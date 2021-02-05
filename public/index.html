@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#000000" />
+		<title>
+			NCI Clinical Trials - National Cancer Institute
+		</title>
+		<link rel="stylesheet" href="%PUBLIC_URL%/index.css" />
+		<link rel="stylesheet" href="%PUBLIC_URL%/__nci-dev__common.css" />
+		<script type="text/javascript">
+			// Only setup the handler if this is not running under cypress.
+			if (!window.Cypress) {
+				// Debugging for testing out new AnalyticsHandler.
+				(function () {
+					var pusher = function () {
+						// Get all the arguments, as push takes in n number of arguments.
+						for (var i = 0; i < arguments.length; i++) {
+							console.log(arguments[i]);
+						}
+					};
+					// Initialize the NCIDataLayer
+					window.NCIDataLayer = window.NCIDataLayer || [];
+					// Set our pusher if it is not already set
+					// this should avoid accidental re-initializations
+					if (window.NCIDataLayer.push === Array.prototype.push) {
+						// Process all the existing items until the queue is
+						// empty.
+						var existingItem;
+						while ((existingItem = window.NCIDataLayer.shift()) !== undefined) {
+							pusher(existingItem);
+						}
+						window.NCIDataLayer.push = pusher;
+					}
+				})();
+			}
+		</script>
+		<script type="text/javascript">
+			function getUrlVars() {
+				var vars = {};
+				var parts = window.location.href.replace(
+					/[?&]+([^=&]+)=([^&]*)/gi,
+					function (m, key, value) {
+						vars[key] = value;
+					}
+				);
+				return vars;
+			}
+			function getUrlParam(parameter, defaultvalue) {
+				var urlparameter = defaultvalue;
+				if (window.location.href.indexOf(parameter) > -1) {
+					urlparameter = getUrlVars()[parameter];
+				}
+				return urlparameter;
+			}
+			window.publicUrl = '%PUBLIC_URL%';
+			const configIndex = getUrlParam('cfg', '0');
+			window.currentConfig = configIndex;
+			const cfgs = [
+				{
+					analyticsChannel: 'Clinical Trials',
+					analyticsHandler: 'EddlAnalyticsHandler',
+					analyticsPublishedDate: 'unknown',
+					analyticsContentGroup: 'Clinical Trials: Custom',
+					apiBaseEndpoint: 'https://webapis.cancer.gov/',
+					appId: '@@/DEFAULT_REACT_APP_ID',
+					baseHost: 'http://localhost:3000',
+					basePath: '/',
+					canonicalHost: 'https://www.cancer.gov',
+					dictionaryEndpoint: 'https://webapis.cancer.gov/glossary/v1/',
+					language: 'en',
+					rootId: 'NCI-app-root',
+					searchEndpoint: 'https://webapis.cancer.gov/sitewidesearch/v1/',
+					searchCollection: 'cgov',
+					searchSiteFilter: 'all',
+					siteName: 'National Cancer Institute',
+					title: 'NCI Clinical Trials',
+					trialListingPageType: 'Disease',
+				},
+				{
+					analyticsChannel: 'Clinical Trials',
+					analyticsHandler: 'EddlAnalyticsHandler',
+					analyticsPublishedDate: 'unknown',
+					analyticsContentGroup: 'Clinical Trials: Custom',
+					apiBaseEndpoint: 'https://webapis.cancer.gov/',
+					appId: '@@/DEFAULT_REACT_APP_ID',
+					baseHost: 'http://localhost:3000',
+					basePath: '/',
+					canonicalHost: 'https://www.cancer.gov',
+					dictionaryEndpoint: 'https://webapis.cancer.gov/glossary/v1/',
+					language: 'en',
+					rootId: 'NCI-app-root',
+					searchEndpoint: 'https://webapis.cancer.gov/sitewidesearch/v1/',
+					searchCollection: 'cgov',
+					searchSiteFilter: 'all',
+					siteName: 'National Cancer Institute',
+					title: 'NCI Clinical Trials',
+					trialListingPageType: 'Intervention',
+				},
+				{
+					analyticsChannel: 'Clinical Trials',
+					analyticsHandler: 'EddlAnalyticsHandler',
+					analyticsPublishedDate: 'unknown',
+					analyticsContentGroup: 'Clinical Trials: Custom',
+					apiBaseEndpoint: 'https://webapis.cancer.gov/',
+					appId: '@@/DEFAULT_REACT_APP_ID',
+					baseHost: 'http://localhost:3000',
+					basePath: '/',
+					canonicalHost: 'https://www.cancer.gov',
+					dictionaryEndpoint: 'https://webapis.cancer.gov/glossary/v1/',
+					language: 'en',
+					rootId: 'NCI-app-root',
+					searchEndpoint: 'https://webapis.cancer.gov/sitewidesearch/v1/',
+					searchCollection: 'cgov',
+					searchSiteFilter: 'all',
+					siteName: 'National Cancer Institute',
+					title: 'NCI Clinical Trials',
+					trialListingPageType: 'Manual',
+				}
+			];
+
+			window.APP_PARAMS = cfgs[configIndex];
+		</script>
+	</head>
+	<body>
+		<noscript>You need to enable JavaScript to run this app.</noscript>
+		<div class="mock-header">
+			<div>
+				<img
+					class="logo"
+					src="https://www.cancer.gov/publishedcontent/images/images/design-elements/logos/nci-logo-full.__v1.svg"
+					alt="National Cancer Institiute"
+				/>
+			</div>
+			<div class="mock-language-bar">
+				<div id="LangList1">
+					<ul>
+						<li><a href="/replaceme">Language Toggle</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<main id="main-content" class="main-content">
+			<div class="general-page-body-container">
+				<div class="content-container contentzone">
+					<div id="NCI-app-root"></div>
+				</div>
+			</div>
+		</main>
+		<div class="jm-wrapper">
+			<select id="jm1" class="jumpmenu" aria-label="Select configuration">
+				<option value="0">Disease</option>
+				<option value="1">Intervention</option>
+				<option value="2">Manual</option>
+			</select>
+		</div>
+		<script type="text/javascript">
+			document.getElementById('jm1').value = window.currentConfig;
+			function initJumpMenus() {
+				// Turns all <select> elements with the 'jumpmenu' class into jump menus
+				var selectElements = document.getElementsByTagName('select');
+				for (i = 0; i < selectElements.length; i++) {
+					// Check for the class and make sure the element has an ID
+					if (
+						selectElements[i].className == 'jumpmenu' &&
+						document.getElementById(selectElements[i].id) != ''
+					) {
+						jumpmenu = document.getElementById(selectElements[i].id);
+						jumpmenu.onchange = function () {
+							if (this.options[this.selectedIndex].value != '') {
+								// Redirect
+								location.href =
+									window.publicUrl +
+									'?cfg=' +
+									this.options[this.selectedIndex].value;
+							}
+						};
+					}
+				}
+			}
+			window.onload = function () {
+				document.documentElement.setAttribute(
+					'lang',
+					window.APP_PARAMS.language
+				);
+				// hide language toggle if no spanish base provided
+				document.querySelector('.mock-language-bar').style.display =
+					window.APP_PARAMS.altLanguageDictionaryBasePath &&
+					window.APP_PARAMS.altLanguageDictionaryBasePath !== ''
+						? 'block'
+						: 'none';
+				initJumpMenus();
+			};
+		</script>
+	</body>
+</html>
