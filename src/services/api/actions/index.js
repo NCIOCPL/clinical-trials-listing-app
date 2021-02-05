@@ -1,0 +1,1 @@
+export { getSampleCallResults } from './getSampleCallResults';

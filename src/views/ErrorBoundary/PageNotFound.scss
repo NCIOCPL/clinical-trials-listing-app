@@ -1,0 +1,22 @@
+.error-container {
+	.error-searchbar {
+		display: block;
+		div.searchString {
+			margin: 0;
+			padding: 0;
+		}
+
+		.button {
+			display: inline-block;
+			width: 20%;
+			margin-right: 1em;
+			margin-left: 1em;
+			top: -1px;
+
+			@media screen and (max-width: 414px) {
+				font-size: 14px;
+				width: 24%;
+			}
+		}
+	}
+}

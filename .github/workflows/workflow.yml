@@ -1,0 +1,221 @@
+name: Workflow
+on: [ push, pull_request ]
+jobs:
+  build:
+    name: Build, Test and Upload Artifacts
+    runs-on: ubuntu-latest
+    steps:
+      ## Setup variables for build info
+      - name: Set Variables
+        id: set_vars
+        run: |
+          ## PUSH
+          if [ "${{ github.event_name }}" == "push" ]; then
+            BUILD_NAME=$(sed -E 's/refs\/(heads|tags)\///; s/\//__/g;' <<< $GITHUB_REF)
+            BRANCH_NAME=$(sed -E 's/refs\/(heads|tags)\///;' <<< $GITHUB_REF)
+            COMMIT_HASH=$(echo "${GITHUB_SHA}")
+          ## PULL_REQUEST
+          elif [ "${{ github.event_name }}" == "pull_request" ]; then
+            BUILD_NAME=$(echo "pr-${{ github.event.pull_request.number }}")
+            BRANCH_NAME=$(echo "pr-${{ github.event.pull_request.number }}")
+            COMMIT_HASH=$(echo "${{ github.event.pull_request.head.sha }}")
+          else
+            ## ERROR
+            exit 1
+          fi
+
+          ## For step checks and artifact deployment path.
+          ## Same for push and PR
+          export REPO_FULL=${{ github.repository }}
+          export REPO_RE='([^/]+)/(.*)'
+          [[ "$REPO_FULL" =~ $REPO_RE ]]
+          REPO_OWNER=$(echo "${BASH_REMATCH[1]}")
+          REPO_NAME=$(echo "${BASH_REMATCH[2]}")
+
+          ## Set step outputs for later use
+          echo ::set-output name=build_name::${BUILD_NAME}
+          echo ::set-output name=branch_name::${BRANCH_NAME}
+          echo ::set-output name=commit_hash::${COMMIT_HASH}
+          echo ::set-output name=repo_owner::${REPO_OWNER}
+          echo ::set-output name=repo_name::${REPO_NAME}
+      ## This clones and checks out.
+      - name: Checkout branch
+        uses: actions/checkout@v1
+      ## This installs the correct node version
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      ## Restore cache
+      - name: Restore npm cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: cache-${{ hashFiles('package-lock.json') }}
+      ## Install using CI
+      - name: Install Dependencies
+        run: npm ci
+        env:
+          CI: true
+      ## Runs jest unit and cypress e2e testing and merges coverage reports
+      - name: Run Tests
+        run: npm test
+        env:
+          CI: true
+      ## Build the app in prep for publishing
+      - name: Build App
+        run: npm run build
+        env:
+          CI: true
+          ## This is used by web pack and NEEDs to be the URL that will ultimately
+          ## be in netstorage
+          PUBLIC_URL: ${{ format('/{0}/{1}/', steps.set_vars.outputs.repo_name, steps.set_vars.outputs.build_name) }}
+      ## Generate build-info.json to house information
+      ## about this specific build. Used for product test
+      ## deployment
+      - name: Create Build Information
+        env:
+          BUILD_INFO: ${{ toJson(steps.set_vars.outputs) }}
+        run: |
+          echo $BUILD_INFO
+          echo $BUILD_INFO > ./build/build-info.json
+      ## Upload the test results artifact
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: test-results
+          path: coverage
+      ## Upload the test results artifact
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: build-artifact
+          path: build
+  deploy-test:
+    name: Deploy built artifacts to test server
+    ## Only do this if the repo is NCIOCPL
+    if: startsWith(github.repository, 'NCIOCPL')
+    ## This job depends on build completing
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download built app
+        uses: actions/download-artifact@v1
+        with:
+          name: build-artifact
+      ## Setup vars from Build Info from build job
+      - name: Setup Job env
+        run: |
+          ## Set Vars
+          BUILD_NAME=$(jq -r '.build_name' < ./build-artifact/build-info.json)
+          BRANCH_NAME=$(jq -r '.branch_name' < ./build-artifact/build-info.json)
+          COMMIT_HASH=$(jq -r '.commit_hash' < ./build-artifact/build-info.json)
+          REPO_OWNER=$(jq -r '.repo_owner' < ./build-artifact/build-info.json)
+          REPO_NAME=$(jq -r '.repo_name' < ./build-artifact/build-info.json)
+
+          ## Set Action Env
+          echo "BUILD_NAME=${BUILD_NAME}" >> $GITHUB_ENV
+          echo "BRANCH_NAME=${BRANCH_NAME}" >> $GITHUB_ENV
+          echo "COMMIT_HASH=${COMMIT_HASH}" >> $GITHUB_ENV
+          echo "REPO_OWNER=${REPO_OWNER}" >> $GITHUB_ENV
+          echo "REPO_NAME=${REPO_NAME}" >> $GITHUB_ENV
+
+          ######## ERROR IF PR FROM FORK
+          if [ "$REPO_OWNER" != "NCIOCPL" ]; then
+            echo "YOU SHOULD NOT SEND PR FROM FORK!!!"
+            exit 1
+          fi
+      ## We need to create the zip for netstorage
+      - name: Zip Build Artifact
+        run: |
+          pushd build-artifact
+          zip -r ../${BUILD_NAME}.zip *
+          popd
+      ## Hack for forcing python3 because using the python shell
+      ## by default uses 2.7
+      - name: Force using python3 for shell
+        shell: bash
+        run: |
+          sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 10
+      ## Install the Akamai netstorage module
+      - name: install python modules
+        shell: bash
+        run: |
+          ## Update Setup Tools so that Edgegrid can install
+          python -m pip install --upgrade pip setuptools wheel
+          pip install -Iv netstorageapi==1.2.12
+          pip install requests edgegrid-python
+      ## Actually do the upload
+      - name: Upload artifact to netstorage
+        shell: python
+        env:
+          NS_HOSTNAME: ${{ secrets.ns_hostname }}
+          NS_KEYNAME: ${{ secrets.ns_keyname }}
+          NS_KEY: ${{ secrets.ns_key }}
+          NS_CPCODE: ${{ secrets.ns_cpcode }}
+          PROP_CPCODE: ${{ secrets.prop_cpcode }}
+          EG_HOSTNAME: ${{ secrets.eg_hostname }}
+          EG_CLIENT_TOKEN: ${{ secrets.eg_client_token }}
+          EG_CLIENT_SECRET: ${{ secrets.eg_client_secret }}
+          EG_ACCESS_TOKEN: ${{ secrets.eg_access_token }}
+          ARTIFACT_FILENAME: ${{ format('{0}.zip', steps.set_vars.outputs.build_name) }}
+        run: |
+          import os
+          import requests
+          from akamai.netstorage import Netstorage, NetstorageError
+          from akamai.edgegrid import EdgeGridAuth
+          from urllib.parse import urljoin
+
+          NS_HOSTNAME = os.environ.get('NS_HOSTNAME')
+          NS_KEYNAME = os.environ.get('NS_KEYNAME')
+          NS_KEY = os.environ.get('NS_KEY')
+          NS_CPCODE = os.environ.get('NS_CPCODE')
+          REPO_NAME = os.environ.get('REPO_NAME')
+          BUILD_NAME = os.environ.get('BUILD_NAME')
+          PROP_CPCODE = os.environ.get('PROP_CPCODE')
+          EG_HOSTNAME = os.environ.get('EG_HOSTNAME')
+          EG_CLIENT_TOKEN = os.environ.get('EG_CLIENT_TOKEN')
+          EG_CLIENT_SECRET = os.environ.get('EG_CLIENT_SECRET')
+          EG_ACCESS_TOKEN = os.environ.get('EG_ACCESS_TOKEN')
+
+          artifact_filename = '{0}.zip'.format(BUILD_NAME)
+          local_source = os.path.join(os.getcwd(), artifact_filename)
+          netstorage_destination = '/{0}/{1}/{2}'.format(NS_CPCODE, REPO_NAME, artifact_filename)
+
+          ## Upload to Netstorage
+          ns = Netstorage(NS_HOSTNAME, NS_KEYNAME, NS_KEY, True)
+          ok, response = ns.upload(local_source, netstorage_destination, True)
+
+          if not ok:
+            # Error occurred
+            print(response)
+            exit(1)
+
+          ## Clear cache
+          session = requests.Session()
+          session.auth = EdgeGridAuth(
+            client_token=EG_CLIENT_TOKEN,
+            client_secret=EG_CLIENT_SECRET,
+            access_token=EG_ACCESS_TOKEN
+          )
+
+          ## Purge the cache
+          purge_result = session.post(
+            urljoin(EG_HOSTNAME, '/ccu/v3/delete/cpcode/production'),
+            json={
+              "objects": [NS_CPCODE, PROP_CPCODE]
+            }
+          )
+
+          ## Handle error from purge
+          if (purge_result.status_code != 201) :
+            print("Purge failed")
+            print(purge_result.reason)
+            print(purge_result.content)
+            exit(2)
+
+          ## Sucessfully Completed.
+          print("Uploaded {0} successfully".format(artifact_filename))
+          exit(0)
+
+## TODO: Post notice PR is ready for testing

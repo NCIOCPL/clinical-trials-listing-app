@@ -1,0 +1,113 @@
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	height: 100%;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+}
+
+.general-page-body-container,
+.mock-header {
+	position: relative;
+	margin: 0 auto;
+	max-width: 62.5em;
+}
+
+.general-page-body-container {
+	background: #fffffb;
+	box-shadow: 10px 0 10px -7px rgba(0, 0, 0, 0.5),
+		-10px 0 10px -7px rgba(0, 0, 0, 0.5);
+	clear: both;
+	height: 100%;
+	min-height: 100vh;
+	overflow: auto;
+}
+
+@media only screen and (min-width: 1441px) {
+	.general-page-body-container,
+	.mock-header {
+		max-width: 1200px;
+	}
+}
+
+.content-container {
+	position: relative;
+	padding-left: 0.9375em;
+	padding-right: 0.9375em;
+}
+
+@media only screen and (min-width: 1025px) {
+	.content-container {
+		float: right;
+		padding-right: 3.125em;
+		width: 75%;
+	}
+}
+
+.show-for-sr {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.jm-wrapper {
+	position: fixed;
+	border-top: 1px solid #ccc;
+	padding: 4px 8px;
+	bottom: 0;
+	right: 0;
+	background: rgba(128, 128, 128, 0.3);
+}
+
+.jm-wrapper select {
+	margin-bottom: 0;
+}
+
+.mock-header .logo {
+	width: 90%;
+	transform: translateY(0.5px);
+	margin: 13px;
+}
+
+.mock-header ul {
+	margin-bottom: 0;
+}
+
+.mock-language-bar {
+	margin: 0 auto;
+	max-width: 62.5em;
+	text-align: right;
+	padding-right: 0.9375em;
+	background: #2a71a5;
+}
+.mock-language-bar a,
+.mock-language-bar a:hover {
+	color: white;
+}
+
+@media only screen and (min-width: 641px) {
+	.mock-header .logo {
+		width: 60%;
+	}
+}
+@media only screen and (min-width: 1025px) {
+	.mock-language-bar {
+		background: white;
+	}
+	.mock-language-bar a,
+	.mock-language-bar a:hover {
+		color: #2b7bba;
+	}
+}
