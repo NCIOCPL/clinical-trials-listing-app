@@ -9,7 +9,7 @@ import { useAppPaths } from '../hooks';
 import { getAxiosClient } from '../services/api/axios-client';
 import { useStateValue } from '../store/store.js';
 import { MockAnalyticsProvider } from '../tracking';
-import Home from '../views/Home';
+import Manual from '../views/Manual';
 
 jest.mock('../store/store.js');
 
@@ -34,10 +34,11 @@ describe('App component', () => {
 
 	afterEach(cleanup);
 
-	test('HomePath route exists and matches expected route', async () => {
+	test('PurlPath route exists and matches expected route', async () => {
 		const apiEndpoint = 'http://localhost:3000/api';
 		const basePath = '/';
 		const language = 'en';
+		const requestFilters = '';
 		const siteName = 'National Cancer Institute';
 
 		useStateValue.mockReturnValue([
@@ -45,23 +46,25 @@ describe('App component', () => {
 				appId: 'mockAppId',
 				basePath,
 				language,
+				requestFilters,
 				siteName,
 			},
 		]);
 
-		const { HomePath } = useAppPaths();
+		const { BasePath } = useAppPaths();
 		const initialState = {
 			apiEndpoint,
 			language,
+			requestFilters,
 			siteName,
 		};
 
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={[HomePath()]}>
+					<MemoryRouter initialEntries={[BasePath()]}>
 						<ClientContextProvider client={getAxiosClient(initialState)}>
-							<ComponentWithLocation RenderComponent={Home} />
+							<ComponentWithLocation RenderComponent={Manual} />
 						</ClientContextProvider>
 					</MemoryRouter>
 				</MockAnalyticsProvider>

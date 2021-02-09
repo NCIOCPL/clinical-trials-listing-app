@@ -1,5 +1,5 @@
+/// <reference types="Cypress" />
 import { And, Given, Then } from 'cypress-cucumber-preprocessor/steps';
-import { i18n } from '../../../src/utils';
 
 const baseURL = Cypress.config('baseUrl');
 
@@ -92,12 +92,6 @@ And('the following links and texts exist on the page', (dataTable) => {
         No Results Page
     -----------------------
 */
-And('the system returns the no results found page', () => {
-
-	cy.window().then((win) => {
-		if (win.INT_TEST_APP_PARAMS) {
-			const noResultsPageTitle =  i18n.nciSearchResults[win.INT_TEST_APP_PARAMS.language];
-			cy.get('h1').should('contain', noResultsPageTitle);
-		}
-	});
+And('the system displays message {string}',(noTrialsText)=>{
+cy.get('div p').should('have.text',noTrialsText)
 });

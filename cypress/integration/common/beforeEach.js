@@ -15,13 +15,15 @@ beforeEach(() => {
 				appId: '@@/DEFAULT_REACT_APP_ID',
 				baseHost: 'http://localhost:3000',
 				basePath: '/',
-				apiEndpoint: '/api/sampleapi/v1/',
+				apiEndpoint: '/api/',
 				canonicalHost: 'https://www.cancer.gov',
 				itemsPerPage: 25,
 				trialListingPageType: 'Disease',
 				rootId: 'NCI-app-root',
 				siteName: 'National Cancer Institute',
-				title: 'NCI Clinical Trials',
+				pageTitle: 'Adult Brain Tumors Clinical Trials',
+				requestFilters:
+						'{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose.primary_purpose_code": "treatment"}',
 		};
 		console.log(win.INT_TEST_APP_PARAMS);
 	});

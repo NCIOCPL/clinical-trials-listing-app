@@ -10,13 +10,8 @@ describe('when base path is slash', () => {
 		},
 	]);
 
-	it('will produce paths without params', () => {
-		const { HomePath } = useAppPaths();
-		expect(HomePath()).toEqual('/');
-	});
-
 	it('will replace paths with params', () => {
-		const { HomePath } = useAppPaths();
-		expect(HomePath({ foo: 'bar' })).toEqual('/');
+		const { BasePath } = useAppPaths();
+		expect(BasePath()).toEqual('/');
 	});
 });

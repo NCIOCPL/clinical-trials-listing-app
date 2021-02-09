@@ -33,20 +33,21 @@ const initialize = ({
 	appId = '@@/DEFAULT_REACT_APP_ID',
 	baseHost = 'http://localhost:3000',
 	basePath = '/',
-	apiEndpoint = '/api/sampleapi/v1/',
+	apiEndpoint = 'https://clinicaltrialsapi.cancer.gov/v1/',
 	canonicalHost = 'https://www.cancer.gov',
 	browserTitle = '{{disease_label}} Clinical Trials',
-	introText = "<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}. All trials on the list are supported by NCI.</p><p>NCI's <a href='/about-cancer/treatment/clinical-trials/what-are-trials'>basic information about clinical trials</a> explains the types and phases of trials and how they are carried out. Clinical trials look at new ways to prevent, detect, or treat disease. You may want to think about taking part in a clinical trial. Talk to your doctor for help in deciding if one is right for you.</p>",
+	introText = '',
 	itemsPerPage = 25,
 	language = 'en',
 	metaDescription = 'NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials for {{disease_normalized}}.',
 	noTrialsHtml = '<p>There are no NCI-supported clinical trials for {{disease_normalized}} at this time. You can try a <a href=\\"/about-cancer/treatment/clinical-trials/search\\">new search</a> or <a href=\\"/contact\\">contact our Cancer Information Service</a> to talk about options for clinical trials.</p>',
 	pageTitle = '{{disease_label}} Clinical Trials',
-	trialListingPageType = 'Disease',
+	trialListingPageType = 'Manual',
+	requestFilters = '',
 	rootId = 'NCI-app-root',
 	siteName = 'National Cancer Institute',
 	title = 'NCI Clinical Trials',
-	viewPageUrlFormatter = '/clinicaltrials/{0}'
+	viewPageUrlFormatter = '/clinicaltrials/{0}',
 } = {}) => {
 	const appRootDOMNode = document.getElementById(rootId);
 	const isRehydrating = appRootDOMNode.getAttribute('data-isRehydrating');
@@ -68,10 +69,11 @@ const initialize = ({
 		metaDescription,
 		noTrialsHtml,
 		pageTitle,
+		requestFilters,
 		trialListingPageType,
 		siteName,
 		title,
-		viewPageUrlFormatter
+		viewPageUrlFormatter,
 	};
 
 	// Determine the analytics HoC we are going to use.

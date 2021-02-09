@@ -6,7 +6,7 @@ import UseCustomQuerySample from '../samples/UseCustomQuery';
 import { useStateValue } from '../../store/store';
 import MockAnalyticsProvider from '../../tracking/mock-analytics-provider';
 import { ErrorBoundary } from '../../views/ErrorBoundary';
-import { setLanguage, setAPIEndpoint } from '../../services/api/endpoints';
+import { setAPIEndpoint } from '../../services/api/endpoints';
 
 jest.mock('../../store/store');
 let wrapper;
@@ -14,7 +14,7 @@ let wrapper;
 describe('', () => {
 	beforeEach(() => {
 		jest.spyOn(console, 'error');
-		console.error.mockImplementation(() => { });
+		console.error.mockImplementation(() => {});
 	});
 
 	afterEach(() => {
@@ -24,6 +24,8 @@ describe('', () => {
 	test('should throw an error using a non existent endpoint - English message', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.example.gov';
+		const requestFilters =
+			'{"diseases.nci_thesaurus_concept_id": ["C5816", "C8550", "C3813"], "primary_purpose.primary_purpose_code": "treatment"}';
 		const language = 'en';
 
 		useStateValue.mockReturnValue([
@@ -93,60 +95,18 @@ describe('', () => {
 			);
 		});
 		expect(
-			screen.getByText('Se produjo un error. Por favor, vuelva a intentar más tarde.')
+			screen.getByText(
+				'Se produjo un error. Por favor, vuelva a intentar más tarde.'
+			)
 		).toBeInTheDocument();
 	});
-
-	// test('useCustomQuery example should throw error - Spanish message', async () => {
-	// 	const dictionaryName = 'Cancer.gov';
-	// 	const dictionaryTitle = 'Diccionario de cáncer';
-	// 	const language = 'es';
-	// 	setDictionaryName(dictionaryName);
-	// 	setAudience('Patient');
-	// 	setLanguage(language);
-	// 	useStateValue.mockReturnValue([
-	// 		{
-	// 			altLanguageDictionaryBasePath: '/cancer-terms',
-	// 			languageToggleSelector: '#LangList1 a',
-	// 			appId: 'mockAppId',
-	// 			canonicalHost: 'https://example.org',
-	// 			basePath: '/',
-	// 			dictionaryEndpoint: '/',
-	// 			dictionaryName,
-	// 			dictionaryTitle,
-	// 			language,
-	// 		},
-	// 	]);
-	// 	client = {
-	// 		query: async () => ({
-	// 			error: true,
-	// 			status: 500,
-	// 			payload: {},
-	// 		}),
-	// 	};
-	// 	await act(async () => {
-	// 		wrapper = render(
-	// 			<MockAnalyticsProvider>
-	// 				<ClientContextProvider client={client}>
-	// 					<ErrorBoundary>
-	// 						<UseCustomQuerySample />
-	// 					</ErrorBoundary>
-	// 				</ClientContextProvider>
-	// 			</MockAnalyticsProvider>
-	// 		);
-	// 	});
-	// 	const { getByText } = wrapper;
-	// 	expect(getByText(i18n.errorPageText[language])).toBeInTheDocument();
-	// });
 
 	test('useCustomQuery example should display content and not throw error', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.example.gov';
 		const apiBaseEndpoint = 'http://localhost:3000/api';
-		const language = 'en';
 		const contentMessage = 'Successful API call with content';
-		const id= '6789';
-		setLanguage(language);
+
 		setAPIEndpoint(apiBaseEndpoint);
 
 		useStateValue.mockReturnValue([
@@ -154,7 +114,6 @@ describe('', () => {
 				appId: 'mockAppId',
 				basePath,
 				canonicalHost,
-				language,
 				apiBaseEndpoint,
 			},
 		]);
@@ -171,7 +130,7 @@ describe('', () => {
 				<MockAnalyticsProvider>
 					<ClientContextProvider client={client}>
 						<ErrorBoundary>
-							<UseCustomQuerySample id={id} />
+							<UseCustomQuerySample />
 						</ErrorBoundary>
 					</ClientContextProvider>
 				</MockAnalyticsProvider>

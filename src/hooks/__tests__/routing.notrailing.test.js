@@ -6,17 +6,12 @@ jest.mock('../../store/store.js');
 describe('when base path missing trailing slash', () => {
 	useStateValue.mockReturnValue([
 		{
-			basePath: '/my/path',
+			basePath: '/',
 		},
 	]);
 
-	it('will produce paths without params', () => {
-		const { HomePath } = useAppPaths();
-		expect(HomePath()).toEqual('/my/path/');
-	});
-
 	it('will replace paths with params', () => {
-		const { HomePath } = useAppPaths();
-		expect(HomePath({ foo: 'bar' })).toEqual('/my/path/');
+		const { BasePath } = useAppPaths();
+		expect(BasePath()).toEqual('/');
 	});
 });
