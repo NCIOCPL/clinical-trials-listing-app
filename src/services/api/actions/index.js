@@ -1,1 +1,1 @@
-export { getSampleCallResults } from './getSampleCallResults';
+export { getClinicalTrials } from './getClinicalTrials';

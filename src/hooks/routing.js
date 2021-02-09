@@ -2,8 +2,7 @@ import { useStateValue } from '../store/store';
 
 // Paths for app
 const appPaths = {
-	HomePath: '/',
-	ItemDetailsPath: '/item/:id',
+	BasePath: '/'
 };
 
 /**
