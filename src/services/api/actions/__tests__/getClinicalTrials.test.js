@@ -5,8 +5,10 @@ describe('getClinicalTrials action', () => {
 	setAPIEndpoint('/clinical-trials');
 
 	test('should match getClinicalTrials action', () => {
-		const requestFilters =
-			'{"diseases.nci_thesaurus_concept_id": ["C5816", "C8550", "C3813"], "primary_purpose.primary_purpose_code": "treatment"}';
+		const requestFilters = {
+			'diseases.nci_thesaurus_concept_id': ['C5816', 'C8550', 'C3813'],
+			'primary_purpose.primary_purpose_code': 'treatment',
+		};
 		const retAction = {
 			method: 'POST',
 			endpoint: `/clinical-trials`,

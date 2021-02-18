@@ -29,7 +29,7 @@ Given('the user visits the home page', () => {
 	cy.visit('/');
 });
 
-Given('the user navigates to {string}',  (destURL) => {
+Given('the user navigates to {string}', (destURL) => {
 	cy.visit(destURL);
 });
 
@@ -43,9 +43,15 @@ Given('{string} is set to {string}', (key, param) => {
 	});
 });
 
+Given('{string} is set as a json string to {string}', (key, param) => {
+	cy.on('window:before:load', (win) => {
+		win.INT_TEST_APP_PARAMS[key] = JSON.parse(param.replaceAll("'", '"'));
+	});
+});
+
 /*
     ----------------------------------------
-        API Error Page
+      API Error Page
     ----------------------------------------
 */
 Then('the user gets an error page that reads {string}', (errorMessage) => {
@@ -63,7 +69,7 @@ And('the page displays {string}', (text) => {
 
 /*
     ----------------------------------------
-        Analytics
+     Analytics
     ----------------------------------------
 */
 Then('browser waits', () => {
@@ -92,8 +98,8 @@ And('the following links and texts exist on the page', (dataTable) => {
         No Results Page
     -----------------------
 */
-And('the system displays message {string}',(noTrialsText)=>{
-cy.get('div p').should('have.text',noTrialsText)
+And('the system displays message {string}', (noTrialsText) => {
+	cy.get('div p').should('have.text', noTrialsText);
 });
 
 /*
@@ -116,3 +122,45 @@ And(
 And('the search bar appears below', () => {
 	cy.get('input#keywords').should('be.visible');
 });
+
+/*
+    -----------------------
+        Manual Page results
+    -----------------------
+*/
+
+And(
+	'each result displays the trial title as a link to the trial description page',
+	() => {
+		cy.get('.ct-list-item')
+			.find('a.ct-list-item__title')
+			.should('have.attr', 'href')
+			.then((href) => {
+				expect(href).to.contain('/v?id=NCI');
+			});
+	}
+);
+
+And('each result displays the trial description below the link', () => {
+	cy.get('.ct-list-item p.body').should('not.be.empty');
+});
+
+And('each result displays {string} below the description', (location) => {
+	cy.get('.ct-list-item .location-info')
+		.find('strong')
+		.should('include.text', location);
+});
+
+Then('the system displays {int} paragraph {string}', (numParagraph, text) => {
+	cy.get('div.intro-text')
+		.find('p')
+		.eq(numParagraph - 1)
+		.should('have.text', text);
+});
+
+And(
+	'the link {string} to {string} appears on the page',
+	(linkText, linkHref) => {
+		cy.get(`a[href="${linkHref}"]`).should('have.text', linkText);
+	}
+);
