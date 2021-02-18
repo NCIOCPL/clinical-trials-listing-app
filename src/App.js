@@ -15,36 +15,39 @@ const App = () => {
 
 	switch (trialListingPageType) {
 		case 'Disease':
-			dynamicRoutes = <Routes>
-				<Route path="/*" element={<PageNotFound />} />
-			</Routes>;
+			dynamicRoutes = (
+				<Routes>
+					<Route path="/*" element={<PageNotFound />} />
+				</Routes>
+			);
 			break;
 
 		case 'Intervention':
-			dynamicRoutes = <Routes>
-				<Route path="/*" element={<PageNotFound />} />
-			</Routes>;
+			dynamicRoutes = (
+				<Routes>
+					<Route path="/*" element={<PageNotFound />} />
+				</Routes>
+			);
 			break;
 
 		case 'Manual':
-			dynamicRoutes = <Routes>
-				<Route path={BasePath()} element={<Manual />} />
-				<Route path="/*" element={<PageNotFound />} />
-			</Routes>;
+			dynamicRoutes = (
+				<Routes>
+					<Route path={BasePath()} element={<Manual />} />
+					<Route path="/*" element={<PageNotFound />} />
+				</Routes>
+			);
 			break;
 
 		default:
-			dynamicRoutes = <Routes>
-				<Route path="/*" element={<NoListingType />} />
-			</Routes>;
-
+			dynamicRoutes = (
+				<Routes>
+					<Route path="/*" element={<NoListingType />} />
+				</Routes>
+			);
 	}
 
-	return (
-		<Router>
-			{dynamicRoutes}
-		</Router>
-	);
+	return <Router>{dynamicRoutes}</Router>;
 };
 
 App.propTypes = {

@@ -1,5 +1,7 @@
 export { i18n } from './i18n';
+export { getLocationInfoFromSites} from './getLocationInfoFromSites';
 export { getProductTestBase } from './getProductTestBase';
+export { getStateNameFromAbbr } from './getStateNameFromAbbr';
 export { formatNumberToThousands } from './number';
 export { matchItemToTerm } from './matchItemToTerm';
 export { getKeyValueFromObject } from './objects';

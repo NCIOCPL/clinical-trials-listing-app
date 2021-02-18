@@ -34,7 +34,7 @@ describe('App component', () => {
 
 	afterEach(cleanup);
 
-	test('PurlPath route exists and matches expected route', async () => {
+	test('BasePath route exists and matches expected route', async () => {
 		const apiEndpoint = 'http://localhost:3000/api';
 		const basePath = '/';
 		const language = 'en';

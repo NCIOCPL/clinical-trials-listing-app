@@ -1,8 +1,7 @@
 import { getEndpoint } from '../endpoints';
 
-export const getClinicalTrials = (requestFilters = '') => {
+export const getClinicalTrials = (requestFilters = {}) => {
 	const endpoint = getEndpoint('clinicalTrials');
-	const additionalParams = JSON.parse(requestFilters);
 	const defaultQuery = {
 		current_trial_status: [
 			'Active',
@@ -12,7 +11,7 @@ export const getClinicalTrials = (requestFilters = '') => {
 			'Temporarily Closed to Accrual',
 			'Temporarily Closed to Accrual and Intervention',
 		],
-		...additionalParams,
+		...requestFilters,
 	};
 
 	return {

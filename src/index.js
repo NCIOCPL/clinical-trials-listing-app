@@ -36,6 +36,7 @@ const initialize = ({
 	apiEndpoint = 'https://clinicaltrialsapi.cancer.gov/v1/',
 	canonicalHost = 'https://www.cancer.gov',
 	browserTitle = '{{disease_label}} Clinical Trials',
+	resultsItemTitleLink = '',
 	introText = '',
 	itemsPerPage = 25,
 	language = 'en',
@@ -61,6 +62,7 @@ const initialize = ({
 		analyticsPublishedDate,
 		baseHost,
 		basePath,
+		resultsItemTitleLink,
 		browserTitle,
 		canonicalHost,
 		introText,
@@ -134,7 +136,6 @@ if (process.env.NODE_ENV !== 'production') {
 	const dictSettings = {
 		...appParams,
 		...integrationTestOverrides,
-		searchEndpoint: '/api/sitewidesearch/v1/',
 	};
 	initialize(dictSettings);
 } else if (window?.location?.host === 'react-app-dev.cancer.gov') {
