@@ -17,10 +17,11 @@ describe('PageNotFound component', () => {
 	beforeEach(cleanup);
 	afterEach(cleanup);
 
-	test('should show error page title ( English )', async () => {
+	test('Should show error page title ( Disease )', async () => {
 		const basePath = '/';
-		const canonicalHost = 'https://www.example.gov';
-		const language = 'en';
+		const canonicalHost = "https://www.cancer.gov";
+		const language = "en";
+		const trialListingPageType = "Disease";
 
 		useStateValue.mockReturnValue([
 			{
@@ -28,6 +29,7 @@ describe('PageNotFound component', () => {
 				basePath,
 				canonicalHost,
 				language,
+				trialListingPageType
 			},
 		]);
 
@@ -46,10 +48,11 @@ describe('PageNotFound component', () => {
 		fireEvent.click(screen.getByText('Search'));
 	});
 
-	test('should show error page title ( English )', async () => {
+	test('Should show error page title ( Intervention )', async () => {
 		const basePath = '/';
-		const canonicalHost = 'https://www.example.gov';
+		const canonicalHost = 'https://www.cancer.gov';
 		const language = 'es';
+		const trialListingPageType = "Intervention";
 
 		useStateValue.mockReturnValue([
 			{
@@ -57,6 +60,7 @@ describe('PageNotFound component', () => {
 				basePath,
 				canonicalHost,
 				language,
+				trialListingPageType
 			},
 		]);
 
@@ -74,4 +78,5 @@ describe('PageNotFound component', () => {
 		fireEvent.change(inputBox, { target: { value: 'pollo' } });
 		fireEvent.click(screen.getByText('Buscar'));
 	});
+
 });

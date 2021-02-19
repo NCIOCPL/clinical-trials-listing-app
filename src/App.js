@@ -14,6 +14,18 @@ const App = () => {
 	const [{ trialListingPageType }] = useStateValue();
 
 	switch (trialListingPageType) {
+		case 'Disease':
+			dynamicRoutes = <Routes>
+				<Route path="/*" element={<PageNotFound />} />
+			</Routes>;
+			break;
+
+		case 'Intervention':
+			dynamicRoutes = <Routes>
+				<Route path="/*" element={<PageNotFound />} />
+			</Routes>;
+			break;
+
 		case 'Manual':
 			dynamicRoutes = <Routes>
 				<Route path={BasePath()} element={<Manual />} />

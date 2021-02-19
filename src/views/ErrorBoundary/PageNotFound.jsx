@@ -7,7 +7,7 @@ import { useStateValue } from '../../store/store';
 import { i18n } from '../../utils';
 
 const PageNotFound = () => {
-	const [{ canonicalHost, language }] = useStateValue();
+	const [{ canonicalHost, language, trialListingPageType }] = useStateValue();
 	const [searchText, updateSearchText] = useState('');
 	const tracking = useTracking();
 
@@ -21,6 +21,7 @@ const PageNotFound = () => {
 			}`,
 			title: pageTitle,
 			type: 'PageLoad',
+			trialListingPageType: trialListingPageType.toLowerCase(),
 		});
 	}, []);
 
@@ -54,8 +55,9 @@ const PageNotFound = () => {
 					</>,
 			  ];
 
-	const executeSearch = (event) => {
+	const executeSearch = event => {
 		event.preventDefault();
+		window.location = `https://www.cancer.gov/search/results?swKeyword=${searchText}`;
 	};
 
 	const renderHelmet = () => {
@@ -84,21 +86,23 @@ const PageNotFound = () => {
 					))}
 				</>
 				<div className="error-searchbar">
-					<TextInput
-						id="keywords"
-						action={updateTextInput}
-						classes="searchString"
-						label={i18n.search[language]}
-						labelHidden
-					/>
-					<input
-						type="submit"
-						className="submit button postfix"
-						id="btnSearch"
-						title={i18n.search[language]}
-						value={i18n.search[language]}
-						onClick={executeSearch}
-					/>
+					<form onSubmit={{executeSearch}}>
+						<TextInput
+							id="keywords"
+							action={updateTextInput}
+							classes="searchString"
+							label={i18n.search[language]}
+							labelHidden
+						/>
+						<input
+							type="submit"
+							className="submit button postfix"
+							id="btnSearch"
+							title={i18n.search[language]}
+							value={i18n.search[language]}
+							onClick={executeSearch}
+						/>
+					</form>
 				</div>
 			</div>
 		</>

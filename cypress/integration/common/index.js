@@ -45,7 +45,7 @@ Given('{string} is set to {string}', (key, param) => {
 
 /*
     ----------------------------------------
-      API Error Page
+        API Error Page
     ----------------------------------------
 */
 Then('the user gets an error page that reads {string}', (errorMessage) => {
@@ -63,7 +63,7 @@ And('the page displays {string}', (text) => {
 
 /*
     ----------------------------------------
-     Analytics
+        Analytics
     ----------------------------------------
 */
 Then('browser waits', () => {
@@ -94,4 +94,25 @@ And('the following links and texts exist on the page', (dataTable) => {
 */
 And('the system displays message {string}',(noTrialsText)=>{
 cy.get('div p').should('have.text',noTrialsText)
+});
+
+/*
+    ----------------------
+        Page Not Found
+    ----------------------
+*/
+
+And('the text {string} appears on the page', (text) => {
+	cy.get('div.error-container').should('contain', text);
+});
+
+And(
+	'the link {string} to {string} appears on the page',
+	(linkText, linkHref) => {
+		cy.get(`a[href="${linkHref}"]`).should('have.text', linkText);
+	}
+);
+
+And('the search bar appears below', () => {
+	cy.get('input#keywords').should('be.visible');
 });
