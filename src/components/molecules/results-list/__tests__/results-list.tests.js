@@ -22,6 +22,7 @@ describe('<ResultsList />', () => {
 						org_name: 'Wingstop',
 						org_city: 'Gaithersburg',
 						org_state_or_province: 'MD',
+						recruitment_status: 'approved'
 					},
 				],
 			},
@@ -37,6 +38,7 @@ describe('<ResultsList />', () => {
 						org_name: 'Johnson & Johnson',
 						org_city: 'Arlington',
 						org_state_or_province: 'VA',
+						recruitment_status: 'in review'
 					},
 				],
 			},
