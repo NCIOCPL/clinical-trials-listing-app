@@ -1,6 +1,10 @@
 import { getEndpoint } from '../endpoints';
 
-export const getClinicalTrials = (requestFilters = {}) => {
+export const getClinicalTrials = ({
+	from = 0,
+	requestFilters = {},
+	size = 50,
+}) => {
 	const endpoint = getEndpoint('clinicalTrials');
 	const defaultQuery = {
 		current_trial_status: [
@@ -12,6 +16,8 @@ export const getClinicalTrials = (requestFilters = {}) => {
 			'Temporarily Closed to Accrual and Intervention',
 		],
 		...requestFilters,
+		from,
+		size,
 	};
 
 	return {

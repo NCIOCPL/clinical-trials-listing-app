@@ -7,6 +7,11 @@
 		<title>NCI Clinical Trials - National Cancer Institute</title>
 		<link rel="stylesheet" href="%PUBLIC_URL%/index.css" />
 		<link rel="stylesheet" href="%PUBLIC_URL%/__nci-dev__common.css" />
+		<style>
+			.hide {
+				display: none;
+			}
+		</style>
 		<script type="text/javascript">
 			// Only setup the handler if this is not running under cypress.
 			if (!window.Cypress) {
@@ -138,8 +143,7 @@
 						],
 						'primary_purpose.primary_purpose_code': 'treatment',
 					},
-					detailedViewPagePrettyUrlFormatter:
-						'/clinicaltrials/{{nci_id}}',
+					detailedViewPagePrettyUrlFormatter: '/clinicaltrials/{{nci_id}}',
 					rootId: 'NCI-app-root',
 					siteName: 'National Cancer Institute',
 					title: 'NCI Clinical Trials',
@@ -172,8 +176,7 @@
 						],
 						'primary_purpose.primary_purpose_code': 'treatment',
 					},
-					detailedViewPagePrettyUrlFormatter:
-						'/clinicaltrials/{{nci_id}}',
+					detailedViewPagePrettyUrlFormatter: '/clinicaltrials/{{nci_id}}',
 					rootId: 'NCI-app-root',
 					siteName: 'National Cancer Institute',
 					title: 'NCI Clinical Trials',
@@ -191,7 +194,7 @@
 					browserTitle: 'Clinical Trials for Adult Metastatic Brain Tumors',
 					canonicalHost: 'https://www.cancer.gov',
 					introText: '',
-					itemsPerPage: 25,
+					itemsPerPage: 8,
 					metaDescription:
 						'Find clinical trials to treat adult metastatic brain tumors.',
 					noTrialsHtml:
@@ -201,8 +204,7 @@
 						'diseases.nci_thesaurus_concept_id': ['C5816', 'C8550', 'C3813'],
 						'primary_purpose.primary_purpose_code': 'treatment',
 					},
-					detailedViewPagePrettyUrlFormatter:
-						'/clinicaltrials/{{nci_id}}',
+					detailedViewPagePrettyUrlFormatter: '/clinicaltrials/{{nci_id}}',
 					rootId: 'NCI-app-root',
 					siteName: 'National Cancer Institute',
 					title: 'NCI Clinical Trials',
@@ -240,8 +242,7 @@
 						],
 						'primary_purpose.primary_purpose_code': 'treatment',
 					},
-					detailedViewPagePrettyUrlFormatter:
-						'/clinicaltrials/{{nci_id}}',
+					detailedViewPagePrettyUrlFormatter: '/clinicaltrials/{{nci_id}}',
 					rootId: 'NCI-app-root',
 					siteName: 'National Cancer Institute',
 					title: 'NCI Clinical Trials',
@@ -302,6 +303,14 @@
 									this.options[this.selectedIndex].value;
 							}
 						};
+					}
+				}
+				// Adds class to hide 'jump menu' if parameter in url is present
+				if (window.location.search.includes('hideJumpMenu')) {
+					var hideJumpMenu = getUrlVars()['hideJumpMenu'];
+					if (hideJumpMenu === 'true') {
+						var jumpMenuContainer = document.getElementById('jm1');
+						jumpMenuContainer.className += ' hide';
 					}
 				}
 			}

@@ -11,6 +11,14 @@ Feature: As a user, I would like to view the trial results for a manual listing 
     And each result displays the trial title as a link to the trial description page
     And each result displays the trial description below the link
     And each result displays "Location: " below the description
+    And pager displays the following navigation options
+      | pages  |
+      | 1      |
+      | 2      |
+      | 3      |
+      | 4      |
+      | 5      |
+      | Next > |
 
 
   Scenario: View manual listing page metadata
@@ -28,3 +36,145 @@ Feature: As a user, I would like to view the trial results for a manual listing 
       | description | Find clinical trials to treat adult metastatic brain tumors. |
     And there is a canonical link with the href "https://www.cancer.gov/"
 
+  Scenario: User is able to navigate through pages on manual listings
+    Given "trialListingPageType" is set to "Manual"
+    And "pageTitle" is set to "Clinical Trials for Adult Metastatic Brain Tumors"
+    And "itemsPerPage" is set to 10
+    Given the user navigates to "/?cfg=4"
+    Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"
+    Then the system displays "Trials 1-10 of" "102"
+    And pager displays the following navigation options
+      | pages  |
+      | 1      |
+      | 2      |
+      | 3      |
+      | ...    |
+      | 11     |
+      | Next > |
+    And the page "1" is highlighted
+    When user clicks on "Next >" button
+    Then pager displays the following navigation options
+      | pages      |
+      | < Previous |
+      | 1          |
+      | 2          |
+      | 3          |
+      | 4          |
+      | ...        |
+      | 11         |
+      | Next >     |
+    And the page "2" is highlighted
+    When user clicks on "Next >" button
+    Then pager displays the following navigation options
+      | pages      |
+      | < Previous |
+      | 1          |
+      | 2          |
+      | 3          |
+      | 4          |
+      | 5          |
+      | ...        |
+      | 11         |
+      | Next >     |
+    And the page "3" is highlighted
+    When user clicks on "Next >" button
+    Then pager displays the following navigation options
+      | pages      |
+      | < Previous |
+      | 1          |
+      | 2          |
+      | 3          |
+      | 4          |
+      | 5          |
+      | 6          |
+      | ...        |
+      | 11         |
+      | Next >     |
+    And the page "4" is highlighted
+    When user clicks on "Next >" button
+    Then pager displays the following navigation options
+      | pages      |
+      | < Previous |
+      | 1          |
+      | ...        |
+      | 3          |
+      | 4          |
+      | 5          |
+      | 6          |
+      | 7          |
+      | ...        |
+      | 11         |
+      | Next >     |
+    And the page "5" is highlighted
+    When user clicks on "11" button
+    Then pager displays the following navigation options
+      | pages      |
+      | < Previous |
+      | 1          |
+      | ...        |
+      | 9          |
+      | 10         |
+      | 11         |
+    And the page "11" is highlighted
+    When user clicks on "< Previous" button
+    Then pager displays the following navigation options
+      | pages      |
+      | < Previous |
+      | 1          |
+      | ...        |
+      | 8          |
+      | 9          |
+      | 10         |
+      | 11         |
+      | Next >     |
+    And the page "10" is highlighted
+    When user clicks on "< Previous" button
+    Then pager displays the following navigation options
+      | pages      |
+      | < Previous |
+      | 1          |
+      | ...        |
+      | 7          |
+      | 8          |
+      | 9          |
+      | 10         |
+      | 11         |
+      | Next >     |
+    And the page "9" is highlighted
+    When user clicks on "< Previous" button
+    Then pager displays the following navigation options
+      | pages      |
+      | < Previous |
+      | 1          |
+      | ...        |
+      | 6          |
+      | 7          |
+      | 8          |
+      | 9          |
+      | 10         |
+      | 11         |
+      | Next >     |
+    And the page "8" is highlighted
+    When user clicks on "< Previous" button
+    Then pager displays the following navigation options
+      | pages      |
+      | < Previous |
+      | 1          |
+      | ...        |
+      | 5          |
+      | 6          |
+      | 7          |
+      | 8          |
+      | 9          |
+      | ...        |
+      | 11         |
+      | Next >     |
+    And the page "7" is highlighted
+
+  Scenario: View manual listing page with no pager (when total results is less than items per page )
+    Given "trialListingPageType" is set to "Manual"
+    And "pageTitle" is set to "Clinical Trials for Adult Metastatic Brain Tumors"
+    And "itemsPerPage" is set to 20
+    Given the user navigates to "/?cfg=4"
+    Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"
+    And pager is not displayed

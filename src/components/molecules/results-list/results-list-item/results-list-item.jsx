@@ -26,7 +26,6 @@ const ResultsListItem = ({
 
 ResultsListItem.propTypes = {
 	nciId: PropTypes.string.isRequired,
-	listingType: PropTypes.string.isRequired,
 	locationInfo: PropTypes.node.isRequired,
 	resultsItemTitleLink: PropTypes.string.isRequired,
 	summary: PropTypes.string.isRequired,

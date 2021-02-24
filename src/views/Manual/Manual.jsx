@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { useLocation, useNavigate } from 'react-router';
 import { useTracking } from 'react-tracking';
 
-import { NoResults, ResultsList, Spinner } from '../../components';
-import CTLViewsHoC from '../CTLViewsHoC';
-import { useCustomQuery } from '../../hooks';
+import { NoResults, Pager, ResultsList, Spinner } from '../../components';
+import { useAppPaths, useCustomQuery } from '../../hooks';
 import { getClinicalTrials } from '../../services/api/actions';
 import { useStateValue } from '../../store/store';
+import {
+	appendOrUpdateToQueryString,
+	getKeyValueFromQueryString,
+	getPageOffset,
+} from '../../utils';
 
 const Manual = () => {
+	const { BasePath } = useAppPaths();
+	const location = useLocation();
+	const navigate = useNavigate();
+	const { search } = location;
+	const tracking = useTracking();
 	const [trialsPayload, setTrialsPayload] = useState(null);
 	const [
 		{
@@ -22,10 +32,25 @@ const Manual = () => {
 			trialListingPageType,
 			baseHost,
 			metaDescription,
+			itemsPerPage,
 		},
 	] = useStateValue();
-	const queryResponse = useCustomQuery(getClinicalTrials(requestFilters));
-	const tracking = useTracking();
+
+	const pn = getKeyValueFromQueryString('pn', search.toLowerCase());
+	const pagerDefaults = {
+		offset: pn ? getPageOffset(pn, itemsPerPage) : 0,
+		page: pn ?? 1,
+		pageUnit: itemsPerPage,
+	};
+	const [pager, setPager] = useState(pagerDefaults);
+
+	const queryResponse = useCustomQuery(
+		getClinicalTrials({
+			from: pager.offset,
+			requestFilters,
+			size: pager.pageUnit,
+		})
+	);
 
 	useEffect(() => {
 		if (!queryResponse.loading && queryResponse.payload) {
@@ -53,6 +78,13 @@ const Manual = () => {
 		}
 	}, [trialsPayload]);
 
+	const onPageNavigationChangeHandler = (pagination) => {
+		setPager(pagination);
+		const { page } = pagination;
+		const qryStr = appendOrUpdateToQueryString(search, 'pn', page);
+		navigate(`${BasePath()}${qryStr}`, { replace: true });
+	};
+
 	const renderHelmet = () => {
 		return (
 			<Helmet>
@@ -66,24 +98,62 @@ const Manual = () => {
 		);
 	};
 
+	const renderPagerSection = (placement) => {
+		const page = pn ?? 1;
+		const pagerOffset = getPageOffset(page, itemsPerPage);
+		return (
+			<>
+				{trialsPayload?.trials?.length > 0 && (
+					<div className="paging-section">
+						{placement === 'top' && (
+							<div className="paging-section__page-info">
+								{`
+								Trials ${pagerOffset + 1}-${Math.min(
+									pagerOffset + itemsPerPage,
+									trialsPayload.total
+								)} of
+								${trialsPayload.total}
+							`}
+							</div>
+						)}
+						<div className="paging-section__pager">
+							<Pager
+								current={Number(pager.page)}
+								onPageNavigationChange={onPageNavigationChangeHandler}
+								resultsPerPage={pager.pageUnit}
+								totalResults={trialsPayload?.total ?? 0}
+							/>
+						</div>
+					</div>
+				)}
+			</>
+		);
+	};
+
 	return (
 		<div>
 			{renderHelmet()}
 			<h1>{pageTitle}</h1>
+
+			{/* ::: Intro Text ::: */}
 			{introText.length > 0 &&
 				!queryResponse.loading &&
-				trialsPayload?.trials.length > 0 && (
+				trialsPayload?.trials?.length > 0 && (
 					<div
 						className="intro-text"
-						dangerouslySetInnerHTML={{ __html: introText }}></div>
+						dangerouslySetInnerHTML={{ __html: introText }}
+					/>
 				)}
+
+			{/* ::: Top Paging Section ::: */}
+			{renderPagerSection('top')}
+			<hr />
 			{(() => {
 				if (queryResponse.loading) {
 					return <Spinner />;
-				} else if (!queryResponse.loading && trialsPayload?.trials.length) {
+				} else if (!queryResponse.loading && trialsPayload?.trials?.length) {
 					return (
 						<ResultsList
-							listingType={trialListingPageType}
 							results={trialsPayload.trials}
 							resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
 						/>
@@ -92,8 +162,11 @@ const Manual = () => {
 					return <NoResults />;
 				}
 			})()}
+			<hr />
+			{/* ::: Bottom Paging Section ::: */}
+			{renderPagerSection('bottom')}
 		</div>
 	);
 };
 
-export default CTLViewsHoC(Manual);
+export default Manual;

@@ -19,5 +19,5 @@ Feature: Manual listing page analytics
             | page.channel                                | Clinical Trials                                                               |
             | page.contentGroup                           | Clinical Trials: Custom                                                       |
             | page.publishedDate                          | 02/02/2011                                                                    |
-            | page.additionalDetails.numberResults        | (int)101                                                                      |
+            | page.additionalDetails.numberResults        | (int)102                                                                      |
             | page.additionalDetails.trialListingPageType | manual parameters                                                             |
