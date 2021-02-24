@@ -7,3 +7,4 @@ export { default as TextInput } from './atomic/TextInput';
 // molecules
 export { default as NoResults } from './molecules/no-results';
 export { default as ResultsList } from './molecules/results-list';
+export { default as Pager } from './molecules/pager';
