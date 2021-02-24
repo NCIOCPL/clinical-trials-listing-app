@@ -10,13 +10,17 @@ import { getStateNameFromAbbr } from './getStateNameFromAbbr';
  * @param {Array} sites
  * @return {JSX.Element}
  */
-export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites) => {
+export const getLocationInfoFromSites = (
+	currentTrialStatus,
+	nctId,
+	sites = []
+) => {
 	let totalUSLocations = 0;
 	let lastUSLocationSite = 0;
 	const siteLinkCT = `https://www.clinicaltrials.gov/show/${nctId}`;
 
 	// Filter list of sites by recruitment status before deriving location
-	const filteredSites = sites.filter((site) => {
+	const filteredSites = sites?.filter((site) => {
 		return (
 			site.recruitment_status.toLowerCase() === 'active' ||
 			site.recruitment_status.toLowerCase() === 'approved' ||
@@ -26,7 +30,7 @@ export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites) => {
 		);
 	});
 
-	for (let i = 0; i < filteredSites.length; i++) {
+	for (let i = 0; i < filteredSites?.length; i++) {
 		if (
 			sites[i].org_country === 'United States' &&
 			sites[i].recruitment_status
@@ -44,7 +48,11 @@ export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites) => {
 			currentTrialStatus.toLowerCase() === 'in review' ||
 			currentTrialStatus.toLowerCase() === 'approved'
 		) {
-			return <>Location information is not yet available.</>;
+			return (
+				<>
+					<strong>Location: </strong>Location information is not yet available.
+				</>
+			);
 		}
 
 		// Set jsx to be returned

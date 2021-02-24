@@ -1,0 +1,44 @@
+.paging-section {
+	&__pager {
+		display: block;
+		margin-top: 20px;
+		padding-top: 20px;
+		float: none;
+		border-top: 1px solid #ddd;
+
+		nav.pager__container {
+			display: block;
+		}
+	}
+
+	@media only screen and (min-width: 1024px) {
+		height: auto;
+		display: block;
+		padding-top: 3px;
+		padding-bottom: 3px;
+
+		&__page-info {
+			display: inline-block;
+			padding-top: 3px;
+			padding-bottom: 3px;
+		}
+
+		&__pager {
+			float: right;
+			display: inline-block;
+			margin: 0;
+			padding-top: 0;
+			border: none;
+		}
+	}
+}
+
+.list + hr {
+	display: none;
+}
+
+@media only screen and (min-width: 1024px) {
+	.list + hr {
+		display: block;
+	}
+}

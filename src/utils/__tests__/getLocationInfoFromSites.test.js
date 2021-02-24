@@ -164,7 +164,11 @@ describe('getLocationInfoFromSites', () => {
 			},
 		];
 
-		const expectedJSX = <>Location information is not yet available.</>;
+		const expectedJSX = (
+			<>
+				<strong>Location: </strong>Location information is not yet available.
+			</>
+		);
 		expect(
 			getLocationInfoFromSites('not yet active', nctId, sitesNoUSLocation)
 		).toMatchObject(expectedJSX);
@@ -176,7 +180,7 @@ describe('getLocationInfoFromSites', () => {
 		).toMatchObject(expectedJSX);
 	});
 
-	test('should return expected string when recruitment status is "Completed, Closed_to_accrual, Administratively_complete,  Closed_to_accrual_and_intervention, or Withdrawn"', () => {
+	test('should return expected string when recruitment status is "Completed, Closed_to_accrual, Administratively_complete, Closed_to_accrual_and_intervention, or Withdrawn"', () => {
 		const siteLinkCT = `https://www.clinicaltrials.gov/show/${nctId}`;
 		const sitesRecruitmentStatus = [
 			{
