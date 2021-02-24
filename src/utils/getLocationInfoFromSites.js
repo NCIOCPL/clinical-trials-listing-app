@@ -15,8 +15,22 @@ export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites) => {
 	let lastUSLocationSite = 0;
 	const siteLinkCT = `https://www.clinicaltrials.gov/show/${nctId}`;
 
-	for (let i = 0; i < sites.length; i++) {
-		if (sites[i].org_country === 'United States') {
+	// Filter list of sites by recruitment status before deriving location
+	const filteredSites = sites.filter((site) => {
+		return (
+			site.recruitment_status.toLowerCase() === 'active' ||
+			site.recruitment_status.toLowerCase() === 'approved' ||
+			site.recruitment_status.toLowerCase() === 'enrolling_by_invitation' ||
+			site.recruitment_status.toLowerCase() === 'in_review' ||
+			site.recruitment_status.toLowerCase() === 'temporarily_closed_to_accrual'
+		);
+	});
+
+	for (let i = 0; i < filteredSites.length; i++) {
+		if (
+			sites[i].org_country === 'United States' &&
+			sites[i].recruitment_status
+		) {
 			totalUSLocations += 1;
 			lastUSLocationSite = i;
 		}
