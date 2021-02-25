@@ -12,6 +12,7 @@ const Manual = () => {
 	const [trialsPayload, setTrialsPayload] = useState(null);
 	const [
 		{
+			detailedViewPagePrettyUrlFormatter,
 			pageTitle,
 			requestFilters,
 			siteName,
@@ -80,7 +81,13 @@ const Manual = () => {
 				if (queryResponse.loading) {
 					return <Spinner />;
 				} else if (!queryResponse.loading && trialsPayload?.trials.length) {
-					return <ResultsList results={trialsPayload.trials} />;
+					return (
+						<ResultsList
+							listingType={trialListingPageType}
+							results={trialsPayload.trials}
+							resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
+						/>
+					);
 				} else {
 					return <NoResults />;
 				}

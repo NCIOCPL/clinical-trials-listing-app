@@ -5,7 +5,7 @@ import { getLocationInfoFromSites } from '../../../utils';
 
 import ResultsListItem from './results-list-item';
 
-const ResultsList = ({ results }) => {
+const ResultsList = ({ listingType, results, resultsItemTitleLink }) => {
 	return (
 		<>
 			<hr />
@@ -29,10 +29,12 @@ const ResultsList = ({ results }) => {
 						return (
 							<ResultsListItem
 								key={index}
+								listingType={listingType}
+								locationInfo={locationInfo}
 								nciId={nci_id}
 								summary={brief_summary}
 								title={brief_title}
-								locationInfo={locationInfo}
+								resultsItemTitleLink={resultsItemTitleLink}
 							/>
 						);
 					})}
@@ -43,7 +45,9 @@ const ResultsList = ({ results }) => {
 };
 
 ResultsList.propTypes = {
+	listingType: PropTypes.string.isRequired,
 	results: PropTypes.array.isRequired,
+	resultsItemTitleLink: PropTypes.string.isRequired,
 };
 
 export default ResultsList;
