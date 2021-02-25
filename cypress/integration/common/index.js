@@ -136,7 +136,7 @@ And(
 			.find('a.ct-list-item__title')
 			.should('have.attr', 'href')
 			.then((href) => {
-				expect(href).to.contain('/v?id=NCI');
+				expect(href).to.contain('/clinicaltrials/NCI-');
 			});
 	}
 );

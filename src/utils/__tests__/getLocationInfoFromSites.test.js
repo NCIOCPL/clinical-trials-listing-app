@@ -215,15 +215,20 @@ describe('getLocationInfoFromSites', () => {
 				recruitment_status: 'withdrawn',
 			},
 		];
-		const jsxLink = <a href={siteLinkCT} rel="noopener noreferrer" target="_blank">ClinicalTrials.gov</a>;
-		const expectedJSX =
-		<>
-			<strong>Location: </strong>
-			<span>See {jsxLink}</span>
-		</>;
+		const jsxLink = (
+			<a href={siteLinkCT} rel="noopener noreferrer" target="_blank">
+				ClinicalTrials.gov
+			</a>
+		);
+		const expectedJSX = (
+			<>
+				<strong>Location: </strong>
+				<span>See {jsxLink}</span>
+			</>
+		);
 
 		expect(
 			getLocationInfoFromSites('completed', nctId, sitesRecruitmentStatus)
 		).toMatchObject(expectedJSX);
-		});
+	});
 });

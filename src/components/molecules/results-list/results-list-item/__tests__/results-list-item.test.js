@@ -3,7 +3,6 @@ import React from 'react';
 import { MemoryRouter } from 'react-router';
 
 import ResultsListItem from '../results-list-item';
-import { useStateValue } from '../../../../../store/store';
 
 jest.mock('../../../../../store/store.js');
 
@@ -13,11 +12,7 @@ describe('<ResultsListItem />', function () {
 		const nciId = 'NCI-12984';
 		const summary = 'sample summary';
 		const title = 'sample title';
-
-		useStateValue.mockReturnValue([
-			{ resultsItemTitleLink: 'http://sample.com/test-url/v' },
-		]);
-
+		const resultsItemTitleLink = '/clinicaltrials/{{nci_id}}';
 		const locationJSX = (
 			<>
 				<strong>Location: </strong>
@@ -31,6 +26,7 @@ describe('<ResultsListItem />', function () {
 					title={title}
 					locationInfo={locationJSX}
 					nciId={nciId}
+					resultsItemTitleLink={resultsItemTitleLink}
 				/>
 			</MemoryRouter>
 		);
@@ -39,7 +35,7 @@ describe('<ResultsListItem />', function () {
 		expect(screen.getByText('3 locations')).toBeInTheDocument();
 		expect(container.querySelector('a')).toHaveAttribute(
 			'href',
-			'http://sample.com/test-url/v?id=NCI-12984'
+			'/clinicaltrials/NCI-12984'
 		);
 	});
 });

@@ -3,7 +3,6 @@ import React from 'react';
 import { MemoryRouter } from 'react-router';
 
 import { ResultsList } from '../../../index';
-import { useStateValue } from '../../../../store/store';
 
 jest.mock('../../../../store/store.js');
 
@@ -22,7 +21,7 @@ describe('<ResultsList />', () => {
 						org_name: 'Wingstop',
 						org_city: 'Gaithersburg',
 						org_state_or_province: 'MD',
-						recruitment_status: 'approved'
+						recruitment_status: 'approved',
 					},
 				],
 			},
@@ -38,19 +37,18 @@ describe('<ResultsList />', () => {
 						org_name: 'Johnson & Johnson',
 						org_city: 'Arlington',
 						org_state_or_province: 'VA',
-						recruitment_status: 'in review'
+						recruitment_status: 'in review',
 					},
 				],
 			},
 		];
 
-		useStateValue.mockReturnValue([
-			{ resultsItemTitleLink: 'http://sample.com/test-url/v' },
-		]);
-
 		render(
 			<MemoryRouter initialEntries={['/']}>
-				<ResultsList results={resultsList} />
+				<ResultsList
+					results={resultsList}
+					resultsItemTitleLink={'http://sample.com/test-url/v?id={{nci_id}}'}
+				/>
 			</MemoryRouter>
 		);
 

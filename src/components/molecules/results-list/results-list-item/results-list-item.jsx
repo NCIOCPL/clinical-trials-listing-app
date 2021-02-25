@@ -1,15 +1,21 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { useStateValue } from '../../../../store/store';
+import { TokenParser } from '../../../../utils';
 
-const ResultsListItem = ({ nciId, locationInfo, summary, title }) => {
-	const [{ resultsItemTitleLink }] = useStateValue();
+const ResultsListItem = ({
+	locationInfo,
+	nciId,
+	resultsItemTitleLink,
+	summary,
+	title,
+}) => {
+	const context = { nci_id: nciId };
+	const titleLink = TokenParser.replaceTokens(resultsItemTitleLink, context);
+
 	return (
 		<li className="ct-list-item">
-			<a
-				className="ct-list-item__title"
-				href={`${resultsItemTitleLink}?id=${nciId}`}>
+			<a className="ct-list-item__title" href={titleLink}>
 				{title}
 			</a>
 			<p className="ct-list-item__body">{summary}</p>
@@ -20,7 +26,9 @@ const ResultsListItem = ({ nciId, locationInfo, summary, title }) => {
 
 ResultsListItem.propTypes = {
 	nciId: PropTypes.string.isRequired,
+	listingType: PropTypes.string.isRequired,
 	locationInfo: PropTypes.node.isRequired,
+	resultsItemTitleLink: PropTypes.string.isRequired,
 	summary: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 };
