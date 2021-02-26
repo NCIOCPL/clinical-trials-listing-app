@@ -7,7 +7,6 @@ import CTLViewsHoC from '../CTLViewsHoC';
 import { useCustomQuery } from '../../hooks';
 import { getClinicalTrials } from '../../services/api/actions';
 import { useStateValue } from '../../store/store';
-import { testIds } from '../../constants';
 
 const Manual = () => {
 	const [trialsPayload, setTrialsPayload] = useState(null);

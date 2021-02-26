@@ -19,9 +19,9 @@ describe('PageNotFound component', () => {
 
 	test('Should show error page title ( Disease )', async () => {
 		const basePath = '/';
-		const canonicalHost = "https://www.cancer.gov";
-		const language = "en";
-		const trialListingPageType = "Disease";
+		const canonicalHost = 'https://www.cancer.gov';
+		const language = 'en';
+		const trialListingPageType = 'Disease';
 
 		useStateValue.mockReturnValue([
 			{
@@ -29,7 +29,7 @@ describe('PageNotFound component', () => {
 				basePath,
 				canonicalHost,
 				language,
-				trialListingPageType
+				trialListingPageType,
 			},
 		]);
 
@@ -52,7 +52,7 @@ describe('PageNotFound component', () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
 		const language = 'es';
-		const trialListingPageType = "Intervention";
+		const trialListingPageType = 'Intervention';
 
 		useStateValue.mockReturnValue([
 			{
@@ -60,7 +60,7 @@ describe('PageNotFound component', () => {
 				basePath,
 				canonicalHost,
 				language,
-				trialListingPageType
+				trialListingPageType,
 			},
 		]);
 
@@ -78,5 +78,4 @@ describe('PageNotFound component', () => {
 		fireEvent.change(inputBox, { target: { value: 'pollo' } });
 		fireEvent.click(screen.getByText('Buscar'));
 	});
-
 });

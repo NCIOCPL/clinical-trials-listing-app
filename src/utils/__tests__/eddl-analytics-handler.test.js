@@ -64,7 +64,10 @@ describe('EDDLAnalyticsHandler', () => {
 		const mockWindow = {
 			NCIDataLayer: [],
 		};
-		EDDLAnalyticsHandler(mockWindow, true)({
+		EDDLAnalyticsHandler(
+			mockWindow,
+			true
+		)({
 			type: 'Chicken',
 			event: 'TestOther',
 			name: 'pageName',
@@ -80,7 +83,10 @@ describe('EDDLAnalyticsHandler', () => {
 		const mockWindow = {
 			NCIDataLayer: [],
 		};
-		EDDLAnalyticsHandler(mockWindow, true)({
+		EDDLAnalyticsHandler(
+			mockWindow,
+			true
+		)({
 			type: 'Other',
 			event: 'TestOther',
 			name: 'pageName',

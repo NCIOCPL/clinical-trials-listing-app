@@ -5,7 +5,7 @@ import Radio from '../Radio';
 
 const label1 = 'Radio Mock Label1';
 const label2 = 'Radio Mock Label2';
-const val = 2;
+
 describe('Check Radio Button', function () {
 	render(
 		<>

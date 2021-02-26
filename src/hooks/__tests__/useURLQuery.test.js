@@ -10,7 +10,7 @@ describe('useURLQuery', () => {
 			search: '?swKeyword=achoo',
 			hash: '',
 			state: null,
-			key: 'default'
+			key: 'default',
 		});
 
 		const urlQuery = useURLQuery();
@@ -20,4 +20,3 @@ describe('useURLQuery', () => {
 		expect(urlQuery.toString()).toEqual(expectedQueryStr);
 	});
 });
-

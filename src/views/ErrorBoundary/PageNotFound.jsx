@@ -55,7 +55,7 @@ const PageNotFound = () => {
 					</>,
 			  ];
 
-	const executeSearch = event => {
+	const executeSearch = (event) => {
 		event.preventDefault();
 		window.location = `https://www.cancer.gov/search/results?swKeyword=${searchText}`;
 	};
@@ -86,7 +86,7 @@ const PageNotFound = () => {
 					))}
 				</>
 				<div className="error-searchbar">
-					<form onSubmit={{executeSearch}}>
+					<form onSubmit={{ executeSearch }}>
 						<TextInput
 							id="keywords"
 							action={updateTextInput}
