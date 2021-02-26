@@ -72,4 +72,4 @@ export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites) => {
 			{`${totalUSLocations} Locations`}
 		</>
 	);
-}
+};

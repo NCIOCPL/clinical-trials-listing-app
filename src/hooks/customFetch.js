@@ -10,8 +10,8 @@ export const useCustomQuery = (action, shouldFetch = true) => {
 			const responseError = response.errorObject
 				? response.errorObject
 				: response.status
-					? `${action.endpoint} returned a ${response.status}`
-					: `Unknown error occurred for ${action.endpoint}`;
+				? `${action.endpoint} returned a ${response.status}`
+				: `Unknown error occurred for ${action.endpoint}`;
 			setError(responseError);
 		}
 	}, [action, response.error, response.errorObject, response.status]);

@@ -1,9 +1,6 @@
-import { setAPIEndpoint } from '../../endpoints';
 import { getClinicalTrials } from '../index';
 
 describe('getClinicalTrials action', () => {
-	setAPIEndpoint('/clinical-trials');
-
 	test('should match getClinicalTrials action', () => {
 		const requestFilters = {
 			'diseases.nci_thesaurus_concept_id': ['C5816', 'C8550', 'C3813'],

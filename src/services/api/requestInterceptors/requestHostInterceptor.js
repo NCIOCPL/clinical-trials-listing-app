@@ -1,4 +1,4 @@
-export const requestHostInterceptor = (host) => (client) => async (action) => {
+export const requestHostInterceptor = (host) => () => async (action) => {
 	return {
 		...action,
 		endpoint: `${host}${action.endpoint}`,
