@@ -8,10 +8,15 @@ module.exports = {
 	extends: [
 		'eslint:recommended',
 		'plugin:react/recommended',
+		'plugin:react-hooks/recommended',
 		'plugin:jsx-a11y/recommended',
-		'prettier',
-		'prettier/react',
+		'plugin:prettier/recommended',
 	],
+	settings: {
+		react: {
+			version: 'detect',
+		},
+	},
 	parser: 'babel-eslint',
 	parserOptions: {
 		ecmaVersion: 2016,
@@ -20,10 +25,10 @@ module.exports = {
 			jsx: true,
 		},
 	},
-	plugins: ['jsx-a11y', 'prettier', 'react', 'react-hooks'],
+	// Plugins are configured by the recommended extensions above
 	rules: {
-		'no-unused-vars': 'off',
 		'react/display-name': 'off',
+		'react-hooks/exhaustive-deps': 'off',
 	},
 	globals: {
 		cy: true,
