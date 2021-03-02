@@ -29,6 +29,11 @@
 			display: block;
 			min-width: 24px;
 			padding: 2px 6px;
+			background-color: #fff;
+			color: #2b7bba;
+			font-size: 100%;
+			font-family: Noto Sans, Century Gothic, Arial, sans-serif;
+			cursor: pointer;
 			text-decoration: none;
 			white-space: nowrap;
 
@@ -38,6 +43,10 @@
 				&:hover {
 					background: #25619b;
 				}
+			}
+
+			&.hidden {
+				display: none;
 			}
 
 			&:hover {
@@ -54,9 +63,9 @@
 }
 
 .pager__container {
-	border-top: 1px solid #000;
-	border-bottom: 1px solid #000;
-	padding: 16px 0;
+	// border-top: 1px solid #000;
+	// border-bottom: 1px solid #000;
+	// padding: 16px 0;
 	margin-top: 16px;
 }
 

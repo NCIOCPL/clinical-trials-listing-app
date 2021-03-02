@@ -1,15 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { useLocation, useNavigate } from 'react-router';
 import { useTracking } from 'react-tracking';
 
-import { NoResults, ResultsList, Spinner } from '../../components';
+import {
+	NoResults,
+	Pager,
+	Pagination,
+	ResultsList,
+	Spinner,
+} from '../../components';
 import CTLViewsHoC from '../CTLViewsHoC';
 import { useCustomQuery } from '../../hooks';
 import { getClinicalTrials } from '../../services/api/actions';
 import { useStateValue } from '../../store/store';
-import { testIds } from '../../constants';
+import { getKeyValueFromQueryString } from '../../utils';
 
 const Manual = () => {
+	const location = useLocation();
+	const navigate = useNavigate();
+	const { search } = location;
+	const page = getKeyValueFromQueryString('pn', search.toLowerCase());
+	const pageUnit = 25;
+	const [pager, setPager] = useState(null);
 	const [trialsPayload, setTrialsPayload] = useState(null);
 	const [
 		{
@@ -24,7 +37,10 @@ const Manual = () => {
 			metaDescription,
 		},
 	] = useStateValue();
-	const queryResponse = useCustomQuery(getClinicalTrials(requestFilters));
+	const offset = pager?.offset ?? 0;
+	const queryResponse = useCustomQuery(
+		getClinicalTrials({ from: offset, requestFilters, size: pageUnit })
+	);
 	const tracking = useTracking();
 
 	useEffect(() => {
@@ -53,6 +69,23 @@ const Manual = () => {
 		}
 	}, [trialsPayload]);
 
+	useEffect(() => {
+		if (pager) {
+			const { page } = pager;
+			navigate(`/?pn=${page}`);
+		}
+	}, [pager]);
+
+	const onPageNavigationChangeHandler = (pagination) => {
+		console.log('onPageNavigationChangeHandler:', pagination);
+		setPager(pagination);
+	};
+	console.log(
+		'onPageNavigationChangeHandler::params :',
+		page,
+		pageUnit,
+		location
+	);
 	const renderHelmet = () => {
 		return (
 			<Helmet>
@@ -70,13 +103,36 @@ const Manual = () => {
 		<div>
 			{renderHelmet()}
 			<h1>{pageTitle}</h1>
+
+			{/* ::: Intro Text ::: */}
 			{introText.length > 0 &&
 				!queryResponse.loading &&
 				trialsPayload?.trials.length > 0 && (
 					<div
 						className="intro-text"
-						dangerouslySetInnerHTML={{ __html: introText }}></div>
+						dangerouslySetInnerHTML={{ __html: introText }}
+					/>
 				)}
+
+			{/* ::: Pager ::: */}
+			{/*{!queryResponse.loading && trialsPayload?.trials.length && (
+				<>*/}
+					<Pagination
+						current={page ? Number(page) : 1}
+						onPageNavigationChange={onPageNavigationChangeHandler}
+						resultsPerPage={pageUnit}
+						totalResults={trialsPayload?.total ?? 0}
+					/>
+					{/*<Pager
+						current={2}
+						totalResults={102}
+						resultsPerPage={25}
+						language={'en'}
+						keyword={''}
+					/>*/}
+				{/*</>
+			)}*/}
+			<hr />
 			{(() => {
 				if (queryResponse.loading) {
 					return <Spinner />;

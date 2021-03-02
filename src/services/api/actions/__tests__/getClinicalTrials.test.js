@@ -23,8 +23,10 @@ describe('getClinicalTrials action', () => {
 					'Temporarily Closed to Accrual',
 					'Temporarily Closed to Accrual and Intervention',
 				],
+				from: 0,
+				size: 50,
 			},
 		};
-		expect(getClinicalTrials(requestFilters)).toEqual(retAction);
+		expect(getClinicalTrials({requestFilters, from: 0, size: 50})).toEqual(retAction);
 	});
 });

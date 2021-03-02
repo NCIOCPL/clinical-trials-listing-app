@@ -10,12 +10,16 @@ import { getStateNameFromAbbr } from './getStateNameFromAbbr';
  * @param {Array} sites
  * @return {JSX.Element}
  */
-export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites) => {
+export const getLocationInfoFromSites = (
+	currentTrialStatus,
+	nctId,
+	sites = []
+) => {
 	let totalUSLocations = 0;
 	let lastUSLocationSite = 0;
 	const siteLinkCT = `https://www.clinicaltrials.gov/show/${nctId}`;
 
-	for (let i = 0; i < sites.length; i++) {
+	for (let i = 0; i < sites?.length; i++) {
 		if (sites[i].org_country === 'United States') {
 			totalUSLocations += 1;
 			lastUSLocationSite = i;
@@ -30,7 +34,11 @@ export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites) => {
 			currentTrialStatus.toLowerCase() === 'in review' ||
 			currentTrialStatus.toLowerCase() === 'approved'
 		) {
-			return <>Location information is not yet available.</>;
+			return (
+				<>
+					<strong>Location: </strong>Location information is not yet available.
+				</>
+			);
 		}
 
 		// Set jsx to be returned
@@ -72,4 +80,4 @@ export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites) => {
 			{`${totalUSLocations} Locations`}
 		</>
 	);
-}
+};

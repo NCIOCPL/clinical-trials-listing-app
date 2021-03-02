@@ -153,7 +153,7 @@ describe('getLocationInfoFromSites', () => {
 			},
 		];
 
-		const expectedJSX = <>Location information is not yet available.</>;
+		const expectedJSX = <><strong>Location: </strong>Location information is not yet available.</>;
 		expect(
 			getLocationInfoFromSites('not yet active', nctId, sitesNoUSLocation)
 		).toMatchObject(expectedJSX);

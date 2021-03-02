@@ -8,3 +8,4 @@ export { default as TextInput } from './atomic/TextInput';
 export { default as NoResults } from './molecules/no-results';
 export { default as ResultsList } from './molecules/results-list';
 export { default as Pager } from './molecules/pager';
+export { default as Pagination } from './molecules/pagination';

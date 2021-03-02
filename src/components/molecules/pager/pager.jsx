@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { i18n } from './i18n';
 import { useURLQuery } from '../../../hooks';
-import './pager.scss';
+// import './pager.scss';
 
 const Pager = ({
 	current,
