@@ -25,7 +25,7 @@ const requestFileRegex = /request\.json$/;
 
 /**
  * Gets all the request objects for the mocks.
- * @param {string} mockDir 
+ * @param {string} mockDir
  */
 const getRequests = async (mockDir) => {
 
@@ -47,12 +47,12 @@ const getRequests = async (mockDir) => {
       curr
     ]),[]);
 
-  return requestObjects;    
+  return requestObjects;
 }
 
 /**
  * Mock handler for posting to /v1/clinical-trials endpoint
- * 
+ *
  * @param {Express.Request} req
  * @param {Express.Response} res
  * @param {Function} next
@@ -86,12 +86,12 @@ const clinicalTrialsPost = async (req, res, next) => {
   } else {
     console.warn("No clinical-trials mock found for request.");
     res.status(404).end();
-  }  
+  }
 }
 
 /**
  * Mock handler for posting to /v1/clinical-trials endpoint
- * 
+ *
  * @param {Express.Request} req
  * @param {Express.Response} res
  * @param {Function} next
@@ -103,7 +103,7 @@ const clinicalTrialsGet = async (req, res, next) => {
 
 /**
  * Entry point for /v1/clinical-trials requests.
- * 
+ *
  * @param {Express.Request} req
  * @param {Express.Response} res
  * @param {Function} next
@@ -117,6 +117,6 @@ const mockClinicalTrials = async (req, res, next) => {
     // Method not allowed
     res.status(405).end();
   }
-} 
+}
 
 module.exports = mockClinicalTrials;

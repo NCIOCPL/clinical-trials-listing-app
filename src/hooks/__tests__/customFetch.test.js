@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, cleanup, render, screen } from '@testing-library/react';
 import React from 'react';
 import { ClientContextProvider } from 'react-fetching-library';
 
@@ -6,7 +6,6 @@ import UseCustomQuerySample from '../samples/UseCustomQuery';
 import { useStateValue } from '../../store/store';
 import MockAnalyticsProvider from '../../tracking/mock-analytics-provider';
 import { ErrorBoundary } from '../../views/ErrorBoundary';
-import { setAPIEndpoint } from '../../services/api/endpoints';
 
 jest.mock('../../store/store');
 let wrapper;
@@ -19,13 +18,12 @@ describe('', () => {
 
 	afterEach(() => {
 		console.error.mockRestore();
+		cleanup();
 	});
 
 	test('should throw an error using a non existent endpoint - English message', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.example.gov';
-		const requestFilters =
-			'{"diseases.nci_thesaurus_concept_id": ["C5816", "C8550", "C3813"], "primary_purpose.primary_purpose_code": "treatment"}';
 		const language = 'en';
 
 		useStateValue.mockReturnValue([
@@ -102,19 +100,15 @@ describe('', () => {
 	});
 
 	test('useCustomQuery example should display content and not throw error', async () => {
-		const basePath = '/';
-		const canonicalHost = 'https://www.example.gov';
-		const apiBaseEndpoint = 'http://localhost:3000/api';
 		const contentMessage = 'Successful API call with content';
-
-		setAPIEndpoint(apiBaseEndpoint);
+		const requestFilters = '';
+		const trialsApiEndpoint = 'http://localhost:3000/api';
 
 		useStateValue.mockReturnValue([
 			{
 				appId: 'mockAppId',
-				basePath,
-				canonicalHost,
-				apiBaseEndpoint,
+				requestFilters,
+				trialsApiEndpoint
 			},
 		]);
 
@@ -126,7 +120,7 @@ describe('', () => {
 			}),
 		};
 		await act(async () => {
-			wrapper = render(
+			render(
 				<MockAnalyticsProvider>
 					<ClientContextProvider client={client}>
 						<ErrorBoundary>
@@ -136,7 +130,6 @@ describe('', () => {
 				</MockAnalyticsProvider>
 			);
 		});
-		const { getByText } = wrapper;
-		expect(getByText(contentMessage)).toBeInTheDocument();
+		expect(screen.getByText(contentMessage)).toBeInTheDocument();
 	});
 });

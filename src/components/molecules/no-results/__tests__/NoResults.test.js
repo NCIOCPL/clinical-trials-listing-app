@@ -31,3 +31,28 @@ describe('<NoResults />', () => {
 		).toBeInTheDocument();
 	});
 });
+
+describe('<NoResults />', () => {
+	test('should contain replaced component text', async () => {
+		const noTrialsHtml = 'There are currently no available trials for {{disease_normalized}}.';
+		const diseaseNormalized = "breast cancer";
+
+		useStateValue.mockReturnValue([
+			{
+				appId: 'mockAppId',
+				noTrialsHtml,
+			},
+		]);
+
+		render(
+			<MockAnalyticsProvider>
+				<MemoryRouter initialEntries={['/']}>
+					<NoResults diseaseName={diseaseNormalized}/>
+				</MemoryRouter>
+			</MockAnalyticsProvider>
+		);
+		expect(
+			screen.getByText('There are currently no available trials for breast cancer.')
+		).toBeInTheDocument();
+	});
+});

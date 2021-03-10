@@ -1,7 +1,12 @@
-import { getEndpoint } from '../endpoints';
-
-export const getClinicalTrials = (requestFilters = {}) => {
-	const endpoint = getEndpoint('clinicalTrials');
+/**
+ * Gets a list of clinical trials from the Clinical Trials API matching the request filters
+ *
+ * @param {Object} params the parameters to fetch
+ * @param {} params.requestFilters the request filters to match
+ */
+export const getClinicalTrials = ({ requestFilters = {} }) => {
+	// Set up query for Clinical Trias API.
+	// Include requestFilters and only active trial statuses.
 	const defaultQuery = {
 		current_trial_status: [
 			'Active',
@@ -15,8 +20,9 @@ export const getClinicalTrials = (requestFilters = {}) => {
 	};
 
 	return {
+		interceptorName: 'clinical-trials-api',
 		method: 'POST',
-		endpoint: `${endpoint}`,
-		body: defaultQuery,
+		endpoint: `{{API_HOST}}/clinical-trials`,
+		body: defaultQuery
 	};
 };

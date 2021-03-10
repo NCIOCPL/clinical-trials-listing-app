@@ -1,20 +1,17 @@
-import { setAPIEndpoint } from '../../endpoints';
 import { getClinicalTrials } from '../index';
 
 describe('getClinicalTrials action', () => {
-	setAPIEndpoint('/clinical-trials');
-
-	test('should match getClinicalTrials action', () => {
+test('should match getClinicalTrials action', () => {
 		const requestFilters = {
 			'diseases.nci_thesaurus_concept_id': ['C5816', 'C8550', 'C3813'],
 			'primary_purpose.primary_purpose_code': 'treatment',
 		};
-		const retAction = {
+
+		const expectedAction = {
+			interceptorName: 'clinical-trials-api',
 			method: 'POST',
-			endpoint: `/clinical-trials`,
+			endpoint: `{{API_HOST}}/clinical-trials`,
 			body: {
-				'diseases.nci_thesaurus_concept_id': ['C5816', 'C8550', 'C3813'],
-				'primary_purpose.primary_purpose_code': 'treatment',
 				current_trial_status: [
 					'Active',
 					'Approved',
@@ -23,8 +20,11 @@ describe('getClinicalTrials action', () => {
 					'Temporarily Closed to Accrual',
 					'Temporarily Closed to Accrual and Intervention',
 				],
+				'diseases.nci_thesaurus_concept_id': ['C5816', 'C8550', 'C3813'],
+				'primary_purpose.primary_purpose_code': 'treatment',
 			},
 		};
-		expect(getClinicalTrials(requestFilters)).toEqual(retAction);
+
+		expect(getClinicalTrials({ requestFilters })).toEqual(expectedAction);
 	});
 });

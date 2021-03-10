@@ -86,7 +86,7 @@ const PageNotFound = () => {
 					))}
 				</>
 				<div className="error-searchbar">
-					<form onSubmit={{executeSearch}}>
+					<form onSubmit={executeSearch}>
 						<TextInput
 							id="keywords"
 							action={updateTextInput}

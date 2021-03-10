@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import { useTracking } from 'react-tracking';
 
 import { NoResults, ResultsList, Spinner } from '../../components';
-import CTLViewsHoC from '../CTLViewsHoC';
 import { useCustomQuery } from '../../hooks';
 import { getClinicalTrials } from '../../services/api/actions';
 import { useStateValue } from '../../store/store';
@@ -24,7 +23,7 @@ const Manual = () => {
 			metaDescription,
 		},
 	] = useStateValue();
-	const queryResponse = useCustomQuery(getClinicalTrials(requestFilters));
+	const queryResponse = useCustomQuery(getClinicalTrials({requestFilters}));
 	const tracking = useTracking();
 
 	useEffect(() => {
@@ -90,4 +89,4 @@ const Manual = () => {
 	);
 };
 
-export default CTLViewsHoC(Manual);
+export default Manual;
