@@ -1,10 +1,12 @@
 export { i18n } from './i18n';
+export { cleanURI } from './cleanURI';
 export { getLocationInfoFromSites } from './getLocationInfoFromSites';
 export { getPageOffset } from './getPageOffset';
 export { getProductTestBase } from './getProductTestBase';
 export { getStateNameFromAbbr } from './getStateNameFromAbbr';
 export { formatNumberToThousands } from './number';
 export { matchItemToTerm } from './matchItemToTerm';
+export { matchQueryParam } from './matchQueryParam';
 export { getKeyValueFromObject } from './objects';
 export { TokenParser } from './replaceTokens';
 export { emboldenSubstring } from './strings';

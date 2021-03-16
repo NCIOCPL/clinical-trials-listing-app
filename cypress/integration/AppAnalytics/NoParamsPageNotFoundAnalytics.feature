@@ -6,14 +6,14 @@ Feature: Analytics Page Not Found
     And "canonicalHost" is set to "https://www.cancer.gov"
 		And "analyticsPublishedDate" is set to "02/02/2011"
     And "siteName" is set to "National Cancer Institute"
-    When the user navigates to "/disease"
+    When the user navigates to "/"
     And page title on error page is "Page Not Found"
     And browser waits
     Then there should be an analytics event with the following details
       | key                                 			   | value                               |
 			| type                                			   | PageLoad                            |
 			| event                               			   | TrialListingApp:Load:PageNotFound 	 |
-			| page.name                           			   | www.cancer.gov/disease			         |
+			| page.name                           			   | www.cancer.gov/			         |
 			| page.title                          			   | Page Not Found                      |
 			| page.metaTitle                      			   | Page Not Found                      |
 			| page.language                       			   | english                             |
@@ -29,14 +29,14 @@ Feature: Analytics Page Not Found
     And "canonicalHost" is set to "https://www.cancer.gov"
 		And "analyticsPublishedDate" is set to "02/02/2011"
     And "siteName" is set to "National Cancer Institute"
-    When the user navigates to "/intervention"
+    When the user navigates to "/"
     And page title on error page is "Page Not Found"
     And browser waits
     Then there should be an analytics event with the following details
       | key                                 			   | value                               |
 			| type                                			   | PageLoad                            |
 			| event                               			   | TrialListingApp:Load:PageNotFound 	 |
-			| page.name                           			   | www.cancer.gov/intervention         |
+			| page.name                           			   | www.cancer.gov/         |
 			| page.title                          			   | Page Not Found                      |
 			| page.metaTitle                      			   | Page Not Found                      |
 			| page.language                       			   | english                             |
