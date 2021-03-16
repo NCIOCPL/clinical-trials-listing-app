@@ -1,1 +1,4 @@
-// Add any constants here
+export const queryParamType = {
+	code: 'code',
+	purl: 'purl',
+};
