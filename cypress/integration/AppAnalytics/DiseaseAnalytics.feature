@@ -13,7 +13,7 @@ Feature: Disease listing page analytics
             | type                                        | PageLoad                                                   |
 						| page.publishedDate                          | 02/02/2011                                                 |
             | page.contentGroup                           | Clinical Trials: Custom                                    |
-						| page.name                                   | www.cancer.gov/C4872                                       |
+						| page.name                                   | www.cancer.gov/breast-cancer                               |
 					  | page.title                                  | Breast Cancer Clinical Trials     							           |
 						| page.channel                                | Clinical Trials                                            |
 					  | page.type                                   | nciAppModulePage                                           |
