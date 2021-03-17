@@ -254,3 +254,13 @@ When('pager is not displayed', () => {
 And('the text {string} appears on the page', (text) => {
 	cy.get('p').contains(text).should('exist')
 });
+
+/*
+    -----------------------
+       Redirect
+    -----------------------
+*/
+
+Then('the user is redirected to {string}', (redirectUrl) => {
+		cy.location('href').should('include', redirectUrl);
+});

@@ -2,24 +2,26 @@ import { act, render } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
-import CTLViewsHoC from './CTLViewsHoC';
-import { MockAnalyticsProvider } from '../tracking';
-import { useCustomQuery } from '../hooks';
+import CTLViewsHoC from '../CTLViewsHoC';
+import { MockAnalyticsProvider } from '../../tracking';
+import { useCustomQuery } from '../../hooks';
+import { useStateValue } from '../../store/store';
 
-jest.mock('../hooks/customFetch');
+jest.mock('../../hooks/customFetch');
+jest.mock('../../store/store.js');
 
 const mockComponent = jest.fn(() => {
 	return <>Hello World</>;
 });
 
 // This must be called before each, or else mockComponent.calls
-// will continue to acumulate across all tests.
+// will continue to accumulate across all tests.
 beforeEach(() => {
 	mockComponent.mockClear();
 });
 
 describe('CTLViewsHoc', () => {
-	test('Should have fetched info passed in as props with no others', async () => {
+	it('Should have fetched info passed in as props with no others', async () => {
 		const data = {
 			conceptId: ['C4872'],
 			name: {
@@ -35,6 +37,13 @@ describe('CTLViewsHoc', () => {
 			status: 200,
 			payload: data,
 		});
+
+		useStateValue.mockReturnValue([
+			{
+				appId: 'mockAppId',
+				basePath: '/',
+			},
+		]);
 
 		const WrappedComponent = CTLViewsHoC(mockComponent);
 
@@ -55,7 +64,7 @@ describe('CTLViewsHoc', () => {
 		});
 	});
 
-	test('Should have fetched info passed in as props with other props', async () => {
+	it('Should have fetched info passed in as props with other props', async () => {
 		const data = {
 			conceptId: ['C4872'],
 			name: {
@@ -71,6 +80,13 @@ describe('CTLViewsHoc', () => {
 			status: 200,
 			payload: data,
 		});
+
+		useStateValue.mockReturnValue([
+			{
+				appId: 'mockAppId',
+				basePath: '/',
+			},
+		]);
 
 		const WrappedComponent = CTLViewsHoC(mockComponent);
 
