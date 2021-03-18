@@ -66,6 +66,7 @@ const PageNotFound = () => {
 				<title>{i18n.pageNotFoundTitle[language]}</title>
 				<meta property="dcterms.subject" content="Error Pages" />
 				<meta property="dcterms.type" content="errorpage" />
+				<meta name="prerender-status-code" content="404" />
 			</Helmet>
 		);
 	};
@@ -90,7 +91,6 @@ const PageNotFound = () => {
 						<TextInput
 							id="keywords"
 							action={updateTextInput}
-							classes="searchString"
 							label={i18n.search[language]}
 							labelHidden
 						/>

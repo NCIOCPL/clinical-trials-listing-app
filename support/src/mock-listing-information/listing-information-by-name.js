@@ -15,9 +15,9 @@ const readFileAsync = util.promisify(fs.readFile);
  * @param {Function} next
  */
 const listingInformationGetByName = async (req, res, next) => {
-	const { queryParam } = req.params;
+  const { queryParam } = req.params;
 
-	// This is the folder to check
+  // This is the folder to check
   const mockDir = path.join(
     __dirname,
     '..',
@@ -26,15 +26,21 @@ const listingInformationGetByName = async (req, res, next) => {
     'listing-information'
   );
 
-	try {
-		const mockFile = path.join(mockDir, `${queryParam}.json`);
-		await readFileAsync(mockFile);
-		res.sendFile(mockFile);
-	} catch (err) {
-		console.error(err);
-		console.warn("No listing-information mock found for request.");
-    res.status(404).end();
-	}
+  try {
+    const mockFile = path.join(mockDir, `${queryParam}.json`);
+    await readFileAsync(mockFile);
+    res.sendFile(mockFile);
+  } catch (err) {
+    const mockFile404 = path.join(mockDir, `${queryParam}-404.json`);
+    if (fs.existsSync(mockFile404)) {
+      res.status(404).end();
+    } else {
+      console.error(err);
+      console.warn("No listing-information mock found for request.");
+      res.status(404).end();
+    }
+
+  }
 }
 
 /**

@@ -20,6 +20,15 @@ Then('page title on error page is {string}', (title) => {
 	cy.get('h1').should('contain', title);
 });
 
+Then('user navigates to non-existent page {string}', (path) => {
+	Cypress.on('uncaught:exception', (err, runnable) => {
+		// returning false here to Cypress from
+		// failing the test
+		return false;
+	});
+	cy.visit(path);
+});
+
 /*
     --------------------
         Page Visits
@@ -233,4 +242,15 @@ When('user clicks on {string} button', (arrow) => {
 });
 When('pager is not displayed', () => {
 	cy.get('.pager__navigation li').should('not.exist');
+});
+
+
+/*
+    -----------------------
+       Page Not Found
+    -----------------------
+*/
+
+And('the text {string} appears on the page', (text) => {
+	cy.get('p').contains(text).should('exist')
 });
