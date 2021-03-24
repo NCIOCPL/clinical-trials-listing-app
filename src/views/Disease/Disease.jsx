@@ -1,17 +1,30 @@
-import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { useParams, useLocation, useNavigate } from 'react-router';
 import { useTracking } from 'react-tracking';
 
-import { NoResults, ResultsList, Spinner } from '../../components';
-import { useCustomQuery } from '../../hooks';
+import { Pager, NoResults, ResultsList, Spinner } from '../../components';
+import { useAppPaths, useCustomQuery } from '../../hooks';
 import { getClinicalTrials } from '../../services/api/actions';
 import { useStateValue } from '../../store/store';
 
-import { TokenParser } from '../../utils';
+import {
+	appendOrUpdateToQueryString,
+	getKeyValueFromQueryString,
+	getPageOffset,
+	TokenParser,
+} from '../../utils';
 
 const Disease = ({ data }) => {
+	const params = useParams();
+	const { codeOrPurl } = params;
+	const { CodeOrPurlPath } = useAppPaths();
+	const location = useLocation();
 	const [trialsPayload, setTrialsPayload] = useState(null);
+	const navigate = useNavigate();
+	const { search } = location;
+
 	const [
 		{
 			baseHost,
@@ -19,6 +32,7 @@ const Disease = ({ data }) => {
 			canonicalHost,
 			detailedViewPagePrettyUrlFormatter,
 			introText,
+			itemsPerPage,
 			language,
 			metaDescription,
 			pageTitle,
@@ -28,6 +42,17 @@ const Disease = ({ data }) => {
 	] = useStateValue();
 
 	const { conceptId, name } = data;
+	const pn = getKeyValueFromQueryString('pn', search.toLowerCase());
+	const pagerDefaults = {
+		offset: pn ? getPageOffset(pn, itemsPerPage) : 0,
+		page: pn ?? 1,
+		pageUnit: itemsPerPage,
+	};
+	const [pager, setPager] = useState(pagerDefaults);
+
+	const setupRequestFilters = () => {
+		return { 'diseases.nci_thesaurus_concept_id': conceptId };
+	};
 
 	const setupReplacementText = () => {
 		// Replace tokens within page title, browser title, intro text, and meta description
@@ -44,14 +69,17 @@ const Disease = ({ data }) => {
 		};
 	};
 
-	const setupRequestFilters = () => {
-		return { 'diseases.nci_thesaurus_concept_id': conceptId };
-	};
-
 	const requestFilters = setupRequestFilters();
 	const replacedText = setupReplacementText();
-	const queryResponse = useCustomQuery(getClinicalTrials({ requestFilters }));
 	const tracking = useTracking();
+
+	const queryResponse = useCustomQuery(
+		getClinicalTrials({
+			from: pager.offset,
+			requestFilters,
+			size: pager.pageUnit,
+		})
+	);
 
 	useEffect(() => {
 		if (!queryResponse.loading && queryResponse.payload) {
@@ -80,6 +108,13 @@ const Disease = ({ data }) => {
 		}
 	}, [trialsPayload]);
 
+	const onPageNavigationChangeHandler = (pagination) => {
+		setPager(pagination);
+		const { page } = pagination;
+		const qryStr = appendOrUpdateToQueryString(search, 'pn', page);
+		navigate(`${CodeOrPurlPath({ codeOrPurl })}${qryStr}`, { replace: true });
+	};
+
 	const renderHelmet = () => {
 		return (
 			<Helmet>
@@ -96,6 +131,38 @@ const Disease = ({ data }) => {
 		);
 	};
 
+	const renderPagerSection = (placement) => {
+		const page = pn ?? 1;
+		const pagerOffset = getPageOffset(page, itemsPerPage);
+		return (
+			<>
+				{trialsPayload?.trials?.length > 0 && (
+					<div className="paging-section">
+						{placement === 'top' && (
+							<div className="paging-section__page-info">
+								{`
+								Trials ${pagerOffset + 1}-${Math.min(
+									pagerOffset + itemsPerPage,
+									trialsPayload.total
+								)} of
+								${trialsPayload.total}
+							`}
+							</div>
+						)}
+						<div className="paging-section__pager">
+							<Pager
+								current={Number(pager.page)}
+								onPageNavigationChange={onPageNavigationChangeHandler}
+								resultsPerPage={pager.pageUnit}
+								totalResults={trialsPayload?.total ?? 0}
+							/>
+						</div>
+					</div>
+				)}
+			</>
+		);
+	};
+
 	return (
 		<div>
 			{renderHelmet()}
@@ -107,13 +174,15 @@ const Disease = ({ data }) => {
 						className="intro-text"
 						dangerouslySetInnerHTML={{ __html: replacedText.introText }}></div>
 				)}
+			{/* ::: Top Paging Section ::: */}
+			{renderPagerSection('top')}
+			<hr />
 			{(() => {
 				if (queryResponse.loading) {
 					return <Spinner />;
 				} else if (!queryResponse.loading && trialsPayload?.trials.length) {
 					return (
 						<ResultsList
-							listingType={trialListingPageType}
 							results={trialsPayload.trials}
 							resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
 						/>
@@ -122,6 +191,9 @@ const Disease = ({ data }) => {
 					return <NoResults />;
 				}
 			})()}
+			<hr />
+			{/* ::: Bottom Paging Section ::: */}
+			{renderPagerSection('bottom')}
 		</div>
 	);
 };

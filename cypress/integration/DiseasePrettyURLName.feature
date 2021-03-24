@@ -11,6 +11,14 @@ Feature: As a user, I would like to view the trial results for a disease listing
     And each result displays the trial title as a link to the trial description page
     And each result displays the trial description below the link
     And each result displays "Location: " below the description
+		And pager displays the following navigation options
+      | pages  |
+      | 1      |
+      | 2      |
+      | 3      |
+      | ...    |
+      | 38     |
+      | Next > |
 
   Scenario: View disease listing page metadata with pretty URL name parameter
     Given "trialListingPageType" is set to "Disease"
@@ -27,3 +35,21 @@ Feature: As a user, I would like to view the trial results for a disease listing
       | name        | content                                 																																				                          |
       | description | NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials for breast cancer.     |
     And there is a canonical link with the href "https://www.cancer.gov/breast-cancer"
+
+	Scenario: Mobile and Tablet Pager Display
+		Given "trialListingPageType" is set to "Disease"
+		And "pageTitle" is set to "{{disease_label}} Clinical Trials"
+		And screen breakpoint is set to "mobile"
+		When the user navigates to "/breast-cancer?cfg=0"
+		Then the system displays 1 paragraph "Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer. All trials on the list are supported by NCI."
+    Then the system displays 2 paragraph "NCI’s basic information about clinical trials explains the types and phases of trials and how they are carried out. Clinical trials look at new ways to prevent, detect, or treat disease. You may want to think about taking part in a clinical trial. Talk to your doctor for help in deciding if one is right for you."
+    Then the system displays "Trials 1-25 of" "938"
+		Then each result displays the trial title as a link to the trial description page
+		Then pager displays the following navigation options
+      | pages  |
+      | 1      |
+      | 2      |
+      | 3      |
+      | ...    |
+      | 38     |
+      | Next > |

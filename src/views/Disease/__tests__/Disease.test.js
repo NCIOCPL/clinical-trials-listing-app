@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import Disease from '../Disease';
 import { useStateValue } from '../../../store/store.js';
 import { MockAnalyticsProvider } from '../../../tracking';
-import { useCustomQuery } from '../../../hooks';
+import { useAppPaths, useCustomQuery } from '../../../hooks';
 
 jest.mock('../../../store/store.js');
 jest.mock('../../../hooks');
@@ -51,6 +51,8 @@ describe('<Disease />', () => {
 				trialListingPageType,
 			},
 		]);
+
+		useAppPaths.mockReturnValue('/C4872');
 
 		useCustomQuery.mockReturnValue({
 			error: false,

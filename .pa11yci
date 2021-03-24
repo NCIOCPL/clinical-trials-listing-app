@@ -1,6 +1,7 @@
 {
   "urls": [
-    "http://localhost:3000"
+    "http://localhost:3000",
+		 "http://localhost:3000/breast-cancer/?cfg=0&pn=3"
   ],
 	"chromeLaunchConfig": {
 		"args": [
