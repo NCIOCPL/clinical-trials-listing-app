@@ -1,5 +1,12 @@
 {
   "urls": [
     "http://localhost:3000"
-  ]
+  ],
+	"chromeLaunchConfig": {
+		"args": [
+			"--no-sandbox",
+			"--disable-setuid-sandbox",
+			"--disable-dev-shm-usage"
+		]
+	}
 }
