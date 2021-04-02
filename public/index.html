@@ -71,6 +71,8 @@
 					basePath: '/',
 					browserTitle: '{{disease_label}} Clinical Trials',
 					canonicalHost: 'https://www.cancer.gov',
+					cisBannerImgUrlLarge: '%PUBLIC_URL%/images/cts-cis-banner-xl.jpeg',
+					cisBannerImgUrlSmall: '%PUBLIC_URL%/images/cts-cis-banner-smartphone.jpeg',
 					detailedViewPagePrettyUrlFormatter:
 						'/clinicaltrials/{{nci_id}}',
 					introText:
@@ -78,6 +80,7 @@
 					itemsPerPage: 25,
 					listingApiEndpoint:
 						'https://webapis-dev.cancer.gov/triallistingsupport/v1/',
+					liveHelpUrl: 'https://livehelp.cancer.gov/app/chat/chat_landing?_icf_22=92',
 					metaDescription:
 						'NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials for {{disease_normalized}}.',
 					noTrialsHtml:
@@ -100,9 +103,12 @@
 					basePath: '/',
 					browserTitle: '',
 					canonicalHost: 'https://www.cancer.gov',
+					cisBannerImgUrlLarge: '%PUBLIC_URL%/images/cts-cis-banner-xl.jpeg',
+					cisBannerImgUrlSmall: '%PUBLIC_URL%/images/cts-cis-banner-smartphone.jpeg',
 					introText: '',
 					itemsPerPage: 25,
 					listingApiEndpoint: 'https://webapis-dev.cancer.gov/triallistingsupport/v1/',
+					liveHelpUrl: 'https://livehelp.cancer.gov/app/chat/chat_landing?_icf_22=92',
 					metaDescription: '',
 					noTrialsHtml: '',
 					pageTitle: '',
@@ -260,6 +266,68 @@
 					trialsApiEndpoint: 'https://clinicaltrialsapi.cancer.gov/v1/',
 					trialListingPageType: 'Manual',
 				},
+				{
+					analyticsChannel: 'Clinical Trials',
+					analyticsHandler: 'EddlAnalyticsHandler',
+					analyticsPublishedDate: 'unknown',
+					analyticsContentGroup: 'Clinical Trials: Custom',
+					appId: '@@/DEFAULT_REACT_APP_ID',
+					baseHost: 'http://localhost:3000',
+					basePath: '/',
+					browserTitle: '{{disease_label}} Clinical Trials',
+					canonicalHost: 'https://www.cancer.gov',
+					detailedViewPagePrettyUrlFormatter:
+						'/clinicaltrials/{{nci_id}}',
+					introText:
+						'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}. All trials on the list are <a class=\"definition\" href=\"/Common/PopUps/popDefinition.aspx?id=CDR0000776051&amp;version=Patient&amp;language=English\" onclick=\"javascript:popWindow(\'defbyid\',\'CDR0000776051&amp;version=Patient&amp;language=English\'); return false;\">supported by NCI</a>.</p><p>NCI’s <a href=\"/about-cancer/treatment/clinical-trials/what-are-trials\">basic information about clinical trials</a> explains the types and phases of trials and how they are carried out. Clinical trials look at new ways to prevent, detect, or treat disease. You may want to think about taking part in a clinical trial. Talk to your doctor for help in deciding if one is right for you.</p>',
+					itemsPerPage: 25,
+					listingApiEndpoint:
+						'https://webapis-dev.cancer.gov/triallistingsupport/v1/',
+					metaDescription:
+						'NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials for {{disease_normalized}}.',
+					noTrialsHtml:
+						'<p>There are no NCI-supported clinical trials for {{disease_normalized}} at this time. You can try a <a href=\"/about-cancer/treatment/clinical-trials/search\">new search</a> or <a href=\"/contact\">contact our Cancer Information Service</a> to talk about options for clinical trials.</p>',
+					pageTitle: '{{disease_label}} Clinical Trials',
+					requestFilters: '',
+					rootId: 'NCI-app-root',
+					siteName: 'National Cancer Institute',
+					title: 'NCI Clinical Trials',
+					trialsApiEndpoint: 'https://clinicaltrialsapi.cancer.gov/v1/',
+					trialListingPageType: 'Disease',
+				},
+				{
+					analyticsChannel: 'Clinical Trials',
+					analyticsHandler: 'EddlAnalyticsHandler',
+					analyticsPublishedDate: 'unknown',
+					analyticsContentGroup: 'Clinical Trials: Custom',
+					appId: '@@/DEFAULT_REACT_APP_ID',
+					baseHost: 'http://localhost:3000',
+					basePath: '/',
+					browserTitle: 'Manual Page With Images',
+					canonicalHost: 'https://www.cancer.gov',
+					cisBannerImgUrlLarge: '%PUBLIC_URL%/images/cts-cis-banner-xl.jpeg',
+					cisBannerImgUrlSmall: '%PUBLIC_URL%/images/cts-cis-banner-smartphone.jpeg',
+					introText: '',
+					itemsPerPage: 25,
+					listingApiEndpoint: 'https://webapis-dev.cancer.gov/triallistingsupport/v1/',
+					metaDescription:
+						'Find clinical trials.',
+					noTrialsHtml:
+						'<p><strong>There are currently no available trials.</strong></p>',
+					pageTitle: 'Manual Page With Images',
+					requestFilters: {
+						'diseases.nci_thesaurus_concept_id': [
+							'C4347',
+						],
+						'primary_purpose.primary_purpose_code': 'treatment',
+					},
+					detailedViewPagePrettyUrlFormatter: '/clinicaltrials/{{nci_id}}',
+					rootId: 'NCI-app-root',
+					siteName: 'National Cancer Institute',
+					title: 'NCI Clinical Trials',
+					trialsApiEndpoint: 'https://clinicaltrialsapi.cancer.gov/v1/',
+					trialListingPageType: 'Manual',
+				},
 			];
 
 			window.APP_PARAMS = cfgs[configIndex];
@@ -292,6 +360,8 @@
 				<option value="3">Manual - Adult Glioblastoma</option>
 				<option value="4">Manual - Adult Metastatic Brain Tumors</option>
 				<option value="5">Manual - Childhood Astrocytoma</option>
+				<option value="6">Disease - No Banner Images Set</option>
+				<option value="7">Manual - Banner Images Set</option>
 			</select>
 		</div>
 		<script type="text/javascript">

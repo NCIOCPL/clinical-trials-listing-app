@@ -1,0 +1,24 @@
+.banner-cis {
+	position: relative;
+
+	&__button {
+		position: absolute;
+		padding: 3px 10px;
+		border-radius: 4px;
+		box-shadow: 3px 3px 5px #AAA;
+		background-color: #62539d;
+		color: #fff;
+		text-decoration: none;
+		font-family: Montserrat, Avant Garde, Arial, sans-serif;
+		font-size: 1.125em;
+		border-width: 1px;
+		cursor: pointer;
+		top: 65%;
+		left: 32%;
+
+		@media only screen and (min-width: 641px) {
+			top: 68%;
+			left: 32.5%;
+		}
+	}
+}

@@ -3,6 +3,8 @@ Feature: Manual listing page analytics
     Scenario: Page Load Analytics fires when a user views a manual listing page
         Given "trialListingPageType" is set to "Manual"
         And "pageTitle" is set to "Clinical Trials for Adult Metastatic Brain Tumors"
+				And "cisBannerImgUrlLarge" is set to null
+				And "cisBannerImgUrlSmall" is set to null
         And "analyticsPublishedDate" is set to "02/02/2011"
         When the user navigates to "/?cfg=4"
         Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"

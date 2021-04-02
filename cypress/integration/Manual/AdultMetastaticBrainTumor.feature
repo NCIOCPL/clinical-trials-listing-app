@@ -3,6 +3,8 @@ Feature: As a user, I would like to view the trial results for a manual listing 
   Scenario: View manual listing page results
     Given "trialListingPageType" is set to "Manual"
     And "pageTitle" is set to "Clinical Trials for Adult Metastatic Brain Tumors"
+		And "cisBannerImgUrlLarge" is set to null
+		And "cisBannerImgUrlSmall" is set to null
     Given the user navigates to "/?cfg=4"
     Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"
     Then the system displays 1 paragraph "Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer. All trials on the list are supported by NCI."
@@ -24,6 +26,8 @@ Feature: As a user, I would like to view the trial results for a manual listing 
   Scenario: View manual listing page metadata
     Given "trialListingPageType" is set to "Manual"
     And "pageTitle" is set to "Clinical Trials for Adult Metastatic Brain Tumors"
+		And "cisBannerImgUrlLarge" is set to null
+		And "cisBannerImgUrlSmall" is set to null
     When the user navigates to "/?cfg=4"
     Then the title tag should be "Clinical Trials for Adult Metastatic Brain Tumors - National Cancer Institute"
     And the page contains meta tags with the following properties
@@ -39,6 +43,8 @@ Feature: As a user, I would like to view the trial results for a manual listing 
   Scenario: User is able to navigate through pages on manual listings
     Given "trialListingPageType" is set to "Manual"
     And "pageTitle" is set to "Clinical Trials for Adult Metastatic Brain Tumors"
+		And "cisBannerImgUrlLarge" is set to null
+		And "cisBannerImgUrlSmall" is set to null
     And "itemsPerPage" is set to 10
     Given the user navigates to "/?cfg=4"
     Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"
@@ -174,6 +180,8 @@ Feature: As a user, I would like to view the trial results for a manual listing 
   Scenario: View manual listing page with no pager (when total results is less than items per page )
     Given "trialListingPageType" is set to "Manual"
     And "pageTitle" is set to "Clinical Trials for Adult Metastatic Brain Tumors"
+		And "cisBannerImgUrlLarge" is set to null
+		And "cisBannerImgUrlSmall" is set to null
     And "itemsPerPage" is set to 20
     Given the user navigates to "/?cfg=4"
     Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"

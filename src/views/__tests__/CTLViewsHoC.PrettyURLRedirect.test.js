@@ -1,7 +1,7 @@
 import { act, render } from '@testing-library/react';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { MemoryRouter, useLocation } from 'react-router-dom';
+import { MemoryRouter, useLocation } from 'react-router';
 
 import CTLViewsHoC from '../CTLViewsHoC';
 import { MockAnalyticsProvider } from '../../tracking';
@@ -10,6 +10,13 @@ import { useStateValue } from '../../store/store';
 
 jest.mock('../../hooks/customFetch');
 jest.mock('../../store/store.js');
+
+jest.mock('react-router', () => ({
+	...jest.requireActual('react-router'),
+	useParams: () => ({
+		codeOrPurl: 'C4872',
+	}),
+}));
 
 let location;
 
