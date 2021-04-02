@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router';
 
 import { Spinner } from '../components';
+import { PageNotFound } from './ErrorBoundary';
+import NoTrialsFound from './NoTrialsFound';
 import { queryParamType } from '../constants';
 import { useAppPaths, useCustomQuery } from '../hooks';
 import { appendOrUpdateToQueryString, matchQueryParam } from '../utils';
@@ -18,8 +20,12 @@ const CTLViewsHoC = (WrappedView) => {
 		const location = useLocation();
 		const navigate = useNavigate();
 		const { search } = location;
+		const isNoTrials = codeOrPurl.startsWith('notrials');
+		const hasTrialsRedirectState = isNoTrials && location.state;
+		const [showNoTrialsFound, setShowNoTrialsFound] = useState(false);
 		const [shouldFetchListingInfo, setShouldFetchListingInfo] = useState(false);
 		const [stateListingInfo, setStateListingInfo] = useState(null);
+		const [showPageNotFound, setShowPageNotFound] = useState(false);
 		const [doneLoading, setDoneLoading] = useState(false);
 		const [hasBeenRedirected, setHasBeenRedirected] = useState(false);
 		const [paramType, setParamType] = useState(queryParamType.code);
@@ -29,14 +35,30 @@ const CTLViewsHoC = (WrappedView) => {
 			paramType === 'code'
 				? getListingInformationById
 				: getListingInformationByName;
+
 		const getListingInfo = useCustomQuery(
 			getFetchByIdOrName({ queryParam }),
 			shouldFetchListingInfo && !hasBeenRedirected
 		);
 
 		useEffect(() => {
-			setFetchByIdOrName();
-			setShouldFetchListingInfo(true);
+			if (isNoTrials && !hasTrialsRedirectState) {
+				setShowPageNotFound(true);
+			}
+		}, []);
+
+		useEffect(() => {
+			if (
+				hasTrialsRedirectState &&
+				location.state?.wasRedirected &&
+				location.state?.listingInfo
+			) {
+				setShowNoTrialsFound(true);
+				setStateListingInfo(location.state.listingInfo);
+			} else if (!isNoTrials) {
+				setFetchByIdOrName(codeOrPurl);
+				setShouldFetchListingInfo(true);
+			}
 		}, [codeOrPurl]);
 
 		useEffect(() => {
@@ -70,8 +92,8 @@ const CTLViewsHoC = (WrappedView) => {
 			}
 		}, [stateListingInfo]);
 
-		const setFetchByIdOrName = () => {
-			const fetchParam = matchQueryParam(codeOrPurl);
+		const setFetchByIdOrName = (param) => {
+			const fetchParam = matchQueryParam(param);
 			setParamType(fetchParam.paramType);
 			setQueryParam(fetchParam.queryParam);
 		};
@@ -79,8 +101,12 @@ const CTLViewsHoC = (WrappedView) => {
 		return (
 			<div>
 				{(() => {
-					if (!doneLoading) {
+					if (showPageNotFound) {
+						return <PageNotFound />;
+					} else if (!doneLoading) {
 						return <Spinner />;
+					} else if (doneLoading && showNoTrialsFound) {
+						return <NoTrialsFound data={stateListingInfo} />;
 					} else {
 						return <WrappedView {...props} data={stateListingInfo} />;
 					}

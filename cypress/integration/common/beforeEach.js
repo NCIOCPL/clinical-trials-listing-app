@@ -16,6 +16,8 @@ beforeEach(() => {
 			baseHost: 'http://localhost:3000',
 			basePath: '/',
 			canonicalHost: 'https://www.cancer.gov',
+			cisBannerImgUrlLarge: '%PUBLIC_URL%/images/cts-cis-banner-xl.jpeg',
+			cisBannerImgUrlSmall: '%PUBLIC_URL%/images/cts-cis-banner-smartphone.jpeg',
 			itemsPerPage: 25,
 			trialListingPageType: 'Disease',
 			listingApiEndpoint: '/api/',

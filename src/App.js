@@ -9,49 +9,95 @@ import { useStateValue } from './store/store';
 import {
 	CTLViewsHoC,
 	Disease,
+	InvalidParameters,
 	Manual,
-	NoListingType,
 	PageNotFound,
 } from './views';
 
 const App = () => {
 	let dynamicRoutes;
 	const { BasePath, CodeOrPurlPath } = useAppPaths();
-	const [{ trialListingPageType }] = useStateValue();
+	const [
+		{ cisBannerImgUrlLarge, cisBannerImgUrlSmall, trialListingPageType },
+	] = useStateValue();
+
+	// Check for image parameters, and set string for invalid parameters page.
+	const hasBannerImages =
+		cisBannerImgUrlLarge !== null && cisBannerImgUrlSmall !== null;
+	const imageParams = 'cisBannerImgUrlLarge, cisBannerImgUrlSmall';
 
 	const WrappedDisease = CTLViewsHoC(Disease);
 
 	switch (trialListingPageType) {
 		case 'Disease':
-			dynamicRoutes = (
-				<Routes>
-					<Route path={CodeOrPurlPath()} element={<WrappedDisease />} />
-					<Route path="/*" element={<PageNotFound />} />
-				</Routes>
-			);
+			// If both banner images are present, set the disease routes.
+			if (hasBannerImages) {
+				dynamicRoutes = (
+					<Routes>
+						<Route path={CodeOrPurlPath()} element={<WrappedDisease />} />
+						<Route path="/*" element={<PageNotFound />} />
+					</Routes>
+				);
+			} else {
+				dynamicRoutes = (
+					<Routes>
+						<Route
+							path="/*"
+							element={<InvalidParameters paramName={imageParams} />}
+						/>
+					</Routes>
+				);
+			}
 			break;
 
 		case 'Intervention':
-			dynamicRoutes = (
-				<Routes>
-					<Route path="/*" element={<PageNotFound />} />
-				</Routes>
-			);
+			// If both banner images are present, set the intervention routes.
+			if (hasBannerImages) {
+				dynamicRoutes = (
+					<Routes>
+						<Route path="/*" element={<PageNotFound />} />
+					</Routes>
+				);
+			} else {
+				dynamicRoutes = (
+					<Routes>
+						<Route
+							path="/*"
+							element={<InvalidParameters paramName={imageParams} />}
+						/>
+					</Routes>
+				);
+			}
 			break;
 
 		case 'Manual':
-			dynamicRoutes = (
-				<Routes>
-					<Route path={BasePath()} element={<Manual />} />
-					<Route path="/*" element={<PageNotFound />} />
-				</Routes>
-			);
+			// If both banner images aren't present, set the manual routes.
+			if (cisBannerImgUrlLarge == null && cisBannerImgUrlSmall == null) {
+				dynamicRoutes = (
+					<Routes>
+						<Route path={BasePath()} element={<Manual />} />
+						<Route path="/*" element={<PageNotFound />} />
+					</Routes>
+				);
+			} else {
+				dynamicRoutes = (
+					<Routes>
+						<Route
+							path="/*"
+							element={<InvalidParameters paramName={imageParams} />}
+						/>
+					</Routes>
+				);
+			}
 			break;
 
 		default:
 			dynamicRoutes = (
 				<Routes>
-					<Route path="/*" element={<NoListingType />} />
+					<Route
+						path="/*"
+						element={<InvalidParameters paramName="trialListingPageType" />}
+					/>
 				</Routes>
 			);
 	}

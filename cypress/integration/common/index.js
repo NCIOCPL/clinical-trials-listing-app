@@ -52,6 +52,12 @@ Given('{string} is set to {string}', (key, param) => {
 	});
 });
 
+Given('{string} is set to null', (key) => {
+	cy.on('window:before:load', (win) => {
+		win.INT_TEST_APP_PARAMS[key] = null;
+	});
+});
+
 Given('{string} is set to {int}', (key, param) => {
 	cy.on('window:before:load', (win) => {
 		win.INT_TEST_APP_PARAMS[key] = param;
@@ -84,7 +90,7 @@ And('the page displays {string}', (text) => {
 
 /*
     ----------------------------------------
-     Analytics
+      Analytics
     ----------------------------------------
 */
 Then('browser waits', () => {
@@ -196,7 +202,7 @@ Given('screen breakpoint is set to {string}', (screenSize) => {
 
 /*
     -----------------------
-       Pager
+        Pager
     -----------------------
 */
 
@@ -247,7 +253,7 @@ When('pager is not displayed', () => {
 
 /*
     -----------------------
-       Page Not Found
+        Page Not Found
     -----------------------
 */
 
@@ -256,11 +262,33 @@ And('the text {string} appears on the page', (text) => {
 });
 
 /*
+    --------------------------
+        Invalid Parameters
+    --------------------------
+*/
+
+Then('the error message {string} appears on the page', (text) => {
+	cy.get('h4').should('contain', text.replaceAll("'", '"'));
+});
+
+/*
     -----------------------
-       Redirect
+        Redirect
     -----------------------
 */
 
 Then('the user is redirected to {string}', (redirectUrl) => {
 		cy.location('href').should('include', redirectUrl);
+});
+
+Then('the user is redirected to {string} with query parameters {string}', (redirectUrl, queryParams) => {
+	cy.location('href').should('include', `${redirectUrl}?${queryParams}`);
+});
+
+And('the CIS Banner displays below', () => {
+	cy.get('[alt="Questions? Chat with an information specialist"]').should('be.visible')
+});
+
+And('the Chat Now button displays below', () => {
+	cy.contains('.banner-cis__button', 'Chat Now');
 });

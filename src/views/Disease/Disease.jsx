@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { useParams, useLocation, useNavigate } from 'react-router';
+import { useNavigate, useParams, useLocation } from 'react-router';
 import { useTracking } from 'react-tracking';
 
 import { Pager, NoResults, ResultsList, Spinner } from '../../components';
@@ -17,8 +17,7 @@ import {
 } from '../../utils';
 
 const Disease = ({ data }) => {
-	const params = useParams();
-	const { codeOrPurl } = params;
+	const { codeOrPurl } = useParams();
 	const { CodeOrPurlPath } = useAppPaths();
 	const location = useLocation();
 	const [trialsPayload, setTrialsPayload] = useState(null);
@@ -41,7 +40,8 @@ const Disease = ({ data }) => {
 		},
 	] = useStateValue();
 
-	const { conceptId, name } = data;
+	const { conceptId, name, prettyUrlName } = data;
+
 	const pn = getKeyValueFromQueryString('pn', search.toLowerCase());
 	const pagerDefaults = {
 		offset: pn ? getPageOffset(pn, itemsPerPage) : 0,
@@ -83,6 +83,15 @@ const Disease = ({ data }) => {
 
 	useEffect(() => {
 		if (!queryResponse.loading && queryResponse.payload) {
+			if (queryResponse.payload.total === 0) {
+				const noTrialsParam = prettyUrlName ? prettyUrlName : codeOrPurl;
+				navigate(
+					`${CodeOrPurlPath({ codeOrPurl: 'notrials' })}?p1=${noTrialsParam}`,
+					{
+						state: { wasRedirected: true, listingInfo: data },
+					}
+				);
+			}
 			setTrialsPayload(queryResponse.payload);
 		}
 	}, [queryResponse.loading, queryResponse.payload]);
@@ -90,7 +99,7 @@ const Disease = ({ data }) => {
 	useEffect(() => {
 		// Fire off a page load event. Usually this would be in
 		// some effect when something loaded.
-		if (trialsPayload) {
+		if (trialsPayload && trialsPayload.total > 0) {
 			tracking.trackEvent({
 				// These properties are required.
 				type: 'PageLoad',
