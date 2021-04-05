@@ -281,6 +281,10 @@ Then('the user is redirected to {string}', (redirectUrl) => {
 		cy.location('href').should('include', redirectUrl);
 });
 
+Then('the redirect parameter is not appended', () => {
+	cy.location('href').should('not.include', 'redirect=true')
+});
+
 Then('the user is redirected to {string} with query parameters {string}', (redirectUrl, queryParams) => {
 	cy.location('href').should('include', `${redirectUrl}?${queryParams}`);
 });

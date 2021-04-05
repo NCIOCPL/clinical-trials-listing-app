@@ -35,12 +35,10 @@ const CTLViewsHoC = (WrappedView) => {
 			paramType === 'code'
 				? getListingInformationById
 				: getListingInformationByName;
-
 		const getListingInfo = useCustomQuery(
 			getFetchByIdOrName({ queryParam }),
 			shouldFetchListingInfo && !hasBeenRedirected
 		);
-
 		useEffect(() => {
 			if (isNoTrials && !hasTrialsRedirectState) {
 				setShowPageNotFound(true);
@@ -72,7 +70,7 @@ const CTLViewsHoC = (WrappedView) => {
 				setStateListingInfo(getListingInfo.payload);
 
 				// Redirect to pretty url if one exists for listing info
-				if (prettyUrlName) {
+				if (prettyUrlName && paramType === 'code') {
 					setHasBeenRedirected(true);
 					const queryString = appendOrUpdateToQueryString(
 						search,
@@ -80,7 +78,8 @@ const CTLViewsHoC = (WrappedView) => {
 						'true'
 					);
 					navigate(
-						`${CodeOrPurlPath({ codeOrPurl: prettyUrlName })}${queryString}`
+						`${CodeOrPurlPath({ codeOrPurl: prettyUrlName })}${queryString}`,
+						{ replace: true }
 					);
 				}
 			}
