@@ -177,7 +177,6 @@ const Disease = ({ data }) => {
 			{renderHelmet()}
 			<h1>{replacedText.pageTitle}</h1>
 			{replacedText.introText.length > 0 &&
-				!queryResponse.loading &&
 				trialsPayload?.trials.length > 0 && (
 					<div
 						className="intro-text"
