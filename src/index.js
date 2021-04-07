@@ -126,7 +126,7 @@ const initialize = ({
 export default initialize;
 
 //add initialize to window
-window.CgovReactAppPlayground = initialize;
+window.ClinicalTrialsListingApp = initialize;
 
 // The following lets us run the app in dev not in situ as would normally be the case.
 const appParams = window.APP_PARAMS || {};
