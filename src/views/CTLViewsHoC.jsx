@@ -12,6 +12,7 @@ import {
 	getListingInformationById,
 	getListingInformationByName,
 } from '../services/api/actions';
+//import { param } from 'cypress/types/jquery';
 
 const CTLViewsHoC = (WrappedView) => {
 	const WithPreFetch = (props) => {
@@ -70,6 +71,7 @@ const CTLViewsHoC = (WrappedView) => {
 				setStateListingInfo(getListingInfo.payload);
 
 				// Redirect to pretty url if one exists for listing info
+				//console.log('prettyURLName and paramType:', prettyUrlName, paramType);
 				if (prettyUrlName && paramType === 'code') {
 					setHasBeenRedirected(true);
 					const queryString = appendOrUpdateToQueryString(
@@ -93,6 +95,7 @@ const CTLViewsHoC = (WrappedView) => {
 
 		const setFetchByIdOrName = (param) => {
 			const fetchParam = matchQueryParam(param);
+			//console.log(fetchParam.paramType);
 			setParamType(fetchParam.paramType);
 			setQueryParam(fetchParam.queryParam);
 		};
