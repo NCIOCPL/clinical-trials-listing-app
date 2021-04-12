@@ -28,7 +28,7 @@ ComponentWithLocation.propTypes = {
 };
 
 describe('<Disease />', () => {
-	it('Should assert page is redirected to pretty URL', async () => {
+	it('Should assert page is redirected to No Trials Found', async () => {
 		const basePath = '/';
 		const browserTitle = '{{disease_name}} Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
@@ -85,7 +85,7 @@ describe('<Disease />', () => {
 			render(
 				<MockAnalyticsProvider>
 					<ClientContextProvider client={client}>
-						<MemoryRouter initialEntries={['/C3037']}>
+						<MemoryRouter initialEntries={['/chronic-fatigue-syndrome']}>
 							<ComponentWithLocation RenderComponent={DiseaseWithData} />
 						</MemoryRouter>
 					</ClientContextProvider>
@@ -106,7 +106,9 @@ describe('<Disease />', () => {
 					},
 					prettyUrlName: 'chronic-fatigue-syndrome',
 				},
-				wasRedirected: true,
+				isNoTrialsRedirect: true,
+				redirectStatus: '302',
+				prerenderLocation: null,
 			},
 			key: expect.any(String),
 		};
@@ -192,7 +194,9 @@ describe('<Disease />', () => {
 					},
 					prettyUrlName: null,
 				},
-				wasRedirected: true,
+				isNoTrialsRedirect: true,
+				redirectStatus: '302',
+				prerenderLocation: null,
 			},
 			key: expect.any(String),
 		};

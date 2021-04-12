@@ -3,11 +3,16 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router';
 
 import { Spinner } from '../components';
-import { PageNotFound } from './ErrorBoundary';
 import NoTrialsFound from './NoTrialsFound';
 import { queryParamType } from '../constants';
 import { useAppPaths, useCustomQuery } from '../hooks';
-import { appendOrUpdateToQueryString, matchQueryParam } from '../utils';
+
+import {
+	appendOrUpdateToQueryString,
+	getKeyValueFromQueryString,
+	matchQueryParam,
+} from '../utils';
+
 import {
 	getListingInformationById,
 	getListingInformationByName,
@@ -21,11 +26,11 @@ const CTLViewsHoC = (WrappedView) => {
 		const navigate = useNavigate();
 		const { search } = location;
 		const isNoTrials = codeOrPurl.startsWith('notrials');
-		const hasTrialsRedirectState = isNoTrials && location.state;
+
 		const [showNoTrialsFound, setShowNoTrialsFound] = useState(false);
+		const [prerenderStatusCode, setPrerenderStatusCode] = useState(null);
 		const [shouldFetchListingInfo, setShouldFetchListingInfo] = useState(false);
 		const [stateListingInfo, setStateListingInfo] = useState(null);
-		const [showPageNotFound, setShowPageNotFound] = useState(false);
 		const [doneLoading, setDoneLoading] = useState(false);
 		const [hasBeenRedirected, setHasBeenRedirected] = useState(false);
 		const [paramType, setParamType] = useState(queryParamType.code);
@@ -40,19 +45,23 @@ const CTLViewsHoC = (WrappedView) => {
 			shouldFetchListingInfo && !hasBeenRedirected
 		);
 		useEffect(() => {
-			if (isNoTrials && !hasTrialsRedirectState) {
-				setShowPageNotFound(true);
-			}
-		}, []);
+			if (isNoTrials) {
+				if (
+					location.state?.isNoTrialsRedirect &&
+					location.state?.listingInfo &&
+					location.state?.redirectStatus
+				) {
+					setShowNoTrialsFound(true);
+					setPrerenderStatusCode(location.state.redirectStatus);
+					setStateListingInfo(location.state.listingInfo);
+				} else {
+					setShowNoTrialsFound(true);
+					setPrerenderStatusCode('404');
 
-		useEffect(() => {
-			if (
-				hasTrialsRedirectState &&
-				location.state?.wasRedirected &&
-				location.state?.listingInfo
-			) {
-				setShowNoTrialsFound(true);
-				setStateListingInfo(location.state.listingInfo);
+					const p1 = getKeyValueFromQueryString('p1', search);
+					setFetchByIdOrName(p1);
+					setShouldFetchListingInfo(true);
+				}
 			} else if (!isNoTrials) {
 				setFetchByIdOrName(codeOrPurl);
 				setShouldFetchListingInfo(true);
@@ -70,8 +79,9 @@ const CTLViewsHoC = (WrappedView) => {
 				setStateListingInfo(getListingInfo.payload);
 
 				// Redirect to pretty url if one exists for listing info
-				if (prettyUrlName && paramType === 'code') {
+				if (prettyUrlName && paramType === 'code' && !isNoTrials) {
 					setHasBeenRedirected(true);
+
 					const queryString = appendOrUpdateToQueryString(
 						search,
 						'redirect',
@@ -79,7 +89,12 @@ const CTLViewsHoC = (WrappedView) => {
 					);
 					navigate(
 						`${CodeOrPurlPath({ codeOrPurl: prettyUrlName })}${queryString}`,
-						{ replace: true }
+						{
+							replace: true,
+							state: {
+								redirectStatus: '301',
+							},
+						}
 					);
 				}
 			}
@@ -100,12 +115,16 @@ const CTLViewsHoC = (WrappedView) => {
 		return (
 			<div>
 				{(() => {
-					if (showPageNotFound) {
-						return <PageNotFound />;
-					} else if (!doneLoading) {
+					if (!doneLoading) {
 						return <Spinner />;
-					} else if (doneLoading && showNoTrialsFound) {
-						return <NoTrialsFound data={stateListingInfo} />;
+					} else if (showNoTrialsFound && prerenderStatusCode && doneLoading) {
+						return (
+							<NoTrialsFound
+								data={stateListingInfo}
+								status={prerenderStatusCode}
+								prerenderLocation={location.state?.prerenderLocation}
+							/>
+						);
 					} else {
 						return <WrappedView {...props} data={stateListingInfo} />;
 					}

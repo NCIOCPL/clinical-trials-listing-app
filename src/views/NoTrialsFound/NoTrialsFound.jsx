@@ -7,7 +7,7 @@ import { CISBanner, NoResults } from '../../components';
 import { useStateValue } from '../../store/store';
 import { TokenParser } from '../../utils';
 
-const NoTrialsFound = ({ data }) => {
+const NoTrialsFound = ({ data, status, prerenderLocation }) => {
 	const tracking = useTracking();
 	const [
 		{
@@ -63,11 +63,9 @@ const NoTrialsFound = ({ data }) => {
 	}, []);
 
 	const renderHelmet = () => {
-		const prerenderHeader =
-			'Location: ' +
-			baseHost +
-			window.location.pathname +
-			window.location.search;
+		const prerenderHeader = prerenderLocation
+			? prerenderLocation
+			: baseHost + window.location.pathname + window.location.search;
 
 		return (
 			<Helmet>
@@ -80,8 +78,18 @@ const NoTrialsFound = ({ data }) => {
 					content={replacementText.metaDescription}
 				/>
 				<link rel="canonical" href={canonicalHost + window.location.pathname} />
-				<meta name="prerender-status-code" content="302" />
-				<meta name="prerender-header" content={prerenderHeader} />
+				<meta name="prerender-status-code" content={status} />
+				{(() => {
+					if (status !== '404') {
+						return (
+							<meta
+								name="prerender-header"
+								content={`Location: ${prerenderHeader}`}
+							/>
+						);
+					}
+				})()}
+				<meta name="robots" content="noindex" />
 			</Helmet>
 		);
 	};
@@ -109,6 +117,8 @@ NoTrialsFound.propTypes = {
 		}),
 		prettyUrlName: PropTypes.string,
 	}),
+	status: PropTypes.string,
+	prerenderLocation: PropTypes.string,
 };
 
 export default NoTrialsFound;
