@@ -44,6 +44,7 @@ const CTLViewsHoC = (WrappedView) => {
 			getFetchByIdOrName({ queryParam }),
 			shouldFetchListingInfo && !hasBeenRedirected
 		);
+
 		useEffect(() => {
 			if (isNoTrials) {
 				if (
@@ -63,6 +64,10 @@ const CTLViewsHoC = (WrappedView) => {
 					setShouldFetchListingInfo(true);
 				}
 			} else if (!isNoTrials) {
+				if (location.state?.redirectStatus) {
+					setPrerenderStatusCode(location.state.redirectStatus);
+				}
+
 				setFetchByIdOrName(codeOrPurl);
 				setShouldFetchListingInfo(true);
 			}
@@ -126,7 +131,13 @@ const CTLViewsHoC = (WrappedView) => {
 							/>
 						);
 					} else {
-						return <WrappedView {...props} data={stateListingInfo} />;
+						return (
+							<WrappedView
+								{...props}
+								data={stateListingInfo}
+								status={prerenderStatusCode}
+							/>
+						);
 					}
 				})()}
 			</div>

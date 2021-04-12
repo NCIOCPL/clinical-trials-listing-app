@@ -74,6 +74,7 @@ describe('CTLViewsHoc', () => {
 		// to match the expected props
 		expect(mockComponent.mock.calls[0][0]).toEqual({
 			data: data,
+			status: null,
 		});
 
 		expect(
@@ -122,6 +123,7 @@ describe('CTLViewsHoc', () => {
 		expect(mockComponent.mock.calls[0][0]).toEqual({
 			color: 'blue',
 			data: data,
+			status: null,
 		});
 
 		expect(

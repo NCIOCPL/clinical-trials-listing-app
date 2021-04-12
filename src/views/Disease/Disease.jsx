@@ -16,7 +16,7 @@ import {
 	TokenParser,
 } from '../../utils';
 
-const Disease = ({ data }) => {
+const Disease = ({ data, status }) => {
 	const { codeOrPurl } = useParams();
 	const { CodeOrPurlPath } = useAppPaths();
 	const location = useLocation();
@@ -138,6 +138,9 @@ const Disease = ({ data }) => {
 	};
 
 	const renderHelmet = () => {
+		const prerenderHeader =
+			baseHost + window.location.pathname + window.location.search;
+
 		return (
 			<Helmet>
 				<title>{`${replacedText.browserTitle} - ${siteName}`}</title>
@@ -149,6 +152,21 @@ const Disease = ({ data }) => {
 					content={replacedText.metaDescription}
 				/>
 				<link rel="canonical" href={canonicalHost + window.location.pathname} />
+				{(() => {
+					if (status !== null) {
+						return <meta name="prerender-status-code" content={status} />;
+					}
+				})()}
+				{(() => {
+					if (status === '301') {
+						return (
+							<meta
+								name="prerender-header"
+								content={`Location: ${prerenderHeader}`}
+							/>
+						);
+					}
+				})()}
 			</Helmet>
 		);
 	};
@@ -228,6 +246,7 @@ Disease.propTypes = {
 		}),
 		prettyUrlName: PropTypes.string,
 	}),
+	status: PropTypes.string,
 };
 
 export default Disease;
