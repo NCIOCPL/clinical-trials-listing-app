@@ -80,7 +80,9 @@ describe('<CTLViewsHoc />', () => {
 			pathname: '/breast-cancer',
 			search: '?redirect=true',
 			hash: '',
-			state: null,
+			state: {
+				redirectStatus: '301',
+			},
 			key: expect.any(String),
 		};
 

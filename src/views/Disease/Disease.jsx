@@ -85,10 +85,23 @@ const Disease = ({ data }) => {
 		if (!queryResponse.loading && queryResponse.payload) {
 			if (queryResponse.payload.total === 0) {
 				const noTrialsParam = prettyUrlName ? prettyUrlName : codeOrPurl;
+				const redirectStatusCode = location.state?.redirectStatus
+					? location.state?.redirectStatus
+					: '302';
+				const prerenderLocation = location.state?.redirectStatus
+					? baseHost + window.location.pathname + window.location.search
+					: null;
+
 				navigate(
 					`${CodeOrPurlPath({ codeOrPurl: 'notrials' })}?p1=${noTrialsParam}`,
 					{
-						state: { wasRedirected: true, listingInfo: data },
+						replace: true,
+						state: {
+							isNoTrialsRedirect: true,
+							listingInfo: data,
+							redirectStatus: redirectStatusCode,
+							prerenderLocation: prerenderLocation,
+						},
 					}
 				);
 			}

@@ -19,17 +19,7 @@ jest.mock('react-router', () => ({
 		pathname: '/notrials',
 		search: '?p1=chronic-fatigue-syndrome',
 		hash: '',
-		state: {
-			listingInfo: {
-				conceptId: ['C3037'],
-				name: {
-					label: 'Chronic Fatigue Syndrome',
-					normalized: 'chronic fatigue syndrome',
-				},
-				prettyUrlName: 'chronic-fatigue-syndrome',
-			},
-			wasRedirected: true,
-		},
+		state: null,
 	}),
 }));
 
@@ -44,7 +34,7 @@ beforeEach(() => {
 });
 
 describe('CTLViewsHoc ', () => {
-	test('Should display No Trials Found if accessed with /notrials route and state listing info', async () => {
+	test('Should display No Trials Found', async () => {
 		const basePath = '/';
 		const browserTitle = '{{disease_name}} Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
@@ -56,7 +46,6 @@ describe('CTLViewsHoc ', () => {
 			},
 			prettyUrlName: 'chronic-fatigue-syndrome',
 		};
-		const detailedViewPagePrettyUrlFormatter = '/clinicaltrials/{{nci_id}}';
 		const introText =
 			'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>';
 		const language = 'en';
@@ -73,7 +62,6 @@ describe('CTLViewsHoc ', () => {
 				basePath,
 				browserTitle,
 				canonicalHost,
-				detailedViewPagePrettyUrlFormatter,
 				introText,
 				language,
 				metaDescription,
@@ -96,8 +84,7 @@ describe('CTLViewsHoc ', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<MemoryRouter
-						initialEntries={['/notrials?p1=chronic-fatigue-syndrome']}>
+					<MemoryRouter initialEntries={['/']}>
 						<WrappedComponent />
 					</MemoryRouter>
 				</MockAnalyticsProvider>

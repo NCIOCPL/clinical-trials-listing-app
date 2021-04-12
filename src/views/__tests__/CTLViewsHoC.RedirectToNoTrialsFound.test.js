@@ -1,11 +1,11 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter } from 'react-router';
 
 import CTLViewsHoC from '../CTLViewsHoC';
 import { MockAnalyticsProvider } from '../../tracking';
 import { useCustomQuery } from '../../hooks';
-import { useStateValue } from '../../store/store.js';
+import { useStateValue } from '../../store/store';
 
 jest.mock('../../store/store.js');
 jest.mock('../../hooks/customFetch');
@@ -17,9 +17,21 @@ jest.mock('react-router', () => ({
 	}),
 	useLocation: () => ({
 		pathname: '/notrials',
-		search: '?p1=C3037',
+		search: '?p1=chronic-fatigue-syndrome',
 		hash: '',
-		state: null,
+		state: {
+			listingInfo: {
+				conceptId: ['C3037'],
+				name: {
+					label: 'Chronic Fatigue Syndrome',
+					normalized: 'chronic fatigue syndrome',
+				},
+				prettyUrlName: 'chronic-fatigue-syndrome',
+			},
+			isNoTrialsRedirect: true,
+			redirectStatus: '302',
+			prerenderLocation: null,
+		},
 	}),
 }));
 
@@ -34,7 +46,7 @@ beforeEach(() => {
 });
 
 describe('CTLViewsHoc ', () => {
-	test('Should display Page Not Found if accessed with /notrials route and no state', async () => {
+	test('Should display No Trials Found if accessed with /notrials route and state listing info', async () => {
 		const basePath = '/';
 		const browserTitle = '{{disease_name}} Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
@@ -46,7 +58,6 @@ describe('CTLViewsHoc ', () => {
 			},
 			prettyUrlName: 'chronic-fatigue-syndrome',
 		};
-		const detailedViewPagePrettyUrlFormatter = '/clinicaltrials/{{nci_id}}';
 		const introText =
 			'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>';
 		const language = 'en';
@@ -63,7 +74,6 @@ describe('CTLViewsHoc ', () => {
 				basePath,
 				browserTitle,
 				canonicalHost,
-				detailedViewPagePrettyUrlFormatter,
 				introText,
 				language,
 				metaDescription,
@@ -86,17 +96,20 @@ describe('CTLViewsHoc ', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/notrials?p1=C3037']}>
+					<MemoryRouter initialEntries={['/']}>
 						<WrappedComponent />
 					</MemoryRouter>
 				</MockAnalyticsProvider>
 			);
 		});
 
-		const expectedPageTitle = 'Page Not Found';
-		expect(screen.getByText(expectedPageTitle)).toBeInTheDocument();
-		const inputBox = screen.getByLabelText('Search');
-		fireEvent.change(inputBox, { target: { value: 'chicken' } });
-		fireEvent.click(screen.getByText('Search'));
+		expect(
+			screen.getByText('Chronic Fatigue Syndrome Clinical Trials')
+		).toBeInTheDocument();
+		expect(
+			screen.getByText(
+				'There are currently no available trials for chronic fatigue syndrome.'
+			)
+		).toBeInTheDocument();
 	});
 });
