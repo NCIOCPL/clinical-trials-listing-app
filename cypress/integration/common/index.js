@@ -219,3 +219,7 @@ When('user clicks on {string} button', (arrow) => {
 When('pager is not displayed', () => {
 	cy.get('.pager__navigation li').should('not.exist');
 });
+
+When('user clicks on result item {int}', (resultIndex) => {
+	cy.get('a.ct-list-item__title').eq(resultIndex - 1).trigger('click', { followRedirect: false });
+})

@@ -33,6 +33,7 @@ const ResultsList = ({ results, resultsItemTitleLink }) => {
 								summary={brief_summary}
 								title={brief_title}
 								resultsItemTitleLink={resultsItemTitleLink}
+								resultIndex={index}
 							/>
 						);
 					})}
