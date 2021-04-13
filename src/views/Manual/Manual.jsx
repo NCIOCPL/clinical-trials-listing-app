@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useLocation, useNavigate } from 'react-router';
-import { useTracking } from 'react-tracking';
+import track, { useTracking } from 'react-tracking';
 
 import { NoResults, Pager, ResultsList, Spinner } from '../../components';
 import { useAppPaths, useCustomQuery } from '../../hooks';
@@ -130,6 +130,10 @@ const Manual = () => {
 		);
 	};
 
+	const ResultsListWithPage = track({
+		currentPage: Number(pager.page),
+	})(ResultsList);
+
 	return (
 		<div>
 			{renderHelmet()}
@@ -153,7 +157,7 @@ const Manual = () => {
 					return <Spinner />;
 				} else if (!queryResponse.loading && trialsPayload?.trials?.length) {
 					return (
-						<ResultsList
+						<ResultsListWithPage
 							results={trialsPayload.trials}
 							resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
 						/>

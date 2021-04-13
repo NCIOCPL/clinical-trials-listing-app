@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter } from 'react-router';
-
+import { MockAnalyticsProvider } from '../../../../../tracking';
 import ResultsListItem from '../results-list-item';
 
 jest.mock('../../../../../store/store.js');
@@ -21,13 +21,15 @@ describe('<ResultsListItem />', function () {
 		);
 		const { container } = render(
 			<MemoryRouter initialEntries={['/']}>
-				<ResultsListItem
-					summary={summary}
-					title={title}
-					locationInfo={locationJSX}
-					nciId={nciId}
-					resultsItemTitleLink={resultsItemTitleLink}
-				/>
+				<MockAnalyticsProvider>
+					<ResultsListItem
+						summary={summary}
+						title={title}
+						locationInfo={locationJSX}
+						nciId={nciId}
+						resultsItemTitleLink={resultsItemTitleLink}
+					/>
+				</MockAnalyticsProvider>
 			</MemoryRouter>
 		);
 		expect(screen.getByText('sample title')).toBeInTheDocument();

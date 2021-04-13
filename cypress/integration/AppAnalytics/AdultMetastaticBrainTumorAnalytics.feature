@@ -21,3 +21,19 @@ Feature: Manual listing page analytics
             | page.publishedDate                          | 02/02/2011                                                                    |
             | page.additionalDetails.numberResults        | (int)102                                                                      |
             | page.additionalDetails.trialListingPageType | manual parameters                                                             |
+
+    Scenario: Click event fires when a user clicks on result item
+        Given "trialListingPageType" is set to "Manual"
+        And "pageTitle" is set to "Clinical Trials for Adult Metastatic Brain Tumors"
+        And "analyticsPublishedDate" is set to "02/02/2011"
+        When the user navigates to "/?cfg=4"
+        Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"
+        When user clicks on result item 1
+        Then there should be an analytics event with the following details
+            | key              | value                             |
+            | type             | Other                             |
+            | event            | TrialListingApp:Other:ResultClick |
+            | linkName         | CTSLink                           |
+            | data.resultIndex | (int)1                            |
+            | data.currentPage | (int)1                            |
+            
