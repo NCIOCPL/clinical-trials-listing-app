@@ -13,14 +13,23 @@ describe('<NoTrialsHtml />', () => {
 		const basePath = '/';
 		const browserTitle = '{{disease_name}} Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
-		const data = {
-			conceptId: ['C3037'],
-			name: {
-				label: 'Chronic Fatigue Syndrome',
-				normalized: 'chronic fatigue syndrome',
+		const data = [
+			{
+				conceptId: ['C3037'],
+				name: {
+					label: 'Chronic Fatigue Syndrome',
+					normalized: 'chronic fatigue syndrome',
+				},
+				prettyUrlName: 'chronic-fatigue-syndrome',
 			},
-			prettyUrlName: 'chronic-fatigue-syndrome',
-		};
+		];
+		const routeParamMap = [
+			{
+				paramName: 'codeOrPurl',
+				textReplacementKey: 'disease',
+				type: 'listing-information',
+			},
+		];
 		const language = 'en';
 		const metaDescription = 'Find clinical trials for {{disease_normalized}}.';
 		const noTrialsHtml =
@@ -48,7 +57,7 @@ describe('<NoTrialsHtml />', () => {
 			render(
 				<MockAnalyticsProvider>
 					<MemoryRouter initialEntries={['/']}>
-						<NoTrialsFound data={data} />
+						<NoTrialsFound routeParamMap={routeParamMap} data={data} />
 					</MemoryRouter>
 				</MockAnalyticsProvider>
 			);

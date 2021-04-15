@@ -18,14 +18,16 @@ describe('<Disease />', () => {
 		const basePath = '/';
 		const browserTitle = '{{disease_name}} Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
-		const data = {
-			conceptId: ['C4872'],
-			name: {
-				label: 'Breast Cancer',
-				normalized: 'breast cancer',
+		const data = [
+			{
+				conceptId: ['C4872'],
+				name: {
+					label: 'Breast Cancer',
+					normalized: 'breast cancer',
+				},
+				prettyUrlName: 'breast-cancer',
 			},
-			prettyUrlName: 'breast-cancer',
-		};
+		];
 		const detailedViewPagePrettyUrlFormatter = '/clinicaltrials/{{nci_id}}';
 		const introText =
 			'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>';
