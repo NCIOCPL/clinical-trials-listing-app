@@ -12,6 +12,7 @@ import {
 	getAxiosClient,
 	replacingRequestInterceptor,
 } from './services/api/common';
+import listingSupportApiFactory from './services/api/trial-listing-support-api';
 import * as serviceWorker from './serviceWorker';
 import reducer from './store/reducer';
 import { StateProvider } from './store/store';
@@ -59,6 +60,11 @@ const initialize = ({
 	const appRootDOMNode = document.getElementById(rootId);
 	const isRehydrating = appRootDOMNode.getAttribute('data-isRehydrating');
 
+	// Setup API clients
+	const trialListingSupportClient = listingSupportApiFactory(
+		listingApiEndpoint
+	);
+
 	// populate global state with init params
 	const initialState = {
 		appId,
@@ -75,6 +81,9 @@ const initialize = ({
 		introText,
 		itemsPerPage,
 		language,
+		apiClients: {
+			trialListingSupportClient,
+		},
 		listingApiEndpoint,
 		liveHelpUrl,
 		metaDescription,
@@ -115,9 +124,6 @@ const initialize = ({
 	const requestInterceptors = [
 		replacingRequestInterceptor('clinical-trials-api', {
 			API_HOST: cleanURI(trialsApiEndpoint),
-		}),
-		replacingRequestInterceptor('listing-information-api', {
-			API_HOST: cleanURI(listingApiEndpoint),
 		}),
 	].filter((item) => item !== null);
 

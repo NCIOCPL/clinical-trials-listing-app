@@ -3,10 +3,9 @@
  *
  * @param {string} queryParam the pretty URL name to match
  */
-export const getListingInformationByName = ({ queryParam = '' }) => {
+export const getListingInformationByName = ({ name = '' }) => {
 	return {
-		interceptorName: 'listing-information-api',
-		method: 'GET',
-		endpoint: `{{API_HOST}}/listing-information/${queryParam}`,
+		type: 'name',
+		payload: name,
 	};
 };
