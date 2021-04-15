@@ -32,14 +32,16 @@ describe('<Disease />', () => {
 		const basePath = '/';
 		const browserTitle = '{{disease_name}} Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
-		const data = {
-			conceptId: ['C3037'],
-			name: {
-				label: 'Chronic Fatigue Syndrome',
-				normalized: 'chronic-fatigue-syndrome',
+		const data = [
+			{
+				conceptId: ['C3037'],
+				name: {
+					label: 'Chronic Fatigue Syndrome',
+					normalized: 'chronic-fatigue-syndrome',
+				},
+				prettyUrlName: 'chronic-fatigue-syndrome',
 			},
-			prettyUrlName: 'chronic-fatigue-syndrome',
-		};
+		];
 		const detailedViewPagePrettyUrlFormatter = '/clinicaltrials/{{nci_id}}';
 		const introText =
 			'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>';
@@ -98,15 +100,6 @@ describe('<Disease />', () => {
 			search: '?p1=chronic-fatigue-syndrome',
 			hash: '',
 			state: {
-				listingInfo: {
-					conceptId: ['C3037'],
-					name: {
-						label: 'Chronic Fatigue Syndrome',
-						normalized: 'chronic-fatigue-syndrome',
-					},
-					prettyUrlName: 'chronic-fatigue-syndrome',
-				},
-				isNoTrialsRedirect: true,
 				redirectStatus: '302',
 				prerenderLocation: null,
 			},
@@ -120,14 +113,16 @@ describe('<Disease />', () => {
 		const basePath = '/';
 		const browserTitle = '{{disease_name}} Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
-		const data = {
-			conceptId: ['C3037'],
-			name: {
-				label: 'Chronic Fatigue Syndrome',
-				normalized: 'chronic-fatigue-syndrome',
+		const data = [
+			{
+				conceptId: ['C3037'],
+				name: {
+					label: 'Chronic Fatigue Syndrome',
+					normalized: 'chronic-fatigue-syndrome',
+				},
+				prettyUrlName: null,
 			},
-			prettyUrlName: null,
-		};
+		];
 		const detailedViewPagePrettyUrlFormatter = '/clinicaltrials/{{nci_id}}';
 		const introText =
 			'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>';
@@ -186,15 +181,6 @@ describe('<Disease />', () => {
 			search: '?p1=C3037',
 			hash: '',
 			state: {
-				listingInfo: {
-					conceptId: ['C3037'],
-					name: {
-						label: 'Chronic Fatigue Syndrome',
-						normalized: 'chronic-fatigue-syndrome',
-					},
-					prettyUrlName: null,
-				},
-				isNoTrialsRedirect: true,
 				redirectStatus: '302',
 				prerenderLocation: null,
 			},

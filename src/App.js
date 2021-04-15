@@ -11,12 +11,13 @@ import {
 	Disease,
 	InvalidParameters,
 	Manual,
+	NoTrialsFound,
 	PageNotFound,
 } from './views';
 
 const App = () => {
 	let dynamicRoutes;
-	const { BasePath, CodeOrPurlPath } = useAppPaths();
+	const { BasePath, CodeOrPurlPath, NoTrialsPath } = useAppPaths();
 	const [
 		{ cisBannerImgUrlLarge, cisBannerImgUrlSmall, trialListingPageType },
 	] = useStateValue();
@@ -26,15 +27,50 @@ const App = () => {
 		cisBannerImgUrlLarge !== null && cisBannerImgUrlSmall !== null;
 	const imageParams = 'cisBannerImgUrlLarge, cisBannerImgUrlSmall';
 
-	const WrappedDisease = CTLViewsHoC(Disease);
-
 	switch (trialListingPageType) {
-		case 'Disease':
+		case 'Disease': {
+			const WrappedDisease = CTLViewsHoC(Disease);
+			const WrappedNoTrials = CTLViewsHoC(NoTrialsFound);
+
+			// This is a map of the parameters and types of params that is
+			// used by the HoC to fetch information from the listing support
+			// service. The names should be just like they are in the route
+			// and the type is either listing-information, trial-type, or
+			// whatever future info type there could be returned by the API.
+			// Additionally the textReplacementKey is used by NoTrialsFound
+			// to setup the replacement text context vars.
+			// Order matters!
+			const diseaseRouteParamMap = [
+				{
+					paramName: 'codeOrPurl',
+					textReplacementKey: 'disease',
+					type: 'listing-information',
+				},
+			];
+
 			// If both banner images are present, set the disease routes.
 			if (hasBannerImages) {
 				dynamicRoutes = (
 					<Routes>
-						<Route path={CodeOrPurlPath()} element={<WrappedDisease />} />
+						<Route
+							path={NoTrialsPath()}
+							element={
+								<WrappedNoTrials
+									redirectPath={NoTrialsPath}
+									routeParamMap={diseaseRouteParamMap}
+								/>
+							}
+							exact
+						/>
+						<Route
+							path={CodeOrPurlPath()}
+							element={
+								<WrappedDisease
+									redirectPath={CodeOrPurlPath}
+									routeParamMap={diseaseRouteParamMap}
+								/>
+							}
+						/>
 						<Route path="/*" element={<PageNotFound />} />
 					</Routes>
 				);
@@ -49,7 +85,7 @@ const App = () => {
 				);
 			}
 			break;
-
+		}
 		case 'Intervention':
 			// If both banner images are present, set the intervention routes.
 			if (hasBannerImages) {

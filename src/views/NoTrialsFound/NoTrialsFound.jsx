@@ -2,12 +2,14 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useTracking } from 'react-tracking';
+import { useLocation } from 'react-router';
 
 import { CISBanner, NoResults } from '../../components';
 import { useStateValue } from '../../store/store';
 import { TokenParser } from '../../utils';
 
-const NoTrialsFound = ({ data, status, prerenderLocation }) => {
+const NoTrialsFound = ({ routeParamMap, data }) => {
+	const location = useLocation();
 	const tracking = useTracking();
 	const [
 		{
@@ -22,14 +24,18 @@ const NoTrialsFound = ({ data, status, prerenderLocation }) => {
 			trialListingPageType,
 		},
 	] = useStateValue();
-	const { name } = data;
 
 	const setupReplacementText = () => {
 		// Replace tokens within page title, browser title, meta description, and no trials html
-		const context = {
-			disease_label: name.label,
-			disease_normalized: name.normalized,
-		};
+		const context = data.reduce((ac, info, idx) => {
+			const contextEntryInfo = routeParamMap[idx];
+			return {
+				...ac,
+				[`${contextEntryInfo.textReplacementKey}_label`]: info.name.label,
+				[`${contextEntryInfo.textReplacementKey}_normalized`]: info.name
+					.normalized,
+			};
+		}, {});
 
 		return {
 			pageTitle: TokenParser.replaceTokens(pageTitle, context),
@@ -42,6 +48,14 @@ const NoTrialsFound = ({ data, status, prerenderLocation }) => {
 	const replacementText = setupReplacementText();
 
 	useEffect(() => {
+		const paramTracking = data.reduce((ac, info, idx) => {
+			const contextEntryInfo = routeParamMap[idx];
+			return {
+				...ac,
+				[`${contextEntryInfo.textReplacementKey}Name`]: info.name.normalized,
+			};
+		}, {});
+
 		// Fire off a page load event.
 		tracking.trackEvent({
 			// These properties are required.
@@ -58,14 +72,18 @@ const NoTrialsFound = ({ data, status, prerenderLocation }) => {
 			// for the event.
 			numberResults: 0,
 			trialListingPageType: `${trialListingPageType.toLowerCase()}`,
-			diseaseName: name.normalized,
+			...paramTracking,
 		});
 	}, []);
 
 	const renderHelmet = () => {
-		const prerenderHeader = prerenderLocation
-			? prerenderLocation
+		const prerenderHeader = location.state?.prerenderLocation
+			? location.state?.prerenderLocation
 			: baseHost + window.location.pathname + window.location.search;
+
+		const status = location.state?.redirectStatus
+			? location.state?.redirectStatus
+			: '404';
 
 		return (
 			<Helmet>
@@ -109,16 +127,23 @@ const NoTrialsFound = ({ data, status, prerenderLocation }) => {
 };
 
 NoTrialsFound.propTypes = {
-	data: PropTypes.shape({
-		conceptId: PropTypes.array,
-		name: PropTypes.shape({
-			label: PropTypes.string,
-			normalized: PropTypes.string,
-		}),
-		prettyUrlName: PropTypes.string,
-	}),
-	status: PropTypes.string,
-	prerenderLocation: PropTypes.string,
+	routeParamMap: PropTypes.arrayOf(
+		PropTypes.shape({
+			paramName: PropTypes.string,
+			textReplacementKey: PropTypes.string,
+			type: PropTypes.oneOf(['listing-information', 'trial-type']),
+		})
+	).isRequired,
+	data: PropTypes.arrayOf(
+		PropTypes.shape({
+			conceptId: PropTypes.array,
+			name: PropTypes.shape({
+				label: PropTypes.string,
+				normalized: PropTypes.string,
+			}),
+			prettyUrlName: PropTypes.string,
+		})
+	),
 };
 
 export default NoTrialsFound;

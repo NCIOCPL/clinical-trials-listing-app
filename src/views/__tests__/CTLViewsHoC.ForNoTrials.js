@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter, Route, Routes } from 'react-router';
 
@@ -10,12 +10,6 @@ import CTLViewsHoC from '../CTLViewsHoC';
 
 jest.mock('../../hooks/listingSupport/useListingSupport');
 jest.mock('../../store/store.js');
-// Create our mock for checking if navigate was called correctly.
-const mockNavigate = jest.fn();
-jest.mock('react-router', () => ({
-	...jest.requireActual('react-router'), // use actual for all non-hook parts
-	useNavigate: () => mockNavigate,
-}));
 
 const SINGLE_PARAM_MAP = [
 	{
@@ -25,9 +19,11 @@ const SINGLE_PARAM_MAP = [
 	},
 ];
 
-describe('CTLViewsHoc redirect', () => {
+const NO_OP_REDIRECT_PATH = () => {};
+
+describe('CTLViewsHoc For No Trials', () => {
 	const mockComponent = jest.fn(() => {
-		return <>This would be the disease component.</>;
+		return <>This would be the NoTrials component.</>;
 	});
 
 	// This must be called before each, or else mockComponent.calls
@@ -36,7 +32,7 @@ describe('CTLViewsHoc redirect', () => {
 		jest.clearAllMocks();
 	});
 
-	it('Should handle a redirect', async () => {
+	it('Should handle single code', async () => {
 		const data = [
 			{
 				conceptId: ['C4872'],
@@ -61,19 +57,23 @@ describe('CTLViewsHoc redirect', () => {
 			},
 		]);
 
-		const mockRedirectPath = jest.fn().mockReturnValue('/breast-cancer');
-
 		const WrappedComponent = CTLViewsHoC(mockComponent);
 
 		render(
 			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/C4872']}>
+				<MemoryRouter
+					initialEntries={[
+						{
+							pathname: '/notrials',
+							search: '?p1=breast-cancer',
+						},
+					]}>
 					<Routes>
 						<Route
-							path="/:codeOrPurl"
+							path="/notrials"
 							element={
 								<WrappedComponent
-									redirectPath={mockRedirectPath}
+									redirectPath={NO_OP_REDIRECT_PATH}
 									routeParamMap={SINGLE_PARAM_MAP}
 								/>
 							}
@@ -82,26 +82,27 @@ describe('CTLViewsHoc redirect', () => {
 				</MemoryRouter>
 			</MockAnalyticsProvider>
 		);
+
 		// Expect the first argument of the first call to mockComponent
 		// to match the expected props
-		expect(mockNavigate.mock.calls[0][0]).toEqual(
-			'/breast-cancer?redirect=true'
-		);
-		expect(mockNavigate.mock.calls[0][1]).toBeTruthy();
+		expect(mockComponent.mock.calls[0][0]).toEqual({
+			data: data,
+			routeParamMap: SINGLE_PARAM_MAP,
+		});
 
 		expect(useListingSupport.mock.calls[0][0]).toEqual([
 			{
-				type: 'id',
-				payload: ['C4872'],
+				type: 'name',
+				payload: 'breast-cancer',
 			},
 		]);
 
-		expect(mockRedirectPath.mock.calls[0][0]).toEqual({
-			codeOrPurl: 'breast-cancer',
-		});
+		expect(
+			screen.getByText('This would be the NoTrials component.')
+		).toBeInTheDocument();
 	});
 
-	it('Should handle a redirect when only one param must be a redirect', async () => {
+	it('Should handle multiple codes', async () => {
 		const data = [
 			{
 				conceptId: ['C4872'],
@@ -112,12 +113,12 @@ describe('CTLViewsHoc redirect', () => {
 				prettyUrlName: 'breast-cancer',
 			},
 			{
-				conceptId: ['C99999', 'C1111111'],
+				conceptId: ['C4878'],
 				name: {
-					label: 'Made Up',
-					normalized: 'made up',
+					label: 'Lung Cancer',
+					normalized: 'lung cancer',
 				},
-				prettyUrlName: null,
+				prettyUrlName: 'lung-cancer',
 			},
 		];
 
@@ -133,10 +134,6 @@ describe('CTLViewsHoc redirect', () => {
 				basePath: '/',
 			},
 		]);
-
-		const mockRedirectPath = jest
-			.fn()
-			.mockReturnValue('/breast-cancer/C99999,C1111111');
 
 		const multiparam_map = [
 			{
@@ -154,13 +151,19 @@ describe('CTLViewsHoc redirect', () => {
 
 		render(
 			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/C4872/C99999,C1111111']}>
+				<MemoryRouter
+					initialEntries={[
+						{
+							pathname: '/notrials',
+							search: '?p1=breast-cancer&p2=lung-cancer',
+						},
+					]}>
 					<Routes>
 						<Route
-							path="/:codeOrPurl/:otherCodeOrPurl"
+							path="/notrials"
 							element={
 								<WrappedComponent
-									redirectPath={mockRedirectPath}
+									redirectPath={NO_OP_REDIRECT_PATH}
 									routeParamMap={multiparam_map}
 								/>
 							}
@@ -169,27 +172,27 @@ describe('CTLViewsHoc redirect', () => {
 				</MemoryRouter>
 			</MockAnalyticsProvider>
 		);
+
 		// Expect the first argument of the first call to mockComponent
 		// to match the expected props
-		expect(mockNavigate.mock.calls[0][0]).toEqual(
-			'/breast-cancer/C99999,C1111111?redirect=true'
-		);
-		expect(mockNavigate.mock.calls[0][1]).toBeTruthy();
+		expect(mockComponent.mock.calls[0][0]).toEqual({
+			data: data,
+			routeParamMap: multiparam_map,
+		});
 
 		expect(useListingSupport.mock.calls[0][0]).toEqual([
 			{
-				type: 'id',
-				payload: ['C4872'],
+				type: 'name',
+				payload: 'breast-cancer',
 			},
 			{
-				type: 'id',
-				payload: ['C99999', 'C1111111'],
+				type: 'name',
+				payload: 'lung-cancer',
 			},
 		]);
 
-		expect(mockRedirectPath.mock.calls[0][0]).toEqual({
-			codeOrPurl: 'breast-cancer',
-			otherCodeOrPurl: 'C99999,C1111111',
-		});
+		expect(
+			screen.getByText('This would be the NoTrials component.')
+		).toBeInTheDocument();
 	});
 });
