@@ -27,18 +27,22 @@ const Disease = ({ data, status }) => {
 	const [
 		{
 			baseHost,
-			browserTitle,
 			canonicalHost,
 			detailedViewPagePrettyUrlFormatter,
-			introText,
+			dynamicListingPatterns,
 			itemsPerPage,
 			language,
-			metaDescription,
-			pageTitle,
 			siteName,
 			trialListingPageType,
 		},
 	] = useStateValue();
+
+	const {
+		browserTitle,
+		introText,
+		metaDescription,
+		pageTitle,
+	} = dynamicListingPatterns.Disease;
 
 	const { conceptId, name, prettyUrlName } = data;
 

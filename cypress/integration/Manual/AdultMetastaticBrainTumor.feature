@@ -5,9 +5,9 @@ Feature: As a user, I would like to view the trial results for a manual listing 
     And "pageTitle" is set to "Clinical Trials for Adult Metastatic Brain Tumors"
 		And "cisBannerImgUrlLarge" is set to null
 		And "cisBannerImgUrlSmall" is set to null
-    Given the user navigates to "/?cfg=4"
+    Given the user navigates to "/"
     Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"
-    Then the system displays 1 paragraph "Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer. All trials on the list are supported by NCI."
+    Then the system displays 1 paragraph "Clinical trials are research studies that involve people. The clinical trials on this list are for adult metastatic brain tumor treatment. All trials on the list are supported by NCI."
     Then the system displays 2 paragraph "NCI’s basic information about clinical trials explains the types and phases of trials and how they are carried out. Clinical trials look at new ways to prevent, detect, or treat disease. You may want to think about taking part in a clinical trial. Talk to your doctor for help in deciding if one is right for you."
     And the link "basic information about clinical trials" to "/about-cancer/treatment/clinical-trials/what-are-trials" appears on the page
     And each result displays the trial title as a link to the trial description page
@@ -26,9 +26,10 @@ Feature: As a user, I would like to view the trial results for a manual listing 
   Scenario: View manual listing page metadata
     Given "trialListingPageType" is set to "Manual"
     And "pageTitle" is set to "Clinical Trials for Adult Metastatic Brain Tumors"
+		And "metaDescription" is set to "Find clinical trials to treat adult metastatic brain tumors."
 		And "cisBannerImgUrlLarge" is set to null
 		And "cisBannerImgUrlSmall" is set to null
-    When the user navigates to "/?cfg=4"
+    When the user navigates to "/"
     Then the title tag should be "Clinical Trials for Adult Metastatic Brain Tumors - National Cancer Institute"
     And the page contains meta tags with the following properties
       | property       | content                                                      |
@@ -46,7 +47,7 @@ Feature: As a user, I would like to view the trial results for a manual listing 
 		And "cisBannerImgUrlLarge" is set to null
 		And "cisBannerImgUrlSmall" is set to null
     And "itemsPerPage" is set to 10
-    Given the user navigates to "/?cfg=4"
+    Given the user navigates to "/"
     Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"
     Then the system displays "Trials 1-10 of" "102"
     And pager displays the following navigation options
@@ -183,6 +184,6 @@ Feature: As a user, I would like to view the trial results for a manual listing 
 		And "cisBannerImgUrlLarge" is set to null
 		And "cisBannerImgUrlSmall" is set to null
     And "itemsPerPage" is set to 20
-    Given the user navigates to "/?cfg=4"
+    Given the user navigates to "/"
     Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"
     And pager is not displayed

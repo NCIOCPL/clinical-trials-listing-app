@@ -5,7 +5,7 @@ describe('getListingInformationByName action', () => {
 		const queryParam = 'breast-cancer';
 
 		const expectedAction = {
-			interceptorName: 'listing-information-api',
+			interceptorName: 'listing-api',
 			method: 'GET',
 			endpoint: `{{API_HOST}}/listing-information/breast-cancer`,
 		};

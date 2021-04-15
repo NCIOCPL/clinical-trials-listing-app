@@ -5,7 +5,7 @@ import { useNavigate, useLocation, useParams } from 'react-router';
 import { Spinner } from '../components';
 import NoTrialsFound from './NoTrialsFound';
 import { queryParamType } from '../constants';
-import { useAppPaths, useCustomQuery } from '../hooks';
+import { useAppPaths, fetchAllTheThings } from '../hooks';
 
 import {
 	appendOrUpdateToQueryString,
@@ -13,10 +13,10 @@ import {
 	matchQueryParam,
 } from '../utils';
 
-import {
-	getListingInformationById,
-	getListingInformationByName,
-} from '../services/api/actions';
+// import {
+// 	getListingInformationById,
+// 	getListingInformationByName,
+// } from '../services/api/actions';
 
 const CTLViewsHoC = (WrappedView) => {
 	const WithPreFetch = (props) => {
@@ -26,10 +26,11 @@ const CTLViewsHoC = (WrappedView) => {
 		const navigate = useNavigate();
 		const { search } = location;
 		const isNoTrials = codeOrPurl.startsWith('notrials');
+		const listingPattern = WrappedView?.name;
 
 		const [showNoTrialsFound, setShowNoTrialsFound] = useState(false);
 		const [prerenderStatusCode, setPrerenderStatusCode] = useState(null);
-		const [shouldFetchListingInfo, setShouldFetchListingInfo] = useState(false);
+		//const [shouldFetchListingInfo, setShouldFetchListingInfo] = useState(false);
 		const [stateListingInfo, setStateListingInfo] = useState(null);
 		const [doneLoading, setDoneLoading] = useState(false);
 		const [hasBeenRedirected, setHasBeenRedirected] = useState(false);
@@ -37,16 +38,27 @@ const CTLViewsHoC = (WrappedView) => {
 		const [queryParam, setQueryParam] = useState();
 
 		const getFetchByIdOrName =
-			paramType === 'code'
-				? getListingInformationById
-				: getListingInformationByName;
-		const getListingInfo = useCustomQuery(
-			getFetchByIdOrName({ queryParam }),
-			shouldFetchListingInfo && !hasBeenRedirected
-		);
+			paramType === queryParamType.code
+				? 'getListingInformationById'
+				: 'getListingInformationByName';
+
+		const paramToFetch = {
+			fetchName: getFetchByIdOrName,
+			fetchParams: queryParam,
+		};
+
+		// const getListingInfo = useCustomQuery(
+		// 	getFetchByIdOrName({ queryParam }),
+		// 	shouldFetchListingInfo && !hasBeenRedirected
+		// );
+		const getListingInfo = fetchAllTheThings(paramToFetch);
 
 		useEffect(() => {
+			// If our current route is '/notrials', we have different logic
+			// for handling the No Trials Found page.
 			if (isNoTrials) {
+				// If we have the listing information in the state,
+				// we have been redirected here.
 				if (
 					location.state?.isNoTrialsRedirect &&
 					location.state?.listingInfo &&
@@ -56,32 +68,39 @@ const CTLViewsHoC = (WrappedView) => {
 					setPrerenderStatusCode(location.state.redirectStatus);
 					setStateListingInfo(location.state.listingInfo);
 				} else {
+					// We have come directly to '/notrials' and we need to look
+					// up the listing information for the given param.
 					setShowNoTrialsFound(true);
 					setPrerenderStatusCode('404');
 
 					const p1 = getKeyValueFromQueryString('p1', search);
 					setFetchByIdOrName(p1);
-					setShouldFetchListingInfo(true);
+					//setShouldFetchListingInfo(true);
 				}
 			} else if (!isNoTrials) {
+				// If we are a code or pretty URL name, do the lookup to handle
+				// the Disease page.
+
+				// If we've been redirected to a pretty URL, set this status code.
+				// This turns on the prerender status stuff for Helmet
 				if (location.state?.redirectStatus) {
 					setPrerenderStatusCode(location.state.redirectStatus);
 				}
 
 				setFetchByIdOrName(codeOrPurl);
-				setShouldFetchListingInfo(true);
+				//setShouldFetchListingInfo(true);
 			}
 		}, [codeOrPurl]);
 
 		useEffect(() => {
 			if (
 				!getListingInfo.loading &&
-				getListingInfo.payload &&
+				getListingInfo.payload[0] &&
 				!hasBeenRedirected
 			) {
-				const { prettyUrlName } = getListingInfo.payload;
+				const { prettyUrlName } = getListingInfo.payload[0];
 
-				setStateListingInfo(getListingInfo.payload);
+				setStateListingInfo(getListingInfo.payload[0]);
 
 				// Redirect to pretty url if one exists for listing info
 				if (prettyUrlName && paramType === 'code' && !isNoTrials) {
@@ -125,6 +144,7 @@ const CTLViewsHoC = (WrappedView) => {
 					} else if (showNoTrialsFound && prerenderStatusCode && doneLoading) {
 						return (
 							<NoTrialsFound
+								listingPattern={listingPattern}
 								data={stateListingInfo}
 								status={prerenderStatusCode}
 								prerenderLocation={location.state?.prerenderLocation}

@@ -23,6 +23,19 @@ jest.mock('react-router', () => ({
 	}),
 }));
 
+const dynamicListingPatterns = {
+	mockConstructor: {
+		browserTitle: '{{disease_label}} Clinical Trials',
+		introText:
+			'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>',
+		metaDescription:
+			'NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials for {{disease_normalized}}.',
+		noTrialsHtml:
+			'<p>There are no NCI-supported clinical trials for {{disease_normalized}} at this time.</p>',
+		pageTitle: '{{disease_label}} Clinical Trials',
+	},
+};
+
 const mockComponent = jest.fn(() => {
 	return <>Hello World</>;
 });
@@ -36,7 +49,6 @@ beforeEach(() => {
 describe('CTLViewsHoc ', () => {
 	test('Should display No Trials Found', async () => {
 		const basePath = '/';
-		const browserTitle = '{{disease_name}} Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
 		const data = {
 			conceptId: ['C3037'],
@@ -49,10 +61,6 @@ describe('CTLViewsHoc ', () => {
 		const introText =
 			'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>';
 		const language = 'en';
-		const metaDescription = 'Find clinical trials for {{disease_normalized}}.';
-		const noTrialsHtml =
-			'<p>There are currently no available trials for {{disease_normalized}}.</p>';
-		const pageTitle = '{{disease_label}} Clinical Trials';
 		const title = 'NCI Clinical Trials';
 		const trialListingPageType = 'Disease';
 
@@ -60,13 +68,9 @@ describe('CTLViewsHoc ', () => {
 			{
 				appId: 'mockAppId',
 				basePath,
-				browserTitle,
 				canonicalHost,
-				introText,
+				dynamicListingPatterns,
 				language,
-				metaDescription,
-				noTrialsHtml,
-				pageTitle,
 				title,
 				trialListingPageType,
 			},
@@ -96,7 +100,7 @@ describe('CTLViewsHoc ', () => {
 		).toBeInTheDocument();
 		expect(
 			screen.getByText(
-				'There are currently no available trials for chronic fatigue syndrome.'
+				'There are no NCI-supported clinical trials for chronic fatigue syndrome at this time.'
 			)
 		).toBeInTheDocument();
 	});

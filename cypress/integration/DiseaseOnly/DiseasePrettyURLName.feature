@@ -2,7 +2,6 @@ Feature: As a user, I would like to view the trial results for a disease listing
 
   Scenario: View disease listing page results with pretty URL name parameter
     Given "trialListingPageType" is set to "Disease"
-    And "pageTitle" is set to "{{disease_label}} Clinical Trials"
     Given the user navigates to "/breast-cancer?cfg=0"
     Then the page title is "Breast Cancer Clinical Trials"
     Then the system displays 1 paragraph "Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer. All trials on the list are supported by NCI."
@@ -22,7 +21,6 @@ Feature: As a user, I would like to view the trial results for a disease listing
 
   Scenario: View disease listing page metadata with pretty URL name parameter
     Given "trialListingPageType" is set to "Disease"
-    And "pageTitle" is set to "{{disease_label}} Clinical Trials"
 		And "siteName" is set to "National Cancer Institute"
     When the user navigates to "/breast-cancer?cfg=0"
     Then the title tag should be "Breast Cancer Clinical Trials - National Cancer Institute"
@@ -38,7 +36,6 @@ Feature: As a user, I would like to view the trial results for a disease listing
 
 	Scenario: Mobile and Tablet Pager Display
 		Given "trialListingPageType" is set to "Disease"
-		And "pageTitle" is set to "{{disease_label}} Clinical Trials"
 		And screen breakpoint is set to "mobile"
 		When the user navigates to "/breast-cancer?cfg=0"
 		Then the system displays 1 paragraph "Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer. All trials on the list are supported by NCI."

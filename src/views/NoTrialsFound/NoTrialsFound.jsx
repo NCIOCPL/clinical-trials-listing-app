@@ -7,21 +7,26 @@ import { CISBanner, NoResults } from '../../components';
 import { useStateValue } from '../../store/store';
 import { TokenParser } from '../../utils';
 
-const NoTrialsFound = ({ data, status, prerenderLocation }) => {
+const NoTrialsFound = ({ listingPattern, data, status, prerenderLocation }) => {
 	const tracking = useTracking();
 	const [
 		{
 			baseHost,
-			browserTitle,
 			canonicalHost,
+			dynamicListingPatterns,
 			language,
-			pageTitle,
-			metaDescription,
-			noTrialsHtml,
 			siteName,
 			trialListingPageType,
 		},
 	] = useStateValue();
+
+	const {
+		browserTitle,
+		metaDescription,
+		noTrialsHtml,
+		pageTitle,
+	} = dynamicListingPatterns[listingPattern];
+
 	const { name } = data;
 
 	const setupReplacementText = () => {
@@ -109,6 +114,7 @@ const NoTrialsFound = ({ data, status, prerenderLocation }) => {
 };
 
 NoTrialsFound.propTypes = {
+	listingPattern: PropTypes.string,
 	data: PropTypes.shape({
 		conceptId: PropTypes.array,
 		name: PropTypes.shape({

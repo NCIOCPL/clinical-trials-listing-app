@@ -2,7 +2,6 @@ Feature: As the system, I want to be able to redirect users to pretty URLs for t
 
 	Scenario: Page redirects to pretty URL if codes are given for Disease
 		Given "trialListingPageType" is set to "Disease"
-		And "pageTitle" is set to "{{disease_label}} Clinical Trials"
 		Given the user navigates to "/C4872"
 		Then the user is redirected to "/breast-cancer?redirect=true"
 		And the page contains meta tags with the following names
@@ -12,6 +11,5 @@ Feature: As the system, I want to be able to redirect users to pretty URLs for t
 
 	Scenario: Page goes to prettyURL, without appending redirect=true, when not given a c-code
 		Given "trialListingPageType" is set to "Disease"
-		And "pageTitle" is set to "{{disease_label}} Clinical Trials"
 		Given the user navigates to "/breast-cancer?cfg=0"
 		Then the redirect parameter is not appended

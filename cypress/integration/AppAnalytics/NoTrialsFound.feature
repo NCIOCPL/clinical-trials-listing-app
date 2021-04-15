@@ -2,7 +2,6 @@ Feature: Disease listing page analytics
 
     Scenario: Page Load Analytics fires when a user views the No Trials Found page for a disease
         Given "trialListingPageType" is set to "Disease"
-        And "pageTitle" is set to "{{disease_label}} Clinical Trials"
         And "analyticsPublishedDate" is set to "02/02/2011"
         When the user navigates to "/C3037"
         Then the page title is "Chronic Fatigue Syndrome Clinical Trials"
