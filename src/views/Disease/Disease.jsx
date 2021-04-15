@@ -16,9 +16,9 @@ import {
 	TokenParser,
 } from '../../utils';
 
-const Disease = ({ data, status }) => {
+const Disease = ({ data: [data] }) => {
 	const { codeOrPurl } = useParams();
-	const { CodeOrPurlPath } = useAppPaths();
+	const { CodeOrPurlPath, NoTrialsPath } = useAppPaths();
 	const location = useLocation();
 	const [trialsPayload, setTrialsPayload] = useState(null);
 	const navigate = useNavigate();
@@ -92,18 +92,16 @@ const Disease = ({ data, status }) => {
 					? baseHost + window.location.pathname + window.location.search
 					: null;
 
-				navigate(
-					`${CodeOrPurlPath({ codeOrPurl: 'notrials' })}?p1=${noTrialsParam}`,
-					{
-						replace: true,
-						state: {
-							isNoTrialsRedirect: true,
-							listingInfo: data,
-							redirectStatus: redirectStatusCode,
-							prerenderLocation: prerenderLocation,
-						},
-					}
-				);
+				// So this is handling the redirect to the no trials page.
+				// it is the job of the dynamic route views to property
+				// set the p1,p2,p3 parameters.
+				navigate(`${NoTrialsPath()}?p1=${noTrialsParam}`, {
+					replace: true,
+					state: {
+						redirectStatus: redirectStatusCode,
+						prerenderLocation: prerenderLocation,
+					},
+				});
 			}
 			setTrialsPayload(queryResponse.payload);
 		}
@@ -140,6 +138,7 @@ const Disease = ({ data, status }) => {
 	const renderHelmet = () => {
 		const prerenderHeader =
 			baseHost + window.location.pathname + window.location.search;
+		const status = location.state?.redirectStatus;
 
 		return (
 			<Helmet>
@@ -238,15 +237,16 @@ const Disease = ({ data, status }) => {
 };
 
 Disease.propTypes = {
-	data: PropTypes.shape({
-		conceptId: PropTypes.array,
-		name: PropTypes.shape({
-			label: PropTypes.string,
-			normalized: PropTypes.string,
-		}),
-		prettyUrlName: PropTypes.string,
-	}),
-	status: PropTypes.string,
+	data: PropTypes.arrayOf(
+		PropTypes.shape({
+			conceptId: PropTypes.array,
+			name: PropTypes.shape({
+				label: PropTypes.string,
+				normalized: PropTypes.string,
+			}),
+			prettyUrlName: PropTypes.string,
+		})
+	),
 };
 
 export default Disease;
