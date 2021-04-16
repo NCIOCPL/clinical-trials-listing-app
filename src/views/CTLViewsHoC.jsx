@@ -26,6 +26,7 @@ const CTLViewsHoC = (WrappedView) => {
 		// The route will be the notrials route.
 		const isNoTrials = location.pathname === NoTrialsPath();
 
+		// Setup the actions for the fetch.
 		const fetchActions = [getIdOrNameAction(isNoTrials, codeOrPurl, 1, search)];
 
 		// Initiate the fetch here. This will be called no matter what, we will rely

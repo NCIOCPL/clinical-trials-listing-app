@@ -15,8 +15,9 @@ describe('Get listing information by name', () => {
 		nock.enableNetConnect();
 	});
 
+	const client = factory('http://example.org');
+
 	test('works with name', async () => {
-		const client = factory('http://example.org');
 		const expected = {
 			conceptId: ['C1234'],
 			name: {
@@ -37,8 +38,6 @@ describe('Get listing information by name', () => {
 	});
 
 	test('handles not found', async () => {
-		const client = factory('http://example.org');
-
 		const scope = nock('http://example.org')
 			.get('/listing-information/asdf')
 			.reply(404);
@@ -50,8 +49,6 @@ describe('Get listing information by name', () => {
 	});
 
 	test('handles error', async () => {
-		const client = factory('http://example.org');
-
 		const scope = nock('http://example.org')
 			.get('/listing-information/asdf')
 			.reply(500);
@@ -64,8 +61,6 @@ describe('Get listing information by name', () => {
 	});
 
 	test('handles unexpected status', async () => {
-		const client = factory('http://example.org');
-
 		const scope = nock('http://example.org')
 			.get('/listing-information/asdf')
 			.reply(201);
@@ -78,8 +73,6 @@ describe('Get listing information by name', () => {
 	});
 
 	test('validates name', async () => {
-		const client = factory('http://example.org');
-
 		await expect(getListingInformationByName(client, '!$')).rejects.toThrow(
 			'Name does not match valid string, can only include a-z,0-9 and dashes (-)'
 		);

@@ -1,11 +1,17 @@
-import { useReducer } from 'react';
+import { useEffect, useReducer, useRef, useCallback } from 'react';
+//import axios from 'axios';
 import { useStateValue } from '../../store/store';
 import {
 	getListingInformationById,
 	getListingInformationByName,
 } from '../../services/api/trial-listing-support-api';
 import reducer from './reducer';
-import { setSuccessfulFetch, setFailedFetch } from './actions';
+import {
+	setSuccessfulFetch,
+	setFailedFetch,
+	setLoading,
+	resetLoading,
+} from './actions';
 
 /**
  * An action representing a listing support API request.
@@ -28,29 +34,35 @@ import { setSuccessfulFetch, setFailedFetch } from './actions';
  * @param {Array<ListingSupportRequestAction>} actions a collection of request items.
  */
 const internalFetch = async (trialListingSupportClient, actions) => {
-	const requests = actions.map((req) => {
-		console.log(req);
-		switch (req.type) {
-			case 'id': {
-				return getListingInformationById(
-					trialListingSupportClient,
-					req.payload
-				);
+	// We want this function to return a single object we can use
+	try {
+		const requests = actions.map((req) => {
+			switch (req.type) {
+				case 'id': {
+					return getListingInformationById(
+						trialListingSupportClient,
+						req.payload
+					);
+				}
+				case 'name': {
+					return getListingInformationByName(
+						trialListingSupportClient,
+						req.payload
+					);
+				}
+				default: {
+					throw new Error(`Unknown trial listing support request`);
+				}
 			}
-			case 'name': {
-				return getListingInformationByName(
-					trialListingSupportClient,
-					req.payload
-				);
-			}
-			default: {
-				throw new Error(`Unknown trial listing support request`);
-			}
-		}
-	});
+		});
 
-	const responses = await Promise.all(requests);
-	return responses;
+		const responses = await Promise.all(requests);
+		return responses;
+	} catch (error) {
+		return {
+			errorObject: error,
+		};
+	}
 };
 
 /**
@@ -65,19 +77,82 @@ export const useListingSupport = (actions) => {
 			apiClients: { trialListingSupportClient },
 		},
 	] = useStateValue();
+
+	// Indicates if the component this was called from is
+	// still mounted or not. Important to avoid
+	// "Can only update a mounted..." errors.
+	const isMounted = useRef(true);
+
 	const [state, dispatch] = useReducer(reducer, {
 		loading: true,
 		payload: null,
 		error: null,
 	});
 
-	internalFetch(trialListingSupportClient, actions)
-		.then((payload) => {
-			dispatch(setSuccessfulFetch(payload));
-		})
-		.catch((error) => {
-			dispatch(setFailedFetch(error));
-		});
+	useEffect(() => {
+		isMounted.current = true;
+
+		// Fire off the query.
+		handleQuery();
+
+		// This is a function to be called when the component is
+		// unmounted.
+		return () => {
+			isMounted.current = false;
+			handleAbort();
+		};
+	}, []);
+
+	// This call back handles the fetch to the api. We use is call back
+	// so the query does not execute except when any of the actions have
+	// changed. Otherwise this gets called pretty much an infinite amount
+	// of times.
+	const handleQuery = useCallback(async () => {
+		//TODO: Handle Aborting, which may include aborting any pending requests.
+
+		// Don't know what this bit is for yet... I.E. what is returning?
+		if (!isMounted.current) {
+			return { error: false };
+		}
+
+		// Reset our state to the loading state.
+		dispatch(setLoading());
+
+		// Make the request, the response object will either be the payload
+		// or it will be an error object. This allows us to have one object
+		// that we return for the useCallback to "cache".
+		// TODO: Passin a cancellation token for this request
+		const response = await internalFetch(trialListingSupportClient, actions);
+
+		// So if we did not abort, then we should dispatch an update for the state.
+		if (
+			isMounted.current &&
+			!(response.errorObject && response.errorObject.name === 'AbortError')
+		) {
+			if (response.errorObject) {
+				dispatch(setFailedFetch(response.errorObject));
+			} else {
+				dispatch(setSuccessfulFetch(response));
+			}
+		}
+
+		// If this was an abort then we need to
+		if (
+			isMounted.current &&
+			response.errorObject &&
+			response.errorObject.name === 'AbortError'
+		) {
+			dispatch(resetLoading());
+		}
+
+		// We should return the response here for useCallback to cache
+		return response;
+	}, [actions]);
+
+	// This callback is for aborting the requests.
+	const handleAbort = useCallback(() => {
+		// We should cancel the Axios request here.
+	}, []);
 
 	return state;
 };

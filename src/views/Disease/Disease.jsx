@@ -237,14 +237,16 @@ const Disease = ({ data: [data] }) => {
 };
 
 Disease.propTypes = {
-	data: PropTypes.shape({
-		conceptId: PropTypes.array,
-		name: PropTypes.shape({
-			label: PropTypes.string,
-			normalized: PropTypes.string,
-		}),
-		prettyUrlName: PropTypes.string,
-	}),
+	data: PropTypes.arrayOf(
+		PropTypes.shape({
+			conceptId: PropTypes.array,
+			name: PropTypes.shape({
+				label: PropTypes.string,
+				normalized: PropTypes.string,
+			}),
+			prettyUrlName: PropTypes.string,
+		})
+	),
 };
 
 export default Disease;

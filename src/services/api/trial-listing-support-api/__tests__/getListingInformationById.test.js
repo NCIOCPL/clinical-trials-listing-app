@@ -15,8 +15,9 @@ describe('Get listing information by id', () => {
 		nock.enableNetConnect();
 	});
 
+	const client = factory('https://example.org');
+
 	test('works with single id', async () => {
-		const client = factory('https://example.org');
 		const expected = {
 			conceptId: ['C1234'],
 			name: {
@@ -37,7 +38,6 @@ describe('Get listing information by id', () => {
 	});
 
 	test('works with multiple ids', async () => {
-		const client = factory('https://example.org');
 		const expected = {
 			conceptId: ['C7768', 'C139538', 'C139569'],
 			name: {
@@ -61,8 +61,6 @@ describe('Get listing information by id', () => {
 	});
 
 	test('handles not found', async () => {
-		const client = factory('https://example.org');
-
 		const scope = nock('https://example.org')
 			.get('/listing-information/get?ccode=c9999')
 			.reply(404);
@@ -74,8 +72,6 @@ describe('Get listing information by id', () => {
 	});
 
 	test('handles error', async () => {
-		const client = factory('https://example.org');
-
 		const scope = nock('https://example.org')
 			.get('/listing-information/get?ccode=c9999')
 			.reply(500);
@@ -88,8 +84,6 @@ describe('Get listing information by id', () => {
 	});
 
 	test('handles unexpected good status', async () => {
-		const client = factory('https://example.org');
-
 		const scope = nock('https://example.org')
 			.get('/listing-information/get?ccode=c9999')
 			.reply(201);

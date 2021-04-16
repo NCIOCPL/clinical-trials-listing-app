@@ -24,7 +24,7 @@ const NoTrialsFound = ({ data }) => {
 			trialListingPageType,
 		},
 	] = useStateValue();
-	const { name } = data;
+	const [{ name }] = data;
 
 	const setupReplacementText = () => {
 		// Replace tokens within page title, browser title, meta description, and no trials html
@@ -115,14 +115,16 @@ const NoTrialsFound = ({ data }) => {
 };
 
 NoTrialsFound.propTypes = {
-	data: PropTypes.shape({
-		conceptId: PropTypes.array,
-		name: PropTypes.shape({
-			label: PropTypes.string,
-			normalized: PropTypes.string,
-		}),
-		prettyUrlName: PropTypes.string,
-	}),
+	data: PropTypes.arrayOf(
+		PropTypes.shape({
+			conceptId: PropTypes.array,
+			name: PropTypes.shape({
+				label: PropTypes.string,
+				normalized: PropTypes.string,
+			}),
+			prettyUrlName: PropTypes.string,
+		})
+	),
 };
 
 export default NoTrialsFound;
