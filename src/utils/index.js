@@ -1,5 +1,6 @@
 export { i18n } from './i18n';
 export { cleanURI } from './cleanURI';
+export { getIdOrNameAction } from './getIdOrNameAction';
 export { getLocationInfoFromSites } from './getLocationInfoFromSites';
 export { getPageOffset } from './getPageOffset';
 export { getProductTestBase } from './getProductTestBase';

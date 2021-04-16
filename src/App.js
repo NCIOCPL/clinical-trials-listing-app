@@ -11,6 +11,7 @@ import {
 	Disease,
 	InvalidParameters,
 	Manual,
+	NoTrialsFound,
 	PageNotFound,
 } from './views';
 
@@ -27,6 +28,7 @@ const App = () => {
 	const imageParams = 'cisBannerImgUrlLarge, cisBannerImgUrlSmall';
 
 	const WrappedDisease = CTLViewsHoC(Disease);
+	const WrappedNoTrials = CTLViewsHoC(NoTrialsFound);
 
 	switch (trialListingPageType) {
 		case 'Disease':
@@ -34,6 +36,7 @@ const App = () => {
 			if (hasBannerImages) {
 				dynamicRoutes = (
 					<Routes>
+						<Route path="/notrials" element={<WrappedNoTrials />} exact />
 						<Route path={CodeOrPurlPath()} element={<WrappedDisease />} />
 						<Route path="/*" element={<PageNotFound />} />
 					</Routes>

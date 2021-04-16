@@ -92,18 +92,14 @@ const Disease = ({ data, status }) => {
 					? baseHost + window.location.pathname + window.location.search
 					: null;
 
-				navigate(
-					`${CodeOrPurlPath({ codeOrPurl: 'notrials' })}?p1=${noTrialsParam}`,
-					{
-						replace: true,
-						state: {
-							isNoTrialsRedirect: true,
-							listingInfo: data,
-							redirectStatus: redirectStatusCode,
-							prerenderLocation: prerenderLocation,
-						},
-					}
-				);
+				navigate(`/notrials?p1=${noTrialsParam}`, {
+					replace: true,
+					state: {
+						listingInfo: data,
+						redirectStatus: redirectStatusCode,
+						prerenderLocation: prerenderLocation,
+					},
+				});
 			}
 			setTrialsPayload(queryResponse.payload);
 		}
