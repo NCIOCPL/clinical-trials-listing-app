@@ -1,9 +1,11 @@
-import { useState } from 'react';
-import { useStateValue } from '../store/store';
+import { useReducer } from 'react';
+import { useStateValue } from '../../store/store';
 import {
 	getListingInformationById,
 	getListingInformationByName,
-} from '../services/api/trial-listing-support-api';
+} from '../../services/api/trial-listing-support-api';
+import reducer from './reducer';
+import { setSuccessfulFetch, setFailedFetch } from './actions';
 
 /**
  * An action representing a listing support API request.
@@ -63,25 +65,19 @@ export const useListingSupport = (actions) => {
 			apiClients: { trialListingSupportClient },
 		},
 	] = useStateValue();
-	const [loading, setLoading] = useState(true);
-	const [payload, setPayload] = useState(null);
-	const [error, setError] = useState(null);
+	const [state, dispatch] = useReducer(reducer, {
+		loading: true,
+		payload: null,
+		error: null,
+	});
 
 	internalFetch(trialListingSupportClient, actions)
 		.then((payload) => {
-			setPayload(payload);
-			setError(false);
-			setLoading(false);
+			dispatch(setSuccessfulFetch(payload));
 		})
 		.catch((error) => {
-			setError(error);
-			setPayload(false);
-			setLoading(false);
+			dispatch(setFailedFetch(error));
 		});
 
-	return {
-		loading,
-		payload,
-		error,
-	};
+	return state;
 };
