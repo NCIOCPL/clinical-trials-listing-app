@@ -17,7 +17,7 @@ import {
 
 const App = () => {
 	let dynamicRoutes;
-	const { BasePath, CodeOrPurlPath } = useAppPaths();
+	const { BasePath, CodeOrPurlPath, NoTrialsPath } = useAppPaths();
 	const [
 		{ cisBannerImgUrlLarge, cisBannerImgUrlSmall, trialListingPageType },
 	] = useStateValue();
@@ -36,7 +36,7 @@ const App = () => {
 			if (hasBannerImages) {
 				dynamicRoutes = (
 					<Routes>
-						<Route path="/notrials" element={<WrappedNoTrials />} exact />
+						<Route path={NoTrialsPath()} element={<WrappedNoTrials />} exact />
 						<Route path={CodeOrPurlPath()} element={<WrappedDisease />} />
 						<Route path="/*" element={<PageNotFound />} />
 					</Routes>

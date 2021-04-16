@@ -2,12 +2,14 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useTracking } from 'react-tracking';
+import { useLocation } from 'react-router';
 
 import { CISBanner, NoResults } from '../../components';
 import { useStateValue } from '../../store/store';
 import { TokenParser } from '../../utils';
 
-const NoTrialsFound = ({ data, status, prerenderLocation }) => {
+const NoTrialsFound = ({ data }) => {
+	const location = useLocation();
 	const tracking = useTracking();
 	const [
 		{
@@ -63,9 +65,13 @@ const NoTrialsFound = ({ data, status, prerenderLocation }) => {
 	}, []);
 
 	const renderHelmet = () => {
-		const prerenderHeader = prerenderLocation
-			? prerenderLocation
+		const prerenderHeader = location.state?.prerenderLocation
+			? location.state?.prerenderLocation
 			: baseHost + window.location.pathname + window.location.search;
+
+		const status = location.state?.redirectStatus
+			? location.state?.redirectStatus
+			: '404';
 
 		return (
 			<Helmet>
@@ -117,8 +123,6 @@ NoTrialsFound.propTypes = {
 		}),
 		prettyUrlName: PropTypes.string,
 	}),
-	status: PropTypes.string,
-	prerenderLocation: PropTypes.string,
 };
 
 export default NoTrialsFound;

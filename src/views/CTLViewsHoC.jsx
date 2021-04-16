@@ -3,15 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router';
 
 import { Spinner } from '../components';
-import { queryParamType } from '../constants';
 import { useAppPaths, useListingSupport } from '../hooks';
 
-import {
-	appendOrUpdateToQueryString,
-	getKeyValueFromQueryString,
-	matchQueryParam,
-	getIdOrNameAction,
-} from '../utils';
+import { appendOrUpdateToQueryString, getIdOrNameAction } from '../utils';
 
 /**
  * Higher order component for fetching disease information from the trial listing support API.
@@ -20,24 +14,17 @@ import {
  */
 const CTLViewsHoC = (WrappedView) => {
 	const WithPreFetch = (props) => {
-		const { CodeOrPurlPath } = useAppPaths();
+		const { CodeOrPurlPath, NoTrialsPath } = useAppPaths();
 		const { codeOrPurl } = useParams();
 		const location = useLocation();
 		const navigate = useNavigate();
 		const { search } = location;
 
-		const [showNoTrialsFound, setShowNoTrialsFound] = useState(false);
-		const [prerenderStatusCode, setPrerenderStatusCode] = useState(null);
-		const [shouldFetchListingInfo, setShouldFetchListingInfo] = useState(false);
-		const [stateListingInfo, setStateListingInfo] = useState(null);
 		const [doneLoading, setDoneLoading] = useState(false);
-		const [hasBeenRedirected, setHasBeenRedirected] = useState(false);
-		const [paramType, setParamType] = useState(queryParamType.code);
-		const [queryParam, setQueryParam] = useState();
 
 		// First thing we need to do is figure out what we are fetching.
-		// Parameters for notrials route come from the query parameters.
-		const isNoTrials = codeOrPurl.startsWith('notrials');
+		// The route will be the notrials route.
+		const isNoTrials = location.pathname === NoTrialsPath();
 
 		const fetchActions = [getIdOrNameAction(isNoTrials, codeOrPurl, 1, search)];
 
@@ -96,59 +83,12 @@ const CTLViewsHoC = (WrappedView) => {
 				}
 
 				// At this point, the wrapped view is going to handle this request.
-				// so we just need to figure out some things relating to status and
-				// metadata.
-
-				// This sets the data that our views will need.
-				setStateListingInfo(getListingInfo.payload);
+				setDoneLoading(true);
 			} else if (!getListingInfo.loading && getListingInfo.error) {
 				// Raise error for ErrorBoundary for now.
 				throw getListingInfo.error;
 			}
 		}, [getListingInfo]);
-
-		// The purpose of this useEffect is to: handle no trials?
-		useEffect(() => {
-			if (isNoTrials) {
-				if (
-					location.state?.isNoTrialsRedirect &&
-					location.state?.listingInfo &&
-					location.state?.redirectStatus
-				) {
-					setShowNoTrialsFound(true);
-					setPrerenderStatusCode(location.state.redirectStatus);
-					setStateListingInfo(location.state.listingInfo);
-				} else {
-					setShowNoTrialsFound(true);
-					setPrerenderStatusCode('404');
-
-					const p1 = getKeyValueFromQueryString('p1', search);
-					setFetchByIdOrName(p1);
-					setShouldFetchListingInfo(true);
-				}
-			} else if (!isNoTrials) {
-				if (location.state?.redirectStatus) {
-					setPrerenderStatusCode(location.state.redirectStatus);
-				}
-
-				setFetchByIdOrName(codeOrPurl);
-				setShouldFetchListingInfo(true);
-			}
-		}, [codeOrPurl]);
-
-		// The purpose of this useEffect is to determine that the fetching and
-		//
-		useEffect(() => {
-			if (stateListingInfo !== null) {
-				setDoneLoading(true);
-			}
-		}, [stateListingInfo]);
-
-		const setFetchByIdOrName = (param) => {
-			const fetchParam = matchQueryParam(param);
-			setParamType(fetchParam.paramType);
-			setQueryParam(fetchParam.queryParam);
-		};
 
 		return (
 			<div>
@@ -156,14 +96,7 @@ const CTLViewsHoC = (WrappedView) => {
 					if (!doneLoading) {
 						return <Spinner />;
 					} else {
-						return (
-							<WrappedView
-								{...props}
-								data={stateListingInfo}
-								status={prerenderStatusCode}
-								prerenderLocation={location.state?.prerenderLocation}
-							/>
-						);
+						return <WrappedView {...props} data={getListingInfo.payload} />;
 					}
 				})()}
 			</div>
