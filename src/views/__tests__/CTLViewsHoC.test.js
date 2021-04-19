@@ -8,10 +8,11 @@ import {
 import React from 'react';
 import { MemoryRouter } from 'react-router';
 
-import CTLViewsHoC from '../CTLViewsHoC';
 import { MockAnalyticsProvider } from '../../tracking';
-import { useListingSupport } from '../../hooks';
+import { useListingSupport } from '../../hooks/listingSupport/useListingSupport';
 import { useStateValue } from '../../store/store.js';
+
+import CTLViewsHoC from '../CTLViewsHoC';
 
 jest.mock('../../hooks/listingSupport/useListingSupport');
 jest.mock('../../store/store.js');
@@ -36,7 +37,6 @@ const mockComponent = jest.fn(() => {
 // This must be called before each, or else mockComponent.calls
 // will continue to accumulate across all tests.
 beforeEach(() => {
-	cleanup();
 	mockComponent.mockClear();
 });
 
