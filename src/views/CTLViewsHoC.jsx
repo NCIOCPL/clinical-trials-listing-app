@@ -14,6 +14,7 @@ const LOADING_STATE = 'loading_state';
 const LOADED_STATE = 'loaded_state';
 const NOTFOUND_STATE = 'notfound_state';
 const ERROR_STATE = 'error_state';
+const REDIR_STATE = 'redir_state';
 
 /**
  * Higher order component for fetching disease information from the trial listing support API.
@@ -29,7 +30,6 @@ const CTLViewsHoC = (WrappedView) => {
 		const { search } = location;
 
 		const [loadingState, setloadingState] = useState(LOADING_STATE);
-
 		// First thing we need to do is figure out what we are fetching.
 		// The route will be the notrials route.
 		const isNoTrials = location.pathname === NoTrialsPath();
@@ -89,18 +89,20 @@ const CTLViewsHoC = (WrappedView) => {
 								},
 							}
 						);
+						setloadingState(REDIR_STATE);
 						return;
 					}
 				}
 
 				// At this point, the wrapped view is going to handle this request.
-				console.log('loaded');
 				setloadingState(LOADED_STATE);
 			} else if (!getListingInfo.loading && getListingInfo.error) {
 				// Raise error for ErrorBoundary for now.
 				setloadingState(ERROR_STATE);
 			}
-		}, [getListingInfo]);
+			// The page should change its states when either the listing info changes
+			// or the fetchActions change.
+		}, [getListingInfo, fetchActions]);
 
 		return (
 			<div>

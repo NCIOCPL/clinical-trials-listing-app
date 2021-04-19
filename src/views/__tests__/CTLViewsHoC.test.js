@@ -9,7 +9,7 @@ import React from 'react';
 import { MemoryRouter } from 'react-router';
 
 import { MockAnalyticsProvider } from '../../tracking';
-import { useListingSupport } from '../../hooks/listingSupport/useListingSupport';
+import { useListingSupport } from '../../hooks';
 import { useStateValue } from '../../store/store.js';
 
 import CTLViewsHoC from '../CTLViewsHoC';
@@ -30,19 +30,19 @@ jest.mock('react-router', () => ({
 	}),
 }));
 
-const mockComponent = jest.fn(() => {
-	return <>This would be the disease component.</>;
-});
+describe('CTLViewsHoc Normal Conditions', () => {
+	const mockComponent = jest.fn(() => {
+		return <>This would be the disease component.</>;
+	});
 
-// This must be called before each, or else mockComponent.calls
-// will continue to accumulate across all tests.
-beforeEach(() => {
-	mockComponent.mockClear();
-});
+	// This must be called before each, or else mockComponent.calls
+	// will continue to accumulate across all tests.
+	beforeEach(() => {
+		mockComponent.mockClear();
+	});
 
-afterEach(cleanup);
+	afterEach(cleanup);
 
-describe('CTLViewsHoc', () => {
 	it('Should have fetched info passed in as props with no others', async () => {
 		const data = [
 			{
@@ -73,7 +73,7 @@ describe('CTLViewsHoc', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/C4872']}>
+					<MemoryRouter initialEntries={['/breast-cancer']}>
 						<WrappedComponent />
 					</MemoryRouter>
 				</MockAnalyticsProvider>
@@ -121,7 +121,7 @@ describe('CTLViewsHoc', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/C4872']}>
+					<MemoryRouter initialEntries={['/breast-cancer']}>
 						<WrappedComponent color="blue" />
 					</MemoryRouter>
 				</MockAnalyticsProvider>
@@ -141,8 +141,21 @@ describe('CTLViewsHoc', () => {
 	});
 
 	// TODO: It should handle multiple IDs
+});
 
-	/*------------- ERROR Conditions --------------*/
+/*------------- ERROR Conditions --------------*/
+describe('CTLViewsHoc Error Conditions', () => {
+	const mockComponent = jest.fn(() => {
+		return <>This would be the disease component.</>;
+	});
+
+	// This must be called before each, or else mockComponent.calls
+	// will continue to accumulate across all tests.
+	beforeEach(() => {
+		mockComponent.mockClear();
+	});
+
+	afterEach(cleanup);
 
 	it('Should have fetched info passed in as props with no others', async () => {
 		const data = [
@@ -183,9 +196,7 @@ describe('CTLViewsHoc', () => {
 
 		// Expect the first argument of the first call to mockComponent
 		// to match the expected props
-		expect(mockComponent.mock.calls[0][0]).toEqual({
-			data: data,
-		});
+		expect(mockComponent).not.toHaveBeenCalled();
 
 		const expectedPageTitle = 'Page Not Found';
 		expect(screen.getByText(expectedPageTitle)).toBeInTheDocument();

@@ -35,17 +35,16 @@ jest.mock('react-router', () => ({
 	}),
 }));
 
-const mockComponent = jest.fn(() => {
-	return <>Hello World</>;
-});
+describe('CTLViewsHoc Normal Conditions', () => {
+	// This must be called before each, or else mockComponent.calls
+	// will continue to acumulate across all tests.
+	beforeEach(() => {
+		mockComponent.mockClear();
+	});
+	const mockComponent = jest.fn(() => {
+		return <>Hello World</>;
+	});
 
-// This must be called before each, or else mockComponent.calls
-// will continue to acumulate across all tests.
-beforeEach(() => {
-	mockComponent.mockClear();
-});
-
-describe('CTLViewsHoc ', () => {
 	test('Should display No Trials Found if accessed with /notrials route and state listing info', async () => {
 		const basePath = '/';
 		const browserTitle = '{{disease_name}} Clinical Trials';
