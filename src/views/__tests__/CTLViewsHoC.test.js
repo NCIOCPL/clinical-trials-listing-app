@@ -1,12 +1,6 @@
-import {
-	act,
-	render,
-	screen,
-	fireEvent,
-	cleanup,
-} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter, Route } from 'react-router';
 
 import { MockAnalyticsProvider } from '../../tracking';
 import { useListingSupport } from '../../hooks';
@@ -16,19 +10,6 @@ import CTLViewsHoC from '../CTLViewsHoC';
 
 jest.mock('../../hooks/listingSupport/useListingSupport');
 jest.mock('../../store/store.js');
-
-jest.mock('react-router', () => ({
-	...jest.requireActual('react-router'), // use actual for all non-hook parts
-	useParams: () => ({
-		codeOrPurl: 'C4872',
-	}),
-	useLocation: () => ({
-		pathname: '/C4872',
-		search: '',
-		hash: '',
-		state: null,
-	}),
-}));
 
 describe('CTLViewsHoc Normal Conditions', () => {
 	const mockComponent = jest.fn(() => {
@@ -40,8 +21,6 @@ describe('CTLViewsHoc Normal Conditions', () => {
 	beforeEach(() => {
 		mockComponent.mockClear();
 	});
-
-	afterEach(cleanup);
 
 	it('Should have fetched info passed in as props with no others', async () => {
 		const data = [
@@ -70,15 +49,13 @@ describe('CTLViewsHoc Normal Conditions', () => {
 
 		const WrappedComponent = CTLViewsHoC(mockComponent);
 
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/breast-cancer']}>
-						<WrappedComponent />
-					</MemoryRouter>
-				</MockAnalyticsProvider>
-			);
-		});
+		render(
+			<MockAnalyticsProvider>
+				<MemoryRouter initialEntries={['/breast-cancer']}>
+					<Route path="/:codeOrPurl" element={<WrappedComponent />} />
+				</MemoryRouter>
+			</MockAnalyticsProvider>
+		);
 
 		// Expect the first argument of the first call to mockComponent
 		// to match the expected props
@@ -118,15 +95,16 @@ describe('CTLViewsHoc Normal Conditions', () => {
 
 		const WrappedComponent = CTLViewsHoC(mockComponent);
 
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/breast-cancer']}>
-						<WrappedComponent color="blue" />
-					</MemoryRouter>
-				</MockAnalyticsProvider>
-			);
-		});
+		render(
+			<MockAnalyticsProvider>
+				<MemoryRouter initialEntries={['/breast-cancer']}>
+					<Route
+						path="/:codeOrPurl"
+						element={<WrappedComponent color="blue" />}
+					/>
+				</MemoryRouter>
+			</MockAnalyticsProvider>
+		);
 
 		// Expect the first argument of the first call to mockCOmponent
 		// to match the expected props
@@ -144,6 +122,7 @@ describe('CTLViewsHoc Normal Conditions', () => {
 });
 
 /*------------- ERROR Conditions --------------*/
+
 describe('CTLViewsHoc Error Conditions', () => {
 	const mockComponent = jest.fn(() => {
 		return <>This would be the disease component.</>;
@@ -155,19 +134,8 @@ describe('CTLViewsHoc Error Conditions', () => {
 		mockComponent.mockClear();
 	});
 
-	afterEach(cleanup);
-
-	it('Should have fetched info passed in as props with no others', async () => {
-		const data = [
-			{
-				conceptId: ['C4872'],
-				name: {
-					label: 'Breast Cancer',
-					normalized: 'breast cancer',
-				},
-				prettyUrlName: 'breast-cancer',
-			},
-		];
+	it('Should handle 404 from API', async () => {
+		const data = [null];
 
 		useListingSupport.mockReturnValue({
 			error: null,
@@ -179,20 +147,21 @@ describe('CTLViewsHoc Error Conditions', () => {
 			{
 				appId: 'mockAppId',
 				basePath: '/',
+				canonicalHost: 'https://www.cancer.gov',
+				language: 'en',
+				trialListingPageType: 'Disease',
 			},
 		]);
 
 		const WrappedComponent = CTLViewsHoC(mockComponent);
 
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/C4872']}>
-						<WrappedComponent />
-					</MemoryRouter>
-				</MockAnalyticsProvider>
-			);
-		});
+		render(
+			<MockAnalyticsProvider>
+				<MemoryRouter initialEntries={['/asdf']}>
+					<Route path="/:codeOrPurl" element={<WrappedComponent />} />
+				</MemoryRouter>
+			</MockAnalyticsProvider>
+		);
 
 		// Expect the first argument of the first call to mockComponent
 		// to match the expected props
@@ -200,8 +169,40 @@ describe('CTLViewsHoc Error Conditions', () => {
 
 		const expectedPageTitle = 'Page Not Found';
 		expect(screen.getByText(expectedPageTitle)).toBeInTheDocument();
-		const inputBox = screen.getByLabelText('Search');
-		fireEvent.change(inputBox, { target: { value: 'chicken' } });
-		fireEvent.click(screen.getByText('Search'));
+	});
+
+	it('Should handle error from API', async () => {
+		useListingSupport.mockReturnValue({
+			error: new Error('Some Error'),
+			loading: false,
+			payload: null,
+		});
+
+		useStateValue.mockReturnValue([
+			{
+				appId: 'mockAppId',
+				basePath: '/',
+				canonicalHost: 'https://www.cancer.gov',
+				language: 'en',
+				trialListingPageType: 'Disease',
+			},
+		]);
+
+		const WrappedComponent = CTLViewsHoC(mockComponent);
+
+		render(
+			<MockAnalyticsProvider>
+				<MemoryRouter initialEntries={['/asdf']}>
+					<Route path="/:codeOrPurl" element={<WrappedComponent />} />
+				</MemoryRouter>
+			</MockAnalyticsProvider>
+		);
+
+		// Expect the first argument of the first call to mockComponent
+		// to match the expected props
+		expect(mockComponent).not.toHaveBeenCalled();
+
+		const expectedPageTitle = 'An error occurred. Please try again later.';
+		expect(screen.getByText(expectedPageTitle)).toBeInTheDocument();
 	});
 });

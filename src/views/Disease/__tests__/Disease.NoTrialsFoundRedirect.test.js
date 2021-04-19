@@ -100,15 +100,6 @@ describe('<Disease />', () => {
 			search: '?p1=chronic-fatigue-syndrome',
 			hash: '',
 			state: {
-				listingInfo: {
-					conceptId: ['C3037'],
-					name: {
-						label: 'Chronic Fatigue Syndrome',
-						normalized: 'chronic-fatigue-syndrome',
-					},
-					prettyUrlName: 'chronic-fatigue-syndrome',
-				},
-				isNoTrialsRedirect: true,
 				redirectStatus: '302',
 				prerenderLocation: null,
 			},
@@ -190,15 +181,6 @@ describe('<Disease />', () => {
 			search: '?p1=C3037',
 			hash: '',
 			state: {
-				listingInfo: {
-					conceptId: ['C3037'],
-					name: {
-						label: 'Chronic Fatigue Syndrome',
-						normalized: 'chronic-fatigue-syndrome',
-					},
-					prettyUrlName: null,
-				},
-				isNoTrialsRedirect: true,
 				redirectStatus: '302',
 				prerenderLocation: null,
 			},
