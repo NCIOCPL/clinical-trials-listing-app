@@ -3,9 +3,17 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router';
 
 import { Spinner } from '../components';
+import { ErrorPage, PageNotFound } from './ErrorBoundary';
 import { useAppPaths, useListingSupport } from '../hooks';
 
 import { appendOrUpdateToQueryString, getIdOrNameAction } from '../utils';
+
+// Let's use some constands for our state var so we can handle
+// loading, loaded, 404 and error, without resorting to a reducer.
+const LOADING_STATE = 'loading_state';
+const LOADED_STATE = 'loaded_state';
+const NOTFOUND_STATE = 'notfound_state';
+const ERROR_STATE = 'error_state';
 
 /**
  * Higher order component for fetching disease information from the trial listing support API.
@@ -20,7 +28,7 @@ const CTLViewsHoC = (WrappedView) => {
 		const navigate = useNavigate();
 		const { search } = location;
 
-		const [doneLoading, setDoneLoading] = useState(false);
+		const [loadingState, setloadingState] = useState(LOADING_STATE);
 
 		// First thing we need to do is figure out what we are fetching.
 		// The route will be the notrials route.
@@ -48,7 +56,8 @@ const CTLViewsHoC = (WrappedView) => {
 				if (getListingInfo.payload.some((res) => res === null)) {
 					// Handle 404. Currently this is a bit hacky, but
 					// we will just throw here for the ErrorBoundary.
-					throw new Error('404');
+					setloadingState(NOTFOUND_STATE);
+					return;
 				}
 
 				// Now we need to check if we must redirect. This would be if
@@ -80,24 +89,31 @@ const CTLViewsHoC = (WrappedView) => {
 								},
 							}
 						);
+						return;
 					}
 				}
 
 				// At this point, the wrapped view is going to handle this request.
-				setDoneLoading(true);
+				console.log('loaded');
+				setloadingState(LOADED_STATE);
 			} else if (!getListingInfo.loading && getListingInfo.error) {
 				// Raise error for ErrorBoundary for now.
-				throw getListingInfo.error;
+				setloadingState(ERROR_STATE);
 			}
 		}, [getListingInfo]);
 
 		return (
 			<div>
 				{(() => {
-					if (!doneLoading) {
-						return <Spinner />;
-					} else {
-						return <WrappedView {...props} data={getListingInfo.payload} />;
+					switch (loadingState) {
+						case NOTFOUND_STATE:
+							return <PageNotFound />;
+						case ERROR_STATE:
+							return <ErrorPage />;
+						case LOADED_STATE:
+							return <WrappedView {...props} data={getListingInfo.payload} />;
+						default:
+							return <Spinner />;
 					}
 				})()}
 			</div>
