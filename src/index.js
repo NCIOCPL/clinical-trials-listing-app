@@ -44,7 +44,7 @@ const initialize = ({
 	introText = '',
 	itemsPerPage = 25,
 	language = 'en',
-	listingApiEndpoint = 'https://webapis-dev.cancer.gov/triallistingsupport/v1/',
+	listingApiEndpoint = 'https://webapis.cancer.gov/triallistingsupport/v1/',
 	liveHelpUrl = null,
 	metaDescription = 'NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials for {{disease_normalized}}.',
 	noTrialsHtml = '<p>There are no NCI-supported clinical trials for {{disease_normalized}} at this time. You can try a <a href=\\"/about-cancer/treatment/clinical-trials/search\\">new search</a> or <a href=\\"/contact\\">contact our Cancer Information Service</a> to talk about options for clinical trials.</p>',

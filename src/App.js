@@ -9,6 +9,7 @@ import { useStateValue } from './store/store';
 import {
 	CTLViewsHoC,
 	Disease,
+	Intervention,
 	InvalidParameters,
 	Manual,
 	NoTrialsFound,
@@ -28,6 +29,7 @@ const App = () => {
 	const imageParams = 'cisBannerImgUrlLarge, cisBannerImgUrlSmall';
 
 	const WrappedDisease = CTLViewsHoC(Disease);
+	const WrappedIntervention = CTLViewsHoC(Intervention);
 	const WrappedNoTrials = CTLViewsHoC(NoTrialsFound);
 
 	switch (trialListingPageType) {
@@ -58,6 +60,8 @@ const App = () => {
 			if (hasBannerImages) {
 				dynamicRoutes = (
 					<Routes>
+						<Route path={NoTrialsPath()} element={<WrappedNoTrials />} exact />
+						<Route path={CodeOrPurlPath()} element={<WrappedIntervention />} />
 						<Route path="/*" element={<PageNotFound />} />
 					</Routes>
 				);
