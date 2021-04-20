@@ -10,8 +10,23 @@ import CTLViewsHoC from '../CTLViewsHoC';
 
 jest.mock('../../hooks/listingSupport/useListingSupport');
 jest.mock('../../store/store.js');
+// Create our mock for checking if navigate was called correctly.
+const mockNavigate = jest.fn();
+jest.mock('react-router', () => ({
+	...jest.requireActual('react-router'), // use actual for all non-hook parts
+	useNavigate: () => mockNavigate,
+	useParams: () => ({
+		codeOrPurl: 'C4872',
+	}),
+	useLocation: () => ({
+		pathname: '/C4872',
+		search: '',
+		hash: '',
+		state: null,
+	}),
+}));
 
-describe('CTLViewsHoc Normal Conditions', () => {
+describe('CTLViewsHoc redirect', () => {
 	const mockComponent = jest.fn(() => {
 		return <>This would be the disease component.</>;
 	});
@@ -19,10 +34,11 @@ describe('CTLViewsHoc Normal Conditions', () => {
 	// This must be called before each, or else mockComponent.calls
 	// will continue to accumulate across all tests.
 	beforeEach(() => {
+		mockNavigate.mockClear();
 		mockComponent.mockClear();
 	});
 
-	it('Should have fetched info passed in as props with no others', async () => {
+	it('Should handle a redirect', async () => {
 		const data = [
 			{
 				conceptId: ['C4872'],
@@ -51,134 +67,20 @@ describe('CTLViewsHoc Normal Conditions', () => {
 
 		render(
 			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/breast-cancer']}>
+				<MemoryRouter initialEntries={['/C4872']}>
 					<Route path="/:codeOrPurl" element={<WrappedComponent />} />
 				</MemoryRouter>
 			</MockAnalyticsProvider>
 		);
-
+		console.log(mockNavigate.mock);
 		// Expect the first argument of the first call to mockComponent
 		// to match the expected props
-		expect(mockComponent.mock.calls[0][0]).toEqual({
-			data: data,
-		});
-
-		// TODO: Expect useListingSupport to be called correctly
-
-		expect(
-			screen.getByText('This would be the disease component.')
-		).toBeInTheDocument();
-	});
-
-	it('Should have fetched info passed in as props with other props', async () => {
-		const data = [
-			{
-				conceptId: ['C4872'],
-				name: {
-					label: 'Breast Cancer',
-					normalized: 'breast cancer',
-				},
-				prettyUrlName: 'breast-cancer',
-			},
-		];
-
-		useListingSupport.mockReturnValue({
-			error: null,
-			loading: false,
-			payload: data,
-		});
-
-		useStateValue.mockReturnValue([
-			{
-				appId: 'mockAppId',
-				basePath: '/',
-			},
-		]);
-
-		const WrappedComponent = CTLViewsHoC(mockComponent);
-
-		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/breast-cancer']}>
-					<Route
-						path="/:codeOrPurl"
-						element={<WrappedComponent color="blue" />}
-					/>
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+		expect(mockNavigate.mock.calls[0][0]).toEqual(
+			'/breast-cancer?redirect=true'
 		);
-
-		// Expect the first argument of the first call to mockCOmponent
-		// to match the expected props
-		expect(mockComponent.mock.calls[0][0]).toEqual({
-			color: 'blue',
-			data: data,
-		});
+		expect(mockNavigate.mock.calls[0][1]).toBeTruthy();
 
 		// TODO: Expect useListingSupport to be called correctly
-
-		expect(
-			screen.getByText('This would be the disease component.')
-		).toBeInTheDocument();
-	});
-
-	// TODO: It should handle multiple IDs
-
-	it('Should handle not found route', async () => {
-		const data = [
-			{
-				conceptId: ['C4872'],
-				name: {
-					label: 'Breast Cancer',
-					normalized: 'breast cancer',
-				},
-				prettyUrlName: 'breast-cancer',
-			},
-		];
-
-		useListingSupport.mockReturnValue({
-			error: null,
-			loading: false,
-			payload: data,
-		});
-
-		useStateValue.mockReturnValue([
-			{
-				appId: 'mockAppId',
-				basePath: '/',
-			},
-		]);
-
-		const noTrialsMockComponent = jest.fn(() => {
-			return <>This would be the no trials component.</>;
-		});
-		const WrappedComponent = CTLViewsHoC(noTrialsMockComponent);
-
-		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter
-					initialEntries={[
-						{
-							pathname: '/notrials',
-							search: '?p1=breast-cancer',
-						},
-					]}>
-					<Route path="/notrials" element={<WrappedComponent />} />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
-		);
-
-		// Expect the first argument of the first call to mock Component
-		// to match the expected props
-		expect(noTrialsMockComponent.mock.calls[0][0]).toEqual({
-			data: data,
-		});
-
-		// TODO: Expect useListingSupport to be called correctly
-
-		expect(
-			screen.getByText('This would be the no trials component.')
-		).toBeInTheDocument();
 	});
 });
 
