@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { MemoryRouter, Route, useNavigate } from 'react-router';
+import { MemoryRouter, Route } from 'react-router';
 
 import { MockAnalyticsProvider } from '../../tracking';
 import { useListingSupport } from '../../hooks';
