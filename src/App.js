@@ -9,6 +9,7 @@ import { useStateValue } from './store/store';
 import {
 	CTLViewsHoC,
 	Disease,
+	Intervention,
 	InvalidParameters,
 	Manual,
 	NoTrialsFound,
@@ -27,10 +28,11 @@ const App = () => {
 		cisBannerImgUrlLarge !== null && cisBannerImgUrlSmall !== null;
 	const imageParams = 'cisBannerImgUrlLarge, cisBannerImgUrlSmall';
 
+	const WrappedNoTrials = CTLViewsHoC(NoTrialsFound);
+
 	switch (trialListingPageType) {
 		case 'Disease': {
 			const WrappedDisease = CTLViewsHoC(Disease);
-			const WrappedNoTrials = CTLViewsHoC(NoTrialsFound);
 
 			// This is a map of the parameters and types of params that is
 			// used by the HoC to fetch information from the listing support
@@ -86,11 +88,48 @@ const App = () => {
 			}
 			break;
 		}
-		case 'Intervention':
+		case 'Intervention': {
+			const WrappedIntervention = CTLViewsHoC(Intervention);
+
+			// This is a map of the parameters and types of params that is
+			// used by the HoC to fetch information from the listing support
+			// service. The names should be just like they are in the route
+			// and the type is either listing-information, trial-type, or
+			// whatever future info type there could be returned by the API.
+			// Additionally the textReplacementKey is used by NoTrialsFound
+			// to setup the replacement text context vars.
+			// Order matters!
+			const interventionRouteParamMap = [
+				{
+					paramName: 'codeOrPurl',
+					textReplacementKey: 'intervention',
+					type: 'listing-information',
+				},
+			];
+
 			// If both banner images are present, set the intervention routes.
 			if (hasBannerImages) {
 				dynamicRoutes = (
 					<Routes>
+						<Route
+							path={NoTrialsPath()}
+							element={
+								<WrappedNoTrials
+									redirectPath={NoTrialsPath}
+									routeParamMap={interventionRouteParamMap}
+								/>
+							}
+							exact
+						/>
+						<Route
+							path={CodeOrPurlPath()}
+							element={
+								<WrappedIntervention
+									redirectPath={CodeOrPurlPath}
+									routeParamMap={interventionRouteParamMap}
+								/>
+							}
+						/>
 						<Route path="/*" element={<PageNotFound />} />
 					</Routes>
 				);
@@ -105,6 +144,7 @@ const App = () => {
 				);
 			}
 			break;
+		}
 
 		case 'Manual':
 			// If both banner images aren't present, set the manual routes.
