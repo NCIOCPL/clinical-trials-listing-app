@@ -61,10 +61,7 @@ const NoTrialsFound = ({ routeParamMap, data }) => {
 			// These properties are required.
 			type: 'PageLoad',
 			event: 'TrialListingApp:Load:NoTrialsFound',
-			name:
-				canonicalHost.replace('https://', '') +
-				window.location.pathname +
-				window.location.search,
+			name: canonicalHost.replace('https://', '') + window.location.pathname,
 			title: replacementText.pageTitle,
 			language: language === 'en' ? 'english' : 'spanish',
 			metaTitle: `${replacementText.pageTitle} - ${siteName}`,

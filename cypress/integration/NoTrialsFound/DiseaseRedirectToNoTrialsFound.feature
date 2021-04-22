@@ -5,7 +5,6 @@ Feature: As the system, I want to be able to redirect users to the No Trials Fou
 		And "pageTitle" is set to "{{disease_label}} Clinical Trials"
 		And "noTrialsHtml" is set to "<p>There are no NCI-supported clinical trials for {{disease_normalized}} at this time. You can try a <a href=\"/about-cancer/treatment/clinical-trials/search\">new search</a> or <a href=\"/contact\">contact our Cancer Information Service</a> to talk about options for clinical trials.</p>"
 		Given the user navigates to "/C3037"
-		Then the user is redirected to "/chronic-fatigue-syndrome" with query parameters "redirect=true"
 		Then the user is redirected to "/notrials" with query parameters "p1=chronic-fatigue-syndrome"
 		Then the page title is "Chronic Fatigue Syndrome Clinical Trials"
     And the system displays message "There are no NCI-supported clinical trials for chronic fatigue syndrome at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials."
