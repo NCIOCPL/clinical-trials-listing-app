@@ -1,0 +1,15 @@
+{
+	"current_trial_status": [
+			"Active",
+			"Approved",
+			"Enrolling by Invitation",
+			"In Review",
+			"Temporarily Closed to Accrual",
+			"Temporarily Closed to Accrual and Intervention"
+	],
+	"arms.interventions.intervention_code": [
+			"C1234"
+	],
+	"from": 0,
+	"size": 25
+}
