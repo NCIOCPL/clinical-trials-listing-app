@@ -116,14 +116,16 @@ const Manual = () => {
 							`}
 							</div>
 						)}
-						<div className="paging-section__pager">
-							<Pager
-								current={Number(pager.page)}
-								onPageNavigationChange={onPageNavigationChangeHandler}
-								resultsPerPage={pager.pageUnit}
-								totalResults={trialsPayload?.total ?? 0}
-							/>
-						</div>
+						{trialsPayload?.total > itemsPerPage && (
+							<div className="paging-section__pager">
+								<Pager
+									current={Number(pager.page)}
+									onPageNavigationChange={onPageNavigationChangeHandler}
+									resultsPerPage={pager.pageUnit}
+									totalResults={trialsPayload?.total ?? 0}
+								/>
+							</div>
+						)}
 					</div>
 				)}
 			</>
@@ -151,7 +153,6 @@ const Manual = () => {
 
 			{/* ::: Top Paging Section ::: */}
 			{renderPagerSection('top')}
-			<hr />
 			{(() => {
 				if (queryResponse.loading) {
 					return <Spinner />;
@@ -166,7 +167,6 @@ const Manual = () => {
 					return <NoResults />;
 				}
 			})()}
-			<hr />
 			{/* ::: Bottom Paging Section ::: */}
 			{renderPagerSection('bottom')}
 		</div>
