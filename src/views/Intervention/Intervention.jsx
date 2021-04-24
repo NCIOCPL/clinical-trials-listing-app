@@ -41,7 +41,7 @@ const Intervention = ({ data: [data] }) => {
 
 	const { conceptId, name, prettyUrlName } = data;
 
-	const diseaseParam = prettyUrlName ? prettyUrlName : conceptId.join(',');
+	const interventionParam = prettyUrlName ? prettyUrlName : conceptId.join(',');
 
 	const pn = getKeyValueFromQueryString('pn', search.toLowerCase());
 	const pagerDefaults = {
@@ -96,7 +96,7 @@ const Intervention = ({ data: [data] }) => {
 				// So this is handling the redirect to the no trials page.
 				// it is the job of the dynamic route views to property
 				// set the p1,p2,p3 parameters.
-				navigate(`${NoTrialsPath()}?p1=${diseaseParam}`, {
+				navigate(`${NoTrialsPath()}?p1=${interventionParam}`, {
 					replace: true,
 					state: {
 						redirectStatus: redirectStatusCode,
@@ -134,7 +134,9 @@ const Intervention = ({ data: [data] }) => {
 		setPager(pagination);
 		const { page } = pagination;
 		const qryStr = appendOrUpdateToQueryString(search, 'pn', page);
-		navigate(`${CodeOrPurlPath({ diseaseParam })}${qryStr}`, { replace: true });
+		navigate(`${CodeOrPurlPath({ interventionParam })}${qryStr}`, {
+			replace: true,
+		});
 	};
 
 	const renderHelmet = () => {

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { useNavigate, useParams, useLocation } from 'react-router';
+import { useNavigate, useLocation } from 'react-router';
 import { useTracking } from 'react-tracking';
 
 import { Pager, NoResults, ResultsList, Spinner } from '../../components';
@@ -17,7 +17,6 @@ import {
 } from '../../utils';
 
 const Disease = ({ data: [data] }) => {
-	const { codeOrPurl } = useParams();
 	const { CodeOrPurlPath, NoTrialsPath } = useAppPaths();
 	const location = useLocation();
 	const [trialsPayload, setTrialsPayload] = useState(null);
@@ -41,6 +40,8 @@ const Disease = ({ data: [data] }) => {
 	] = useStateValue();
 
 	const { conceptId, name, prettyUrlName } = data;
+
+	const diseaseParam = prettyUrlName ? prettyUrlName : conceptId.join(',');
 
 	const pn = getKeyValueFromQueryString('pn', search.toLowerCase());
 	const pagerDefaults = {
@@ -84,8 +85,7 @@ const Disease = ({ data: [data] }) => {
 	useEffect(() => {
 		if (!queryResponse.loading && queryResponse.payload) {
 			if (queryResponse.payload.total === 0) {
-				const noTrialsParam = prettyUrlName ? prettyUrlName : codeOrPurl;
-
+				const noTrialsParam = prettyUrlName ? prettyUrlName : diseaseParam;
 				const redirectStatusCode = location.state?.redirectStatus
 					? location.state?.redirectStatus
 					: '302';
@@ -134,7 +134,9 @@ const Disease = ({ data: [data] }) => {
 		setPager(pagination);
 		const { page } = pagination;
 		const qryStr = appendOrUpdateToQueryString(search, 'pn', page);
-		navigate(`${CodeOrPurlPath({ codeOrPurl })}${qryStr}`, { replace: true });
+		navigate(`${CodeOrPurlPath({ codeOrPurl: diseaseParam })}${qryStr}`, {
+			replace: true,
+		});
 	};
 
 	const renderHelmet = () => {
