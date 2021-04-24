@@ -19,6 +19,8 @@ Feature: As a user, I would like to view the trial results for a disease listing
       | ...    |
       | 38     |
       | Next > |
+      When user clicks on "Next >" button
+      Then the user is redirected to "/breast-cancer" with query parameters "cfg=0&pn=2"
 
   Scenario: View disease listing page metadata with pretty URL name parameter
     Given "trialListingPageType" is set to "Disease"
