@@ -13,10 +13,10 @@ Feature: As the system, I want to be able to redirect users to the No Trials Fou
 		And the CIS Banner displays below
 		And the Chat Now button displays below
 		And the page contains meta tags with the following names
-				| name                  | content 																																|
-				| prerender-status-code | 301     																																|
-				| prerender-header		  | Location: http://localhost:3000/chronic-fatigue-syndrome?redirect=true  |
-				| robots				 			  | noindex																																	|
+				| name                  | content 																									|
+				| prerender-status-code | 301     																									|
+				| prerender-header		  | Location: http://localhost:3000/chronic-fatigue-syndrome  |
+				| robots				 			  | noindex																										|
 
 
 	Scenario: Page redirects to No Trials Found page if pretty URL name is given for Disease and no trials are returned
