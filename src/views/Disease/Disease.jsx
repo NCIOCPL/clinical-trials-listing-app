@@ -89,7 +89,7 @@ const Disease = ({ data: [data] }) => {
 					? location.state?.redirectStatus
 					: '302';
 				const prerenderLocation = location.state?.redirectStatus
-					? baseHost + window.location.pathname + window.location.search
+					? baseHost + window.location.pathname
 					: null;
 
 				// So this is handling the redirect to the no trials page.
@@ -136,8 +136,7 @@ const Disease = ({ data: [data] }) => {
 	};
 
 	const renderHelmet = () => {
-		const prerenderHeader =
-			baseHost + window.location.pathname + window.location.search;
+		const prerenderHeader = baseHost + window.location.pathname;
 		const status = location.state?.redirectStatus;
 
 		return (

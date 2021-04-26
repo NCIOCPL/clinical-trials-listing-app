@@ -31,7 +31,7 @@ Feature: As a user when I visit a non existent trial listing page I am presented
             | name                  | content |
             | prerender-status-code | 404     |
 
-		Scenario: Intervention 404: Page Not Found displays when a user views a dynamic listing page with invalid disease c-code
+    Scenario: Intervention 404: Page Not Found displays when a user views a dynamic listing page with invalid disease c-code
         Given "trialListingPageType" is set to "Intervention"
         When user navigates to non-existent page "/c123455?cfg=0"
         And page title is "Page Not Found"
