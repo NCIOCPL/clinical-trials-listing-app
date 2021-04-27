@@ -134,7 +134,7 @@ const Intervention = ({ data: [data] }) => {
 		setPager(pagination);
 		const { page } = pagination;
 		const qryStr = appendOrUpdateToQueryString(search, 'pn', page);
-		navigate(`${CodeOrPurlPath({ interventionParam })}${qryStr}`, {
+		navigate(`${CodeOrPurlPath({ codeOrPurl: interventionParam })}${qryStr}`, {
 			replace: true,
 		});
 	};
