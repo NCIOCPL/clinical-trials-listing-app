@@ -1,5 +1,4 @@
 import { useEffect, useReducer, useRef, useCallback } from 'react';
-//import axios from 'axios';
 import { useStateValue } from '../../store/store';
 import {
 	getListingInformationById,
@@ -12,6 +11,7 @@ import {
 	setLoading,
 	setAborted,
 } from './actions';
+import { useCache } from '../cache/caching';
 
 /**
  * An action representing a listing support API request.
@@ -33,25 +33,41 @@ import {
  * @param {import('axios').AxiosInstance} trialListingSupportClient the axios client
  * @param {Array<ListingSupportRequestAction>} actions a collection of request items.
  */
-const internalFetch = async (trialListingSupportClient, actions) => {
+
+const internalFetch = async (
+	getCacheItem,
+	trialListingSupportClient,
+	actions
+) => {
 	// TODO: Pass in an abort token to internalFetch
 	// We want this function to return a single object we can use
+
 	try {
 		const requests = actions.map((req) => {
 			switch (req.type) {
 				case 'id': {
-					// TODO: Add an abort token to getListingInformationById
-					return getListingInformationById(
-						trialListingSupportClient,
-						req.payload
-					);
+					const cacheItem = getCacheItem(req.payload);
+					if (cacheItem) {
+						return Promise.resolve(cacheItem);
+					} else {
+						// TODO: Add an abort token to getListingInformationById
+						return getListingInformationById(
+							trialListingSupportClient,
+							req.payload
+						);
+					}
 				}
 				case 'name': {
-					// TODO: Add an abort token to getListingInformationByName
-					return getListingInformationByName(
-						trialListingSupportClient,
-						req.payload
-					);
+					const cacheItem = getCacheItem(req.payload);
+					if (cacheItem) {
+						return Promise.resolve(cacheItem);
+					} else {
+						// TODO: Add an abort token to getListingInformationByName
+						return getListingInformationByName(
+							trialListingSupportClient,
+							req.payload
+						);
+					}
 				}
 				default: {
 					throw new Error(`Unknown trial listing support request`);
@@ -96,8 +112,8 @@ export const useListingSupport = (actions) => {
 		error: null,
 		aborted: false,
 	});
-
-	// We onlu want to fire this the first time useListingSupport
+	const { getCacheItem, cacheItem } = useCache();
+	// We only want to fire this the first time useListingSupport
 	// is called.
 	useEffect(() => {
 		isMounted.current = true;
@@ -133,7 +149,11 @@ export const useListingSupport = (actions) => {
 		// or it will be an error object. This allows us to have one object
 		// that we return for the useCallback to "cache".
 		// TODO: Pass in a cancellation token for this request to handle aborts
-		const response = await internalFetch(trialListingSupportClient, actions);
+		const response = await internalFetch(
+			getCacheItem,
+			trialListingSupportClient,
+			actions
+		);
 
 		// So if we did not abort, then we should dispatch an update for the state.
 		if (
@@ -141,8 +161,23 @@ export const useListingSupport = (actions) => {
 			!(response.errorObject && response.errorObject.name === 'AbortError')
 		) {
 			if (response.errorObject) {
+				console.log('the response was an errorObject');
 				dispatch(setFailedFetch(response.errorObject));
 			} else {
+				//checks to see if the response's payload has an object stored in it
+				if (response !== null && response[0] !== null) {
+					//checks to see if the given key is an array, if so will iterate through it and cache all items, along with prettyUrlName
+					if (Array.isArray(response[0].conceptId)) {
+						for (var i = 0; i < response[0].conceptId.length; i++) {
+							cacheItem(response, response[0].conceptId[i]);
+						}
+						cacheItem(response, response[0].prettyUrlName);
+					} else {
+						//just cache the one item and it's prettyUrlNameq
+						cacheItem(response, response[0].conceptId);
+						cacheItem(response, response[0].prettyUrlName);
+					}
+				}
 				dispatch(setSuccessfulFetch(response));
 			}
 		}
@@ -156,6 +191,7 @@ export const useListingSupport = (actions) => {
 		// unless our component unmounted AND a fetch was in progress, in which case
 		// we really don't care about the response. So we can set an aborted flag in
 		// case we will.
+
 		if (
 			isMounted.current &&
 			response.errorObject &&
@@ -167,8 +203,6 @@ export const useListingSupport = (actions) => {
 		// We should return the response here for useCallback to cache
 		return response;
 	}, [actions]);
-
-	// This callback is for aborting the requests.
 	const handleAbort = useCallback(() => {
 		// TODO: We should cancel the Axios request here.
 	}, []);
