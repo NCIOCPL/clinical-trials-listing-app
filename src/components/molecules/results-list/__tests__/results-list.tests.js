@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter } from 'react-router';
-
+import { MockAnalyticsProvider } from '../../../../tracking';
 import { ResultsList } from '../../../index';
 
 jest.mock('../../../../store/store.js');
@@ -45,10 +45,12 @@ describe('<ResultsList />', () => {
 
 		render(
 			<MemoryRouter initialEntries={['/']}>
-				<ResultsList
-					results={resultsList}
-					resultsItemTitleLink={'http://sample.com/test-url/v?id={{nci_id}}'}
-				/>
+				<MockAnalyticsProvider>
+					<ResultsList
+						results={resultsList}
+						resultsItemTitleLink={'http://sample.com/test-url/v?id={{nci_id}}'}
+					/>
+				</MockAnalyticsProvider>
 			</MemoryRouter>
 		);
 

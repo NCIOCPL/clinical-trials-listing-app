@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useLocation, useNavigate } from 'react-router';
-import { useTracking } from 'react-tracking';
+import track, { useTracking } from 'react-tracking';
 
 import { NoResults, Pager, ResultsList, Spinner } from '../../components';
 import { useAppPaths, useCustomQuery } from '../../hooks';
@@ -116,19 +116,25 @@ const Manual = () => {
 							`}
 							</div>
 						)}
-						<div className="paging-section__pager">
-							<Pager
-								current={Number(pager.page)}
-								onPageNavigationChange={onPageNavigationChangeHandler}
-								resultsPerPage={pager.pageUnit}
-								totalResults={trialsPayload?.total ?? 0}
-							/>
-						</div>
+						{trialsPayload?.total > itemsPerPage && (
+							<div className="paging-section__pager">
+								<Pager
+									current={Number(pager.page)}
+									onPageNavigationChange={onPageNavigationChangeHandler}
+									resultsPerPage={pager.pageUnit}
+									totalResults={trialsPayload?.total ?? 0}
+								/>
+							</div>
+						)}
 					</div>
 				)}
 			</>
 		);
 	};
+
+	const ResultsListWithPage = track({
+		currentPage: Number(pager.page),
+	})(ResultsList);
 
 	return (
 		<div>
@@ -145,13 +151,12 @@ const Manual = () => {
 
 			{/* ::: Top Paging Section ::: */}
 			{renderPagerSection('top')}
-			<hr />
 			{(() => {
 				if (queryResponse.loading) {
 					return <Spinner />;
 				} else if (!queryResponse.loading && trialsPayload?.trials?.length) {
 					return (
-						<ResultsList
+						<ResultsListWithPage
 							results={trialsPayload.trials}
 							resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
 						/>
@@ -160,7 +165,6 @@ const Manual = () => {
 					return <NoResults />;
 				}
 			})()}
-			<hr />
 			{/* ::: Bottom Paging Section ::: */}
 			{renderPagerSection('bottom')}
 		</div>

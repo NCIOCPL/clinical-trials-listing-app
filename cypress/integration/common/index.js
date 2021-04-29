@@ -192,13 +192,10 @@ And(
     -----------------------
 */
 Given('screen breakpoint is set to {string}', (screenSize) => {
-	if (screenSize === 'desktop')
-			cy.viewport(1025, 600);
-	else if (screenSize === 'mobile')
-			cy.viewport(600, 800);
-	else if (screenSize === 'tablet')
-			cy.viewport(800, 900);
-})
+	if (screenSize === 'desktop') cy.viewport(1025, 600);
+	else if (screenSize === 'mobile') cy.viewport(600, 800);
+	else if (screenSize === 'tablet') cy.viewport(800, 900);
+});
 
 /*
     -----------------------
@@ -250,7 +247,6 @@ When('pager is not displayed', () => {
 	cy.get('.pager__navigation li').should('not.exist');
 });
 
-
 /*
     -----------------------
         Page Not Found
@@ -258,7 +254,7 @@ When('pager is not displayed', () => {
 */
 
 And('the text {string} appears on the page', (text) => {
-	cy.get('p').contains(text).should('exist')
+	cy.get('p').contains(text).should('exist');
 });
 
 /*
@@ -278,21 +274,31 @@ Then('the error message {string} appears on the page', (text) => {
 */
 
 Then('the user is redirected to {string}', (redirectUrl) => {
-		cy.location('href').should('include', redirectUrl);
+	cy.location('href').should('include', redirectUrl);
 });
 
 Then('the redirect parameter is not appended', () => {
-	cy.location('href').should('not.include', 'redirect=true')
+	cy.location('href').should('not.include', 'redirect=true');
 });
 
-Then('the user is redirected to {string} with query parameters {string}', (redirectUrl, queryParams) => {
-	cy.location('href').should('include', `${redirectUrl}?${queryParams}`);
-});
+Then(
+	'the user is redirected to {string} with query parameters {string}',
+	(redirectUrl, queryParams) => {
+		cy.location('href').should('include', `${redirectUrl}?${queryParams}`);
+	}
+);
 
 And('the CIS Banner displays below', () => {
-	cy.get('[alt="Questions? Chat with an information specialist"]').should('be.visible')
+	cy.get('[alt="Questions? Chat with an information specialist"]').should(
+		'be.visible'
+	);
 });
 
 And('the Chat Now button displays below', () => {
 	cy.contains('.banner-cis__button', 'Chat Now');
+});
+When('user clicks on result item {int}', (resultIndex) => {
+	cy.get('a.ct-list-item__title')
+		.eq(resultIndex - 1)
+		.trigger('click', { followRedirect: false });
 });
