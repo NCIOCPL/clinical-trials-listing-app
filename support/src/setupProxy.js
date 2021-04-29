@@ -5,6 +5,7 @@ const express = require('express');
 const mockClinicalTrials = require('./mock-clinical-trials/clinical-trials');
 const mockListingInformationById = require('./mock-listing-information/listing-information-by-id');
 const mockListingInformationByName = require('./mock-listing-information/listing-information-by-name');
+const mockTrialTypeGetByName = require('./mock-trial-type/trial-type-by-name');
 
 
 module.exports = function (app) {
@@ -21,5 +22,7 @@ module.exports = function (app) {
 	app.use('/api/listing-information/get', mockListingInformationById);
 
 	app.use('/api/listing-information/:queryParam', mockListingInformationByName);
+
+  app.use('/api/trial-type/:name', mockTrialTypeGetByName);
 
 }

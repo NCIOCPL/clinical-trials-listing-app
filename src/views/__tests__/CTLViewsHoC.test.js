@@ -80,6 +80,8 @@ describe('CTLViewsHoc Normal Conditions', () => {
 		// Expect the first argument of the first call to mockComponent
 		// to match the expected props
 		expect(mockComponent.mock.calls[0][0]).toEqual({
+			routeParamMap: SINGLE_PARAM_MAP,
+			routePath: NO_OP_REDIRECT_PATH,
 			data: data,
 		});
 
@@ -144,6 +146,8 @@ describe('CTLViewsHoc Normal Conditions', () => {
 		// Expect the first argument of the first call to mockCOmponent
 		// to match the expected props
 		expect(mockComponent.mock.calls[0][0]).toEqual({
+			routeParamMap: SINGLE_PARAM_MAP,
+			routePath: NO_OP_REDIRECT_PATH,
 			color: 'blue',
 			data: data,
 		});
@@ -228,6 +232,8 @@ describe('CTLViewsHoc Normal Conditions', () => {
 		// Expect the first argument of the first call to mockComponent
 		// to match the expected props
 		expect(mockComponent.mock.calls[0][0]).toEqual({
+			routeParamMap: multiparam_map,
+			routePath: NO_OP_REDIRECT_PATH,
 			data: data,
 		});
 

@@ -13,3 +13,9 @@ export { TokenParser } from './replaceTokens';
 export { emboldenSubstring } from './strings';
 export { appendOrUpdateToQueryString, getKeyValueFromQueryString } from './url';
 export { EDDLAnalyticsHandler } from './eddl-analytics-handler';
+export {
+	getTextReplacementContext,
+	getNoTrialsRedirectParams,
+	getParamsForRoute,
+	getAnalyticsParamsForRoute,
+} from './data-route-param-util';

@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { useNavigate, useLocation } from 'react-router';
-import { useTracking } from 'react-tracking';
+import { useLocation, useNavigate } from 'react-router';
+import track, { useTracking } from 'react-tracking';
 
 import { Pager, NoResults, ResultsList, Spinner } from '../../components';
 import { useAppPaths, useCustomQuery } from '../../hooks';
@@ -14,10 +14,14 @@ import {
 	getKeyValueFromQueryString,
 	getPageOffset,
 	TokenParser,
+	getTextReplacementContext,
+	getNoTrialsRedirectParams,
+	getParamsForRoute,
+	getAnalyticsParamsForRoute,
 } from '../../utils';
 
-const Disease = ({ data: [data] }) => {
-	const { CodeOrPurlPath, NoTrialsPath } = useAppPaths();
+const Disease = ({ routeParamMap, routePath, data }) => {
+	const { NoTrialsPath } = useAppPaths();
 	const location = useLocation();
 	const [trialsPayload, setTrialsPayload] = useState(null);
 	const navigate = useNavigate();
@@ -26,22 +30,15 @@ const Disease = ({ data: [data] }) => {
 	const [
 		{
 			baseHost,
-			browserTitle,
 			canonicalHost,
 			detailedViewPagePrettyUrlFormatter,
-			introText,
+			dynamicListingPatterns,
 			itemsPerPage,
 			language,
-			metaDescription,
-			pageTitle,
 			siteName,
 			trialListingPageType,
 		},
 	] = useStateValue();
-
-	const { conceptId, name, prettyUrlName } = data;
-
-	const diseaseParam = prettyUrlName ? prettyUrlName : conceptId.join(',');
 
 	const pn = getKeyValueFromQueryString('pn', search.toLowerCase());
 	const pagerDefaults = {
@@ -52,21 +49,56 @@ const Disease = ({ data: [data] }) => {
 	const [pager, setPager] = useState(pagerDefaults);
 
 	const setupRequestFilters = () => {
-		return { 'diseases.nci_thesaurus_concept_id': conceptId };
+		const query = data.reduce((acQuery, paramData, idx) => {
+			const paramInfo = routeParamMap[idx];
+
+			// TODO: Find some way to make this more generic
+			switch (paramInfo.paramName) {
+				case 'codeOrPurl':
+					return {
+						...acQuery,
+						'diseases.nci_thesaurus_concept_id': paramData.conceptId,
+					};
+				case 'type':
+					return {
+						...acQuery,
+						'primary_purpose.primary_purpose_code': paramData.idString,
+					};
+				case 'interCodeOrPurl':
+					return {
+						...acQuery,
+						'arms.interventions.intervention_code': paramData.conceptId,
+					};
+				default:
+					throw new Error(`Unknown parameter ${paramInfo.paramName}`);
+			}
+		}, {});
+		return query;
 	};
 
 	const setupReplacementText = () => {
 		// Replace tokens within page title, browser title, intro text, and meta description
-		const context = {
-			disease_label: name.label,
-			disease_normalized: name.normalized,
-		};
+		const context = getTextReplacementContext(data, routeParamMap);
+
+		// The config to the app will provide an array of listing patterns that map to the
+		// number of params that this route has.
+		// TODO: move this to app.js, the route setup, should control which listing pattern to use
+		const listingPatternIndex = routeParamMap.length - 1;
+		const listingPattern = Object.values(dynamicListingPatterns)[
+			listingPatternIndex
+		];
 
 		return {
-			pageTitle: TokenParser.replaceTokens(pageTitle, context),
-			browserTitle: TokenParser.replaceTokens(browserTitle, context),
-			introText: TokenParser.replaceTokens(introText, context),
-			metaDescription: TokenParser.replaceTokens(metaDescription, context),
+			pageTitle: TokenParser.replaceTokens(listingPattern.pageTitle, context),
+			browserTitle: TokenParser.replaceTokens(
+				listingPattern.browserTitle,
+				context
+			),
+			introText: TokenParser.replaceTokens(listingPattern.introText, context),
+			metaDescription: TokenParser.replaceTokens(
+				listingPattern.metaDescription,
+				context
+			),
 		};
 	};
 
@@ -85,7 +117,6 @@ const Disease = ({ data: [data] }) => {
 	useEffect(() => {
 		if (!queryResponse.loading && queryResponse.payload) {
 			if (queryResponse.payload.total === 0) {
-				const noTrialsParam = prettyUrlName ? prettyUrlName : diseaseParam;
 				const redirectStatusCode = location.state?.redirectStatus
 					? location.state?.redirectStatus
 					: '302';
@@ -97,17 +128,25 @@ const Disease = ({ data: [data] }) => {
 				// So this is handling the redirect to the no trials page.
 				// it is the job of the dynamic route views to property
 				// set the p1,p2,p3 parameters.
-				navigate(`${NoTrialsPath()}?p1=${noTrialsParam}`, {
-					replace: true,
-					state: {
-						redirectStatus: redirectStatusCode,
-						prerenderLocation: prerenderLocation,
-					},
-				});
+				const redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
+
+				navigate(
+					`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`,
+					{
+						replace: true,
+						state: {
+							redirectStatus: redirectStatusCode,
+							prerenderLocation: prerenderLocation,
+						},
+					}
+				);
 			}
 			setTrialsPayload(queryResponse.payload);
 		}
 	}, [queryResponse.loading, queryResponse.payload]);
+
+	// Setup data for tracking
+	const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
 
 	useEffect(() => {
 		// Fire off a page load event. Usually this would be in
@@ -125,7 +164,7 @@ const Disease = ({ data: [data] }) => {
 				// for the event.
 				numberResults: queryResponse.payload?.total,
 				trialListingPageType: `${trialListingPageType.toLowerCase()}`,
-				diseaseName: name.normalized,
+				...trackingData,
 			});
 		}
 	}, [trialsPayload]);
@@ -134,9 +173,14 @@ const Disease = ({ data: [data] }) => {
 		setPager(pagination);
 		const { page } = pagination;
 		const qryStr = appendOrUpdateToQueryString(search, 'pn', page);
-		navigate(`${CodeOrPurlPath({ codeOrPurl: diseaseParam })}${qryStr}`, {
+
+		const paramsObject = getParamsForRoute(data, routeParamMap);
+
+		navigate(`${routePath(paramsObject)}${qryStr}`, {
 			replace: true,
 		});
+
+		window.scrollTo(0, 0);
 	};
 
 	const renderHelmet = () => {
@@ -155,7 +199,7 @@ const Disease = ({ data: [data] }) => {
 				/>
 				<link rel="canonical" href={canonicalHost + window.location.pathname} />
 				{(() => {
-					if (status !== null) {
+					if (status) {
 						return <meta name="prerender-status-code" content={status} />;
 					}
 				})()}
@@ -207,6 +251,10 @@ const Disease = ({ data: [data] }) => {
 		);
 	};
 
+	const ResultsListWithPage = track({
+		currentPage: Number(pager.page),
+	})(ResultsList);
+
 	return (
 		<div>
 			{renderHelmet()}
@@ -224,7 +272,7 @@ const Disease = ({ data: [data] }) => {
 					return <Spinner />;
 				} else if (!queryResponse.loading && trialsPayload?.trials.length) {
 					return (
-						<ResultsList
+						<ResultsListWithPage
 							results={trialsPayload.trials}
 							resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
 						/>
@@ -240,6 +288,14 @@ const Disease = ({ data: [data] }) => {
 };
 
 Disease.propTypes = {
+	routeParamMap: PropTypes.arrayOf(
+		PropTypes.shape({
+			paramName: PropTypes.string,
+			textReplacementKey: PropTypes.string,
+			type: PropTypes.oneOf(['listing-information', 'trial-type']),
+		})
+	).isRequired,
+	routePath: PropTypes.func.isRequired,
 	data: PropTypes.arrayOf(
 		PropTypes.shape({
 			conceptId: PropTypes.array,

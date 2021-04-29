@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import './styles/app.scss';
 
+import { pageTypePatterns, textProperties } from './constants';
 import { useAppPaths } from './hooks';
 import { useStateValue } from './store/store';
 import {
@@ -18,20 +19,71 @@ import {
 
 const App = () => {
 	let dynamicRoutes;
-	const { BasePath, CodeOrPurlPath, NoTrialsPath } = useAppPaths();
+	const {
+		BasePath,
+		CodeOrPurlPath,
+		CodeOrPurlWithTypeAndInterCodeOrPurlPath,
+		NoTrialsPath,
+	} = useAppPaths();
 	const [
-		{ cisBannerImgUrlLarge, cisBannerImgUrlSmall, trialListingPageType },
+		{
+			cisBannerImgUrlLarge,
+			cisBannerImgUrlSmall,
+			dynamicListingPatterns,
+			trialListingPageType,
+		},
 	] = useStateValue();
+
+	const hasAllDynamicListingPatterns = (pageType) => {
+		if (dynamicListingPatterns == null) {
+			return false;
+		} else {
+			return (
+				// The dynamicListingPatterns have all patterns that are
+				// expected for the given page type.
+				pageTypePatterns[pageType].every((pattern) =>
+					Object.keys(dynamicListingPatterns).includes(pattern)
+				) &&
+				// Each pattern within the dynamicListingPatterns has all text
+				// properties set that are expected.
+				Object.keys(dynamicListingPatterns).every(
+					(pattern) =>
+						// The pattern has all text properties expected.
+						textProperties.every((property) =>
+							Object.keys(dynamicListingPatterns[pattern]).includes(property)
+						) &&
+						// Each text property is set, and not null or undefined.
+						!Object.values(dynamicListingPatterns[pattern]).some(
+							(textProperty) => textProperty == null
+						)
+				)
+			);
+		}
+	};
 
 	// Check for image parameters, and set string for invalid parameters page.
 	const hasBannerImages =
 		cisBannerImgUrlLarge !== null && cisBannerImgUrlSmall !== null;
 	const imageParams = 'cisBannerImgUrlLarge, cisBannerImgUrlSmall';
+	const patternParams = 'dynamicListingPatterns';
+
+	const getInvalidParams = (patterns, images) => {
+		if (!patterns && !images) {
+			return patternParams + ', ' + imageParams;
+		} else if (!patterns && images) {
+			return patternParams;
+		} else if (patterns && !images) {
+			return imageParams;
+		}
+	};
 
 	const WrappedNoTrials = CTLViewsHoC(NoTrialsFound);
 
 	switch (trialListingPageType) {
 		case 'Disease': {
+			const hasDiseasePatterns = hasAllDynamicListingPatterns(
+				trialListingPageType
+			);
 			const WrappedDisease = CTLViewsHoC(Disease);
 
 			// This is a map of the parameters and types of params that is
@@ -48,10 +100,21 @@ const App = () => {
 					textReplacementKey: 'disease',
 					type: 'listing-information',
 				},
+				{
+					paramName: 'type',
+					textReplacementKey: 'trial_type',
+					type: 'trial-type',
+				},
+				{
+					paramName: 'interCodeOrPurl',
+					textReplacementKey: 'intervention',
+					type: 'listing-information',
+				},
 			];
 
-			// If both banner images are present, set the disease routes.
-			if (hasBannerImages) {
+			// If all dynamic listing patterns and corresponding params
+			// and both banner images are present, set the disease routes.
+			if (hasDiseasePatterns && hasBannerImages) {
 				dynamicRoutes = (
 					<Routes>
 						<Route
@@ -73,15 +136,25 @@ const App = () => {
 								/>
 							}
 						/>
+						<Route
+							path={CodeOrPurlWithTypeAndInterCodeOrPurlPath()}
+							element={
+								<WrappedDisease
+									redirectPath={CodeOrPurlWithTypeAndInterCodeOrPurlPath}
+									routeParamMap={diseaseRouteParamMap}
+								/>
+							}
+						/>
 						<Route path="/*" element={<PageNotFound />} />
 					</Routes>
 				);
 			} else {
+				const params = getInvalidParams(hasDiseasePatterns, hasBannerImages);
 				dynamicRoutes = (
 					<Routes>
 						<Route
 							path="/*"
-							element={<InvalidParameters paramName={imageParams} />}
+							element={<InvalidParameters paramName={params} />}
 						/>
 					</Routes>
 				);

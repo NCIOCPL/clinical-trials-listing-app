@@ -16,7 +16,6 @@ const trastuzumabFile = `trastuzumab-response.json`;
 describe('<Intervention />', () => {
 	it('should render <ResultsList /> component', async () => {
 		const basePath = '/';
-		const browserTitle = 'Clinical Trials Using {{intervention_label}}';
 		const canonicalHost = 'https://www.cancer.gov';
 		const data = [
 			{
@@ -29,15 +28,20 @@ describe('<Intervention />', () => {
 			},
 		];
 		const detailedViewPagePrettyUrlFormatter = '/clinicaltrials/{{nci_id}}';
-		const introText =
-			'<p>Clinical trials are research studies that involve people. The clinical trials on this list are studying {{intervention_normalized}}.</p>';
-		const metaDescription =
-			'Find clinical trials using {{intervention_normalized}}.';
-		const noTrialsHtml =
-			'<p>There are currently no available trials using {{intervention_normalized}}.</p>';
-		const pageTitle = 'Clinical Trials Using {{intervention_label}}';
 		const title = 'NCI Clinical Trials';
 		const trialListingPageType = 'Intervention';
+		const dynamicListingPatterns = {
+			Intervention: {
+				browserTitle: 'Clinical Trials Using {{intervention_label}}',
+				introText:
+					'<p>Clinical trials are research studies that involve people. The clinical trials on this list are studying {{intervention_normalized}}.</p>',
+				metaDescription:
+					'Find clinical trials using {{intervention_normalized}}.',
+				noTrialsHtml:
+					'<p>There are currently no available trials using {{intervention_normalized}}.</p>',
+				pageTitle: 'Clinical Trials Using {{intervention_label}}',
+			},
+		};
 
 		const trialResults = getFixture(`${fixturePath}/${trastuzumabFile}`);
 
@@ -45,13 +49,10 @@ describe('<Intervention />', () => {
 			{
 				appId: 'mockAppId',
 				basePath,
-				browserTitle,
 				canonicalHost,
 				detailedViewPagePrettyUrlFormatter,
-				introText,
-				metaDescription,
-				noTrialsHtml,
-				pageTitle,
+				dynamicListingPatterns,
+				itemsPerPage: 25,
 				title,
 				trialListingPageType,
 			},
@@ -68,11 +69,24 @@ describe('<Intervention />', () => {
 			payload: trialResults,
 		});
 
+		const redirectPath = () => '/notrials';
+		const routeParamMap = [
+			{
+				paramName: 'codeOrPurl',
+				textReplacementKey: 'disease',
+				type: 'listing-information',
+			},
+		];
+
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
 					<MemoryRouter initialEntries={['/']}>
-						<Intervention data={data} />
+						<Intervention
+							routeParamMap={routeParamMap}
+							routePath={redirectPath}
+							data={data}
+						/>
 					</MemoryRouter>
 				</MockAnalyticsProvider>
 			);

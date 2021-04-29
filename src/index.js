@@ -22,7 +22,7 @@ import { ErrorBoundary } from './views';
 
 /**
  * Initializes the Clinical Trials Listing App.
- * @param {object} params - Configuration for the app
+ * @param {any} params - Configuration for the app
  */
 const initialize = ({
 	analyticsChannel = 'Clinical Trials',
@@ -40,6 +40,7 @@ const initialize = ({
 	cisBannerImgUrlLarge = null,
 	cisBannerImgUrlSmall = null,
 	browserTitle = '{{disease_label}} Clinical Trials',
+	dynamicListingPatterns = null,
 	detailedViewPagePrettyUrlFormatter = '',
 	introText = '',
 	itemsPerPage = 25,
@@ -76,6 +77,7 @@ const initialize = ({
 		cisBannerImgUrlLarge,
 		cisBannerImgUrlSmall,
 		detailedViewPagePrettyUrlFormatter,
+		dynamicListingPatterns,
 		browserTitle,
 		canonicalHost,
 		introText,

@@ -2,10 +2,8 @@ Feature: As a user, I would like to view the trial results for an intervention l
 
   Scenario: View intervention listing page results with c-code parameter
     Given "trialListingPageType" is set to "Intervention"
-    And "pageTitle" is set to "Clinical Trials Using {{intervention_label}}"
-		And "browserTitle" is set to "Clinical Trials Using {{intervention_label}}"
-		And "introText" is set to "<p>Clinical trials are research studies that involve people. The clinical trials on this list are studying Trastuzumab. All trials on the list are NCI-supported clinical trials, which are sponsored or otherwise financially supported by NCI.</p><p>NCI’s <a href=\"/about-cancer/treatment/clinical-trials/what-are-trials\">basic information about clinical trials</a> explains the types and phases of trials and how they are carried out. Clinical trials look at new ways to prevent, detect, or treat disease. You may want to think about taking part in a clinical trial. Talk to your doctor for help in deciding if one is right for you.</p>"
-		Given the user navigates to "/C1647?cfg=1"
+    And "dynamicListingPatterns" object is set to "Intervention"
+    Given the user navigates to "/C1647?cfg=1"
     Then the page title is "Clinical Trials Using Trastuzumab"
     Then the system displays 1 paragraph "Clinical trials are research studies that involve people. The clinical trials on this list are studying Trastuzumab. All trials on the list are NCI-supported clinical trials, which are sponsored or otherwise financially supported by NCI."
     Then the system displays 2 paragraph "NCI’s basic information about clinical trials explains the types and phases of trials and how they are carried out. Clinical trials look at new ways to prevent, detect, or treat disease. You may want to think about taking part in a clinical trial. Talk to your doctor for help in deciding if one is right for you."
@@ -16,18 +14,16 @@ Feature: As a user, I would like to view the trial results for an intervention l
 
   Scenario: View intervention listing page metadata with c-code parameter
     Given "trialListingPageType" is set to "Intervention"
-    And "pageTitle" is set to "Clinical Trials Using {{intervention_label}}"
-		And "browserTitle" is set to "Clinical Trials Using {{intervention_label}}"
-		And "introText" is set to "<p>Clinical trials are research studies that involve people. The clinical trials on this list are studying Trastuzumab. All trials on the list are NCI-supported clinical trials, which are sponsored or otherwise financially supported by NCI.</p><p>NCI’s <a href=\"/about-cancer/treatment/clinical-trials/what-are-trials\">basic information about clinical trials</a> explains the types and phases of trials and how they are carried out. Clinical trials look at new ways to prevent, detect, or treat disease. You may want to think about taking part in a clinical trial. Talk to your doctor for help in deciding if one is right for you.</p>"
-		And "siteName" is set to "National Cancer Institute"
+    And "dynamicListingPatterns" object is set to "Intervention"
+    And "siteName" is set to "National Cancer Institute"
     When the user navigates to "/C1647?cfg=1"
     Then the title tag should be "Clinical Trials Using Trastuzumab - National Cancer Institute"
     And the page contains meta tags with the following properties
-      | property       | content                                     																																					                    |
-      | og:title       | Clinical Trials Using Trastuzumab               																													                                |
-      | og:url         | http://localhost:3000/trastuzumab                                       																															  	|
-      | og:description | NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials studying Trastuzumab. |
+      | property       | content                                                                                                                        |
+      | og:title       | Clinical Trials Using Trastuzumab                                                                                              |
+      | og:url         | http://localhost:3000/trastuzumab                                                                                              |
+      | og:description | NCI supports clinical trials that test new and more effective ways to treat cancer. Find clinical trials studying trastuzumab. |
     And the page contains meta tags with the following names
-      | name        | content                                 																																				                          	|
-      | description | NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials studying Trastuzumab.    |
+      | name        | content                                                                                                                        |
+      | description | NCI supports clinical trials that test new and more effective ways to treat cancer. Find clinical trials studying trastuzumab. |
     And there is a canonical link with the href "https://www.cancer.gov/trastuzumab"

@@ -14,34 +14,54 @@ const NoTrialsFound = ({ routeParamMap, data }) => {
 	const [
 		{
 			baseHost,
-			browserTitle,
 			canonicalHost,
+			dynamicListingPatterns,
 			language,
-			pageTitle,
-			metaDescription,
-			noTrialsHtml,
 			siteName,
 			trialListingPageType,
 		},
 	] = useStateValue();
 
+	const listingPatternIndex = routeParamMap.length - 1;
+	const listingPattern = Object.values(dynamicListingPatterns)[
+		listingPatternIndex
+	];
+
 	const setupReplacementText = () => {
 		// Replace tokens within page title, browser title, meta description, and no trials html
 		const context = data.reduce((ac, info, idx) => {
 			const contextEntryInfo = routeParamMap[idx];
+
+			if (contextEntryInfo.textReplacementKey !== 'trial_type') {
+				return {
+					...ac,
+					[`${contextEntryInfo.textReplacementKey}_label`]: info.name.label,
+					[`${contextEntryInfo.textReplacementKey}_normalized`]: info.name
+						.normalized,
+				};
+			}
+
 			return {
 				...ac,
-				[`${contextEntryInfo.textReplacementKey}_label`]: info.name.label,
-				[`${contextEntryInfo.textReplacementKey}_normalized`]: info.name
-					.normalized,
+				[`${contextEntryInfo.textReplacementKey}_label`]: info.label,
+				[`${contextEntryInfo.textReplacementKey}_normalized`]: info.label.toLowerCase(),
 			};
 		}, {});
 
 		return {
-			pageTitle: TokenParser.replaceTokens(pageTitle, context),
-			browserTitle: TokenParser.replaceTokens(browserTitle, context),
-			metaDescription: TokenParser.replaceTokens(metaDescription, context),
-			noTrialsHtml: TokenParser.replaceTokens(noTrialsHtml, context),
+			pageTitle: TokenParser.replaceTokens(listingPattern.pageTitle, context),
+			browserTitle: TokenParser.replaceTokens(
+				listingPattern.browserTitle,
+				context
+			),
+			metaDescription: TokenParser.replaceTokens(
+				listingPattern.metaDescription,
+				context
+			),
+			noTrialsHtml: TokenParser.replaceTokens(
+				listingPattern.noTrialsHtml,
+				context
+			),
 		};
 	};
 
@@ -50,9 +70,17 @@ const NoTrialsFound = ({ routeParamMap, data }) => {
 	useEffect(() => {
 		const paramTracking = data.reduce((ac, info, idx) => {
 			const contextEntryInfo = routeParamMap[idx];
+
+			if (contextEntryInfo.textReplacementKey !== 'trial_type') {
+				return {
+					...ac,
+					[`${contextEntryInfo.textReplacementKey}Name`]: info.name.normalized,
+				};
+			}
+
 			return {
 				...ac,
-				[`${contextEntryInfo.textReplacementKey}Name`]: info.name.normalized,
+				[`${contextEntryInfo.textReplacementKey}`]: info.idString,
 			};
 		}, {});
 
