@@ -30,7 +30,6 @@ ComponentWithLocation.propTypes = {
 describe('<Disease />', () => {
 	it('Should assert page is redirected to No Trials Found', async () => {
 		const basePath = '/';
-		const browserTitle = '{{disease_name}} Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
 		const data = [
 			{
@@ -43,26 +42,27 @@ describe('<Disease />', () => {
 			},
 		];
 		const detailedViewPagePrettyUrlFormatter = '/clinicaltrials/{{nci_id}}';
-		const introText =
-			'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>';
-		const metaDescription = 'Find clinical trials for {{disease_normalized}}.';
-		const noTrialsHtml =
-			'<p>There are currently no available trials for {{disease_normalized}}.</p>';
-		const pageTitle = '{{disease_label}} Clinical Trials';
 		const title = 'NCI Clinical Trials';
 		const trialListingPageType = 'Disease';
+		const dynamicListingPatterns = {
+			Disease: {
+				browserTitle: '{{disease_name}} Clinical Trials',
+				introText:
+					'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>',
+				metaDescription: 'Find clinical trials for {{disease_normalized}}.',
+				noTrialsHtml:
+					'<p>There are currently no available trials for {{disease_normalized}}.</p>',
+				pageTitle: '{{disease_label}} Clinical Trials',
+			},
+		};
 
 		useStateValue.mockReturnValue([
 			{
 				appId: 'mockAppId',
 				basePath,
-				browserTitle,
 				canonicalHost,
 				detailedViewPagePrettyUrlFormatter,
-				introText,
-				metaDescription,
-				noTrialsHtml,
-				pageTitle,
+				dynamicListingPatterns,
 				title,
 				trialListingPageType,
 			},
@@ -79,8 +79,24 @@ describe('<Disease />', () => {
 			}),
 		};
 
+		const redirectPath = () => '/notrials';
+
+		const routeParamMap = [
+			{
+				paramName: 'codeOrPurl',
+				textReplacementKey: 'disease',
+				type: 'listing-information',
+			},
+		];
+
 		const DiseaseWithData = () => {
-			return <Disease data={data} />;
+			return (
+				<Disease
+					routeParamMap={routeParamMap}
+					routePath={redirectPath}
+					data={data}
+				/>
+			);
 		};
 
 		await act(async () => {
@@ -111,7 +127,6 @@ describe('<Disease />', () => {
 
 	it('Should assert page is redirected to code when pretty URL is absent', async () => {
 		const basePath = '/';
-		const browserTitle = '{{disease_name}} Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
 		const data = [
 			{
@@ -124,26 +139,27 @@ describe('<Disease />', () => {
 			},
 		];
 		const detailedViewPagePrettyUrlFormatter = '/clinicaltrials/{{nci_id}}';
-		const introText =
-			'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>';
-		const metaDescription = 'Find clinical trials for {{disease_normalized}}.';
-		const noTrialsHtml =
-			'<p>There are currently no available trials for {{disease_normalized}}.</p>';
-		const pageTitle = '{{disease_label}} Clinical Trials';
 		const title = 'NCI Clinical Trials';
 		const trialListingPageType = 'Disease';
+		const dynamicListingPatterns = {
+			Disease: {
+				browserTitle: '{{disease_name}} Clinical Trials',
+				introText:
+					'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>',
+				metaDescription: 'Find clinical trials for {{disease_normalized}}.',
+				noTrialsHtml:
+					'<p>There are currently no available trials for {{disease_normalized}}.</p>',
+				pageTitle: '{{disease_label}} Clinical Trials',
+			},
+		};
 
 		useStateValue.mockReturnValue([
 			{
 				appId: 'mockAppId',
 				basePath,
-				browserTitle,
 				canonicalHost,
 				detailedViewPagePrettyUrlFormatter,
-				introText,
-				metaDescription,
-				noTrialsHtml,
-				pageTitle,
+				dynamicListingPatterns,
 				title,
 				trialListingPageType,
 			},
@@ -160,8 +176,24 @@ describe('<Disease />', () => {
 			}),
 		};
 
+		const redirectPath = () => '/notrials';
+
+		const routeParamMap = [
+			{
+				paramName: 'codeOrPurl',
+				textReplacementKey: 'disease',
+				type: 'listing-information',
+			},
+		];
+
 		const DiseaseWithData = () => {
-			return <Disease data={data} />;
+			return (
+				<Disease
+					routeParamMap={routeParamMap}
+					routePath={redirectPath}
+					data={data}
+				/>
+			);
 		};
 
 		await act(async () => {

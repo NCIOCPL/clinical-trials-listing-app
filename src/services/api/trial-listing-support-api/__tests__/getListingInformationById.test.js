@@ -28,10 +28,10 @@ describe('Get listing information by id', () => {
 		};
 
 		const scope = nock('https://example.org')
-			.get('/listing-information/get?ccode=c1234')
+			.get('/listing-information/get?ccode=C1234')
 			.reply(200, expected);
 
-		const actual = await getListingInformationById(client, ['c1234']);
+		const actual = await getListingInformationById(client, ['C1234']);
 
 		expect(actual).toEqual(expected);
 		scope.isDone();

@@ -4,6 +4,8 @@ import { useStateValue } from '../store/store';
 const appPaths = {
 	BasePath: '/',
 	CodeOrPurlPath: '/:codeOrPurl',
+	CodeOrPurlWithTypeAndInterCodeOrPurlPath:
+		'/:codeOrPurl/:type/:interCodeOrPurl',
 	NoTrialsPath: '/notrials',
 };
 

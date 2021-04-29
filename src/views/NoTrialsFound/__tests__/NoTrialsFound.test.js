@@ -7,11 +7,16 @@ import { useStateValue } from '../../../store/store.js';
 import { MockAnalyticsProvider } from '../../../tracking';
 
 jest.mock('../../../store/store.js');
-
+jest.mock('react-router-dom', () => ({
+	...jest.requireActual('react-router-dom'),
+	useLocation: () => ({
+		pathname: '/notrials',
+		search: '?p1=chronic-fatigue-syndrome',
+	}),
+}));
 describe('<NoTrialsHtml />', () => {
 	it('Should assert NoTrialsHtml is displayed with replaced text', async () => {
 		const basePath = '/';
-		const browserTitle = '{{disease_name}} Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
 		const data = [
 			{
@@ -31,23 +36,25 @@ describe('<NoTrialsHtml />', () => {
 			},
 		];
 		const language = 'en';
-		const metaDescription = 'Find clinical trials for {{disease_normalized}}.';
-		const noTrialsHtml =
-			'<p>There are currently no available trials for {{disease_normalized}}.</p>';
-		const pageTitle = '{{disease_label}} Clinical Trials';
 		const title = 'NCI Clinical Trials';
 		const trialListingPageType = 'Disease';
+		const dynamicListingPatterns = {
+			Disease: {
+				browserTitle: '{{disease_name}} Clinical Trials',
+				metaDescription: 'Find clinical trials for {{disease_normalized}}.',
+				noTrialsHtml:
+					'<p>There are currently no available trials for {{disease_normalized}}.</p>',
+				pageTitle: '{{disease_label}} Clinical Trials',
+			},
+		};
 
 		useStateValue.mockReturnValue([
 			{
 				appId: 'mockAppId',
 				basePath,
-				browserTitle,
 				canonicalHost,
+				dynamicListingPatterns,
 				language,
-				metaDescription,
-				noTrialsHtml,
-				pageTitle,
 				title,
 				trialListingPageType,
 			},
@@ -56,7 +63,8 @@ describe('<NoTrialsHtml />', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/']}>
+					<MemoryRouter
+						initialEntries={['/notrials?p1=chronic-fatigue-syndrome']}>
 						<NoTrialsFound routeParamMap={routeParamMap} data={data} />
 					</MemoryRouter>
 				</MockAnalyticsProvider>

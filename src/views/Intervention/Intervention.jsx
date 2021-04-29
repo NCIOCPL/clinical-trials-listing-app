@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { useNavigate, useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { useTracking } from 'react-tracking';
 
 import { Pager, NoResults, ResultsList, Spinner } from '../../components';
@@ -16,8 +16,8 @@ import {
 	TokenParser,
 } from '../../utils';
 
-const Intervention = ({ data: [data] }) => {
-	const { CodeOrPurlPath, NoTrialsPath } = useAppPaths();
+const Intervention = ({ routeParamMap, routePath, data }) => {
+	const { NoTrialsPath } = useAppPaths();
 	const location = useLocation();
 	const [trialsPayload, setTrialsPayload] = useState(null);
 	const navigate = useNavigate();
@@ -26,22 +26,15 @@ const Intervention = ({ data: [data] }) => {
 	const [
 		{
 			baseHost,
-			browserTitle,
 			canonicalHost,
 			detailedViewPagePrettyUrlFormatter,
-			introText,
+			dynamicListingPatterns,
 			itemsPerPage,
 			language,
-			metaDescription,
-			pageTitle,
 			siteName,
 			trialListingPageType,
 		},
 	] = useStateValue();
-
-	const { conceptId, name, prettyUrlName } = data;
-
-	const interventionParam = prettyUrlName ? prettyUrlName : conceptId.join(',');
 
 	const pn = getKeyValueFromQueryString('pn', search.toLowerCase());
 	const pagerDefaults = {
@@ -52,21 +45,65 @@ const Intervention = ({ data: [data] }) => {
 	const [pager, setPager] = useState(pagerDefaults);
 
 	const setupRequestFilters = () => {
-		return { 'arms.interventions.intervention_code': conceptId };
+		const query = data.reduce((acQuery, paramData, idx) => {
+			const paramInfo = routeParamMap[idx];
+			switch (paramInfo.paramName) {
+				case 'codeOrPurl':
+					return {
+						...acQuery,
+						'arms.interventions.intervention_code': paramData.conceptId,
+					};
+				case 'type':
+					return {
+						...acQuery,
+						'primary_purpose.primary_purpose_code': paramData.idString,
+					};
+				default:
+					throw new Error(`Unknown parameter ${paramInfo.paramName}`);
+			}
+		}, {});
+		return query;
 	};
 
 	const setupReplacementText = () => {
 		// Replace tokens within page title, browser title, intro text, and meta description
-		const context = {
-			intervention_label: name.label,
-			intervention_normalized: name.normalized,
-		};
+		const context = data.reduce((acQuery, paramData, idx) => {
+			const paramInfo = routeParamMap[idx];
+
+			switch (paramInfo.paramName) {
+				case 'codeOrPurl':
+					return {
+						...acQuery,
+						intervention_label: paramData.name.label,
+						intervention_normalized: paramData.name.normalized,
+					};
+				case 'type':
+					return {
+						...acQuery,
+						trial_type_label: paramData.label,
+						trial_type_normalized: paramData.label.toLowerCase(),
+					};
+				default:
+					throw new Error(`Unknown parameter type ${paramInfo.paramName}`);
+			}
+		}, {});
+
+		const listingPatternIndex = routeParamMap.length - 1;
+		const listingPattern = Object.values(dynamicListingPatterns)[
+			listingPatternIndex
+		];
 
 		return {
-			pageTitle: TokenParser.replaceTokens(pageTitle, context),
-			browserTitle: TokenParser.replaceTokens(browserTitle, context),
-			introText: TokenParser.replaceTokens(introText, context),
-			metaDescription: TokenParser.replaceTokens(metaDescription, context),
+			pageTitle: TokenParser.replaceTokens(listingPattern.pageTitle, context),
+			browserTitle: TokenParser.replaceTokens(
+				listingPattern.browserTitle,
+				context
+			),
+			introText: TokenParser.replaceTokens(listingPattern.introText, context),
+			metaDescription: TokenParser.replaceTokens(
+				listingPattern.metaDescription,
+				context
+			),
 		};
 	};
 
@@ -96,7 +133,24 @@ const Intervention = ({ data: [data] }) => {
 				// So this is handling the redirect to the no trials page.
 				// it is the job of the dynamic route views to property
 				// set the p1,p2,p3 parameters.
-				navigate(`${NoTrialsPath()}?p1=${interventionParam}`, {
+				const redirectParams = data.reduce((acQuery, paramData, idx) => {
+					const paramInfo = routeParamMap[idx];
+
+					switch (paramInfo.paramName) {
+						case 'codeOrPurl': {
+							return `p${idx + 1}=${
+								paramData.prettyUrlName
+									? paramData.prettyUrlName
+									: paramData.conceptId.join(',')
+							}`;
+						}
+						case 'type': {
+							return `${acQuery}&p${idx + 1}=${paramData.prettyUrlName}`;
+						}
+					}
+				}, {});
+
+				navigate(`${NoTrialsPath()}?${redirectParams}`, {
 					replace: true,
 					state: {
 						redirectStatus: redirectStatusCode,
@@ -107,6 +161,24 @@ const Intervention = ({ data: [data] }) => {
 			setTrialsPayload(queryResponse.payload);
 		}
 	}, [queryResponse.loading, queryResponse.payload]);
+
+	// Setup data for tracking
+	const trackingData = data.reduce((acQuery, paramData, idx) => {
+		const paramInfo = routeParamMap[idx];
+
+		switch (paramInfo.paramName) {
+			case 'codeOrPurl':
+				return {
+					...acQuery,
+					interventionName: paramData.name.normalized,
+				};
+			case 'type':
+				return {
+					...acQuery,
+					trialType: paramData.label.toLowerCase(),
+				};
+		}
+	}, {});
 
 	useEffect(() => {
 		// Fire off a page load event. Usually this would be in
@@ -124,8 +196,8 @@ const Intervention = ({ data: [data] }) => {
 				// for the event.
 				numberResults: queryResponse.payload?.total,
 				trialListingPageType: `${trialListingPageType.toLowerCase()}`,
-				interventionName: name.normalized,
-				trialType: 'none',
+				interventionName: trackingData.interventionName,
+				trialType: trackingData.trialType ?? 'none',
 			});
 		}
 	}, [trialsPayload]);
@@ -134,7 +206,29 @@ const Intervention = ({ data: [data] }) => {
 		setPager(pagination);
 		const { page } = pagination;
 		const qryStr = appendOrUpdateToQueryString(search, 'pn', page);
-		navigate(`${CodeOrPurlPath({ codeOrPurl: interventionParam })}${qryStr}`, {
+
+		const queryObject = data.reduce((acQuery, paramData, idx) => {
+			const paramInfo = routeParamMap[idx];
+
+			switch (paramInfo.paramName) {
+				case 'codeOrPurl': {
+					return {
+						...acQuery,
+						codeOrPurl: paramData.prettyUrlName
+							? paramData.prettyUrlName
+							: paramData.conceptId.join(','),
+					};
+				}
+				case 'type': {
+					return {
+						...acQuery,
+						type: paramData.label.toLowerCase(),
+					};
+				}
+			}
+		}, {});
+
+		navigate(`${routePath(queryObject)}${qryStr}`, {
 			replace: true,
 		});
 	};
@@ -240,6 +334,14 @@ const Intervention = ({ data: [data] }) => {
 };
 
 Intervention.propTypes = {
+	routeParamMap: PropTypes.arrayOf(
+		PropTypes.shape({
+			paramName: PropTypes.string,
+			textReplacementKey: PropTypes.string,
+			type: PropTypes.oneOf(['listing-information', 'trial-type']),
+		})
+	).isRequired,
+	routePath: PropTypes.func.isRequired,
 	data: PropTypes.arrayOf(
 		PropTypes.shape({
 			conceptId: PropTypes.array,

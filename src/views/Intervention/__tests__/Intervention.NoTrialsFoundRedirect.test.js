@@ -9,13 +9,6 @@ import { ClientContextProvider } from 'react-fetching-library';
 
 jest.mock('../../../store/store.js');
 
-jest.mock('react-router', () => ({
-	...jest.requireActual('react-router'), // use actual for all non-hook parts
-	useParams: () => ({
-		codeOrPurl: 'C1234',
-	}),
-}));
-
 let location;
 
 function ComponentWithLocation({ RenderComponent }) {
@@ -30,7 +23,6 @@ ComponentWithLocation.propTypes = {
 describe('<Intervention />', () => {
 	it('Should assert page is redirected to No Trials Found', async () => {
 		const basePath = '/';
-		const browserTitle = 'Clinical Trials Using {{intervention_label}}';
 		const canonicalHost = 'https://www.cancer.gov';
 		const data = [
 			{
@@ -43,27 +35,28 @@ describe('<Intervention />', () => {
 			},
 		];
 		const detailedViewPagePrettyUrlFormatter = '/clinicaltrials/{{nci_id}}';
-		const introText =
-			'<p>Clinical trials are research studies that involve people. The clinical trials on this list are studying {{intervention_normalized}}.</p>';
-		const metaDescription =
-			'Find clinical trials for {{intervention_normalized}}.';
-		const noTrialsHtml =
-			'<p>There are currently no available trials for {{intervention_normalized}}.</p>';
-		const pageTitle = '{{intervention_label}} Clinical Trials';
 		const title = 'NCI Clinical Trials';
 		const trialListingPageType = 'Intervention';
+		const dynamicListingPatterns = {
+			Intervention: {
+				browserTitle: 'Clinical Trials Using {{intervention_label}}',
+				introText:
+					'<p>Clinical trials are research studies that involve people. The clinical trials on this list are studying {{intervention_normalized}}.</p>',
+				metaDescription:
+					'Find clinical trials using {{intervention_normalized}}.',
+				noTrialsHtml:
+					'<p>There are currently no available trials using {{intervention_normalized}}.</p>',
+				pageTitle: 'Clinical Trials Using {{intervention_label}}',
+			},
+		};
 
 		useStateValue.mockReturnValue([
 			{
 				appId: 'mockAppId',
 				basePath,
-				browserTitle,
 				canonicalHost,
 				detailedViewPagePrettyUrlFormatter,
-				introText,
-				metaDescription,
-				noTrialsHtml,
-				pageTitle,
+				dynamicListingPatterns,
 				title,
 				trialListingPageType,
 			},
@@ -80,8 +73,23 @@ describe('<Intervention />', () => {
 			}),
 		};
 
+		const redirectPath = () => '/notrials';
+		const routeParamMap = [
+			{
+				paramName: 'codeOrPurl',
+				textReplacementKey: 'disease',
+				type: 'listing-information',
+			},
+		];
+
 		const InterventionWithData = () => {
-			return <Intervention data={data} />;
+			return (
+				<Intervention
+					routeParamMap={routeParamMap}
+					routePath={redirectPath}
+					data={data}
+				/>
+			);
 		};
 
 		await act(async () => {
@@ -112,7 +120,6 @@ describe('<Intervention />', () => {
 
 	it('Should assert page is redirected to code when pretty URL is absent', async () => {
 		const basePath = '/';
-		const browserTitle = 'Clinical Trials Using {{intervention_name}}';
 		const canonicalHost = 'https://www.cancer.gov';
 		const data = [
 			{
@@ -125,27 +132,28 @@ describe('<Intervention />', () => {
 			},
 		];
 		const detailedViewPagePrettyUrlFormatter = '/clinicaltrials/{{nci_id}}';
-		const introText =
-			'<p>Clinical trials are research studies that involve people. The clinical trials on this list are studying {{intervention_normalized}}.</p>';
-		const metaDescription =
-			'Find clinical trials for {{intervention_normalized}}.';
-		const noTrialsHtml =
-			'<p>There are currently no available trials for {{intervention_normalized}}.</p>';
-		const pageTitle = '{{intervention_label}} Clinical Trials';
 		const title = 'NCI Clinical Trials';
 		const trialListingPageType = 'Intervention';
+		const dynamicListingPatterns = {
+			Intervention: {
+				browserTitle: 'Clinical Trials Using {{intervention_label}}',
+				introText:
+					'<p>Clinical trials are research studies that involve people. The clinical trials on this list are studying {{intervention_normalized}}.</p>',
+				metaDescription:
+					'Find clinical trials using {{intervention_normalized}}.',
+				noTrialsHtml:
+					'<p>There are currently no available trials using {{intervention_normalized}}.</p>',
+				pageTitle: 'Clinical Trials Using {{intervention_label}}',
+			},
+		};
 
 		useStateValue.mockReturnValue([
 			{
 				appId: 'mockAppId',
 				basePath,
-				browserTitle,
 				canonicalHost,
 				detailedViewPagePrettyUrlFormatter,
-				introText,
-				metaDescription,
-				noTrialsHtml,
-				pageTitle,
+				dynamicListingPatterns,
 				title,
 				trialListingPageType,
 			},
@@ -162,8 +170,23 @@ describe('<Intervention />', () => {
 			}),
 		};
 
+		const redirectPath = () => '/notrials';
+		const routeParamMap = [
+			{
+				paramName: 'codeOrPurl',
+				textReplacementKey: 'disease',
+				type: 'listing-information',
+			},
+		];
+
 		const InterventionWithData = () => {
-			return <Intervention data={data} />;
+			return (
+				<Intervention
+					routeParamMap={routeParamMap}
+					routePath={redirectPath}
+					data={data}
+				/>
+			);
 		};
 
 		await act(async () => {

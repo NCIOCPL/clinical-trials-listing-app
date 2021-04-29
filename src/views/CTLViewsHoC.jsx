@@ -5,10 +5,14 @@ import { useNavigate, useLocation, useParams } from 'react-router';
 import { Spinner } from '../components';
 import { ErrorPage, PageNotFound } from './ErrorBoundary';
 import { useAppPaths, useListingSupport } from '../hooks';
+import { getTrialType } from '../services/api/actions';
+import {
+	appendOrUpdateToQueryString,
+	getIdOrNameAction,
+	getKeyValueFromQueryString,
+} from '../utils';
 
-import { appendOrUpdateToQueryString, getIdOrNameAction } from '../utils';
-
-// Let's use some constands for our state var so we can handle
+// Let's use some constants for our state var so we can handle
 // loading, loaded, 404 and error, without resorting to a reducer.
 const LOADING_STATE = 'loading_state';
 const LOADED_STATE = 'loaded_state';
@@ -29,7 +33,7 @@ const CTLViewsHoC = (WrappedView) => {
 		const navigate = useNavigate();
 		const { search } = location;
 
-		const [loadingState, setloadingState] = useState(LOADING_STATE);
+		const [loadingState, setLoadingState] = useState(LOADING_STATE);
 		// First thing we need to do is figure out what we are fetching.
 		// The route will be the notrials route.
 		const isNoTrials = location.pathname === NoTrialsPath();
@@ -40,7 +44,23 @@ const CTLViewsHoC = (WrappedView) => {
 				`You must supply a routeParamMap to your CTLViewsHoC wrapped component.`
 			);
 		}
-		const fetchActions = routeParamMap.map((param, idx) => {
+
+		// Remove any parameters we did not receive. Since react-router does not suck, we
+		// can be sure that the params passed to us will be what we expect. (e.g. it would
+		// not allow /:codeOrPurl/:trial_type/:interventionCodeOrPurl to work with trialtype
+		// is not in the params list.)
+		//
+		// Remember that the routeParamMap has the parameters in the order they can appear.
+		// if the first element of routeParamMap is ':type', but your route actually has
+		// ':codeOrPurl' first, then you are doing this wrong. In that case, your routeParamMap
+		// needs to have ':codeOrPurl' first. This is why we can assume order of the
+		// filtered list will be maintained, and that no "gaps" will be created.
+		const filteredRouteParamMap = isNoTrials
+			? routeParamMap.filter((param, idx) => search.includes(`p${idx + 1}=`))
+			: routeParamMap.filter((param) => params[param.paramName]);
+
+		// Collate provided fetch actions and filter out actions with no payloads
+		const fetchActions = filteredRouteParamMap.map((param, idx) => {
 			switch (param.type) {
 				case 'listing-information': {
 					return getIdOrNameAction(
@@ -50,10 +70,18 @@ const CTLViewsHoC = (WrappedView) => {
 						search
 					);
 				}
+				case 'trial-type': {
+					return getTrialType({
+						trialType: !isNoTrials
+							? params[param.paramName]
+							: getKeyValueFromQueryString(`p${idx + 1}`, search),
+					});
+				}
 				default:
 					throw new Error(`${param.type} route param type is unknown.`);
 			}
 		});
+
 		// Initiate the fetch here. This will be called no matter what, we will rely
 		// on useListingSupport to handle any caching.
 		const getListingInfo = useListingSupport(fetchActions);
@@ -73,7 +101,7 @@ const CTLViewsHoC = (WrappedView) => {
 				if (getListingInfo.payload.some((res) => res === null)) {
 					// Handle 404. Currently this is a bit hacky, but
 					// we will just throw here for the ErrorBoundary.
-					setloadingState(NOTFOUND_STATE);
+					setLoadingState(NOTFOUND_STATE);
 					return;
 				}
 
@@ -95,21 +123,33 @@ const CTLViewsHoC = (WrappedView) => {
 						);
 
 						// Setup redirect params
-						const redirectParams = routeParamMap.reduce((ac, param, idx) => {
-							switch (param.type) {
-								case 'listing-information': {
-									return {
-										...ac,
-										[param.paramName]: getListingInfo.payload[idx].prettyUrlName
-											? getListingInfo.payload[idx].prettyUrlName
-											: getListingInfo.payload[idx].conceptId.join(','),
-									};
+						const redirectParams = filteredRouteParamMap.reduce(
+							(ac, param, idx) => {
+								switch (param.type) {
+									case 'listing-information': {
+										return {
+											...ac,
+											[param.paramName]: getListingInfo.payload[idx]
+												?.prettyUrlName
+												? getListingInfo.payload[idx]?.prettyUrlName
+												: getListingInfo.payload[idx]?.conceptId.join(','),
+										};
+									}
+									case 'trial-type': {
+										return {
+											...ac,
+											[param.paramName]: getListingInfo.payload[idx]
+												?.prettyUrlName
+												? getListingInfo.payload[idx]?.prettyUrlName
+												: getListingInfo.payload[idx]?.idString,
+										};
+									}
+									// We know by this point if any types were invalid, so no need to
+									// have a default only to never get code coverage.
 								}
-								// We know by this point if any types were invalid, so no need to
-								// have a default only to never get code coverage.
-							}
-						}, {});
-
+							},
+							{}
+						);
 						// Navigate to the passed in redirectPath. This is really cause
 						// we can't easily figure out the current route from react-router.
 						navigate(`${redirectPath(redirectParams)}${queryString}`, {
@@ -118,16 +158,16 @@ const CTLViewsHoC = (WrappedView) => {
 								redirectStatus: '301',
 							},
 						});
-						setloadingState(REDIR_STATE);
+						setLoadingState(REDIR_STATE);
 						return;
 					}
 				}
 
 				// At this point, the wrapped view is going to handle this request.
-				setloadingState(LOADED_STATE);
+				setLoadingState(LOADED_STATE);
 			} else if (!getListingInfo.loading && getListingInfo.error) {
 				// Raise error for ErrorBoundary for now.
-				setloadingState(ERROR_STATE);
+				setLoadingState(ERROR_STATE);
 			}
 			// The page should change its states when either the listing info changes
 			// or the fetchActions change.
@@ -145,13 +185,20 @@ const CTLViewsHoC = (WrappedView) => {
 							if (isNoTrials) {
 								return (
 									<WrappedView
-										routeParamMap={routeParamMap}
+										routeParamMap={filteredRouteParamMap}
 										{...props}
 										data={getListingInfo.payload}
 									/>
 								);
 							} else {
-								return <WrappedView {...props} data={getListingInfo.payload} />;
+								return (
+									<WrappedView
+										routeParamMap={filteredRouteParamMap}
+										routePath={redirectPath}
+										{...props}
+										data={getListingInfo.payload}
+									/>
+								);
 							}
 						default:
 							return <Spinner />;

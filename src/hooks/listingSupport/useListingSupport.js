@@ -1,17 +1,18 @@
 import { useEffect, useReducer, useRef, useCallback } from 'react';
-//import axios from 'axios';
-import { useStateValue } from '../../store/store';
-import {
-	getListingInformationById,
-	getListingInformationByName,
-} from '../../services/api/trial-listing-support-api';
-import reducer from './reducer';
+
 import {
 	setSuccessfulFetch,
 	setFailedFetch,
 	setLoading,
 	setAborted,
 } from './actions';
+import reducer from './reducer';
+import {
+	getListingInformationById,
+	getListingInformationByName,
+	getTrialType,
+} from '../../services/api/trial-listing-support-api';
+import { useStateValue } from '../../store/store';
 
 /**
  * An action representing a listing support API request.
@@ -52,6 +53,9 @@ const internalFetch = async (trialListingSupportClient, actions) => {
 						trialListingSupportClient,
 						req.payload
 					);
+				}
+				case 'trialType': {
+					return getTrialType(trialListingSupportClient, req.payload);
 				}
 				default: {
 					throw new Error(`Unknown trial listing support request`);

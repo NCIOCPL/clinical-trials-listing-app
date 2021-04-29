@@ -30,9 +30,9 @@ Then('user navigates to non-existent page {string}', (path) => {
 });
 
 /*
-    --------------------
-        Page Visits
-    --------------------
+	--------------------
+		Page Visits
+	--------------------
 */
 Given('the user visits the home page', () => {
 	cy.visit('/');
@@ -70,10 +70,17 @@ Given('{string} is set as a json string to {string}', (key, param) => {
 	});
 });
 
+Given('{string} object is set to {string}', (key, param) => {
+	cy.on('window:before:load', (win) => {
+		const newObj = {};
+		newObj[param] = win.INT_TEST_APP_PARAMS[key][param];
+		win.INT_TEST_APP_PARAMS[key] = newObj
+	});
+});
 /*
-    ----------------------------------------
-      API Error Page
-    ----------------------------------------
+	----------------------------------------
+	  API Error Page
+	----------------------------------------
 */
 Then('the user gets an error page that reads {string}', (errorMessage) => {
 	Cypress.on('uncaught:exception', (err, runnable) => {
@@ -89,9 +96,9 @@ And('the page displays {string}', (text) => {
 });
 
 /*
-    ----------------------------------------
-      Analytics
-    ----------------------------------------
+	----------------------------------------
+	  Analytics
+	----------------------------------------
 */
 Then('browser waits', () => {
 	cy.wait(2000);
@@ -115,18 +122,18 @@ And('the following links and texts exist on the page', (dataTable) => {
 });
 
 /*
-    -----------------------
-        No Results Page
-    -----------------------
+	-----------------------
+		No Results Page
+	-----------------------
 */
 And('the system displays message {string}', (noTrialsText) => {
 	cy.get('div p').should('have.text', noTrialsText);
 });
 
 /*
-    ----------------------
-        Page Not Found
-    ----------------------
+	----------------------
+		Page Not Found
+	----------------------
 */
 
 And('the text {string} appears on the page', (text) => {
@@ -145,9 +152,9 @@ And('the search bar appears below', () => {
 });
 
 /*
-    -----------------------
-        Manual Page results
-    -----------------------
+	-----------------------
+		Manual Page results
+	-----------------------
 */
 
 And(
@@ -187,9 +194,9 @@ And(
 );
 
 /*
-    -----------------------
-        Manual Page results
-    -----------------------
+	-----------------------
+		Manual Page results
+	-----------------------
 */
 Given('screen breakpoint is set to {string}', (screenSize) => {
 	if (screenSize === 'desktop') cy.viewport(1025, 600);
@@ -198,9 +205,9 @@ Given('screen breakpoint is set to {string}', (screenSize) => {
 });
 
 /*
-    -----------------------
-        Pager
-    -----------------------
+	-----------------------
+		Pager
+	-----------------------
 */
 
 Then('the system displays {string} {string}', (perPage, total) => {
@@ -248,9 +255,9 @@ When('pager is not displayed', () => {
 });
 
 /*
-    -----------------------
-        Page Not Found
-    -----------------------
+	-----------------------
+		Page Not Found
+	-----------------------
 */
 
 And('the text {string} appears on the page', (text) => {
@@ -258,9 +265,9 @@ And('the text {string} appears on the page', (text) => {
 });
 
 /*
-    --------------------------
-        Invalid Parameters
-    --------------------------
+	--------------------------
+		Invalid Parameters
+	--------------------------
 */
 
 Then('the error message {string} appears on the page', (text) => {
@@ -268,9 +275,9 @@ Then('the error message {string} appears on the page', (text) => {
 });
 
 /*
-    -----------------------
-        Redirect
-    -----------------------
+	-----------------------
+		Redirect
+	-----------------------
 */
 
 Then('the user is redirected to {string}', (redirectUrl) => {
@@ -301,4 +308,8 @@ When('user clicks on result item {int}', (resultIndex) => {
 	cy.get('a.ct-list-item__title')
 		.eq(resultIndex - 1)
 		.trigger('click', { followRedirect: false });
+});
+
+And('user is brought to the top of a page', () => {
+	cy.window().its('scrollY').should('equal', 0);
 });
