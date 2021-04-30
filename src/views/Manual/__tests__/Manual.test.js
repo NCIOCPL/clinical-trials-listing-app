@@ -7045,4 +7045,53 @@ describe('<Manual />', () => {
 			screen.getByText('There are currently no available trials.')
 		).toBeInTheDocument();
 	});
+
+	test('should put a scroll position at top of page', async () => {
+		jest.spyOn(window, 'scrollTo');
+
+		const basePath = '/';
+		const noTrialsHtml = 'There are currently no available trials.';
+		const pageTitle = 'Manual Listing Page';
+		const requestFilters =
+			'{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose.primary_purpose_code": "treatment"}';
+		const title = 'NCI Clinical Trials';
+		const canonicalHost = 'https://www.cancer.gov';
+		const trialListingPageType = 'Manual';
+		const introText = 'Intro text';
+		useStateValue.mockReturnValue([
+			{
+				appId: 'mockAppId',
+				basePath,
+				introText,
+				noTrialsHtml,
+				pageTitle,
+				requestFilters,
+				title,
+				canonicalHost,
+				trialListingPageType,
+			},
+		]);
+
+		const client = {
+			query: async () => ({
+				error: false,
+				status: 200,
+				payload: {},
+			}),
+		};
+
+		await act(async () => {
+			wrapper = render(
+				<MockAnalyticsProvider>
+					<MemoryRouter initialEntries={['/']}>
+						<ClientContextProvider client={client}>
+							<Manual />
+						</ClientContextProvider>
+					</MemoryRouter>
+				</MockAnalyticsProvider>
+			);
+		});
+		expect(window.scrollTo).toHaveBeenCalledTimes(1);
+		expect(window.scrollTo).toHaveBeenLastCalledWith(0, 0);
+	});
 });

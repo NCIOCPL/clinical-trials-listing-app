@@ -51,6 +51,14 @@ const Manual = () => {
 			size: pager.pageUnit,
 		})
 	);
+	const scrollToTheTop = () => {
+		window.scrollTo(0, 0);
+	};
+
+	// every time page loads the scroll should be positioned at the top
+	useEffect(() => {
+		scrollToTheTop();
+	}, []);
 
 	useEffect(() => {
 		if (!queryResponse.loading && queryResponse.payload) {
@@ -83,6 +91,9 @@ const Manual = () => {
 		const { page } = pagination;
 		const qryStr = appendOrUpdateToQueryString(search, 'pn', page);
 		navigate(`${BasePath()}${qryStr}`, { replace: true });
+		//since pagination does not reload the page, putting this
+		//here as well to bring scroll to the top after paging
+		scrollToTheTop();
 	};
 
 	const renderHelmet = () => {
