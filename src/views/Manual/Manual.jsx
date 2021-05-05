@@ -55,10 +55,10 @@ const Manual = () => {
 		window.scrollTo(0, 0);
 	};
 
-	// every time page loads the scroll should be positioned at the top
-	useEffect(() => {
-		scrollToTheTop();
-	}, []);
+	// // every time page loads the scroll should be positioned at the top
+	// useEffect(() => {
+	// 	scrollToTheTop();
+	// }, []);
 
 	useEffect(() => {
 		if (!queryResponse.loading && queryResponse.payload) {
