@@ -1,6 +1,6 @@
 {
 	"name": "@nciocpl/clinical-trials-listing-app",
-	"version": "1.0.0-beta.1",
+	"version": "1.0.0",
 	"description": "Clinical Trials Listing App",
 	"repository": {
 		"type": "git",
