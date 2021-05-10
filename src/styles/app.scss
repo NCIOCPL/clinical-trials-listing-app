@@ -1,0 +1,11 @@
+// molecules
+@import '../components/molecules/pager/pager';
+@import '../components/molecules/results-list/results-list-item/results-list-item';
+
+//views
+@import '../views/Manual/Manual';
+@import '../views/ErrorBoundary/PageNotFound';
+
+h1 {
+	margin-bottom: 20px;
+}

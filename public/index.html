@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#000000" />
+		<title>NCI Clinical Trials - National Cancer Institute</title>
+		<link rel="stylesheet" href="%PUBLIC_URL%/index.css" />
+		<link rel="stylesheet" href="%PUBLIC_URL%/__nci-dev__common.css" />
+		<style>
+			.hide {
+				display: none;
+			}
+		</style>
+		<script type="text/javascript">
+			// Only setup the handler if this is not running under cypress.
+			if (!window.Cypress) {
+				// Debugging for testing out new AnalyticsHandler.
+				(function () {
+					var pusher = function () {
+						// Get all the arguments, as push takes in n number of arguments.
+						for (var i = 0; i < arguments.length; i++) {
+							console.log(arguments[i]);
+						}
+					};
+					// Initialize the NCIDataLayer
+					window.NCIDataLayer = window.NCIDataLayer || [];
+					// Set our pusher if it is not already set
+					// this should avoid accidental re-initializations
+					if (window.NCIDataLayer.push === Array.prototype.push) {
+						// Process all the existing items until the queue is
+						// empty.
+						var existingItem;
+						while ((existingItem = window.NCIDataLayer.shift()) !== undefined) {
+							pusher(existingItem);
+						}
+						window.NCIDataLayer.push = pusher;
+					}
+				})();
+			}
+		</script>
+		<script type="text/javascript">
+			function getUrlVars() {
+				var vars = {};
+				var parts = window.location.href.replace(
+					/[?&]+([^=&]+)=([^&]*)/gi,
+					function (m, key, value) {
+						vars[key] = value;
+					}
+				);
+				return vars;
+			}
+			function getUrlParam(parameter, defaultvalue) {
+				var urlparameter = defaultvalue;
+				if (window.location.href.indexOf(parameter) > -1) {
+					urlparameter = getUrlVars()[parameter];
+				}
+				return urlparameter;
+			}
+			window.publicUrl = '%PUBLIC_URL%';
+			const configIndex = getUrlParam('cfg', '2');
+			window.currentConfig = configIndex;
+			const cfgs = [
+				{
+					analyticsChannel: 'Clinical Trials',
+					analyticsHandler: 'EddlAnalyticsHandler',
+					analyticsPublishedDate: 'unknown',
+					analyticsContentGroup: 'Clinical Trials: Custom',
+					apiEndpoint: 'https://clinicaltrialsapi.cancer.gov/v1/',
+					appId: '@@/DEFAULT_REACT_APP_ID',
+					baseHost: 'http://localhost:3000',
+					basePath: '/',
+					browserTitle: '',
+					canonicalHost: 'https://www.cancer.gov',
+					introText: '',
+					itemsPerPage: 25,
+					metaDescription: '',
+					noTrialsHtml: '',
+					pageTitle: '',
+					requestFilters: '',
+					rootId: 'NCI-app-root',
+					siteName: 'National Cancer Institute',
+					title: 'NCI Clinical Trials',
+					trialListingPageType: 'Disease',
+				},
+				{
+					analyticsChannel: 'Clinical Trials',
+					analyticsHandler: 'EddlAnalyticsHandler',
+					analyticsPublishedDate: 'unknown',
+					analyticsContentGroup: 'Clinical Trials: Custom',
+					apiEndpoint: 'https://clinicaltrialsapi.cancer.gov/v1/',
+					appId: '@@/DEFAULT_REACT_APP_ID',
+					baseHost: 'http://localhost:3000',
+					basePath: '/',
+					browserTitle: '',
+					canonicalHost: 'https://www.cancer.gov',
+					introText: '',
+					itemsPerPage: 25,
+					metaDescription: '',
+					noTrialsHtml: '',
+					pageTitle: '',
+					requestFilters: '',
+					rootId: 'NCI-app-root',
+					siteName: 'National Cancer Institute',
+					title: 'NCI Clinical Trials',
+					trialListingPageType: 'Intervention',
+				},
+				{
+					analyticsChannel: 'Clinical Trials',
+					analyticsHandler: 'EddlAnalyticsHandler',
+					analyticsPublishedDate: 'unknown',
+					analyticsContentGroup: 'Clinical Trials: Custom',
+					apiEndpoint: 'https://clinicaltrialsapi.cancer.gov/v1/',
+					appId: '@@/DEFAULT_REACT_APP_ID',
+					baseHost: 'http://localhost:3000',
+					basePath: '/',
+					browserTitle: 'Clinical Trials for Adult Brain Tumors',
+					canonicalHost: 'https://www.cancer.gov',
+					introText:
+						'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer. All trials on the list are <a class="definition" href="/Common/PopUps/popDefinition.aspx?id=CDR0000776051&amp;version=Patient&amp;language=English" onclick="javascript:popWindow("defbyid","CDR0000776051&amp;version=Patient&amp;language=English"); return false;">supported by NCI</a>.</p><p>NCI’s <a href="/about-cancer/treatment/clinical-trials/what-are-trials">basic information about clinical trials</a> explains the types and phases of trials and how they are carried out. Clinical trials look at new ways to prevent, detect, or treat disease. You may want to think about taking part in a clinical trial. Talk to your doctor for help in deciding if one is right for you.</p>',
+					itemsPerPage: 25,
+					metaDescription: 'Find clinical trials to treat adult brain tumors.',
+					noTrialsHtml:
+						'<p><strong>There are currently no available trials.</strong></p>',
+					pageTitle: 'Clinical Trials for Adult Brain Tumors',
+					requestFilters: {
+						'diseases.nci_thesaurus_concept_id': [
+							'C6954',
+							'C9372',
+							'C9375',
+							'C9094',
+							'C9370',
+							'C9374',
+							'C7710',
+							'C5967',
+							'C9091',
+							'C5797',
+							'C9373',
+							'C9376',
+							'C9371',
+							'C5116',
+							'C5115',
+						],
+						'primary_purpose.primary_purpose_code': 'treatment',
+					},
+					detailedViewPagePrettyUrlFormatter: '/clinicaltrials/{{nci_id}}',
+					rootId: 'NCI-app-root',
+					siteName: 'National Cancer Institute',
+					title: 'NCI Clinical Trials',
+					trialListingPageType: 'Manual',
+				},
+				{
+					analyticsChannel: 'Clinical Trials',
+					analyticsHandler: 'EddlAnalyticsHandler',
+					analyticsPublishedDate: 'unknown',
+					analyticsContentGroup: 'Clinical Trials: Custom',
+					apiEndpoint: 'https://clinicaltrialsapi.cancer.gov/v1/',
+					appId: '@@/DEFAULT_REACT_APP_ID',
+					baseHost: 'http://localhost:3000',
+					basePath: '/',
+					browserTitle: 'Clinical Trials for Adult Glioblastoma',
+					canonicalHost: 'https://www.cancer.gov',
+					introText: '',
+					itemsPerPage: 25,
+					metaDescription: 'Find clinical trials to treat adult glioblastoma.',
+					noTrialsHtml:
+						'<p><strong>There are currently no available trials.</strong></p>',
+					pageTitle: 'Clinical Trials for Adult Glioblastoma',
+					requestFilters: {
+						'diseases.nci_thesaurus_concept_id': [
+							'C68702',
+							'C9094',
+							'C9375',
+							'C9370',
+							'C27183',
+						],
+						'primary_purpose.primary_purpose_code': 'treatment',
+					},
+					detailedViewPagePrettyUrlFormatter: '/clinicaltrials/{{nci_id}}',
+					rootId: 'NCI-app-root',
+					siteName: 'National Cancer Institute',
+					title: 'NCI Clinical Trials',
+					trialListingPageType: 'Manual',
+				},
+				{
+					analyticsChannel: 'Clinical Trials',
+					analyticsHandler: 'EddlAnalyticsHandler',
+					analyticsPublishedDate: 'unknown',
+					analyticsContentGroup: 'Clinical Trials: Custom',
+					apiEndpoint: 'https://clinicaltrialsapi.cancer.gov/v1/',
+					appId: '@@/DEFAULT_REACT_APP_ID',
+					baseHost: 'http://localhost:3000',
+					basePath: '/',
+					browserTitle: 'Clinical Trials for Adult Metastatic Brain Tumors',
+					canonicalHost: 'https://www.cancer.gov',
+					introText: '',
+					itemsPerPage: 8,
+					metaDescription:
+						'Find clinical trials to treat adult metastatic brain tumors.',
+					noTrialsHtml:
+						'<p><strong>There are currently no available trials.</strong></p>',
+					pageTitle: 'Clinical Trials for Adult Metastatic Brain Tumors',
+					requestFilters: {
+						'diseases.nci_thesaurus_concept_id': ['C5816', 'C8550', 'C3813'],
+						'primary_purpose.primary_purpose_code': 'treatment',
+					},
+					detailedViewPagePrettyUrlFormatter: '/clinicaltrials/{{nci_id}}',
+					rootId: 'NCI-app-root',
+					siteName: 'National Cancer Institute',
+					title: 'NCI Clinical Trials',
+					trialListingPageType: 'Manual',
+				},
+				{
+					analyticsChannel: 'Clinical Trials',
+					analyticsHandler: 'EddlAnalyticsHandler',
+					analyticsPublishedDate: 'unknown',
+					analyticsContentGroup: 'Clinical Trials: Custom',
+					apiEndpoint: 'https://clinicaltrialsapi.cancer.gov/v1/',
+					appId: '@@/DEFAULT_REACT_APP_ID',
+					baseHost: 'http://localhost:3000',
+					basePath: '/',
+					browserTitle: 'Clinical Trials for Childhood Astrocytoma',
+					canonicalHost: 'https://www.cancer.gov',
+					introText: '',
+					itemsPerPage: 25,
+					metaDescription:
+						'Find clinical trials to treat childhood astrocytoma.',
+					noTrialsHtml:
+						'<p><strong>There are currently no available trials.</strong></p>',
+					pageTitle: 'Clinical Trials for Childhood Astrocytoma',
+					requestFilters: {
+						'diseases.nci_thesaurus_concept_id': [
+							'C124275',
+							'C115195',
+							'C7535',
+							'C7531',
+							'C115957',
+							'C6286',
+							'C6215',
+							'C114967',
+							'C4347',
+						],
+						'primary_purpose.primary_purpose_code': 'treatment',
+					},
+					detailedViewPagePrettyUrlFormatter: '/clinicaltrials/{{nci_id}}',
+					rootId: 'NCI-app-root',
+					siteName: 'National Cancer Institute',
+					title: 'NCI Clinical Trials',
+					trialListingPageType: 'Manual',
+				},
+			];
+
+			window.APP_PARAMS = cfgs[configIndex];
+		</script>
+	</head>
+	<body>
+		<noscript>You need to enable JavaScript to run this app.</noscript>
+		<div class="mock-header">
+			<div>
+				<img
+					class="logo"
+					src="https://www.cancer.gov/publishedcontent/images/images/design-elements/logos/nci-logo-full.__v1.svg"
+					alt="National Cancer Institiute"
+				/>
+			</div>
+		</div>
+
+		<main id="main-content" class="main-content">
+			<div class="general-page-body-container">
+				<div class="content-container contentzone">
+					<div id="NCI-app-root"></div>
+				</div>
+			</div>
+		</main>
+		<div class="jm-wrapper">
+			<select id="jm1" class="jumpmenu" aria-label="Select configuration">
+				<option value="0">Disease</option>
+				<option value="1">Intervention</option>
+				<option value="2">Manual - Adult Brain Tumors</option>
+				<option value="3">Manual - Adult Glioblastoma</option>
+				<option value="4">Manual - Adult Metastatic Brain Tumors</option>
+				<option value="5">Manual - Childhood Astrocytoma</option>
+			</select>
+		</div>
+		<script type="text/javascript">
+			document.getElementById('jm1').value = window.currentConfig;
+			function initJumpMenus() {
+				// Turns all <select> elements with the 'jumpmenu' class into jump menus
+				var selectElements = document.getElementsByTagName('select');
+				for (i = 0; i < selectElements.length; i++) {
+					// Check for the class and make sure the element has an ID
+					if (
+						selectElements[i].className == 'jumpmenu' &&
+						document.getElementById(selectElements[i].id) != ''
+					) {
+						jumpmenu = document.getElementById(selectElements[i].id);
+						jumpmenu.onchange = function () {
+							if (this.options[this.selectedIndex].value != '') {
+								// Redirect
+								location.href =
+									window.publicUrl +
+									'?cfg=' +
+									this.options[this.selectedIndex].value;
+							}
+						};
+					}
+				}
+				// Adds class to hide 'jump menu' if parameter in url is present
+				if (window.location.search.includes('hideJumpMenu')) {
+					var hideJumpMenu = getUrlVars()['hideJumpMenu'];
+					if (hideJumpMenu === 'true') {
+						var jumpMenuContainer = document.getElementById('jm1');
+						jumpMenuContainer.className += ' hide';
+					}
+				}
+			}
+			window.onload = function () {
+				initJumpMenus();
+			};
+		</script>
+	</body>
+</html>

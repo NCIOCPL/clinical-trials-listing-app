@@ -1,0 +1,18 @@
+{
+    "current_trial_status": [
+        "Active",
+        "Approved",
+        "Enrolling by Invitation",
+        "In Review",
+        "Temporarily Closed to Accrual",
+        "Temporarily Closed to Accrual and Intervention"
+    ],
+    "diseases.nci_thesaurus_concept_id": [
+        "chicken",
+        "foo",
+        "oknn"
+    ],
+    "primary_purpose.primary_purpose_code": "treatment",
+    "from": 0,
+    "size": 25
+}
