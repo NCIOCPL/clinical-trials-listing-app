@@ -1,0 +1,38 @@
+.cts-removable-tag {
+	display: inline-block;
+	background-color: #2a71a5;
+	border: 1px solid #2a71a5;
+	margin: 5px 3px;
+	height: 32px;
+	border-radius: 16px;
+	padding-left: 12px;
+	padding-right: 6px;
+	color: white;
+
+	&__button {
+		min-width: auto !important;
+		min-height: auto;
+		width: 18px;
+		height: 18px;
+		vertical-align: middle;
+		border-radius: 50%;
+		appearance: none;
+		background: #003366;
+		font-size: 11px;
+		color: white;
+		padding: 0;
+		text-align: center;
+		margin: 0 0 0 0.75rem;
+		cursor: pointer;
+		&:hover,
+		&:focus {
+			color: #036;
+			background: #fff;
+			font-weight: bold;
+		}
+	}
+	&__label {
+		font-size: 14px;
+		line-height: 28px;
+	}
+}
