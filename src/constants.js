@@ -1,5 +1,6 @@
 export const pageTypePatterns = {
 	Disease: ['Disease', 'DiseaseTrialType', 'DiseaseTrialTypeIntervention'],
+	Intervention: ['Intervention', 'InterventionTrialType'],
 };
 
 // Order matters here as matching occurs on all items in the array,
@@ -20,9 +21,11 @@ export const pageTypePatternsQueryParamsByTrialTypeMap = {
 	],
 	Intervention: [
 		{
+			InterventionTrialType: ['codeOrPurl', 'type'],
 			Intervention: ['codeOrPurl'],
 		},
 		{
+			InterventionTrialType: ['p1', 'p2'],
 			Intervention: ['p1'],
 		},
 	],

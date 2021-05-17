@@ -191,6 +191,11 @@ const App = () => {
 					textReplacementKey: 'intervention',
 					type: 'listing-information',
 				},
+				{
+					paramName: 'type',
+					textReplacementKey: 'trial_type',
+					type: 'trial-type',
+				},
 			];
 
 			// If both banner images are present, set the intervention routes.
@@ -213,6 +218,15 @@ const App = () => {
 								element={
 									<WrappedIntervention
 										redirectPath={CodeOrPurlPath}
+										routeParamMap={interventionRouteParamMap}
+									/>
+								}
+							/>
+							<Route
+								path={CodeOrPurlWithTypePath()}
+								element={
+									<WrappedIntervention
+										redirectPath={CodeOrPurlWithTypePath}
 										routeParamMap={interventionRouteParamMap}
 									/>
 								}

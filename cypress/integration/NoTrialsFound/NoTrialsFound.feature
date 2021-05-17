@@ -100,3 +100,24 @@ Feature: As the system, I want to be able to view the No Trials Found page for t
 			| /notrials?p1=spiroplatin&p2=treatment&p3=trastuzumab&cfg=0 | Treatment Clinical Trials for Spiroplatin Using Trastuzumab   | There are no NCI-supported clinical trials for spiroplatin treatment using trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.   |
 			| /notrials?p1=C1234&p2=treatment&p3=trastuzumab&cfg=0       | Treatment Clinical Trials for Spiroplatin Using Trastuzumab   | There are no NCI-supported clinical trials for spiroplatin treatment using trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.   |
 			| /notrials?p1=breast-cancer&p2=treatment&p3=C1234&cfg=0     | Treatment Clinical Trials for Breast Cancer Using Spiroplatin | There are no NCI-supported clinical trials for breast cancer treatment using spiroplatin at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials. |
+
+	Scenario Outline: No Trials Found page is displayed when navigated to /notrials route for Intervention Trial Type
+		Given "trialListingPageType" is set to "Intervention"
+		And "dynamicListingPatterns" object is set to "Intervention"
+		Given the user navigates to "<url>"
+		Then the page title is "<title>"
+		And the system displays message "<infoMessage>"
+		And the link "new search" to "/about-cancer/treatment/clinical-trials/search" appears on the page
+		And the link "contact our Cancer Information Service" to "/contact" appears on the page
+		And the CIS Banner displays below
+		And the Chat Now button displays below
+		And the page contains meta tags with the following names
+			| name                  | content |
+			| prerender-status-code | 404     |
+			| robots                | noindex |
+		Examples:
+			| url                                          | title                                        | infoMessage                                                                                                                                                                                             |
+			| /notrials?p1=spiroplatin&p2=treatment&cfg=1  | Treatment Clinical Trials Using Spiroplatin  | There are no NCI-supported clinical trials for treatment using spiroplatin at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.  |
+			| /notrials?p1=C1234&p2=treatment&cfg=1        | Treatment Clinical Trials Using Spiroplatin  | There are no NCI-supported clinical trials for treatment using spiroplatin at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials.  |
+			| /notrials?p1=trastuzumab&p2=diagnostic&cfg=1 | Diagnostic Clinical Trials Using Trastuzumab | There are no NCI-supported clinical trials for diagnostic using trastuzumab at this time. You can try a new search or contact our Cancer Information Service to talk about options for clinical trials. |
+
