@@ -95,3 +95,28 @@ Feature: NoTrials Page analytics
       | page.additionalDetails.trialListingPageType | intervention                                                  |
       | page.additionalDetails.interventionName     | spiroplatin                                                   |
       | page.additionalDetails.numberResults        | (int)0                                                        |
+
+  Scenario: Page Load Analytics fires when a user views the No Trials Found page for an intervention trial type
+    Given "trialListingPageType" is set to "Intervention"
+    And "dynamicListingPatterns" object is set to "Intervention"
+    And "analyticsPublishedDate" is set to "02/02/2011"
+    And "siteName" is set to "National Cancer Institute"
+    When the user navigates to "/C1234/treatment"
+    Then the page title is "Treatment Clinical Trials Using Spiroplatin"
+    And browser waits
+    Then there should be an analytics event with the following details
+      | key                                         | value                                                                   |
+      | type                                        | PageLoad                                                                |
+      | event                                       | TrialListingApp:Load:NoTrialsFound                                      |
+      | page.name                                   | www.cancer.gov/notrials                                                 |
+      | page.title                                  | Treatment Clinical Trials Using Spiroplatin                             |
+      | page.metaTitle                              | Treatment Clinical Trials Using Spiroplatin - National Cancer Institute |
+      | page.language                               | english                                                                 |
+      | page.type                                   | nciAppModulePage                                                        |
+      | page.channel                                | Clinical Trials                                                         |
+      | page.contentGroup                           | Clinical Trials: Custom                                                 |
+      | page.publishedDate                          | 02/02/2011                                                              |
+      | page.additionalDetails.trialListingPageType | intervention                                                            |
+      | page.additionalDetails.interventionName     | spiroplatin                                                             |
+      | page.additionalDetails.trialType            | treatment                                                               |
+      | page.additionalDetails.numberResults        | (int)0                                                                  |

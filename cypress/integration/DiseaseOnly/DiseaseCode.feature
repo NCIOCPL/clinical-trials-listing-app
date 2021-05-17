@@ -15,15 +15,15 @@ Feature: As a user, I would like to view the trial results for a disease listing
   Scenario: View disease listing page metadata with c-code parameter
     Given "trialListingPageType" is set to "Disease"
     And "dynamicListingPatterns" object is set to "Disease"
-		And "siteName" is set to "National Cancer Institute"
+    And "siteName" is set to "National Cancer Institute"
     When the user navigates to "/C4872?cfg=0"
     Then the title tag should be "Breast Cancer Clinical Trials - National Cancer Institute"
     And the page contains meta tags with the following properties
-      | property       | content                                     																																					                  |
-      | og:title       | Breast Cancer Clinical Trials                 																													                                |
-      | og:url         | http://localhost:3000/breast-cancer                                       																																		  |
-      | og:description | NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials for breast cancer.  |
+      | property       | content                                                                                                                               |
+      | og:title       | Breast Cancer Clinical Trials                                                                                                         |
+      | og:url         | http://localhost:3000/breast-cancer                                                                                                   |
+      | og:description | NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials for breast cancer. |
     And the page contains meta tags with the following names
-      | name        | content                                 																																				                          |
-      | description | NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials for breast cancer.     |
+      | name        | content                                                                                                                               |
+      | description | NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials for breast cancer. |
     And there is a canonical link with the href "https://www.cancer.gov/breast-cancer"

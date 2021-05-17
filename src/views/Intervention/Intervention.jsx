@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useLocation, useNavigate } from 'react-router';
-import { useTracking } from 'react-tracking';
+import track, { useTracking } from 'react-tracking';
 
 import { Pager, NoResults, ResultsList, Spinner } from '../../components';
 import { useAppPaths, useCustomQuery } from '../../hooks';
@@ -14,6 +14,8 @@ import {
 	getKeyValueFromQueryString,
 	getPageOffset,
 	TokenParser,
+	getAnalyticsParamsForRoute,
+	getParamsForRoute,
 } from '../../utils';
 
 const Intervention = ({ routeParamMap, routePath, data }) => {
@@ -163,22 +165,7 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 	}, [queryResponse.loading, queryResponse.payload]);
 
 	// Setup data for tracking
-	const trackingData = data.reduce((acQuery, paramData, idx) => {
-		const paramInfo = routeParamMap[idx];
-
-		switch (paramInfo.paramName) {
-			case 'codeOrPurl':
-				return {
-					...acQuery,
-					interventionName: paramData.name.normalized,
-				};
-			case 'type':
-				return {
-					...acQuery,
-					trialType: paramData.label.toLowerCase(),
-				};
-		}
-	}, {});
+	const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
 
 	useEffect(() => {
 		// Fire off a page load event. Usually this would be in
@@ -206,30 +193,12 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 		const { page } = pagination;
 		const qryStr = appendOrUpdateToQueryString(search, 'pn', page);
 
-		const queryObject = data.reduce((acQuery, paramData, idx) => {
-			const paramInfo = routeParamMap[idx];
+		const paramsObject = getParamsForRoute(data, routeParamMap);
 
-			switch (paramInfo.paramName) {
-				case 'codeOrPurl': {
-					return {
-						...acQuery,
-						codeOrPurl: paramData.prettyUrlName
-							? paramData.prettyUrlName
-							: paramData.conceptId.join(','),
-					};
-				}
-				case 'type': {
-					return {
-						...acQuery,
-						type: paramData.label.toLowerCase(),
-					};
-				}
-			}
-		}, {});
-
-		navigate(`${routePath(queryObject)}${qryStr}`, {
+		navigate(`${routePath(paramsObject)}${qryStr}`, {
 			replace: true,
 		});
+		window.scrollTo(0, 0);
 	};
 
 	const renderHelmet = () => {
@@ -300,6 +269,10 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 		);
 	};
 
+	const ResultsListWithPage = track({
+		currentPage: Number(pager.page),
+	})(ResultsList);
+
 	return (
 		<div>
 			{renderHelmet()}
@@ -317,7 +290,7 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 					return <Spinner />;
 				} else if (!queryResponse.loading && trialsPayload?.trials.length) {
 					return (
-						<ResultsList
+						<ResultsListWithPage
 							results={trialsPayload.trials}
 							resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
 						/>

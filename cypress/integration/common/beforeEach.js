@@ -54,6 +54,7 @@ beforeEach(() => {
 						pageTitle: '{{trial_type_label}} Clinical Trials for {{disease_label}} Using {{intervention_label}}',
 					},
 				},
+
 				Intervention: {
 					Intervention: {
 						pageTitle: 'Clinical Trials Using {{intervention_label}}',
@@ -74,8 +75,9 @@ beforeEach(() => {
 							'<p>Clinical trials are research studies that involve people. The clinical trials on this list are testing {{trial_type_normalized}} methods that use {{intervention_normalized}}. All trials on the list are NCI-supported clinical trials, which are sponsored or otherwise financially supported by NCI.</p><p>NCI’s <a href="/about-cancer/treatment/clinical-trials/what-are-trials">basic information about clinical trials</a> explains the types and phases of trials and how they are carried out. Clinical trials look at new ways to prevent, detect, or treat disease. You may want to think about taking part in a clinical trial. Talk to your doctor for help in deciding if one is right for you.</p>',
 						noTrialsHtml:
 							'<p>There are no NCI-supported clinical trials for {{trial_type_normalized}} using {{intervention_normalized}} at this time. You can try a <a href="/about-cancer/treatment/clinical-trials/search">new search</a> or <a href="/contact">contact our Cancer Information Service</a> to talk about options for clinical trials.</p>',
-					},
-				}
+
+					}
+				},
 			},
 			itemsPerPage: 25,
 			trialListingPageType: 'Disease',
