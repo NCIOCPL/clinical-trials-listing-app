@@ -22,3 +22,18 @@ Feature: Disease listing page analytics
 			| page.additionalDetails.diseaseName          | breast cancer                                             |
 			| page.additionalDetails.trialListingPageType | disease                                                   |
 			| page.additionalDetails.numberResults        | (int)938                                                  |
+
+	Scenario: Click event fires when a user clicks on result item
+        Given "trialListingPageType" is set to "Disease"
+				And "dynamicListingPatterns" object is set to "Disease"
+        And "analyticsPublishedDate" is set to "02/02/2011"
+        When the user navigates to "/breast-cancer"
+        Then the page title is "Breast Cancer Clinical Trials"
+        When user clicks on result item 2
+        Then there should be an analytics event with the following details
+            | key              | value                             |
+            | type             | Other                             |
+            | event            | TrialListingApp:Other:ResultClick |
+            | linkName         | CTSLink                           |
+            | data.resultIndex | (int)2                            |
+            | data.currentPage | (int)1                            |

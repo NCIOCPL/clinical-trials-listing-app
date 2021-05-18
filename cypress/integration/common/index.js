@@ -279,7 +279,6 @@ Then('the error message {string} appears on the page', (text) => {
 		Redirect
 	-----------------------
 */
-
 Then('the user is redirected to {string}', (redirectUrl) => {
 	cy.location('href').should('include', redirectUrl);
 });
