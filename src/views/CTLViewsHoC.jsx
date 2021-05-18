@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router';
 
 import { Spinner } from '../components';
@@ -10,15 +10,17 @@ import {
 	appendOrUpdateToQueryString,
 	getIdOrNameAction,
 	getKeyValueFromQueryString,
+	convertObjectToBase64,
 } from '../utils';
-
-// Let's use some constants for our state var so we can handle
-// loading, loaded, 404 and error, without resorting to a reducer.
-const LOADING_STATE = 'loading_state';
-const LOADED_STATE = 'loaded_state';
-const NOTFOUND_STATE = 'notfound_state';
-const ERROR_STATE = 'error_state';
-const REDIR_STATE = 'redir_state';
+import {
+	hocReducer,
+	hocStates,
+	setLoading,
+	setSuccessfulFetch,
+	setFailedFetch,
+	setNotFound,
+	setRedirecting,
+} from './hocReducer';
 
 /**
  * Higher order component for fetching disease information from the trial listing support API.
@@ -33,7 +35,12 @@ const CTLViewsHoC = (WrappedView) => {
 		const navigate = useNavigate();
 		const { search } = location;
 
-		const [loadingState, setLoadingState] = useState(LOADING_STATE);
+		const [state, hocDispatch] = useReducer(hocReducer, {
+			status: hocStates.LOADING_STATE,
+			listingData: null,
+			actionsHash: '',
+		});
+
 		// First thing we need to do is figure out what we are fetching.
 		// The route will be the notrials route.
 		const isNoTrials = location.pathname === NoTrialsPath();
@@ -82,26 +89,34 @@ const CTLViewsHoC = (WrappedView) => {
 			}
 		});
 
+		// Get a hash of the actions so that we can check= if the response data's
+		// 'originating hash' matches the current hash during render. Changes from
+		// the same route with different data will trigger a re-render with the
+		// old data before the spinner is displayed.
+		const currentActionsHash = convertObjectToBase64(fetchActions);
+
 		// Initiate the fetch here. This will be called no matter what, we will rely
 		// on useListingSupport to handle any caching.
 		const getListingInfo = useListingSupport(fetchActions);
 
-		// Next we need to determine what the current route state is:
-		// - are we loading fresh c-code or pretty url request
-		// - are we handling c-code -> pretty url redirect
-		// - are we handling 0 trial c-code or purl -> no trials
-		// - are we handling a fresh notrials request.
-
-		// The purpose of this useEffect is to handle the load for the
-		// trial listing support API lookups.
+		//Effect to handle fetching the listing info
 		useEffect(() => {
+			// Either this is a brand new load, or we got redirected and we are loading
+			// a new action.
+			// NOTE 2: The reducer is smart enough not to change the state object if
+			// it will result in an equivalent object. So setting loading -> loading
+			// will not trigger a reload.
+			if (getListingInfo.loading) {
+				hocDispatch(setLoading());
+			}
+
 			if (!getListingInfo.loading && getListingInfo.payload) {
 				// Check if any of the elements of the payload are null,
 				// this is a 404.
 				if (getListingInfo.payload.some((res) => res === null)) {
 					// Handle 404. Currently this is a bit hacky, but
 					// we will just throw here for the ErrorBoundary.
-					setLoadingState(NOTFOUND_STATE);
+					hocDispatch(setNotFound());
 					return;
 				}
 
@@ -150,6 +165,9 @@ const CTLViewsHoC = (WrappedView) => {
 							},
 							{}
 						);
+						// Let's set the state BEFORE we navigate
+						hocDispatch(setRedirecting());
+
 						// Navigate to the passed in redirectPath. This is really cause
 						// we can't easily figure out the current route from react-router.
 						navigate(`${redirectPath(redirectParams)}${queryString}`, {
@@ -158,50 +176,73 @@ const CTLViewsHoC = (WrappedView) => {
 								redirectStatus: '301',
 							},
 						});
-						setLoadingState(REDIR_STATE);
 						return;
 					}
 				}
 
 				// At this point, the wrapped view is going to handle this request.
-				setLoadingState(LOADED_STATE);
+				hocDispatch(
+					setSuccessfulFetch(currentActionsHash, getListingInfo.payload)
+				);
 			} else if (!getListingInfo.loading && getListingInfo.error) {
 				// Raise error for ErrorBoundary for now.
-				setLoadingState(ERROR_STATE);
+				hocDispatch(setFailedFetch());
 			}
-			// The page should change its states when either the listing info changes
-			// or the fetchActions change.
-		}, [getListingInfo, fetchActions]);
+			// This effect should only fire if getListingInfo has been updated, even
+			// if we get redirected to the same route, the route params will change,
+			// the actions will get updated, and that will trigger getListingInfo to
+			// update.
+			//
+			// NOTE: If the route changed and therefore the actions changed, this will
+			// fire. So this effect should also handle the hocState going from a
+			// previously good fetch with data, back to a loading state.
+		}, [getListingInfo]);
 
 		return (
 			<div>
 				{(() => {
-					switch (loadingState) {
-						case NOTFOUND_STATE:
-							return <PageNotFound />;
-						case ERROR_STATE:
-							return <ErrorPage />;
-						case LOADED_STATE:
-							if (isNoTrials) {
-								return (
-									<WrappedView
-										routeParamMap={filteredRouteParamMap}
-										{...props}
-										data={getListingInfo.payload}
-									/>
-								);
-							} else {
-								return (
-									<WrappedView
-										routeParamMap={filteredRouteParamMap}
-										routePath={redirectPath}
-										{...props}
-										data={getListingInfo.payload}
-									/>
-								);
+					// Show loading.
+					if (
+						getListingInfo.loading ||
+						state.status === hocStates.REDIR_STATE ||
+						state.status === hocStates.LOADING_STATE ||
+						(state.status === hocStates.LOADED_STATE &&
+							state.actionsHash !== currentActionsHash)
+					) {
+						return <Spinner />;
+					} else {
+						// We have finished loading and either need to display
+						// 404, error or the results.
+						switch (state.status) {
+							case hocStates.NOTFOUND_STATE: {
+								return <PageNotFound />;
 							}
-						default:
-							return <Spinner />;
+							case hocStates.LOADED_STATE: {
+								if (isNoTrials) {
+									return (
+										<WrappedView
+											routeParamMap={filteredRouteParamMap}
+											{...props}
+											data={state.listingData}
+										/>
+									);
+								} else {
+									return (
+										<WrappedView
+											routeParamMap={filteredRouteParamMap}
+											routePath={redirectPath}
+											{...props}
+											data={state.listingData}
+										/>
+									);
+								}
+							}
+							default: {
+								// This should only happen for hocStates.ERROR_STATE, but it
+								// felt very wrong for there not to be a default here.
+								return <ErrorPage />;
+							}
+						}
 					}
 				})()}
 			</div>

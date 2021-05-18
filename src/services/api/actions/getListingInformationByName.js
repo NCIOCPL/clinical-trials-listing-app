@@ -4,6 +4,10 @@
  * @param {string} queryParam the pretty URL name to match
  */
 export const getListingInformationByName = ({ name = '' }) => {
+	if (!name || name === '') {
+		throw new Error('You must specify a name in order to fetch it.');
+	}
+
 	return {
 		type: 'name',
 		payload: name,
