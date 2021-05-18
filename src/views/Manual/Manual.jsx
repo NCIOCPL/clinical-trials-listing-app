@@ -153,14 +153,12 @@ const Manual = () => {
 			<h1>{pageTitle}</h1>
 
 			{/* ::: Intro Text ::: */}
-			{introText.length > 0 &&
-				!queryResponse.loading &&
-				trialsPayload?.trials?.length > 0 && (
-					<div
-						className="intro-text"
-						dangerouslySetInnerHTML={{ __html: introText }}
-					/>
-				)}
+			{introText.length > 0 && trialsPayload?.trials?.length > 0 && (
+				<div
+					className="intro-text"
+					dangerouslySetInnerHTML={{ __html: introText }}
+				/>
+			)}
 
 			{/* ::: Top Paging Section ::: */}
 			{renderPagerSection('top')}
