@@ -8,7 +8,7 @@ export { getStateNameFromAbbr } from './getStateNameFromAbbr';
 export { formatNumberToThousands } from './number';
 export { matchItemToTerm } from './matchItemToTerm';
 export { matchQueryParam } from './matchQueryParam';
-export { getKeyValueFromObject } from './objects';
+export { getKeyValueFromObject, convertObjectToBase64 } from './objects';
 export { TokenParser } from './replaceTokens';
 export { emboldenSubstring } from './strings';
 export { appendOrUpdateToQueryString, getKeyValueFromQueryString } from './url';

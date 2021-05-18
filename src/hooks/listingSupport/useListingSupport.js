@@ -12,6 +12,7 @@ import {
 	getListingInformationByName,
 	getTrialType,
 } from '../../services/api/trial-listing-support-api';
+import { convertObjectToBase64 } from '../../utils/objects';
 import { useStateValue } from '../../store/store';
 
 /**
@@ -101,6 +102,8 @@ export const useListingSupport = (actions) => {
 		aborted: false,
 	});
 
+	const actionsHash = convertObjectToBase64(actions);
+
 	// We onlu want to fire this the first time useListingSupport
 	// is called.
 	useEffect(() => {
@@ -115,7 +118,7 @@ export const useListingSupport = (actions) => {
 			isMounted.current = false;
 			handleAbort();
 		};
-	}, []);
+	}, [actionsHash]);
 
 	// This call back handles the fetch to the api. We use is call back
 	// so the query does not execute except when any of the actions have

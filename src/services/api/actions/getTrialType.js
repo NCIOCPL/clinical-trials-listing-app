@@ -4,6 +4,10 @@
  * @param {string} trialType the trial type to match
  */
 export const getTrialType = ({ trialType = '' }) => {
+	if (!trialType || trialType === '') {
+		throw new Error('You must specify a trialType in order to fetch it.');
+	}
+
 	return {
 		payload: trialType,
 		type: 'trialType',
