@@ -62,9 +62,10 @@ const initialize = ({
 	const isRehydrating = appRootDOMNode.getAttribute('data-isRehydrating');
 
 	// Setup API clients
-	const trialListingSupportClient = listingSupportApiFactory(
-		listingApiEndpoint
+	const clinicalTrialsSupportClient = listingSupportApiFactory(
+		trialsApiEndpoint
 	);
+	const trialListingSupportClient = listingSupportApiFactory(trialsApiEndpoint);
 
 	// populate global state with init params
 	const initialState = {
@@ -84,7 +85,8 @@ const initialize = ({
 		itemsPerPage,
 		language,
 		apiClients: {
-			trialListingSupportClient,
+			ctsAPI: clinicalTrialsSupportClient,
+			trialListingAPI: trialListingSupportClient,
 		},
 		listingApiEndpoint,
 		liveHelpUrl,
