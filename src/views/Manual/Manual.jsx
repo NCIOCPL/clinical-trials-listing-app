@@ -151,7 +151,7 @@ const Manual = () => {
 		<div>
 			{renderHelmet()}
 			<h1>{pageTitle}</h1>
-
+			<div className="page-options-container" />
 			{/* ::: Intro Text ::: */}
 			{introText.length > 0 && trialsPayload?.trials?.length > 0 && (
 				<div
