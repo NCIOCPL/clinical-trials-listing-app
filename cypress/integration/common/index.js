@@ -1,5 +1,5 @@
 /// <reference types="Cypress" />
-import { And, Given, Then } from 'cypress-cucumber-preprocessor/steps';
+import { And, Given, Then, When } from 'cypress-cucumber-preprocessor/steps';
 
 const baseURL = Cypress.config('baseUrl');
 
@@ -74,7 +74,7 @@ Given('{string} object is set to {string}', (key, param) => {
 	cy.on('window:before:load', (win) => {
 		const newObj = {};
 		newObj[param] = win.INT_TEST_APP_PARAMS[key][param];
-		win.INT_TEST_APP_PARAMS[key] = newObj
+		win.INT_TEST_APP_PARAMS[key] = newObj;
 	});
 });
 /*
@@ -97,7 +97,7 @@ And('the page displays {string}', (text) => {
 
 /*
 	----------------------------------------
-	  Analytics
+	 Analytics
 	----------------------------------------
 */
 Then('browser waits', () => {
@@ -304,6 +304,7 @@ And('the CIS Banner displays below', () => {
 And('the Chat Now button displays below', () => {
 	cy.contains('.banner-cis__button', 'Chat Now');
 });
+
 When('user clicks on result item {int}', (resultIndex) => {
 	cy.get('a.ct-list-item__title')
 		.eq(resultIndex - 1)
@@ -312,4 +313,15 @@ When('user clicks on result item {int}', (resultIndex) => {
 
 And('user is brought to the top of a page', () => {
 	cy.window().its('scrollY').should('equal', 0);
+});
+
+Then('delighter is displayed with link {string}', (link) => {
+	cy.get('div div.floating-delighter')
+		.find('a')
+		.should('be.visible')
+		.and('have.attr', 'href', link);
+});
+
+And('delighter is not displayed', () => {
+	cy.get('div div.floating-delighter').should('not.exist');
 });
