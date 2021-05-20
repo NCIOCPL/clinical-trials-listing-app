@@ -21,9 +21,9 @@ Then('page title on error page is {string}', (title) => {
 });
 
 /*
-    --------------------
-        Page Visits
-    --------------------
+	--------------------
+		Page Visits
+	--------------------
 */
 Given('the user visits the home page', () => {
 	cy.visit('/');
@@ -56,9 +56,9 @@ Given('{string} is set as a json string to {string}', (key, param) => {
 });
 
 /*
-    ----------------------------------------
-      API Error Page
-    ----------------------------------------
+	----------------------------------------
+	  API Error Page
+	----------------------------------------
 */
 Then('the user gets an error page that reads {string}', (errorMessage) => {
 	Cypress.on('uncaught:exception', (err, runnable) => {
@@ -74,9 +74,9 @@ And('the page displays {string}', (text) => {
 });
 
 /*
-    ----------------------------------------
-     Analytics
-    ----------------------------------------
+	----------------------------------------
+	 Analytics
+	----------------------------------------
 */
 Then('browser waits', () => {
 	cy.wait(2000);
@@ -100,18 +100,18 @@ And('the following links and texts exist on the page', (dataTable) => {
 });
 
 /*
-    -----------------------
-        No Results Page
-    -----------------------
+	-----------------------
+		No Results Page
+	-----------------------
 */
 And('the system displays message {string}', (noTrialsText) => {
 	cy.get('div p').should('have.text', noTrialsText);
 });
 
 /*
-    ----------------------
-        Page Not Found
-    ----------------------
+	----------------------
+		Page Not Found
+	----------------------
 */
 
 And('the text {string} appears on the page', (text) => {
@@ -130,9 +130,9 @@ And('the search bar appears below', () => {
 });
 
 /*
-    -----------------------
-        Manual Page results
-    -----------------------
+	-----------------------
+		Manual Page results
+	-----------------------
 */
 
 And(
@@ -171,9 +171,9 @@ And(
 	}
 );
 /*
-    -----------------------
-       Pager
-    -----------------------
+	-----------------------
+	   Pager
+	-----------------------
 */
 
 Then('the system displays {string} {string}', (perPage, total) => {
@@ -223,3 +223,11 @@ When('pager is not displayed', () => {
 When('user clicks on result item {int}', (resultIndex) => {
 	cy.get('a.ct-list-item__title').eq(resultIndex - 1).trigger('click', { followRedirect: false });
 })
+
+Then('delighter is displayed with link {string}', (link) => {
+	cy.get('div div.floating-delighter').find('a').should('be.visible').and('have.attr', 'href', link);
+});
+
+And('delighter is not displayed', () => {
+	cy.get('div div.floating-delighter').should('not.exist');
+});
