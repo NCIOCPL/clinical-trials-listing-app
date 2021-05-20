@@ -19,6 +19,7 @@ Feature: As a user, I would like to view the trial results for a manual listing 
       | 4      |
       | 5      |
       | Next > |
+    And delighter is displayed with link "https://cancer.gov/about-cancer/treatment/clinical-trials/search"
 
 
   Scenario: View manual listing page metadata
@@ -64,6 +65,7 @@ Feature: As a user, I would like to view the trial results for a manual listing 
       | 11         |
       | Next >     |
     And the page "2" is highlighted
+    And delighter is displayed with link "https://cancer.gov/about-cancer/treatment/clinical-trials/search"
     When user clicks on "Next >" button
     Then pager displays the following navigation options
       | pages      |
@@ -77,6 +79,7 @@ Feature: As a user, I would like to view the trial results for a manual listing 
       | 11         |
       | Next >     |
     And the page "3" is highlighted
+    And delighter is displayed with link "https://cancer.gov/about-cancer/treatment/clinical-trials/search"
     When user clicks on "Next >" button
     Then pager displays the following navigation options
       | pages      |
@@ -91,6 +94,7 @@ Feature: As a user, I would like to view the trial results for a manual listing 
       | 11         |
       | Next >     |
     And the page "4" is highlighted
+    And delighter is displayed with link "https://cancer.gov/about-cancer/treatment/clinical-trials/search"
     When user clicks on "Next >" button
     Then pager displays the following navigation options
       | pages      |
@@ -128,6 +132,7 @@ Feature: As a user, I would like to view the trial results for a manual listing 
       | 11         |
       | Next >     |
     And the page "10" is highlighted
+    And delighter is displayed with link "https://cancer.gov/about-cancer/treatment/clinical-trials/search"
     When user clicks on "< Previous" button
     Then pager displays the following navigation options
       | pages      |
@@ -178,3 +183,4 @@ Feature: As a user, I would like to view the trial results for a manual listing 
     Given the user navigates to "/?cfg=4"
     Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"
     And pager is not displayed
+    And delighter is displayed with link "https://cancer.gov/about-cancer/treatment/clinical-trials/search"

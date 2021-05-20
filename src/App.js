@@ -47,12 +47,7 @@ const App = () => {
 			);
 	}
 
-	return (
-		<>
-			<div className="page-options-container" />
-			<Router>{dynamicRoutes}</Router>;
-		</>
-	);
+	return <Router>{dynamicRoutes}</Router>;
 };
 
 App.propTypes = {

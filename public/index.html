@@ -252,6 +252,28 @@
 
 			window.APP_PARAMS = cfgs[configIndex];
 		</script>
+		<script type="text/javascript">
+			const buildDelighter = () => {
+				const anchors = document.getElementsByClassName(
+					'page-options-container'
+				);
+				for (let i = 0; i < anchors.length; i++) {
+					anchors[i].innerHTML =
+						'<div class="floating-delighter floating-delighter--cts">' +
+						'<a href="https://cancer.gov/about-cancer/treatment/clinical-trials/search" class="floating-delighter__link">' +
+						'<div class="floating-delighter__icon"></div>' +
+						'<div class="floating-delighter__label">Find a Clinical Trial</div>' +
+						'</a>' +
+						'</div>';
+				}
+			};
+
+			if (document.readyState === 'complete') {
+				buildDelighter();
+			} else {
+				document.addEventListener('DOMContentLoaded', buildDelighter);
+			}
+		</script>
 	</head>
 	<body>
 		<noscript>You need to enable JavaScript to run this app.</noscript>
