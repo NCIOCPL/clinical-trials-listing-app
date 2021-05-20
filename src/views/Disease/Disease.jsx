@@ -116,7 +116,7 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 
 	useEffect(() => {
 		if (!queryResponse.loading && queryResponse.payload) {
-			if (queryResponse.payload.total === 0) {
+			if (queryResponse.payload.trials.length === 0) {
 				const redirectStatusCode = location.state?.redirectStatus
 					? location.state?.redirectStatus
 					: '302';
