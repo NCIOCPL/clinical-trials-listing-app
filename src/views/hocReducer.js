@@ -58,10 +58,8 @@ export const setNotFound = () => {
 	};
 };
 
-const getStatusByAction = (type) => {
+const getNonLoadedStatusByAction = (type) => {
 	switch (type) {
-		case SUCCESSFUL_FETCH:
-			return hocStates.LOADED_STATE;
 		case RESET_LOADING:
 			return hocStates.LOADING_STATE;
 		case ENCOUNTERED_NOTFOUND:
@@ -87,9 +85,14 @@ export const hocReducer = (state = {}, action) => {
 		} else {
 			// Status is the same, did the payload change, or are we trying to update
 			// the same object?
-			const newPayloadHash = convertObjectToBase64(action.payload);
-			const oldPayloadHash = convertObjectToBase64(state.listingData);
-			if (newPayloadHash === oldPayloadHash) {
+			const newResponseHash = convertObjectToBase64(
+				action.payload.fetchResponse
+			);
+			const oldResponseHash = convertObjectToBase64(state.listingData);
+			if (
+				newResponseHash === oldResponseHash &&
+				action.payload.fetchActionsHash === state.actionsHash
+			) {
 				// Same status, same object, same state
 				return state;
 			} else {
@@ -106,14 +109,18 @@ export const hocReducer = (state = {}, action) => {
 			case ENCOUNTERED_NOTFOUND:
 			case ERROR_OCCURRED:
 			case REDIRECT_NEEDED: {
-				const status = getStatusByAction(action.type);
-				if (state.status === status && state.listingData === null) {
+				const status = getNonLoadedStatusByAction(action.type);
+				if (
+					state.status === status &&
+					state.listingData === null &&
+					state.actionsHash === ''
+				) {
 					return state;
 				} else {
 					return {
 						status,
 						listingData: null,
-						fetchActionsHash: '',
+						actionsHash: '',
 					};
 				}
 			}

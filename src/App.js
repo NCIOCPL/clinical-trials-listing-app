@@ -6,6 +6,7 @@ import './styles/app.scss';
 
 import { pageTypePatterns, textProperties } from './constants';
 import { useAppPaths } from './hooks';
+import { ListingSupportContextProvider } from './hooks/listingSupport';
 import { useStateValue } from './store/store';
 import {
 	CTLViewsHoC,
@@ -116,37 +117,39 @@ const App = () => {
 			// and both banner images are present, set the disease routes.
 			if (hasDiseasePatterns && hasBannerImages) {
 				dynamicRoutes = (
-					<Routes>
-						<Route
-							path={NoTrialsPath()}
-							element={
-								<WrappedNoTrials
-									redirectPath={NoTrialsPath}
-									routeParamMap={diseaseRouteParamMap}
-								/>
-							}
-							exact
-						/>
-						<Route
-							path={CodeOrPurlPath()}
-							element={
-								<WrappedDisease
-									redirectPath={CodeOrPurlPath}
-									routeParamMap={diseaseRouteParamMap}
-								/>
-							}
-						/>
-						<Route
-							path={CodeOrPurlWithTypeAndInterCodeOrPurlPath()}
-							element={
-								<WrappedDisease
-									redirectPath={CodeOrPurlWithTypeAndInterCodeOrPurlPath}
-									routeParamMap={diseaseRouteParamMap}
-								/>
-							}
-						/>
-						<Route path="/*" element={<PageNotFound />} />
-					</Routes>
+					<ListingSupportContextProvider>
+						<Routes>
+							<Route
+								path={NoTrialsPath()}
+								element={
+									<WrappedNoTrials
+										redirectPath={NoTrialsPath}
+										routeParamMap={diseaseRouteParamMap}
+									/>
+								}
+								exact
+							/>
+							<Route
+								path={CodeOrPurlPath()}
+								element={
+									<WrappedDisease
+										redirectPath={CodeOrPurlPath}
+										routeParamMap={diseaseRouteParamMap}
+									/>
+								}
+							/>
+							<Route
+								path={CodeOrPurlWithTypeAndInterCodeOrPurlPath()}
+								element={
+									<WrappedDisease
+										redirectPath={CodeOrPurlWithTypeAndInterCodeOrPurlPath}
+										routeParamMap={diseaseRouteParamMap}
+									/>
+								}
+							/>
+							<Route path="/*" element={<PageNotFound />} />
+						</Routes>
+					</ListingSupportContextProvider>
 				);
 			} else {
 				const params = getInvalidParams(hasDiseasePatterns, hasBannerImages);
@@ -183,28 +186,30 @@ const App = () => {
 			// If both banner images are present, set the intervention routes.
 			if (hasBannerImages) {
 				dynamicRoutes = (
-					<Routes>
-						<Route
-							path={NoTrialsPath()}
-							element={
-								<WrappedNoTrials
-									redirectPath={NoTrialsPath}
-									routeParamMap={interventionRouteParamMap}
-								/>
-							}
-							exact
-						/>
-						<Route
-							path={CodeOrPurlPath()}
-							element={
-								<WrappedIntervention
-									redirectPath={CodeOrPurlPath}
-									routeParamMap={interventionRouteParamMap}
-								/>
-							}
-						/>
-						<Route path="/*" element={<PageNotFound />} />
-					</Routes>
+					<ListingSupportContextProvider>
+						<Routes>
+							<Route
+								path={NoTrialsPath()}
+								element={
+									<WrappedNoTrials
+										redirectPath={NoTrialsPath}
+										routeParamMap={interventionRouteParamMap}
+									/>
+								}
+								exact
+							/>
+							<Route
+								path={CodeOrPurlPath()}
+								element={
+									<WrappedIntervention
+										redirectPath={CodeOrPurlPath}
+										routeParamMap={interventionRouteParamMap}
+									/>
+								}
+							/>
+							<Route path="/*" element={<PageNotFound />} />
+						</Routes>
+					</ListingSupportContextProvider>
 				);
 			} else {
 				dynamicRoutes = (

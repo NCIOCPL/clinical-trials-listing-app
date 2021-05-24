@@ -10,9 +10,12 @@
  * the mockComponent is correctly called.
  */
 import React, { useEffect } from 'react';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import { MemoryRouter, Route, Routes, useNavigate } from 'react-router';
-
+import {
+	ListingSupportCache,
+	ListingSupportContext,
+} from '../../hooks/listingSupport';
 import { MockAnalyticsProvider } from '../../tracking';
 
 import { useStateValue } from '../../store/store';
@@ -21,7 +24,6 @@ import { getListingInformationByName } from '../../services/api/trial-listing-su
 import { getTrialType } from '../../services/api/trial-listing-support-api/getTrialType';
 
 import CTLViewsHoC from '../CTLViewsHoC';
-import { act } from 'react-dom/test-utils';
 
 jest.mock('../../store/store');
 jest.mock(
@@ -113,7 +115,6 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 	 */
 	it('handles navigation from ID to Name', async () => {
 		getListingInformationById.mockReturnValue(CONCEPT_BREAST_CANCER);
-		getListingInformationByName.mockReturnValue(CONCEPT_BREAST_CANCER);
 
 		// We use RedirectPath to figure out the correct route for
 		// a redirect. This assumes /:codeOrPurl which matches our
@@ -131,19 +132,22 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/C4872']}>
-						<Routes>
-							<Route
-								path="/:codeOrPurl"
-								element={
-									<WrappedComponent
-										redirectPath={mockRedirectPath}
-										routeParamMap={diseaseRouteParamMap}
-									/>
-								}
-							/>
-						</Routes>
-					</MemoryRouter>
+					<ListingSupportContext.Provider
+						value={{ cache: new ListingSupportCache() }}>
+						<MemoryRouter initialEntries={['/C4872']}>
+							<Routes>
+								<Route
+									path="/:codeOrPurl"
+									element={
+										<WrappedComponent
+											redirectPath={mockRedirectPath}
+											routeParamMap={diseaseRouteParamMap}
+										/>
+									}
+								/>
+							</Routes>
+						</MemoryRouter>
+					</ListingSupportContext.Provider>
 				</MockAnalyticsProvider>
 			);
 		});
@@ -153,12 +157,7 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 		expect(getListingInformationById.mock.calls[0][1]).toEqual(['C4872']);
 
 		// Redirect call
-		// TODO: When caching is implemented this should be expected to
-		// be 0 calls as it will have been cached.
-		expect(getListingInformationByName.mock.calls).toHaveLength(1);
-		expect(getListingInformationByName.mock.calls[0][1]).toEqual(
-			'breast-cancer'
-		);
+		expect(getListingInformationByName.mock.calls).toHaveLength(0);
 
 		// There should only be 1 call to our component as the HoC would have:
 		// Fetched the ID, then redirected, then fetched the second, then it
@@ -167,6 +166,88 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 		const { data: call1data } = mockComponent.mock.calls[0][0];
 
 		expect(call1data).toEqual([CONCEPT_BREAST_CANCER]);
+	});
+
+	it('should handle going to no trials', async () => {
+		getListingInformationById.mockImplementation((client, ids) => {
+			if (ids.includes('C99999')) {
+				return CONCEPT_NO_PURL;
+			}
+		});
+
+		// This should not get called.
+		const mockRedirectPath = jest.fn().mockImplementationOnce(() => {
+			throw new Error(
+				'I should not be getting called here, but this is required.'
+			);
+		});
+
+		const mockComponentConcept = jest.fn(() => {
+			const navigate = useNavigate();
+			useEffect(() => {
+				navigate('/notrials?p1=C99999', {
+					replace: true,
+				});
+			}, []);
+			return <></>;
+		});
+
+		const mockNoTrials = jest.fn(() => {
+			return <>This would be the disease + type component.</>;
+		});
+
+		const WrappedComponentConcept = CTLViewsHoC(mockComponentConcept);
+		const WrappedComponentConceptNoTrials = CTLViewsHoC(mockNoTrials);
+
+		// Hopefully this renders, and navigates and loads the
+		// new component.
+		await act(async () => {
+			render(
+				<MockAnalyticsProvider>
+					<ListingSupportContext.Provider
+						value={{ cache: new ListingSupportCache() }}>
+						<MemoryRouter initialEntries={['/C99999']}>
+							<Routes>
+								<Route
+									path="/:codeOrPurl"
+									element={
+										<WrappedComponentConcept
+											redirectPath={mockRedirectPath}
+											routeParamMap={diseaseRouteParamMap}
+										/>
+									}
+								/>
+								<Route
+									path="/notrials"
+									element={
+										<WrappedComponentConceptNoTrials
+											redirectPath={mockRedirectPath}
+											routeParamMap={diseaseRouteParamMap}
+										/>
+									}
+								/>
+							</Routes>
+						</MemoryRouter>
+					</ListingSupportContext.Provider>
+				</MockAnalyticsProvider>
+			);
+		});
+
+		// Total API calls for first render, and redirect
+		expect(getListingInformationById.mock.calls).toHaveLength(1);
+		expect(getListingInformationById.mock.calls[0][1]).toEqual(['C99999']);
+
+		// The mock component should only be called once as that would
+		// only be when the redirects have stopped. So 2 calls with a
+		// null is wrong.
+		expect(mockComponentConcept.mock.calls).toHaveLength(1);
+		const { data: conceptData } = mockComponentConcept.mock.calls[0][0];
+		expect(mockNoTrials.mock.calls).toHaveLength(1);
+		const { data: conceptTypeData } = mockNoTrials.mock.calls[0][0];
+
+		expect(conceptData).toEqual([CONCEPT_NO_PURL]);
+
+		expect(conceptTypeData).toEqual([CONCEPT_NO_PURL]);
 	});
 
 	/**
@@ -211,40 +292,35 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/C99999/treatment/C2222']}>
-						<Routes>
-							<Route
-								path="/:codeOrPurl/:type/:interCodeOrPurl"
-								element={
-									<WrappedComponent
-										redirectPath={mockRedirectPath}
-										routeParamMap={diseaseRouteParamMap}
-									/>
-								}
-							/>
-						</Routes>
-					</MemoryRouter>
+					<ListingSupportContext.Provider
+						value={{ cache: new ListingSupportCache() }}>
+						<MemoryRouter initialEntries={['/C99999/treatment/C2222']}>
+							<Routes>
+								<Route
+									path="/:codeOrPurl/:type/:interCodeOrPurl"
+									element={
+										<WrappedComponent
+											redirectPath={mockRedirectPath}
+											routeParamMap={diseaseRouteParamMap}
+										/>
+									}
+								/>
+							</Routes>
+						</MemoryRouter>
+					</ListingSupportContext.Provider>
 				</MockAnalyticsProvider>
 			);
 		});
 
 		// Total API calls for first render, and redirect
-		expect(getListingInformationById.mock.calls).toHaveLength(3);
-		expect(getTrialType.mock.calls).toHaveLength(2);
-		expect(getListingInformationByName.mock.calls).toHaveLength(1);
+		expect(getListingInformationById.mock.calls).toHaveLength(2);
+		expect(getTrialType.mock.calls).toHaveLength(1);
+		expect(getListingInformationByName.mock.calls).toHaveLength(0);
 
 		// First render API Calls
 		expect(getListingInformationById.mock.calls[0][1]).toEqual(['C99999']);
 		expect(getListingInformationById.mock.calls[1][1]).toEqual(['C2222']);
 		expect(getTrialType.mock.calls[0][1]).toEqual('treatment');
-
-		// After redirect API Calls
-		expect(getListingInformationById.mock.calls[2][1]).toEqual(['C99999']);
-		expect(getTrialType.mock.calls[1][1]).toEqual('treatment');
-		// Note the is happens after redirect
-		expect(getListingInformationByName.mock.calls[0][1]).toEqual(
-			'multi-id-concept'
-		);
 
 		// There should only be 1 call to our component as the HoC would have:
 		// Fetched the ID, then redirected, then fetched the second, then it
@@ -300,19 +376,22 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/breast-cancer']}>
-						<Routes>
-							<Route
-								path="/:codeOrPurl"
-								element={
-									<WrappedComponent
-										redirectPath={mockRedirectPath}
-										routeParamMap={diseaseRouteParamMap}
-									/>
-								}
-							/>
-						</Routes>
-					</MemoryRouter>
+					<ListingSupportContext.Provider
+						value={{ cache: new ListingSupportCache() }}>
+						<MemoryRouter initialEntries={['/breast-cancer']}>
+							<Routes>
+								<Route
+									path="/:codeOrPurl"
+									element={
+										<WrappedComponent
+											redirectPath={mockRedirectPath}
+											routeParamMap={diseaseRouteParamMap}
+										/>
+									}
+								/>
+							</Routes>
+						</MemoryRouter>
+					</ListingSupportContext.Provider>
 				</MockAnalyticsProvider>
 			);
 		});
@@ -383,42 +462,43 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/C99999']}>
-						<Routes>
-							<Route
-								path="/:codeOrPurl"
-								element={
-									<WrappedComponentConcept
-										redirectPath={mockRedirectPath}
-										routeParamMap={diseaseRouteParamMap}
-									/>
-								}
-							/>
-							<Route
-								path="/:codeOrPurl/:type"
-								element={
-									<WrappedComponentConceptPlusType
-										redirectPath={mockRedirectPath}
-										routeParamMap={diseaseRouteParamMap}
-									/>
-								}
-							/>
-						</Routes>
-					</MemoryRouter>
+					<ListingSupportContext.Provider
+						value={{ cache: new ListingSupportCache() }}>
+						<MemoryRouter initialEntries={['/C99999']}>
+							<Routes>
+								<Route
+									path="/:codeOrPurl"
+									element={
+										<WrappedComponentConcept
+											redirectPath={mockRedirectPath}
+											routeParamMap={diseaseRouteParamMap}
+										/>
+									}
+								/>
+								<Route
+									path="/:codeOrPurl/:type"
+									element={
+										<WrappedComponentConceptPlusType
+											redirectPath={mockRedirectPath}
+											routeParamMap={diseaseRouteParamMap}
+										/>
+									}
+								/>
+							</Routes>
+						</MemoryRouter>
+					</ListingSupportContext.Provider>
 				</MockAnalyticsProvider>
 			);
 		});
 
 		// Total API calls for first render, and redirect
-		expect(getListingInformationById.mock.calls).toHaveLength(2);
+		expect(getListingInformationById.mock.calls).toHaveLength(1);
 		expect(getTrialType.mock.calls).toHaveLength(1);
 
 		// First render API Calls
 		expect(getListingInformationById.mock.calls[0][1]).toEqual(['C99999']);
 
 		// After redirect API Calls
-		// TODO: With caching, there should only be a call to byId on the first render
-		expect(getListingInformationById.mock.calls[1][1]).toEqual(['C99999']);
 		expect(getTrialType.mock.calls[0][1]).toEqual('treatment');
 
 		// The mock component should only be called once as that would

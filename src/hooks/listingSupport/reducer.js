@@ -6,12 +6,12 @@ import {
 } from './actions';
 
 // Reducer
-const reducer = (state = {}, action) => {
+const reducer = (state = { _cache: {} }, action) => {
 	switch (action.type) {
 		case FETCH_SUCCESS:
 			return {
 				loading: false,
-				payload: action.payload,
+				payload: action.payload.fetchResponse,
 				error: null,
 				aborted: false,
 			};

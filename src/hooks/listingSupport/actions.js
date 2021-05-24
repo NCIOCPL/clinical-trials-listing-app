@@ -5,10 +5,13 @@ export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_ERROR = 'FETCH_ERROR';
 
 // Actions
-export const setSuccessfulFetch = (payload) => {
+export const setSuccessfulFetch = (fetchActions, fetchResponse) => {
 	return {
 		type: FETCH_SUCCESS,
-		payload,
+		payload: {
+			fetchActions,
+			fetchResponse,
+		},
 	};
 };
 
