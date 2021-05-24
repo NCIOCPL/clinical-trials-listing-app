@@ -127,7 +127,10 @@ const CTLViewsHoC = (WrappedView) => {
 				if (!isNoTrials) {
 					const redirectCheck = fetchActions.some(
 						(action, idx) =>
-							action.type === 'id' && getListingInfo.payload[idx].prettyUrlName
+							(action.type === 'id' &&
+								getListingInfo.payload[idx].prettyUrlName) ||
+							(action.type === 'trialType' &&
+								action.payload !== getListingInfo.payload[idx].prettyUrlName)
 					);
 
 					if (redirectCheck) {
