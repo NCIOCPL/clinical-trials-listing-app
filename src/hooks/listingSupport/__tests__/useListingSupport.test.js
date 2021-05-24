@@ -1,6 +1,10 @@
 import React from 'react';
 import { act, render, screen } from '@testing-library/react';
-import { useListingSupport } from '../useListingSupport';
+import {
+	ListingSupportCache,
+	ListingSupportContext,
+	useListingSupport,
+} from '../index';
 import { getListingInformationById as IdAction } from '../../../services/api/actions/getListingInformationById';
 import { getListingInformationByName as NameAction } from '../../../services/api/actions/getListingInformationByName';
 import { getTrialType as TrialTypeAction } from '../../../services/api/actions/getTrialType';
@@ -20,7 +24,7 @@ jest.mock(
 jest.mock('../../../services/api/trial-listing-support-api/getTrialType');
 
 /* eslint-disable react/prop-types */
-const UseListingSupportSample = ({ actions, testId }) => {
+const InternalListingSupportSample = ({ actions, testId }) => {
 	const { loading, payload, error, aborted } = useListingSupport(actions);
 
 	return (
@@ -66,6 +70,16 @@ const UseListingSupportSample = ({ actions, testId }) => {
 	);
 };
 
+// THIS IS KINDA A HACK. Basically we need a new cache for each test, and I can't figure
+// out how to clear it. So we will just create it in each test.
+const UseListingSupportSample = ({ cache, actions, testId }) => {
+	return (
+		<ListingSupportContext.Provider value={{ cache }}>
+			<InternalListingSupportSample actions={actions} testId={testId} />
+		</ListingSupportContext.Provider>
+	);
+};
+
 describe('useListingSupport', () => {
 	beforeEach(() => {
 		jest.clearAllMocks();
@@ -93,8 +107,9 @@ describe('useListingSupport', () => {
 			});
 			const actions = [IdAction({ ids: ['C4872'] })];
 
+			const cache = new ListingSupportCache();
 			await act(async () => {
-				render(<UseListingSupportSample actions={actions} />);
+				render(<UseListingSupportSample cache={cache} actions={actions} />);
 			});
 
 			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
@@ -123,8 +138,9 @@ describe('useListingSupport', () => {
 			});
 			const actions = [NameAction({ name: 'breast-cancer' })];
 
+			const cache = new ListingSupportCache();
 			await act(async () => {
-				render(<UseListingSupportSample actions={actions} />);
+				render(<UseListingSupportSample cache={cache} actions={actions} />);
 			});
 
 			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
@@ -150,8 +166,9 @@ describe('useListingSupport', () => {
 
 			const actions = [TrialTypeAction({ trialType: 'treatment' })];
 
+			const cache = new ListingSupportCache();
 			await act(async () => {
-				render(<UseListingSupportSample actions={actions} />);
+				render(<UseListingSupportSample cache={cache} actions={actions} />);
 			});
 
 			expect(screen.getByText('Payload[0]-ids: treatment')).toBeInTheDocument();
@@ -191,8 +208,9 @@ describe('useListingSupport', () => {
 				TrialTypeAction({ trialType: 'treatment' }),
 			];
 
+			const cache = new ListingSupportCache();
 			await act(async () => {
-				render(<UseListingSupportSample actions={actions} />);
+				render(<UseListingSupportSample cache={cache} actions={actions} />);
 			});
 
 			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
@@ -235,11 +253,17 @@ describe('useListingSupport', () => {
 				});
 
 			let renderRtn;
+			const cache = new ListingSupportCache();
+
 			// Pass 1.
 			const actions = [IdAction({ ids: ['C4872'] })];
 			await act(async () => {
 				renderRtn = render(
-					<UseListingSupportSample actions={actions} testId={'round1'} />
+					<UseListingSupportSample
+						cache={cache}
+						actions={actions}
+						testId={'round1'}
+					/>
 				);
 			});
 			expect(screen.getByText('TestId: round1')).toBeInTheDocument();
@@ -248,7 +272,11 @@ describe('useListingSupport', () => {
 			const actionsPt2 = [IdAction({ ids: ['C99999'] })];
 			await act(async () => {
 				renderRtn.rerender(
-					<UseListingSupportSample actions={actionsPt2} testId={'round2'} />
+					<UseListingSupportSample
+						cache={cache}
+						actions={actionsPt2}
+						testId={'round2'}
+					/>
 				);
 			});
 			expect(screen.getByText('Payload[0]-ids: C99999')).toBeInTheDocument();
@@ -270,30 +298,27 @@ describe('useListingSupport', () => {
 				},
 			]);
 
-			getListingInformationById
-				.mockReturnValueOnce({
-					conceptId: ['C1111', 'C2222'],
-					name: {
-						label: 'Multi-id concept',
-						normalized: 'multi-id concept',
-					},
-					prettyUrlName: 'multi-id-concept',
-				})
-				.mockReturnValueOnce({
-					conceptId: ['C1111', 'C2222'],
-					name: {
-						label: 'Multi-id concept',
-						normalized: 'multi-id concept',
-					},
-					prettyUrlName: 'multi-id-concept',
-				});
+			getListingInformationById.mockReturnValueOnce({
+				conceptId: ['C1111', 'C2222'],
+				name: {
+					label: 'Multi-id concept',
+					normalized: 'multi-id concept',
+				},
+				prettyUrlName: 'multi-id-concept',
+			});
 
 			let renderRtn;
+			const cache = new ListingSupportCache();
+
 			// Pass 1.
 			const actions = [IdAction({ ids: ['C1111'] })];
 			await act(async () => {
 				renderRtn = render(
-					<UseListingSupportSample actions={actions} testId={'round1'} />
+					<UseListingSupportSample
+						cache={cache}
+						actions={actions}
+						testId={'round1'}
+					/>
 				);
 			});
 			expect(screen.getByText('TestId: round1')).toBeInTheDocument();
@@ -304,7 +329,11 @@ describe('useListingSupport', () => {
 			const actionsPt2 = [IdAction({ ids: ['C2222'] })];
 			await act(async () => {
 				renderRtn.rerender(
-					<UseListingSupportSample actions={actionsPt2} testId={'round2'} />
+					<UseListingSupportSample
+						cache={cache}
+						actions={actionsPt2}
+						testId={'round2'}
+					/>
 				);
 			});
 			expect(
@@ -312,9 +341,8 @@ describe('useListingSupport', () => {
 			).toBeInTheDocument();
 			expect(screen.getByText('TestId: round2')).toBeInTheDocument();
 			expect(screen.queryByText('TestId: round1')).toBeNull();
-			expect(getListingInformationById.mock.calls).toHaveLength(2);
+			expect(getListingInformationById.mock.calls).toHaveLength(1);
 			expect(getListingInformationById.mock.calls[0][1]).toEqual(['C1111']);
-			expect(getListingInformationById.mock.calls[1][1]).toEqual(['C2222']);
 		});
 
 		it('handles id to name transition', async () => {
@@ -337,21 +365,22 @@ describe('useListingSupport', () => {
 				prettyUrlName: 'breast-cancer',
 			});
 
-			getListingInformationByName.mockReturnValueOnce({
-				conceptId: ['C4872'],
-				name: {
-					label: 'Breast Cancer',
-					normalized: 'breast cancer',
-				},
-				prettyUrlName: 'breast-cancer',
+			getListingInformationByName.mockImplementation(() => {
+				throw new Error('I should not be called');
 			});
 
 			let renderRtn;
+			const cache = new ListingSupportCache();
+
 			// Pass 1.
 			const actions = [IdAction({ ids: ['C4872'] })];
 			await act(async () => {
 				renderRtn = render(
-					<UseListingSupportSample actions={actions} testId={'round1'} />
+					<UseListingSupportSample
+						cache={cache}
+						actions={actions}
+						testId={'round1'}
+					/>
 				);
 			});
 			expect(screen.getByText('TestId: round1')).toBeInTheDocument();
@@ -360,7 +389,11 @@ describe('useListingSupport', () => {
 			const actionsPt2 = [NameAction({ name: 'breast-cancer' })];
 			await act(async () => {
 				renderRtn.rerender(
-					<UseListingSupportSample actions={actionsPt2} testId={'round2'} />
+					<UseListingSupportSample
+						cache={cache}
+						actions={actionsPt2}
+						testId={'round2'}
+					/>
 				);
 			});
 			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
@@ -368,11 +401,6 @@ describe('useListingSupport', () => {
 			expect(screen.queryByText('TestId: round1')).toBeNull();
 			expect(getListingInformationById.mock.calls).toHaveLength(1);
 			expect(getListingInformationById.mock.calls[0][1]).toEqual(['C4872']);
-			// TODO: Once caching is added the below mocks should NOT get called.
-			expect(getListingInformationByName.mock.calls).toHaveLength(1);
-			expect(getListingInformationByName.mock.calls[0][1]).toEqual(
-				'breast-cancer'
-			);
 		});
 
 		it('handles adding then removing parameters', async () => {
@@ -441,13 +469,18 @@ describe('useListingSupport', () => {
 			});
 
 			let renderRtn;
+			const cache = new ListingSupportCache();
 
 			// Round 1
 			const actions = [IdAction({ ids: ['C1111', 'C2222'] })];
 
 			await act(async () => {
 				renderRtn = render(
-					<UseListingSupportSample actions={actions} testId={'round1'} />
+					<UseListingSupportSample
+						cache={cache}
+						actions={actions}
+						testId={'round1'}
+					/>
 				);
 			});
 
@@ -469,7 +502,11 @@ describe('useListingSupport', () => {
 
 			await act(async () => {
 				renderRtn.rerender(
-					<UseListingSupportSample actions={actions2} testId={'round2'} />
+					<UseListingSupportSample
+						cache={cache}
+						actions={actions2}
+						testId={'round2'}
+					/>
 				);
 			});
 			expect(
@@ -477,16 +514,13 @@ describe('useListingSupport', () => {
 			).toBeInTheDocument();
 			expect(screen.getByText('Payload[1]-ids: treatment')).toBeInTheDocument();
 			expect(screen.getByText('TestId: round2')).toBeInTheDocument();
-			// No change to get by ID
+			// ID Should still only be one cause it was not in the actions list.
 			expect(getListingInformationById.mock.calls).toHaveLength(1);
 
-			// Name should be added.
-			expect(getListingInformationByName.mock.calls).toHaveLength(1);
-			expect(getListingInformationByName.mock.calls[0][1]).toEqual(
-				'multi-id-concept'
-			);
+			// Name should not have been called because it is cached.
+			expect(getListingInformationByName.mock.calls).toHaveLength(0);
 
-			// Name should be added.
+			// Trial type should be added.
 			expect(getTrialType.mock.calls).toHaveLength(1);
 			expect(getTrialType.mock.calls[0][1]).toEqual('treatment');
 
@@ -499,7 +533,11 @@ describe('useListingSupport', () => {
 
 			await act(async () => {
 				renderRtn.rerender(
-					<UseListingSupportSample actions={actions3} testId={'round3'} />
+					<UseListingSupportSample
+						cache={cache}
+						actions={actions3}
+						testId={'round3'}
+					/>
 				);
 			});
 			expect(
@@ -510,44 +548,39 @@ describe('useListingSupport', () => {
 
 			expect(screen.getByText('TestId: round3')).toBeInTheDocument();
 
-			// Added a call to get by Id.
-			// TODO: With caching this should be back to 1 as we are asking
-			// for the same concept
-			expect(getListingInformationById.mock.calls).toHaveLength(2);
-			expect(getListingInformationById.mock.calls[1][1]).toEqual(['C2222']);
+			// ID should still only be 1 because it was cached.
+			expect(getListingInformationById.mock.calls).toHaveLength(1);
 
-			// Another name fetch should have happened.
-			expect(getListingInformationByName.mock.calls).toHaveLength(2);
-			expect(getListingInformationByName.mock.calls[1][1]).toEqual(
+			// We should expect trial type to not have been called again
+			// because it is cached.
+			expect(getTrialType.mock.calls).toHaveLength(1);
+
+			// A new call to get by name hsould have happened because of
+			// the new third parameter.
+			expect(getListingInformationByName.mock.calls).toHaveLength(1);
+			expect(getListingInformationByName.mock.calls[0][1]).toEqual(
 				'dummy-concept'
 			);
-
-			// Another name call should have happened.
-			expect(getTrialType.mock.calls).toHaveLength(2);
-			expect(getTrialType.mock.calls[1][1]).toEqual('treatment');
 
 			// Round 4
 			const actions4 = [IdAction({ ids: ['C99999'] })];
 
 			await act(async () => {
 				renderRtn.rerender(
-					<UseListingSupportSample actions={actions4} testId={'round4'} />
+					<UseListingSupportSample
+						cache={cache}
+						actions={actions4}
+						testId={'round4'}
+					/>
 				);
 			});
 			expect(screen.getByText('Payload[0]-ids: C99999')).toBeInTheDocument();
 			expect(screen.getByText('TestId: round4')).toBeInTheDocument();
 
-			// Added a call to get by Id.
-			// TODO: With caching this should be back to 1 as we are asking
-			// for the same concept
-			expect(getListingInformationById.mock.calls).toHaveLength(3);
-			expect(getListingInformationById.mock.calls[2][1]).toEqual(['C99999']);
-
-			// No more name fetches
-			expect(getListingInformationByName.mock.calls).toHaveLength(2);
-
-			// No more trial type fetches.
-			expect(getTrialType.mock.calls).toHaveLength(2);
+			// Nothing should be fetched now since C99999 is in the cache.
+			expect(getListingInformationById.mock.calls).toHaveLength(1);
+			expect(getTrialType.mock.calls).toHaveLength(1);
+			expect(getListingInformationByName.mock.calls).toHaveLength(1);
 		});
 	});
 
@@ -568,8 +601,9 @@ describe('useListingSupport', () => {
 			});
 			const actions = [IdAction({ ids: ['C4872'] })];
 
+			const cache = new ListingSupportCache();
 			await act(async () => {
-				render(<UseListingSupportSample actions={actions} />);
+				render(<UseListingSupportSample cache={cache} actions={actions} />);
 			});
 
 			// TODO: Make this actually check the payload
@@ -619,8 +653,9 @@ describe('useListingSupport', () => {
 			});
 			const actions = [IdAction({ ids: ['C4872'] })];
 
+			const cache = new ListingSupportCache();
 			await act(async () => {
-				render(<UseListingSupportSample actions={actions} />);
+				render(<UseListingSupportSample cache={cache} actions={actions} />);
 			});
 
 			expect(screen.getByText('Error: Bad Mojo')).toBeInTheDocument();

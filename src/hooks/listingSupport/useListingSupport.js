@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef, useCallback } from 'react';
+import { useEffect, useReducer, useRef, useCallback, useContext } from 'react';
 
 import {
 	setSuccessfulFetch,
@@ -7,6 +7,7 @@ import {
 	setAborted,
 } from './actions';
 import reducer from './reducer';
+import { updateCache } from './updateCache';
 import {
 	getListingInformationById,
 	getListingInformationByName,
@@ -14,6 +15,7 @@ import {
 } from '../../services/api/trial-listing-support-api';
 import { convertObjectToBase64 } from '../../utils/objects';
 import { useStateValue } from '../../store/store';
+import { ListingSupportContext } from './listingSupportContext';
 
 /**
  * An action representing a listing support API request.
@@ -35,13 +37,19 @@ import { useStateValue } from '../../store/store';
  * @param {import('axios').AxiosInstance} trialListingSupportClient the axios client
  * @param {Array<ListingSupportRequestAction>} actions a collection of request items.
  */
-const internalFetch = async (trialListingSupportClient, actions) => {
+const internalFetch = async (trialListingSupportClient, actions, cache) => {
 	// TODO: Pass in an abort token to internalFetch
 	// We want this function to return a single object we can use
 	try {
 		const requests = actions.map((req) => {
 			switch (req.type) {
 				case 'id': {
+					//check Cache
+					for (const id of req.payload) {
+						if (cache.get(id)) {
+							return cache.get(id);
+						}
+					}
 					// TODO: Add an abort token to getListingInformationById
 					return getListingInformationById(
 						trialListingSupportClient,
@@ -49,14 +57,25 @@ const internalFetch = async (trialListingSupportClient, actions) => {
 					);
 				}
 				case 'name': {
-					// TODO: Add an abort token to getListingInformationByName
-					return getListingInformationByName(
-						trialListingSupportClient,
-						req.payload
-					);
+					//check Cache
+					if (cache.get(req.payload)) {
+						return cache.get(req.payload);
+					} else {
+						// TODO: Add an abort token to getListingInformationByName
+						return getListingInformationByName(
+							trialListingSupportClient,
+							req.payload
+						);
+					}
 				}
 				case 'trialType': {
-					return getTrialType(trialListingSupportClient, req.payload);
+					//check Cache
+					if (cache.get(req.payload)) {
+						return cache.get(req.payload);
+					} else {
+						// the cache key should just be req.payload
+						return getTrialType(trialListingSupportClient, req.payload);
+					}
 				}
 				default: {
 					throw new Error(`Unknown trial listing support request`);
@@ -90,6 +109,9 @@ export const useListingSupport = (actions) => {
 		},
 	] = useStateValue();
 
+	// Get the cache for fetched terms
+	const { cache } = useContext(ListingSupportContext);
+
 	// Indicates if the component this was called from is
 	// still mounted or not. Important to avoid
 	// "Can only update a mounted..." errors.
@@ -100,6 +122,7 @@ export const useListingSupport = (actions) => {
 		payload: null,
 		error: null,
 		aborted: false,
+		_cache: {},
 	});
 
 	const actionsHash = convertObjectToBase64(actions);
@@ -140,7 +163,11 @@ export const useListingSupport = (actions) => {
 		// or it will be an error object. This allows us to have one object
 		// that we return for the useCallback to "cache".
 		// TODO: Pass in a cancellation token for this request to handle aborts
-		const response = await internalFetch(trialListingSupportClient, actions);
+		const response = await internalFetch(
+			trialListingSupportClient,
+			actions,
+			cache
+		);
 
 		// So if we did not abort, then we should dispatch an update for the state.
 		if (
@@ -150,7 +177,8 @@ export const useListingSupport = (actions) => {
 			if (response.errorObject) {
 				dispatch(setFailedFetch(response.errorObject));
 			} else {
-				dispatch(setSuccessfulFetch(response));
+				updateCache(cache, actions, response);
+				dispatch(setSuccessfulFetch(actions, response));
 			}
 		}
 

@@ -5,14 +5,27 @@ import {
 	setLoading,
 	setAborted,
 } from '../actions';
+import { getListingInformationById as IdAction } from '../../../services/api/actions/getListingInformationById';
+
+const CONCEPT_NO_PURL = {
+	conceptId: ['C99999'],
+	name: {
+		label: 'No Purl Concept',
+		normalized: 'no purl concept',
+	},
+	prettyUrlName: null,
+};
 
 describe('listingSupport reducer', () => {
 	it('should handle successful fetch action', () => {
-		const actual = reducer({}, setSuccessfulFetch({ a: 1 }));
+		const actual = reducer(
+			{},
+			setSuccessfulFetch([IdAction({ ids: ['C99999'] })], [CONCEPT_NO_PURL])
+		);
 		expect(actual).toEqual({
 			loading: false,
 			error: null,
-			payload: { a: 1 },
+			payload: [CONCEPT_NO_PURL],
 			aborted: false,
 		});
 	});
@@ -40,6 +53,16 @@ describe('listingSupport reducer', () => {
 
 	it('should handle set aborted action', () => {
 		const actual = reducer({}, setAborted());
+		expect(actual).toEqual({
+			loading: false,
+			error: null,
+			payload: null,
+			aborted: true,
+		});
+	});
+
+	it('handles an initial state', () => {
+		const actual = reducer(undefined, setAborted());
 		expect(actual).toEqual({
 			loading: false,
 			error: null,
