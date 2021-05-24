@@ -5,9 +5,9 @@
  * @param {string} type - the trial type to fetch
  */
 export const getTrialType = async (client, type) => {
-	if (!type.match(/[a-zA-Z0-9-]+/)) {
+	if (!type.match(/[a-zA-Z0-9-_]+/)) {
 		throw new Error(
-			'Name does not match valid string, can only include a-z,0-9 and dashes (-)'
+			'Name does not match valid string, can only include a-z,0-9, dashes (-), and underscores (_)'
 		);
 	}
 

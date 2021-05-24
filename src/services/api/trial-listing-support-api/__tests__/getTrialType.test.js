@@ -34,6 +34,23 @@ describe('Get trial type information', () => {
 		scope.isDone();
 	});
 
+	test('should return expected response with valid trial type when given idString', async () => {
+		const expected = {
+			prettyUrlName: 'health-sciences-research',
+			idString: 'health_sciences_research',
+			label: 'Health Sciences Research',
+		};
+
+		const scope = nock('http://example.org')
+			.get('/trial-type/health_sciences_research')
+			.reply(200, expected);
+
+		const actual = await getTrialType(client, 'health_sciences_research');
+
+		expect(actual).toEqual(expected);
+		scope.isDone();
+	});
+
 	test('handles not found', async () => {
 		const scope = nock('http://example.org').get('/trial-type/asdf').reply(404);
 
@@ -65,7 +82,7 @@ describe('Get trial type information', () => {
 
 	test('validates name', async () => {
 		await expect(getTrialType(client, '!$')).rejects.toThrow(
-			'Name does not match valid string, can only include a-z,0-9 and dashes (-)'
+			'Name does not match valid string, can only include a-z,0-9, dashes (-), and underscores (_)'
 		);
 	});
 });
