@@ -4,7 +4,13 @@ import { Helmet } from 'react-helmet';
 import { useLocation, useNavigate } from 'react-router';
 import track, { useTracking } from 'react-tracking';
 
-import { Pager, NoResults, ResultsList, Spinner } from '../../components';
+import {
+	Pager,
+	NoResults,
+	ResultsList,
+	ScrollRestoration,
+	Spinner,
+} from '../../components';
 import { useAppPaths, useCustomQuery } from '../../hooks';
 import { getClinicalTrials } from '../../services/api/actions';
 import { useStateValue } from '../../store/store';
@@ -202,11 +208,9 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 		setPager(pagination);
 		const { page } = pagination;
 		const qryStr = appendOrUpdateToQueryString(search, 'pn', page);
-
 		const paramsObject = getParamsForRoute(data, routeParamMap);
 
 		navigate(`${routePath(paramsObject)}${qryStr}`);
-		window.scrollTo(0, 0);
 	};
 
 	const renderHelmet = () => {
@@ -299,10 +303,13 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 					return <Spinner />;
 				} else if (!queryResponse.loading && trialsPayload?.trials.length) {
 					return (
-						<ResultsListWithPage
-							results={trialsPayload.trials}
-							resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
-						/>
+						<>
+							<ScrollRestoration />
+							<ResultsListWithPage
+								results={trialsPayload.trials}
+								resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
+							/>
+						</>
 					);
 				} else {
 					return <NoResults />;
