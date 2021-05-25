@@ -17,7 +17,7 @@ module.exports = function (app) {
   // NOTE: The client does not allow us to change the base path.
   // So
 
-  app.use('/api/clinical-trials', mockClinicalTrials);
+  app.use('/api/v1/clinical-trials', mockClinicalTrials);
 
 	app.use('/api/listing-information/get', mockListingInformationById);
 

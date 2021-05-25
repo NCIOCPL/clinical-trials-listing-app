@@ -10,7 +10,7 @@ import { useAppPaths, useCustomQuery } from '../../../hooks';
 jest.mock('../../../store/store.js');
 jest.mock('../../../hooks');
 
-const fixturePath = `/clinical-trials`;
+const fixturePath = `/v1/clinical-trials`;
 const trastuzumabFile = `trastuzumab-response.json`;
 
 describe('<Intervention />', () => {

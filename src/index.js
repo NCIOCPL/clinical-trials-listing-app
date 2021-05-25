@@ -39,6 +39,9 @@ const initialize = ({
 	canonicalHost = 'https://www.cancer.gov',
 	cisBannerImgUrlLarge = null,
 	cisBannerImgUrlSmall = null,
+	ctsApiHostname = 'clinicaltrialsapi.cancer.gov',
+	ctsPort = null,
+	ctsProtocol = 'https',
 	browserTitle = '{{disease_label}} Clinical Trials',
 	dynamicListingPatterns = null,
 	detailedViewPagePrettyUrlFormatter = '',
@@ -55,7 +58,6 @@ const initialize = ({
 	rootId = 'NCI-app-root',
 	siteName = 'National Cancer Institute',
 	title = 'NCI Clinical Trials',
-	trialsApiEndpoint = 'https://clinicaltrialsapi.cancer.gov/v1/',
 	viewPageUrlFormatter = '/clinicaltrials/{0}',
 } = {}) => {
 	const appRootDOMNode = document.getElementById(rootId);
@@ -76,6 +78,9 @@ const initialize = ({
 		basePath,
 		cisBannerImgUrlLarge,
 		cisBannerImgUrlSmall,
+		ctsApiHostname,
+		ctsPort,
+		ctsProtocol,
 		detailedViewPagePrettyUrlFormatter,
 		dynamicListingPatterns,
 		browserTitle,
@@ -95,7 +100,6 @@ const initialize = ({
 		trialListingPageType,
 		siteName,
 		title,
-		trialsApiEndpoint,
 		viewPageUrlFormatter,
 	};
 
@@ -121,6 +125,22 @@ const initialize = ({
 	AnalyticsHoC.propTypes = {
 		children: PropTypes.node,
 	};
+
+	// Set up Clinical Trials API URL using given parameters.
+	const setupTrialsAPIEndpoint = () => {
+		if (ctsProtocol === null || ctsApiHostname === null) {
+			throw new Error('ctsProtocol and ctsApiHostname must be set.');
+		} else {
+			return (
+				(ctsProtocol !== '' ? ctsProtocol + '://' : '') +
+				ctsApiHostname +
+				(ctsPort && ctsPort !== '' ? ':' + ctsPort : '') +
+				'/v1/'
+			);
+		}
+	};
+
+	const trialsApiEndpoint = setupTrialsAPIEndpoint();
 
 	// Setup requestInterceptors for RTL client.
 	const requestInterceptors = [
