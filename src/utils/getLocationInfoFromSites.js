@@ -91,7 +91,7 @@ export const getLocationInfoFromSites = (
 	return (
 		<>
 			<strong>Location: </strong>
-			{`${totalUSLocations} Locations`}
+			{`${totalUSLocations} locations`}
 		</>
 	);
 };
