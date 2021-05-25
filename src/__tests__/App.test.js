@@ -36,21 +36,25 @@ describe('App component', () => {
 
 	test('BasePath route exists and matches expected route', async () => {
 		const basePath = '/';
+		const ctsApiHostname = 'clinicaltrialsapi.cancer.gov';
+		const ctsPort = null;
+		const ctsProtocol = 'https';
 		const language = 'en';
 		const listingApiEndpoint = 'http://localhost:3000/listing-api';
 		const requestFilters = '';
 		const siteName = 'National Cancer Institute';
-		const trialsApiEndpoint = 'http://localhost:3000/trials-api';
 
 		useStateValue.mockReturnValue([
 			{
 				appId: 'mockAppId',
 				basePath,
+				ctsApiHostname,
+				ctsPort,
+				ctsProtocol,
 				language,
 				listingApiEndpoint,
 				requestFilters,
 				siteName,
-				trialsApiEndpoint,
 			},
 		]);
 

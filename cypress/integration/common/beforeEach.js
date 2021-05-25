@@ -18,6 +18,9 @@ beforeEach(() => {
 			canonicalHost: 'https://www.cancer.gov',
 			cisBannerImgUrlLarge: '%PUBLIC_URL%/images/cts-cis-banner-xl.jpeg',
 			cisBannerImgUrlSmall: '%PUBLIC_URL%/images/cts-cis-banner-smartphone.jpeg',
+			ctsApiHostname: '/api',
+			ctsPort: null,
+			ctsProtocol: '',
 			dynamicListingPatterns: {
 				Disease: {
 					browserTitle: '{{disease_label}} Clinical Trials',
@@ -86,7 +89,6 @@ beforeEach(() => {
 				'/clinicaltrials/{{nci_id}}',
 				introText:
 				'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer. All trials on the list are NCI-supported clinical trials, which are sponsored or otherwise financially supported by NCI.</p><p>NCI’s <a href="/about-cancer/treatment/clinical-trials/what-are-trials">basic information about clinical trials</a> explains the types and phases of trials and how they are carried out. Clinical trials look at new ways to prevent, detect, or treat disease. You may want to think about taking part in a clinical trial. Talk to your doctor for help in deciding if one is right for you.</p>',
-			trialsApiEndpoint: '/api/',
 		};
 		console.log(win.INT_TEST_APP_PARAMS);
 	});

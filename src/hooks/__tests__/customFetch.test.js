@@ -112,14 +112,18 @@ describe('', () => {
 
 	test('useCustomQuery example should display content and not throw error', async () => {
 		const contentMessage = 'Successful API call with content';
+		const ctsApiHostname = 'clinicaltrialsapi.cancer.gov';
+		const ctsPort = null;
+		const ctsProtocol = 'https';
 		const requestFilters = '';
-		const trialsApiEndpoint = 'http://localhost:3000/api';
 
 		useStateValue.mockReturnValue([
 			{
 				appId: 'mockAppId',
+				ctsApiHostname,
+				ctsPort,
+				ctsProtocol,
 				requestFilters,
-				trialsApiEndpoint,
 			},
 		]);
 

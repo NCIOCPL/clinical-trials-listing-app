@@ -72,6 +72,7 @@ const clinicalTrialsPost = async (req, res, next) => {
     '..',
     '..',
     'mock-data',
+		'v1',
     'clinical-trials'
   );
 
