@@ -83,7 +83,9 @@ export const getParamsForRoute = (data, routeParamMap) => {
 			case 'trial-type': {
 				return {
 					...acQuery,
-					[paramInfo.paramName]: paramData.label.toLowerCase(),
+					[paramInfo.paramName]: paramData.prettyUrlName
+						? paramData.prettyUrlName
+						: paramData.idString,
 				};
 			}
 			default:

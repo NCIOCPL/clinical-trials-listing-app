@@ -2,6 +2,7 @@ Feature: As a user, I would like to see the Page Not Found page when I visit a d
 
 	Scenario: User visits disease trials listing page with no parameters
 		Given "trialListingPageType" is set to "Disease"
+		And "dynamicListingPatterns" object is set to "Disease"
 		When the user navigates to "/?cfg=0"
 		Then page title on error page is "Page Not Found"
     And the text "We can't find the page you're looking for." appears on the page
@@ -12,6 +13,7 @@ Feature: As a user, I would like to see the Page Not Found page when I visit a d
 
 	Scenario: User visits intervention trials listing page with no parameters
 		Given "trialListingPageType" is set to "Intervention"
+		And "dynamicListingPatterns" object is set to "Intervention"
 		When the user navigates to "/?cfg=1"
 		Then page title on error page is "Page Not Found"
     And the text "We can't find the page you're looking for." appears on the page

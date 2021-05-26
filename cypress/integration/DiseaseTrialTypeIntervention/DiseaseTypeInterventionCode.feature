@@ -2,7 +2,7 @@ Feature: As a user, I would like to view the trial results for a disease listing
 
   Scenario: View disease listing page results with c-code parameter
     Given "trialListingPageType" is set to "Disease"
-    And "pageTitle" is set to "{{trial_type_label}} Clinical Trials for {{disease_label}} Using {{intervention_label}}"
+    And "dynamicListingPatterns" object is set to "Disease"
     Given the user navigates to "/C4872/treatment/C1647?cfg=0"
     Then the page title is "Treatment Clinical Trials for Breast Cancer Using Trastuzumab"
     Then the system displays 1 paragraph "Clinical trials are research studies that involve people. The clinical trials on this list are testing treatment methods for breast cancer that use trastuzumab. All trials on the list are NCI-supported clinical trials, which are sponsored or otherwise financially supported by NCI."
@@ -14,7 +14,7 @@ Feature: As a user, I would like to view the trial results for a disease listing
 
   Scenario: View disease listing page metadata with pretty URL name parameter
     Given "trialListingPageType" is set to "Disease"
-    And "pageTitle" is set to "{{trial_type_label}} Clinical Trials for {{disease_label}} Using {{intervention_label}}"
+    And "dynamicListingPatterns" object is set to "Disease"
     And "siteName" is set to "National Cancer Institute"
     Given the user navigates to "/C4872/treatment/C1647?cfg=0"
     Then the title tag should be "Treatment Clinical Trials for Breast Cancer Using Trastuzumab - National Cancer Institute"

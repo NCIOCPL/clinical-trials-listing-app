@@ -196,8 +196,7 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 				// for the event.
 				numberResults: queryResponse.payload?.total,
 				trialListingPageType: `${trialListingPageType.toLowerCase()}`,
-				interventionName: trackingData.interventionName,
-				trialType: trackingData.trialType ?? 'none',
+				...trackingData,
 			});
 		}
 	}, [trialsPayload]);

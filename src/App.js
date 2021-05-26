@@ -23,6 +23,7 @@ const App = () => {
 	const {
 		BasePath,
 		CodeOrPurlPath,
+		CodeOrPurlWithTypePath,
 		CodeOrPurlWithTypeAndInterCodeOrPurlPath,
 		NoTrialsPath,
 	} = useAppPaths();
@@ -134,6 +135,15 @@ const App = () => {
 								element={
 									<WrappedDisease
 										redirectPath={CodeOrPurlPath}
+										routeParamMap={diseaseRouteParamMap}
+									/>
+								}
+							/>
+							<Route
+								path={CodeOrPurlWithTypePath()}
+								element={
+									<WrappedDisease
+										redirectPath={CodeOrPurlWithTypePath}
 										routeParamMap={diseaseRouteParamMap}
 									/>
 								}

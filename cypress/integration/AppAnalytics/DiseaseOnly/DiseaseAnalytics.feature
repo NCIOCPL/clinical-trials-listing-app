@@ -2,7 +2,7 @@ Feature: Disease listing page analytics
 
 	Scenario: Page Load Analytics fires when a user views a disease listing page
 		Given "trialListingPageType" is set to "Disease"
-		And "pageTitle" is set to "{{disease_label}} Clinical Trials"
+		And "dynamicListingPatterns" object is set to "Disease"
 		And "analyticsPublishedDate" is set to "02/02/2011"
 		When the user navigates to "/C4872"
 		Then the page title is "Breast Cancer Clinical Trials"

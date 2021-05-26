@@ -80,7 +80,7 @@ const NoTrialsFound = ({ routeParamMap, data }) => {
 
 			return {
 				...ac,
-				[`${contextEntryInfo.textReplacementKey}`]: info.idString,
+				trialType: info.label.toLowerCase(),
 			};
 		}, {});
 
