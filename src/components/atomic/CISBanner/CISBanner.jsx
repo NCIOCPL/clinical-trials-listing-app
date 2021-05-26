@@ -28,7 +28,7 @@ const CISBanner = ({ onLiveHelpClick }) => {
 				<source srcSet={cisBannerImgUrlSmall} media="(max-width: 640px)" />
 				<source srcSet={cisBannerImgUrlLarge} />
 				<img
-					srcSet={cisBannerImgUrlSmall}
+					src={cisBannerImgUrlLarge}
 					alt="Questions? Chat with an information specialist"
 				/>
 			</picture>
