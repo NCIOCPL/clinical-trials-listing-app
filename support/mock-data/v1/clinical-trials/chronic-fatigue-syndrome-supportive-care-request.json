@@ -1,0 +1,16 @@
+{
+	"current_trial_status": [
+		"Active",
+		"Approved",
+		"Enrolling by Invitation",
+		"In Review",
+		"Temporarily Closed to Accrual",
+		"Temporarily Closed to Accrual and Intervention"
+	],
+	"diseases.nci_thesaurus_concept_id": [
+		"C3037"
+	],
+	"primary_purpose.primary_purpose_code": "supportive_care",
+	"from": 0,
+	"size": 25
+}

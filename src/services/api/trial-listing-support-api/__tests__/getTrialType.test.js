@@ -36,16 +36,16 @@ describe('Get trial type information', () => {
 
 	test('should return expected response with valid trial type when given idString', async () => {
 		const expected = {
-			prettyUrlName: 'health-sciences-research',
-			idString: 'health_sciences_research',
-			label: 'Health Sciences Research',
+			prettyUrlName: 'health-services-research',
+			idString: 'health_services_research',
+			label: 'Health Services Research',
 		};
 
 		const scope = nock('http://example.org')
-			.get('/trial-type/health_sciences_research')
+			.get('/trial-type/health_services_research')
 			.reply(200, expected);
 
-		const actual = await getTrialType(client, 'health_sciences_research');
+		const actual = await getTrialType(client, 'health_services_research');
 
 		expect(actual).toEqual(expected);
 		scope.isDone();

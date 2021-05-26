@@ -74,7 +74,7 @@ Given('{string} object is set to {string}', (key, param) => {
 	cy.on('window:before:load', (win) => {
 		const newObj = {};
 		newObj[param] = win.INT_TEST_APP_PARAMS[key][param];
-		win.INT_TEST_APP_PARAMS[key] = newObj;
+		win.INT_TEST_APP_PARAMS[key] = newObj[param];
 	});
 });
 /*

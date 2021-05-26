@@ -2,6 +2,7 @@ Feature: As a user, I would like to see an error page when I visit a dynamic lis
 
 	Scenario: User visits disease trials listing page with invalid parameters
 		Given "trialListingPageType" is set to "Disease"
+		And "dynamicListingPatterns" object is set to "Disease"
 		And "cisBannerImgUrlLarge" is set to null
 		And "cisBannerImgUrlSmall" is set to null
 		When the user navigates to "/C4872"
@@ -9,6 +10,7 @@ Feature: As a user, I would like to see an error page when I visit a dynamic lis
 
 	Scenario: User visits disease trials listing page with invalid parameters
 		Given "trialListingPageType" is set to "Disease"
+		And "dynamicListingPatterns" object is set to "Disease"
 		And "cisBannerImgUrlLarge" is set to null
 		And "cisBannerImgUrlSmall" is set to 'img.jpeg'
 		When the user navigates to "/C4872"

@@ -2,7 +2,7 @@ Feature: Disease trial type intervention listing page analytics
 
   Scenario: Page Load Analytics fires when a user views a disease listing page
     Given "trialListingPageType" is set to "Disease"
-    And "pageTitle" is set to "{{trial_type_label}} Clinical Trials for {{disease_label}} Using {{intervention_label}}"
+    And "dynamicListingPatterns" object is set to "Disease"
     And "analyticsPublishedDate" is set to "02/02/2011"
     When the user navigates to "/breast-cancer/treatment/trastuzumab?cfg=0"
     Then the page title is "Treatment Clinical Trials for Breast Cancer Using Trastuzumab"
@@ -27,7 +27,7 @@ Feature: Disease trial type intervention listing page analytics
 
   Scenario: Click event fires when a user clicks on result item
     Given "trialListingPageType" is set to "Disease"
-    And "pageTitle" is set to "{{trial_type_label}} Clinical Trials for {{disease_label}} Using {{intervention_label}}"
+    And "dynamicListingPatterns" object is set to "Disease"
     And "analyticsPublishedDate" is set to "02/02/2011"
     When the user navigates to "/breast-cancer/treatment/trastuzumab?cfg=0"
     Then the page title is "Treatment Clinical Trials for Breast Cancer Using Trastuzumab"
