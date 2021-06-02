@@ -169,6 +169,16 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 		}
 	}, [trialsPayload]);
 
+	useEffect(() => {
+		if (pn !== pager.page.toString()) {
+			setPager({
+				...pager,
+				offset: pn ? getPageOffset(pn, itemsPerPage) : 0,
+				page: typeof pn === 'string' ? pn : 1,
+			});
+		}
+	}, [pn]);
+
 	const onPageNavigationChangeHandler = (pagination) => {
 		setPager(pagination);
 		const { page } = pagination;
@@ -176,9 +186,7 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 
 		const paramsObject = getParamsForRoute(data, routeParamMap);
 
-		navigate(`${routePath(paramsObject)}${qryStr}`, {
-			replace: true,
-		});
+		navigate(`${routePath(paramsObject)}${qryStr}`);
 
 		window.scrollTo(0, 0);
 	};
