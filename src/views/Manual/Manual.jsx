@@ -86,11 +86,21 @@ const Manual = () => {
 		}
 	}, [trialsPayload]);
 
+	useEffect(() => {
+		if (pn !== pager.page.toString()) {
+			setPager({
+				...pager,
+				offset: pn ? getPageOffset(pn, itemsPerPage) : 0,
+				page: typeof pn === 'string' ? pn : 1,
+			});
+		}
+	}, [pn]);
+
 	const onPageNavigationChangeHandler = (pagination) => {
 		setPager(pagination);
 		const { page } = pagination;
 		const qryStr = appendOrUpdateToQueryString(search, 'pn', page);
-		navigate(`${BasePath()}${qryStr}`, { replace: true });
+		navigate(`${BasePath()}${qryStr}`);
 		//since pagination does not reload the page, putting this
 		//here as well to bring scroll to the top after paging
 		scrollToTheTop();
