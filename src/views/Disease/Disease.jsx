@@ -264,7 +264,7 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 	})(ResultsList);
 
 	return (
-		<div>
+		<>
 			{renderHelmet()}
 			<h1>{replacedText.pageTitle}</h1>
 			{replacedText.introText.length > 0 &&
@@ -291,7 +291,7 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 			})()}
 			{/* ::: Bottom Paging Section ::: */}
 			{renderPagerSection('bottom')}
-		</div>
+		</>
 	);
 };
 
