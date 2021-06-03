@@ -7,6 +7,7 @@ Feature: Intervention listing page analytics
 		When the user navigates to "/C1647?cfg=1"
 		Then the page title is "Clinical Trials Using Trastuzumab"
 		And browser waits
+		And delighter is displayed with link "https://cancer.gov/about-cancer/treatment/clinical-trials/search"
 		Then there should be an analytics event with the following details
 			| key                                         | value                                                         |
 			| event                                       | TrialListingApp:Load:Results                                  |

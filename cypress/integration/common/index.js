@@ -108,10 +108,10 @@ And('the following links and texts exist on the page', (dataTable) => {
 	// Split the data table into array of pairs
 	const rawTable = dataTable.rawTable.slice();
 
-	// Verify the total number of links
+	// Verify the total number of links, plus 1 is to handle the floating delighter
 	cy.document().then((doc) => {
 		let docLinkArray = doc.querySelectorAll('#main-content a');
-		expect(docLinkArray.length).to.be.eq(rawTable.length);
+		expect(docLinkArray.length).to.be.eq(rawTable.length + 1);
 	});
 
 	// get the link with the provided url and assert it's text

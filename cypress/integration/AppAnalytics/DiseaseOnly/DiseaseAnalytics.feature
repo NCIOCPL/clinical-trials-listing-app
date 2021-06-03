@@ -6,6 +6,7 @@ Feature: Disease listing page analytics
 		And "analyticsPublishedDate" is set to "02/02/2011"
 		When the user navigates to "/C4872"
 		Then the page title is "Breast Cancer Clinical Trials"
+		And delighter is displayed with link "https://cancer.gov/about-cancer/treatment/clinical-trials/search"
 		And browser waits
 		Then there should be an analytics event with the following details
 			| key                                         | value                                                     |
@@ -29,6 +30,7 @@ Feature: Disease listing page analytics
         And "analyticsPublishedDate" is set to "02/02/2011"
         When the user navigates to "/breast-cancer"
         Then the page title is "Breast Cancer Clinical Trials"
+				And delighter is displayed with link "https://cancer.gov/about-cancer/treatment/clinical-trials/search"
         When user clicks on result item 2
         Then there should be an analytics event with the following details
             | key              | value                             |

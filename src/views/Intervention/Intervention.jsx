@@ -274,7 +274,7 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 	})(ResultsList);
 
 	return (
-		<div>
+		<>
 			{renderHelmet()}
 			<h1>{replacedText.pageTitle}</h1>
 			{replacedText.introText.length > 0 &&
@@ -284,6 +284,7 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 						dangerouslySetInnerHTML={{ __html: replacedText.introText }}></div>
 				)}
 			{/* ::: Top Paging Section ::: */}
+
 			{renderPagerSection('top')}
 			{(() => {
 				if (queryResponse.loading) {
@@ -301,7 +302,7 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 			})()}
 			{/* ::: Bottom Paging Section ::: */}
 			{renderPagerSection('bottom')}
-		</div>
+		</>
 	);
 };
 

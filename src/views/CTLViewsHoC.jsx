@@ -203,6 +203,7 @@ const CTLViewsHoC = (WrappedView) => {
 
 		return (
 			<div>
+				<div className="page-options-container" />
 				{(() => {
 					// Show loading.
 					if (
