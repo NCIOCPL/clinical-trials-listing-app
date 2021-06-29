@@ -1,0 +1,20 @@
+{
+    "current_trial_status": [
+        "Active",
+        "Approved",
+        "Enrolling by Invitation",
+        "In Review",
+        "Temporarily Closed to Accrual",
+        "Temporarily Closed to Accrual and Intervention"
+    ],
+    "diseases.nci_thesaurus_concept_id": [
+        "C4872",
+        "C118809"
+    ],
+    "arms.interventions.intervention_code": [
+        "C1647"
+    ],
+    "primary_purpose.primary_purpose_code": "treatment",
+    "from": 0,
+    "size": 25
+}

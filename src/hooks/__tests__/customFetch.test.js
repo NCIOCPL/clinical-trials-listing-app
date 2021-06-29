@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, cleanup, render, screen } from '@testing-library/react';
 import React from 'react';
 import { ClientContextProvider } from 'react-fetching-library';
 
@@ -8,7 +8,6 @@ import MockAnalyticsProvider from '../../tracking/mock-analytics-provider';
 import { ErrorBoundary } from '../../views/ErrorBoundary';
 
 jest.mock('../../store/store');
-let wrapper;
 
 const getSampleCallResults = ({ id }) => {
 	return {
@@ -30,6 +29,7 @@ describe('', () => {
 
 	afterEach(() => {
 		console.error.mockRestore();
+		cleanup();
 	});
 
 	test('should throw an error using a non existent endpoint - English message', async () => {
@@ -111,17 +111,19 @@ describe('', () => {
 	});
 
 	test('useCustomQuery example should display content and not throw error', async () => {
-		const basePath = '/';
-		const canonicalHost = 'https://www.example.gov';
-		const apiBaseEndpoint = 'http://localhost:3000/api';
 		const contentMessage = 'Successful API call with content';
+		const ctsApiHostname = 'clinicaltrialsapi.cancer.gov';
+		const ctsPort = null;
+		const ctsProtocol = 'https';
+		const requestFilters = '';
 
 		useStateValue.mockReturnValue([
 			{
 				appId: 'mockAppId',
-				basePath,
-				canonicalHost,
-				apiBaseEndpoint,
+				ctsApiHostname,
+				ctsPort,
+				ctsProtocol,
+				requestFilters,
 			},
 		]);
 
@@ -133,7 +135,7 @@ describe('', () => {
 			}),
 		};
 		await act(async () => {
-			wrapper = render(
+			render(
 				<MockAnalyticsProvider>
 					<ClientContextProvider client={client}>
 						<ErrorBoundary>
@@ -143,7 +145,6 @@ describe('', () => {
 				</MockAnalyticsProvider>
 			);
 		});
-		const { getByText } = wrapper;
-		expect(getByText(contentMessage)).toBeInTheDocument();
+		expect(screen.getByText(contentMessage)).toBeInTheDocument();
 	});
 });

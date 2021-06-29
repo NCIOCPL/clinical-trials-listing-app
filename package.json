@@ -1,6 +1,6 @@
 {
 	"name": "@nciocpl/clinical-trials-listing-app",
-	"version": "1.0.2",
+	"version": "2.0.0",
 	"description": "Clinical Trials Listing App",
 	"repository": {
 		"type": "git",
@@ -28,6 +28,7 @@
 		"fs-extra": "^8.1.0",
 		"history": "^5.0.0",
 		"prop-types": "^15.7.2",
+		"qs": "^6.10.1",
 		"react": "^16.13.1",
 		"react-app-polyfill": "^1.0.6",
 		"react-dev-utils": "^10.2.1",

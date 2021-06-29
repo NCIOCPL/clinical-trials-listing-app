@@ -6,7 +6,7 @@ import { ClientContextProvider } from 'react-fetching-library';
 import { MemoryRouter, useLocation } from 'react-router';
 
 import { useAppPaths } from '../hooks';
-import { getAxiosClient } from '../services/api/axios-client';
+import { getAxiosClient } from '../services/api/common';
 import { useStateValue } from '../store/store.js';
 import { MockAnalyticsProvider } from '../tracking';
 import Manual from '../views/Manual';
@@ -35,9 +35,12 @@ describe('App component', () => {
 	afterEach(cleanup);
 
 	test('BasePath route exists and matches expected route', async () => {
-		const apiEndpoint = 'http://localhost:3000/api';
 		const basePath = '/';
+		const ctsApiHostname = 'clinicaltrialsapi.cancer.gov';
+		const ctsPort = null;
+		const ctsProtocol = 'https';
 		const language = 'en';
+		const listingApiEndpoint = 'http://localhost:3000/listing-api';
 		const requestFilters = '';
 		const siteName = 'National Cancer Institute';
 
@@ -45,25 +48,23 @@ describe('App component', () => {
 			{
 				appId: 'mockAppId',
 				basePath,
+				ctsApiHostname,
+				ctsPort,
+				ctsProtocol,
 				language,
+				listingApiEndpoint,
 				requestFilters,
 				siteName,
 			},
 		]);
 
 		const { BasePath } = useAppPaths();
-		const initialState = {
-			apiEndpoint,
-			language,
-			requestFilters,
-			siteName,
-		};
 
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
 					<MemoryRouter initialEntries={[BasePath()]}>
-						<ClientContextProvider client={getAxiosClient(initialState)}>
+						<ClientContextProvider client={getAxiosClient([])}>
 							<ComponentWithLocation RenderComponent={Manual} />
 						</ClientContextProvider>
 					</MemoryRouter>

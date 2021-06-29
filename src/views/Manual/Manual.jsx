@@ -3,7 +3,13 @@ import { Helmet } from 'react-helmet';
 import { useLocation, useNavigate } from 'react-router';
 import track, { useTracking } from 'react-tracking';
 
-import { NoResults, Pager, ResultsList, Spinner } from '../../components';
+import {
+	NoResults,
+	Pager,
+	ResultsList,
+	ScrollRestoration,
+	Spinner,
+} from '../../components';
 import { useAppPaths, useCustomQuery } from '../../hooks';
 import { getClinicalTrials } from '../../services/api/actions';
 import { useStateValue } from '../../store/store';
@@ -51,14 +57,6 @@ const Manual = () => {
 			size: pager.pageUnit,
 		})
 	);
-	const scrollToTheTop = () => {
-		window.scrollTo(0, 0);
-	};
-
-	// every time page loads the scroll should be positioned at the top
-	useEffect(() => {
-		scrollToTheTop();
-	}, []);
 
 	useEffect(() => {
 		if (!queryResponse.loading && queryResponse.payload) {
@@ -86,14 +84,21 @@ const Manual = () => {
 		}
 	}, [trialsPayload]);
 
+	useEffect(() => {
+		if (pn !== pager.page.toString()) {
+			setPager({
+				...pager,
+				offset: pn ? getPageOffset(pn, itemsPerPage) : 0,
+				page: typeof pn === 'string' ? pn : 1,
+			});
+		}
+	}, [pn]);
+
 	const onPageNavigationChangeHandler = (pagination) => {
 		setPager(pagination);
 		const { page } = pagination;
 		const qryStr = appendOrUpdateToQueryString(search, 'pn', page);
-		navigate(`${BasePath()}${qryStr}`, { replace: true });
-		//since pagination does not reload the page, putting this
-		//here as well to bring scroll to the top after paging
-		scrollToTheTop();
+		navigate(`${BasePath()}${qryStr}`);
 	};
 
 	const renderHelmet = () => {
@@ -167,10 +172,13 @@ const Manual = () => {
 					return <Spinner />;
 				} else if (!queryResponse.loading && trialsPayload?.trials?.length) {
 					return (
-						<ResultsListWithPage
-							results={trialsPayload.trials}
-							resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
-						/>
+						<>
+							<ScrollRestoration />
+							<ResultsListWithPage
+								results={trialsPayload.trials}
+								resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
+							/>
+						</>
 					);
 				} else {
 					return <NoResults />;

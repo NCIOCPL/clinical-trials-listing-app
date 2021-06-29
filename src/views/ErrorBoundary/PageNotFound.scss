@@ -1,21 +1,40 @@
 .error-container {
 	.error-searchbar {
 		display: block;
-		div.searchString {
+		.ncids-input-group {
+			display: block;
+				margin: 5px 0 0;
+				width: 100%;
+			@media screen and (min-width: 641px) {
+				display: inline-block;
+				width: 270px;
+			}
+
+		.ncids-input {
+			display: block;
+			margin: 5px 0 0;
+			width: 100%;
+
+			@media screen and (min-width: 641px) {
+			display: inline-block;
 			margin: 0;
-			padding: 0;
+			padding: 0 0 0 8px;
+			width: 270px;
+			}
 		}
+	}
 
 		.button {
+			display: block;
+			margin: 10px 0 0;
+			width: 100%;
+
+			@media screen and (min-width: 641px) {
 			display: inline-block;
 			width: 20%;
 			margin-right: 1em;
 			margin-left: 1em;
-			top: -1px;
-
-			@media screen and (max-width: 414px) {
-				font-size: 14px;
-				width: 24%;
+			top: -2px;
 			}
 		}
 	}

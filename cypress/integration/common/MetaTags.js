@@ -60,3 +60,7 @@ Then('there are alternate links with the following', (dataTable) => {
 Then('there are no alternate links', () => {
 	cy.get("[rel='alternate']").should('not.exist');
 });
+
+And('meta tag with a {string} {string} does not exist',(propertyOrName, value)=>{
+	cy.get(`[${propertyOrName}='${value}']`).should('not.exist');
+});

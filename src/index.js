@@ -8,18 +8,21 @@ import ReactDOM from 'react-dom';
 import { ClientContextProvider } from 'react-fetching-library';
 
 import App from './App';
-import { getAxiosClient } from './services/api/axios-client';
+import {
+	getAxiosClient,
+	replacingRequestInterceptor,
+} from './services/api/common';
+import listingSupportApiFactory from './services/api/trial-listing-support-api';
 import * as serviceWorker from './serviceWorker';
 import reducer from './store/reducer';
 import { StateProvider } from './store/store';
 import { AnalyticsProvider, EddlAnalyticsProvider } from './tracking';
-import { getProductTestBase } from './utils';
+import { cleanURI, getProductTestBase } from './utils';
 import { ErrorBoundary } from './views';
 
 /**
  * Initializes the Clinical Trials Listing App.
- * @param {object} params - Configuration for the app
- * @param {string} params.analyticsName - The name of the dictionary for analytics purposes.
+ * @param {any} params - Configuration for the app
  */
 const initialize = ({
 	analyticsChannel = 'Clinical Trials',
@@ -33,13 +36,20 @@ const initialize = ({
 	appId = '@@/DEFAULT_REACT_APP_ID',
 	baseHost = 'http://localhost:3000',
 	basePath = '/',
-	apiEndpoint = 'https://clinicaltrialsapi.cancer.gov/v1/',
 	canonicalHost = 'https://www.cancer.gov',
+	cisBannerImgUrlLarge = null,
+	cisBannerImgUrlSmall = null,
+	ctsApiHostname = 'clinicaltrialsapi.cancer.gov',
+	ctsPort = null,
+	ctsProtocol = 'https',
 	browserTitle = '{{disease_label}} Clinical Trials',
+	dynamicListingPatterns = null,
 	detailedViewPagePrettyUrlFormatter = '',
 	introText = '',
 	itemsPerPage = 25,
 	language = 'en',
+	listingApiEndpoint = 'https://webapis.cancer.gov/triallistingsupport/v1/',
+	liveHelpUrl = null,
 	metaDescription = 'NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials for {{disease_normalized}}.',
 	noTrialsHtml = '<p>There are no NCI-supported clinical trials for {{disease_normalized}} at this time. You can try a <a href=\\"/about-cancer/treatment/clinical-trials/search\\">new search</a> or <a href=\\"/contact\\">contact our Cancer Information Service</a> to talk about options for clinical trials.</p>',
 	pageTitle = '{{disease_label}} Clinical Trials',
@@ -53,21 +63,36 @@ const initialize = ({
 	const appRootDOMNode = document.getElementById(rootId);
 	const isRehydrating = appRootDOMNode.getAttribute('data-isRehydrating');
 
+	// Setup API clients
+	const trialListingSupportClient = listingSupportApiFactory(
+		listingApiEndpoint
+	);
+
 	// populate global state with init params
 	const initialState = {
-		apiEndpoint,
 		appId,
 		analyticsChannel,
 		analyticsContentGroup,
 		analyticsPublishedDate,
 		baseHost,
 		basePath,
+		cisBannerImgUrlLarge,
+		cisBannerImgUrlSmall,
+		ctsApiHostname,
+		ctsPort,
+		ctsProtocol,
 		detailedViewPagePrettyUrlFormatter,
+		dynamicListingPatterns,
 		browserTitle,
 		canonicalHost,
 		introText,
 		itemsPerPage,
 		language,
+		apiClients: {
+			trialListingSupportClient,
+		},
+		listingApiEndpoint,
+		liveHelpUrl,
 		metaDescription,
 		noTrialsHtml,
 		pageTitle,
@@ -101,11 +126,34 @@ const initialize = ({
 		children: PropTypes.node,
 	};
 
+	// Set up Clinical Trials API URL using given parameters.
+	const setupTrialsAPIEndpoint = () => {
+		if (ctsProtocol === null || ctsApiHostname === null) {
+			throw new Error('ctsProtocol and ctsApiHostname must be set.');
+		} else {
+			return (
+				(ctsProtocol !== '' ? ctsProtocol + '://' : '') +
+				ctsApiHostname +
+				(ctsPort && ctsPort !== '' ? ':' + ctsPort : '') +
+				'/v1/'
+			);
+		}
+	};
+
+	const trialsApiEndpoint = setupTrialsAPIEndpoint();
+
+	// Setup requestInterceptors for RTL client.
+	const requestInterceptors = [
+		replacingRequestInterceptor('clinical-trials-api', {
+			API_HOST: cleanURI(trialsApiEndpoint),
+		}),
+	].filter((item) => item !== null);
+
 	const AppBlock = () => {
 		return (
 			<StateProvider initialState={initialState} reducer={reducer}>
 				<AnalyticsHoC>
-					<ClientContextProvider client={getAxiosClient(initialState)}>
+					<ClientContextProvider client={getAxiosClient(requestInterceptors)}>
 						<ErrorBoundary>
 							<App />
 						</ErrorBoundary>
@@ -133,19 +181,19 @@ const appParams = window.APP_PARAMS || {};
 const integrationTestOverrides = window.INT_TEST_APP_PARAMS || {};
 if (process.env.NODE_ENV !== 'production') {
 	//This is DEV
-	const dictSettings = {
+	const ctlSettings = {
 		...appParams,
 		...integrationTestOverrides,
 	};
-	initialize(dictSettings);
+	initialize(ctlSettings);
 } else if (window?.location?.host === 'react-app-dev.cancer.gov') {
 	// This is for product testing
-	const dictSettings = {
+	const ctlSettings = {
 		...appParams,
 		...integrationTestOverrides,
 		...{ basePath: getProductTestBase() },
 	};
-	initialize(dictSettings);
+	initialize(ctlSettings);
 }
 
 // If you want your app to work offline and load faster, you can change

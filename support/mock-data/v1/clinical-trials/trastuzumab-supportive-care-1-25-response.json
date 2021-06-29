@@ -1,0 +1,3343 @@
+{
+  "total": 1,
+  "trials": [
+    {
+      "nci_id": "NCI-2020-07032",
+      "nct_id": "NCT02993198",
+      "protocol_id": "NU 14B07",
+      "ccr_id": null,
+      "ctep_id": null,
+      "dcp_id": null,
+      "other_ids": [
+        {
+          "name": "Study Protocol Other Identifier",
+          "value": "STU00200675"
+        }
+      ],
+      "associated_studies": null,
+      "outcome_measures": [
+        {
+          "name": "Improvement or stability in strain from baseline",
+          "description": "For each participant in Arms B and C, will assess whether they have experienced a decrease > 3% in strain. The within-arm prevalence of this event will be summarized using counts and percentages. Between arm comparisons of these prevalence rates will be carried out using exact binomial methods. In addition, as exploratory analyses, will carry out univariable and, data-permitting, multivariable logistic regression analyses to account for potential confounding factors such as patient demographics, estrogen and progesterone receptor status, New York Heart Association functional class, cancer treatment regimen, previous chemotherapy, comorbidities (hypertension, hyperlipidemia, diabetes, coronary artery disease, cardiac valve disease) and medication. The outcome modeled will be whether the participant has reached the study primary endpoint (a decrease in strain > 3%).",
+          "timeframe": "Baseline up to 2 years",
+          "type_code": "PRIMARY"
+        },
+        {
+          "name": "Rate of cancer treatments held for decrement in ejection fraction > 10% among groups",
+          "description": "Counts and percentages will be tabulated by study arm and comparisons between arms will be performed using methods supported by the data. Should the number of cancer treatments held be reduced, will use Fisher’s exact test. Otherwise, will use Wilcoxon’s rank sum test. Should the data be normally distributed, will use the two sample unequal-variance two-sided t-test. Statistical significance will be declared at the two-sided 5% alpha level, unless otherwise stated. Univariable and multivariable (if feasible) analyses will be carried out in similar fashion to those described for the primary\r\nendpoint, with the exception that the current endpoint (number of cancer treatments). Otherwise, the number of cancer treatments will be dichotomized as either less than or greater than or equal to a certain value, in which case logistic regression models will be constructed. All analyses will be carried out using SAS version 9.4 and R version 3.0.1 or later.",
+          "timeframe": "Up to 2 years",
+          "type_code": "SECONDARY"
+        }
+      ],
+      "amendment_date": null,
+      "current_trial_status": "Active",
+      "current_trial_status_date": "2015-04-09",
+      "start_date": "2015-04-09",
+      "start_date_type_code": "ACTUAL",
+      "completion_date": null,
+      "completion_date_type_code": null,
+      "record_verification_date": "2021-01-21",
+      "brief_title": "Evaluating Changes in Heart Function in HER2+ Stage I-III Breast Cancer Patients Who Have Been Treated with Anthracycline and / or Trastuzumab and Pertuzumab-based Cancer Therapy",
+      "official_title": "A Prospective Study of Early Stage Breast Cancer Patients with Abnormal Myocardial Deformation Treated with Anthracycline and / or Trastuzumab and Pertuzumab-Based Cancer Therapy",
+      "acronym": null,
+      "keywords": null,
+      "brief_summary": "This trial collects clinical and echocardiographic data to create a registry and develop a better way to follow and treat changes in heart function in patients with HER2+ stage I-III breast cancer who are receiving anthracycline and / or trastuzumab and pertuzumab-based chemotherapy. An echocardiogram is an ultrasound of the heart. An ultrasound uses sound waves to make an image of what is inside the body. This trial also studies how well a prophylactic beta-blocker called carvedilol works in preventing a decline in heart function compared to standard heart failure medication. B-blockers are commonly given for high blood pressure and heart failure. Carvedilol is used to treat high blood pressure and certain heart problems. It blocks certain receptors on nerve cells and causes blood vessels to dilate (widen). This study also involves a sub-study which investigates biomarkers and genetic variations in patients who have been treated with anti-cancer drugs that appear to be linked to their chance of developing heart damage. Analyzing blood samples from patients with HER2+ breast cancer in the laboratory may help doctors learn more about changes that occur in DNA and identify biomarkers related to cancer. Blood sample donation may help researchers to better understand why certain patients are at risk for developing heart damage from chemotherapy, and to find new markers for heart damage in order to develop new ways to protect the heart from chemotherapy injury.",
+      "detail_description": "PRIMARY OBJECTIVES:\r\nI. To create a registry of both clinical and echocardiographic variables that will be used to develop a risk model to predict LV dysfunction in early stage breast cancer patients undergoing chemotherapy with anthracycline and/or trastuzumab and pertuzumab-based regimens.\r\nII. To propose a new management algorithm for initiation of prophylactic beta blocker therapy for early stage breast cancer patients with preclinical cardiac toxicities demonstrated by strain parameters.\r\nIII. To determine if initiation of prophylactic beta-blocker therapy in patients with early cardiac toxicity can prevent a worsening of strain.\r\nIV. To explore serial measurements of a suite of biomarkers (high sensitivity troponin [hs TnI], brain natriuretic protein [BNP], galectin 3, growth differentiation factor 15 [GDF-15], (phosphatidylinositol glycan anchor biosynthesis [PIGF]) during ongoing anticancer treatment that are presumed but not yet proven to be predictive of cardiac dysfunction in women with breast cancer.\r\nV. To identify deoxyribonucleic acid (DNA) biomarkers of predilection to cardiotoxicity.\r\nVI. To generate human induced pluripotent stem cells (hiPSC) to validate markers predictive of cardiotoxicity.\r\n\r\nOUTLINE:\r\nPrior to the initiation of chemotherapy, patients undergo echocardiogram per standard of care at baseline.\r\n\r\nBased on echocardiogram findings, patients with normal ejection fraction (EF) and normal strain are assigned to Arm A , and patients who present with a decrease in EF > 10% to a value < 53% are assigned to Arm D. Patients with normal EF who develop abnormal strain measurements are randomized to Arm B (prophylactic beta blocker medication) or Arm C (no prophylactic treatment).\r\n\r\nARM A: Patients receive standard of care chemotherapy and undergo echocardiogram every 3 months for 12 months.\r\n\r\nARM B: Patients receive carvedilol orally (PO) twice daily (BID) for up to 1 year in the absence of disease progression or unacceptable toxicity. Patients also undergo echocardiogram every 3 months for 12 months until completion of trastuzumab/pertuzumab chemotherapy. \r\n\r\nARM C: Patients undergo echocardiogram every 3 months for 12 months until completion of trastuzumab/pertuzumab chemotherapy.\r\n\r\nARM D: Patients withhold standard of care chemotherapy. Patients then receive standard of care heart failure therapy and undergo echocardiogram every 1 month to determine if anti-cancer treatment can be resumed.\r\n\r\nBIOMARKER SUB-STUDY: \r\nAt the same time as the trastuzumab infusions, patients undergo and collection of blood samples for biomarkers and genetic testing at baseline, every 6 weeks for 12 months, and at 1 year post-chemotherapy. Patients undergo standard echocardiogram. Patients in Arm B and C also undergo additional 4D strain and 4D volume assessment at completion of the study.",
+      "classification_code": null,
+      "interventional_model": "Parallel",
+      "study_source": "Institutional",
+      "accepts_healthy_volunteers_indicator": "NO",
+      "study_protocol_type": "Interventional",
+      "study_subtype_code": null,
+      "study_population_description": null,
+      "study_model_code": null,
+      "study_model_other_text": null,
+      "sampling_method_code": null,
+      "why_study_stopped": null,
+      "bio_specimen": {
+        "f1": "bio_specimen_description",
+        "f2": null,
+        "f3": "bio_specimen_retention_code",
+        "f4": null
+      },
+      "primary_purpose": {
+        "primary_purpose_code": "SUPPORTIVE_CARE",
+        "primary_purpose_other_text": null,
+        "primary_purpose_additional_qualifier_code": null
+      },
+      "phase": {
+        "phase": "O",
+        "phase_other_text": null,
+        "phase_additional_qualifier_code": "YES"
+      },
+      "masking": {
+        "masking": null,
+        "masking_allocation_code": "Randomized Controlled Trial",
+        "masking_role_investigator": null,
+        "masking_role_outcome_assessor": "OUTCOMES_ASSESSOR",
+        "masking_role_subject": null,
+        "masking_role_caregiver": null
+      },
+      "principal_investigator": "Nausheen Akhter",
+      "central_contact": {
+        "central_contact_email": null,
+        "central_contact_name": null,
+        "central_contact_phone": null,
+        "central_contact_type": null
+      },
+      "lead_org": "Northwestern University",
+      "collaborators": [
+        {
+          "name": "National Cancer Institute",
+          "functional_role": "FUNDING_SOURCE"
+        }
+      ],
+      "sites": [
+        {
+          "contact_email": "n-akhter@northwestern.edu",
+          "contact_name": "Nausheen Akhter",
+          "contact_phone": "312-695-4965",
+          "recruitment_status": "ACTIVE",
+          "recruitment_status_date": "2015-04-09",
+          "local_site_identifier": null,
+          "org_address_line_1": "303 East Chicago Avenue",
+          "org_address_line_2": null,
+          "org_city": "Chicago",
+          "org_country": "United States",
+          "org_email": "cancer@northwestern.edu",
+          "org_family": "Robert H. Lurie Comprehensive Cancer Center",
+          "org_fax": null,
+          "org_name": "Northwestern University",
+          "org_to_family_relationship": "ORGANIZATIONAL",
+          "org_phone": "312-695-1301",
+          "org_postal_code": "60611",
+          "org_state_or_province": "IL",
+          "org_status": "ACTIVE",
+          "org_status_date": "2015-08-18",
+          "org_tty": null,
+          "org_va": false,
+          "org_coordinates": {
+            "lat": 41.8946,
+            "lon": -87.6187
+          }
+        }
+      ],
+      "anatomic_sites": [
+        "Breast"
+      ],
+      "diseases": [
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "YES",
+          "nci_thesaurus_concept_id": "C94774",
+          "preferred_name": "Early-Stage Breast Carcinoma",
+          "display_name": "Early-Stage Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Early-Stage Breast Carcinoma",
+            "early-stage breast cancer"
+          ],
+          "parents": [
+            "C4872"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C53556",
+          "preferred_name": "HER2 Positive Breast Carcinoma",
+          "display_name": "HER2 Positive Breast Carcinoma",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "ERBB2 Overexpressing Subtype of Breast Carcinoma",
+            "HER2 Overexpressing Breast Carcinoma",
+            "HER2 Overexpressing Subtype of Breast Carcinoma",
+            "HER2 Positive Breast Cancer"
+          ],
+          "parents": [
+            "C53553"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139538",
+          "preferred_name": "Anatomic Stage II Breast Cancer AJCC v8",
+          "display_name": "Stage II Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Anatomic Stage II Breast Cancer AJCC v8",
+            "Anatomic Stage II Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139533"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139539",
+          "preferred_name": "Anatomic Stage IIA Breast Cancer AJCC v8",
+          "display_name": "Stage IIA Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Anatomic Stage IIA Breast Cancer AJCC v8",
+            "Anatomic Stage IIA Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139538"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139540",
+          "preferred_name": "Anatomic Stage IIB Breast Cancer AJCC v8",
+          "display_name": "Stage IIB Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Anatomic Stage IIB Breast Cancer AJCC v8",
+            "Anatomic Stage IIB Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139538"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139535",
+          "preferred_name": "Anatomic Stage I Breast Cancer AJCC v8",
+          "display_name": "Stage I Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Anatomic Stage I Breast Cancer AJCC v8",
+            "Anatomic Stage I Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139533"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139537",
+          "preferred_name": "Anatomic Stage IB Breast Cancer AJCC v8",
+          "display_name": "Stage IB Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Anatomic Stage IB Breast Cancer AJCC v8",
+            "Anatomic Stage IB Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139535"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139536",
+          "preferred_name": "Anatomic Stage IA Breast Cancer AJCC v8",
+          "display_name": "Stage IA Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Anatomic Stage IA Breast Cancer AJCC v8",
+            "Anatomic Stage IA Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139535"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139541",
+          "preferred_name": "Anatomic Stage III Breast Cancer AJCC v8",
+          "display_name": "Stage III Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Anatomic Stage III Breast Cancer AJCC v8",
+            "Anatomic Stage III Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139533"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139544",
+          "preferred_name": "Anatomic Stage IIIC Breast Cancer AJCC v8",
+          "display_name": "Stage IIIC Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Anatomic Stage IIIC Breast Cancer AJCC v8",
+            "Anatomic Stage IIIC Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139541"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139543",
+          "preferred_name": "Anatomic Stage IIIB Breast Cancer AJCC v8",
+          "display_name": "Stage IIIB Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Anatomic Stage IIIB Breast Cancer AJCC v8",
+            "Anatomic Stage IIIB Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139541"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139542",
+          "preferred_name": "Anatomic Stage IIIA Breast Cancer AJCC v8",
+          "display_name": "Stage IIIA Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Anatomic Stage IIIA Breast Cancer AJCC v8",
+            "Anatomic Stage IIIA Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139541"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139582",
+          "preferred_name": "Prognostic Stage III Breast Cancer AJCC v8",
+          "display_name": "Stage III Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Prognostic Stage III Breast Cancer AJCC v8",
+            "Prognostic Stage III Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139554"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139584",
+          "preferred_name": "Prognostic Stage IIIB Breast Cancer AJCC v8",
+          "display_name": "Stage IIIB Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Prognostic Stage IIIB Breast Cancer AJCC v8",
+            "Prognostic Stage IIIB Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139582"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139583",
+          "preferred_name": "Prognostic Stage IIIA Breast Cancer AJCC v8",
+          "display_name": "Stage IIIA Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Prognostic Stage IIIA Breast Cancer AJCC v8",
+            "Prognostic Stage IIIA Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139582"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139585",
+          "preferred_name": "Prognostic Stage IIIC Breast Cancer AJCC v8",
+          "display_name": "Stage IIIC Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Prognostic Stage IIIC Breast Cancer AJCC v8",
+            "Prognostic Stage IIIC Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139582"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139556",
+          "preferred_name": "Prognostic Stage I Breast Cancer AJCC v8",
+          "display_name": "Stage I Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Prognostic Stage I Breast Cancer AJCC v8",
+            "Prognostic Stage I Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139554"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139558",
+          "preferred_name": "Prognostic Stage IB Breast Cancer AJCC v8",
+          "display_name": "Stage IB Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Prognostic Stage IB Breast Cancer AJCC v8",
+            "Prognostic Stage IB Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139556"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139557",
+          "preferred_name": "Prognostic Stage IA Breast Cancer AJCC v8",
+          "display_name": "Stage IA Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Prognostic Stage IA Breast Cancer AJCC v8",
+            "Prognostic Stage IA Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139556"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139572",
+          "preferred_name": "Prognostic Stage IIB Breast Cancer AJCC v8",
+          "display_name": "Stage IIB Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Prognostic Stage IIB Breast Cancer AJCC v8",
+            "Prognostic Stage IIB Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139569"
+          ]
+        },
+        {
+          "inclusion_indicator": "TRIAL",
+          "lead_disease_indicator": "NO",
+          "nci_thesaurus_concept_id": "C139571",
+          "preferred_name": "Prognostic Stage IIA Breast Cancer AJCC v8",
+          "display_name": "Stage IIA Breast Cancer",
+          "paths": [
+            {
+              "paths": [
+                {
+                  "direction": 1,
+                  "concepts": [
+                    {
+                      "idx": 0,
+                      "label": "Breast Carcinoma",
+                      "code": "C4872"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Prognostic Stage IIA Breast Cancer AJCC v8",
+            "Prognostic Stage IIA Breast Carcinoma AJCC v8"
+          ],
+          "parents": [
+            "C139569"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C9335",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C2910",
+            "C9305"
+          ],
+          "lead_disease_indicator": "YES",
+          "display_name": "Malignant Breast Neoplasm",
+          "preferred_name": "Malignant Breast Neoplasm",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "Malignant Breast Tumor",
+            "Malignant Neoplasm of Breast",
+            "Malignant Neoplasm of the Breast",
+            "Malignant Tumor of Breast",
+            "Malignant Tumor of the Breast"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C5214",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C2852",
+            "C4872"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Breast Adenocarcinoma",
+          "preferred_name": "Breast Adenocarcinoma",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "Adenocarcinoma of Breast",
+            "Adenocarcinoma of the Breast",
+            "Mammary adenocarcinoma"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C3262",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C2991"
+          ],
+          "lead_disease_indicator": "YES",
+          "display_name": "Other Neoplasm",
+          "preferred_name": "Neoplasm",
+          "type": [
+            "maintype"
+          ],
+          "synonyms": [
+            "Neoplasia",
+            "Neoplasm",
+            "Neoplasm, NOS",
+            "Neoplasms, NOS",
+            "Neoplastic Disease",
+            "Neoplastic Growth",
+            "Tumor, NOS",
+            "neoplasia",
+            "neoplasm",
+            "tumor"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C26709",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C27551"
+          ],
+          "lead_disease_indicator": "YES",
+          "display_name": "Breast Disorder",
+          "preferred_name": "Breast Disorder",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "Breast Disease",
+            "Breast Diseases"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C27551",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C2991"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Disorder by Site",
+          "preferred_name": "Disorder by Site",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "Disease by Site"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C139533",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C139532"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Breast Cancer by AJCC v8 Anatomic Stage",
+          "preferred_name": "Breast Cancer by AJCC v8 Anatomic Stage",
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Breast Carcinoma by AJCC v8 Anatomic Stage"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C2910",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C26709",
+            "C3263"
+          ],
+          "lead_disease_indicator": "YES",
+          "display_name": "Breast Neoplasm",
+          "preferred_name": "Breast Neoplasm",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "Breast Tumor",
+            "Neoplasm of Breast",
+            "Neoplasm of the Breast",
+            "Tumor of Breast",
+            "Tumor of the Breast"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C139541",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C139533"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Stage III Breast Cancer",
+          "preferred_name": "Anatomic Stage III Breast Cancer AJCC v8",
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Anatomic Stage III Breast Cancer AJCC v8",
+            "Anatomic Stage III Breast Carcinoma AJCC v8"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C7057",
+          "inclusion_indicator": "TREE",
+          "parents": [],
+          "lead_disease_indicator": "YES",
+          "display_name": "Disease, Disorder or Finding",
+          "preferred_name": "Disease, Disorder or Finding",
+          "type": [],
+          "synonyms": []
+        },
+        {
+          "nci_thesaurus_concept_id": "C3263",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C3262"
+          ],
+          "lead_disease_indicator": "YES",
+          "display_name": "Neoplasm by Site",
+          "preferred_name": "Neoplasm by Site",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": []
+        },
+        {
+          "nci_thesaurus_concept_id": "C139532",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C4872"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Breast Cancer by AJCC v8 Stage",
+          "preferred_name": "Breast Cancer by AJCC v8 Stage",
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Breast Carcinoma by AJCC v8 Stage"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C139556",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C139554"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Stage I Breast Cancer",
+          "preferred_name": "Prognostic Stage I Breast Cancer AJCC v8",
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Prognostic Stage I Breast Cancer AJCC v8",
+            "Prognostic Stage I Breast Carcinoma AJCC v8"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C53553",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C5214"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Breast Carcinoma by Gene Expression Profile",
+          "preferred_name": "Breast Carcinoma by Gene Expression Profile",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": []
+        },
+        {
+          "nci_thesaurus_concept_id": "C4741",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C3262"
+          ],
+          "lead_disease_indicator": "YES",
+          "display_name": "Neoplasm by Morphology",
+          "preferred_name": "Neoplasm by Morphology",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "Tumor Morphology",
+            "Tumor_Morphology"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C7132",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C3709"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Glandular Cell Neoplasm",
+          "preferred_name": "Glandular Cell Neoplasm",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "Glandular Cell Epithelial Neoplasm",
+            "Glandular Cell Epithelium Neoplasm"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C3709",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C4741"
+          ],
+          "lead_disease_indicator": "YES",
+          "display_name": "Epithelial Neoplasm",
+          "preferred_name": "Epithelial Neoplasm",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "Epithelial Neoplasms, NOS",
+            "Epithelioma",
+            "Epithelioma, malignant"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C3262",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C2991"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Other Neoplasm",
+          "preferred_name": "Neoplasm",
+          "type": [
+            "maintype"
+          ],
+          "synonyms": [
+            "Neoplasia",
+            "Neoplasm",
+            "Neoplasm, NOS",
+            "Neoplasms, NOS",
+            "Neoplastic Disease",
+            "Neoplastic Growth",
+            "Tumor, NOS",
+            "neoplasia",
+            "neoplasm",
+            "tumor"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C4872",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C2916",
+            "C9335"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Breast Cancer",
+          "preferred_name": "Breast Carcinoma",
+          "type": [
+            "maintype"
+          ],
+          "synonyms": [
+            "Breast Carcinoma",
+            "Breast cancer, NOS",
+            "Cancer of Breast",
+            "Cancer of the Breast",
+            "Carcinoma of Breast",
+            "Carcinoma of the Breast",
+            "Mammary Carcinoma",
+            "breast cancer"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C2916",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C3709",
+            "C9305"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Other Carcinoma",
+          "preferred_name": "Carcinoma",
+          "type": [
+            "maintype"
+          ],
+          "synonyms": [
+            "CARCINOMA, MALIGNANT",
+            "Carcinoma",
+            "Carcinoma, NOS",
+            "Epithelial Carcinoma",
+            "Epithelial tumor, malignant",
+            "Epithelioma Malignant",
+            "Malignant Epithelial Neoplasm",
+            "Malignant Epithelial Tumor",
+            "Malignant Epithelioma",
+            "carcinoma",
+            "epithelial carcinoma"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C7062",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C3262"
+          ],
+          "lead_disease_indicator": "YES",
+          "display_name": "Neoplasm by Special Category",
+          "preferred_name": "Neoplasm by Special Category",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": []
+        },
+        {
+          "nci_thesaurus_concept_id": "C139582",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C139554"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Stage III Breast Cancer",
+          "preferred_name": "Prognostic Stage III Breast Cancer AJCC v8",
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Prognostic Stage III Breast Cancer AJCC v8",
+            "Prognostic Stage III Breast Carcinoma AJCC v8"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C2991",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C7057"
+          ],
+          "lead_disease_indicator": "YES",
+          "display_name": "Other Disease",
+          "preferred_name": "Disease or Disorder",
+          "type": [
+            "maintype"
+          ],
+          "synonyms": [
+            "Diagnosis",
+            "Disease",
+            "Disease or Disorder",
+            "Disease or Disorder, Non-Neoplastic",
+            "Diseases",
+            "Diseases and Disorders",
+            "Disorder",
+            "Disorders",
+            "condition",
+            "disease",
+            "disease term",
+            "disease type",
+            "disease_term",
+            "disease_type",
+            "disorder"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C7057",
+          "inclusion_indicator": "TREE",
+          "parents": [],
+          "lead_disease_indicator": "NO",
+          "display_name": "Disease, Disorder or Finding",
+          "preferred_name": "Disease, Disorder or Finding",
+          "type": [],
+          "synonyms": []
+        },
+        {
+          "nci_thesaurus_concept_id": "C2916",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C3709",
+            "C9305"
+          ],
+          "lead_disease_indicator": "YES",
+          "display_name": "Other Carcinoma",
+          "preferred_name": "Carcinoma",
+          "type": [
+            "maintype"
+          ],
+          "synonyms": [
+            "CARCINOMA, MALIGNANT",
+            "Carcinoma",
+            "Carcinoma, NOS",
+            "Epithelial Carcinoma",
+            "Epithelial tumor, malignant",
+            "Epithelioma Malignant",
+            "Malignant Epithelial Neoplasm",
+            "Malignant Epithelial Tumor",
+            "Malignant Epithelioma",
+            "carcinoma",
+            "epithelial carcinoma"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C9335",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C2910",
+            "C9305"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Malignant Breast Neoplasm",
+          "preferred_name": "Malignant Breast Neoplasm",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "Malignant Breast Tumor",
+            "Malignant Neoplasm of Breast",
+            "Malignant Neoplasm of the Breast",
+            "Malignant Tumor of Breast",
+            "Malignant Tumor of the Breast"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C7062",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C3262"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Neoplasm by Special Category",
+          "preferred_name": "Neoplasm by Special Category",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": []
+        },
+        {
+          "nci_thesaurus_concept_id": "C2852",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C2916",
+            "C7132"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Adenocarcinoma",
+          "preferred_name": "Adenocarcinoma",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "ADENOCARCINOMA, MALIGNANT",
+            "Adenocarcinoma, NOS",
+            "adenocarcinoma"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C4872",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C2916",
+            "C9335"
+          ],
+          "lead_disease_indicator": "YES",
+          "display_name": "Breast Cancer",
+          "preferred_name": "Breast Carcinoma",
+          "type": [
+            "maintype"
+          ],
+          "synonyms": [
+            "Breast Carcinoma",
+            "Breast cancer, NOS",
+            "Cancer of Breast",
+            "Cancer of the Breast",
+            "Carcinoma of Breast",
+            "Carcinoma of the Breast",
+            "Mammary Carcinoma",
+            "breast cancer"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C3263",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C3262"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Neoplasm by Site",
+          "preferred_name": "Neoplasm by Site",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": []
+        },
+        {
+          "nci_thesaurus_concept_id": "C139538",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C139533"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Stage II Breast Cancer",
+          "preferred_name": "Anatomic Stage II Breast Cancer AJCC v8",
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Anatomic Stage II Breast Cancer AJCC v8",
+            "Anatomic Stage II Breast Carcinoma AJCC v8"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C139535",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C139533"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Stage I Breast Cancer",
+          "preferred_name": "Anatomic Stage I Breast Cancer AJCC v8",
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Anatomic Stage I Breast Cancer AJCC v8",
+            "Anatomic Stage I Breast Carcinoma AJCC v8"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C139569",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C139554"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Stage II Breast Cancer",
+          "preferred_name": "Prognostic Stage II Breast Cancer AJCC v8",
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Prognostic Stage II Breast Cancer AJCC v8",
+            "Prognostic Stage II Breast Carcinoma AJCC v8"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C9305",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C7062"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Malignant Neoplasm",
+          "preferred_name": "Malignant Neoplasm",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "CA",
+            "Cancer",
+            "Malignancy",
+            "Malignant Growth",
+            "Malignant Neoplastic Disease",
+            "Malignant Tumor",
+            "NEOPLASM, MALIGNANT",
+            "Neoplasm, malignant",
+            "Tumor, malignant, NOS",
+            "Unclassified tumor, malignant",
+            "cancer",
+            "malignancy"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C26709",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C27551"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Breast Disorder",
+          "preferred_name": "Breast Disorder",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "Breast Disease",
+            "Breast Diseases"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C3709",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C4741"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Epithelial Neoplasm",
+          "preferred_name": "Epithelial Neoplasm",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "Epithelial Neoplasms, NOS",
+            "Epithelioma",
+            "Epithelioma, malignant"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C9305",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C7062"
+          ],
+          "lead_disease_indicator": "YES",
+          "display_name": "Malignant Neoplasm",
+          "preferred_name": "Malignant Neoplasm",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "CA",
+            "Cancer",
+            "Malignancy",
+            "Malignant Growth",
+            "Malignant Neoplastic Disease",
+            "Malignant Tumor",
+            "NEOPLASM, MALIGNANT",
+            "Neoplasm, malignant",
+            "Tumor, malignant, NOS",
+            "Unclassified tumor, malignant",
+            "cancer",
+            "malignancy"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C139554",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C139532"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Breast Cancer by AJCC v8 Prognostic Stage",
+          "preferred_name": "Breast Cancer by AJCC v8 Prognostic Stage",
+          "type": [
+            "stage"
+          ],
+          "synonyms": [
+            "Breast Cancer by AJCC v8 Prognostic Stage Group",
+            "Breast Carcinoma by AJCC v8 Prognostic Stage"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C2991",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C7057"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Other Disease",
+          "preferred_name": "Disease or Disorder",
+          "type": [
+            "maintype"
+          ],
+          "synonyms": [
+            "Diagnosis",
+            "Disease",
+            "Disease or Disorder",
+            "Disease or Disorder, Non-Neoplastic",
+            "Diseases",
+            "Diseases and Disorders",
+            "Disorder",
+            "Disorders",
+            "condition",
+            "disease",
+            "disease term",
+            "disease type",
+            "disease_term",
+            "disease_type",
+            "disorder"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C27551",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C2991"
+          ],
+          "lead_disease_indicator": "YES",
+          "display_name": "Disorder by Site",
+          "preferred_name": "Disorder by Site",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "Disease by Site"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C4741",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C3262"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Neoplasm by Morphology",
+          "preferred_name": "Neoplasm by Morphology",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "Tumor Morphology",
+            "Tumor_Morphology"
+          ]
+        },
+        {
+          "nci_thesaurus_concept_id": "C2910",
+          "inclusion_indicator": "TREE",
+          "parents": [
+            "C26709",
+            "C3263"
+          ],
+          "lead_disease_indicator": "NO",
+          "display_name": "Breast Neoplasm",
+          "preferred_name": "Breast Neoplasm",
+          "type": [
+            "subtype"
+          ],
+          "synonyms": [
+            "Breast Tumor",
+            "Neoplasm of Breast",
+            "Neoplasm of the Breast",
+            "Tumor of Breast",
+            "Tumor of the Breast"
+          ]
+        }
+      ],
+      "biomarkers": [
+        {
+          "assay_purpose": "Eligibility Criterion - Inclusion",
+          "long_name": "ERBB2 Overexpression",
+          "name": "ERBB2 Overexpression",
+          "synonyms": [
+            "HER2 Overexpression",
+            "Receptor Tyrosine-Protein Kinase erbB-2 Protein Variant Overexpression",
+            "Tyrosine Kinase-Type Cell Surface Receptor HER2 Overexpression",
+            "v-Erb-B2 Avian Erythroblastic Leukemia Viral Oncogene Homolog 2 Overexpression",
+            "Proto-Oncogene Neu Overexpression",
+            "NEU Overexpression",
+            "HER2/neu Overexpression",
+            "Erb-B2 Receptor Tyrosine Kinase Overexpression"
+          ],
+          "hugo_biomarker_code": null,
+          "nci_thesaurus_concept_id": "C150634",
+          "eligibility_criterion": "inclusion"
+        }
+      ],
+      "minimum_target_accrual_number": 150,
+      "eligibility": {
+        "structured": {
+          "gender": "BOTH",
+          "max_age": "999 Years",
+          "max_age_number": 999,
+          "max_age_unit": "Years",
+          "min_age": "18 Years",
+          "min_age_number": 18,
+          "min_age_unit": "Years",
+          "max_age_in_years": 999,
+          "min_age_in_years": 18
+        },
+        "unstructured": [
+          {
+            "display_order": 1,
+            "inclusion_indicator": true,
+            "description": "Patients > 18 years of age with HER2-overexpressing early stage breast cancer (stages I – III)"
+          },
+          {
+            "display_order": 2,
+            "inclusion_indicator": true,
+            "description": "Pathology report must include HER2 expression, estrogen and progesterone receptor status"
+          },
+          {
+            "display_order": 3,
+            "inclusion_indicator": true,
+            "description": "Normal left ventricular (LV) function (EF >= 53%) on baseline echocardiogram"
+          },
+          {
+            "display_order": 4,
+            "inclusion_indicator": true,
+            "description": "New York Heart Association (NYHA) functional class I-II (no symptoms, dyspnea with more than 2 blocks)"
+          },
+          {
+            "display_order": 5,
+            "inclusion_indicator": true,
+            "description": "Scheduled to receive treatment with anthracycline and/or trastuzumab and pertuzumab-based regimens"
+          },
+          {
+            "display_order": 6,
+            "inclusion_indicator": true,
+            "description": "Patients with a history of hypertension (HTN), hyperlipidemia, diabetes, mild coronary artery disease (CAD) mild valvular disease are permitted"
+          },
+          {
+            "display_order": 7,
+            "inclusion_indicator": true,
+            "description": "Patients on concomitant cardiac medications other than beta-blockers (BB) or ace-inhibitors (angiotensin-converting enzyme [ACE]) therapy are permitted. Other non-cardiac medications are not prohibited"
+          },
+          {
+            "display_order": 8,
+            "inclusion_indicator": true,
+            "description": "Women of childbearing potential and sexually active men and women should use effective contraception"
+          },
+          {
+            "display_order": 9,
+            "inclusion_indicator": true,
+            "description": "Patients must have a signed informed consent prior to registration"
+          },
+          {
+            "display_order": 10,
+            "inclusion_indicator": false,
+            "description": "LV dysfunction (EF < 53%)"
+          },
+          {
+            "display_order": 11,
+            "inclusion_indicator": false,
+            "description": "New York Heart Association (NYHA) functional class III-IV (heart failure symptoms at less than 2 blocks to advanced symptoms at rest)\r\n* NYHA Classification:\r\nI – No limitations to activity\r\nII – Slight limitation to ordinary activity, no symptoms at rest\r\nIII – Marked limitation to less than ordinary activity, no symptoms at rest\r\nIV – Inability to carry out activity without symptoms, symptoms at rest"
+          },
+          {
+            "display_order": 12,
+            "inclusion_indicator": false,
+            "description": "Pre-existing cardiac disease (moderate-severe coronary artery disease, moderate-severe valvular heart disease, constrictive/restrictive cardiomyopathies)"
+          },
+          {
+            "display_order": 13,
+            "inclusion_indicator": false,
+            "description": "Metastatic breast cancer"
+          },
+          {
+            "display_order": 14,
+            "inclusion_indicator": false,
+            "description": "Patients who have ever taken BB/ACE therapy are excluded"
+          },
+          {
+            "display_order": 15,
+            "inclusion_indicator": false,
+            "description": "2nd and 3rd degree atrioventricular block (AV) block"
+          },
+          {
+            "display_order": 16,
+            "inclusion_indicator": false,
+            "description": "Sick sinus syndrome"
+          },
+          {
+            "display_order": 17,
+            "inclusion_indicator": false,
+            "description": "Patients with severe bradycardia (< 50 bpm) or severe hypotension (SBP < 85 mmHg)"
+          },
+          {
+            "display_order": 18,
+            "inclusion_indicator": false,
+            "description": "Severe liver dysfunction defined as Child-Turcotte-Pugh class B & C (significant functional compromise - decompensated disease)"
+          },
+          {
+            "display_order": 19,
+            "inclusion_indicator": false,
+            "description": "Moderate-severe asthma"
+          },
+          {
+            "display_order": 20,
+            "inclusion_indicator": false,
+            "description": "Hypersensitivity to beta-blockers"
+          },
+          {
+            "display_order": 21,
+            "inclusion_indicator": false,
+            "description": "Patients who are pregnant/lactating are not eligible"
+          },
+          {
+            "display_order": 22,
+            "inclusion_indicator": false,
+            "description": "Unwilling to consent/assent to blood donation"
+          }
+        ]
+      },
+      "number_of_arms": 4,
+      "arms": [
+        {
+          "arm_name": "Arm A (chemotherapy, echocardiogram)",
+          "arm_type": "ACTIVE_COMPARATOR",
+          "arm_description": "Patients receive standard of care chemotherapy and undergo echocardiogram every 3 months for 12 months.",
+          "interventions": [
+            {
+              "intervention_name": "Echocardiography",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_code": "C16525",
+              "intervention_description": "A test that uses high-frequency sound waves (ultrasound) to create an image of the heart. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+              "parents": [
+                "C16094"
+              ],
+              "inclusion_indicator": "TRIAL",
+              "synonyms": [],
+              "intervention_category": "Other"
+            },
+            {
+              "intervention_name": "Anthracycline Antineoplastic Antibiotic",
+              "intervention_type": "Drug",
+              "intervention_code": "C1594",
+              "intervention_description": null,
+              "parents": [
+                "C259",
+                "C2115",
+                "C1968"
+              ],
+              "inclusion_indicator": "TRIAL",
+              "synonyms": [],
+              "intervention_category": "Agent"
+            },
+            {
+              "intervention_name": "Trastuzumab",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_code": "C1647",
+              "intervention_description": "A recombinant humanized monoclonal antibody directed against the human epidermal growth factor receptor 2 (HER2). After binding to HER2 on the tumor cell surface, trastuzumab induces an antibody-dependent cell-mediated cytotoxicity against tumor cells that overexpress HER2. HER2 is overexpressed by many adenocarcinomas, particularly breast adenocarcinomas. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+              "parents": [
+                "C155711"
+              ],
+              "inclusion_indicator": "TRIAL",
+              "synonyms": [
+                "Herceptin",
+                "Herzuma",
+                "Kanjinti",
+                "Ogivri",
+                "Ontruzant",
+                "Trazimera"
+              ],
+              "intervention_category": "Agent"
+            },
+            {
+              "intervention_name": "Pertuzumab",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_code": "C38692",
+              "intervention_description": "A humanized recombinant monoclonal antibody directed against the extracellular dimerization domain of the HER-2 tyrosine kinase receptor. Binding of the antibody to the dimerization domain of the HER-2 tyrosine kinase receptor protein directly inhibits the ability of the HER-2 tyrosine kinase receptor protein (the most common pairing partner) to dimerize with other HER tyrosine kinase receptor proteins; inhibiting receptor protein dimerization prevents the activation of HER signaling pathways, resulting in tumor cell apoptosis. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+              "parents": [
+                "C155711"
+              ],
+              "inclusion_indicator": "TRIAL",
+              "synonyms": [
+                "Perjeta"
+              ],
+              "intervention_category": "Agent"
+            },
+            {
+              "intervention_code": "C16094",
+              "intervention_name": "Cardiac Function Study",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C100084"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C100084",
+              "intervention_name": "Cardiac Diagnostic Procedure",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C18020"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C18020",
+              "intervention_name": "Diagnostic Procedure",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C25218"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C25218",
+              "intervention_name": "Intervention or Procedure",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C16203"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C16203",
+              "intervention_name": "Clinical or Research Activity",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C43431"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C43431",
+              "intervention_name": "Activity",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C259",
+              "intervention_name": "Antineoplastic Antibiotic",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C274"
+              ],
+              "synonyms": [
+                "Anticancer Antibiotic",
+                "Anticancer Antibiotics",
+                "Antineoplastic Antibiotics",
+                "Antitumor Antibiotic",
+                "Antitumor Antibiotics"
+              ]
+            },
+            {
+              "intervention_code": "C274",
+              "intervention_name": "Antineoplastic Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1909"
+              ],
+              "synonyms": [
+                "Anti-Cancer Agents",
+                "Anti-Tumor Agents",
+                "Anti-Tumor Drugs",
+                "Antineoplastic Drugs",
+                "Antineoplastics",
+                "Antiproliferative Agents",
+                "Antiproliferative Drugs",
+                "Cancer Drug",
+                "Chemotherapeutic Agents, Neoplastic Disease",
+                "Tumor-Specific Treatment Agents"
+              ]
+            },
+            {
+              "intervention_code": "C1909",
+              "intervention_name": "Pharmacologic Substance",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1908"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C1908",
+              "intervention_name": "Drug, Food, Chemical or Biomedical Material",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C2115",
+              "intervention_name": "DNA Minor Groove Binding Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C2161"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C2161",
+              "intervention_name": "DNA Groove Binding Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C2842"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C2842",
+              "intervention_name": "DNA Binding Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C274"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C1968",
+              "intervention_name": "Topoisomerase-II Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1748"
+              ],
+              "synonyms": [
+                "Topoisomerase-II Inhibitors"
+              ]
+            },
+            {
+              "intervention_code": "C1748",
+              "intervention_name": "Topoisomerase Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C129825"
+              ],
+              "synonyms": [
+                "DNA Topoisomerase Inhibitors",
+                "Topoisomerase Inhibitors"
+              ]
+            },
+            {
+              "intervention_code": "C129825",
+              "intervention_name": "Antineoplastic Enzyme Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C129824",
+                "C471"
+              ],
+              "synonyms": [
+                "Anti-cancer Enzyme Inhibitor"
+              ]
+            },
+            {
+              "intervention_code": "C129824",
+              "intervention_name": "Antineoplastic Protein Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C2189"
+              ],
+              "synonyms": [
+                "Anti-cancer Protein Inhibitor",
+                "Antineoplastic Protein Antagonist"
+              ]
+            },
+            {
+              "intervention_code": "C2189",
+              "intervention_name": "Signal Transduction Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C274"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C471",
+              "intervention_name": "Enzyme Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1909"
+              ],
+              "synonyms": [
+                "Enzyme Antagonist",
+                "Enzyme Inhibitor Agent",
+                "Enzyme Inhibitor Drug"
+              ]
+            },
+            {
+              "intervention_code": "C155711",
+              "intervention_name": "Anti-HER2 Monoclonal Antibody",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C129822",
+                "C163760",
+                "C20401"
+              ],
+              "synonyms": [
+                "Anti-ErbB2 Monoclonal Antibody",
+                "Anti-HER-2 Monoclonal Antibody"
+              ]
+            },
+            {
+              "intervention_code": "C129822",
+              "intervention_name": "Antineoplastic Antibody",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C129821"
+              ],
+              "synonyms": [
+                "Anti-cancer Antibody",
+                "Anticancer Antibody",
+                "Antineoplastic Ab"
+              ]
+            },
+            {
+              "intervention_code": "C129821",
+              "intervention_name": "Antineoplastic Biological Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C274",
+                "C307"
+              ],
+              "synonyms": [
+                "Anti-cancer Biological Agent",
+                "Anticancer Biological",
+                "Antineoplastic Biological",
+                "Antineoplastic Biotherapeutic"
+              ]
+            },
+            {
+              "intervention_code": "C307",
+              "intervention_name": "Biological Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1909"
+              ],
+              "synonyms": [
+                "Biological Products",
+                "Biologicals",
+                "Biologics",
+                "Biopharmaceuticals",
+                "Immunologic, Immunochemical",
+                "Immunologics"
+              ]
+            },
+            {
+              "intervention_code": "C163760",
+              "intervention_name": "HER2-targeting Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C163758"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C163758",
+              "intervention_name": "Targeted Therapy Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C274"
+              ],
+              "synonyms": [
+                "Anti-tumor Targeted Therapy Agent",
+                "Molecularly Targeted Therapy Agent",
+                "Targeted Agent",
+                "Targeted Therapeutic Agent"
+              ]
+            },
+            {
+              "intervention_code": "C20401",
+              "intervention_name": "Monoclonal Antibody Therapy",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C307",
+                "C308"
+              ],
+              "synonyms": [
+                "Monoclonal Antibodies",
+                "Monoclonal Antibody"
+              ]
+            },
+            {
+              "intervention_code": "C308",
+              "intervention_name": "Immunotherapy",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1909"
+              ],
+              "synonyms": [
+                "BRM",
+                "Biological Response Modifier",
+                "Biomodulators",
+                "Immune Mediators",
+                "Immune Modulators",
+                "Immune Regulators",
+                "Immunomodulating Agent",
+                "Immunomodulators",
+                "Immunomodulatory Agent",
+                "Immunopotentiators",
+                "Immunotherapy Agent",
+                "Immunotherapeutic Agent"
+              ]
+            }
+          ]
+        },
+        {
+          "arm_name": "Arm B (carvedilol, echocardiogram, chemotherapy)",
+          "arm_type": "EXPERIMENTAL",
+          "arm_description": "Patients receive carvedilol PO BID for up to 1 year in the absence of disease progression or unacceptable toxicity. Patients also undergo echocardiogram every 3 months for 12 months until completion of trastuzumab/pertuzumab chemotherapy.",
+          "interventions": [
+            {
+              "intervention_name": "Pertuzumab",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_code": "C38692",
+              "intervention_description": "A humanized recombinant monoclonal antibody directed against the extracellular dimerization domain of the HER-2 tyrosine kinase receptor. Binding of the antibody to the dimerization domain of the HER-2 tyrosine kinase receptor protein directly inhibits the ability of the HER-2 tyrosine kinase receptor protein (the most common pairing partner) to dimerize with other HER tyrosine kinase receptor proteins; inhibiting receptor protein dimerization prevents the activation of HER signaling pathways, resulting in tumor cell apoptosis. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+              "inclusion_indicator": "TRIAL",
+              "synonyms": [
+                "Perjeta"
+              ],
+              "intervention_category": "Agent",
+              "parents": [
+                "C155711"
+              ]
+            },
+            {
+              "intervention_name": "Carvedilol",
+              "intervention_type": "Drug",
+              "intervention_code": "C28906",
+              "intervention_description": "A synthetic antihypertensive methoxyphenoxy- 2-propanol derivative with no intrinsic sympathomimetic activity, Carvedilol acts as a nonselective beta-adrenoceptor blocking agent (S(-) enantiomer) and as an alpha 1-adrenoceptor blocker (R(+) and S(-) enantiomers). Its acts more strongly on beta-receptors than on alpha 1-receptors, reduces peripheral vascular resistance by vasodilation, and prevents reflex tachycardia (beta-blockade) so that heart rate is either unchanged or decreased. Carvedilol also reduces renin release through beta-blockade. Check for active clinical trials or closed clinical trials using this agent.Health professional",
+              "parents": [
+                "C29576"
+              ],
+              "inclusion_indicator": "TRIAL",
+              "synonyms": [
+                "Coreg"
+              ],
+              "intervention_category": "Agent"
+            },
+            {
+              "intervention_name": "Echocardiography",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_code": "C16525",
+              "intervention_description": "A test that uses high-frequency sound waves (ultrasound) to create an image of the heart. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+              "inclusion_indicator": "TRIAL",
+              "synonyms": [],
+              "intervention_category": "Other",
+              "parents": [
+                "C16094"
+              ]
+            },
+            {
+              "intervention_name": "Anthracycline Antineoplastic Antibiotic",
+              "intervention_type": "Drug",
+              "intervention_code": "C1594",
+              "intervention_description": null,
+              "inclusion_indicator": "TRIAL",
+              "synonyms": [],
+              "intervention_category": "Agent",
+              "parents": [
+                "C259",
+                "C2115",
+                "C1968"
+              ]
+            },
+            {
+              "intervention_name": "Trastuzumab",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_code": "C1647",
+              "intervention_description": "A recombinant humanized monoclonal antibody directed against the human epidermal growth factor receptor 2 (HER2). After binding to HER2 on the tumor cell surface, trastuzumab induces an antibody-dependent cell-mediated cytotoxicity against tumor cells that overexpress HER2. HER2 is overexpressed by many adenocarcinomas, particularly breast adenocarcinomas. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+              "inclusion_indicator": "TRIAL",
+              "synonyms": [
+                "Herceptin",
+                "Herzuma",
+                "Kanjinti",
+                "Ogivri",
+                "Ontruzant",
+                "Trazimera"
+              ],
+              "intervention_category": "Agent",
+              "parents": [
+                "C155711"
+              ]
+            },
+            {
+              "intervention_code": "C155711",
+              "intervention_name": "Anti-HER2 Monoclonal Antibody",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C129822",
+                "C163760",
+                "C20401"
+              ],
+              "synonyms": [
+                "Anti-ErbB2 Monoclonal Antibody",
+                "Anti-HER-2 Monoclonal Antibody"
+              ]
+            },
+            {
+              "intervention_code": "C129822",
+              "intervention_name": "Antineoplastic Antibody",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C129821"
+              ],
+              "synonyms": [
+                "Anti-cancer Antibody",
+                "Anticancer Antibody",
+                "Antineoplastic Ab"
+              ]
+            },
+            {
+              "intervention_code": "C129821",
+              "intervention_name": "Antineoplastic Biological Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C274",
+                "C307"
+              ],
+              "synonyms": [
+                "Anti-cancer Biological Agent",
+                "Anticancer Biological",
+                "Antineoplastic Biological",
+                "Antineoplastic Biotherapeutic"
+              ]
+            },
+            {
+              "intervention_code": "C274",
+              "intervention_name": "Antineoplastic Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1909"
+              ],
+              "synonyms": [
+                "Anti-Cancer Agents",
+                "Anti-Tumor Agents",
+                "Anti-Tumor Drugs",
+                "Antineoplastic Drugs",
+                "Antineoplastics",
+                "Antiproliferative Agents",
+                "Antiproliferative Drugs",
+                "Cancer Drug",
+                "Chemotherapeutic Agents, Neoplastic Disease",
+                "Tumor-Specific Treatment Agents"
+              ]
+            },
+            {
+              "intervention_code": "C1909",
+              "intervention_name": "Pharmacologic Substance",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1908"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C1908",
+              "intervention_name": "Drug, Food, Chemical or Biomedical Material",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C307",
+              "intervention_name": "Biological Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1909"
+              ],
+              "synonyms": [
+                "Biological Products",
+                "Biologicals",
+                "Biologics",
+                "Biopharmaceuticals",
+                "Immunologic, Immunochemical",
+                "Immunologics"
+              ]
+            },
+            {
+              "intervention_code": "C163760",
+              "intervention_name": "HER2-targeting Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C163758"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C163758",
+              "intervention_name": "Targeted Therapy Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C274"
+              ],
+              "synonyms": [
+                "Anti-tumor Targeted Therapy Agent",
+                "Molecularly Targeted Therapy Agent",
+                "Targeted Agent",
+                "Targeted Therapeutic Agent"
+              ]
+            },
+            {
+              "intervention_code": "C20401",
+              "intervention_name": "Monoclonal Antibody Therapy",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C307",
+                "C308"
+              ],
+              "synonyms": [
+                "Monoclonal Antibodies",
+                "Monoclonal Antibody"
+              ]
+            },
+            {
+              "intervention_code": "C308",
+              "intervention_name": "Immunotherapy",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1909"
+              ],
+              "synonyms": [
+                "BRM",
+                "Biological Response Modifier",
+                "Biomodulators",
+                "Immune Mediators",
+                "Immune Modulators",
+                "Immune Regulators",
+                "Immunomodulating Agent",
+                "Immunomodulators",
+                "Immunomodulatory Agent",
+                "Immunopotentiators",
+                "Immunotherapy Agent",
+                "Immunotherapeutic Agent"
+              ]
+            },
+            {
+              "intervention_code": "C29576",
+              "intervention_name": "Beta-Adrenergic Antagonist",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C72900"
+              ],
+              "synonyms": [
+                "Beta Blocker",
+                "Beta-Adrenergic Blocking Agent",
+                "Beta-Blockers"
+              ]
+            },
+            {
+              "intervention_code": "C72900",
+              "intervention_name": "Adrenergic Antagonist",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C29747"
+              ],
+              "synonyms": [
+                "Adrenergic Blockers",
+                "Adrenergic Blocking Agent"
+              ]
+            },
+            {
+              "intervention_code": "C29747",
+              "intervention_name": "Adrenergic Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C78272"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C78272",
+              "intervention_name": "Agent Affecting Nervous System",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1909"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C16094",
+              "intervention_name": "Cardiac Function Study",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C100084"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C100084",
+              "intervention_name": "Cardiac Diagnostic Procedure",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C18020"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C18020",
+              "intervention_name": "Diagnostic Procedure",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C25218"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C25218",
+              "intervention_name": "Intervention or Procedure",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C16203"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C16203",
+              "intervention_name": "Clinical or Research Activity",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C43431"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C43431",
+              "intervention_name": "Activity",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C259",
+              "intervention_name": "Antineoplastic Antibiotic",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C274"
+              ],
+              "synonyms": [
+                "Anticancer Antibiotic",
+                "Anticancer Antibiotics",
+                "Antineoplastic Antibiotics",
+                "Antitumor Antibiotic",
+                "Antitumor Antibiotics"
+              ]
+            },
+            {
+              "intervention_code": "C2115",
+              "intervention_name": "DNA Minor Groove Binding Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C2161"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C2161",
+              "intervention_name": "DNA Groove Binding Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C2842"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C2842",
+              "intervention_name": "DNA Binding Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C274"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C1968",
+              "intervention_name": "Topoisomerase-II Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1748"
+              ],
+              "synonyms": [
+                "Topoisomerase-II Inhibitors"
+              ]
+            },
+            {
+              "intervention_code": "C1748",
+              "intervention_name": "Topoisomerase Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C129825"
+              ],
+              "synonyms": [
+                "DNA Topoisomerase Inhibitors",
+                "Topoisomerase Inhibitors"
+              ]
+            },
+            {
+              "intervention_code": "C129825",
+              "intervention_name": "Antineoplastic Enzyme Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C129824",
+                "C471"
+              ],
+              "synonyms": [
+                "Anti-cancer Enzyme Inhibitor"
+              ]
+            },
+            {
+              "intervention_code": "C129824",
+              "intervention_name": "Antineoplastic Protein Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C2189"
+              ],
+              "synonyms": [
+                "Anti-cancer Protein Inhibitor",
+                "Antineoplastic Protein Antagonist"
+              ]
+            },
+            {
+              "intervention_code": "C2189",
+              "intervention_name": "Signal Transduction Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C274"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C471",
+              "intervention_name": "Enzyme Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1909"
+              ],
+              "synonyms": [
+                "Enzyme Antagonist",
+                "Enzyme Inhibitor Agent",
+                "Enzyme Inhibitor Drug"
+              ]
+            }
+          ]
+        },
+        {
+          "arm_name": "Arm C (echocardiogram, chemotherapy)",
+          "arm_type": "EXPERIMENTAL",
+          "arm_description": "Patients undergo echocardiogram every 3 months for 12 months until completion of trastuzumab/pertuzumab chemotherapy.",
+          "interventions": [
+            {
+              "intervention_name": "Echocardiography",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_code": "C16525",
+              "intervention_description": "A test that uses high-frequency sound waves (ultrasound) to create an image of the heart. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+              "inclusion_indicator": "TRIAL",
+              "synonyms": [],
+              "intervention_category": "Other",
+              "parents": [
+                "C16094"
+              ]
+            },
+            {
+              "intervention_name": "Anthracycline Antineoplastic Antibiotic",
+              "intervention_type": "Drug",
+              "intervention_code": "C1594",
+              "intervention_description": null,
+              "inclusion_indicator": "TRIAL",
+              "synonyms": [],
+              "intervention_category": "Agent",
+              "parents": [
+                "C259",
+                "C2115",
+                "C1968"
+              ]
+            },
+            {
+              "intervention_name": "Trastuzumab",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_code": "C1647",
+              "intervention_description": "A recombinant humanized monoclonal antibody directed against the human epidermal growth factor receptor 2 (HER2). After binding to HER2 on the tumor cell surface, trastuzumab induces an antibody-dependent cell-mediated cytotoxicity against tumor cells that overexpress HER2. HER2 is overexpressed by many adenocarcinomas, particularly breast adenocarcinomas. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+              "inclusion_indicator": "TRIAL",
+              "synonyms": [
+                "Herceptin",
+                "Herzuma",
+                "Kanjinti",
+                "Ogivri",
+                "Ontruzant",
+                "Trazimera"
+              ],
+              "intervention_category": "Agent",
+              "parents": [
+                "C155711"
+              ]
+            },
+            {
+              "intervention_name": "Pertuzumab",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_code": "C38692",
+              "intervention_description": "A humanized recombinant monoclonal antibody directed against the extracellular dimerization domain of the HER-2 tyrosine kinase receptor. Binding of the antibody to the dimerization domain of the HER-2 tyrosine kinase receptor protein directly inhibits the ability of the HER-2 tyrosine kinase receptor protein (the most common pairing partner) to dimerize with other HER tyrosine kinase receptor proteins; inhibiting receptor protein dimerization prevents the activation of HER signaling pathways, resulting in tumor cell apoptosis. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+              "inclusion_indicator": "TRIAL",
+              "synonyms": [
+                "Perjeta"
+              ],
+              "intervention_category": "Agent",
+              "parents": [
+                "C155711"
+              ]
+            },
+            {
+              "intervention_code": "C16094",
+              "intervention_name": "Cardiac Function Study",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C100084"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C100084",
+              "intervention_name": "Cardiac Diagnostic Procedure",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C18020"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C18020",
+              "intervention_name": "Diagnostic Procedure",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C25218"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C25218",
+              "intervention_name": "Intervention or Procedure",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C16203"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C16203",
+              "intervention_name": "Clinical or Research Activity",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C43431"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C43431",
+              "intervention_name": "Activity",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C259",
+              "intervention_name": "Antineoplastic Antibiotic",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C274"
+              ],
+              "synonyms": [
+                "Anticancer Antibiotic",
+                "Anticancer Antibiotics",
+                "Antineoplastic Antibiotics",
+                "Antitumor Antibiotic",
+                "Antitumor Antibiotics"
+              ]
+            },
+            {
+              "intervention_code": "C274",
+              "intervention_name": "Antineoplastic Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1909"
+              ],
+              "synonyms": [
+                "Anti-Cancer Agents",
+                "Anti-Tumor Agents",
+                "Anti-Tumor Drugs",
+                "Antineoplastic Drugs",
+                "Antineoplastics",
+                "Antiproliferative Agents",
+                "Antiproliferative Drugs",
+                "Cancer Drug",
+                "Chemotherapeutic Agents, Neoplastic Disease",
+                "Tumor-Specific Treatment Agents"
+              ]
+            },
+            {
+              "intervention_code": "C1909",
+              "intervention_name": "Pharmacologic Substance",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1908"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C1908",
+              "intervention_name": "Drug, Food, Chemical or Biomedical Material",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C2115",
+              "intervention_name": "DNA Minor Groove Binding Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C2161"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C2161",
+              "intervention_name": "DNA Groove Binding Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C2842"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C2842",
+              "intervention_name": "DNA Binding Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C274"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C1968",
+              "intervention_name": "Topoisomerase-II Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1748"
+              ],
+              "synonyms": [
+                "Topoisomerase-II Inhibitors"
+              ]
+            },
+            {
+              "intervention_code": "C1748",
+              "intervention_name": "Topoisomerase Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C129825"
+              ],
+              "synonyms": [
+                "DNA Topoisomerase Inhibitors",
+                "Topoisomerase Inhibitors"
+              ]
+            },
+            {
+              "intervention_code": "C129825",
+              "intervention_name": "Antineoplastic Enzyme Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C129824",
+                "C471"
+              ],
+              "synonyms": [
+                "Anti-cancer Enzyme Inhibitor"
+              ]
+            },
+            {
+              "intervention_code": "C129824",
+              "intervention_name": "Antineoplastic Protein Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C2189"
+              ],
+              "synonyms": [
+                "Anti-cancer Protein Inhibitor",
+                "Antineoplastic Protein Antagonist"
+              ]
+            },
+            {
+              "intervention_code": "C2189",
+              "intervention_name": "Signal Transduction Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C274"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C471",
+              "intervention_name": "Enzyme Inhibitor",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Drug",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1909"
+              ],
+              "synonyms": [
+                "Enzyme Antagonist",
+                "Enzyme Inhibitor Agent",
+                "Enzyme Inhibitor Drug"
+              ]
+            },
+            {
+              "intervention_code": "C155711",
+              "intervention_name": "Anti-HER2 Monoclonal Antibody",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C129822",
+                "C163760",
+                "C20401"
+              ],
+              "synonyms": [
+                "Anti-ErbB2 Monoclonal Antibody",
+                "Anti-HER-2 Monoclonal Antibody"
+              ]
+            },
+            {
+              "intervention_code": "C129822",
+              "intervention_name": "Antineoplastic Antibody",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C129821"
+              ],
+              "synonyms": [
+                "Anti-cancer Antibody",
+                "Anticancer Antibody",
+                "Antineoplastic Ab"
+              ]
+            },
+            {
+              "intervention_code": "C129821",
+              "intervention_name": "Antineoplastic Biological Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C274",
+                "C307"
+              ],
+              "synonyms": [
+                "Anti-cancer Biological Agent",
+                "Anticancer Biological",
+                "Antineoplastic Biological",
+                "Antineoplastic Biotherapeutic"
+              ]
+            },
+            {
+              "intervention_code": "C307",
+              "intervention_name": "Biological Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1909"
+              ],
+              "synonyms": [
+                "Biological Products",
+                "Biologicals",
+                "Biologics",
+                "Biopharmaceuticals",
+                "Immunologic, Immunochemical",
+                "Immunologics"
+              ]
+            },
+            {
+              "intervention_code": "C163760",
+              "intervention_name": "HER2-targeting Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C163758"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C163758",
+              "intervention_name": "Targeted Therapy Agent",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C274"
+              ],
+              "synonyms": [
+                "Anti-tumor Targeted Therapy Agent",
+                "Molecularly Targeted Therapy Agent",
+                "Targeted Agent",
+                "Targeted Therapeutic Agent"
+              ]
+            },
+            {
+              "intervention_code": "C20401",
+              "intervention_name": "Monoclonal Antibody Therapy",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C307",
+                "C308"
+              ],
+              "synonyms": [
+                "Monoclonal Antibodies",
+                "Monoclonal Antibody"
+              ]
+            },
+            {
+              "intervention_code": "C308",
+              "intervention_name": "Immunotherapy",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Biological / Vaccine",
+              "intervention_description": "",
+              "intervention_category": "Agent Category",
+              "parents": [
+                "C1909"
+              ],
+              "synonyms": [
+                "BRM",
+                "Biological Response Modifier",
+                "Biomodulators",
+                "Immune Mediators",
+                "Immune Modulators",
+                "Immune Regulators",
+                "Immunomodulating Agent",
+                "Immunomodulators",
+                "Immunomodulatory Agent",
+                "Immunopotentiators",
+                "Immunotherapy Agent",
+                "Immunotherapeutic Agent"
+              ]
+            }
+          ]
+        },
+        {
+          "arm_name": "Arm D (standard of care, echocardiogram)",
+          "arm_type": "ACTIVE_COMPARATOR",
+          "arm_description": "Patients withhold standard of care chemotherapy. Patients then receive standard of care heart failure therapy and undergo echocardiogram every 1 month to determine if anti-cancer treatment can be resumed.",
+          "interventions": [
+            {
+              "intervention_name": "Echocardiography",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_code": "C16525",
+              "intervention_description": "A test that uses high-frequency sound waves (ultrasound) to create an image of the heart. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+              "inclusion_indicator": "TRIAL",
+              "synonyms": [],
+              "intervention_category": "Other",
+              "parents": [
+                "C16094"
+              ]
+            },
+            {
+              "intervention_name": "Best Practice",
+              "intervention_type": "Other",
+              "intervention_code": "C94396",
+              "intervention_description": null,
+              "parents": [
+                "C15239"
+              ],
+              "inclusion_indicator": "TRIAL",
+              "synonyms": [],
+              "intervention_category": "Other"
+            },
+            {
+              "intervention_code": "C16094",
+              "intervention_name": "Cardiac Function Study",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C100084"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C100084",
+              "intervention_name": "Cardiac Diagnostic Procedure",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C18020"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C18020",
+              "intervention_name": "Diagnostic Procedure",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C25218"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C25218",
+              "intervention_name": "Intervention or Procedure",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C16203"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C16203",
+              "intervention_name": "Clinical or Research Activity",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C43431"
+              ],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C43431",
+              "intervention_name": "Activity",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Procedure / Surgery",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [],
+              "synonyms": []
+            },
+            {
+              "intervention_code": "C15239",
+              "intervention_name": "Patient Care",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Other",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C16205"
+              ],
+              "synonyms": [
+                "Patient Care Delivery"
+              ]
+            },
+            {
+              "intervention_code": "C16205",
+              "intervention_name": "Healthcare Activity",
+              "inclusion_indicator": "TREE",
+              "intervention_type": "Other",
+              "intervention_description": "",
+              "intervention_category": "NONE",
+              "parents": [
+                "C16203"
+              ],
+              "synonyms": [
+                "Health Care Activity",
+                "Healthcare"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

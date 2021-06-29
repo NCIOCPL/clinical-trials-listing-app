@@ -3,6 +3,11 @@ import { useStateValue } from '../store/store';
 // Paths for app
 const appPaths = {
 	BasePath: '/',
+	CodeOrPurlPath: '/:codeOrPurl',
+	CodeOrPurlWithTypePath: '/:codeOrPurl/:type',
+	CodeOrPurlWithTypeAndInterCodeOrPurlPath:
+		'/:codeOrPurl/:type/:interCodeOrPurl',
+	NoTrialsPath: '/notrials',
 };
 
 /**
