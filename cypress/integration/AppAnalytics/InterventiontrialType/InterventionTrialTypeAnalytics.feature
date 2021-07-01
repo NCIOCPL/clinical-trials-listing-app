@@ -22,7 +22,7 @@ Feature: Intervention listing page analytics
 			| page.additionalDetails.trialListingPageType | intervention                                                            |
 			| page.additionalDetails.interventionName     | trastuzumab                                                             |
 			| page.additionalDetails.trialType            | treatment                                                               |
-			| page.additionalDetails.numberResults        | (int)56                                                                 |
+			| page.additionalDetails.numberResults        | (int)58                                                                 |
 
 	Scenario: Click event fires when a user clicks on result item
 		Given "trialListingPageType" is set to "Intervention"
