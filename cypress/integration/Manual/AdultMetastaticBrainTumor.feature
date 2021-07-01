@@ -49,7 +49,7 @@ Feature: As a user, I would like to view the trial results for a manual listing 
     And "itemsPerPage" is set to 10
     Given the user navigates to "/?cfg=4"
     Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"
-    Then the system displays "Trials 1-10 of" "102"
+    Then the system displays "Trials 1-10 of" "104"
     And pager displays the following navigation options
       | pages  |
       | 1      |

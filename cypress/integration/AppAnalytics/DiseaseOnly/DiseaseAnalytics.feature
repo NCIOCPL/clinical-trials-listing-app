@@ -22,7 +22,7 @@ Feature: Disease listing page analytics
 			| page.metaTitle                              | Breast Cancer Clinical Trials - National Cancer Institute |
 			| page.additionalDetails.diseaseName          | breast cancer                                             |
 			| page.additionalDetails.trialListingPageType | disease                                                   |
-			| page.additionalDetails.numberResults        | (int)938                                                  |
+			| page.additionalDetails.numberResults        | (int)969                                                  |
 
 	Scenario: Click event fires when a user clicks on result item
         Given "trialListingPageType" is set to "Disease"
