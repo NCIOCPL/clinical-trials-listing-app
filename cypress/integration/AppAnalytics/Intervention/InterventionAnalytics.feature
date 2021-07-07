@@ -22,4 +22,4 @@ Feature: Intervention listing page analytics
 			| page.metaTitle                              | Clinical Trials Using Trastuzumab - National Cancer Institute |
 			| page.additionalDetails.trialListingPageType | intervention                                                  |
 			| page.additionalDetails.interventionName     | trastuzumab                                                   |
-			| page.additionalDetails.numberResults        | (int)58                                                       |
+			| page.additionalDetails.numberResults        | (int)59                                                       |

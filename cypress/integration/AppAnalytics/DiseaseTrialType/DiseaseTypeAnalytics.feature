@@ -22,7 +22,7 @@ Feature: Disease trial type listing page analytics
       | page.additionalDetails.diseaseName          | breast cancer                                                                   |
       | page.additionalDetails.trialType            | supportive care                                                                 |
       | page.additionalDetails.trialListingPageType | disease                                                                         |
-      | page.additionalDetails.numberResults        | (int)139                                                                        |
+      | page.additionalDetails.numberResults        | (int)140                                                                        |
 
   Scenario: Click event fires when a user clicks on result item
     Given "trialListingPageType" is set to "Disease"
