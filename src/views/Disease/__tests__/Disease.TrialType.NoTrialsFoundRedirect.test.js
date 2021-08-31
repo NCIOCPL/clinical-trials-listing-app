@@ -5,9 +5,11 @@ import { MemoryRouter, useLocation } from 'react-router';
 import Disease from '../Disease';
 import { useStateValue } from '../../../store/store.js';
 import { MockAnalyticsProvider } from '../../../tracking';
-import { ClientContextProvider } from 'react-fetching-library';
+import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
+import { getClinicalTrials } from '../../../services/api/actions/getClinicalTrials';
 
 jest.mock('../../../store/store.js');
+jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 
 jest.mock('react-router', () => ({
 	...jest.requireActual('react-router'), // use actual for all non-hook parts
@@ -29,6 +31,20 @@ ComponentWithLocation.propTypes = {
 };
 
 describe('<Disease />', () => {
+	afterEach(() => {
+		jest.clearAllMocks();
+	});
+
+	useCtsApi.mockReturnValue({
+		error: false,
+		loading: false,
+		aborted: false,
+		payload: {
+			total: 0,
+			trials: [],
+		},
+	});
+
 	it('Should assert page is redirected to No Trials Found', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
@@ -95,19 +111,11 @@ describe('<Disease />', () => {
 				dynamicListingPatterns,
 				title,
 				trialListingPageType,
+				apiClients: {
+					clinicalTrialsSearchClient: true,
+				},
 			},
 		]);
-
-		const client = {
-			query: async () => ({
-				error: false,
-				status: 200,
-				payload: {
-					total: 0,
-					trials: [],
-				},
-			}),
-		};
 
 		const redirectPath = () => '/notrials';
 
@@ -137,12 +145,10 @@ describe('<Disease />', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<ClientContextProvider client={client}>
-						<MemoryRouter
-							initialEntries={['/chronic-fatigue-syndrome/supportive-care']}>
-							<ComponentWithLocation RenderComponent={DiseaseWithData} />
-						</MemoryRouter>
-					</ClientContextProvider>
+					<MemoryRouter
+						initialEntries={['/chronic-fatigue-syndrome/supportive-care']}>
+						<ComponentWithLocation RenderComponent={DiseaseWithData} />
+					</MemoryRouter>
 				</MockAnalyticsProvider>
 			);
 		});
@@ -157,6 +163,18 @@ describe('<Disease />', () => {
 			},
 			key: expect.any(String),
 		};
+
+		const requestFilters = {
+			'diseases.nci_thesaurus_concept_id': ['C3037'],
+			'primary_purpose.primary_purpose_code': 'supportive_care',
+		};
+		const requestQuery = getClinicalTrials({
+			from: 0,
+			requestFilters,
+			size: 50,
+		});
+
+		expect(useCtsApi.mock.calls[0][0]).toEqual(requestQuery);
 
 		expect(location).toMatchObject(expectedLocationObject);
 	});
@@ -227,19 +245,11 @@ describe('<Disease />', () => {
 				dynamicListingPatterns,
 				title,
 				trialListingPageType,
+				apiClients: {
+					clinicalTrialsSearchClient: true,
+				},
 			},
 		]);
-
-		const client = {
-			query: async () => ({
-				error: false,
-				status: 200,
-				payload: {
-					total: 0,
-					trials: [],
-				},
-			}),
-		};
 
 		const redirectPath = () => '/notrials';
 
@@ -269,11 +279,9 @@ describe('<Disease />', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<ClientContextProvider client={client}>
-						<MemoryRouter initialEntries={['/C3037/supportive-care']}>
-							<ComponentWithLocation RenderComponent={DiseaseWithData} />
-						</MemoryRouter>
-					</ClientContextProvider>
+					<MemoryRouter initialEntries={['/C3037/supportive-care']}>
+						<ComponentWithLocation RenderComponent={DiseaseWithData} />
+					</MemoryRouter>
 				</MockAnalyticsProvider>
 			);
 		});
@@ -289,6 +297,17 @@ describe('<Disease />', () => {
 			key: expect.any(String),
 		};
 
+		const requestFilters = {
+			'diseases.nci_thesaurus_concept_id': ['C3037'],
+			'primary_purpose.primary_purpose_code': 'supportive_care',
+		};
+		const requestQuery = getClinicalTrials({
+			from: 0,
+			requestFilters,
+			size: 50,
+		});
+
+		expect(useCtsApi.mock.calls[0][0]).toEqual(requestQuery);
 		expect(location).toMatchObject(expectedLocationObject);
 	});
 });

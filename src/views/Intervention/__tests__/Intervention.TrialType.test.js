@@ -5,15 +5,31 @@ import { MemoryRouter } from 'react-router';
 import Intervention from '../Intervention';
 import { useStateValue } from '../../../store/store.js';
 import { MockAnalyticsProvider } from '../../../tracking';
-import { useAppPaths, useCustomQuery } from '../../../hooks';
+import { useAppPaths } from '../../../hooks/routing';
+import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
 
 jest.mock('../../../store/store.js');
-jest.mock('../../../hooks');
+jest.mock('../../../hooks/routing');
+jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 
 const fixturePath = `/v1/clinical-trials`;
 const trastuzumabFile = `trastuzumab-response.json`;
 
 describe('<Intervention Trial Type display />', () => {
+	afterEach(() => {
+		jest.clearAllMocks();
+	});
+
+	useCtsApi.mockReturnValue({
+		error: false,
+		loading: false,
+		aborted: false,
+		payload: {
+			total: 0,
+			trials: [],
+		},
+	});
+
 	it('should render <ResultsList /> component for intervention and trial type display', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
@@ -65,6 +81,9 @@ describe('<Intervention Trial Type display />', () => {
 				itemsPerPage: 25,
 				title,
 				trialListingPageType,
+				apiClients: {
+					clinicalTrialsSearchClient: true,
+				},
 			},
 		]);
 
@@ -72,10 +91,10 @@ describe('<Intervention Trial Type display />', () => {
 			codeOrPurlPath: '/:codeOrPurl/:type',
 		});
 
-		useCustomQuery.mockReturnValue({
+		useCtsApi.mockReturnValue({
 			error: false,
 			loading: false,
-			status: 200,
+			aborted: false,
 			payload: trialResults,
 		});
 
@@ -107,7 +126,7 @@ describe('<Intervention Trial Type display />', () => {
 			);
 		});
 
-		expect(useCustomQuery).toHaveBeenCalled();
+		expect(useCtsApi).toHaveBeenCalled();
 
 		expect(
 			screen.getByText('Treatment Clinical Trials Using Trastuzumab')

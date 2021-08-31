@@ -5,19 +5,16 @@ import './polyfills';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ClientContextProvider } from 'react-fetching-library';
 
 import App from './App';
-import {
-	getAxiosClient,
-	replacingRequestInterceptor,
-} from './services/api/common';
 import listingSupportApiFactory from './services/api/trial-listing-support-api';
+import clinicalTrialsSearchClientFactory from './services/api/clinical-trials-search-api';
+
 import * as serviceWorker from './serviceWorker';
 import reducer from './store/reducer';
 import { StateProvider } from './store/store';
 import { AnalyticsProvider, EddlAnalyticsProvider } from './tracking';
-import { cleanURI, getProductTestBase } from './utils';
+import { getProductTestBase } from './utils';
 import { ErrorBoundary } from './views';
 
 /**
@@ -63,9 +60,27 @@ const initialize = ({
 	const appRootDOMNode = document.getElementById(rootId);
 	const isRehydrating = appRootDOMNode.getAttribute('data-isRehydrating');
 
+	// Set up Clinical Trials API URL using given parameters.
+	const setupTrialsAPIEndpoint = () => {
+		if (ctsProtocol === null || ctsApiHostname === null) {
+			throw new Error('ctsProtocol and ctsApiHostname must be set.');
+		} else {
+			return (
+				(ctsProtocol !== '' ? ctsProtocol + '://' : '') +
+				ctsApiHostname +
+				(ctsPort && ctsPort !== '' ? ':' + ctsPort : '') +
+				'/v1/'
+			);
+		}
+	};
+
 	// Setup API clients
 	const trialListingSupportClient = listingSupportApiFactory(
 		listingApiEndpoint
+	);
+
+	const clinicalTrialsSearchClient = clinicalTrialsSearchClientFactory(
+		setupTrialsAPIEndpoint()
 	);
 
 	// populate global state with init params
@@ -90,6 +105,7 @@ const initialize = ({
 		language,
 		apiClients: {
 			trialListingSupportClient,
+			clinicalTrialsSearchClient,
 		},
 		listingApiEndpoint,
 		liveHelpUrl,
@@ -126,38 +142,13 @@ const initialize = ({
 		children: PropTypes.node,
 	};
 
-	// Set up Clinical Trials API URL using given parameters.
-	const setupTrialsAPIEndpoint = () => {
-		if (ctsProtocol === null || ctsApiHostname === null) {
-			throw new Error('ctsProtocol and ctsApiHostname must be set.');
-		} else {
-			return (
-				(ctsProtocol !== '' ? ctsProtocol + '://' : '') +
-				ctsApiHostname +
-				(ctsPort && ctsPort !== '' ? ':' + ctsPort : '') +
-				'/v1/'
-			);
-		}
-	};
-
-	const trialsApiEndpoint = setupTrialsAPIEndpoint();
-
-	// Setup requestInterceptors for RTL client.
-	const requestInterceptors = [
-		replacingRequestInterceptor('clinical-trials-api', {
-			API_HOST: cleanURI(trialsApiEndpoint),
-		}),
-	].filter((item) => item !== null);
-
 	const AppBlock = () => {
 		return (
 			<StateProvider initialState={initialState} reducer={reducer}>
 				<AnalyticsHoC>
-					<ClientContextProvider client={getAxiosClient(requestInterceptors)}>
-						<ErrorBoundary>
-							<App />
-						</ErrorBoundary>
-					</ClientContextProvider>
+					<ErrorBoundary>
+						<App />
+					</ErrorBoundary>
 				</AnalyticsHoC>
 			</StateProvider>
 		);
