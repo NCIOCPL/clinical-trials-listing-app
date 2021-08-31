@@ -12,25 +12,12 @@ jest.mock('../../../store/store.js');
 jest.mock('../../../hooks/routing');
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 
-const fixturePath = `/v1/clinical-trials`;
-const trastuzumabFile = `trastuzumab-response.json`;
-
 describe('<Intervention />', () => {
 	afterEach(() => {
 		jest.clearAllMocks();
 	});
 
-	useCtsApi.mockReturnValue({
-		error: false,
-		loading: false,
-		aborted: false,
-		payload: {
-			total: 0,
-			trials: [],
-		},
-	});
-
-	it('should render <ResultsList /> component', async () => {
+	test('should render <ErrorPage> Component', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
 		const data = [
@@ -59,8 +46,6 @@ describe('<Intervention />', () => {
 			},
 		};
 
-		const trialResults = getFixture(`${fixturePath}/${trastuzumabFile}`);
-
 		useStateValue.mockReturnValue([
 			{
 				appId: 'mockAppId',
@@ -69,6 +54,7 @@ describe('<Intervention />', () => {
 				detailedViewPagePrettyUrlFormatter,
 				dynamicListingPatterns,
 				itemsPerPage: 25,
+				language: 'en',
 				title,
 				trialListingPageType,
 				apiClients: {
@@ -85,7 +71,7 @@ describe('<Intervention />', () => {
 			error: false,
 			loading: false,
 			aborted: false,
-			payload: trialResults,
+			payload: null,
 		});
 
 		const redirectPath = () => '/notrials';
@@ -100,7 +86,7 @@ describe('<Intervention />', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/']}>
+					<MemoryRouter initialEntries={['/trastuzumab']}>
 						<Intervention
 							routeParamMap={routeParamMap}
 							routePath={redirectPath}
@@ -117,9 +103,7 @@ describe('<Intervention />', () => {
 			screen.getByText('Clinical Trials Using Trastuzumab')
 		).toBeInTheDocument();
 		expect(
-			screen.getByText(
-				'Clinical trials are research studies that involve people. The clinical trials on this list are studying trastuzumab.'
-			)
+			screen.getByText('An error occurred. Please try again later.')
 		).toBeInTheDocument();
 	});
 });

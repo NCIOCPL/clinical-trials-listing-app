@@ -11,10 +11,10 @@ import {
 	ScrollRestoration,
 	Spinner,
 } from '../../components';
-import { useAppPaths, useCustomQuery } from '../../hooks';
+import ErrorPage from '../ErrorBoundary/ErrorPage';
+import { useAppPaths, useCtsApi } from '../../hooks';
 import { getClinicalTrials } from '../../services/api/actions';
 import { useStateValue } from '../../store/store';
-
 import {
 	appendOrUpdateToQueryString,
 	getKeyValueFromQueryString,
@@ -29,7 +29,6 @@ import {
 const Disease = ({ routeParamMap, routePath, data }) => {
 	const { NoTrialsPath } = useAppPaths();
 	const location = useLocation();
-	const [trialsPayload, setTrialsPayload] = useState(null);
 	const navigate = useNavigate();
 	const { search } = location;
 
@@ -112,17 +111,19 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 	const replacedText = setupReplacementText();
 	const tracking = useTracking();
 
-	const queryResponse = useCustomQuery(
-		getClinicalTrials({
-			from: pager.offset,
-			requestFilters,
-			size: pager.pageUnit,
-		})
-	);
+	const requestQuery = getClinicalTrials({
+		from: pager.offset,
+		requestFilters,
+		size: pager.pageUnit,
+	});
+
+	// Kick off the CTS Api Fetch
+	const fetchState = useCtsApi(requestQuery);
 
 	useEffect(() => {
-		if (!queryResponse.loading && queryResponse.payload) {
-			if (queryResponse.payload.trials.length === 0) {
+		if (!fetchState.loading && fetchState.payload) {
+			if (fetchState.payload.total === 0) {
+				//
 				const redirectStatusCode = location.state?.redirectStatus
 					? location.state?.redirectStatus
 					: '302';
@@ -146,34 +147,32 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 						},
 					}
 				);
+				// return ;
 			}
-			setTrialsPayload(queryResponse.payload);
+			// Fire off a page load event. Usually this would be in
+			// some effect when something loaded.
+			if (fetchState.payload.total > 0) {
+				tracking.trackEvent({
+					// These properties are required.
+					type: 'PageLoad',
+					event: 'TrialListingApp:Load:Results',
+					name:
+						canonicalHost.replace('https://', '') + window.location.pathname,
+					title: replacedText.pageTitle,
+					language: language === 'en' ? 'english' : 'spanish',
+					metaTitle: `${replacedText.pageTitle} - ${siteName}`,
+					// Any additional properties fall into the "page.additionalDetails" bucket
+					// for the event.
+					numberResults: fetchState.payload?.total,
+					trialListingPageType: `${trialListingPageType.toLowerCase()}`,
+					...trackingData,
+				});
+			}
 		}
-	}, [queryResponse.loading, queryResponse.payload]);
+	}, [fetchState]);
 
 	// Setup data for tracking
 	const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
-
-	useEffect(() => {
-		// Fire off a page load event. Usually this would be in
-		// some effect when something loaded.
-		if (trialsPayload && trialsPayload.total > 0) {
-			tracking.trackEvent({
-				// These properties are required.
-				type: 'PageLoad',
-				event: 'TrialListingApp:Load:Results',
-				name: canonicalHost.replace('https://', '') + window.location.pathname,
-				title: replacedText.pageTitle,
-				language: language === 'en' ? 'english' : 'spanish',
-				metaTitle: `${replacedText.pageTitle} - ${siteName}`,
-				// Any additional properties fall into the "page.additionalDetails" bucket
-				// for the event.
-				numberResults: queryResponse.payload?.total,
-				trialListingPageType: `${trialListingPageType.toLowerCase()}`,
-				...trackingData,
-			});
-		}
-	}, [trialsPayload]);
 
 	useEffect(() => {
 		if (pn !== pager.page.toString()) {
@@ -228,36 +227,36 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 		);
 	};
 
+	// It is assumed this function will be called only if there are
+	// trials.
 	const renderPagerSection = (placement) => {
 		const page = pn ?? 1;
 		const pagerOffset = getPageOffset(page, itemsPerPage);
 		return (
 			<>
-				{trialsPayload?.trials?.length > 0 && (
-					<div className="paging-section">
-						{placement === 'top' && (
-							<div className="paging-section__page-info">
-								{`
-								Trials ${pagerOffset + 1}-${Math.min(
-									pagerOffset + itemsPerPage,
-									trialsPayload.total
-								)} of
-								${trialsPayload.total}
-							`}
-							</div>
-						)}
-						{trialsPayload?.total > itemsPerPage && (
-							<div className="paging-section__pager">
-								<Pager
-									current={Number(pager.page)}
-									onPageNavigationChange={onPageNavigationChangeHandler}
-									resultsPerPage={pager.pageUnit}
-									totalResults={trialsPayload?.total ?? 0}
-								/>
-							</div>
-						)}
-					</div>
-				)}
+				<div className="paging-section">
+					{placement === 'top' && (
+						<div className="paging-section__page-info">
+							{`
+							Trials ${pagerOffset + 1}-${Math.min(
+								pagerOffset + itemsPerPage,
+								fetchState.payload.total
+							)} of
+							${fetchState.payload.total}
+						`}
+						</div>
+					)}
+					{fetchState.payload.total > itemsPerPage && (
+						<div className="paging-section__pager">
+							<Pager
+								current={Number(pager.page)}
+								onPageNavigationChange={onPageNavigationChangeHandler}
+								resultsPerPage={pager.pageUnit}
+								totalResults={fetchState.payload.total}
+							/>
+						</div>
+					)}
+				</div>
 			</>
 		);
 	};
@@ -270,33 +269,39 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 		<>
 			{renderHelmet()}
 			<h1>{replacedText.pageTitle}</h1>
-			{replacedText.introText.length > 0 &&
-				trialsPayload?.trials.length > 0 && (
-					<div
-						className="intro-text"
-						dangerouslySetInnerHTML={{ __html: replacedText.introText }}></div>
-				)}
-			{/* ::: Top Paging Section ::: */}
-			{renderPagerSection('top')}
 			{(() => {
-				if (queryResponse.loading) {
+				if (fetchState.loading) {
 					return <Spinner />;
-				} else if (!queryResponse.loading && trialsPayload?.trials.length) {
-					return (
-						<>
-							<ScrollRestoration />
-							<ResultsListWithPage
-								results={trialsPayload.trials}
-								resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
-							/>
-						</>
-					);
+				} else if (!fetchState.loading && fetchState.payload) {
+					if (fetchState.payload.total > 0) {
+						return (
+							<>
+								{/* ::: Intro Text ::: */}
+								{replacedText.introText.length > 0 && (
+									<div
+										className="intro-text"
+										dangerouslySetInnerHTML={{
+											__html: replacedText.introText,
+										}}></div>
+								)}
+								{/* ::: Top Paging Section ::: */}
+								{renderPagerSection('top')}
+								<ScrollRestoration />
+								<ResultsListWithPage
+									results={fetchState.payload.trials}
+									resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
+								/>
+								{/* ::: Bottom Paging Section ::: */}
+								{renderPagerSection('bottom')}
+							</>
+						);
+					} else {
+						return <NoResults />;
+					}
 				} else {
-					return <NoResults />;
+					return <ErrorPage />;
 				}
 			})()}
-			{/* ::: Bottom Paging Section ::: */}
-			{renderPagerSection('bottom')}
 		</>
 	);
 };

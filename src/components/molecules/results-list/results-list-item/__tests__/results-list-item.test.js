@@ -27,6 +27,7 @@ describe('<ResultsListItem />', function () {
 						title={title}
 						locationInfo={locationJSX}
 						nciId={nciId}
+						resultIndex={0}
 						resultsItemTitleLink={resultsItemTitleLink}
 					/>
 				</MockAnalyticsProvider>

@@ -4,15 +4,17 @@
  * @param {Number} from the offset to start results from
  * @param {Object} requestFilters the request filters to match
  * @param {Number} size the number of results
+ *
  */
+
 export const getClinicalTrials = ({
 	from = 0,
 	requestFilters = {},
 	size = 50,
 }) => {
-	// Set up query for Clinical Trias API.
+	// Set up query for Clinical Trials API.
 	// Include only active trial statuses, requestFilters, from, and size.
-	const defaultQuery = {
+	const requestQuery = {
 		current_trial_status: [
 			'Active',
 			'Approved',
@@ -39,9 +41,7 @@ export const getClinicalTrials = ({
 	};
 
 	return {
-		interceptorName: 'clinical-trials-api',
-		method: 'POST',
-		endpoint: `{{API_HOST}}/clinical-trials`,
-		body: defaultQuery,
+		type: 'getClinicalTrials',
+		payload: requestQuery,
 	};
 };

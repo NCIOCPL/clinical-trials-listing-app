@@ -1,8 +1,9 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter } from 'react-router';
 
 import Disease from '../Disease';
+import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary';
 import { useStateValue } from '../../../store/store.js';
 import { MockAnalyticsProvider } from '../../../tracking';
 import { useAppPaths } from '../../../hooks/routing';
@@ -12,38 +13,29 @@ jest.mock('../../../store/store.js');
 jest.mock('../../../hooks/routing');
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 
-const fixturePath = `/v1/clinical-trials`;
-const trastuzumabFile = `trastuzumab-response.json`;
+jest.mock('react-router', () => ({
+	...jest.requireActual('react-router'),
+	useParams: () => ({
+		foo: 'bar',
+	}),
+}));
 
 describe('<Disease />', () => {
 	afterEach(() => {
 		jest.clearAllMocks();
 	});
 
-	useCtsApi.mockReturnValue({
-		error: false,
-		loading: false,
-		aborted: false,
-		payload: {
-			total: 0,
-			trials: [],
-		},
-	});
-
-	it('should render <ResultsList /> component', async () => {
+	it('should throw on unknown param', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
 		const data = [
 			{
-				conceptId: ['C4872', 'C118809'],
-				name: { label: 'Breast Cancer', normalized: 'breast cancer' },
+				conceptId: ['C4872'],
+				name: {
+					label: 'Breast Cancer',
+					normalized: 'breast cancer',
+				},
 				prettyUrlName: 'breast-cancer',
-			},
-			{ prettyUrlName: 'treatment', idString: 'treatment', label: 'Treatment' },
-			{
-				conceptId: ['C1647'],
-				name: { label: 'Trastuzumab', normalized: 'trastuzumab' },
-				prettyUrlName: 'trastuzumab',
 			},
 		];
 		const detailedViewPagePrettyUrlFormatter = '/clinicaltrials/{{nci_id}}';
@@ -51,13 +43,12 @@ describe('<Disease />', () => {
 		const trialListingPageType = 'Disease';
 		const dynamicListingPatterns = {
 			Disease: {
-				browserTitle: '{{disease_label}} Clinical Trials',
+				browserTitle: '{{disease_name}} Clinical Trials',
 				introText:
-					'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}. All trials on the list are NCI-supported clinical trials, which are sponsored or otherwise financially supported by NCI.</p><p>NCI’s <a href="/about-cancer/treatment/clinical-trials/what-are-trials">basic information about clinical trials</a> explains the types and phases of trials and how they are carried out. Clinical trials look at new ways to prevent, detect, or treat disease. You may want to think about taking part in a clinical trial. Talk to your doctor for help in deciding if one is right for you.</p>',
-				metaDescription:
-					'NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials for {{disease_normalized}}.',
+					'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>',
+				metaDescription: 'Find clinical trials for {{disease_normalized}}.',
 				noTrialsHtml:
-					'<p>There are no NCI-supported clinical trials for {{disease_normalized}} at this time. You can try a <a href="/about-cancer/treatment/clinical-trials/search">new search</a> or <a href="/contact">contact our Cancer Information Service</a> to talk about options for clinical trials.</p>',
+					'<p>There are currently no available trials for {{disease_normalized}}.</p>',
 				pageTitle: '{{disease_label}} Clinical Trials',
 			},
 			DiseaseTrialType: {
@@ -85,8 +76,6 @@ describe('<Disease />', () => {
 			},
 		};
 
-		const response = getFixture(`${fixturePath}/${trastuzumabFile}`);
-
 		useStateValue.mockReturnValue([
 			{
 				appId: 'mockAppId',
@@ -100,37 +89,27 @@ describe('<Disease />', () => {
 				apiClients: {
 					clinicalTrialsSearchClient: true,
 				},
+				language: 'en',
 			},
 		]);
 
 		useAppPaths.mockReturnValue({
-			CodeOrPurlWithTypeAndInterCodeOrPurlPath: () =>
-				'/:codeOrPurl/:type/:interCodeOrPurl',
+			codeOrPurlPath: '/:codeOrPurl',
 		});
 
 		useCtsApi.mockReturnValue({
-			error: false,
+			error: new Error('Bad Mojo'),
 			loading: false,
 			aborted: false,
-			payload: response,
+			payload: null,
 		});
 
 		const redirectPath = () => '/notrials';
 
 		const routeParamMap = [
 			{
-				paramName: 'codeOrPurl',
+				paramName: 'chicken',
 				textReplacementKey: 'disease',
-				type: 'listing-information',
-			},
-			{
-				paramName: 'type',
-				textReplacementKey: 'trial_type',
-				type: 'trial-type',
-			},
-			{
-				paramName: 'interCodeOrPurl',
-				textReplacementKey: 'intervention',
 				type: 'listing-information',
 			},
 		];
@@ -138,42 +117,23 @@ describe('<Disease />', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/C4872/treatment/C1647']}>
-						<Disease
-							routeParamMap={routeParamMap}
-							routePath={redirectPath}
-							data={data}
-						/>
-					</MemoryRouter>
+					<ErrorBoundary>
+						<MemoryRouter initialEntries={['/C4872']}>
+							<Disease
+								routeParamMap={routeParamMap}
+								routePath={redirectPath}
+								data={data}
+							/>
+						</MemoryRouter>
+					</ErrorBoundary>
 				</MockAnalyticsProvider>
 			);
 		});
 
-		expect(useCtsApi).toHaveBeenCalled();
+		expect(useCtsApi).not.toHaveBeenCalled();
 
 		expect(
-			screen.getByText(
-				'Treatment Clinical Trials for Breast Cancer Using Trastuzumab'
-			)
+			screen.getByText('An error occurred. Please try again later.')
 		).toBeInTheDocument();
-		expect(
-			screen.getByText(
-				'Clinical trials are research studies that involve people. The clinical trials on this list are testing treatment methods for breast cancer that use trastuzumab. All trials on the list are NCI-supported clinical trials, which are sponsored or otherwise financially supported by NCI.'
-			)
-		).toBeInTheDocument();
-
-		// Navigate to page 2 with next pager item. Confirm currently active page on top and bottom is 2
-		await act(async () => {
-			await fireEvent.click(
-				screen.getAllByRole('button', { name: 'next page' })[0]
-			);
-		});
-
-		expect(
-			screen.getAllByRole('button', { name: 'page 2' })[0]
-		).toHaveAttribute('class', 'pager__button active');
-		expect(
-			screen.getAllByRole('button', { name: 'page 2' })[1]
-		).toHaveAttribute('class', 'pager__button active');
 	});
 });

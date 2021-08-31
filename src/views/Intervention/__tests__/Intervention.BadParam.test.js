@@ -3,6 +3,7 @@ import React from 'react';
 import { MemoryRouter } from 'react-router';
 
 import Intervention from '../Intervention';
+import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary';
 import { useStateValue } from '../../../store/store.js';
 import { MockAnalyticsProvider } from '../../../tracking';
 import { useAppPaths } from '../../../hooks/routing';
@@ -12,35 +13,29 @@ jest.mock('../../../store/store.js');
 jest.mock('../../../hooks/routing');
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 
-const fixturePath = `/v1/clinical-trials`;
-const trastuzumabFile = `trastuzumab-response.json`;
+jest.mock('react-router', () => ({
+	...jest.requireActual('react-router'),
+	useParams: () => ({
+		foo: 'bar',
+	}),
+}));
 
 describe('<Intervention />', () => {
 	afterEach(() => {
 		jest.clearAllMocks();
 	});
 
-	useCtsApi.mockReturnValue({
-		error: false,
-		loading: false,
-		aborted: false,
-		payload: {
-			total: 0,
-			trials: [],
-		},
-	});
-
-	it('should render <ResultsList /> component', async () => {
+	it('should throw on unknown param', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
 		const data = [
 			{
-				conceptId: ['C1647'],
+				conceptId: ['C4872'],
 				name: {
-					label: 'Trastuzumab',
-					normalized: 'trastuzumab',
+					label: 'Breast Cancer',
+					normalized: 'breast cancer',
 				},
-				prettyUrlName: 'trastuzumab',
+				prettyUrlName: 'breast-cancer',
 			},
 		];
 		const detailedViewPagePrettyUrlFormatter = '/clinicaltrials/{{nci_id}}';
@@ -59,8 +54,6 @@ describe('<Intervention />', () => {
 			},
 		};
 
-		const trialResults = getFixture(`${fixturePath}/${trastuzumabFile}`);
-
 		useStateValue.mockReturnValue([
 			{
 				appId: 'mockAppId',
@@ -74,6 +67,7 @@ describe('<Intervention />', () => {
 				apiClients: {
 					clinicalTrialsSearchClient: true,
 				},
+				language: 'en',
 			},
 		]);
 
@@ -82,17 +76,18 @@ describe('<Intervention />', () => {
 		});
 
 		useCtsApi.mockReturnValue({
-			error: false,
+			error: new Error('Bad Mojo'),
 			loading: false,
 			aborted: false,
-			payload: trialResults,
+			payload: null,
 		});
 
 		const redirectPath = () => '/notrials';
+
 		const routeParamMap = [
 			{
-				paramName: 'codeOrPurl',
-				textReplacementKey: 'disease',
+				paramName: 'chicken',
+				textReplacementKey: 'Intervention',
 				type: 'listing-information',
 			},
 		];
@@ -100,26 +95,23 @@ describe('<Intervention />', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/']}>
-						<Intervention
-							routeParamMap={routeParamMap}
-							routePath={redirectPath}
-							data={data}
-						/>
-					</MemoryRouter>
+					<ErrorBoundary>
+						<MemoryRouter initialEntries={['/C4872']}>
+							<Intervention
+								routeParamMap={routeParamMap}
+								routePath={redirectPath}
+								data={data}
+							/>
+						</MemoryRouter>
+					</ErrorBoundary>
 				</MockAnalyticsProvider>
 			);
 		});
 
-		expect(useCtsApi).toHaveBeenCalled();
+		expect(useCtsApi).not.toHaveBeenCalled();
 
 		expect(
-			screen.getByText('Clinical Trials Using Trastuzumab')
-		).toBeInTheDocument();
-		expect(
-			screen.getByText(
-				'Clinical trials are research studies that involve people. The clinical trials on this list are studying trastuzumab.'
-			)
+			screen.getByText('An error occurred. Please try again later.')
 		).toBeInTheDocument();
 	});
 });
