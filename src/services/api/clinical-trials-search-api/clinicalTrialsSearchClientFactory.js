@@ -9,6 +9,7 @@ const clinicalTrialsSearchClientFactory = (apiBase) => {
 	return axios.create({
 		baseURL: apiBase,
 		timeout: 15000,
+		headers: { 'X-API-KEY': 'hcNOUbe2eLaxnSx1CcjyF91x8QbN6Mej5hsg3eTs' },
 	});
 };
 

@@ -6,17 +6,20 @@
  */
 export const getClinicalTrials = async (client, query) => {
 	try {
-		const res = await client.post(`/clinical-trials`, query);
+		const res = await client.post(`/trials`, query);
 		if (res.status === 200) {
 			if (
 				res.data.total === null ||
 				typeof res.data.total === 'undefined' ||
-				(res.data.total > 0 && !res.data?.trials?.length) ||
-				(res.data.total === 0 && res.data?.trials?.length !== 0)
+				(res.data.total > 0 && !res.data?.data?.length) ||
+				(res.data.total === 0 && res.data?.data?.length !== 0)
 			) {
 				throw new Error(`Trial count mismatch from the API`);
 			} else {
-				return res.data;
+				return {
+					total: res.data.total,
+					trials: res.data.data,
+				};
 			}
 		} else {
 			// This condition will be hit for anything < 300.

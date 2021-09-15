@@ -69,7 +69,7 @@ const initialize = ({
 				(ctsProtocol !== '' ? ctsProtocol + '://' : '') +
 				ctsApiHostname +
 				(ctsPort && ctsPort !== '' ? ':' + ctsPort : '') +
-				'/v1/'
+				'/api/v2/'
 			);
 		}
 	};
