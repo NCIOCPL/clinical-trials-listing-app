@@ -274,6 +274,7 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 					return <Spinner />;
 				} else if (!fetchState.loading && fetchState.payload) {
 					if (fetchState.payload.total > 0) {
+						console.log('fetchState Payload: ', fetchState.payload);
 						return (
 							<>
 								{/* ::: Intro Text ::: */}
