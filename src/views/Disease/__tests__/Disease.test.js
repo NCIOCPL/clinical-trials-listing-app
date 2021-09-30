@@ -19,7 +19,7 @@ jest.mock('react-router', () => ({
 	}),
 }));
 
-const fixturePath = `/v1/clinical-trials`;
+const fixturePath = `/v2/trials`;
 const breastCancerFile = `breast-cancer-response.json`;
 
 describe('<Disease />', () => {

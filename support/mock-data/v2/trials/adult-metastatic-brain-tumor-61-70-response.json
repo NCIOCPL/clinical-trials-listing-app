@@ -1,0 +1,165 @@
+{
+	"total": 104,
+	"data": [
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "DESTINY-Breast07 will investigate the safety, tolerability, and anti-tumour activity of trastuzumab deruxtecan (T-DXd) in combination with other anti-cancer agents in patients with HER2-positive Metastatic Breast Cancer",
+			"nct_id": "NCT04538742",
+			"brief_title": "A Phase 1b / 2 Study of T-DXd Combinations in HER2-positive Metastatic Breast Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "NY",
+					"org_city": "New York",
+					"org_country": "United States",
+					"org_name": "Laura and Isaac Perlmutter Cancer Center at NYU Langone",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-04133"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial investigates how well GLIADEL wafers after surgery work compared to stereotactic radiosurgery after surgery in treating patients with cancer that has spread to the brain (metastatic brain tumor). GLIADEL is a wafer that is used to deliver the anticancer drug carmustine directly into a brain tumor site after the tumor has been removed by surgery. Chemotherapy drugs, such as carmustine, work in different ways to stop the growth of tumor cells, either by killing the cells, by stopping them from dividing, or by stopping them from spreading. Stereotactic radiosurgery uses special equipment to position a patient and deliver radiation to tumors with high precision. This method may kill tumor cells with fewer doses over a shorter period and cause less damage to normal tissue. Giving GLIADEL or stereotactic radiosurgery after surgery may help keep the cancer from coming back.",
+			"nct_id": "NCT04222062",
+			"brief_title": "GLIADEL or Stereotactic Radiosurgery after Surgery for the Treatment of Metastatic Brain Tumor",
+			"sites": [
+				{
+					"org_state_or_province": "NE",
+					"org_city": "Omaha",
+					"org_country": "United States",
+					"org_name": "University of Nebraska Medical Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2020-06968"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This is an open-label, Phase I, first-in-human (FIH) multicenter, clinical study conducted in multiple parts to establish the safety, tolerability and Pharmacokinetic / Pharmacodynamic (PK / PD) profile (with and without food) and early signs of efficacy of M1774 as monotherapy and in combination with the poly (ADP-ribose) polymerase (PARP) inhibitor niraparib.",
+			"nct_id": "NCT04170153",
+			"brief_title": "M1774 in Participants With Metastatic or Locally Advanced Unresectable Solid Tumors (DDRiver Solid Tumors 301)",
+			"sites": [
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Houston",
+					"org_country": "United States",
+					"org_name": "M D Anderson Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2020-02284"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I / II trial investigates the side effects of NovoTTF-200A and how well it works with pembrolizumab for the treatment of newly diagnosed melanoma that has spread to the brain (brain metastasis). The NovoTTF-200A System is a portable device which produces changing electrical fields, called tumor treatment fields (“TTFields”) within the human body. TTFields stop the growth of tumor cells resulting in cell death of the rapidly dividing cancer cells. Immunotherapy with monoclonal antibodies, such as pembrolizumab, may help the body's immune system attack the cancer, and may interfere with the ability of tumor cells to grow and spread. Giving TTFields may sensitize the tumor cells to immune therapies such as pembrolizumab.",
+			"nct_id": "NCT04129515",
+			"brief_title": "NovoTTF-200A and Pembrolizumab for the Treatment of Newly Diagnosed Melanoma Brain Metastasis",
+			"sites": [
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Beth Israel Deaconess Medical Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2020-04558"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This early phase I trial studies the extent by which sacituzumab govitecan is able get into the brain in treating patients with breast cancer that has spread to the brain (brain metastasis) or glioblastoma that has come back after previous treatment (recurrent). Sacituzumab govitecan is a monoclonal antibody, called sacituzumab, linked to a chemotherapy drug called govitecan. Sacituzumab attaches to TROP2 positive tumor cells in a targeted way and delivers govitecan to kill them.",
+			"nct_id": "NCT03995706",
+			"brief_title": "Sacituzumab Govitecan in Treating Patients with Breast Cancer Brain Metastasis or Recurrent Glioblastoma",
+			"sites": [
+				{
+					"org_state_or_province": "TX",
+					"org_city": "San Antonio",
+					"org_country": "United States",
+					"org_name": "Cancer Therapy and Research Center at The UT Health Science Center at San Antonio",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-05154"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies how well cell therapy (with tumor infiltrating lymphocytes) works for the treatment of solid cancer that has spread to nearby tissue or lymph nodes (locally advanced), has spread to other parts of the body (metastatic), or has come back (recurrent). This trial involves taking cells called lymphocytes (a type of white blood cell) from patients' tumors, growing them in the laboratory in large numbers, and then giving the cells back to the patient. These cells are called tumor infiltrating lymphocytes and the therapy is called cell therapy. Giving chemotherapy drugs, such as cyclophosphamide and fludarabine, before treating with these cells may temporarily suppress the immune system to improve the chances that the tumor fighting cells will be able to survive in the body. Giving aldesleukin after the cell administration may help the tumor fighting cells stay alive longer. Giving tumor fighting cells (tumor infiltrating lymphocytes) followed by aldesleukin may cause the cancer to shrink.",
+			"nct_id": "NCT03935893",
+			"brief_title": "Cell Therapy for the Treatment of Locally Advanced, Metastatic, or Recurrent Solid Cancers",
+			"sites": [
+				{
+					"org_state_or_province": "PA",
+					"org_city": "Pittsburgh",
+					"org_country": "United States",
+					"org_name": "University of Pittsburgh Cancer Institute (UPCI)",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-06773"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I trial studies the best dose and the effects of oncolytic HSV-1 G207 with or without radiation therapy in treating patients with cerebellar brain tumors that have come back (recurrent) or have not responded to treatment (refractory). G207 is an experimental herpes simplex virus (HSV). HSV causes cold sores and, rarely, causes a severe brain infection. G207 has been genetically changed and weakened, in the hope that only cancer cells will be infected and killed by the virus, without harming normal brain tissue. Radiation therapy uses high energy x-rays to kill tumor cells and shrink tumors. Giving oncolytic HSV-1 G207 with or without radiation therapy may shrink the brain tumor and improve tumor symptoms.",
+			"nct_id": "NCT03911388",
+			"brief_title": "Oncolytic HSV-1 G207 in Patients with Recurrent or Refractory Cerebellar Brain Tumors",
+			"sites": [
+				{
+					"org_state_or_province": "AL",
+					"org_city": "Birmingham",
+					"org_country": "United States",
+					"org_name": "University of Alabama at Birmingham Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-00011"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "There is a specific protein called tGLI1 that is often found in brain tumors. It has been linked to more aggressive tumors. Ketoconazole is an antifungal drug that has been shown in animals and cells to reduce tGLI1 and block its functions. This early phase I trial studies the side effects and how well ketoconazole works before surgery in treating patients with glioma that has come back (recurrent) or breast cancer that has spread (metastatic) to the brain. This study may teach scientists how to treat or prevent these tumor types in the future.",
+			"nct_id": "NCT03796273",
+			"brief_title": "Ketoconazole before Surgery in Treating Patients with Recurrent Glioma or Breast Cancer Metastatic to the Brain",
+			"sites": [
+				{
+					"org_state_or_province": "NC",
+					"org_city": "Winston-Salem",
+					"org_country": "United States",
+					"org_name": "Wake Forest University Health Sciences",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-03087"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase III trial studies stereotactic radiosurgery (SRS) before surgery to see how well it works compared with SRS after surgery in treating patients with cancer that has spread to the brain (brain metastases). SRS is the delivery of focused, high-dose radiation given in a single session to the tumors, with a minimal dose given to uninvolved areas of the brain.",
+			"nct_id": "NCT03741673",
+			"brief_title": "Pre-operative SRS or Post-operative SRS in Treating Cancer Patients with Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Houston",
+					"org_country": "United States",
+					"org_name": "M D Anderson Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-02220"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I trial studies the side effects and best dose of fractionated stereotactic radiation therapy in treating patients with cancer that has spread to the brain and has not been removed by surgery. Fractionated stereotactic radiation therapy uses special equipment to position a patient and deliver radiation to tumors with high precision. This method can kill tumor cells with fewer doses over a shorter period and cause less damage to normal tissue.",
+			"nct_id": "NCT03726359",
+			"brief_title": "Fractionated Stereotactic Radiation Therapy in Treating Cancer Patients with Brain Metastases That Has Not Been Removed by Surgery",
+			"sites": [
+				{
+					"org_state_or_province": "NY",
+					"org_city": "Bronx",
+					"org_country": "United States",
+					"org_name": "Montefiore Medical Center-Weiler Hospital",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-03263"
+		}
+	]
+}

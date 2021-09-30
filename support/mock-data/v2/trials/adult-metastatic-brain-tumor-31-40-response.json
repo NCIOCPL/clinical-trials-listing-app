@@ -1,0 +1,235 @@
+{
+	"total": 104,
+	"data": [
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies the side effects and possible benefits of troriluzole, ipilimumab, and nivolumab in treating patients with melanoma that has spread to the brain (brain metastases) previously treated with anti-PD-1 therapy. Ipilimumab and nivolumab are drugs that treat cancer by blocking certain molecules in the body. This blocking action prevents other molecules from binding to cells involved in the immune system. With these changes, the immune system is more likely to become active, and will react more intensely when activated. The immune system is able to destroy cancer cells and reduce the size of tumors, so activating the immune system is an important part of cancer treatment. Ipilimumab blocks a molecule called CTLA-4, which normally decreases the activation of the immune system by binding to T-Cells, which are important immune system cells that can attack cancer cells. Nivolumab blocks a molecule called PD-1, which also normally decreases the activation of the immune system. Troriluzole is a drug that modulates glutamate, the most abundant excitatory neurotransmitter in the human body. The primary mode of action of troriluzole is reducing synaptic levels of glutamate. This may change parts of the immune system in the brain, which could improve treatment outcomes with anti-cancer drugs such as ipilimumab and nivolumab that can work in the brain. This study is testing troriluzole’s ability to increase the effectiveness of ipilimumab and nivolumab treatment in melanoma that has spread to the brain, as well as testing the safety of the combination of these three drugs.",
+			"nct_id": "NCT04899921",
+			"brief_title": "Troriluzole, Ipilimumab, and Nivolumab for the Treatment of Melanoma Brain Metastases Previous Treated with Anti-PD-1 Therapy",
+			"sites": [
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Dana-Farber Cancer Institute",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Brigham and Women's Hospital",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-06090"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This protocol is for a lead-in safety study of 5 patients followed by a randomized Phase 2 clinical trial of BMX-001, a new class of pharmaceutical, in 64 patients with multiple brain metastases (MBM) undergoing whole brain radiation therapy (WBRT). Preliminary studies have demonstrated that BMX-001 provides protection of normal tissues from radiation-induced injury and augments tumor growth inhibition.",
+			"nct_id": "NCT03608020",
+			"brief_title": "A Trial for Treatment of Cancer Patients With Multiple Brain Metastases Undergoing Whole-Brain Radiotherapy",
+			"sites": [
+				{
+					"org_state_or_province": "NC",
+					"org_city": "Durham",
+					"org_country": "United States",
+					"org_name": "Duke University Medical Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "KY",
+					"org_city": "Lexington",
+					"org_country": "United States",
+					"org_name": "University of Kentucky / Markey Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-00398"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies how well pembrolizumab and bevacizumab work in treating patients with melanoma that has spread to the other parts of the body or non-small cell lung cancer that has spread to the brain. Immunotherapy with monoclonal antibodies, such as pembrolizumab and bevacizumab, may help the body’s immune system attack the cancer, and may interfere with the ability of tumor cells to grow and spread.",
+			"nct_id": "NCT02681549",
+			"brief_title": "Pembrolizumab and Bevacizumab in Treating Patients with Metastatic Melanoma or Non-small Cell Lung Cancer with Untreated Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "CT",
+					"org_city": "New Haven",
+					"org_country": "United States",
+					"org_name": "Yale University",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "FL",
+					"org_city": "Tampa",
+					"org_country": "United States",
+					"org_name": "Moffitt Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2016-00938"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial investigates the effect of brigatinib on patients with ALK+ lung cancer that has spread to the brain (brain metastases). Brigatinib may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth.",
+			"nct_id": "NCT04634110",
+			"brief_title": "Brigatinib before Brain Irradiation Trial for the Treatment of Brain Metastases from ALK+ Lung Cancer, the B3i Trial",
+			"sites": [
+				{
+					"org_state_or_province": "CO",
+					"org_city": "Aurora",
+					"org_country": "United States",
+					"org_name": "University of Colorado Hospital",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MN",
+					"org_city": "Rochester",
+					"org_country": "United States",
+					"org_name": "Mayo Clinic in Rochester",
+					"recruitment_status": "IN_REVIEW"
+				},
+				{
+					"org_state_or_province": "CA",
+					"org_city": "Duarte",
+					"org_country": "United States",
+					"org_name": "City of Hope Comprehensive Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-00211"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This clinical trial studies the side effects of stereotactic radiosurgery dose reduction, and to see how well it works in treating patients who are receiving immunotherapy for cancer that has spread to the brain (brain metastases). Stereotactic radiosurgery is a specialized radiation therapy that delivers a single, high dose of radiation directly to the tumor and may cause less damage to normal tissue. Giving a lower dose of stereotactic radiosurgery may be safer without compromising tumor killing in patients with brain metastases.",
+			"nct_id": "NCT04047602",
+			"brief_title": "Stereotactic Radiosurgery Dose Reduction for the Treatment of Brain Metastases in Patients Receiving Immunotherapy, the RADREMI Study",
+			"sites": [
+				{
+					"org_state_or_province": "IN",
+					"org_city": "Indianapolis",
+					"org_country": "United States",
+					"org_name": "Indiana University / Melvin and Bren Simon Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "IN",
+					"org_city": "Indianapolis",
+					"org_country": "United States",
+					"org_name": "IU Health Methodist Hospital",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-05845"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies how well paxalisib in combination with trastuzumab works in treating patients with HER2 positive breast cancer that has spread to the brain (brain metastases). Paxalisib may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth. Trastuzumab is a form of “targeted therapy” because it works by attaching itself to specific molecules (receptors) on the surface of breast cancer cells, known as HER2 receptors. When trastuzumab attaches to HER2 receptors, the signals that tell the cells to grow are blocked and the cancer cell may be marked for destruction by body’s immune system. It is not yet known how a HER2-positive breast cancer that has spread to the brain responds to combination of paxalisib and trastuzumab.",
+			"nct_id": "NCT03765983",
+			"brief_title": "Paxalisib and Trastuzumab in Treating Patients with HER2 Positive Breast Cancer Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Dana-Farber Cancer Institute",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Brigham and Women's Hospital",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-01756"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "To evaluate the safety and tolerability of galinpepimut-S in combination with pembrolizumab in patients with selected advanced cancers. Patients will be followed long-term for Overall Survival (OS) and safety. The study will enroll approximately 90 patients and maximum study treatment duration is approximately 2.13 years.",
+			"nct_id": "NCT03761914",
+			"brief_title": "Galinpepimut-S in Combination With Pembrolizumab in Patients With Selected Advanced Cancers",
+			"sites": [
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Houston",
+					"org_country": "United States",
+					"org_name": "M D Anderson Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NY",
+					"org_city": "New York",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-03740"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies how well stereotactic radiosurgery before resection works in treating patients with solid tumors that have spread to the brain. Stereotactic body radiation therapy uses special equipment to position a patient and deliver radiation to tumors with high precision. This method can kill tumor cells with fewer doses over a shorter period and cause less damage to normal tissue. Performing stereotactic radiosurgery before surgery may sterilize the cancer cells surrounding the brain tumor so they may not spread during surgery.",
+			"nct_id": "NCT03398694",
+			"brief_title": "Stereotactic Radiosurgery before Resection in Treating Patients with Solid Tumor Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "IN",
+					"org_city": "Indianapolis",
+					"org_country": "United States",
+					"org_name": "Indiana University / Melvin and Bren Simon Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "IN",
+					"org_city": "Indianapolis",
+					"org_country": "United States",
+					"org_name": "IU Health Methodist Hospital",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-00930"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies how well whole brain radiation therapy with simultaneous integrated boost works in treating patients with solid tumors that have spread to the brain (brain metastases). Radiation therapy uses high energy x-rays to kill tumor cells and shrink tumors. Lowering the dose of radiation therapy to the areas of the whole brain with no visible tumor (whole brain radiation therapy) and radiation therapy to areas of the brain where tumors are known to be (simultaneous integrated boost), may help preserve cognitive function while still preventing new tumor growth in the brain.",
+			"nct_id": "NCT03189381",
+			"brief_title": "Whole Brain Radiation Therapy with Simultaneous Integrated Boost in Treating Patients with Brain Metastases from Solid Tumors",
+			"sites": [
+				{
+					"org_state_or_province": "IN",
+					"org_city": "Indianapolis",
+					"org_country": "United States",
+					"org_name": "Indiana University / Melvin and Bren Simon Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "IN",
+					"org_city": "Indianapolis",
+					"org_country": "United States",
+					"org_name": "IU Health Methodist Hospital",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-00087"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I / II trial studies the best dose and effect of pimasertib in combination with bintrafusp alfa in treating patients with cancer that has spread to the brain (brain metastases). Immunotherapy with bintrafusp alfa, a bifunctional fusion protein composed of the monoclonal antibody anti-PD-L1 and TGF-beta, may help the body's immune system attack the cancer, and may interfere with the ability of tumor cells to grow and spread. Pimasertib may stop the growth of cancer cells by blocking some of the enzymes needed for cell growth. Giving pimasertib and bintrafusp alfa may help to prevent or delay the cancer from progressing (getting worse) and / or coming back.",
+			"nct_id": "NCT04789668",
+			"brief_title": "Bintrafusp Alfa and Pimasertib for the Treatment of Patients with Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Houston",
+					"org_country": "United States",
+					"org_name": "M D Anderson Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-00219"
+		}
+	]
+}

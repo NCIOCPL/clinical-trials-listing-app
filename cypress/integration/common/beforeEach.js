@@ -18,9 +18,6 @@ beforeEach(() => {
 			canonicalHost: 'https://www.cancer.gov',
 			cisBannerImgUrlLarge: '%PUBLIC_URL%/images/cts-cis-banner-xl.jpeg',
 			cisBannerImgUrlSmall: '%PUBLIC_URL%/images/cts-cis-banner-smartphone.jpeg',
-			ctsApiHostname: '/api',
-			ctsPort: null,
-			ctsProtocol: '',
 			dynamicListingPatterns: {
 				Disease: {
 					Disease: {
@@ -82,12 +79,13 @@ beforeEach(() => {
 			itemsPerPage: 25,
 			trialListingPageType: 'Disease',
 			listingApiEndpoint: '/api/',
+			ctsApiEndpoint: '/cts/mock-api',
 			rootId: 'NCI-app-root',
 			siteName: 'National Cancer Institute',
 			pageTitle: '{{disease_name}} Clinical Trials',
 			requestFilters: {
 				'diseases.nci_thesaurus_concept_id': ['C5816', 'C8550', 'C3813'],
-				'primary_purpose.primary_purpose_code': 'treatment',
+				'primary_purpose': 'treatment',
 			},
 			detailedViewPagePrettyUrlFormatter:
 				'/clinicaltrials/{{nci_id}}',

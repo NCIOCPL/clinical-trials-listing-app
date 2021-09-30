@@ -12,7 +12,7 @@ jest.mock('../../../store/store.js');
 jest.mock('../../../hooks/routing');
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 
-const fixturePath = `/v1/clinical-trials`;
+const fixturePath = `/v2/trials`;
 const trastuzumabFile = `trastuzumab-response.json`;
 
 describe('<Disease />', () => {

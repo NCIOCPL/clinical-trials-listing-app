@@ -124,7 +124,7 @@ describe('<Intervention />', () => {
 		};
 
 		const requestFilters = {
-			'arms.interventions.intervention_code': ['C1234'],
+			'arms.interventions.nci_thesaurus_concept_id': ['C1234'],
 		};
 		const requestQuery = getClinicalTrials({
 			from: 0,
@@ -221,7 +221,7 @@ describe('<Intervention />', () => {
 		};
 
 		const requestFilters = {
-			'arms.interventions.intervention_code': ['C1234'],
+			'arms.interventions.nci_thesaurus_concept_id': ['C1234'],
 		};
 		const requestQuery = getClinicalTrials({
 			from: 0,

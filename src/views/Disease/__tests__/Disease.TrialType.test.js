@@ -13,7 +13,7 @@ jest.mock('../../../store/store.js');
 jest.mock('../../../hooks/routing');
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 
-const fixturePath = `/v1/clinical-trials`;
+const fixturePath = `/v2/trials`;
 const trastuzumabFile = `trastuzumab-response.json`;
 
 describe('<Disease />', () => {
@@ -27,7 +27,7 @@ describe('<Disease />', () => {
 		aborted: false,
 		payload: {
 			total: 0,
-			trials: [],
+			data: [],
 		},
 	});
 
@@ -80,7 +80,6 @@ describe('<Disease />', () => {
 					'{{trial_type_label}} Clinical Trials for {{disease_label}} Using {{intervention_label}}',
 			},
 		};
-
 		const response = getFixture(`${fixturePath}/${trastuzumabFile}`);
 
 		useStateValue.mockReturnValue([
@@ -138,7 +137,7 @@ describe('<Disease />', () => {
 
 		const requestFilters = {
 			'diseases.nci_thesaurus_concept_id': ['C4872', 'C118809'],
-			'primary_purpose.primary_purpose_code': 'treatment',
+			primary_purpose: 'treatment',
 		};
 		const requestQuery = getClinicalTrials({
 			from: 0,

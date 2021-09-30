@@ -5,7 +5,7 @@ Feature: Page Load analytics for no trials found Manual Listing Page
         And "pageTitle" is set to "Clinical Trials for Adult Metastatic Brain Tumors"
 				And "cisBannerImgUrlLarge" is set to null
 				And "cisBannerImgUrlSmall" is set to null
-				And "requestFilters" is set as a json string to "{'diseases.nci_thesaurus_concept_id': ['chicken', 'foo', 'oknn'], 'primary_purpose.primary_purpose_code': 'treatment'}"
+				And "requestFilters" is set as a json string to "{'diseases.nci_thesaurus_concept_id': ['chicken', 'foo', 'oknn'], 'primary_purpose': 'treatment'}"
 				And "analyticsPublishedDate" is set to "02/02/2011"
 				When the user navigates to "/"
         Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"

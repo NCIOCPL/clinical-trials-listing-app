@@ -1,0 +1,207 @@
+{
+	"total": 104,
+	"data": [
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "NSCLC patients with metastatic disease who have failed at least one prior treatment and have a minimum of two metastatic lesions (at least one measurable), are eligible if they have an ECOG Performance Status of 0-1. Patients will receive on Day 1, ipilimumab (every 6 weeks) concurrently with radiation (6Gy x 5 fractions). Nivolumab (every 2 weeks) will be given in addition to ipilimumab on day 22.",
+			"nct_id": "NCT03168464",
+			"brief_title": "Radiation and Immune Checkpoints Blockade in Metastatic NSCLC (BMS # CA209-632)",
+			"sites": [
+				{
+					"org_state_or_province": "NY",
+					"org_city": "New York",
+					"org_country": "United States",
+					"org_name": "NYP / Columbia University Medical Center / Herbert Irving Comprehensive Cancer Center",
+					"recruitment_status": "ADMINISTRATIVELY_COMPLETE"
+				}
+			],
+			"nci_id": "NCI-2019-05713"
+		},
+		{
+			"current_trial_status": "In Review",
+			"brief_summary": "This study will have a Phase I portion in which subjects will be enrolled based on 3+3 dose escalation rules. Three dose levels of olaparib will be studied. Cycle 1 of study treatment will consist of Olaparib given twice daily concurrently with stereotactic radiosurgery (SRS). Olaparib will start one week prior to SRS and continue during and following SRS (1-5 fractions) for up to 28 days total. The number of doses of Olaparib will be dependent on how long it takes a subject to recover from SRS (ideally the subject will be off steroids, if they are required, at the start of Cycle 2, with exceptions outlined later in this section). Once the subject has recovered from SRS, Cycle 2 will be initiated with physician's choice systemic therapy and durvalumab. Cycle 2+ will equal 21 days. During Cycles 2 and 3, physician's choice systemic monotherapy will be given along with durvalumab per section 5.3. Each cycle will last 21 days. Imaging to evaluate intracranial and extracranial disease will be performed after Cycle 3, and subjects with response will continue with the systemic therapy and durvalumab until progression (intracranial or extracranial), unacceptable toxicity or death.",
+			"nct_id": "NCT04711824",
+			"brief_title": "Study of Stereotactic Radiosurgery With Olaparib Followed by Durvalumab and Physician's Choice Systemic Therapy in Subjects With Breast Cancer Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "NC",
+					"org_city": "Chapel Hill",
+					"org_country": "United States",
+					"org_name": "UNC Lineberger Comprehensive Cancer Center",
+					"recruitment_status": "APPROVED"
+				}
+			],
+			"nci_id": "NCI-2021-05777"
+		},
+		{
+			"current_trial_status": "In Review",
+			"brief_summary": "This is an open-label Phase 3 study to see if ANG1005 can prolong survival compared to a Physician Best Choice control in HER2-negative breast cancer patients with newly diagnosed leptomeningeal disease and previously treated brain metastases.",
+			"nct_id": "NCT03613181",
+			"brief_title": "ANG1005 in Leptomeningeal Disease From Breast Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "OH",
+					"org_city": "Columbus",
+					"org_country": "United States",
+					"org_name": "Ohio State University Comprehensive Cancer Center",
+					"recruitment_status": "APPROVED"
+				},
+				{
+					"org_state_or_province": "CA",
+					"org_city": "Duarte",
+					"org_country": "United States",
+					"org_name": "City of Hope Comprehensive Cancer Center",
+					"recruitment_status": "APPROVED"
+				},
+				{
+					"org_state_or_province": "NY",
+					"org_city": "New York",
+					"org_country": "United States",
+					"org_name": "NYP / Columbia University Medical Center / Herbert Irving Comprehensive Cancer Center",
+					"recruitment_status": "CLOSED_TO_ACCRUAL"
+				},
+				{
+					"org_state_or_province": "WA",
+					"org_city": "Seattle",
+					"org_country": "United States",
+					"org_name": "Fred Hutch / University of Washington Cancer Consortium",
+					"recruitment_status": "WITHDRAWN"
+				},
+				{
+					"org_state_or_province": "NC",
+					"org_city": "Chapel Hill",
+					"org_country": "United States",
+					"org_name": "UNC Lineberger Comprehensive Cancer Center",
+					"recruitment_status": "APPROVED"
+				},
+				{
+					"org_state_or_province": "CA",
+					"org_city": "San Francisco",
+					"org_country": "United States",
+					"org_name": "UCSF Medical Center-Mount Zion",
+					"recruitment_status": "APPROVED"
+				}
+			],
+			"nci_id": "NCI-2019-00498"
+		},
+		{
+			"current_trial_status": "Approved",
+			"brief_summary": "This phase IIa trial studies how well dendritic cell vaccines against Her2 / Her3, cytokine modulation (CKM) regimen, and pembrolizumab work for the treatment of triple negative breast cancer or HER2+ breast cancer that has spread to the brain (brain metastasis). Dendritic cell vaccines work by boosting the immune system (a system in the body that protect against infection) to recognize and destroy the cancer cells. CKM regimen, consisting of rintatolimod, interferon alpha-2b and celecoxib, attempt to direct the immune cells to the cancer cells and maximize the effectiveness of pembrolizumab. Pembrolizumab is an “immune checkpoint inhibitor” which is designed to either “unleash” or “enhance” the cancer immune responses that already exist by either blocking inhibitory molecules” or by activating stimulatory molecules. Giving dendritic cell vaccines, CKM regimen, and pembrolizumab may shrink the cancer.",
+			"nct_id": "NCT04348747",
+			"brief_title": "Dendritic Cell Vaccines against Her2 / Her3, Cytokine Modulation Regimen, and Pembrolizumab for the Treatment of Brain Metastasis from Triple Negative Breast Cancer or HER2+ Breast Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "NY",
+					"org_city": "Buffalo",
+					"org_country": "United States",
+					"org_name": "Roswell Park Cancer Institute",
+					"recruitment_status": "APPROVED"
+				}
+			],
+			"nci_id": "NCI-2020-01520"
+		},
+		{
+			"current_trial_status": "Temporarily Closed to Accrual",
+			"brief_summary": "Background: In a new cancer therapy, researchers take a person s blood, select a certain white blood cell to grow in the lab, and then change the genes of these cells using a virus. The cells are then given back to the person. This is called gene transfer. For this study, researchers will modify the person s white blood cells with anti-CD70. Objectives: To see if a gene transfer with anti-CD70 cells can safely shrink tumors and to be certain the treatment is safe. Eligibility: Adults age 18 and older diagnosed with cancer that has the CD70-expressing cancer. Design: Participants will be screened with medical history, physical exam, scans, and other tests. They may by admitted to the hospital. Leukapheresis will be performed. For this, blood is removed through a needle in the arm. A machine separates the white blood cells. The rest of the blood is returned through a needle in the other arm. Eligible participants will have an intravenous catheter placed in their upper chest. Over several days, they will get chemotherapy drugs and the anti-CD70 cells. They will recover in the hospital. Participants will take an antibiotic for 6 months after treatment. They will repeat leukapheresis. Participants will visit the clinic every 1-3 months for the first year after treatment, every 6 months for the second year, and then as determined by their physician. Follow-up visits will take 1-2 days. At each visit, participants will have lab tests, imaging studies, and a physical exam. Throughout the study, blood will be taken and participants will have many tests to determine the size and extent of their tumor and the treatment s impact.",
+			"nct_id": "NCT02830724",
+			"brief_title": "Administering Peripheral Blood Lymphocytes Transduced With a CD70-Binding Chimeric Antigen Receptor to People With CD70 Expressing Cancers",
+			"sites": [
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Bethesda",
+					"org_country": "United States",
+					"org_name": "National Institutes of Health Clinical Center",
+					"recruitment_status": "TEMPORARILY_CLOSED_TO_ACCRUAL"
+				}
+			],
+			"nci_id": "NCI-2018-03328"
+		},
+		{
+			"current_trial_status": "Temporarily Closed to Accrual",
+			"brief_summary": "This phase II trial studies how well whole-brain radiation therapy using intensity-modulated radiation therapy (IMRT) works in treating patients with cancer that has spread to the brain. Radiation therapy uses high energy x-rays to kill tumor cells and shrink tumors. Giving radiation therapy to the whole brain at different intensities from many angles may kill more tumor cells and cause less damage to normal tissue.",
+			"nct_id": "NCT02753790",
+			"brief_title": "Whole-Brain Radiation Therapy Using Intensity-Modulated Radiation Therapy in Treating Patients with Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "NM",
+					"org_city": "Albuquerque",
+					"org_country": "United States",
+					"org_name": "University of New Mexico Cancer Center",
+					"recruitment_status": "TEMPORARILY_CLOSED_TO_ACCRUAL"
+				}
+			],
+			"nci_id": "NCI-2016-00436"
+		},
+		{
+			"current_trial_status": "Temporarily Closed to Accrual",
+			"brief_summary": "Background: Cell therapy is an experimental cancer therapy. It takes young tumor infiltrating lymphocytes (Young TIL) cells from a person s tumors and grows them in a lab. Then they are returned to the person. Researchers think adding the drug pembrolizumab might make the therapy more effective. Objective: To test if adding pembrolizumab to cell therapy is safe and effective to shrink melanoma tumors. Eligibility: People ages 18 70 years with metastatic melanoma Design: Participants will be screened with: Physical exam CT, MRI, or PET scans X-rays Heart and lung function tests Blood and urine tests Before treatment, participants will have: A piece of tumor taken from a biopsy or during surgery in order to grow TIL cells Leukapheresis: Blood flows through a needle in one arm and into a machine that removes white blood cells. The rest of the blood returns through a needle in the other arm. An IV catheter placed in the chest for getting TIL cells, aldesleukin, and pembrolizumab (if assigned) Participants will stay in the hospital for treatment. This includes: Daily chemotherapy for 1 week For some participants, pembrolizumab infusion 1 day after chemotherapy TIL cell infusion 2 4 days after chemotherapy, then aldesleukin infusion every 8 hours for up to 12 doses Possible filgrastim injection Recovery for 1 2 weeks After treatment, participants will: Take an antibiotic and antiviral for at least 6 months If assigned, have pembrolizumab treatment every 3 weeks for 3 more doses. They may have another round. Have 2-day follow-up visits every 1 3 months for 1 year and then every 6 months",
+			"nct_id": "NCT02621021",
+			"brief_title": "A Prospective Randomized and Phase 2 Trial for Metastatic Melanoma Using Adoptive Cell Therapy With Tumor Infiltrating Lymphocytes Plus IL-2 Either Alone or Following the Administration of Pembrolizumab",
+			"sites": [
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Bethesda",
+					"org_country": "United States",
+					"org_name": "National Institutes of Health Clinical Center",
+					"recruitment_status": "TEMPORARILY_CLOSED_TO_ACCRUAL"
+				}
+			],
+			"nci_id": "NCI-2018-02793"
+		},
+		{
+			"current_trial_status": "Temporarily Closed to Accrual",
+			"brief_summary": "Background: The NCI Surgery Branch has developed an experimental therapy that involves taking white blood cells from patients' tumors, growing them in the laboratory in large numbers, and then giving the cells back to the patient. These cells are called Tumor Infiltrating Lymphocytes, or TIL and we have given this type of treatment to over 100 patients. In this study, we are selecting a specific subset of white blood cells from the tumor that we think are the most effective in fighting tumors and will use only these cells in making the tumor fighting cells. Objective: The purpose of this study is to see if these specifically selected tumor fighting cells can cause non-small cell lung cancer (NSCLC) tumors to shrink and to see if this treatment is safe. Eligibility: - Adults age 18-70 with NSCLC who have a tumor that can be safely removed. Design: - Work up stage: Patients will be seen as an outpatient at the NIH clinical Center and undergo a history and physical examination, scans, x-rays, lab tests, and other tests as needed - Surgery: If the patients meet all of the requirements for the study they will undergo surgery to remove a tumor that can be used to grow the TIL product. - Leukapheresis: Patients may undergo leukapheresis to obtain additional white blood cells. {Leukapheresis is a common procedure, which removes only the white blood cells from the patient.} - Treatment: Once their cells have grown, the patients will be admitted to the hospital for the conditioning chemotherapy, the TIL cells and aldesleukin. They will stay in the hospital for about 4 weeks for the treatment. Follow up: Patients will return to the clinic for a physical exam, review of side effects, lab tests, and scans about every 1-3 months for the first year, and then every 6 months to 1 year as long as their tumors are shrinking. Follow up visits take up to 2 days.",
+			"nct_id": "NCT02133196",
+			"brief_title": "T Cell Receptor Immunotherapy for Patients With Metastatic Non-Small Cell Lung Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Bethesda",
+					"org_country": "United States",
+					"org_name": "National Institutes of Health Clinical Center",
+					"recruitment_status": "TEMPORARILY_CLOSED_TO_ACCRUAL"
+				}
+			],
+			"nci_id": "NCI-2018-02265"
+		},
+		{
+			"current_trial_status": "Temporarily Closed to Accrual",
+			"brief_summary": "This phase I / II trial studies the side effects and the best dose of stereotactic radiosurgery and to see how well it works in treating patients with large tumor that has spread to the brain. Stereotactic radiosurgery is a specialized radiation therapy that delivers a single, high dose of radiation directly to the tumor and may cause less damage to normal tissue.",
+			"nct_id": "NCT01843413",
+			"brief_title": "Stereotactic Radiosurgery in Treating Patients with Large Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "OH",
+					"org_city": "Cleveland",
+					"org_country": "United States",
+					"org_name": "Case Comprehensive Cancer Center",
+					"recruitment_status": "TEMPORARILY_CLOSED_TO_ACCRUAL"
+				}
+			],
+			"nci_id": "NCI-2013-00845"
+		},
+		{
+			"current_trial_status": "Temporarily Closed to Accrual",
+			"brief_summary": "Background: The NCI Surgery Branch has developed an experimental therapy that involves taking white blood cells from patients' tumors, growing them in the laboratory in large numbers, and then giving the cells back to the patient. These cells are called Tumor Infiltrating Lymphocytes, or TIL and we have given this type of treatment to over 200 patients with melanoma. Researchers want to know if TIL shrink s tumors in people with digestive tract, urothelial, breast, or ovarian / endometrial cancers. In this study, we are selecting a specific subset of white blood cells from the tumor that we think are the most effective in fighting tumors and will use only these cells in making the tumor fighting cells. Objective: The purpose of this study is to see if these specifically selected tumor fighting cells can cause digestive tract, urothelial, breast, or ovarian / endometrial tumors to shrink and to see if this treatment is safe. Eligibility: - Adults age 18-70 with upper or lower gastrointestinal, hepatobiliary, genitourinary, breast, ovarian / endometrial cancer, or glioblastoma refractory to standard chemotherapy. Design: Work up stage: Patients will be seen as an outpatient at the NIH clinical Center and undergo a history and physical examination, scans, x-rays, lab tests, and other tests as needed. Surgery: If the patients meet all of the requirements for the study they will undergo surgery to remove a tumor that can be used to grow the TIL product. Leukapheresis: Patients may undergo leukapheresis to obtain additional white blood cells. {Leukapheresis is a common procedure, which removes only the white blood cells from the patient.} Treatment: Once their cells have grown, the patients will be admitted to the hospital for the conditioning chemotherapy, the TIL cells and aldesleukin. They will stay in the hospital for about 4 weeks for the treatment. Follow up: Patients will return to the clinic for a physical exam, review of side effects, lab tests, and scans about every 1-3 months for the first year, and then every 6 months to 1 year as long as their tumors are shrinking. Follow up visits will take up to 2 days.",
+			"nct_id": "NCT01174121",
+			"brief_title": "Immunotherapy Using Tumor Infiltrating Lymphocytes for Patients With Metastatic Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Bethesda",
+					"org_country": "United States",
+					"org_name": "National Cancer Institute Surgery Branch",
+					"recruitment_status": "TEMPORARILY_CLOSED_TO_ACCRUAL"
+				},
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Bethesda",
+					"org_country": "United States",
+					"org_name": "National Institutes of Health Clinical Center",
+					"recruitment_status": "TEMPORARILY_CLOSED_TO_ACCRUAL"
+				}
+			],
+			"nci_id": "NCI-2019-00142"
+		}
+	]
+}

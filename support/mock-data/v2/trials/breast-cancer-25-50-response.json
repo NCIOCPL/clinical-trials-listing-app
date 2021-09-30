@@ -1,0 +1,2589 @@
+{
+    "total": 969,
+    "data": [
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This clinical trial is an interventional, active-treatment, open-label, multi-center, Phase 1 / 2 study. The study objectives are to assess the safety, tolerability and pharmacokinetics (PK) of the oral RAD51 inhibitor CYT-0851 in patients with relapsed / refractory B-cell malignancies and advanced solid tumors and to identify a recommended Phase 2 dose for evaluation in these patients.",
+            "nct_id": "NCT03997968",
+            "brief_title": "A Phase 1 / 2 Study of CYT-0851, an Oral RAD51 Inhibitor, in B-Cell Malignancies and Advanced Solid Tumors",
+            "sites": [
+                {
+                    "org_state_or_province": "WA",
+                    "org_city": "Seattle",
+                    "org_country": "United States",
+                    "org_name": "Fred Hutch / University of Washington Cancer Consortium",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "M D Anderson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Philadelphia",
+                    "org_country": "United States",
+                    "org_name": "Thomas Jefferson University Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NJ",
+                    "org_city": "Hackensack",
+                    "org_country": "United States",
+                    "org_name": "Hackensack University Medical Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "AZ",
+                    "org_city": "Scottsdale",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Arizona",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "New York",
+                    "org_country": "United States",
+                    "org_name": "Laura and Isaac Perlmutter Cancer Center at NYU Langone",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Palo Alto",
+                    "org_country": "United States",
+                    "org_name": "Stanford Cancer Institute Palo Alto",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Dana-Farber Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Brigham and Women's Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MI",
+                    "org_city": "Ann Arbor",
+                    "org_country": "United States",
+                    "org_name": "University of Michigan Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MN",
+                    "org_city": "Rochester",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Rochester",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Jacksonville",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Florida",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "OK",
+                    "org_city": "Oklahoma City",
+                    "org_country": "United States",
+                    "org_name": "University of Oklahoma Health Sciences Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Francisco",
+                    "org_country": "United States",
+                    "org_name": "UCSF Medical Center-Mount Zion",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2019-06977"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This phase II / III trial studies how well hypofractionated partial breast irradiation works in treating patients with early stage breast cancer. Hypofractionated radiation therapy delivers higher doses of radiation therapy over a shorter period of time and may kill more tumor cells and have fewer side effects. Treating only the part of the breast where the cancer started may lead to fewer side effects than standard treatment.",
+            "nct_id": "NCT03077841",
+            "brief_title": "Hypofractionated Partial Breast Irradiation in Treating Patients with Early Stage Breast Cancer",
+            "sites": [
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "M D Anderson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Conroe",
+                    "org_country": "United States",
+                    "org_name": "MD Anderson in The Woodlands",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "League City",
+                    "org_country": "United States",
+                    "org_name": "MD Anderson League City",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Sugar Land",
+                    "org_country": "United States",
+                    "org_name": "MD Anderson in Sugar Land",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "MD Anderson West Houston",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "OH",
+                    "org_city": "Mansfield",
+                    "org_country": "United States",
+                    "org_name": "OhioHealth Mansfield Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NJ",
+                    "org_city": "Berkeley Heights",
+                    "org_country": "United States",
+                    "org_name": "Summit Medical Group",
+                    "recruitment_status": "APPROVED"
+                },
+                {
+                    "org_state_or_province": "IN",
+                    "org_city": "Indianapolis",
+                    "org_country": "United States",
+                    "org_name": "Community Cancer Center East",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NJ",
+                    "org_city": "Camden",
+                    "org_country": "United States",
+                    "org_name": "Cooper Hospital University Medical Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "San Antonio",
+                    "org_country": "United States",
+                    "org_name": "Saint Luke's Baptist Health System",
+                    "recruitment_status": "APPROVED"
+                },
+                {
+                    "org_state_or_province": "NM",
+                    "org_city": "Albuquerque",
+                    "org_country": "United States",
+                    "org_name": "Presbyterian Hospital",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "NJ",
+                    "org_city": "Voorhees",
+                    "org_country": "United States",
+                    "org_name": "MD Anderson Cancer Center at Cooper-Voorhees",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Jacksonville",
+                    "org_country": "United States",
+                    "org_name": "Baptist MD Anderson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Atlanta",
+                    "org_country": "United States",
+                    "org_name": "Piedmont Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "San Antonio",
+                    "org_country": "United States",
+                    "org_name": "University of Texas Health Science Center at San Antonio",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MI",
+                    "org_city": "Saginaw",
+                    "org_country": "United States",
+                    "org_name": "Covenant Medical Center Harrison",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "HI",
+                    "org_city": "Honolulu",
+                    "org_country": "United States",
+                    "org_name": "Queen's Medical Center",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2017-00476"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This phase II trial studies how well neratinib, capecitabine, and trastuzumab emtansine work in treating patients with human epidermal growth factor receptor 2 (HER2)-positive breast cancer that has spread to the brain. Neratinib may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth. Drugs used in chemotherapy, such as capecitabine, work in different ways to stop the growth of tumor cells, either by killing the cells, by stopping them from dividing, or by stopping them from spreading. Trastuzumab emtansine (T-DM1) is a monoclonal antibody, called trastuzumab, linked to a chemotherapy drug called DM1. Trastuzumab attaches to HER2 positive cancer cells in a targeted way and delivers DM1 to kill them. Giving neratinib, capecitabine, and trastuzumab emtansine together may be an effective treatment for breast cancer.",
+            "nct_id": "NCT01494662",
+            "brief_title": "Neratinib, Capecitabine, and Trastuzumab Emtansine in Treating Patients with HER2-Positive Breast Cancer That Has Spread to the Brain",
+            "sites": [
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Dana-Farber Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Beth Israel Deaconess Medical Center",
+                    "recruitment_status": "COMPLETED"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Brigham and Women's Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MD",
+                    "org_city": "Baltimore",
+                    "org_country": "United States",
+                    "org_name": "Johns Hopkins University / Sidney Kimmel Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "Baylor College of Medicine / Dan L Duncan Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Francisco",
+                    "org_country": "United States",
+                    "org_name": "UCSF Medical Center-Mount Zion",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NC",
+                    "org_city": "Durham",
+                    "org_country": "United States",
+                    "org_name": "Duke University Medical Center",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Pittsburgh",
+                    "org_country": "United States",
+                    "org_name": "University of Pittsburgh Cancer Institute (UPCI)",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "M D Anderson Cancer Center",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "MN",
+                    "org_city": "Rochester",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Rochester",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Brigham and Women's Faulkner Hospital",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "MI",
+                    "org_city": "Ann Arbor",
+                    "org_country": "United States",
+                    "org_name": "University of Michigan Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NC",
+                    "org_city": "Chapel Hill",
+                    "org_country": "United States",
+                    "org_name": "UNC Lineberger Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "DC",
+                    "org_city": "Washington",
+                    "org_country": "United States",
+                    "org_name": "MedStar Georgetown University Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Massachusetts General Hospital Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Harrisburg",
+                    "org_country": "United States",
+                    "org_name": "UPMC Pinnacle Cancer Center / Community Osteopathic Campus",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Pittsburgh",
+                    "org_country": "United States",
+                    "org_name": "UPMC-Magee Womens Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Mechanicsburg",
+                    "org_country": "United States",
+                    "org_name": "UPMC Pinnacle West Shore",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2012-00255"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This is an open-label, FIH study designed to evaluate the safety, tolerability, PK, pharmacodynamics, and preliminary antineoplastic activity of RLY-4008, a potent and highly selective fibroblast growth factor receptor 2 (FGFR2) inhibitor administered orally patients with unresectable or metastatic ICC and other unresectable or metastatic solid tumors. This study consists of 2 parts, a dose escalation (Part 1) and a dose expansion (Part 2).",
+            "nct_id": "NCT04526106",
+            "brief_title": "First-in-Human Study of Highly Selective FGFR2 Inhibitor, RLY-4008, in Patients With ICC and Other Advanced Solid Tumors",
+            "sites": [
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "M D Anderson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "OH",
+                    "org_city": "Cleveland",
+                    "org_country": "United States",
+                    "org_name": "Case Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "New York",
+                    "org_country": "United States",
+                    "org_name": "Memorial Sloan Kettering Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MN",
+                    "org_city": "Rochester",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Rochester",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "AZ",
+                    "org_city": "Scottsdale",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Arizona",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Jacksonville",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Florida",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Los Angeles",
+                    "org_country": "United States",
+                    "org_name": "USC / Norris Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Newport Beach",
+                    "org_country": "United States",
+                    "org_name": "Hoag Memorial Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Los Angeles",
+                    "org_country": "United States",
+                    "org_name": "Los Angeles County-USC Medical Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MI",
+                    "org_city": "Ann Arbor",
+                    "org_country": "United States",
+                    "org_name": "University of Michigan Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Tampa",
+                    "org_country": "United States",
+                    "org_name": "Moffitt Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Massachusetts General Hospital Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Francisco",
+                    "org_country": "United States",
+                    "org_name": "UCSF Medical Center-Mount Zion",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2020-06870"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This is an open label, randomized, multicenter study evaluating the activity of lasofoxifene relative to fulvestrant for the treatment of pre- and postmenopausal women with locally advanced or metastatic ER+ / HER2- breast cancer with an acquired ESR1 mutation and who have disease progression on an aromatase inhibitor (AI) in combination with a cyclin dependent kinase (CDK) 4 / 6 inhibitor. The primary objective is to evaluate the progression free survival (PFS) of 5 mg lasofoxifene relative to fulvestrant for the treatment of pre- and postmenopausal women with locally advanced or metastatic estrogen receptor positive (ER+) / human epidermal growth factor 2 negative (HER2-) breast cancer with an estrogen receptor 1 (ESR1) mutation. The secondary objectives are to evaluate: 1. Clinical benefit rate (CBR) and Objective Response Rate (ORR) 2. Duration of response 3. Time to response 4. Overall Survival (OS) 5. Pharmacokinetics of lasofoxifene 6. Quality of life (QoL): Quality of Life (QoL): vaginal assessment scale (VAS) and vulvar assessment scale (VuAS) questionnaires 7. Safety of lasofoxifene 8. Response to various ESR1 mutation (Y537S, Y537C, D538G, E380Q, S463P, V534E, P535H, L536H, L536P, L536R, L536Q, or Y537N).",
+            "nct_id": "NCT03781063",
+            "brief_title": "Evaluation of Lasofoxifene Versus Fulvestrant in Advanced or Metastatic ER+ / HER2- Breast Cancer With an ESR1 Mutation",
+            "sites": [
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Duarte",
+                    "org_country": "United States",
+                    "org_name": "City of Hope Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "OH",
+                    "org_city": "Columbus",
+                    "org_country": "United States",
+                    "org_name": "Ohio State University Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "IL",
+                    "org_city": "Chicago",
+                    "org_country": "United States",
+                    "org_name": "University of Chicago Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MO",
+                    "org_city": "Saint Louis",
+                    "org_country": "United States",
+                    "org_name": "Siteman Cancer Center at Washington University",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Jacksonville",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Florida",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MN",
+                    "org_city": "Rochester",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Rochester",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "AZ",
+                    "org_city": "Scottsdale",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Arizona",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "IL",
+                    "org_city": "Chicago",
+                    "org_country": "United States",
+                    "org_name": "Northwestern University",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Pittsburgh",
+                    "org_country": "United States",
+                    "org_name": "University of Pittsburgh Cancer Institute (UPCI)",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Atlanta",
+                    "org_country": "United States",
+                    "org_name": "Emory University Hospital / Winship Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "Buffalo",
+                    "org_country": "United States",
+                    "org_name": "Roswell Park Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NC",
+                    "org_city": "Durham",
+                    "org_country": "United States",
+                    "org_name": "Duke University Medical Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Francisco",
+                    "org_country": "United States",
+                    "org_name": "UCSF Medical Center-Mount Zion",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2019-02318"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "The purpose of this study is to evaluate the tolerability and safety profile of ASP1948 when administered as a single agent and in combination with nivolumab or pembrolizumab in participants with locally advanced (unresectable) or metastatic solid tumors; characterize the pharmacokinetic profile of ASP1948 when administered as a single agent and in combination with nivolumab or pembrolizumab and determine the recommended Phase 2 dose (RP2D) of ASP1948 when administered as a single agent and in combination with nivolumab or pembrolizumab. This study will also evaluate the antitumor effect of ASP1948 when administered as a single agent and in combination with nivolumab or pembrolizumab.",
+            "nct_id": "NCT03565445",
+            "brief_title": "A Study of ASP1948, Targeting an Immune Modulatory Receptor as a Single Agent and in Combination With a PD-l Inhibitor (Nivolumab or Pembrolizumab) in Subjects With Advanced Solid Tumors",
+            "sites": [
+                {
+                    "org_state_or_province": "CT",
+                    "org_city": "New Haven",
+                    "org_country": "United States",
+                    "org_name": "Yale University",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MI",
+                    "org_city": "Ann Arbor",
+                    "org_country": "United States",
+                    "org_name": "University of Michigan Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "WA",
+                    "org_city": "Seattle",
+                    "org_country": "United States",
+                    "org_name": "Fred Hutch / University of Washington Cancer Consortium",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "SC",
+                    "org_city": "Charleston",
+                    "org_country": "United States",
+                    "org_name": "Medical University of South Carolina",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "OH",
+                    "org_city": "Columbus",
+                    "org_country": "United States",
+                    "org_name": "Ohio State University Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NH",
+                    "org_city": "Lebanon",
+                    "org_country": "United States",
+                    "org_name": "Dartmouth Hitchcock Medical Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Pittsburgh",
+                    "org_country": "United States",
+                    "org_name": "University of Pittsburgh Cancer Institute (UPCI)",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TN",
+                    "org_city": "Nashville",
+                    "org_country": "United States",
+                    "org_name": "Vanderbilt University / Ingram Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MO",
+                    "org_city": "Saint Louis",
+                    "org_country": "United States",
+                    "org_name": "Siteman Cancer Center at Washington University",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL_AND_INTERVENTION"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "New York",
+                    "org_country": "United States",
+                    "org_name": "Icahn School of Medicine at Mount Sinai",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "OR",
+                    "org_city": "Portland",
+                    "org_country": "United States",
+                    "org_name": "OHSU Knight Cancer Institute",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "OK",
+                    "org_city": "Oklahoma City",
+                    "org_country": "United States",
+                    "org_name": "University of Oklahoma Health Sciences Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "Bronx",
+                    "org_country": "United States",
+                    "org_name": "Montefiore Medical Center-Weiler Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "IL",
+                    "org_city": "Chicago",
+                    "org_country": "United States",
+                    "org_name": "University of Chicago Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "UT",
+                    "org_city": "Salt Lake City",
+                    "org_country": "United States",
+                    "org_name": "Huntsman Cancer Institute / University of Utah",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2018-02515"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This is a Phase 1 / 1b open-label, dose escalation and dose expansion study of CPI-006, a humanized monoclonal antibody (mAb) targeting the CD73 cell-surface ectonucleotidase in adult subjects with select advanced cancers. CPI-006 will be evaluated as a single agent, in combination with ciforadenant (an oral adenosine 2A receptor antagonist), in combination with pembrolizumab (an anti-PD1 antibody), and in combination with ciforadenant and pembrolizumab.",
+            "nct_id": "NCT03454451",
+            "brief_title": "CPI-006 Alone and in Combination With Ciforadenant and With Pembrolizumab for Patients With Advanced Cancers",
+            "sites": [
+                {
+                    "org_state_or_province": "IL",
+                    "org_city": "Chicago",
+                    "org_country": "United States",
+                    "org_name": "University of Chicago Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "New York",
+                    "org_country": "United States",
+                    "org_name": "Icahn School of Medicine at Mount Sinai",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Duarte",
+                    "org_country": "United States",
+                    "org_name": "City of Hope Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MD",
+                    "org_city": "Baltimore",
+                    "org_country": "United States",
+                    "org_name": "Johns Hopkins University / Sidney Kimmel Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "Buffalo",
+                    "org_country": "United States",
+                    "org_name": "Roswell Park Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Dana-Farber Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Brigham and Women's Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "OK",
+                    "org_city": "Oklahoma City",
+                    "org_country": "United States",
+                    "org_name": "University of Oklahoma Health Sciences Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Miami",
+                    "org_country": "United States",
+                    "org_name": "University of Miami Miller School of Medicine-Sylvester Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "IL",
+                    "org_city": "Chicago",
+                    "org_country": "United States",
+                    "org_name": "Northwestern University",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Pittsburgh",
+                    "org_country": "United States",
+                    "org_name": "University of Pittsburgh Cancer Institute (UPCI)",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CT",
+                    "org_city": "New Haven",
+                    "org_country": "United States",
+                    "org_name": "Yale University",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Francisco",
+                    "org_country": "United States",
+                    "org_name": "UCSF Medical Center-Mount Zion",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2018-02296"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This phase II trial studies how well tamoxifen citrate, anastrozole, or fulvestrant work in treating patients with stage I-III invasive lobular breast cancer. Tamoxifen citrate and anastrozole may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth. Drugs used in chemotherapy, such as fulvestrant, work in different ways to stop the growth of tumor cells, either by killing the cells, by stopping them from dividing, or by stopping them from spreading. It is not yet known whether giving tamoxifen citrate, anastrozole, or fulvestrant will work better in treating patients with invasive lobular breast cancer.",
+            "nct_id": "NCT02206984",
+            "brief_title": "Tamoxifen Citrate, Anastrozole, or Fulvestrant in Treating Patients with Stage I-III Invasive Lobular Breast Cancer",
+            "sites": [
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Pittsburgh",
+                    "org_country": "United States",
+                    "org_name": "University of Pittsburgh Cancer Institute (UPCI)",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NC",
+                    "org_city": "Chapel Hill",
+                    "org_country": "United States",
+                    "org_name": "UNC Lineberger Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MN",
+                    "org_city": "Rochester",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Rochester",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "IN",
+                    "org_city": "Indianapolis",
+                    "org_country": "United States",
+                    "org_name": "Indiana University / Melvin and Bren Simon Cancer Center",
+                    "recruitment_status": "WITHDRAWN"
+                },
+                {
+                    "org_state_or_province": "WA",
+                    "org_city": "Seattle",
+                    "org_country": "United States",
+                    "org_name": "Fred Hutch / University of Washington Cancer Consortium",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "Bronx",
+                    "org_country": "United States",
+                    "org_name": "Montefiore Medical Center - Moses Campus",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Francisco",
+                    "org_country": "United States",
+                    "org_name": "UCSF Medical Center-Mount Zion",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "AL",
+                    "org_city": "Birmingham",
+                    "org_country": "United States",
+                    "org_name": "University of Alabama at Birmingham Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "M D Anderson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "IL",
+                    "org_city": "Chicago",
+                    "org_country": "United States",
+                    "org_name": "University of Chicago Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "Baylor College of Medicine / Dan L Duncan Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "DC",
+                    "org_city": "Washington",
+                    "org_country": "United States",
+                    "org_name": "MedStar Georgetown University Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "DC",
+                    "org_city": "Washington",
+                    "org_country": "United States",
+                    "org_name": "MedStar Washington Hospital Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Philadelphia",
+                    "org_country": "United States",
+                    "org_name": "University of Pennsylvania / Abramson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2018-00191"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This clinical trial is a Phase 1 / 2, open-label, sequential-group, dose-escalation and cohort expansion study to determine the safety and preliminary anti-tumor activity of FLX475 as monotherapy and in combination with pembrolizumab. The study will be conducted in 2 parts, a dose-escalation phase (Part 1) and a cohort expansion phase (Part 2). In Part 1 of the study, subjects will be enrolled in sequential cohorts treated with successively higher doses of FLX475 as monotherapy or in combination with pembrolizumab. In Part 2 of the study, subjects will be initially enrolled in Stage 1 of parallel expansion cohorts of FLX475 as monotherapy or in combination with pembrolizumab.",
+            "nct_id": "NCT03674567",
+            "brief_title": "Dose Escalation and Expansion Study of FLX475 Monotherapy and in Combination With Pembrolizumab",
+            "sites": [
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Atlanta",
+                    "org_country": "United States",
+                    "org_name": "Emory University Hospital / Winship Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "M D Anderson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "IL",
+                    "org_city": "Chicago",
+                    "org_country": "United States",
+                    "org_name": "University of Chicago Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MD",
+                    "org_city": "Baltimore",
+                    "org_country": "United States",
+                    "org_name": "Johns Hopkins University / Sidney Kimmel Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Dana-Farber Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Brigham and Women's Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "New York",
+                    "org_country": "United States",
+                    "org_name": "NYP / Columbia University Medical Center / Herbert Irving Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Tampa",
+                    "org_country": "United States",
+                    "org_name": "Moffitt Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MI",
+                    "org_city": "Ann Arbor",
+                    "org_country": "United States",
+                    "org_name": "University of Michigan Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "DC",
+                    "org_city": "Washington",
+                    "org_country": "United States",
+                    "org_name": "MedStar Georgetown University Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CT",
+                    "org_city": "New Haven",
+                    "org_country": "United States",
+                    "org_name": "Yale University",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "WA",
+                    "org_city": "Seattle",
+                    "org_country": "United States",
+                    "org_name": "Fred Hutch / University of Washington Cancer Consortium",
+                    "recruitment_status": "IN_REVIEW"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Los Angeles",
+                    "org_country": "United States",
+                    "org_name": "UCLA / Jonsson Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2019-00102"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This is a Phase 1, multiple dose, ascending dose escalation study to define a MTD / RD and regimen of XmAb20717, to describe safety and tolerability, to assess PK and immunogenicity, and to preliminarily assess anti-tumor activity of XmAb20717 in subjects with selected advanced solid tumors.",
+            "nct_id": "NCT03517488",
+            "brief_title": "A Study of XmAb®20717 in Subjects With Selected Advanced Solid Tumors",
+            "sites": [
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Atlanta",
+                    "org_country": "United States",
+                    "org_name": "Emory University Hospital / Winship Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "M D Anderson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "IL",
+                    "org_city": "Chicago",
+                    "org_country": "United States",
+                    "org_name": "University of Chicago Comprehensive Cancer Center",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "MI",
+                    "org_city": "Detroit",
+                    "org_country": "United States",
+                    "org_name": "Wayne State University / Karmanos Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "New York",
+                    "org_country": "United States",
+                    "org_name": "NYP / Columbia University Medical Center / Herbert Irving Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Philadelphia",
+                    "org_country": "United States",
+                    "org_name": "University of Pennsylvania / Abramson Cancer Center",
+                    "recruitment_status": "ADMINISTRATIVELY_COMPLETE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Diego",
+                    "org_country": "United States",
+                    "org_name": "University of California San Diego",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "VA",
+                    "org_city": "Charlottesville",
+                    "org_country": "United States",
+                    "org_name": "University of Virginia Cancer Center",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "KS",
+                    "org_city": "Westwood",
+                    "org_country": "United States",
+                    "org_name": "University of Kansas Hospital-Westwood Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "KS",
+                    "org_city": "Fairway",
+                    "org_country": "United States",
+                    "org_name": "University of Kansas Clinical Research Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "WA",
+                    "org_city": "Seattle",
+                    "org_country": "United States",
+                    "org_name": "Fred Hutch / University of Washington Cancer Consortium",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "New York",
+                    "org_country": "United States",
+                    "org_name": "Laura and Isaac Perlmutter Cancer Center at NYU Langone",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "UT",
+                    "org_city": "Salt Lake City",
+                    "org_country": "United States",
+                    "org_name": "Huntsman Cancer Institute / University of Utah",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Pittsburgh",
+                    "org_country": "United States",
+                    "org_name": "University of Pittsburgh Cancer Institute (UPCI)",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Francisco",
+                    "org_country": "United States",
+                    "org_name": "UCSF Medical Center-Mount Zion",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Los Angeles",
+                    "org_country": "United States",
+                    "org_name": "UCLA / Jonsson Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2018-00935"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "The purpose of this study is to find out the possible anti-cancer effect of pelareorep in combination with chemotherapy [paclitaxel] and avelumab in treating a type of breast cancer called Hormone Receptor positive (HR+) / Human Epidermal Growth Factor Receptor 2 negative(HER2-) breast cancer, which is either locally advanced or has metastasized (cancer that has spread in your body). The study will investigate if pelareorep in combination with paclitaxel and avelumab is more effective than paclitaxel alone, or pelareorep and paclitaxel. The safety of the combination treatments will also be evaluated.",
+            "nct_id": "NCT04215146",
+            "brief_title": "A Study to Assess Overall Response Rate by Inducing an Inflammatory Phenotype in Metastatic BReast cAnCEr With the Oncolytic Reovirus PeLareorEp in CombinaTion With Anti-PD-L1 Avelumab and Paclitaxel - BRACELET-1 Study",
+            "sites": [
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Philadelphia",
+                    "org_country": "United States",
+                    "org_name": "Thomas Jefferson University Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NJ",
+                    "org_city": "New Brunswick",
+                    "org_country": "United States",
+                    "org_name": "Rutgers Cancer Institute of New Jersey",
+                    "recruitment_status": "TEMPORARILY_CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "IN",
+                    "org_city": "Indianapolis",
+                    "org_country": "United States",
+                    "org_name": "Indiana University / Melvin and Bren Simon Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Miami",
+                    "org_country": "United States",
+                    "org_name": "University of Miami Miller School of Medicine-Sylvester Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "OH",
+                    "org_city": "Columbus",
+                    "org_country": "United States",
+                    "org_name": "Ohio State University Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "OH",
+                    "org_city": "Cleveland",
+                    "org_country": "United States",
+                    "org_name": "Case Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Philadelphia",
+                    "org_country": "United States",
+                    "org_name": "Fox Chase Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "VA",
+                    "org_city": "Richmond",
+                    "org_country": "United States",
+                    "org_name": "Virginia Commonwealth University / Massey Cancer Center",
+                    "recruitment_status": "TEMPORARILY_CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "New York",
+                    "org_country": "United States",
+                    "org_name": "Icahn School of Medicine at Mount Sinai",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MO",
+                    "org_city": "Saint Louis",
+                    "org_country": "United States",
+                    "org_name": "Siteman Cancer Center at Washington University",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "Buffalo",
+                    "org_country": "United States",
+                    "org_name": "Roswell Park Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "Bronx",
+                    "org_country": "United States",
+                    "org_name": "Montefiore Medical Center-Weiler Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Philadelphia",
+                    "org_country": "United States",
+                    "org_name": "University of Pennsylvania / Abramson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2020-03947"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This phase Ib trial studies the best dose of berzosertib when given together with the usual treatment (radiation therapy) in treating patients with triple negative or estrogen receptor and / or progesterone receptor positive, HER-2 negative breast cancer. Berzosertib may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth. Radiation therapy uses high energy rays to kill tumor cells and shrink tumors. Giving M6620 and radiation therapy may kill tumor cells more effectively than radiation alone or shrink or stabilize breast cancer for longer than radiation therapy alone.",
+            "nct_id": "NCT04052555",
+            "brief_title": "Testing the Addition of an Anti-cancer Drug, Berzosertib, to the Usual Treatment (Radiation Therapy) for Chemotherapy-Resistant Triple-Negative and Estrogen and / or Progesterone Receptor Positive, HER2 Negative Breast Cancer",
+            "sites": [
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Jacksonville",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Florida",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "UT",
+                    "org_city": "Farmington",
+                    "org_country": "United States",
+                    "org_name": "Farmington Health Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Pittsburgh",
+                    "org_country": "United States",
+                    "org_name": "University of Pittsburgh Cancer Institute (UPCI)",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "UT",
+                    "org_city": "Salt Lake City",
+                    "org_country": "United States",
+                    "org_name": "University of Utah Sugarhouse Health Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "UT",
+                    "org_city": "Salt Lake City",
+                    "org_country": "United States",
+                    "org_name": "Huntsman Cancer Institute / University of Utah",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "AZ",
+                    "org_city": "Scottsdale",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Arizona",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Galveston",
+                    "org_country": "United States",
+                    "org_name": "University of Texas Medical Branch",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Sacramento",
+                    "org_country": "United States",
+                    "org_name": "University of California Davis Comprehensive Cancer Center",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "NJ",
+                    "org_city": "New Brunswick",
+                    "org_country": "United States",
+                    "org_name": "Rutgers Cancer Institute of New Jersey",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MN",
+                    "org_city": "Rochester",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Rochester",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "OH",
+                    "org_city": "Columbus",
+                    "org_country": "United States",
+                    "org_name": "Ohio State University Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "AZ",
+                    "org_city": "Phoenix",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic Hospital in Arizona",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2019-05187"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This is a Phase 1, multiple dose, ascending-dose escalation study and expansion study designed to define a maximum tolerated dose and / or recommended dose of XmAb22841 monotherapy and in combination with pembrolizumab; to assess safety, tolerability, pharmacokinetics, immunogenicity, and anti-tumor activity of XmAb22841 monotherapy and in combination with pembrolizumab in subjects with select advanced solid tumors.",
+            "nct_id": "NCT03849469",
+            "brief_title": "A Study of XmAb®22841 Monotherapy & in Combination w / Pembrolizumab in Subjects w / Selected Advanced Solid Tumors",
+            "sites": [
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Atlanta",
+                    "org_country": "United States",
+                    "org_name": "Emory University Hospital / Winship Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "M D Anderson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MI",
+                    "org_city": "Detroit",
+                    "org_country": "United States",
+                    "org_name": "Wayne State University / Karmanos Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "New York",
+                    "org_country": "United States",
+                    "org_name": "NYP / Columbia University Medical Center / Herbert Irving Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "UT",
+                    "org_city": "Salt Lake City",
+                    "org_country": "United States",
+                    "org_name": "Huntsman Cancer Institute / University of Utah",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MO",
+                    "org_city": "Saint Louis",
+                    "org_country": "United States",
+                    "org_name": "Siteman Cancer Center at Washington University",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL_AND_INTERVENTION"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Philadelphia",
+                    "org_country": "United States",
+                    "org_name": "University of Pennsylvania / Abramson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Dana-Farber Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Brigham and Women's Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Pittsburgh",
+                    "org_country": "United States",
+                    "org_name": "University of Pittsburgh Cancer Institute (UPCI)",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Diego",
+                    "org_country": "United States",
+                    "org_name": "University of California San Diego",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Los Angeles",
+                    "org_country": "United States",
+                    "org_name": "UCLA / Jonsson Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2019-02498"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This phase II trial studies how well stereotactic body radiotherapy (SBRT) works in treating patients with triple negative breast cancer that has spread to limited number of other places in the body (oligometastatic) or non-small cell lung cancer that has spread to other places in the body (metastatic). Stereotactic body radiation therapy uses special equipment to position a patient and deliver radiation to tumors with high precision. This method can kill tumor cells with fewer doses over a shorter period and cause less damage to normal tissue.",
+            "nct_id": "NCT03808337",
+            "brief_title": "Stereotactic Body Radiotherapy in Treating Patients with Oligometastatic Breast Cancer or Metastatic Non-small Cell Lung Cancer",
+            "sites": [
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "New York",
+                    "org_country": "United States",
+                    "org_name": "NYP / Weill Cornell Medical Center",
+                    "recruitment_status": "IN_REVIEW"
+                },
+                {
+                    "org_state_or_province": "CT",
+                    "org_city": "Hartford",
+                    "org_country": "United States",
+                    "org_name": "Hartford Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CT",
+                    "org_city": "Norwalk",
+                    "org_country": "United States",
+                    "org_name": "Norwalk Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Allentown",
+                    "org_country": "United States",
+                    "org_name": "Lehigh Valley Hospital-Cedar Crest",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Miami",
+                    "org_country": "United States",
+                    "org_name": "Miami Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "West Harrison",
+                    "org_country": "United States",
+                    "org_name": "Memorial Sloan Kettering Westchester",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "Uniondale",
+                    "org_country": "United States",
+                    "org_name": "Memorial Sloan Kettering Nassau",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NJ",
+                    "org_city": "Middletown",
+                    "org_country": "United States",
+                    "org_name": "Memorial Sloan Kettering Monmouth",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "Commack",
+                    "org_country": "United States",
+                    "org_name": "Memorial Sloan Kettering Commack",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NJ",
+                    "org_city": "Montvale",
+                    "org_country": "United States",
+                    "org_name": "Memorial Sloan Kettering Bergen",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NJ",
+                    "org_city": "Basking Ridge",
+                    "org_country": "United States",
+                    "org_name": "Memorial Sloan Kettering Basking Ridge",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "New York",
+                    "org_country": "United States",
+                    "org_name": "Memorial Sloan Kettering Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2019-00436"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This is a Phase 1, multiple dose, ascending dose escalation study to define a MTD / RD and regimen of XmAb23104, to describe safety and tolerability, to assess PK and immunogenicity, and to preliminarily assess anti-tumor activity of XmAb23104 monotherapy and combination therapy with ipilimumab in subjects with selected advanced solid tumors.",
+            "nct_id": "NCT03752398",
+            "brief_title": "A Study of XmAb®23104 in Subjects With Selected Advanced Solid Tumors (DUET-3)",
+            "sites": [
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Atlanta",
+                    "org_country": "United States",
+                    "org_name": "Emory University Hospital / Winship Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "WA",
+                    "org_city": "Seattle",
+                    "org_country": "United States",
+                    "org_name": "Fred Hutch / University of Washington Cancer Consortium",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "M D Anderson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Philadelphia",
+                    "org_country": "United States",
+                    "org_name": "University of Pennsylvania / Abramson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "VA",
+                    "org_city": "Charlottesville",
+                    "org_country": "United States",
+                    "org_name": "University of Virginia Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "New York",
+                    "org_country": "United States",
+                    "org_name": "NYP / Columbia University Medical Center / Herbert Irving Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MO",
+                    "org_city": "Saint Louis",
+                    "org_country": "United States",
+                    "org_name": "Siteman Cancer Center at Washington University",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "UT",
+                    "org_city": "Salt Lake City",
+                    "org_country": "United States",
+                    "org_name": "Huntsman Cancer Institute / University of Utah",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NC",
+                    "org_city": "Durham",
+                    "org_country": "United States",
+                    "org_name": "Duke University Medical Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Pittsburgh",
+                    "org_country": "United States",
+                    "org_name": "University of Pittsburgh Cancer Institute (UPCI)",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Diego",
+                    "org_country": "United States",
+                    "org_name": "University of California San Diego",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CO",
+                    "org_city": "Aurora",
+                    "org_country": "United States",
+                    "org_name": "University of Colorado Hospital",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2019-00828"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This phase II trial studies how well radiation therapy given with standard care palbociclib and hormone therapy work in treating patients with breast cancer that has spread from one part of the body to the bone (bone metastasis). Radiation therapy uses high energy x-rays to kill tumor cells and shrink tumors. Palbociclib may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth. Estrogen can cause the growth of breast cancer cells. Letrozole, anastrozole, and exemestane lowers the amount of estrogen made by the body. This may help stop the growth of tumor cells that need estrogen to grow. Fulvestrant and tamoxifen blocks the use of estrogen by the tumor cells. Giving radiation therapy, palbociclib, and hormone therapy may work better in treating breast cancer patients with bone metastasis.",
+            "nct_id": "NCT03691493",
+            "brief_title": "Radiation Therapy, Palbociclib, and Hormone Therapy in Treating Breast Cancer Patients with Bone Metastasis",
+            "sites": [
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Atlanta",
+                    "org_country": "United States",
+                    "org_name": "Emory University Hospital / Winship Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Atlanta",
+                    "org_country": "United States",
+                    "org_name": "Emory University Hospital Midtown",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Atlanta",
+                    "org_country": "United States",
+                    "org_name": "Emory Saint Joseph's Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Atlanta",
+                    "org_country": "United States",
+                    "org_name": "Grady Health System",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "ME",
+                    "org_city": "Portland",
+                    "org_country": "United States",
+                    "org_name": "Maine Medical Center-Bramhall Campus",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Savannah",
+                    "org_country": "United States",
+                    "org_name": "Lewis Cancer and Research Pavilion at Saint Joseph's / Candler",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Macon",
+                    "org_country": "United States",
+                    "org_name": "Central Georgia Cancer Care PC",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Columbus",
+                    "org_country": "United States",
+                    "org_name": "John B Amos Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Atlanta",
+                    "org_country": "United States",
+                    "org_name": "Piedmont Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Atlanta",
+                    "org_country": "United States",
+                    "org_name": "Northside Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Augusta",
+                    "org_country": "United States",
+                    "org_name": "Augusta University Medical Center",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2018-02000"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This phase II trial studies how well nab-paclitaxel, durvalumab, and tremelimumab with or without personalized synthetic long peptide vaccine (neoantigen vaccine) works in treating patients with triple negative breast cancer that has spread to other places in the body (metastatic). Drugs used in chemotherapy, such as nab-paclitaxel, work in different ways to stop the growth of tumor cells, either by killing the cells, by stopping them from dividing, or by stopping them from spreading. Immunotherapy with monoclonal antibodies, such as durvalumab and tremelimumab, may induce changes in body’s immune system and may interfere with the ability of tumor cells to grow and spread. Vaccines made from peptides may help the body build an effective immune response to kill tumor cells. It is not yet known whether giving nab-paclitaxel, durvalumab, and tremelimumab with or without neoantigen vaccine will work better in treating patients with triple negative breast cancer.",
+            "nct_id": "NCT03606967",
+            "brief_title": "Testing the Addition of an Individualized Vaccine to Nab-Paclitaxel, Durvalumab and Tremelimumab and Chemotherapy in Patients with Metastatic Triple Negative Breast Cancer",
+            "sites": [
+                {
+                    "org_state_or_province": "CT",
+                    "org_city": "New Haven",
+                    "org_country": "United States",
+                    "org_name": "Yale University",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MO",
+                    "org_city": "Saint Louis",
+                    "org_country": "United States",
+                    "org_name": "Siteman Cancer Center-South County",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CO",
+                    "org_city": "Aurora",
+                    "org_country": "United States",
+                    "org_name": "University of Colorado Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MO",
+                    "org_city": "Saint Peters",
+                    "org_country": "United States",
+                    "org_name": "Siteman Cancer Center at Saint Peters Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MO",
+                    "org_city": "Creve Coeur",
+                    "org_country": "United States",
+                    "org_name": "Siteman Cancer Center at West County Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MO",
+                    "org_city": "Saint Louis",
+                    "org_country": "United States",
+                    "org_name": "Siteman Cancer Center at Christian Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NH",
+                    "org_city": "Lebanon",
+                    "org_country": "United States",
+                    "org_name": "Dartmouth Hitchcock Medical Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Sacramento",
+                    "org_country": "United States",
+                    "org_name": "University of California Davis Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "OK",
+                    "org_city": "Oklahoma City",
+                    "org_country": "United States",
+                    "org_name": "University of Oklahoma Health Sciences Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Orange",
+                    "org_country": "United States",
+                    "org_name": "UC Irvine Health / Chao Family Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MO",
+                    "org_city": "Saint Louis",
+                    "org_country": "United States",
+                    "org_name": "Washington University School of Medicine",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2018-01581"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This phase II trial studies how well tucatinib, trastuzumab, and capecitabine work in treating patients with HER2 positive breast cancer that has spread to the leptomeninges (leptomeningeal metastases). Tucatinib may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth. Trastuzumab is a form of “targeted therapy” because it works by attaching itself to specific molecules (receptors) on the surface of cancer cells, known as HER2 receptors. When trastuzumab attaches to HER2 receptors, the signals that tell the cells to grow are blocked and the cancer cell may be marked for destruction by the body’s immune system. Drugs used in chemotherapy, such as capecitabine, work in different ways to stop the growth of tumor cells, either by killing the cells, by stopping them from dividing, or by stopping them from spreading. Giving tucatinib, trastuzumab, and capecitabine may help to control leptomeningeal disease and improve survival in patients with breast cancer.",
+            "nct_id": "NCT03501979",
+            "brief_title": "Tucatinib, Trastuzumab, and Capecitabine in Treating Patients with HER2 Positive Breast Cancer with Leptomeningeal Metastases",
+            "sites": [
+                {
+                    "org_state_or_province": "AL",
+                    "org_city": "Birmingham",
+                    "org_country": "United States",
+                    "org_name": "University of Alabama at Birmingham Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "M D Anderson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Francisco",
+                    "org_country": "United States",
+                    "org_name": "UCSF Medical Center-Mission Bay",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Francisco",
+                    "org_country": "United States",
+                    "org_name": "University of California San Francisco",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "WA",
+                    "org_city": "Seattle",
+                    "org_country": "United States",
+                    "org_name": "University of Washington Medical Center - Montlake",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "WA",
+                    "org_city": "Seattle",
+                    "org_country": "United States",
+                    "org_name": "Seattle Cancer Care Alliance",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "DC",
+                    "org_city": "Washington",
+                    "org_country": "United States",
+                    "org_name": "MedStar Georgetown University Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "IN",
+                    "org_city": "Indianapolis",
+                    "org_country": "United States",
+                    "org_name": "Indiana University / Melvin and Bren Simon Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "IL",
+                    "org_city": "Chicago",
+                    "org_country": "United States",
+                    "org_name": "University of Chicago Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MI",
+                    "org_city": "Ann Arbor",
+                    "org_country": "United States",
+                    "org_name": "University of Michigan Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Dana-Farber Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2019-05084"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This randomized phase II trial studies how well multi-epitope folate receptor alpha peptide vaccine, sargramostim (GM-CSF), and cyclophosphamide work to prevent the recurrence of stage 1-3 triple negative breast cancer. Vaccines made from a person's white blood cells mixed with tumor proteins may help the body build an effective immune response to kill tumor cells. Drugs used in chemotherapy, such as cyclophosphamide, work in different ways to stop the growth of tumor cells, either by killing the cells, by stopping them from dividing, or by stopping them from spreading. Giving multi-epitope folate receptor alpha peptide vaccine, sargramostim (GM-CSF), and cyclophosphamide may work well together to prevent cancer recurrence after surgery and other standard treatments for triple negative breast cancer.",
+            "nct_id": "NCT03012100",
+            "brief_title": "Multi-epitope Folate Receptor Alpha Peptide Vaccine, GM-CSF, and Cyclophosphamide in Treating Patients with Triple Negative Breast Cancer",
+            "sites": [
+                {
+                    "org_state_or_province": "IL",
+                    "org_city": "Urbana",
+                    "org_country": "United States",
+                    "org_name": "Carle Cancer Center NCI Community Oncology Research Program",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "WI",
+                    "org_city": "Marshfield",
+                    "org_country": "United States",
+                    "org_name": "Marshfield Medical Center-Marshfield",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "DC",
+                    "org_city": "Washington",
+                    "org_country": "United States",
+                    "org_name": "MedStar Georgetown University Hospital",
+                    "recruitment_status": "WITHDRAWN"
+                },
+                {
+                    "org_state_or_province": "IL",
+                    "org_city": "Chicago",
+                    "org_country": "United States",
+                    "org_name": "University of Chicago Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Miami",
+                    "org_country": "United States",
+                    "org_name": "University of Miami Miller School of Medicine-Sylvester Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "LA",
+                    "org_city": "New Orleans",
+                    "org_country": "United States",
+                    "org_name": "Ochsner Medical Center Jefferson",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "VA",
+                    "org_city": "Falls Church",
+                    "org_country": "United States",
+                    "org_name": "Inova Fairfax Hospital",
+                    "recruitment_status": "COMPLETED"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Massachusetts General Hospital Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Dana-Farber Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Duarte",
+                    "org_country": "United States",
+                    "org_name": "City of Hope Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MN",
+                    "org_city": "Rochester",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Rochester",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Jacksonville",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Florida",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "AZ",
+                    "org_city": "Scottsdale",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Arizona",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2016-01878"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This phase II trial studies cediranib maleate in combination with olaparib in treating patients with solid tumors that have spread to other parts of the body (advanced / metastatic) or cannot be removed by surgery (unresectable), including breast cancer, non-small cell lung cancer, small cell lung cancer, and pancreatic cancer. Cediranib maleate and olaparib may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth. Cediranib maleate may also block the flow of oxygen to the tumor, and may help make the tumor more sensitive to olaparib.",
+            "nct_id": "NCT02498613",
+            "brief_title": "A Phase 2 Study of Cediranib in Combination with Olaparib in Advanced Solid Tumors",
+            "sites": [
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Diego",
+                    "org_country": "United States",
+                    "org_name": "University of California San Diego",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CT",
+                    "org_city": "New Haven",
+                    "org_country": "United States",
+                    "org_name": "Smilow Cancer Center / Yale-New Haven Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Tampa",
+                    "org_country": "United States",
+                    "org_name": "Moffitt Cancer Center-International Plaza",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "British Columbia",
+                    "org_city": "Vancouver",
+                    "org_country": "Canada",
+                    "org_name": "BCCA-Vancouver Cancer Centre",
+                    "recruitment_status": "TEMPORARILY_CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "La Jolla",
+                    "org_country": "United States",
+                    "org_name": "UC San Diego Moores Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MI",
+                    "org_city": "Farmington Hills",
+                    "org_country": "United States",
+                    "org_name": "Weisberg Cancer Treatment Center",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "CT",
+                    "org_city": "New Haven",
+                    "org_country": "United States",
+                    "org_name": "Yale University",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "VA",
+                    "org_city": "Richmond",
+                    "org_country": "United States",
+                    "org_name": "Virginia Commonwealth University / Massey Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Sacramento",
+                    "org_country": "United States",
+                    "org_name": "University of California Davis Comprehensive Cancer Center",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Dana-Farber Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MI",
+                    "org_city": "Detroit",
+                    "org_country": "United States",
+                    "org_name": "Wayne State University / Karmanos Cancer Institute",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Tampa",
+                    "org_country": "United States",
+                    "org_name": "Moffitt Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "M D Anderson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Francisco",
+                    "org_country": "United States",
+                    "org_name": "UCSF Medical Center-Mount Zion",
+                    "recruitment_status": "TEMPORARILY_CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "TN",
+                    "org_city": "Nashville",
+                    "org_country": "United States",
+                    "org_name": "Vanderbilt University / Ingram Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "Ontario",
+                    "org_city": "Toronto",
+                    "org_country": "Canada",
+                    "org_name": "University Health Network-Princess Margaret Hospital",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2015-01097"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This phase IV trial studies the side effects of intraoperative radiation therapy and how well it works in treating patients with breast cancer undergoing breast-conserving surgery. Delivering radiation one time to the area where the tumor was removed while the patient is still in the operating room may kill any residual tumor cells and may be as effective as standard radiation therapy in patients with early stage breast cancer.",
+            "nct_id": "NCT01570998",
+            "brief_title": "Intraoperative Radiation Therapy in Treating Patients with Breast Cancer Undergoing Breast-Conserving Surgery",
+            "sites": [
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Francisco",
+                    "org_country": "United States",
+                    "org_name": "UCSF Medical Center-Mount Zion",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Los Angeles",
+                    "org_country": "United States",
+                    "org_name": "California Hospital Medical Center",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "IL",
+                    "org_city": "Maywood",
+                    "org_country": "United States",
+                    "org_name": "Loyola University Medical Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "New York",
+                    "org_country": "United States",
+                    "org_name": "NYP / Columbia University Medical Center / Herbert Irving Comprehensive Cancer Center",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "Ithaca",
+                    "org_country": "United States",
+                    "org_name": "Cornell University",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Walnut Creek",
+                    "org_country": "United States",
+                    "org_name": "John Muir Medical Center-Walnut Creek",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "DC",
+                    "org_city": "Washington",
+                    "org_country": "United States",
+                    "org_name": "MedStar Georgetown University Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "DC",
+                    "org_city": "Washington",
+                    "org_country": "United States",
+                    "org_name": "MedStar Washington Hospital Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "IL",
+                    "org_city": "Chicago",
+                    "org_country": "United States",
+                    "org_name": "Northwestern University",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "Poughkeepsie",
+                    "org_country": "United States",
+                    "org_name": "Vassar Brothers Medical Center",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Easton",
+                    "org_country": "United States",
+                    "org_name": "Saint Luke's Hospital-Anderson Campus",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "VA",
+                    "org_city": "Newport News",
+                    "org_country": "United States",
+                    "org_name": "Sentara Port Warwick",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "Dobbs Ferry",
+                    "org_country": "United States",
+                    "org_name": "Community Hospital at Dobbs Ferry",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MD",
+                    "org_city": "Baltimore",
+                    "org_country": "United States",
+                    "org_name": "Mercy Medical Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "IN",
+                    "org_city": "Indianapolis",
+                    "org_country": "United States",
+                    "org_name": "Community Cancer Center South",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Burlington",
+                    "org_country": "United States",
+                    "org_name": "Lahey Hospital and Medical Center",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "WI",
+                    "org_city": "Green Bay",
+                    "org_country": "United States",
+                    "org_name": "Aurora BayCare Medical Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "WV",
+                    "org_city": "Morgantown",
+                    "org_country": "United States",
+                    "org_name": "West Virginia University Healthcare",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "CT",
+                    "org_city": "Greenwich",
+                    "org_country": "United States",
+                    "org_name": "Greenwich Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "VA",
+                    "org_city": "Falls Church",
+                    "org_country": "United States",
+                    "org_name": "Inova Fairfax Hospital",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Savannah",
+                    "org_country": "United States",
+                    "org_name": "Memorial Health University Medical Center",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "MI",
+                    "org_city": "Saint Joseph",
+                    "org_country": "United States",
+                    "org_name": "Marie Yeager Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Orange",
+                    "org_country": "United States",
+                    "org_name": "UC Irvine Health / Chao Family Comprehensive Cancer Center",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "OH",
+                    "org_city": "Cleveland",
+                    "org_country": "United States",
+                    "org_name": "Cleveland Clinic Foundation",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "San Francisco",
+                    "org_country": "United States",
+                    "org_name": "University of California San Francisco",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2017-00461"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This phase II trial investigates how well paclitaxel and pertuzumab with margetuximab or trastuzumab works in treating patients with HER2-positive stage II-III invasive breast cancer. Chemotherapy drugs, such as paclitaxel, work in different ways to stop the growth of tumor cells, either by killing the cells, by stopping them from dividing, or by stopping them from spreading. Pertuzumab is a monoclonal antibody that may interfere with the ability of tumor cells to grow and spread. Trastuzumab and margetuximab are both forms of targeted therapy because they attach themselves to specific molecules (receptors) on the surface of tumor cells, known as HER2 receptors. When trastuzumab and margetuximab attach to HER2 receptors, the signals that tell the cells to grow are blocked and the tumor cell may be marked for destruction by the body's immune system. This trial is being done to determine how well HER2-positive breast cancer responds to pre-operative treatment using one of two different combination of drugs as a treatment for this diagnosis.",
+            "nct_id": "NCT04425018",
+            "brief_title": "Paclitaxel and Pertuzumab with Margetuximab or Trastuzumab for the Treatment of HER2-Positive Stage II-III Invasive Breast Cancer, The MARGOT Trial",
+            "sites": [
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Dana-Farber Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Brigham and Women's Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "Baylor College of Medicine / Dan L Duncan Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "DC",
+                    "org_city": "Washington",
+                    "org_country": "United States",
+                    "org_name": "MedStar Georgetown University Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "DC",
+                    "org_city": "Washington",
+                    "org_country": "United States",
+                    "org_name": "MedStar Washington Hospital Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Pittsburgh",
+                    "org_country": "United States",
+                    "org_name": "University of Pittsburgh Cancer Institute (UPCI)",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "IL",
+                    "org_city": "Chicago",
+                    "org_country": "United States",
+                    "org_name": "University of Chicago Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Milford",
+                    "org_country": "United States",
+                    "org_name": "Dana-Farber / Brigham and Women's Cancer Center at Milford Regional",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "South Weymouth",
+                    "org_country": "United States",
+                    "org_name": "Dana-Farber / Brigham and Women's Cancer Center at South Shore",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "Bronx",
+                    "org_country": "United States",
+                    "org_name": "Montefiore Medical Center-Einstein Campus",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2020-06704"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "The purpose of this open-label, nonrandomized, Phase 2 study is to evaluate the efficacy and safety of TAS-120 and TAS-120 + fulvestrant in patients with locally advanced / metastatic breast cancer harboring FGFR gene amplifications.",
+            "nct_id": "NCT04024436",
+            "brief_title": "A Study of TAS-120 in Patients With Metastatic Breast Cancer",
+            "sites": [
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "M D Anderson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MN",
+                    "org_city": "Rochester",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Rochester",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Jacksonville",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Florida",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "AZ",
+                    "org_city": "Scottsdale",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Arizona",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Tampa",
+                    "org_country": "United States",
+                    "org_name": "Moffitt Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Dallas",
+                    "org_country": "United States",
+                    "org_name": "UT Southwestern / Simmons Cancer Center-Dallas",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Dana-Farber Cancer Institute",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Brigham and Women's Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Massachusetts General Hospital Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Beth Israel Deaconess Medical Center",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2019-07729"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "The purpose of the trial is to evaluate the safety of GEN1046 in patients with malignant solid tumors",
+            "nct_id": "NCT03917381",
+            "brief_title": "GEN1046 Safety Trial in Patients With Malignant Solid Tumors",
+            "sites": [
+                {
+                    "org_state_or_province": "OH",
+                    "org_city": "Cleveland",
+                    "org_country": "United States",
+                    "org_name": "Case Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CT",
+                    "org_city": "New Haven",
+                    "org_country": "United States",
+                    "org_name": "Yale University",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "OH",
+                    "org_city": "Columbus",
+                    "org_country": "United States",
+                    "org_name": "Ohio State University Comprehensive Cancer Center",
+                    "recruitment_status": "APPROVED"
+                },
+                {
+                    "org_state_or_province": "GA",
+                    "org_city": "Atlanta",
+                    "org_country": "United States",
+                    "org_name": "Emory University Hospital / Winship Cancer Institute",
+                    "recruitment_status": "APPROVED"
+                },
+                {
+                    "org_state_or_province": "NC",
+                    "org_city": "Chapel Hill",
+                    "org_country": "United States",
+                    "org_name": "UNC Lineberger Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "IA",
+                    "org_city": "Iowa City",
+                    "org_country": "United States",
+                    "org_name": "University of Iowa / Holden Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "NY",
+                    "org_city": "New York",
+                    "org_country": "United States",
+                    "org_name": "Laura and Isaac Perlmutter Cancer Center at NYU Langone",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "AZ",
+                    "org_city": "Scottsdale",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Arizona",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "FL",
+                    "org_city": "Jacksonville",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Florida",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MN",
+                    "org_city": "Rochester",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Rochester",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MO",
+                    "org_city": "Saint Louis",
+                    "org_country": "United States",
+                    "org_name": "Siteman Cancer Center at Washington University",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MI",
+                    "org_city": "Ann Arbor",
+                    "org_country": "United States",
+                    "org_name": "University of Michigan Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2020-03735"
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "The purpose of this study is to assess the efficacy and safety of pembrolizumab (MK-3475) versus placebo in combination with neoadjuvant (pre-surgery) chemotherapy and adjuvant (post-surgery) endocrine therapy in the treatment of adults who have high-risk early-stage estrogen receptor-positive, human epidermal growth factor receptor 2-negative (ER+ / HER2-) breast cancer. The primary study hypotheses are: 1) pembrolizumab is superior to placebo, both in combination with the protocol-specified neoadjuvant anticancer therapy, as assessed by pathological Complete Response (pCR) rate defined by the local pathologist, and 2) pembrolizumab is superior to placebo (both in combination with the protocol-specified neoadjuvant and adjuvant anticancer therapies) as assessed by Event-Free Survival (EFS) as determined by the investigator. The study is considered to have met its primary objective if pembrolizumab is superior to placebo with respect to either pCR (ypT0 / Tis ypN0) or EFS.",
+            "nct_id": "NCT03725059",
+            "brief_title": "Study of Pembrolizumab (MK-3475) Versus Placebo in Combination With Neoadjuvant Chemotherapy & Adjuvant Endocrine Therapy in the Treatment of Early-Stage Estrogen Receptor-Positive, Human Epidermal Growth Factor Receptor 2-Negative (ER+ / HER2-) Breast Cancer (MK-3475-756 / KEYNOTE-756)",
+            "sites": [
+                {
+                    "org_state_or_province": "SC",
+                    "org_city": "Charleston",
+                    "org_country": "United States",
+                    "org_name": "Medical University of South Carolina",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CO",
+                    "org_city": "Aurora",
+                    "org_country": "United States",
+                    "org_name": "University of Colorado Hospital",
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Massachusetts General Hospital Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Danvers",
+                    "org_country": "United States",
+                    "org_name": "Mass General / North Shore Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Sacramento",
+                    "org_country": "United States",
+                    "org_name": "University of California Davis Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Palo Alto",
+                    "org_country": "United States",
+                    "org_name": "Stanford Cancer Institute Palo Alto",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "TX",
+                    "org_city": "Houston",
+                    "org_country": "United States",
+                    "org_name": "M D Anderson Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Newton",
+                    "org_country": "United States",
+                    "org_name": "Newton-Wellesley Hospital",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "MN",
+                    "org_city": "Rochester",
+                    "org_country": "United States",
+                    "org_name": "Mayo Clinic in Rochester",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "IL",
+                    "org_city": "Chicago",
+                    "org_country": "United States",
+                    "org_name": "University of Chicago Comprehensive Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                },
+                {
+                    "org_state_or_province": "PA",
+                    "org_city": "Philadelphia",
+                    "org_country": "United States",
+                    "org_name": "Fox Chase Cancer Center",
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2018-03257"
+        }
+    ]
+}
