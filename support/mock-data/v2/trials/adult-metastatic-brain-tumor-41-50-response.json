@@ -1,0 +1,172 @@
+{
+	"total": 104,
+	"data": [
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I trial is to find out the possible benefits and / or side effects of dapagliflozin in patients with pancreatic cancer that has spread to nearby tissues or lymph nodes (locally advanced) or other places in the body (metastatic) and are receiving standard of care chemotherapy. Dapagliflozin may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth.",
+			"nct_id": "NCT04542291",
+			"brief_title": "Dapagliflozin for the Treatment of Patients with Locally Advanced or Metastatic Pancreatic Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "MO",
+					"org_city": "Saint Louis",
+					"org_country": "United States",
+					"org_name": "Siteman Cancer Center at Washington University",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-00004"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial investigates how stereotactic radiosurgery affects brain functions while treating patients with small cell lung cancer that has spread to the brain (brain metastasis). Standard of care treatment consists of whole brain radiation therapy, which targets the entire brain, and may result in side effects affecting the nervous system. Stereotactic radiosurgery only targets areas of the brain that are suspected to be affected by the disease. The purpose of this trial is to learn if and how patients’ brain functions are affected by the use of stereotactic radiosurgery rather than whole brain radiation therapy in managing brain metastasis caused by small cell lung cancer. Stereotactic radiosurgery may help patients avoid nervous system side effects caused by whole brain radiation therapy.",
+			"nct_id": "NCT04516070",
+			"brief_title": "Stereotactic Radiosurgery for the Treatment of Patients with Small Cell Lung Cancer Brain Metastasis",
+			"sites": [
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Houston",
+					"org_country": "United States",
+					"org_name": "M D Anderson Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2020-05720"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This study is designed to determine the safety, tolerability, and optimal dosing of GLR2007 in participants with advanced solid tumors that do not respond well to standard clinical therapies.",
+			"nct_id": "NCT04444427",
+			"brief_title": "Evaluation of GLR2007 for Advanced Solid Tumors",
+			"sites": [
+				{
+					"org_state_or_province": "PA",
+					"org_city": "Philadelphia",
+					"org_country": "United States",
+					"org_name": "Fox Chase Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2020-11658"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies the effect of two different radiosurgery dosing strategies (1 larger dose versus 3 smaller doses) in patients with brain cancer who are receiving immunotherapy. Stereotactic radiosurgery (SRS) consists of high-energy radiation that is delivered to a small, focused area of the brain using a treatment machine called a linear accelerator. Frameless SRS uses a plastic mask that is customized to fit the face for very accurate targeting of brain tumors. The results of this study may help researchers to determine whether multiple SRS treatments may decrease the risk for complications associated with a single SRS treatment.",
+			"nct_id": "NCT04427228",
+			"brief_title": "Frameless Single versus Multifraction Radiosurgery in Patients with Brain Cancer Receiving Immunotherapy, MIGRAINE Study",
+			"sites": [
+				{
+					"org_state_or_province": "IL",
+					"org_city": "Chicago",
+					"org_country": "United States",
+					"org_name": "University of Chicago Comprehensive Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2020-08526"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This trial will be a randomized controlled study comparing the efficacy and safety of intraoperative radiation therapy using GammaTilesTM (GT) versus SRS 3-4 weeks following metastatic tumor resection which is the current standard of care.",
+			"nct_id": "NCT04365374",
+			"brief_title": "Post-Surgical Stereotactic Radiotherapy (SRT) Versus GammaTile",
+			"sites": [
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Houston",
+					"org_country": "United States",
+					"org_name": "M D Anderson Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "GA",
+					"org_city": "Atlanta",
+					"org_country": "United States",
+					"org_name": "Emory University Hospital / Winship Cancer Institute",
+					"recruitment_status": "IN_REVIEW"
+				}
+			],
+			"nci_id": "NCI-2021-03480"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "Background: Drugs known as PARP inhibitors are known to help stop tumor growth in patients with breast, ovarian cancers and many other cancers including prostate and pancreatic cancers. Many research studies done in animals and human cells have shown that these type of drugs can improve how well chemotherapy works. Standard chemotherapy can be too toxic to be combined with PARP inhibitors. In this study, we use a new form of chemotherapy called PLX038 to see if it can be safely combined with PARP inhibitors to shrink tumors. Objective: To find a safe combination of PLX038 and rucaparib, and to see if this mix will cause tumors to shrink. Eligibility: People age 18 and older with solid tumors, SCLC, or small cell cancer outside their lungs. Design: Participants will be screened with: Physical exam Blood tests Records of their diagnosis (or they will have a tumor biopsy) A review of their symptoms and medications A review of their ability to perform their normal activities Electrocardiograms to measure the electrical activity of the heart Computed tomography (CT) scans of the chest, abdomen, and pelvis. CT scans are a series of X-rays. Participants will get PLX038 by intravenous catheter on Day 1 of each cycle (1 cycle = 21 days). For this, a small plastic tube is put into an arm vein. They will take rucaparib twice daily by mouth on Days 3 to 19 of each cycle. They will keep a medicine diary. Participants may give a hair sample. They may have optional tumor biopsies. Screening tests are repeated throughout the study. About 30 days after treatment ends, participants will have a safety follow-up visit. They will give blood samples, talk about their health, and get a physical exam. Then they will be called or emailed every 6 months....",
+			"nct_id": "NCT04209595",
+			"brief_title": "PLX038 (PEGylated SN38) and Rucaparib in Solid Tumors and Small Cell Cancers",
+			"sites": [
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Bethesda",
+					"org_country": "United States",
+					"org_name": "National Institutes of Health Clinical Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-08959"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I trial studies the side effects and best dose of adavosertib when given together with olaparib in treating patients with solid tumors that have spread to other places in the body (advanced) with selected mutations. Adavosertib may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth. PARPs are proteins that help repair DNA mutations. PARP inhibitors, such as olaparib, can keep PARP from working, so tumor cells can't repair themselves, and they may stop growing. Giving olaparib and adavosertib one after the other may shrink or stabilize advanced solid tumors as successfully as using them together, with fewer side effects.",
+			"nct_id": "NCT04197713",
+			"brief_title": "Testing the Sequential Combination of the Anti-cancer Drugs Olaparib followed by Adavosertib (AZD1775) in Patients with Advanced Solid Tumors with Selected Mutations and PARP Resistance, STAR Study",
+			"sites": [
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Houston",
+					"org_country": "United States",
+					"org_name": "M D Anderson Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-08262"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies how well tumor treating fields therapy with Optune device, nivolumab, and ipilimumab work in treating patients with melanoma that has spread to the brain (metastasized). Optune is a portable device that produces electric fields. The electric fields are delivered to the brain using an adhesive cap that is worn on the head and may slow the growth of tumor cells. Immunotherapy with monoclonal antibodies, such as nivolumab and ipilimumab, may help the body’s immune system attack the cancer, and may interfere with the ability of tumor cells to grow and spread. Giving tumor treating fields therapy with Optune device, nivolumab, and ipilimumab may work better in treating patients with melanoma that has spread to the brain compared to nivolumab and ipilimumab alone.",
+			"nct_id": "NCT03903640",
+			"brief_title": "Tumor Treating Fields Therapy, Nivolumab, and Ipilimumab in Treating Patients with Melanoma Brain Metastasis",
+			"sites": [
+				{
+					"org_state_or_province": "MO",
+					"org_city": "Saint Louis",
+					"org_country": "United States",
+					"org_name": "Siteman Cancer Center at Washington University",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-03104"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies the side effects and how well low dose ipilimumab works in combination with pembrolizumab in treating patients with melanoma that has spread to the brain. Immunotherapy with monoclonal antibodies, such as ipilimumab and pembrolizumab, may help the body's immune system attack the cancer, and may interfere with the ability of tumor cells to grow and spread.",
+			"nct_id": "NCT03873818",
+			"brief_title": "Low Dose Ipilimumab with Pembrolizumab in Treating Patients with Melanoma that Has Spread to the Brain",
+			"sites": [
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Houston",
+					"org_country": "United States",
+					"org_name": "M D Anderson Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-00406"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies how well brigatinib works in treating patients with ALK and ROS1 gene alterations and solid cancers that have spread to nearby tissue and lymph nodes or other places in the body. Brigatinib may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth.",
+			"nct_id": "NCT03868423",
+			"brief_title": "Brigatinib in Treating Patients with ALK and ROS1 Gene Alterations and Locally Advanced or Metastatic Solid Cancers",
+			"sites": [
+				{
+					"org_state_or_province": "OH",
+					"org_city": "Columbus",
+					"org_country": "United States",
+					"org_name": "Ohio State University Comprehensive Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2017-01394"
+		}
+	]
+}

@@ -8,14 +8,13 @@ import ReactDOM from 'react-dom';
 
 import App from './App';
 import listingSupportApiFactory from './services/api/trial-listing-support-api';
-import clinicalTrialsSearchClientFactory from './services/api/clinical-trials-search-api';
-
 import * as serviceWorker from './serviceWorker';
 import reducer from './store/reducer';
 import { StateProvider } from './store/store';
 import { AnalyticsProvider, EddlAnalyticsProvider } from './tracking';
 import { getProductTestBase } from './utils';
 import { ErrorBoundary } from './views';
+import clinicalTrialsSearchClientFactory from './services/api/clinical-trials-search-api/clinicalTrialsSearchClientFactory';
 
 /**
  * Initializes the Clinical Trials Listing App.
@@ -36,9 +35,7 @@ const initialize = ({
 	canonicalHost = 'https://www.cancer.gov',
 	cisBannerImgUrlLarge = null,
 	cisBannerImgUrlSmall = null,
-	ctsApiHostname = 'clinicaltrialsapi.cancer.gov',
-	ctsPort = null,
-	ctsProtocol = 'https',
+	ctsApiEndpoint = 'https://clinicaltrialsapi.cancer.gov/api',
 	browserTitle = '{{disease_label}} Clinical Trials',
 	dynamicListingPatterns = null,
 	detailedViewPagePrettyUrlFormatter = '',
@@ -60,27 +57,14 @@ const initialize = ({
 	const appRootDOMNode = document.getElementById(rootId);
 	const isRehydrating = appRootDOMNode.getAttribute('data-isRehydrating');
 
-	// Set up Clinical Trials API URL using given parameters.
-	const setupTrialsAPIEndpoint = () => {
-		if (ctsProtocol === null || ctsApiHostname === null) {
-			throw new Error('ctsProtocol and ctsApiHostname must be set.');
-		} else {
-			return (
-				(ctsProtocol !== '' ? ctsProtocol + '://' : '') +
-				ctsApiHostname +
-				(ctsPort && ctsPort !== '' ? ':' + ctsPort : '') +
-				'/v1/'
-			);
-		}
-	};
-
 	// Setup API clients
 	const trialListingSupportClient = listingSupportApiFactory(
 		listingApiEndpoint
 	);
 
+	// Set up Clinical Trials API URL using given parameters.
 	const clinicalTrialsSearchClient = clinicalTrialsSearchClientFactory(
-		setupTrialsAPIEndpoint()
+		ctsApiEndpoint
 	);
 
 	// populate global state with init params
@@ -93,9 +77,7 @@ const initialize = ({
 		basePath,
 		cisBannerImgUrlLarge,
 		cisBannerImgUrlSmall,
-		ctsApiHostname,
-		ctsPort,
-		ctsProtocol,
+		ctsApiEndpoint,
 		detailedViewPagePrettyUrlFormatter,
 		dynamicListingPatterns,
 		browserTitle,
@@ -174,6 +156,7 @@ if (process.env.NODE_ENV !== 'production') {
 	//This is DEV
 	const ctlSettings = {
 		...appParams,
+		ctsApiEndpoint: 'http://localhost:3000/cts/proxy-api',
 		...integrationTestOverrides,
 	};
 	initialize(ctlSettings);
@@ -181,6 +164,7 @@ if (process.env.NODE_ENV !== 'production') {
 	// This is for product testing
 	const ctlSettings = {
 		...appParams,
+		ctsApiEndpoint: 'https://clinicaltrialsapi.cancer.gov/api',
 		...integrationTestOverrides,
 		...{ basePath: getProductTestBase() },
 	};

@@ -30,7 +30,7 @@ describe('testing getClinicalTrials', () => {
 					'sites.recruitment_status',
 				],
 				'arms.interventions.intervention_code': ['C1234'],
-				'primary_purpose.primary_purpose_code': 'treatment',
+				primary_purpose: 'treatment',
 				from: 0,
 				size: 50,
 			},
@@ -38,7 +38,7 @@ describe('testing getClinicalTrials', () => {
 
 		const requestFilters = {
 			'arms.interventions.intervention_code': ['C1234'],
-			'primary_purpose.primary_purpose_code': 'treatment',
+			primary_purpose: 'treatment',
 		};
 
 		const requestQuery = getClinicalTrials({

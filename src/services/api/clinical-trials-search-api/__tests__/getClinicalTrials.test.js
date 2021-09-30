@@ -9,7 +9,6 @@ import { getClinicalTrials } from '../getClinicalTrials';
 axios.defaults.adapter = require('axios/lib/adapters/http');
 
 const client = clinicalTrialsSearchClientFactory('http://example.org');
-// const nockClient = clinicalTrialsSearchClientFactory('https://example.org');
 
 describe('testing getClinicalTrials', () => {
 	beforeAll(() => {
@@ -35,8 +34,8 @@ describe('testing getClinicalTrials', () => {
 		});
 
 		const scope = nock('http://example.org')
-			.post('/clinical-trials', query.payload)
-			.reply(200, { total: 57, trials: [{}] });
+			.post('/v2/trials', query.payload)
+			.reply(200, { total: 57, data: [{}] });
 		const response = await getClinicalTrials(client, query.payload);
 		expect(response.total).toEqual(57);
 		scope.isDone();
@@ -46,8 +45,8 @@ describe('testing getClinicalTrials', () => {
 		['empty object', {}],
 		['null total', { total: null }],
 		['count with null trials', { total: 32 }],
-		['count with empty trials', { total: 32, trials: [] }],
-		['zero count with trials', { total: 0, trials: [1] }],
+		['count with empty trials', { total: 32, data: [] }],
+		['zero count with trials', { total: 0, data: [1] }],
 	])('Invalid trial responses - %s', async (testCase, resObj) => {
 		const requestFilters = {
 			'arms.interventions.intervention_code': ['C1647'],
@@ -58,7 +57,7 @@ describe('testing getClinicalTrials', () => {
 		});
 
 		const scope = nock('http://example.org')
-			.post('/clinical-trials', query.payload)
+			.post('/v2/trials', query.payload)
 			.reply(200, resObj);
 
 		await expect(getClinicalTrials(client, query.payload)).rejects.toThrow(
@@ -77,7 +76,7 @@ describe('testing getClinicalTrials', () => {
 		});
 
 		const scope = nock('http://example.org')
-			.post('/clinical-trials', query.payload)
+			.post('/v2/trials', query.payload)
 			.reply(201);
 		await expect(getClinicalTrials(client, query.payload)).rejects.toThrow(
 			'Unexpected status 201 for fetching clinical trials'
@@ -95,7 +94,7 @@ describe('testing getClinicalTrials', () => {
 		});
 
 		const scope = nock('http://example.org')
-			.post('/clinical-trials', query.payload)
+			.post('/v2/trials', query.payload)
 			.reply(500);
 		await expect(getClinicalTrials(client, query.payload)).rejects.toThrow(
 			'Unexpected status 500 for fetching clinical trials'
@@ -113,7 +112,7 @@ describe('testing getClinicalTrials', () => {
 		});
 
 		const scope = nock('http://example.org')
-			.post('/clinical-trials', query.payload)
+			.post('/v2/trials', query.payload)
 			.replyWithError('connection refused');
 		await expect(getClinicalTrials(client, query.payload)).rejects.toThrow(
 			'connection refused'

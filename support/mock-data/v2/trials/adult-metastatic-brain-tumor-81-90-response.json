@@ -1,0 +1,186 @@
+{
+	"total": 104,
+	"data": [
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies how well stereotactic radiosurgery works in treating patients with cancer that has spread to the brain. Stereotactic radiosurgery is a specialized radiation therapy that delivers a single, high dose of radiation directly to the tumor and may cause less damage to normal tissue.",
+			"nct_id": "NCT02886572",
+			"brief_title": "Stereotactic Radiosurgery in Treating Brain Metastases in Patients with Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "NC",
+					"org_city": "Durham",
+					"org_country": "United States",
+					"org_name": "Duke University Medical Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2016-01936"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "Background: EP0057 consists of a sugar molecule cyclodextrin linked to a chemotherapy drug called camptothecin. The combined molecule or \"nanoparticle drug conjugate\" travels through the blood. Once inside cancer cells, the chemotherapy drug is released from the molecule. Olaparib is a drug that may stop cancer cells from repairing the DNA damage caused by chemotherapy. Researchers want to see how safe it is to give EP0057 and olaparib together and to see how well the combination treats a specific type of lung cancer called small cell lung cancer (SCLC). Objectives: To test the safety and maximum dose of EP0057 and olaparib together. To test how well they treat small cell lung cancer. Eligibility: Adults 18 and older with small cell lung cancer. Design: Participants will be screened with standard cancer care tests. Participants will get the 2 study drugs in 28-day cycles. EP0057 will be given every 2 weeks, through a small plastic tube in an arm vein. Olaparib will be taken by mouth twice a day most days. Participants will keep a pill diary. For Cycle 1, participants will have 3 visits. All other cycles will have 2 visits. At study visits, participants may have: - Blood and hair samples taken - History and Physical exam - Questions about health and side effects - Pregnancy test - Optional tumor biopsy where a piece of tumor is removed by needle after numbing the skin. - CT scan - Injection of EP0057 (twice per cycle) - Olaparib prescription <TAB> Participants will have a follow-up visit 4 weeks after finish taking the drugs. They will have a physical exam and blood tests. They may have a tumor biopsy. The study team will call the patient every 3 months for follow up after completing the study treatment. ...",
+			"nct_id": "NCT02769962",
+			"brief_title": "Trial of EP0057, a Nanoparticle Camptothecin With Olaparib in People With Relapsed / Refractory Small Cell Lung Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Bethesda",
+					"org_country": "United States",
+					"org_name": "National Institutes of Health Clinical Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-03324"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This pilot and randomized phase II trial studies how well glyburide works in treating brain swelling in participants with cancer that has spread to the brain undergoing stereotactic radiosurgery. Glyburide may work by reducing swelling from tumors in the brain.",
+			"nct_id": "NCT02460874",
+			"brief_title": "Glyburide in Treating Brain Swelling in Participants with Brain Metastases Undergoing Stereotactic Radiosurgery",
+			"sites": [
+				{
+					"org_state_or_province": "AL",
+					"org_city": "Birmingham",
+					"org_country": "United States",
+					"org_name": "University of Alabama at Birmingham Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-00126"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I trial studies the side effects and the best dose of fractionated stereotactic radiosurgery in treating patients with large brain metastasis. Radiosurgery can send x-rays directly to the tumor and cause less damage to normal tissue.",
+			"nct_id": "NCT02054689",
+			"brief_title": "Fractionated Stereotactic Radiosurgery in Treating Patients With Large Brain Metastasis",
+			"sites": [
+				{
+					"org_state_or_province": "PA",
+					"org_city": "Pittsburgh",
+					"org_country": "United States",
+					"org_name": "University of Pittsburgh Cancer Institute (UPCI)",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2013-01285"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies how well stereotactic radiosurgery works in treating patients with melanoma that has spread to more than 3 places in the brain. Stereotactic radiosurgery is a specialized radiation therapy that delivers a single, high dose of radiation directly to the tumor and may cause less damage to normal tissue.",
+			"nct_id": "NCT01644591",
+			"brief_title": "Stereotactic Radiosurgery in Treating Patients with Greater Than 3 Melanoma Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Houston",
+					"org_country": "United States",
+					"org_name": "M D Anderson Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-01809"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This randomized phase III clinical trial compares stereotactic radiosurgery with whole brain radiation therapy to see how well they work in treating patients with non-melanoma cancer that has recently spread from the first location to the brain. Radiation therapy uses high energy x-rays to kill tumor cells and shrink tumors. Stereotactic radiosurgery is a specialized type of radiation therapy that delivers a single, high dose of radiation directly to the tumor and may kill more tumor cells and cause less damage to normal tissue. Whole brain radiation therapy delivers a lower dose of radiation to the entire brain over several treatments. It is not yet known whether stereotactic radiosurgery works better than whole brain radiation therapy in treating patients with non-melanoma brain metastases. Stereotactic radiosurgery may also cause fewer thinking and memory problems than whole brain radiation therapy.",
+			"nct_id": "NCT01592968",
+			"brief_title": "Stereotactic Radiosurgery or Whole Brain Radiation Therapy in Treating Patients with Newly Diagnosed Non-melanoma Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Houston",
+					"org_country": "United States",
+					"org_name": "M D Anderson Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2014-02058"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I trial studies the side effects and best dose of a combined vaccine therapy and to see how well it works in treating patients with solid tumors that have spread to other parts of the body (metastatic). The cancer vaccine is made up of two proteins (that look like the tumor cells) mixed up with a special compound that may help train and boost the immune system to recognize and fight the tumor cells.",
+			"nct_id": "NCT01376505",
+			"brief_title": "Combined Vaccine Therapy in Treating Patients with Metastatic Solid Tumors",
+			"sites": [
+				{
+					"org_state_or_province": "OH",
+					"org_city": "Columbus",
+					"org_country": "United States",
+					"org_name": "Ohio State University Comprehensive Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2011-00920"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "Substudy 02D is part of a larger research study that is testing experimental treatments for melanoma, a type of skin cancer. The larger study is the umbrella study. The goal of substudy 02D is to evaluate the safety and efficacy of investigational treatment arms in programmed cell-death 1 (PD-1) naïve or PD-1 exposed participants with melanoma brain metastasis (MBM) and to identify the investigational agent(s) that, when used in combination, are superior to the current treatment options / historical control available.",
+			"nct_id": "NCT04700072",
+			"brief_title": "Substudy 02D: Safety and Efficacy of Pembrolizumab in Combination With Investigational Agents or Pembrolizumab Alone in Participants With Melanoma Brain Metastasis (MK-3475-02D / KEYMAKER-U02)",
+			"sites": [
+				{
+					"org_state_or_province": "OH",
+					"org_city": "Columbus",
+					"org_country": "United States",
+					"org_name": "Ohio State University Comprehensive Cancer Center",
+					"recruitment_status": "IN_REVIEW"
+				},
+				{
+					"org_state_or_province": "CO",
+					"org_city": "Aurora",
+					"org_country": "United States",
+					"org_name": "University of Colorado Hospital",
+					"recruitment_status": "IN_REVIEW"
+				},
+				{
+					"org_state_or_province": "CA",
+					"org_city": "Los Angeles",
+					"org_country": "United States",
+					"org_name": "UCLA / Jonsson Comprehensive Cancer Center",
+					"recruitment_status": "IN_REVIEW"
+				}
+			],
+			"nci_id": "NCI-2021-03613"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This will be a phase 1, multicenter, open-label trial to evaluate the safety, tolerability, PK and efficacy of ZN-A-1041 as a monotherapy or in combination with Capecitabine in patients with HER2-positive advanced solid tumors with or without brain metastases. The study will consist of three phases: phase 1a (dose escalation with ZN-A-1041 monotherapy), phase 1b (dose escalation with ZN-A-1041 and Capecitabine combination therapy) and phase 1c (dose expansion with ZN-A-1041 and Capecitabine combination therapy).",
+			"nct_id": "NCT04487236",
+			"brief_title": "Trial of ZN-A-1041 Enteric Capsules in Patients With HER2-Positive Advanced Solid Tumors",
+			"sites": [
+				{
+					"org_state_or_province": "NC",
+					"org_city": "Durham",
+					"org_country": "United States",
+					"org_name": "Duke University Medical Center",
+					"recruitment_status": "APPROVED"
+				}
+			],
+			"nci_id": "NCI-2021-02086"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This is an open-label study of Study WRI-GEV-007, which evaluates SV-BR-1-GM in metastatic or locally recurrent breast cancer patients, in combination with the PD-1 inhibitor INCMGA00012 and the IDO inhibitor epacadostat. Patients who with advanced breast cancer who have failed prior therapies will be eligible to enroll in this study. The study will evaluate SV-BR-1-GM in combination with INCMGA00012 and epacadostat. Treatment cycles will be every 3 weeks with evaluations for tumor progression or response every 6-12 weeks.",
+			"nct_id": "NCT03328026",
+			"brief_title": "Combination Study of SV-BR-1-GM in Combination With INCMGA00012 and Epacadostat",
+			"sites": [
+				{
+					"org_state_or_province": "PA",
+					"org_city": "Philadelphia",
+					"org_country": "United States",
+					"org_name": "Thomas Jefferson University Hospital",
+					"recruitment_status": "COMPLETED"
+				},
+				{
+					"org_state_or_province": "FL",
+					"org_city": "Miami",
+					"org_country": "United States",
+					"org_name": "University of Miami Miller School of Medicine-Sylvester Cancer Center",
+					"recruitment_status": "TEMPORARILY_CLOSED_TO_ACCRUAL"
+				}
+			],
+			"nci_id": "NCI-2018-01203"
+		}
+	]
+}

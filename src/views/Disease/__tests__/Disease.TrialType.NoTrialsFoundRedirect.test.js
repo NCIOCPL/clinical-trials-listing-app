@@ -166,7 +166,7 @@ describe('<Disease />', () => {
 
 		const requestFilters = {
 			'diseases.nci_thesaurus_concept_id': ['C3037'],
-			'primary_purpose.primary_purpose_code': 'supportive_care',
+			primary_purpose: 'supportive_care',
 		};
 		const requestQuery = getClinicalTrials({
 			from: 0,
@@ -299,7 +299,7 @@ describe('<Disease />', () => {
 
 		const requestFilters = {
 			'diseases.nci_thesaurus_concept_id': ['C3037'],
-			'primary_purpose.primary_purpose_code': 'supportive_care',
+			primary_purpose: 'supportive_care',
 		};
 		const requestQuery = getClinicalTrials({
 			from: 0,

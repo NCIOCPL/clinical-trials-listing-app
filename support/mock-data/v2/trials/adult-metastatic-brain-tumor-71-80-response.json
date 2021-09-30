@@ -1,0 +1,200 @@
+{
+	"total": 104,
+	"data": [
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I trial studies the side effects and best dose of HER2-CAR T cells alone or with chemotherapy in treating patients with cancer that has spread to the brain (metastasized) or leptomeninges and has come back (recurrent). HER2-CAR T cells delivered into the ventricles of the brain may recognize and kill tumor cells. Chemotherapy drugs, such as cyclophosphamide and fludarabine, work in different ways to stop the growth of tumor cells, either by killing the cells, by stopping them from dividing, or by stopping them from spreading. Giving chemotherapy with HER2-CAR T cells may kill more tumor cells.",
+			"nct_id": "NCT03696030",
+			"brief_title": "HER2-CAR T cells and Chemotherapy in Treating Patients with Recurrent Brain or Leptomeningeal Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "CA",
+					"org_city": "Duarte",
+					"org_country": "United States",
+					"org_name": "City of Hope Comprehensive Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-01270"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I / II trial studies the best dose and side effects of stereotactic radiosurgery intreating participants whose cancer cells have spread to the brain from other organs in the body and studying their neurocognitive decline. Stereotactic radiosurgery is a specialized radiation therapy that delivers a single, high dose of radiation directly to the tumor and may cause less damage to normal tissue.",
+			"nct_id": "NCT03508752",
+			"brief_title": "Stereotactic Radiosurgery in Treating Participants with Brain Metastases and Studying Their Neurocognitive Decline",
+			"sites": [
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Dallas",
+					"org_country": "United States",
+					"org_name": "UT Southwestern / Simmons Cancer Center-Dallas",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-01080"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This trial studies how well stereotactic radiotherapy followed by tumor treating fields therapy work in treating participants with small cell lung cancer that has spread to the brain. Stereotactic radiosurgery is a specialized radiation therapy that delivers a single, high dose of radiation directly to the tumor and may cause less damage to normal tissue. Given stereotactic radiosurgery and tumor treating fields therapy may help to reduce the chances of cancers coming back in other parts of your brain that are not being treated with stereotactic radiosurgery.",
+			"nct_id": "NCT03488472",
+			"brief_title": "Stereotactic Radiosurgery followed by Tumor Treating Fields Therapy in Treating Participants with Small Cell Lung Cancer with Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "AL",
+					"org_city": "Birmingham",
+					"org_country": "United States",
+					"org_name": "University of Alabama at Birmingham Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-01478"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase III trial studies how well radiation therapy and chemotherapy work in treating patients with stage II-IV non-small cell lung cancer and to see the effect of treatment on patient-reported outcomes. Radiation therapy uses high energy x-rays to kill tumor cells and shrink tumors. Drugs used in chemotherapy, such as paclitaxel and carboplatin, work in different ways to stop the growth of tumor cells, either by killing the cells, by stopping them from dividing, or by stopping them from spreading. Giving accelerated radiation therapy within shorter time and chemotherapy may work better than standard radiation therapy in treating patients with non-small-cell lung cancer and may improve patient outcomes.",
+			"nct_id": "NCT03481114",
+			"brief_title": "Radiation Therapy and Chemotherapy in Treating Patients with Stage II-IV Non-small Cell Lung Cancer and the Effect of Treatment on Patient-Reported Outcomes",
+			"sites": [
+				{
+					"org_state_or_province": "NY",
+					"org_city": "Bronx",
+					"org_country": "United States",
+					"org_name": "Montefiore Medical Center-Weiler Hospital",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-00730"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I trial studies the side effects and best dose of fractionated stereotactic radiation therapy in treating patients with cancer that has spread to the brain (brain metastases). Fractionated stereotactic radiation therapy is a specialized radiation therapy that uses multiple, smaller doses of radiation therapy spread over several treatment sessions. Increasing the dose of fractionated stereotactic radiation therapy may result in improved tumor control with minimal side effects.",
+			"nct_id": "NCT03412812",
+			"brief_title": "Fractionated Stereotactic Radiation Therapy in Treating Cancer Patients with Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "AL",
+					"org_city": "Birmingham",
+					"org_country": "United States",
+					"org_name": "University of Alabama at Birmingham Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-05085"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This pilot phase II trial studies how well ferumoxytol magnetic resonance imaging (MRI) works in assessing response to pembrolizumab in patients with glioblastoma. Diagnostic procedures, such as ferumoxytol MRI, may help measure a patient's response to pembrolizumab treatment.",
+			"nct_id": "NCT03347617",
+			"brief_title": "Ferumoxytol MRI in Assessing Response to Pembrolizumab in Patients with Glioblastoma",
+			"sites": [
+				{
+					"org_state_or_province": "OR",
+					"org_city": "Portland",
+					"org_country": "United States",
+					"org_name": "OHSU Knight Cancer Institute",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2017-02008"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This is a Phase 1 study of E6201 plus dabrafenib for the treatment of CNS metastases in BRAF V600-mutated metastatic melanoma. A total of up to N=28-34 subjects with melanoma metastasized to the CNS will be included.",
+			"nct_id": "NCT03332589",
+			"brief_title": "E6201 Plus Dabrafenib for the Treatment of Metastatic Melanoma Central Nervous System Metastases (CNS)",
+			"sites": [
+				{
+					"org_state_or_province": "AZ",
+					"org_city": "Tucson",
+					"org_country": "United States",
+					"org_name": "Banner University Medical Center - Tucson",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-00617"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "Background: Non-small cell lung cancer (NSCLC) is the most common type of lung cancer. Lung cancer is the leading cause of cancer-related death in the United States. Most people with lung cancer are already in the advanced stages of the disease by the time they see a doctor. Researchers want to see if combining an approved drug with two new drugs can help. Objective: To study if tetrahydrouridine-decitabine (THU-DAC) with pembrolizumab is safe and effective in people with non-small cell lung cancer that cannot be removed by surgery. Eligibility: People 18 years and older who have NSCLC that cannot be removed by surgery Design: Participants will be screened with - Medical history - Physical exam - Blood and urine tests - Tests of heart and lung function They may have a small tumor sample taken (biopsy). They may have tumor scans. Before starting treatment, participants will repeat the screening tests. They will also give a stool sample. The study will be done in 3-week cycles for up to 6 cycles. - Participants will take the 2 study drugs by mouth 3-5 days a week. - Participants will get pembrolizumab in a vein for 30 minutes 1 day each cycle. Participants will keep a study medication diary. During cycle 1, participants will have blood taken multiple times on days 1 and 2. Every 3 cycles, participants will repeat screening tests. Participants will have a mandatory tumor biopsy. When they finish treatment, participants will have a physical exam and blood tests.",
+			"nct_id": "NCT03233724",
+			"brief_title": "Oral Decitabine and Tetrahydrouridine as Epigenetic Priming for, Pembrolizumab-Mediated Immune Checkpoint Blockade in Patients With Inoperable, or Unresectable Locally Advanced or Metastatic Non-Small Cell Lung Cancers and Esophageal Carcinomas",
+			"sites": [
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Bethesda",
+					"org_country": "United States",
+					"org_name": "National Institutes of Health Clinical Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-03586"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This trial studies the side effects and how well genu-sparing whole-brain radiotherapy works in preserving cognition and neuropsychiatric functioning in patients with solid tumors that have spread to the brain. Genu-sparing whole-brain radiotherapy delivers radiation therapy to the brain while decreasing radiation exposure to an area of the brain called the corpus callosum genu, and it may decrease side effects from radiation to the brain such as memory and thinking problems.",
+			"nct_id": "NCT03223922",
+			"brief_title": "Genu-Sparing Whole-Brain Radiotherapy in Preserving Cognition and Neuropsychiatric Functioning in Patients with Solid Tumors with Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Baltimore",
+					"org_country": "United States",
+					"org_name": "Johns Hopkins University / Sidney Kimmel Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Baltimore",
+					"org_country": "United States",
+					"org_name": "Johns Hopkins Bayview Medical Center",
+					"recruitment_status": "APPROVED"
+				},
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Lutherville",
+					"org_country": "United States",
+					"org_name": "Johns Hopkins at Green Spring Station",
+					"recruitment_status": "APPROVED"
+				},
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Columbia",
+					"org_country": "United States",
+					"org_name": "Howard County General Hospital",
+					"recruitment_status": "APPROVED"
+				},
+				{
+					"org_state_or_province": "DC",
+					"org_city": "Washington",
+					"org_country": "United States",
+					"org_name": "Sibley Memorial Hospital",
+					"recruitment_status": "APPROVED"
+				},
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Bethesda",
+					"org_country": "United States",
+					"org_name": "Suburban Hospital",
+					"recruitment_status": "APPROVED"
+				}
+			],
+			"nci_id": "NCI-2017-01516"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies the side effects and how well nivolumab with trametinib and dabrafenib, or encorafenib and binimetinib work in treating patients with BRAF-mutated stage III-IV melanoma that has spread to other places in the body (metastatic) or cannot be removed by surgery (unresectable). Immunotherapy with monoclonal antibodies, such as nivolumab, may induce changes in the body's immune system and may interfere with the ability of tumor cells to grow and spread. Trametinib, dabrafenib, encorafenib, and binimetinib may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth. It is not yet known if nivolumab with trametinib and dabrafenib, or encorafenib and binimetinib may work better in treating patients with BRAF-mutated melanoma.",
+			"nct_id": "NCT02910700",
+			"brief_title": "Nivolumab with Trametinib and Dabrafenib, or Encorafenib and Binimetinib in Treating Patients with BRAF Mutated Metastatic or Unresectable Stage III-IV Melanoma",
+			"sites": [
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Houston",
+					"org_country": "United States",
+					"org_name": "M D Anderson Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2016-01940"
+		}
+	]
+}

@@ -1,0 +1,550 @@
+{
+	"total": 104,
+	"data": [
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I trial studies the side effects of GDC-0084 and radiation therapy to the brain in treating patients with PI3K pathway-mutated solid tumors that have spread to the brain and / or membranes lining the brain and spinal cord (brain and / or leptomeninges metastases). When a cancer has a PI3K pathway mutation, it sends signals to other cells in the body to encourage rapid growth, leading to the spread of cancer. PI3K mutations are common in many types of cancer, and they cause radiation therapy to be less effective. GDC-0084 reduces the activity of PI3K-related signaling. Radiation therapy uses high energy x-rays to kill tumor cells and shrink tumors. Giving GDC-0084 with whole or partial brain radiation therapy may be an effective treatment for solid tumors brain metastases or leptomeningeal metastases.",
+			"nct_id": "NCT04192981",
+			"brief_title": "GDC-0084 and Radiation Therapy for the Treatment of Solid Tumor Brain Metastases or Leptomeningeal Metastases with PI3K Pathway Mutations",
+			"sites": [
+				{
+					"org_state_or_province": "NY",
+					"org_city": "New York",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NY",
+					"org_city": "West Harrison",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Westchester",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NY",
+					"org_city": "Uniondale",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Nassau",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NY",
+					"org_city": "Commack",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Commack",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NJ",
+					"org_city": "Basking Ridge",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Basking Ridge",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NJ",
+					"org_city": "Montvale",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Bergen",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NJ",
+					"org_city": "Middletown",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Monmouth",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-08530"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies the effect of cesium (Cs)-131 brachytherapy in treating patients with cancer that has spread to the brain from other places in the body (brain metastases) and that has come back (recurrent). Cs-131 brachytherapy involves placing small radioactive seeds (Cs-131 seeds) near the area(s) of the brain where the cancer is being removed. These seeds are permanent, and they temporarily give off radiation to kill any cancer cells that may grow after surgery. Cs-131 brachytherapy may help prevent brain tumors from growing back after surgery.",
+			"nct_id": "NCT04690348",
+			"brief_title": "Cs131 Brachytherapy for the Treatment of Recurrent Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "NY",
+					"org_city": "New York",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NY",
+					"org_city": "Uniondale",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Nassau",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NY",
+					"org_city": "Commack",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Commack",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NJ",
+					"org_city": "Basking Ridge",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Basking Ridge",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NJ",
+					"org_city": "Montvale",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Bergen",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NJ",
+					"org_city": "Middletown",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Monmouth",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2020-14162"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I trial investigates the side effects and best dose of adavosertib and how well it works when given in combination with radiation therapy in treating patients with esophageal or gastroesophageal junction cancer for which no treatment is currently available (incurable). Adavosertib may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth. Radiation therapy uses high energy x-rays to kill tumor cells and shrink tumors. Giving adavosertib together with radiation therapy kill more tumor cells than radiation therapy alone in treating patients with esophageal and gastroesophageal junction cancer.",
+			"nct_id": "NCT04460937",
+			"brief_title": "Testing the Addition of an Anti-cancer Drug, Adavosertib, to Radiation Therapy for Patients with Incurable Esophageal and Gastroesophageal Junction Cancers",
+			"sites": [
+				{
+					"org_state_or_province": "UT",
+					"org_city": "Salt Lake City",
+					"org_country": "United States",
+					"org_name": "Huntsman Cancer Institute / University of Utah",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "OH",
+					"org_city": "Columbus",
+					"org_country": "United States",
+					"org_name": "Ohio State University Comprehensive Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "KY",
+					"org_city": "Lexington",
+					"org_country": "United States",
+					"org_name": "University of Kentucky / Markey Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "PA",
+					"org_city": "Pittsburgh",
+					"org_country": "United States",
+					"org_name": "University of Pittsburgh Cancer Institute (UPCI)",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "UT",
+					"org_city": "Salt Lake City",
+					"org_country": "United States",
+					"org_name": "University of Utah Sugarhouse Health Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "IL",
+					"org_city": "Chicago",
+					"org_country": "United States",
+					"org_name": "Northwestern University",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2020-04698"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This study will test an investigational drug called AZD1390 in combination with radiation therapy for the treatment of brain tumors. This is the first time AZD1390 is being given to patients. This study will test safety, tolerability and PK (how the drug is absorbed, distributed and eliminated) of ascending doses of AZD1390 in combination with distinct regimens of radiation therapy",
+			"nct_id": "NCT03423628",
+			"brief_title": "A Study to Assess the Safety and Tolerability of AZD1390 Given With Radiation Therapy in Patients With Brain Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "PA",
+					"org_city": "Pittsburgh",
+					"org_country": "United States",
+					"org_name": "University of Pittsburgh Cancer Institute (UPCI)",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "VA",
+					"org_city": "Richmond",
+					"org_country": "United States",
+					"org_name": "Virginia Commonwealth University / Massey Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Brigham and Women's Hospital",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Dana-Farber Cancer Institute",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NY",
+					"org_city": "New York",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Massachusetts General Hospital Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-00805"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I trial studies the side effects and best dose of ropidoxuridine when given together with whole brain radiation therapy in treating patients with cancer that has spread to the brain (brain metastases). Ropidoxuridine may help whole brain radiation therapy work better by making cancer cells more sensitive to the radiation therapy.",
+			"nct_id": "NCT02993146",
+			"brief_title": "Ropidoxuridine and Whole Brain Radiation Therapy in Treating Patients with Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Houston",
+					"org_country": "United States",
+					"org_name": "Baylor College of Medicine / Dan L Duncan Comprehensive Cancer Center",
+					"recruitment_status": "TEMPORARILY_CLOSED_TO_ACCRUAL"
+				},
+				{
+					"org_state_or_province": "MI",
+					"org_city": "Detroit",
+					"org_country": "United States",
+					"org_name": "Wayne State University / Karmanos Cancer Institute",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "CA",
+					"org_city": "Sacramento",
+					"org_country": "United States",
+					"org_name": "University of California Davis Comprehensive Cancer Center",
+					"recruitment_status": "CLOSED_TO_ACCRUAL"
+				},
+				{
+					"org_state_or_province": "CA",
+					"org_city": "La Jolla",
+					"org_country": "United States",
+					"org_name": "UC San Diego Moores Cancer Center",
+					"recruitment_status": "CLOSED_TO_ACCRUAL"
+				},
+				{
+					"org_state_or_province": "UT",
+					"org_city": "Salt Lake City",
+					"org_country": "United States",
+					"org_name": "Huntsman Cancer Institute / University of Utah",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "PA",
+					"org_city": "Philadelphia",
+					"org_country": "United States",
+					"org_name": "Fox Chase Cancer Center",
+					"recruitment_status": "CLOSED_TO_ACCRUAL"
+				},
+				{
+					"org_state_or_province": "NE",
+					"org_city": "Omaha",
+					"org_country": "United States",
+					"org_name": "University of Nebraska Medical Center",
+					"recruitment_status": "CLOSED_TO_ACCRUAL"
+				},
+				{
+					"org_state_or_province": "MI",
+					"org_city": "Farmington Hills",
+					"org_country": "United States",
+					"org_name": "Weisberg Cancer Treatment Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NY",
+					"org_city": "New York",
+					"org_country": "United States",
+					"org_name": "NYP / Columbia University Medical Center / Herbert Irving Comprehensive Cancer Center",
+					"recruitment_status": "CLOSED_TO_ACCRUAL"
+				},
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Dallas",
+					"org_country": "United States",
+					"org_name": "UT Southwestern / Simmons Cancer Center-Dallas",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "IA",
+					"org_city": "Iowa City",
+					"org_country": "United States",
+					"org_name": "University of Iowa / Holden Comprehensive Cancer Center",
+					"recruitment_status": "CLOSED_TO_ACCRUAL"
+				},
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Baltimore",
+					"org_country": "United States",
+					"org_name": "University of Maryland / Greenebaum Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MI",
+					"org_city": "Ann Arbor",
+					"org_country": "United States",
+					"org_name": "University of Michigan Comprehensive Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Houston",
+					"org_country": "United States",
+					"org_name": "Ben Taub General Hospital",
+					"recruitment_status": "TEMPORARILY_CLOSED_TO_ACCRUAL"
+				}
+			],
+			"nci_id": "NCI-2016-01909"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "NUV-422-02 is a first-in-human, open-label, Phase 1 / 2 dose escalation and multiple expansion cohort study designed to evaluate the safety and efficacy of NUV-422. The study population is comprised of adults with recurrent or refractory high-grade gliomas (HGGs), metastatic breast cancer (mBC), with and without brain metastases, and recurrent or refractory metastatic castration-resistant prostate cancer (mCRPC). All patients will self-administer NUV-422 orally in 28-day cycles until disease progression, toxicity, withdrawal of consent, or termination of the study.",
+			"nct_id": "NCT04541225",
+			"brief_title": "Study of NUV-422 in Adults With Recurrent or Refractory High-grade Gliomas and Solid Tumors",
+			"sites": [
+				{
+					"org_state_or_province": "UT",
+					"org_city": "Salt Lake City",
+					"org_country": "United States",
+					"org_name": "Huntsman Cancer Institute / University of Utah",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "TX",
+					"org_city": "Houston",
+					"org_country": "United States",
+					"org_name": "M D Anderson Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NY",
+					"org_city": "New York",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Dana-Farber Cancer Institute",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Brigham and Women's Hospital",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2020-13767"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase III trial studies how well whole-brain radiotherapy or stereotactic radiosurgery works in treating patients with 5-20 malignant tumors that have spread to the brain from other parts of the body. Whole-brain radiotherapy delivers radiation to the entire brain Stereotactic radiosurgery is a specialized radiation therapy that delivers a single, high dose of radiation directly to the tumor and may cause less damage to normal tissue. It is not yet known whether whole-brain radiotherapy or stereotactic radiosurgery works better in treating patients with 5-20 malignant tumors in the brain.",
+			"nct_id": "NCT03075072",
+			"brief_title": "Whole-Brain Radiotherapy or Stereotactic Radiosurgery in Treating Patients with 5-20 Metastatic Malignant Tumors in the Brain",
+			"sites": [
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Brigham and Women's Hospital",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Dana-Farber Cancer Institute",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Milford",
+					"org_country": "United States",
+					"org_name": "Dana-Farber / Brigham and Women's Cancer Center at Milford Regional",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "South Weymouth",
+					"org_country": "United States",
+					"org_name": "Dana-Farber / Brigham and Women's Cancer Center at South Shore",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "RI",
+					"org_city": "Providence",
+					"org_country": "United States",
+					"org_name": "Lifespan",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2017-00755"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I trial seeks to find out the best dose, possible benefits and / or side effects of entinostat in combination with atezolizumab, carboplatin and etoposide for the treatment of previously untreated aggressive lung cancer that has spread (extensive-stage small cell lung cancer). Entinostat and etoposide may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth. Immunotherapy with monoclonal antibodies, such as atezolizumab, may help the body's immune system attack the cancer, and may interfere with the ability of tumor cells to grow and spread. Carboplatin is a chemotherapy drug that attaches to deoxyribonucleic acid (DNA) and may kill tumor cells. Giving entinostat in combination with atezolizumab, carboplatin and etoposide may work better than atezolizumab, carboplatin and etoposide alone.",
+			"nct_id": "NCT04631029",
+			"brief_title": "Testing the Addition of an Anti-cancer Drug, Entinostat, to the Usual Chemotherapy and Immunotherapy Treatment (Atezolizumab, Carboplatin and Etoposide) for Previously Untreated Aggressive Lung Cancer that Has Spread",
+			"sites": [
+				{
+					"org_state_or_province": "PA",
+					"org_city": "Pittsburgh",
+					"org_country": "United States",
+					"org_name": "University of Pittsburgh Cancer Institute (UPCI)",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "WI",
+					"org_city": "Madison",
+					"org_country": "United States",
+					"org_name": "University of Wisconsin Hospital and Clinics",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NY",
+					"org_city": "New York",
+					"org_country": "United States",
+					"org_name": "Memorial Sloan Kettering Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "VA",
+					"org_city": "Charlottesville",
+					"org_country": "United States",
+					"org_name": "University of Virginia Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "UT",
+					"org_city": "Salt Lake City",
+					"org_country": "United States",
+					"org_name": "Huntsman Cancer Institute / University of Utah",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2020-09916"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This is a phase 1 study in advanced cancer patients with varied hepatic fucntions to evaluate the potential effect of hepatic impairment on pharmacokinetics and safety of lorlatinib and provide dose recommendation for patients with hepatic impairment if possible.",
+			"nct_id": "NCT03726333",
+			"brief_title": "Hepatic Impairment Study for Lorlatinib in Cancer Patients",
+			"sites": [
+				{
+					"org_state_or_province": "GA",
+					"org_city": "Atlanta",
+					"org_country": "United States",
+					"org_name": "Emory University Hospital / Winship Cancer Institute",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "TX",
+					"org_city": "San Antonio",
+					"org_country": "United States",
+					"org_name": "Cancer Therapy and Research Center at The UT Health Science Center at San Antonio",
+					"recruitment_status": "WITHDRAWN"
+				},
+				{
+					"org_state_or_province": "CO",
+					"org_city": "Aurora",
+					"org_country": "United States",
+					"org_name": "University of Colorado Hospital",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "CA",
+					"org_city": "Los Angeles",
+					"org_country": "United States",
+					"org_name": "USC / Norris Comprehensive Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "CA",
+					"org_city": "Los Angeles",
+					"org_country": "United States",
+					"org_name": "Los Angeles County-USC Medical Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "CA",
+					"org_city": "Newport Beach",
+					"org_country": "United States",
+					"org_name": "Hoag Memorial Hospital",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-01060"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies how well stereotactic radiosurgery works in treating patients with small cell cancer and 1-10 tumors that have spread to the brain from other parts of the body (brain metastases). Stereotactic radiosurgery is a specialized radiation therapy that delivers a single, high dose of radiation directly to the tumor and may cause less damage to normal tissue.",
+			"nct_id": "NCT03391362",
+			"brief_title": "Stereotactic Radiosurgery in Treating Patients with Small Cell Cancer and 1-10 Brain Metastases",
+			"sites": [
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Dana-Farber Cancer Institute",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Brigham and Women's Hospital",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Beth Israel Deaconess Medical Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "South Weymouth",
+					"org_country": "United States",
+					"org_name": "Dana-Farber / Brigham and Women's Cancer Center at South Shore",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Milford",
+					"org_country": "United States",
+					"org_name": "Dana-Farber / Brigham and Women's Cancer Center at Milford Regional",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-00391"
+		}
+	]
+}

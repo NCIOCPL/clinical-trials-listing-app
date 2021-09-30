@@ -140,8 +140,8 @@ describe('<Intervention Trial Type display />', () => {
 		};
 
 		const requestFilters = {
-			'arms.interventions.intervention_code': ['C1234'],
-			'primary_purpose.primary_purpose_code': 'treatment',
+			'arms.interventions.nci_thesaurus_concept_id': ['C1234'],
+			primary_purpose: 'treatment',
 		};
 		const requestQuery = getClinicalTrials({
 			from: 0,
@@ -256,8 +256,8 @@ describe('<Intervention Trial Type display />', () => {
 		};
 
 		const requestFilters = {
-			'arms.interventions.intervention_code': ['C1234'],
-			'primary_purpose.primary_purpose_code': 'treatment',
+			'arms.interventions.nci_thesaurus_concept_id': ['C1234'],
+			primary_purpose: 'treatment',
 		};
 		const requestQuery = getClinicalTrials({
 			from: 0,

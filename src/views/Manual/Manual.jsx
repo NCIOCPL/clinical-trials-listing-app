@@ -172,7 +172,7 @@ const Manual = () => {
 
 								<ScrollRestoration />
 								<ResultsListWithPage
-									results={fetchState.payload.trials}
+									results={fetchState.payload.data}
 									resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
 								/>
 								{/* ::: Bottom Paging Section ::: */}

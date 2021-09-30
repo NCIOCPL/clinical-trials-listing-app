@@ -27,7 +27,7 @@ describe('<Manual />', () => {
 		aborted: false,
 		payload: {
 			total: 0,
-			trials: [],
+			data: [],
 		},
 	});
 
@@ -36,7 +36,7 @@ describe('<Manual />', () => {
 		const noTrialsHtml = 'There are currently no available trials.';
 		const pageTitle = 'Manual Listing Page';
 		const requestFilters =
-			'{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose.primary_purpose_code": "treatment"}';
+			'{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose": "treatment"}';
 		const title = 'NCI Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
 		const trialListingPageType = 'Manual';
@@ -87,7 +87,7 @@ describe('<Manual />', () => {
 		const noTrialsHtml = 'There are currently no available trials.';
 		const pageTitle = 'Clinical Trials for Adult Brain Tumors';
 		const requestFilters =
-			'{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose.primary_purpose_code": "treatment"}';
+			'{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose": "treatment"}';
 		const title = 'NCI Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
 		const trialListingPageType = 'Manual';
@@ -118,7 +118,7 @@ describe('<Manual />', () => {
 			aborted: false,
 			payload: {
 				total: 4,
-				trials: [
+				data: [
 					{
 						nci_id: 'NCI-2013-00786',
 						nct_id: 'NCT00303849',
@@ -7002,7 +7002,7 @@ describe('<Manual />', () => {
 		const noTrialsHtml = 'There are currently no available trials.';
 		const pageTitle = 'Manual Listing Page';
 		const requestFilters =
-			'{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose.primary_purpose_code": "treatment"}';
+			'{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose": "treatment"}';
 		const title = 'NCI Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
 		const trialListingPageType = 'Manual';
@@ -7049,7 +7049,7 @@ describe('<Manual />', () => {
 		const noTrialsHtml = 'There are currently no available trials.';
 		const pageTitle = 'Manual Listing Page';
 		const requestFilters =
-			'{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose.primary_purpose_code": "treatment"}';
+			'{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose": "treatment"}';
 		const title = 'NCI Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
 		const trialListingPageType = 'Manual';

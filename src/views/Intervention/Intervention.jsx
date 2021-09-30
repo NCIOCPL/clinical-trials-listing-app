@@ -59,12 +59,12 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 				case 'codeOrPurl':
 					return {
 						...acQuery,
-						'arms.interventions.intervention_code': paramData.conceptId,
+						'arms.interventions.nci_thesaurus_concept_id': paramData.conceptId,
 					};
 				case 'type':
 					return {
 						...acQuery,
-						'primary_purpose.primary_purpose_code': paramData.idString,
+						primary_purpose: paramData.idString,
 					};
 				default:
 					throw new Error(`Unknown parameter ${paramInfo.paramName}`);
@@ -303,7 +303,7 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 								{renderPagerSection('top')}
 								<ScrollRestoration />
 								<ResultsListWithPage
-									results={fetchState.payload.trials}
+									results={fetchState.payload.data}
 									resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
 								/>
 								{/* ::: Bottom Paging Section ::: */}
