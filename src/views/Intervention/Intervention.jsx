@@ -175,7 +175,8 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 					type: 'PageLoad',
 					event: 'TrialListingApp:Load:Results',
 					name:
-						canonicalHost.replace('https://', '') + window.location.pathname,
+						canonicalHost.replace(/^(http|https):\/\//, '') +
+						window.location.pathname,
 					title: replacedText.pageTitle,
 					language: language === 'en' ? 'english' : 'spanish',
 					metaTitle: `${replacedText.pageTitle} - ${siteName}`,
