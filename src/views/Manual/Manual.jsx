@@ -65,7 +65,9 @@ const Manual = () => {
 				// These properties are required.
 				type: 'PageLoad',
 				event: 'TrialListingApp:Load:Results',
-				name: canonicalHost.replace('https://', '') + window.location.pathname,
+				name:
+					canonicalHost.replace(/^(http|https):\/\//, '') +
+					window.location.pathname,
 				title: pageTitle,
 				language: language === 'en' ? 'english' : 'spanish',
 				metaTitle: `${pageTitle} - ${siteName}`,

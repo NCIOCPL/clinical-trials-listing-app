@@ -16,7 +16,7 @@ const PageNotFound = () => {
 		tracking.trackEvent({
 			event: 'TrialListingApp:Load:PageNotFound',
 			metaTitle: pageTitle,
-			name: `${canonicalHost.replace('https://', '')}${
+			name: `${canonicalHost.replace(/^(http|https):\/\//, '')}${
 				window.location.pathname
 			}`,
 			title: pageTitle,

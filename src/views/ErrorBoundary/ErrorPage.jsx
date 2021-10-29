@@ -13,7 +13,7 @@ const ErrorPage = () => {
 		tracking.trackEvent({
 			event: 'SitewideSearchApp:Load:Error',
 			metaTitle: pageTitle,
-			name: `${canonicalHost.replace('https://', '')}${
+			name: `${canonicalHost.replace(/^(http|https):\/\//g, '')}${
 				window.location.pathname
 			}`,
 			title: pageTitle,
