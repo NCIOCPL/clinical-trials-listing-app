@@ -5,15 +5,32 @@ import { MemoryRouter } from 'react-router';
 import Disease from '../Disease';
 import { useStateValue } from '../../../store/store.js';
 import { MockAnalyticsProvider } from '../../../tracking';
-import { useAppPaths, useCustomQuery } from '../../../hooks';
+import { getClinicalTrials } from '../../../services/api/actions/getClinicalTrials';
+import { useAppPaths } from '../../../hooks/routing';
+import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
 
 jest.mock('../../../store/store.js');
-jest.mock('../../../hooks');
+jest.mock('../../../hooks/routing');
+jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 
-const fixturePath = `/v1/clinical-trials`;
+const fixturePath = `/v2/trials`;
 const trastuzumabFile = `trastuzumab-response.json`;
 
 describe('<Disease />', () => {
+	afterEach(() => {
+		jest.clearAllMocks();
+	});
+
+	useCtsApi.mockReturnValue({
+		error: false,
+		loading: false,
+		aborted: false,
+		payload: {
+			total: 0,
+			data: [],
+		},
+	});
+
 	it('should render <ResultsList /> component', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
@@ -63,7 +80,6 @@ describe('<Disease />', () => {
 					'{{trial_type_label}} Clinical Trials for {{disease_label}} Using {{intervention_label}}',
 			},
 		};
-
 		const response = getFixture(`${fixturePath}/${trastuzumabFile}`);
 
 		useStateValue.mockReturnValue([
@@ -83,10 +99,10 @@ describe('<Disease />', () => {
 			CodeOrPurlWithTypePath: () => '/:codeOrPurl/:type',
 		});
 
-		useCustomQuery.mockReturnValue({
+		useCtsApi.mockReturnValue({
 			error: false,
 			loading: false,
-			status: 200,
+			aborted: false,
 			payload: response,
 		});
 
@@ -119,7 +135,18 @@ describe('<Disease />', () => {
 			);
 		});
 
-		expect(useCustomQuery).toHaveBeenCalled();
+		const requestFilters = {
+			'diseases.nci_thesaurus_concept_id': ['C4872', 'C118809'],
+			primary_purpose: 'treatment',
+		};
+		const requestQuery = getClinicalTrials({
+			from: 0,
+			requestFilters,
+			size: 25,
+		});
+
+		expect(useCtsApi.mock.calls[0][0]).toEqual(requestQuery);
+		expect(useCtsApi).toHaveBeenCalled();
 
 		expect(
 			screen.getByText('Treatment Clinical Trials for Breast Cancer')

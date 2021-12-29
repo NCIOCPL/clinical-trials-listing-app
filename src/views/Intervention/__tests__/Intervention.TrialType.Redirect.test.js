@@ -5,9 +5,11 @@ import { MemoryRouter, useLocation } from 'react-router';
 import Intervention from '../Intervention';
 import { useStateValue } from '../../../store/store.js';
 import { MockAnalyticsProvider } from '../../../tracking';
-import { ClientContextProvider } from 'react-fetching-library';
+import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
+import { getClinicalTrials } from '../../../services/api/actions/getClinicalTrials';
 
 jest.mock('../../../store/store.js');
+jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 
 let location;
 
@@ -21,6 +23,20 @@ ComponentWithLocation.propTypes = {
 };
 
 describe('<Intervention Trial Type display />', () => {
+	afterEach(() => {
+		jest.clearAllMocks();
+	});
+
+	useCtsApi.mockReturnValue({
+		error: false,
+		loading: false,
+		aborted: false,
+		payload: {
+			total: 0,
+			trials: [],
+		},
+	});
+
 	it('Should assert page is redirected to No Trials Found', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
@@ -72,19 +88,11 @@ describe('<Intervention Trial Type display />', () => {
 				dynamicListingPatterns,
 				title,
 				trialListingPageType,
+				apiClients: {
+					clinicalTrialsSearchClient: true,
+				},
 			},
 		]);
-
-		const client = {
-			query: async () => ({
-				error: false,
-				status: 200,
-				payload: {
-					total: 0,
-					trials: [],
-				},
-			}),
-		};
 
 		const redirectPath = () => '/notrials';
 		const routeParamMap = [
@@ -113,11 +121,9 @@ describe('<Intervention Trial Type display />', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<ClientContextProvider client={client}>
-						<MemoryRouter initialEntries={['/spiroplatin']}>
-							<ComponentWithLocation RenderComponent={InterventionWithData} />
-						</MemoryRouter>
-					</ClientContextProvider>
+					<MemoryRouter initialEntries={['/spiroplatin']}>
+						<ComponentWithLocation RenderComponent={InterventionWithData} />
+					</MemoryRouter>
 				</MockAnalyticsProvider>
 			);
 		});
@@ -133,6 +139,17 @@ describe('<Intervention Trial Type display />', () => {
 			key: expect.any(String),
 		};
 
+		const requestFilters = {
+			'arms.interventions.nci_thesaurus_concept_id': ['C1234'],
+			primary_purpose: 'treatment',
+		};
+		const requestQuery = getClinicalTrials({
+			from: 0,
+			requestFilters,
+			size: 50,
+		});
+
+		expect(useCtsApi.mock.calls[0][0]).toEqual(requestQuery);
 		expect(location).toMatchObject(expectedLocationObject);
 	});
 
@@ -187,19 +204,11 @@ describe('<Intervention Trial Type display />', () => {
 				dynamicListingPatterns,
 				title,
 				trialListingPageType,
+				apiClients: {
+					clinicalTrialsSearchClient: true,
+				},
 			},
 		]);
-
-		const client = {
-			query: async () => ({
-				error: false,
-				status: 200,
-				payload: {
-					total: 0,
-					trials: [],
-				},
-			}),
-		};
 
 		const redirectPath = () => '/notrials';
 		const routeParamMap = [
@@ -228,11 +237,9 @@ describe('<Intervention Trial Type display />', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<ClientContextProvider client={client}>
-						<MemoryRouter initialEntries={['/C1234']}>
-							<ComponentWithLocation RenderComponent={InterventionWithData} />
-						</MemoryRouter>
-					</ClientContextProvider>
+					<MemoryRouter initialEntries={['/C1234']}>
+						<ComponentWithLocation RenderComponent={InterventionWithData} />
+					</MemoryRouter>
 				</MockAnalyticsProvider>
 			);
 		});
@@ -247,6 +254,18 @@ describe('<Intervention Trial Type display />', () => {
 			},
 			key: expect.any(String),
 		};
+
+		const requestFilters = {
+			'arms.interventions.nci_thesaurus_concept_id': ['C1234'],
+			primary_purpose: 'treatment',
+		};
+		const requestQuery = getClinicalTrials({
+			from: 0,
+			requestFilters,
+			size: 50,
+		});
+
+		expect(useCtsApi.mock.calls[0][0]).toEqual(requestQuery);
 
 		expect(location).toMatchObject(expectedLocationObject);
 	});

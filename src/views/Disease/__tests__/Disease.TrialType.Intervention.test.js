@@ -5,15 +5,31 @@ import { MemoryRouter } from 'react-router';
 import Disease from '../Disease';
 import { useStateValue } from '../../../store/store.js';
 import { MockAnalyticsProvider } from '../../../tracking';
-import { useAppPaths, useCustomQuery } from '../../../hooks';
+import { useAppPaths } from '../../../hooks/routing';
+import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
 
 jest.mock('../../../store/store.js');
-jest.mock('../../../hooks');
+jest.mock('../../../hooks/routing');
+jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 
-const fixturePath = `/v1/clinical-trials`;
+const fixturePath = `/v2/trials`;
 const trastuzumabFile = `trastuzumab-response.json`;
 
 describe('<Disease />', () => {
+	afterEach(() => {
+		jest.clearAllMocks();
+	});
+
+	useCtsApi.mockReturnValue({
+		error: false,
+		loading: false,
+		aborted: false,
+		payload: {
+			total: 0,
+			trials: [],
+		},
+	});
+
 	it('should render <ResultsList /> component', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
@@ -81,6 +97,9 @@ describe('<Disease />', () => {
 				itemsPerPage: 25,
 				title,
 				trialListingPageType,
+				apiClients: {
+					clinicalTrialsSearchClient: true,
+				},
 			},
 		]);
 
@@ -89,10 +108,10 @@ describe('<Disease />', () => {
 				'/:codeOrPurl/:type/:interCodeOrPurl',
 		});
 
-		useCustomQuery.mockReturnValue({
+		useCtsApi.mockReturnValue({
 			error: false,
 			loading: false,
-			status: 200,
+			aborted: false,
 			payload: response,
 		});
 
@@ -130,7 +149,7 @@ describe('<Disease />', () => {
 			);
 		});
 
-		expect(useCustomQuery).toHaveBeenCalled();
+		expect(useCtsApi).toHaveBeenCalled();
 
 		expect(
 			screen.getByText(

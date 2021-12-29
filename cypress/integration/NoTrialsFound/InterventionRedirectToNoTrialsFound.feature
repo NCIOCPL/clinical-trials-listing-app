@@ -12,8 +12,8 @@ Feature: As the system, I want to be able to redirect users to the No Trials Fou
 		And the CIS Banner displays below
 		And the Chat Now button displays below
 		And the page contains meta tags with the following names
-			| name                  | content                                     |
-			| prerender-status-code | 301                                         |
+			| name                  | content                  										|
+			| prerender-status-code | 301																					|
 			| prerender-header      | Location: http://localhost:3000/spiroplatin |
 			| robots                | noindex                                     |
 

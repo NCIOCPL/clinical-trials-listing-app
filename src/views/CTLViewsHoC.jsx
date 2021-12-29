@@ -27,6 +27,7 @@ import {
  *
  * @param {*} WrappedView This should either be a results view, or the notrials view.
  */
+
 const CTLViewsHoC = (WrappedView) => {
 	const WithPreFetch = ({ redirectPath, routeParamMap, ...props }) => {
 		const { NoTrialsPath } = useAppPaths();

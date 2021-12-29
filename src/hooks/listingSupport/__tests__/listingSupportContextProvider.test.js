@@ -25,7 +25,7 @@ describe('ListingSupportContextProvider', () => {
 			return <div>Keys: {cacheKeys}</div>;
 		});
 
-		await act(() => {
+		act(() => {
 			render(
 				<ListingSupportContextProvider>
 					<MemoryRouter initialEntries={['/test']}>

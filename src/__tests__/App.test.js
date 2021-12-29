@@ -2,11 +2,9 @@ import { act, cleanup, render } from '@testing-library/react';
 import axios from 'axios';
 import nock from 'nock';
 import React from 'react';
-import { ClientContextProvider } from 'react-fetching-library';
 import { MemoryRouter, useLocation } from 'react-router';
 
 import { useAppPaths } from '../hooks';
-import { getAxiosClient } from '../services/api/common';
 import { useStateValue } from '../store/store.js';
 import { MockAnalyticsProvider } from '../tracking';
 import Manual from '../views/Manual';
@@ -64,9 +62,7 @@ describe('App component', () => {
 			render(
 				<MockAnalyticsProvider>
 					<MemoryRouter initialEntries={[BasePath()]}>
-						<ClientContextProvider client={getAxiosClient([])}>
-							<ComponentWithLocation RenderComponent={Manual} />
-						</ClientContextProvider>
+						<ComponentWithLocation RenderComponent={Manual} />
 					</MemoryRouter>
 				</MockAnalyticsProvider>
 			);
