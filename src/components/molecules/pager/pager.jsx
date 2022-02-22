@@ -25,10 +25,16 @@ const Pager = ({
 	// or supplied page greater than pageCount
 	const currentPage = current < 1 || current > pageCount ? 1 : current;
 
+	/**
+	 * @param{number} page - A given page number
+	 */
 	const getOffset = (page) => {
 		return page * resultsPerPage - resultsPerPage;
 	};
 
+	/**
+	 * @param{number} pageNumber - The new page number to navigate to.
+	 */
 	const pageNavigationChangeHandler = (pageNumber) => {
 		const offset = getOffset(pageNumber);
 		const pager = { offset, page: pageNumber, pageUnit: resultsPerPage };
@@ -38,66 +44,43 @@ const Pager = ({
 	const buildNavigation = () => {
 		const pagerBar = [];
 
-		for (let index = 0; index < pageCount; index++) {
-			const pageNumber = index + 1;
-			let showLeftNeighbour = false;
-			let showRightNeighbour = false;
-
-			// Show all pages as long as number of pages is less than or equal to 5
+		// Iterate over the page number to either render or elide
+		for (let pageNumber = 1; pageNumber <= pageCount; pageNumber++) {
+			// Show all pages as long as total number of pages is less than or equal to max (e.g:5)
 			const showAll = pageCount <= maxNumberedPagerItems;
-
+			// Determine if this page number is a neighbor that should render
+			// i.e. Is the page number within allowable distance of the active page
+			let isNeighbor = false;
 			if (currentPageNeighbours !== 0) {
-				showLeftNeighbour =
-					Math.max(
-						1,
-						Math.min(currentPage - pageNumber, currentPageNeighbours)
-					) +
-						pageNumber ===
-					currentPage;
-
-				showRightNeighbour =
-					pageNumber -
-						Math.max(
-							1,
-							Math.min(pageNumber - currentPage, currentPageNeighbours)
-						) ===
-					currentPage;
+				const pageDistance = Math.abs(currentPage - pageNumber);
+				isNeighbor = pageDistance <= currentPageNeighbours;
 			}
-
-			// Only show left ellipsis for page number
-			// when current page is greater than or equal to 5 [currentPage >= maxNumberedPagerItems]
-			const showLeftEllipsis =
-				(currentPage >= maxNumberedPagerItems ||
-					currentPage - firstPage - currentPageNeighbours === pageNumber) &&
-				pageNumber === firstPage + 1 &&
-				!showAll;
-
-			// Show right ellipsis
-			// when total number of pages is greater than 5 [pageCount > maxNumberedPagerItems]
-			// and when page number is not a right neighbour [!showRightNeighbour]
-			const showRightEllipsis =
-				pageCount > maxNumberedPagerItems &&
-				pageNumber === pageCount - 1 &&
-				!showRightNeighbour &&
-				currentPage !== pageCount &&
-				!showAll;
-
-			// Always show first and last pages
-			const showFirstAndLastPage =
+			// The active page will always be displayed
+			const isCurrentlyActivePage = currentPage === pageNumber;
+			// The first and last pages will always be displayed
+			const isFirstORLastPage =
 				pageNumber === firstPage || pageNumber === pageCount;
 
-			// Always show currently active page
-			const isCurrentlyActivePage = currentPage === pageNumber;
+			// Is the given pageNumber in the position to be replaced by the ellipses if renderable
+			// (i.e. in the 2nd position or 2nd to last position)
+			const isEllipsisPosition =
+				pageNumber === 2 || pageNumber === pageCount - 1;
+
+			// This page number is visible if any of the conditions are met
+			const isNumberVisible =
+				showAll || isFirstORLastPage || isCurrentlyActivePage || isNeighbor;
+
+			// Determine whether to display left ellipsis instead of page number
+			const isLeftEllipsis =
+				isEllipsisPosition && !isNumberVisible && pageNumber < currentPage;
+
+			//Determine whether to display right ellipsis instead of page number
+			const isRightEllipsis =
+				isEllipsisPosition && !isNumberVisible && pageNumber > currentPage;
 
 			let pagerItem;
 
-			if (
-				showAll ||
-				showFirstAndLastPage ||
-				isCurrentlyActivePage ||
-				showLeftNeighbour ||
-				showRightNeighbour
-			) {
+			if (isNumberVisible) {
 				pagerItem = (
 					<li className="pager__list-item" key={`page-${pageNumber}`}>
 						<button
@@ -110,13 +93,13 @@ const Pager = ({
 						</button>
 					</li>
 				);
-			} else if (showLeftEllipsis) {
+			} else if (isLeftEllipsis) {
 				pagerItem = (
 					<li key="left-ellipsis" className="pager__ellipsis--left">
 						...
 					</li>
 				);
-			} else if (showRightEllipsis) {
+			} else if (isRightEllipsis) {
 				pagerItem = (
 					<li key="right-ellipsis" className="pager__ellipsis--right">
 						...
