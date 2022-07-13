@@ -79,7 +79,7 @@ beforeEach(() => {
 			itemsPerPage: 25,
 			trialListingPageType: 'Disease',
 			listingApiEndpoint: '/api/',
-			ctsApiEndpoint: '/cts/mock-api',
+			ctsApiEndpoint: '/cts/mock-api/v2',
 			rootId: 'NCI-app-root',
 			siteName: 'National Cancer Institute',
 			pageTitle: '{{disease_name}} Clinical Trials',
