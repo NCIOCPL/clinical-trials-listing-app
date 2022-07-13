@@ -6,7 +6,7 @@
  */
 export const getClinicalTrials = async (client, query) => {
 	try {
-		const res = await client.post('/v2/trials', query);
+		const res = await client.post('/trials', query);
 
 		if (res.status === 200) {
 			if (

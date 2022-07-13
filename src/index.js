@@ -35,7 +35,7 @@ const initialize = ({
 	canonicalHost = 'https://www.cancer.gov',
 	cisBannerImgUrlLarge = null,
 	cisBannerImgUrlSmall = null,
-	ctsApiEndpoint = 'https://clinicaltrialsapi.cancer.gov/api',
+	ctsApiEndpoint = 'https://clinicaltrialsapi.cancer.gov/api/v2',
 	browserTitle = '{{disease_label}} Clinical Trials',
 	dynamicListingPatterns = null,
 	detailedViewPagePrettyUrlFormatter = '',
@@ -156,7 +156,7 @@ if (process.env.NODE_ENV !== 'production') {
 	//This is DEV
 	const ctlSettings = {
 		...appParams,
-		ctsApiEndpoint: 'http://localhost:3000/cts/proxy-api',
+		ctsApiEndpoint: 'http://localhost:3000/cts/proxy-api/v2',
 		...integrationTestOverrides,
 	};
 	initialize(ctlSettings);
