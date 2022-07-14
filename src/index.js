@@ -164,7 +164,7 @@ if (process.env.NODE_ENV !== 'production') {
 	// This is for product testing
 	const ctlSettings = {
 		...appParams,
-		ctsApiEndpoint: 'https://clinicaltrialsapi.cancer.gov/api',
+		ctsApiEndpoint: 'https://clinicaltrialsapi.cancer.gov/api/v2',
 		...integrationTestOverrides,
 		...{ basePath: getProductTestBase() },
 	};

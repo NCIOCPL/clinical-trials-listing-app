@@ -39,6 +39,7 @@ const Manual = () => {
 			baseHost,
 			metaDescription,
 			itemsPerPage,
+			noTrialsHtml,
 		},
 	] = useStateValue();
 
@@ -146,7 +147,6 @@ const Manual = () => {
 	const ResultsListWithPage = track({
 		currentPage: Number(pager.page),
 	})(ResultsList);
-
 	return (
 		<div>
 			{renderHelmet()}
@@ -182,6 +182,21 @@ const Manual = () => {
 					} else {
 						return <NoResults />;
 					}
+				}
+				if (
+					!fetchState.loading &&
+					fetchState.error != null &&
+					fetchState.error.message === 'Trial count mismatch from the API'
+				) {
+					return (
+						<>
+							<div
+								className="No_Trials_Found"
+								dangerouslySetInnerHTML={{
+									__html: noTrialsHtml,
+								}}></div>
+						</>
+					);
 				} else {
 					return <ErrorPage />;
 				}
