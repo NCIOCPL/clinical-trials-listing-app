@@ -121,7 +121,37 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 	const fetchState = useCtsApi(requestQuery);
 
 	useEffect(() => {
-		if (!fetchState.loading && fetchState.payload) {
+		//if you try to access a nonexistent page, eg: try to access page 41 of 1-40 pages
+
+		if (
+			!fetchState.loading &&
+			fetchState.error != null &&
+			fetchState.error.message === 'Trial count mismatch from the API'
+		) {
+			const redirectStatusCode = location.state?.redirectStatus
+				? location.state?.redirectStatus
+				: '404';
+
+			const prerenderLocation = location.state?.redirectStatus
+				? baseHost + window.location.pathname
+				: null;
+
+			// So this is handling the redirect to the no trials page.
+			// it is the job of the dynamic route views to property
+			// set the p1,p2,p3 parameters.
+			const redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
+
+			navigate(
+				`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`,
+				{
+					replace: true,
+					state: {
+						redirectStatus: redirectStatusCode,
+						prerenderLocation: prerenderLocation,
+					},
+				}
+			);
+		} else if (!fetchState.loading && fetchState.payload) {
 			if (fetchState.payload.total === 0) {
 				//
 				const redirectStatusCode = location.state?.redirectStatus
@@ -149,6 +179,7 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 				);
 				// return ;
 			}
+
 			// Fire off a page load event. Usually this would be in
 			// some effect when something loaded.
 			if (fetchState.payload.total > 0) {
@@ -230,9 +261,11 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 
 	// It is assumed this function will be called only if there are
 	// trials.
+
 	const renderPagerSection = (placement) => {
 		const page = pn ?? 1;
 		const pagerOffset = getPageOffset(page, itemsPerPage);
+
 		return (
 			<>
 				<div className="paging-section">
@@ -264,6 +297,7 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 	const ResultsListWithPage = track({
 		currentPage: Number(pager.page),
 	})(ResultsList);
+
 	return (
 		<>
 			{renderHelmet()}
