@@ -53,7 +53,7 @@ describe('getLocationInfoFromSites', () => {
 		).toMatchObject(expectedJSX);
 	});
 
-	test('should return location count "4 Locations" when US locations are more than 1', () => {
+	test('should return location count "4 locations" when US locations are more than 1', () => {
 		const sitesMultipleLocations = [
 			{
 				org_country: 'United States',
@@ -94,7 +94,7 @@ describe('getLocationInfoFromSites', () => {
 
 		const expectedJSX = (
 			<>
-				<strong>Location: </strong>4 Locations
+				<strong>Location: </strong>4 locations
 			</>
 		);
 

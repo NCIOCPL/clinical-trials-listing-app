@@ -3,8 +3,15 @@ import { Helmet } from 'react-helmet';
 import { useLocation, useNavigate } from 'react-router';
 import track, { useTracking } from 'react-tracking';
 
-import { NoResults, Pager, ResultsList, Spinner } from '../../components';
-import { useAppPaths, useCustomQuery } from '../../hooks';
+import {
+	NoResults,
+	Pager,
+	ResultsList,
+	ScrollRestoration,
+	Spinner,
+} from '../../components';
+import ErrorPage from '../ErrorBoundary/ErrorPage';
+import { useAppPaths, useCtsApi } from '../../hooks';
 import { getClinicalTrials } from '../../services/api/actions';
 import { useStateValue } from '../../store/store';
 import {
@@ -19,7 +26,6 @@ const Manual = () => {
 	const navigate = useNavigate();
 	const { search } = location;
 	const tracking = useTracking();
-	const [trialsPayload, setTrialsPayload] = useState(null);
 	const [
 		{
 			detailedViewPagePrettyUrlFormatter,
@@ -33,6 +39,7 @@ const Manual = () => {
 			baseHost,
 			metaDescription,
 			itemsPerPage,
+			noTrialsHtml,
 		},
 	] = useStateValue();
 
@@ -43,57 +50,51 @@ const Manual = () => {
 		pageUnit: itemsPerPage,
 	};
 	const [pager, setPager] = useState(pagerDefaults);
+	const requestQuery = getClinicalTrials({
+		from: pager.offset,
+		requestFilters,
+		size: pager.pageUnit,
+	});
 
-	const queryResponse = useCustomQuery(
-		getClinicalTrials({
-			from: pager.offset,
-			requestFilters,
-			size: pager.pageUnit,
-		})
-	);
-	const scrollToTheTop = () => {
-		window.scrollTo(0, 0);
-	};
-
-	// every time page loads the scroll should be positioned at the top
-	useEffect(() => {
-		scrollToTheTop();
-	}, []);
+	// Kick off the CTS Api Fetch
+	const fetchState = useCtsApi(requestQuery);
 
 	useEffect(() => {
-		if (!queryResponse.loading && queryResponse.payload) {
-			setTrialsPayload(queryResponse.payload);
-		}
-	}, [queryResponse.loading, queryResponse.payload]);
-
-	useEffect(() => {
-		// Fire off a page load event. Usually this would be in
-		// some effect when something loaded.
-		if (trialsPayload) {
+		// Fire off a page load event once payload is returned.
+		if (!fetchState.loading && fetchState.payload) {
 			tracking.trackEvent({
 				// These properties are required.
 				type: 'PageLoad',
 				event: 'TrialListingApp:Load:Results',
-				name: canonicalHost.replace('https://', '') + window.location.pathname,
+				name:
+					canonicalHost.replace(/^(http|https):\/\//, '') +
+					window.location.pathname,
 				title: pageTitle,
 				language: language === 'en' ? 'english' : 'spanish',
 				metaTitle: `${pageTitle} - ${siteName}`,
 				// Any additional properties fall into the "page.additionalDetails" bucket
 				// for the event.
-				numberResults: queryResponse.payload?.total,
+				numberResults: fetchState.payload?.total,
 				trialListingPageType: `${trialListingPageType.toLowerCase()} parameters`,
 			});
 		}
-	}, [trialsPayload]);
+	}, [fetchState]);
+
+	useEffect(() => {
+		if (pn !== pager.page.toString()) {
+			setPager({
+				...pager,
+				offset: pn ? getPageOffset(pn, itemsPerPage) : 0,
+				page: typeof pn === 'string' ? pn : 1,
+			});
+		}
+	}, [pn]);
 
 	const onPageNavigationChangeHandler = (pagination) => {
 		setPager(pagination);
 		const { page } = pagination;
 		const qryStr = appendOrUpdateToQueryString(search, 'pn', page);
-		navigate(`${BasePath()}${qryStr}`, { replace: true });
-		//since pagination does not reload the page, putting this
-		//here as well to bring scroll to the top after paging
-		scrollToTheTop();
+		navigate(`${BasePath()}${qryStr}`);
 	};
 
 	const renderHelmet = () => {
@@ -109,36 +110,36 @@ const Manual = () => {
 		);
 	};
 
+	// It is assumed this function will be called only if there are
+	// trials.
 	const renderPagerSection = (placement) => {
 		const page = pn ?? 1;
 		const pagerOffset = getPageOffset(page, itemsPerPage);
 		return (
 			<>
-				{trialsPayload?.trials?.length > 0 && (
-					<div className="paging-section">
-						{placement === 'top' && (
-							<div className="paging-section__page-info">
-								{`
-								Trials ${pagerOffset + 1}-${Math.min(
-									pagerOffset + itemsPerPage,
-									trialsPayload.total
-								)} of
-								${trialsPayload.total}
-							`}
-							</div>
-						)}
-						{trialsPayload?.total > itemsPerPage && (
-							<div className="paging-section__pager">
-								<Pager
-									current={Number(pager.page)}
-									onPageNavigationChange={onPageNavigationChangeHandler}
-									resultsPerPage={pager.pageUnit}
-									totalResults={trialsPayload?.total ?? 0}
-								/>
-							</div>
-						)}
-					</div>
-				)}
+				<div className="paging-section">
+					{placement === 'top' && (
+						<div className="paging-section__page-info">
+							{`
+							Trials ${pagerOffset + 1}-${Math.min(
+								pagerOffset + itemsPerPage,
+								fetchState.payload.total
+							)} of
+							${fetchState.payload.total}
+						`}
+						</div>
+					)}
+					{fetchState.payload.total > itemsPerPage && (
+						<div className="paging-section__pager">
+							<Pager
+								current={Number(pager.page)}
+								onPageNavigationChange={onPageNavigationChangeHandler}
+								resultsPerPage={pager.pageUnit}
+								totalResults={fetchState.payload.total}
+							/>
+						</div>
+					)}
+				</div>
 			</>
 		);
 	};
@@ -146,40 +147,60 @@ const Manual = () => {
 	const ResultsListWithPage = track({
 		currentPage: Number(pager.page),
 	})(ResultsList);
-
 	return (
 		<div>
 			{renderHelmet()}
 			<h1>{pageTitle}</h1>
-
-			{/* ::: Intro Text ::: */}
-			{introText.length > 0 &&
-				!queryResponse.loading &&
-				trialsPayload?.trials?.length > 0 && (
-					<div
-						className="intro-text"
-						dangerouslySetInnerHTML={{ __html: introText }}
-					/>
-				)}
-
-			{/* ::: Top Paging Section ::: */}
-			{renderPagerSection('top')}
+			<div className="page-options-container" />
 			{(() => {
-				if (queryResponse.loading) {
+				if (fetchState.loading) {
 					return <Spinner />;
-				} else if (!queryResponse.loading && trialsPayload?.trials?.length) {
+				} else if (!fetchState.loading && fetchState.payload) {
+					if (fetchState.payload.total > 0) {
+						return (
+							<>
+								{/* ::: Intro Text ::: */}
+								{introText.length > 0 && (
+									<div
+										className="intro-text"
+										dangerouslySetInnerHTML={{ __html: introText }}
+									/>
+								)}
+
+								{/* ::: Top Paging Section ::: */}
+								{renderPagerSection('top')}
+
+								<ScrollRestoration />
+								<ResultsListWithPage
+									results={fetchState.payload.data}
+									resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
+								/>
+								{/* ::: Bottom Paging Section ::: */}
+								{renderPagerSection('bottom')}
+							</>
+						);
+					} else {
+						return <NoResults />;
+					}
+				}
+				if (
+					!fetchState.loading &&
+					fetchState.error != null &&
+					fetchState.error.message === 'Trial count mismatch from the API'
+				) {
 					return (
-						<ResultsListWithPage
-							results={trialsPayload.trials}
-							resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
-						/>
+						<>
+							<div
+								className="No_Trials_Found"
+								dangerouslySetInnerHTML={{
+									__html: noTrialsHtml,
+								}}></div>
+						</>
 					);
 				} else {
-					return <NoResults />;
+					return <ErrorPage />;
 				}
 			})()}
-			{/* ::: Bottom Paging Section ::: */}
-			{renderPagerSection('bottom')}
 		</div>
 	);
 };

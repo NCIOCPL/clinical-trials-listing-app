@@ -1,0 +1,10 @@
+{
+  "conceptId": [
+    "C1234"
+  ],
+  "name": {
+    "label": "Spiroplatin",
+    "normalized": "spiroplatin"
+  },
+  "prettyUrlName": "spiroplatin"
+}

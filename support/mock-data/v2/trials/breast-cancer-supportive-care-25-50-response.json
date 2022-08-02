@@ -1,0 +1,503 @@
+{
+	"total": 140,
+	"data": [
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This randomized clinical trial studies how well the Four Conversations program works in improving quality of care in patients with breast cancer that has spread to other place in the body. Four Conversations is a standardized, online, end of life planning curriculum for patients and their providers. Participating in the Four Conversations program may help patients learn about end of life planning and improve decision making between patients and providers.",
+			"nct_id": "NCT02944344",
+			"brief_title": "Four Conversations Program in Improving Quality of Care in Patients with Metastatic Breast Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "NC",
+					"org_city": "Durham",
+					"org_country": "United States",
+					"org_name": "Duke University Medical Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NC",
+					"org_city": "Raleigh",
+					"org_country": "United States",
+					"org_name": "Duke Raleigh Hospital",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NC",
+					"org_city": "Durham",
+					"org_country": "United States",
+					"org_name": "Durham Regional Hospital",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2016-01320"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies the use of omega-3 fatty acid supplementation in preventing aromatase inhibitor-induced toxicity in patients with stage I-III breast cancer. An omega-3 supplementation may help relieve moderate to severe bone pain and improve joint symptoms caused by aromatase inhibitor-induced arthralgias.",
+			"nct_id": "NCT02831582",
+			"brief_title": "Omega-3 Supplementation in Prevention of Aromatase Inhibitor-Induced Toxicity in Patients with Stage I-III Breast Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "OH",
+					"org_city": "Columbus",
+					"org_country": "United States",
+					"org_name": "Ohio State University Comprehensive Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "OH",
+					"org_city": "Cleveland",
+					"org_country": "United States",
+					"org_name": "Cleveland Clinic Foundation",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "CA",
+					"org_city": "Duarte",
+					"org_country": "United States",
+					"org_name": "City of Hope Comprehensive Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2016-00377"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This clinical trial determines whether a high-intensity interval training exercise program improves brain health as well as cardiovascular (heart) function among women with stage I-III breast cancer undergoing chemotherapy. There is some evidence that there can be cognitive changes after chemotherapy among some patients with breast cancer. The information learned by doing this research study may help determine whether participating in a specific exercise program can improve brain and heart health.",
+			"nct_id": "NCT04724499",
+			"brief_title": "High-Intensity Interval Training for the Improvement of Cognitive Function in Stage I-III Breast Cancer Patients Undergoing Chemotherapy, The CLARITY Trial",
+			"sites": [
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Dana-Farber Cancer Institute",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Brigham and Women's Hospital",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-01688"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This trial studies how well a novel couple-based intervention called intimacy enhancement works in improving sexual function in breast cancer survivors and their partners or spouses. Intimacy enhancement includes education and training in cognitive and behavioral skills to cope with sexual concerns, communication skills training, and sex therapy. Participating in intimacy enhancement program may help improve emotional, relationship, and sexual well-being for breast cancer survivors and their partners or spouses.",
+			"nct_id": "NCT03930797",
+			"brief_title": "Coping Together after Breast Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "PA",
+					"org_city": "Philadelphia",
+					"org_country": "United States",
+					"org_name": "Fox Chase Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NC",
+					"org_city": "Durham",
+					"org_country": "United States",
+					"org_name": "Duke University Medical Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-03147"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This trial studies how physical activity affects genetic biomarkers of aging, symptoms, and outcomes in patients with stage I-III breast cancer undergoing chemotherapy. During chemotherapy, levels of a biomarker of aging in cells, p16, increases which can have an effect on symptoms and outcomes, including function, fatigue, and overall quality of life. Physical activity may lower levels of p16 and improve symptoms and patient outcomes in patients with breast cancer undergoing chemotherapy.",
+			"nct_id": "NCT03761706",
+			"brief_title": "Physical Activity in Affecting Levels of Biomarkers of Aging, Symptoms, and Outcomes in Patients with Stage I-III Breast Cancer Undergoing Chemotherapy",
+			"sites": [
+				{
+					"org_state_or_province": "NC",
+					"org_city": "Chapel Hill",
+					"org_country": "United States",
+					"org_name": "UNC Lineberger Comprehensive Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "NC",
+					"org_city": "Raleigh",
+					"org_country": "United States",
+					"org_name": "Rex Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-03355"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This trial studies how well cognitive-behavioral treatment for insomnia (CBT-I) intervention works in reducing insomnia prior to behavioral weight loss program in patients with stages I-III breast cancer. CBT-I intervention may reduce insomnia and thereby improve weight loss and behavioral outcomes (e.g., physical activity and dietary behaviors) in patients with early stage breast cancer.",
+			"nct_id": "NCT03542604",
+			"brief_title": "CBT-I Intervention in Reducing Insomnia Prior to Behavioral Weight Loss Program in Patients with Stages I-III Breast Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Baltimore",
+					"org_country": "United States",
+					"org_name": "Johns Hopkins University / Sidney Kimmel Cancer Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MD",
+					"org_city": "Baltimore",
+					"org_country": "United States",
+					"org_name": "Johns Hopkins Bayview Medical Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-03186"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This trial studies how lifestyle therapy works in improving diet, physical activity, and treatment compliance in patients with stage I-III breast cancer. Lifestyle therapy includes dietary and physical activity guidelines that may help patients comply with their treatment for breast cancer.",
+			"nct_id": "NCT03314688",
+			"brief_title": "Lifestyle Therapy in Improving Diet, Physical Activity, and Treatment Compliance in Patients with Stage I-III Breast Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "CT",
+					"org_city": "New Haven",
+					"org_country": "United States",
+					"org_name": "Yale University",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Dana-Farber Cancer Institute",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2018-01957"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This randomized phase IV trial studies how well ovarian stimulation and tamoxifen or letrozole work in fertility preservation in patients with breast cancer. Ovarian stimulation uses medicines such as gonadotrophins to stimulate the ovaries to mature more eggs. Tamoxifen may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth and blocks the effects of estrogen. Letrozole may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth and lower the body's estrogen levels. It is now yet know whether giving ovarian stimulation with tamoxifen or letrozole may work better in amount of mature eggs being retrieved.",
+			"nct_id": "NCT03011684",
+			"brief_title": "Ovarian Simulation and Tamoxifen or Letrozole in Fertility Preservation in Patients with Breast Cancer, TALES Study",
+			"sites": [
+				{
+					"org_state_or_province": "CA",
+					"org_city": "San Francisco",
+					"org_country": "United States",
+					"org_name": "UCSF Medical Center-Mount Zion",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "CA",
+					"org_city": "San Francisco",
+					"org_country": "United States",
+					"org_name": "University of California San Francisco",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2017-01809"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This clinical trial studies the effect of a physical activity program called progressive combined training (PCT) in reducing metabolic dysregulation in obese Latina stage I-III breast cancer survivors. PCT consists of supervised and unsupervised resistance and cardiovascular exercise. The PCT exercise program may improve fitness and lessen risk factors related to heart disease, diabetes, and obesity in stage I-III Latina breast cancer survivors. This study may help determine if participating in an exercise program can lower high blood sugar and cholesterol, and the likelihood of being overweight.",
+			"nct_id": "NCT04717050",
+			"brief_title": "Physical Activity Intervention for the Reduction of Metabolic Dysregulation in Obese Latina Stage I-III Breast Cancer Survivors, ROSA Study",
+			"sites": [
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Brigham and Women's Hospital",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Dana-Farber Cancer Institute",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-01663"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This trial studies how well a technology-based, electronic health record (EHR)-integrated physical activity intervention works in improving physical activity in stage I-III breast or stage I-II endometrial cancer survivors. Using a technology-based, EHR-integrated physical activity intervention may help researchers learn how to help people who have been diagnosed with cancer to become more physically active. This is important because other studies have shown that physical activity is associated with factors that may be related to cancer survivorship and quality of life.",
+			"nct_id": "NCT04262180",
+			"brief_title": "Technology-Based, EHR-Integrated Physical Activity Intervention for the Improvement of Physical Activity in Stage I-III Breast or Stage I-II Endometrial Cancer Survivors",
+			"sites": [
+				{
+					"org_state_or_province": "WI",
+					"org_city": "Madison",
+					"org_country": "United States",
+					"org_name": "University of Wisconsin Hospital and Clinics",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "IL",
+					"org_city": "Chicago",
+					"org_country": "United States",
+					"org_name": "Northwestern University",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2020-00400"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This trial studies how well a home-based group stress management program called remotely-delivered Cognitive Behavioral Stress Management (R-CBSM) works in improving response to the influenza (flu) vaccine and quality of life in older patients with stage 0-III breast cancer undergoing treatment. R-CBSM is a type of stress management and relaxation training provided through video-conferencing. Women with breast cancer often experience a lot of stress. Stress can also affect how the immune system works. Because treatment for breast cancer can also affect the immune system, the extra effect of stress along with cancer treatment may make patients more vulnerable to things like the flu virus. This can get worse with age. It is critical for older women getting treatment for breast cancer to get help from the flu vaccine. Stress can reduce the body's positive response to the flu vaccine, even in healthy people. Participating in R-CBSM may reduce stress and improve flu vaccine response and general quality of life. It is not yet known whether having the stress management program before the vaccine has different effects on immune response to the influenza vaccine and quality of life than having it after the vaccine in older breast cancer patients undergoing treatment.",
+			"nct_id": "NCT03955991",
+			"brief_title": "Video-Conferenced Stress Management and Relaxation Training for the Improvement of Influenza Vaccine Response and Quality of Life in Older Patients with Stage 0-III Breast Cancer, the VSMART Trial",
+			"sites": [
+				{
+					"org_state_or_province": "FL",
+					"org_city": "Miami",
+					"org_country": "United States",
+					"org_name": "Jackson Memorial Hospital-Holtz Children's Hospital",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "FL",
+					"org_city": "Miami",
+					"org_country": "United States",
+					"org_name": "University of Miami Miller School of Medicine-Sylvester Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2019-07034"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This randomized pilot clinical trial studies pain coping skills training in preventing and treating pain in patients with stage 0-III breast cancer after breast surgery. Breast surgery may result in persistent pain that interferes with daily activities and lowers quality of life. Pain coping skills training is an approach based on cognitive behavioral therapy that helps patients change their behavior by changing the way they think and feel. Pain coping skills training may reduce persistent pain after breast cancer surgery.",
+			"nct_id": "NCT02439437",
+			"brief_title": "Pain Coping Skills Training in Preventing and Treating Pain in Patients with Stage 0-III Breast Cancer After Breast Surgery",
+			"sites": [
+				{
+					"org_state_or_province": "NC",
+					"org_city": "Durham",
+					"org_country": "United States",
+					"org_name": "Duke University Medical Center",
+					"recruitment_status": "ACTIVE"
+				},
+				{
+					"org_state_or_province": "VA",
+					"org_city": "Fishersville",
+					"org_country": "United States",
+					"org_name": "Augusta Health Center for Cancer and Blood Disorders",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2015-02147"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This clinical trial studies the effect of a behavioral intervention, Beyond Stress, for managing anxiety and depression in Latinx patients with breast cancer. Beyond Stress may help decrease perceived stress, decrease depression, decrease anxiety, improve sleep, increase coping skills for stress, increase peer support, increase awareness and knowledge of resources for the reduction, and manage stress in Latinx patients with breast cancer.",
+			"nct_id": "NCT04834154",
+			"brief_title": "A Behavioral Intervention, Beyond Stress, for the Management of Anxiety and Depression in Latinx Breast Cancer Patients",
+			"sites": [
+				{
+					"org_state_or_province": "CA",
+					"org_city": "Palo Alto",
+					"org_country": "United States",
+					"org_name": "Stanford Cancer Institute Palo Alto",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-06706"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This clinical trial studies the effect of a mobile application (app) in improving sleep in patients with prostate, colon, or breast cancer. Difficulty sleeping, falling and / or staying asleep, is common in people after they have been diagnosed and treated for cancer, and there has been limited access for most people to cognitive behavioral therapy for insomnia because it has required an in-person visit with a trained therapist. This trial aims to see whether a mobile app may help cancer survivors with sleep difficulties to sleep better.",
+			"nct_id": "NCT04827459",
+			"brief_title": "A Mobile App in Improving Sleeping in Patients with Prostate, Colon, or Breast Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "MI",
+					"org_city": "Ann Arbor",
+					"org_country": "United States",
+					"org_name": "University of Michigan Comprehensive Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-05880"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This clinical trial compares the effect of different topical pain treatment options for patients with breast cancer undergoing sentinel lymph node mapping with radiotracer injection. Sentinel lymph node mapping involves a safe radioactive tracer liquid injected in the breast the day of surgery or the day before surgery. The radioactive tracer collects in the sentinel lymph nodes. Surgeons can then find and remove the sentinel lymph nodes with the help of the radioactive tracer. The radioactive tracer liquid may be painful. Information from this study may help determine the best method to control this pain.",
+			"nct_id": "NCT04822597",
+			"brief_title": "Optimizing Topical Pain Control for Breast Cancer Patients Receiving Radiotracer Injection for Sentinel Lymph Node Mapping",
+			"sites": [
+				{
+					"org_state_or_province": "WI",
+					"org_city": "Madison",
+					"org_country": "United States",
+					"org_name": "University of Wisconsin Hospital and Clinics",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-03210"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase I / II trial investigates the feasibility of a biomarker-guided cardioprotection treatment in patients with lymphoma or breast cancer who are receiving anthracyclines. Anthracycline-based chemotherapy is commonly used to treat cancer but can damage the heart. The N-terminal pro-hormone of brain natriuretic peptide (NT-proBNP) is a heart-stress hormone that can be measured using a blood test. Patients who have weakened heart function often have high NT-proBNP levels. They may have high NT-proBNP levels even if they don’t have other symptoms of weakened heart function. This study aims to see whether NT-proBNP can be used as an “early warning sign” of heart damage in patients who are treated with anthracyclines.",
+			"nct_id": "NCT04737265",
+			"brief_title": "Biomarker-Guided Cardioprotection in Patients with Lymphoma or Breast Cancer Treated with Anthracyclines",
+			"sites": [
+				{
+					"org_state_or_province": "PA",
+					"org_city": "Philadelphia",
+					"org_country": "United States",
+					"org_name": "University of Pennsylvania / Abramson Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-01995"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This clinical trial studies the impact of a combined intermittent fasting and exercise intervention on metabolic markers in patients with hormone receptor positive breast cancer that has spread to other places in the body (metastatic) and cannot be removed by surgery (unresectable). This trial is to study whether a combined program of moderate-intensity exercise and prolonged overnight fasting, or waiting at least 13 hours between the last meal of the night and the first meal the next day, is feasible in women with hormone receptor-positive metastatic breast cancer initiating endocrine therapy in combination with palbociclib or alpelisib.",
+			"nct_id": "NCT04708860",
+			"brief_title": "Impact of a Combined Intermittent Fasting and Exercise Intervention on Metabolic Markers in Patients with Metastatic Unresectable Hormone Receptor Positive Breast Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Dana-Farber Cancer Institute",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-01690"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This phase II trial studies the effect of a digital application (app), BNT001, on cognitive-behavioral stress management in patients with stage I-III breast or lung cancer. The app is designed for cancer patients to treat anxiety and depressive symptoms related to their cancer diagnosis. The purpose of this study is to develop and refine procedures for eligibility screening, suicide risk assessment, and delivery of the app prior to the launch of a phase III randomized trial. The impact of the app in managing stress and improving quality of life and mood is a secondary aim.",
+			"nct_id": "NCT04705025",
+			"brief_title": "Cognitive-Behavioral Stress Management Device for the Treatment of Anxiety and Depressive Symptoms in Patients with Stage I-III Breast or Lung Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "CA",
+					"org_city": "Los Angeles",
+					"org_country": "United States",
+					"org_name": "UCLA / Jonsson Comprehensive Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2020-11560"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This clinical trial studies the feasibility of implementing various adaptive training exercise programs to improve cardiorespiratory fitness in patients after receiving breast cancer treatment. Information from this study may help researchers better understand how to implement adaptive training interventions to improve cardiorespiratory fitness in patients after receiving breast cancer treatment.",
+			"nct_id": "NCT04667481",
+			"brief_title": "Adaptive Training Exercise Programs for Improving Cardiorespiratory Fitness after Breast Cancer Treatment, The ACTIVATE Trial",
+			"sites": [
+				{
+					"org_state_or_province": "WA",
+					"org_city": "Seattle",
+					"org_country": "United States",
+					"org_name": "Fred Hutch / University of Washington Cancer Consortium",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-01114"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "Aromatase inhibitors are a powerful medication for reducing the risk of recurrence and increasing survival in postmenopausal breast cancer patients. However, these medications can lead to intolerable side effects, poor medication adherence, and increased stress levels. This project's broad objective is to assess whether an intervention can improve medication adherence and reduce physical symptoms and stress in breast cancer patients prescribed aromatase inhibitors. Participants will be randomly assigned to a values affirmation or reflective journaling condition. Interventions will be writing-based, one essay per month for six months. Physical symptoms and perceived stress will be assessed at baseline, post-intervention (one month after the intervention), and follow-up (six months from the post-intervention assessment and seven months after the end of the intervention). Furthermore, an electronic pill bottle will continuously assess daily compliance so that medication adherence rates during the intervention, post-intervention, and follow-up can be calculated.",
+			"nct_id": "NCT04651452",
+			"brief_title": "A Value Affirmation Intervention in Breast Cancer Patients Taking Aromatase Inhibitors",
+			"sites": [
+				{
+					"org_state_or_province": "PA",
+					"org_city": "Pittsburgh",
+					"org_country": "United States",
+					"org_name": "Carnegie Mellon University",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-00611"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This trial examines a care transition intervention (video telehealth) for patients hospitalized with cancer that has spread to other places in the body (advanced). Patients with cancer often experience challenges, such as symptom management, new medications, and physical weakness, as they transition from hospital to home. Video visits are a way to keep close contact with patients and support them in their care after they return home from a hospitalization. Video visits with patients after hospital discharge may improve the post-discharge care.",
+			"nct_id": "NCT04640714",
+			"brief_title": "Care Transition Intervention for Hospitalized Patients with Advanced Cancer",
+			"sites": [
+				{
+					"org_state_or_province": "MA",
+					"org_city": "Boston",
+					"org_country": "United States",
+					"org_name": "Massachusetts General Hospital Cancer Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2020-13499"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This two-group, randomized control trial (RCT) will test the effects of a home-based, 16 week gait / balance training plus resistance (exercise bands) exercise program as compared to an educational cancer survivorship attention control condition to address persistent taxane-induced peripheral neuropathy in 312 patients treated for invasive breast cancer with taxanes at 1 year or more after completion of therapy. Assessments of lower extremity muscle strength, gait / balance, nerve conduction, neuropathy symptoms, and quality of life (QOL) will be performed. The proposed exercise intervention addresses gait / balance impairments and motor (resistance) components of taxane-induced peripheral neuropathy. The mechanism by which the intervention achieves the proposed outcomes is though 1) increasing endoneurial blood flow to peripheral nerves and mitochondria resulting in reduction in neuropathic symptoms (including pain) and clinical manifestations of peripheral neuropathy, while improving gait / balance in those with persistent neuropathy; 2) The subsequent increase in nutrient supply allows the mitochondria to function more efficiently, and may alleviate the neuropathic manifestations of taxane-induced peripheral neuropathy. 15 This is the first study proposing to test the home-delivery of an exercise intervention specifically aimed at persistent (long-term) taxane-induced neuropathy. If successful, this study will provide the only evidence-based intervention for patients suffering from persistent neuropathy from neurotoxic chemotherapy. Additionally, the home-delivery format makes this intervention easily translated into clinical practice. Specific Aims: In a sample of patients who completed a taxane-containing chemotherapy regimen (> 1 year) for breast cancer and who have a persistent neuropathy (VAS score of > 3) the specific aims of this RCT are: 1. To test the efficacy of a 16-week -delivered program of gait / balance training plus resistance exercise, compared to an educational attention control condition in increasing muscle strength, improving gait / balance and nerve conduction parameters, decreasing the severity of taxane-induced peripheral neuropathy symptoms, and increasing quality of life. 2. To evaluate for differences in muscle strength, gait / balance, sensory (sural) and motor (peroneal) nerve conduction, peripheral neuropathy symptoms, and quality of life (QOL) between patients who receive the exercise program, compared to those in an educational attention control condition controlling for age, BMI, taxane cycles and intervals, neuropathic pain, neuropathy / pain medications, current resistance exercise participation and falls / near falls experienced.",
+			"nct_id": "NCT04621721",
+			"brief_title": "Home-Based Physical Activity Intervention for Taxane-Induced CIPN",
+			"sites": [
+				{
+					"org_state_or_province": "FL",
+					"org_city": "Tampa",
+					"org_country": "United States",
+					"org_name": "University of South Florida",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2020-13983"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This clinical trial studies the feasibility and acceptability of a Comprehensive Oncology Rehabilitation and Exercise (CORE) program among breast cancer patients. This CORE program aims to integrate exercise and rehabilitation services as part of standard of care for all cancer survivors, from the time of cancer diagnosis and beyond.",
+			"nct_id": "NCT04594473",
+			"brief_title": "Comprehensive Oncology Rehabilitation and Exercise (CORE) Program Among Breast Cancer Survivors",
+			"sites": [
+				{
+					"org_state_or_province": "UT",
+					"org_city": "Salt Lake City",
+					"org_country": "United States",
+					"org_name": "Huntsman Cancer Institute / University of Utah",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-02565"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This trial evaluates the helpfulness of a Couple Communication Skills Training intervention in patients with cancer and their spouses / intimate partners. Couples’ ability to communicate openly and effectively with each other about cancer-related concerns can improve their psychological adjustment and the quality of their relationship. This trial aims to see whether couple-based programs are helpful for couples in which one partner has cancer.",
+			"nct_id": "NCT04590885",
+			"brief_title": "Couple Communication Skills Training for the Supportive Care of Patients with Cancer and Their Partners",
+			"sites": [
+				{
+					"org_state_or_province": "NC",
+					"org_city": "Durham",
+					"org_country": "United States",
+					"org_name": "Duke University Medical Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2021-03703"
+		},
+		{
+			"current_trial_status": "Active",
+			"brief_summary": "This clinical trial tests a smartphone application (app) called Patterns of Activity and Cognition during Treatment (PACT) in women receiving chemotherapy for stage I-III breast cancer. Many women who are being treated for breast cancer experience declines in memory and attention that go beyond those of normal aging. This study examines memory and attention, lifestyle behaviors, and quality of life in women receiving chemotherapy for their breast cancer. The PACT app may help doctors understand the effects of physical activity on brain health and ultimately develop future interventions to improve quality of life in women receiving chemotherapy for breast cancer.",
+			"nct_id": "NCT04562987",
+			"brief_title": "A Mobile Health Intervention (Patterns of Activity and Cognition during Treatment) in Patients with Stage I-III Breast Cancer, PACT Study",
+			"sites": [
+				{
+					"org_state_or_province": "NE",
+					"org_city": "Omaha",
+					"org_country": "United States",
+					"org_name": "University of Nebraska Medical Center",
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2020-13799"
+		}
+	]
+}

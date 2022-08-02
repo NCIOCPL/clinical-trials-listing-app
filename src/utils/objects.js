@@ -7,3 +7,12 @@ export const getKeyValueFromObject = (key, obj) => {
 	});
 	return retValue;
 };
+
+/**
+ * Gets a hash for an object.
+ *
+ * @param {object} obj the object to hash
+ */
+export const convertObjectToBase64 = (obj) => {
+	return Buffer.from(JSON.stringify(obj)).toString('base64');
+};
