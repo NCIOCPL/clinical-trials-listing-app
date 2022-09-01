@@ -25,6 +25,7 @@
 !.eslintrc.yaml
 !.cpplint
 !.npmrc
+!.nvmrc
 
 # === Rules for root dir ===
 /core

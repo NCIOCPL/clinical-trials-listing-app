@@ -39,6 +39,10 @@
 		"react-tracking": "^7.3.0",
 		"resolve": "1.15.0"
 	},
+	"engines":{
+		"node": "12.13.0",
+		"npm": "6.13.6"
+	},
 	"scripts": {
 		"start": "node scripts/start.js",
 		"build": "node scripts/build.js",
