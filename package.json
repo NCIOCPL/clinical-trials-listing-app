@@ -39,7 +39,7 @@
 		"react-tracking": "^7.3.0",
 		"resolve": "1.15.0"
 	},
-	"engines":{
+	"engines": {
 		"node": "12.13.0",
 		"npm": "6.13.6"
 	},
