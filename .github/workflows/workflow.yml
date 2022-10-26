@@ -2,5 +2,5 @@ name: Workflow
 on: [push, pull_request]
 jobs:
   react-app-workflow:
-    uses: nciocpl/cgov-react-app-playground/.github/workflows/workflow.yml@workflow/v1
+    uses: nciocpl/cgov-react-app-playground/.github/workflows/workflow.yml@workflow/v2
     secrets: inherit
