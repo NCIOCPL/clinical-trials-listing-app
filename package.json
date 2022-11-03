@@ -46,7 +46,9 @@
 	},
 	"scripts": {
 		"start": "node scripts/start.js",
-		"build": "node scripts/build.js",
+		"build:cgdp-legacy": "node scripts/generate-cgdp-legacy.js",
+		"build:cra": "node scripts/build.js",
+		"build": "npm run build:cra && npm run build:cgdp-legacy",
 		"test": "NODE_ENV=test npm run lint && NODE_ENV=test npm run pa11y-tests && NODE_ENV=test npm run unit-tests && NODE_ENV=test npm run cy:ci",
 		"test:it": "NODE_ENV=test cypress open",
 		"test:pa11y": "./node_modules/.bin/pa11y-ci",
@@ -198,6 +200,7 @@
 		"postcss-flexbugs-fixes": "4.1.0",
 		"postcss-loader": "3.0.0",
 		"postcss-normalize": "8.0.1",
+		"postcss-prefix-selector": "^1.16.0",
 		"postcss-preset-env": "6.7.0",
 		"postcss-safe-parser": "4.0.1",
 		"prettier": "^2.2.1",
