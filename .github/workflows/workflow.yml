@@ -1,5 +1,17 @@
 name: Workflow
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+      - main
+      - develop
+      - 'hotfix/**'
+      - 'release/**'
+      - 'feature/**'
+      - 'prototype/**'
+    tags:
+      - '*'
+  pull_request:
 jobs:
   react-app-workflow:
     uses: nciocpl/cgov-react-app-playground/.github/workflows/workflow.yml@workflow/v2
