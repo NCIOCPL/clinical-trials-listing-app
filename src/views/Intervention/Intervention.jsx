@@ -21,6 +21,7 @@ import {
 	getPageOffset,
 	TokenParser,
 	getAnalyticsParamsForRoute,
+	getNoTrialsRedirectParams,
 	getParamsForRoute,
 } from '../../utils';
 
@@ -128,7 +129,36 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 	const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
 
 	useEffect(() => {
-		if (!fetchState.loading && fetchState.payload) {
+		//if you try to access a nonexistent page, eg: try to access page 41 of 1-40 pages
+		if (
+			!fetchState.loading &&
+			fetchState.error != null &&
+			fetchState.error.message === 'Trial count mismatch from the API'
+		) {
+			const redirectStatusCode = location.state?.redirectStatus
+				? location.state?.redirectStatus
+				: '404';
+
+			const prerenderLocation = location.state?.redirectStatus
+				? baseHost + window.location.pathname
+				: null;
+
+			// So this is handling the redirect to the no trials page.
+			// it is the job of the dynamic route views to property
+			// set the p1,p2,p3 parameters.
+			const redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
+
+			navigate(
+				`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`,
+				{
+					replace: true,
+					state: {
+						redirectStatus: redirectStatusCode,
+						prerenderLocation: prerenderLocation,
+					},
+				}
+			);
+		} else if (!fetchState.loading && fetchState.payload) {
 			if (fetchState.payload.total === 0) {
 				const redirectStatusCode = location.state?.redirectStatus
 					? location.state?.redirectStatus
