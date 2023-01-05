@@ -36,15 +36,16 @@ const NoTrialsFound = ({ routeParamMap, data }) => {
 				return {
 					...ac,
 					[`${contextEntryInfo.textReplacementKey}_label`]: info.name.label,
-					[`${contextEntryInfo.textReplacementKey}_normalized`]: info.name
-						.normalized,
+					[`${contextEntryInfo.textReplacementKey}_normalized`]:
+						info.name.normalized,
 				};
 			}
 
 			return {
 				...ac,
 				[`${contextEntryInfo.textReplacementKey}_label`]: info.label,
-				[`${contextEntryInfo.textReplacementKey}_normalized`]: info.label.toLowerCase(),
+				[`${contextEntryInfo.textReplacementKey}_normalized`]:
+					info.label.toLowerCase(),
 			};
 		}, {});
 
