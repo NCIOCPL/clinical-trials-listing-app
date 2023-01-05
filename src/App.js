@@ -83,9 +83,8 @@ const App = () => {
 
 	switch (trialListingPageType) {
 		case 'Disease': {
-			const hasDiseasePatterns = hasAllDynamicListingPatterns(
-				trialListingPageType
-			);
+			const hasDiseasePatterns =
+				hasAllDynamicListingPatterns(trialListingPageType);
 			const WrappedDisease = CTLViewsHoC(Disease);
 
 			// This is a map of the parameters and types of params that is

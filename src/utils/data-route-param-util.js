@@ -12,14 +12,15 @@ export const getTextReplacementContext = (data, routeParamMap) => {
 				return {
 					...ac,
 					[`${paramInfo.textReplacementKey}_label`]: paramData.name.label,
-					[`${paramInfo.textReplacementKey}_normalized`]: paramData.name
-						.normalized,
+					[`${paramInfo.textReplacementKey}_normalized`]:
+						paramData.name.normalized,
 				};
 			case 'trial-type':
 				return {
 					...ac,
 					[`${paramInfo.textReplacementKey}_label`]: paramData.label,
-					[`${paramInfo.textReplacementKey}_normalized`]: paramData.label.toLowerCase(),
+					[`${paramInfo.textReplacementKey}_normalized`]:
+						paramData.label.toLowerCase(),
 				};
 			default:
 				throw new Error(`Unknown parameter type ${paramInfo.type}`);

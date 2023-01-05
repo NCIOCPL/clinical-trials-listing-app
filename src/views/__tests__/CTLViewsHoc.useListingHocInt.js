@@ -507,9 +507,8 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 		expect(mockComponentConcept.mock.calls).toHaveLength(1);
 		const { data: conceptData } = mockComponentConcept.mock.calls[0][0];
 		expect(mockComponentConceptPlusType.mock.calls).toHaveLength(1);
-		const {
-			data: conceptTypeData,
-		} = mockComponentConceptPlusType.mock.calls[0][0];
+		const { data: conceptTypeData } =
+			mockComponentConceptPlusType.mock.calls[0][0];
 
 		expect(conceptData).toEqual([CONCEPT_NO_PURL]);
 
