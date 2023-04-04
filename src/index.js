@@ -1,4 +1,5 @@
-import 'react-app-polyfill/ie11';
+/* istanbul ignore file */
+
 import 'react-app-polyfill/stable';
 import './polyfills';
 

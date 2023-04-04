@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs');
+const isWsl = require('is-wsl');
 const path = require('path');
 const webpack = require('webpack');
 const resolve = require('resolve');
@@ -236,6 +237,11 @@ module.exports = function (webpackEnv) {
 						},
 					},
 					sourceMap: shouldUseSourceMap,
+					// Use multi-process parallel running to improve the build speed
+					// Default number of concurrent runs: os.cpus().length - 1
+					// Disabled on WSL (Windows Subsystem for Linux) due to an issue with Terser
+					// https://github.com/webpack-contrib/terser-webpack-plugin/issues/21
+					parallel: !isWsl,
 				}),
 				// This is only used in production mode
 				new OptimizeCSSAssetsPlugin({
@@ -369,20 +375,35 @@ module.exports = function (webpackEnv) {
 								customize: require.resolve(
 									'babel-preset-react-app/webpack-overrides'
 								),
-
-								plugins: [
-									[
-										require.resolve('babel-plugin-named-asset-import'),
-										{
-											loaderMap: {
-												svg: {
-													ReactComponent:
-														'@svgr/webpack?-svgo,+titleProp,+ref![path]',
+								// If this is development, then additionally add in the istanbul plugin
+								plugins: isEnvProduction
+									? [
+											[
+												require.resolve('babel-plugin-named-asset-import'),
+												{
+													loaderMap: {
+														svg: {
+															ReactComponent:
+																'@svgr/webpack?-svgo,+titleProp,+ref![path]',
+														},
+													},
 												},
-											},
-										},
-									],
-								],
+											],
+									  ]
+									: [
+											[
+												require.resolve('babel-plugin-named-asset-import'),
+												{
+													loaderMap: {
+														svg: {
+															ReactComponent:
+																'@svgr/webpack?-svgo,+titleProp,+ref![path]',
+														},
+													},
+												},
+											],
+											require.resolve('babel-plugin-istanbul'),
+									  ],
 								// This is a feature of `babel-loader` for webpack (not Babel itself).
 								// It enables caching results in ./node_modules/.cache/babel-loader/
 								// directory for faster rebuilds.

@@ -43,23 +43,29 @@
 	},
 	"scripts": {
 		"start": "node scripts/start.js",
+		"start:silent": "BROWSER=none npm start",
 		"build:cgdp-legacy": "node scripts/generate-cgdp-legacy.js",
 		"build:cra": "node scripts/build.js",
 		"build": "npm run build:cra && npm run build:cgdp-legacy",
-		"test": "NODE_ENV=test npm run lint && NODE_ENV=test npm run pa11y-tests && NODE_ENV=test npm run unit-tests && NODE_ENV=test npm run cy:ci",
+		"test": "npm run unit-tests && npm run cy:ci && npm run merge-coverage",
 		"test:it": "NODE_ENV=test cypress open",
 		"test:pa11y": "./node_modules/.bin/pa11y-ci",
 		"pa11y-tests": "start-server-and-test start http://localhost:3000 pa11y",
 		"pa11y": "pa11y-ci",
-		"cy:ci": "start-server-and-test start http://localhost:3000 integration-tests",
+		"cy:ci": "start-server-and-test start:silent http://localhost:3000 integration-tests",
 		"unit-tests": "jest",
-		"integration-tests": "cypress run",
-		"prereport:combined": "cp coverage/cypress/index.html coverage/from-cypress.html && cp coverage/jest/lcov-report/index.html coverage/from-jest.html",
-		"report:combined": "nyc merge coverage && mv coverage.html .nyc_output/out.html",
-		"postreport:combined": "nyc report --reporter html --report-dir coverage",
+		"integration-tests": "NODE_ENV=test cypress run && nyc report -t coverage/cypress --reporter text --report-dir coverage/cypress",
+		"merge-coverage": "npm run mc:pre && npm run mc:merge && npm run mc:report",
+		"mc:pre": "node scripts/pre-merge-coverage",
+		"mc:merge": "nyc merge coverage/tmp coverage/merged/coverage-final.json",
+		"mc:report": "nyc report --nycrc-path=merged.nyc.config.js",
 		"format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
-		"lint": "eslint src --ext .js,.jsx",
-		"lint:fix": "eslint src --ext .js,.jsx --fix"
+		"lint": "npm run lint:src && npm run lint:cypress",
+		"lint:src": "eslint src --ext .js,.jsx",
+		"lint:cypress": "eslint cypress/e2e --ext .js,.jsx",
+		"lint:fix": "npm run lint:src:fix && npm run lint:cypress:fix",
+		"lint:src:fix": "eslint src --ext .js,.jsx --fix",
+		"lint:cypress:fix": "eslint cypress/e2e --ext .js,.jsx --fix"
 	},
 	"browserslist": {
 		"production": [
@@ -82,7 +88,8 @@
 		"collectCoverage": true,
 		"coverageDirectory": "coverage/jest",
 		"collectCoverageFrom": [
-			"src/**/*.test.{js,jsx,ts,tsx}",
+			"src/**/*.{js,jsx,ts,tsx}",
+			"!src/**/*.test.{js,jsx,ts,tsx}",
 			"!src/**/*.d.ts",
 			"!cypress/**/*.{spec,test}.{js,jsx,ts,tsx}"
 		],
@@ -140,12 +147,6 @@
 		"nonGlobalStepDefinitions": true,
 		"stepDefinitions": "cypress/e2e",
 		"commonPath": "cypress/e2e/common"
-	},
-	"nyc": {
-		"report-dir": "coverage/cypress",
-		"reporter": [
-			"html"
-		]
 	},
 	"devDependencies": {
 		"@babel/core": "7.9.0",
