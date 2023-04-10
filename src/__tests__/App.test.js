@@ -1,4 +1,4 @@
-import { act, cleanup, render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import axios from 'axios';
 import nock from 'nock';
 import React from 'react';
@@ -30,9 +30,7 @@ describe('App component', () => {
 		nock.enableNetConnect();
 	});
 
-	afterEach(cleanup);
-
-	test('BasePath route exists and matches expected route', async () => {
+	it('BasePath route exists and matches expected route', async () => {
 		const basePath = '/';
 		const ctsApiHostname = 'clinicaltrialsapi.cancer.gov';
 		const ctsPort = null;

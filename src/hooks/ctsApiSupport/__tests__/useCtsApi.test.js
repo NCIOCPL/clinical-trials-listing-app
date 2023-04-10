@@ -167,7 +167,7 @@ describe('tests for useCtsApi', () => {
 
 		expect(getClinicalTrials.mock.calls).toHaveLength(1);
 		expect(getClinicalTrials.mock.calls[0][1]).toEqual(expected);
-		expect(isErrorThrown);
+		expect(isErrorThrown).toBeTruthy();
 	});
 
 	it('should handle any other kind of error when calling getClinicalTrials with client and query params', async () => {
@@ -229,6 +229,6 @@ describe('tests for useCtsApi', () => {
 
 		expect(getClinicalTrials.mock.calls).toHaveLength(1);
 		expect(getClinicalTrials.mock.calls[0][1]).toEqual(expected);
-		expect(isErrorThrown);
+		expect(isErrorThrown).toBeTruthy();
 	});
 });

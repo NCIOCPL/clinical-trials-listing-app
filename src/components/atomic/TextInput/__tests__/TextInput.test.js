@@ -1,10 +1,9 @@
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import TextInput from '../TextInput';
 
 let errorMessage;
 let retMockActionObject;
-let wrapper;
 const inputHelpText = 'We are in test mode';
 const labelText = 'Text Input Test';
 const placeholderText = 'This is a test';
@@ -16,31 +15,25 @@ const mockTextInput = {
 };
 
 describe('TextInput component', function () {
-	beforeEach(function () {
-		wrapper = render(<TextInput {...mockTextInput} />);
+	it('TextInput renders with label, placeholder, and help text', function () {
+		render(<TextInput {...mockTextInput} />);
+
+		expect(screen.getByLabelText(labelText)).toBeInTheDocument();
+		expect(screen.getByPlaceholderText(placeholderText)).toBeInTheDocument();
+		expect(screen.getByText(inputHelpText)).toBeInTheDocument();
 	});
 
-	afterEach(cleanup);
+	it('Enter input text and validate entered text', function () {
+		render(<TextInput {...mockTextInput} />);
 
-	test('TextInput renders with label, placeholder, and help text', function () {
-		const { getByLabelText, getByPlaceholderText, getByText } = wrapper;
-		expect(getByLabelText(labelText)).toBeTruthy();
-		expect(getByPlaceholderText(placeholderText)).toBeTruthy();
-		expect(getByText(inputHelpText)).toBeInTheDocument();
-	});
-
-	test('Enter input text and validate entered text', function () {
-		const { getByDisplayValue, getByPlaceholderText } = wrapper;
 		const expectedText = 'term';
-		const textInput = getByPlaceholderText(placeholderText);
+		const textInput = screen.getByPlaceholderText(placeholderText);
 		fireEvent.change(textInput, { target: { value: expectedText } });
-		expect(getByDisplayValue(expectedText).value).toBe(expectedText);
+		expect(screen.getByDisplayValue(expectedText).value).toBe(expectedText);
 	});
 
 	describe('TextInput with error', function () {
-		beforeEach(cleanup);
-
-		test('TextInput event handlers ( action, onBlur )', function () {
+		it('TextInput event handlers ( action, onBlur )', function () {
 			const handleBlurEvent = jest.fn();
 			const mockActionObject = {
 				action: 'mock handler',
@@ -65,7 +58,7 @@ describe('TextInput component', function () {
 				};
 			};
 
-			wrapper = render(
+			render(
 				<TextInput
 					action={actionEventHandler}
 					allowedChars={{
@@ -76,8 +69,7 @@ describe('TextInput component', function () {
 					{...mockTextInput}
 				/>
 			);
-			const { getByPlaceholderText } = wrapper;
-			const textInput = getByPlaceholderText(placeholderText);
+			const textInput = screen.getByPlaceholderText(placeholderText);
 			fireEvent.change(textInput, { ...mockActionEvent.event });
 			fireEvent.blur(textInput);
 
@@ -88,7 +80,7 @@ describe('TextInput component', function () {
 			expect(retMockActionObject.hasCorrectTargetEventValue).toBe(true);
 		});
 
-		test('Trigger error and validate', function () {
+		it('Trigger error and validate', function () {
 			const mockEvent = {
 				event: {
 					target: {
@@ -107,16 +99,13 @@ describe('TextInput component', function () {
 			};
 
 			setErrorMessage(mockEvent);
-			wrapper = render(
-				<TextInput errorMessage={errorMessage} {...mockTextInput} />
-			);
-			const { getByTestId, getByPlaceholderText, getByText } = wrapper;
-			const textInput = getByPlaceholderText(placeholderText);
+			render(<TextInput errorMessage={errorMessage} {...mockTextInput} />);
+			const textInput = screen.getByPlaceholderText(placeholderText);
 			fireEvent.change(textInput, { target: { value: 'error' } });
-			const error = getByTestId('tid-error');
+			const error = screen.getByTestId('tid-error');
 
-			expect(error).toBeTruthy();
-			expect(getByText(errorMessage)).toBeTruthy();
+			expect(error).toBeInTheDocument();
+			expect(screen.getByText(errorMessage)).toBeInTheDocument();
 		});
 	});
 });

@@ -5,7 +5,7 @@ describe('testing getClinicalTrials', () => {
 		jest.clearAllMocks();
 	});
 
-	test('creates a query, when given requestFilters', async () => {
+	it('creates a query, when given requestFilters', async () => {
 		const expectedQuery = {
 			type: 'getClinicalTrials',
 			payload: {
@@ -48,7 +48,7 @@ describe('testing getClinicalTrials', () => {
 		expect(requestQuery).toMatchObject(expectedQuery);
 	});
 
-	test('creates a query without any requestFilters', async () => {
+	it('creates a query without any requestFilters', async () => {
 		const expectedQuery = {
 			type: 'getClinicalTrials',
 			payload: {
