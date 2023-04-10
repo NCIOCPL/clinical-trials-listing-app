@@ -1,10 +1,4 @@
-import {
-	act,
-	cleanup,
-	fireEvent,
-	render,
-	screen,
-} from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -16,11 +10,7 @@ import { MockAnalyticsProvider } from '../../../tracking';
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 jest.mock('../../../store/store.js');
 
-let wrapper;
-
 describe('<Manual />', () => {
-	afterEach(cleanup);
-
 	useCtsApi.mockReturnValue({
 		error: false,
 		loading: false,
@@ -31,7 +21,7 @@ describe('<Manual />', () => {
 		},
 	});
 
-	test('should render <NoResults /> component', async () => {
+	it('should render <NoResults /> component', async () => {
 		const basePath = '/';
 		const noTrialsHtml = 'There are currently no available trials.';
 		const pageTitle = 'Manual Listing Page';
@@ -82,7 +72,7 @@ describe('<Manual />', () => {
 		).toBeInTheDocument();
 	});
 
-	test('should render <Manual /> component', async () => {
+	it('should render <Manual /> component', async () => {
 		const basePath = '/';
 		const noTrialsHtml = 'There are currently no available trials.';
 		const pageTitle = 'Clinical Trials for Adult Brain Tumors';
@@ -6928,7 +6918,7 @@ describe('<Manual />', () => {
 		});
 
 		await act(async () => {
-			wrapper = await render(
+			await render(
 				<MockAnalyticsProvider>
 					<MemoryRouter initialEntries={['/']}>
 						<Manual />
@@ -6937,24 +6927,21 @@ describe('<Manual />', () => {
 			);
 		});
 
-		const { container } = wrapper;
 		expect(useCtsApi).toHaveBeenCalled();
 		expect(screen.getByRole('heading')).toHaveTextContent(
 			'Clinical Trials for Adult Brain Tumors'
 		);
 
 		// Check page result count info exists
-		expect(
-			container.querySelector('.paging-section__page-info')
-		).toHaveTextContent('Trials 1-1 of 4');
+		expect(screen.getByText('Trials 1-1 of 4')).toBeInTheDocument();
 
 		// Check pager exists
 		expect(
 			screen.getAllByRole('navigation', { name: 'pager navigation' })[0]
 		).toBeInTheDocument();
 
-		// Pager item count should be 6. 4 for pager item numbers, 2 for previous and next page item.
-		expect(screen.getAllByRole('list')[0].children.length).toBe(6);
+		// Pager item count should be 10. 4 for pager item numbers, 1 for next page item for both top and bottom pager.
+		expect(screen.getAllByRole('button', { name: /page/ })).toHaveLength(10);
 
 		// Result title and href value should match expected
 		expect(screen.getAllByRole('link')[0]).toHaveTextContent(
@@ -6965,27 +6952,25 @@ describe('<Manual />', () => {
 			'/test/NCI-2013-00786'
 		);
 
-		// Location should be present and match expected
-		expect(container.querySelector('.location-info')).toHaveTextContent(
-			'Location: OHSU Knight Cancer Institute, Portland, Oregon'
-		);
+		// Location text should match expected
+		expect(
+			screen.getByText('OHSU Knight Cancer Institute, Portland, Oregon')
+		).toBeInTheDocument();
 
 		// Navigate to page 2 with next pager item. Confirm currently active page on top and bottom is 2
-		await act(async () => {
-			await fireEvent.click(
-				screen.getAllByRole('button', { name: 'next page' })[0]
-			);
-		});
+		fireEvent.click(screen.getAllByRole('button', { name: 'next page' })[0]);
 
-		expect(
-			screen.getAllByRole('button', { name: 'page 2' })[0]
-		).toHaveAttribute('class', 'pager__button active');
-		expect(
-			screen.getAllByRole('button', { name: 'page 2' })[1]
-		).toHaveAttribute('class', 'pager__button active');
+		expect(screen.getAllByRole('button', { name: 'page 2' })[0]).toHaveClass(
+			'pager__button active',
+			{ exact: true }
+		);
+		expect(screen.getAllByRole('button', { name: 'page 2' })[1]).toHaveClass(
+			'pager__button active',
+			{ exact: true }
+		);
 	});
 
-	test('should render <NoResults /> component when payload is empty', async () => {
+	it('should render <NoResults /> component when payload is empty', async () => {
 		const basePath = '/';
 		const noTrialsHtml = 'There are currently no available trials.';
 		const pageTitle = 'Manual Listing Page';
@@ -7032,7 +7017,7 @@ describe('<Manual />', () => {
 		).toBeInTheDocument();
 	});
 
-	test('should render <ErrorPage /> component when error occurs', async () => {
+	it('should render <ErrorPage /> component when error occurs', async () => {
 		const basePath = '/';
 		const noTrialsHtml = 'There are currently no available trials.';
 		const pageTitle = 'Manual Listing Page';

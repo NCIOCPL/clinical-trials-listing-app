@@ -15,9 +15,9 @@ describe('getListingInformationByName action', () => {
 	it('handles exception when passed incorrect data because we do not use typescript and do not have type safety', () => {
 		expect(() => {
 			getListingInformationByName({ foo: [20] });
-		}).toThrowError('You must specify a name in order to fetch it.');
+		}).toThrow('You must specify a name in order to fetch it.');
 		expect(() => {
 			getListingInformationByName({ name: null });
-		}).toThrowError('You must specify a name in order to fetch it.');
+		}).toThrow('You must specify a name in order to fetch it.');
 	});
 });

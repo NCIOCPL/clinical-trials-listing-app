@@ -15,12 +15,12 @@ describe('getListingInformationById action', () => {
 	it('handles exception when passed incorrect data because we do not use typescript and do not have type safety', () => {
 		expect(() => {
 			getListingInformationById({ id: [2] });
-		}).toThrowError('You must specify ids in order to fetch them.');
+		}).toThrow('You must specify ids in order to fetch them.');
 		expect(() => {
 			getListingInformationById({ ids: 'chicken' });
-		}).toThrowError('You must specify ids in order to fetch them.');
+		}).toThrow('You must specify ids in order to fetch them.');
 		expect(() => {
 			getListingInformationById({ ids: null });
-		}).toThrowError('You must specify ids in order to fetch them.');
+		}).toThrow('You must specify ids in order to fetch them.');
 	});
 });

@@ -1,38 +1,35 @@
+const jestRules = require('eslint-plugin-jest').rules;
+const jestDomRules = require('eslint-plugin-jest-dom').rules;
+const testLibRules = require('eslint-plugin-testing-library').rules;
+
+const disableAllRules = (pluginName, rules) => {
+	return Object.keys(rules).reduce((ac, ruleName) => {
+		return {
+			...ac,
+			[`${pluginName}/${ruleName}`]: 'off',
+		};
+	}, {});
+};
+
+// We need to turn off jest rules for cypress because
+// Cypress uses expect.
+const cypressRuleDisables = {
+	...disableAllRules('jest', jestRules),
+	...disableAllRules('jest-dom', jestDomRules),
+	...disableAllRules('testing-library', testLibRules),
+};
+
 module.exports = {
-	env: {
-		browser: true,
-		es6: true,
-		node: true,
-		jest: true,
-	},
-	extends: [
-		'eslint:recommended',
-		'plugin:react/recommended',
-		'plugin:react-hooks/recommended',
-		'plugin:jsx-a11y/recommended',
-		'plugin:prettier/recommended',
-	],
-	settings: {
-		react: {
-			version: 'detect',
-		},
-	},
-	parser: 'babel-eslint',
-	parserOptions: {
-		ecmaVersion: 2016,
-		sourceType: 'module',
-		ecmaFeatures: {
-			jsx: true,
-		},
-	},
-	// Plugins are configured by the recommended extensions above
-	rules: {
-		'react/display-name': 'off',
-		'react-hooks/exhaustive-deps': 'off',
-	},
+	extends: '@nciocpl/eslint-config-react',
 	globals: {
 		cy: true,
 		Cypress: true,
 		getFixture: true,
 	},
+	overrides: [
+		{
+			files: ['cypress/**/*.js'],
+			rules: cypressRuleDisables,
+		},
+	],
 };

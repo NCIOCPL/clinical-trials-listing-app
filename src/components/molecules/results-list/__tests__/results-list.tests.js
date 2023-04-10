@@ -7,7 +7,7 @@ import { ResultsList } from '../../../index';
 jest.mock('../../../../store/store.js');
 
 describe('<ResultsList />', () => {
-	test('', () => {
+	it('should ensure results list match expected outcome', () => {
 		const resultsList = [
 			{
 				brief_summary: 'Test brief summary 1',
@@ -55,10 +55,11 @@ describe('<ResultsList />', () => {
 		);
 
 		let expectedLocationInfo;
+		const resultLinks = screen.getAllByRole('link');
 
 		expect(screen.getByText('Test brief summary 1')).toBeInTheDocument();
 		expect(screen.getByText('Test brief title 1')).toBeInTheDocument();
-		expect(screen.getByText('Test brief title 1').closest('a')).toHaveAttribute(
+		expect(resultLinks[0]).toHaveAttribute(
 			'href',
 			'http://sample.com/test-url/v?id=NCI-120803'
 		);
@@ -66,7 +67,7 @@ describe('<ResultsList />', () => {
 		expect(screen.getByText(expectedLocationInfo)).toBeInTheDocument();
 		expect(screen.getByText('Test brief summary 2')).toBeInTheDocument();
 		expect(screen.getByText('Test brief title 2')).toBeInTheDocument();
-		expect(screen.getByText('Test brief title 2').closest('a')).toHaveAttribute(
+		expect(resultLinks[1]).toHaveAttribute(
 			'href',
 			'http://sample.com/test-url/v?id=NCI-354788'
 		);
