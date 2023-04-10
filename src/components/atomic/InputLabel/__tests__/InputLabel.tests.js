@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import InputLabel from '../InputLabel';
@@ -6,8 +6,8 @@ import InputLabel from '../InputLabel';
 const htmlFor = 'mock';
 const labelHint = 'Mock hint';
 
-describe('', function () {
-	const wrapper = render(
+describe('<InputLabel />', function () {
+	render(
 		<InputLabel
 			label="Mock Input Label"
 			hasError
@@ -18,14 +18,15 @@ describe('', function () {
 		/>
 	);
 
-	test('InputLabel renders with correct class names and label hint', function () {
-		const { getByTestId, getByText } = wrapper;
-		const label = getByTestId(`tid-${htmlFor}-label`);
+	it('InputLabel renders with correct class names and label hint', function () {
+		const label = screen.getByTestId(`tid-${htmlFor}-label`);
 		expect(label).toBeInTheDocument();
-		expect(getByText(labelHint)).toBeInTheDocument();
-		expect(label).toHaveAttribute(
-			'class',
-			'ncids-label ncids-label--required ncids-label--error'
+		expect(screen.getByText(labelHint)).toBeInTheDocument();
+		expect(label).toHaveClass(
+			'ncids-label ncids-label--required ncids-label--error',
+			{
+				exact: true,
+			}
 		);
 	});
 });

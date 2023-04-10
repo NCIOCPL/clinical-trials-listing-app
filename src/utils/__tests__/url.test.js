@@ -4,7 +4,7 @@ import {
 } from '../url';
 
 describe('getKeyValueFromQueryString()', () => {
-	test('should return value for key from query string if key exists in query string', () => {
+	it('should return value for key from query string if key exists in query string', () => {
 		const queryString =
 			'?dictionary=term&searchText=cancer&language=English&searchType=exact&offset=0&maxResults=0';
 		expect(getKeyValueFromQueryString('searchText', queryString)).toEqual(
@@ -12,15 +12,15 @@ describe('getKeyValueFromQueryString()', () => {
 		);
 	});
 
-	test('should return null value if key does not exist in query string', () => {
+	it('should return null value if key does not exist in query string', () => {
 		const queryString =
 			'?dictionary=term&searchText=cancer&language=English&searchType=exact&offset=0&maxResults=0';
-		expect(getKeyValueFromQueryString('chicken', queryString)).toEqual(null);
+		expect(getKeyValueFromQueryString('chicken', queryString)).toBeNull();
 	});
 });
 
 describe('appendOrUpdateToQueryString()', () => {
-	test('should append new param to query string when param does not exist in query string', () => {
+	it('should append new param to query string when param does not exist in query string', () => {
 		const queryString = '?fruit=orange';
 		const key = 'chicken';
 		const value = 'wings';
@@ -30,7 +30,7 @@ describe('appendOrUpdateToQueryString()', () => {
 		);
 	});
 
-	test('should set query param and value when there is no value in the queryString parameter', () => {
+	it('should set query param and value when there is no value in the queryString parameter', () => {
 		const queryString = '';
 		const key = 'chicken';
 		const value = 'wings';
@@ -40,7 +40,7 @@ describe('appendOrUpdateToQueryString()', () => {
 		);
 	});
 
-	test('should update new param and value in query string', () => {
+	it('should update new param and value in query string', () => {
 		const queryString = '?fruit=orange&chicken=wings';
 		const key = 'chicken';
 		const value = 'thighs';

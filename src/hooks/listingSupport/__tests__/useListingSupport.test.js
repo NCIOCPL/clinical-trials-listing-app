@@ -281,7 +281,7 @@ describe('useListingSupport', () => {
 			});
 			expect(screen.getByText('Payload[0]-ids: C99999')).toBeInTheDocument();
 			expect(screen.getByText('TestId: round2')).toBeInTheDocument();
-			expect(screen.queryByText('TestId: round1')).toBeNull();
+			expect(screen.queryByText('TestId: round1')).not.toBeInTheDocument();
 			expect(getListingInformationById.mock.calls).toHaveLength(2);
 			expect(getListingInformationById.mock.calls[0][1]).toEqual(['C4872']);
 			expect(getListingInformationById.mock.calls[1][1]).toEqual(['C99999']);
@@ -340,7 +340,7 @@ describe('useListingSupport', () => {
 				screen.getByText('Payload[0]-ids: C1111,C2222')
 			).toBeInTheDocument();
 			expect(screen.getByText('TestId: round2')).toBeInTheDocument();
-			expect(screen.queryByText('TestId: round1')).toBeNull();
+			expect(screen.queryByText('TestId: round1')).not.toBeInTheDocument();
 			expect(getListingInformationById.mock.calls).toHaveLength(1);
 			expect(getListingInformationById.mock.calls[0][1]).toEqual(['C1111']);
 		});
@@ -398,7 +398,7 @@ describe('useListingSupport', () => {
 			});
 			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
 			expect(screen.getByText('TestId: round2')).toBeInTheDocument();
-			expect(screen.queryByText('TestId: round1')).toBeNull();
+			expect(screen.queryByText('TestId: round1')).not.toBeInTheDocument();
 			expect(getListingInformationById.mock.calls).toHaveLength(1);
 			expect(getListingInformationById.mock.calls[0][1]).toEqual(['C4872']);
 		});

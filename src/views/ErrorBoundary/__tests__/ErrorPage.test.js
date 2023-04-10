@@ -1,4 +1,4 @@
-import { act, cleanup, render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import React from 'react';
 
 import ErrorPage from '../ErrorPage';
@@ -8,10 +8,7 @@ import { MockAnalyticsProvider } from '../../../tracking';
 jest.mock('../../../store/store');
 
 describe('ErrorPage component', () => {
-	beforeEach(cleanup);
-	afterEach(cleanup);
-
-	test('should show error page title ( English )', async () => {
+	it('should show error page title ( English )', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.example.gov';
 		const language = 'en';

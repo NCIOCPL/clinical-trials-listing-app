@@ -1,10 +1,4 @@
-import {
-	act,
-	cleanup,
-	fireEvent,
-	render,
-	screen,
-} from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
 import PageNotFound from '../PageNotFound';
@@ -14,10 +8,7 @@ import { MockAnalyticsProvider } from '../../../tracking';
 jest.mock('../../../store/store');
 
 describe('PageNotFound component', () => {
-	beforeEach(cleanup);
-	afterEach(cleanup);
-
-	test('Should show error page title ( Disease )', async () => {
+	it('Should show error page title ( Disease )', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
 		const language = 'en';
@@ -48,7 +39,7 @@ describe('PageNotFound component', () => {
 		fireEvent.click(screen.getByText('Search'));
 	});
 
-	test('Should show error page title ( Intervention )', async () => {
+	it('Should show error page title ( Intervention )', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
 		const language = 'es';

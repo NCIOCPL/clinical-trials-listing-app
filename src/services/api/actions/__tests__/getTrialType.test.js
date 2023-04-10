@@ -15,9 +15,9 @@ describe('getTrialType action', () => {
 	it('handles exception when passed incorrect data because we do not use typescript and do not have type safety', () => {
 		expect(() => {
 			getTrialType({ foo: [20] });
-		}).toThrowError('You must specify a trialType in order to fetch it.');
+		}).toThrow('You must specify a trialType in order to fetch it.');
 		expect(() => {
 			getTrialType({ trialType: null });
-		}).toThrowError('You must specify a trialType in order to fetch it.');
+		}).toThrow('You must specify a trialType in order to fetch it.');
 	});
 });
