@@ -163,17 +163,15 @@ describe('<Disease />', () => {
 		).toBeInTheDocument();
 
 		// Navigate to page 2 with next pager item. Confirm currently active page on top and bottom is 2
-		await act(async () => {
-			await fireEvent.click(
-				screen.getAllByRole('button', { name: 'next page' })[0]
-			);
-		});
+		fireEvent.click(screen.getAllByRole('button', { name: 'next page' })[0]);
 
-		expect(
-			screen.getAllByRole('button', { name: 'page 2' })[0]
-		).toHaveAttribute('class', 'pager__button active');
-		expect(
-			screen.getAllByRole('button', { name: 'page 2' })[1]
-		).toHaveAttribute('class', 'pager__button active');
+		expect(screen.getAllByRole('button', { name: 'page 2' })[0]).toHaveClass(
+			'pager__button active',
+			{ exact: true }
+		);
+		expect(screen.getAllByRole('button', { name: 'page 2' })[1]).toHaveClass(
+			'pager__button active',
+			{ exact: true }
+		);
 	});
 });

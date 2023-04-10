@@ -32,7 +32,7 @@ describe('<Pager />', () => {
 		// There should be 5 visible pager navigation items.
 		// 4 for page numbers (first, two right neighbours for default first page, and last page,
 		// and 1 for next
-		expect(screen.getAllByRole('button').length).toBe(5);
+		expect(screen.getAllByRole('button')).toHaveLength(5);
 	});
 
 	it('should display page 1 as currently active page when current page supplied is 0', () => {
@@ -46,9 +46,9 @@ describe('<Pager />', () => {
 		);
 
 		// Page 1 should be currently active page
-		expect(screen.getByRole('button', { name: 'page 1' })).toHaveAttribute(
-			'class',
-			'pager__button active'
+		expect(screen.getByRole('button', { name: 'page 1' })).toHaveClass(
+			'pager__button active',
+			{ exact: true }
 		);
 	});
 
@@ -63,20 +63,22 @@ describe('<Pager />', () => {
 		);
 
 		// Page 1 should be currently active page
-		expect(screen.getByRole('button', { name: 'page 1' })).toHaveAttribute(
-			'class',
-			'pager__button active'
+		expect(screen.getByRole('button', { name: 'page 1' })).toHaveClass(
+			'pager__button active',
+			{ exact: true }
 		);
 	});
 
 	it('should display expected pager items and check currently active page on load and on next button click', () => {
-		const { container, rerender } = render(<Pager {...defaultProps} />);
+		const { rerender } = render(<Pager {...defaultProps} />);
 
 		// There should be 6 visible pager navigation items. 5 for page numbers, and 1 for next
-		expect(screen.getAllByRole('button').length).toBe(6);
+		expect(screen.getAllByRole('button')).toHaveLength(6);
 
 		// There should be 5 page number items reflecting total page count of 5
-		expect(container.querySelectorAll('li.pager__list-item').length).toBe(5);
+		expect(screen.getAllByRole('button', { name: /page\s\d+/ })).toHaveLength(
+			5
+		);
 
 		// Next pager item should be present
 		expect(screen.getByRole('button', { name: 'next page' })).toHaveTextContent(
@@ -87,9 +89,9 @@ describe('<Pager />', () => {
 		expect(screen.getByRole('button', { name: 'page 1' })).toHaveTextContent(
 			'1'
 		);
-		expect(screen.getByRole('button', { name: 'page 1' })).toHaveAttribute(
-			'class',
-			'pager__button active'
+		expect(screen.getByRole('button', { name: 'page 1' })).toHaveClass(
+			'pager__button active',
+			{ exact: true }
 		);
 
 		// Previous pager item button should be hidden and have expected label
@@ -102,14 +104,14 @@ describe('<Pager />', () => {
 		rerender(<Pager {...defaultProps} current={pageNumber} />);
 
 		// Currently active page now should be page 2
-		expect(screen.getByRole('button', { name: 'page 2' })).toHaveAttribute(
-			'class',
-			'pager__button active'
+		expect(screen.getByRole('button', { name: 'page 2' })).toHaveClass(
+			'pager__button active',
+			{ exact: true }
 		);
 	});
 
 	it('should check for default active page passed, ellipsis display and currently active page on previous button click', () => {
-		const { container, rerender } = render(
+		const { rerender } = render(
 			<Pager
 				{...defaultProps}
 				current={5}
@@ -119,18 +121,19 @@ describe('<Pager />', () => {
 		);
 
 		// Check currently active page is 5 as provided to props
-		expect(screen.getByRole('button', { name: 'page 5' })).toHaveAttribute(
-			'class',
-			'pager__button active'
+		expect(screen.getByRole('button', { name: 'page 5' })).toHaveClass(
+			'pager__button active',
+			{ exact: true }
 		);
 
 		// Check for left and right ellipsis
-		expect(
-			container.querySelector('li.pager__ellipsis--left')
-		).toHaveTextContent('...');
-		expect(
-			container.querySelector('li.pager__ellipsis--right')
-		).toHaveTextContent('...');
+		// Order matters here. Left ellipsis shows up before the right.
+		const ellipsisClasses = ['pager__ellipsis--left', 'pager__ellipsis--right'];
+		const ellipsisItems = screen.getAllByText('...');
+
+		for (let i = 0; i < ellipsisItems.length; i++) {
+			expect(ellipsisItems[i]).toHaveClass(ellipsisClasses[i]);
+		}
 
 		// Click on last page number and confirm next button is hidden
 		fireEvent.click(screen.getByRole('button', { name: 'page 11' }));
@@ -142,9 +145,9 @@ describe('<Pager />', () => {
 				totalResults={102}
 			/>
 		);
-		expect(screen.getByRole('button', { name: 'page 11' })).toHaveAttribute(
-			'class',
-			'pager__button active'
+		expect(screen.getByRole('button', { name: 'page 11' })).toHaveClass(
+			'pager__button active',
+			{ exact: true }
 		);
 
 		// Click on previous and confirm currently active page is 10
@@ -157,14 +160,14 @@ describe('<Pager />', () => {
 				totalResults={102}
 			/>
 		);
-		expect(screen.getByRole('button', { name: 'page 10' })).toHaveAttribute(
-			'class',
-			'pager__button active'
+		expect(screen.getByRole('button', { name: 'page 10' })).toHaveClass(
+			'pager__button active',
+			{ exact: true }
 		);
 	});
 
 	it('should display correct page neighbours to the left and right of the current page', () => {
-		const { container, rerender } = render(
+		const { rerender } = render(
 			<Pager
 				{...defaultProps}
 				currentPageNeighbours={1}
@@ -174,9 +177,9 @@ describe('<Pager />', () => {
 		);
 
 		// Page 1 should be currently active page
-		expect(screen.getByRole('button', { name: 'page 1' })).toHaveAttribute(
-			'class',
-			'pager__button active'
+		expect(screen.getByRole('button', { name: 'page 1' })).toHaveClass(
+			'pager__button active',
+			{ exact: true }
 		);
 
 		// Page 2 is right neighbour of 1 and should be displayed
@@ -211,9 +214,9 @@ describe('<Pager />', () => {
 		);
 
 		// Page 2 is currently active page
-		expect(screen.getByRole('button', { name: 'page 2' })).toHaveAttribute(
-			'class',
-			'pager__button active'
+		expect(screen.getByRole('button', { name: 'page 2' })).toHaveClass(
+			'pager__button active',
+			{ exact: true }
 		);
 
 		// Page 3 is right neighbour of 2 and should be displayed
@@ -227,9 +230,7 @@ describe('<Pager />', () => {
 		).not.toBeInTheDocument();
 
 		// Right ellipsis is displayed
-		expect(
-			container.querySelector('li.pager__ellipsis--right')
-		).toHaveTextContent('...');
+		expect(screen.getByText('...')).toHaveClass('pager__ellipsis--right');
 
 		// Last page, page 11 is displayed
 		expect(screen.getByRole('button', { name: 'page 11' })).toHaveTextContent(
@@ -258,9 +259,9 @@ describe('<Pager />', () => {
 		);
 
 		// Page 3 is currently active page
-		expect(screen.getByRole('button', { name: 'page 3' })).toHaveAttribute(
-			'class',
-			'pager__button active'
+		expect(screen.getByRole('button', { name: 'page 3' })).toHaveClass(
+			'pager__button active',
+			{ exact: true }
 		);
 
 		// Page 2 is left neighbour of 3 and should be displayed
@@ -279,14 +280,10 @@ describe('<Pager />', () => {
 		).not.toBeInTheDocument();
 
 		// Left ellipsis is not displayed
-		expect(
-			container.querySelector('li.pager__ellipsis--left')
-		).not.toBeInTheDocument();
+		expect(screen.getByText('...')).not.toHaveClass('pager__ellipsis--left');
 
 		// Right ellipsis is displayed
-		expect(
-			container.querySelector('li.pager__ellipsis--right')
-		).toHaveTextContent('...');
+		expect(screen.getByText('...')).toHaveClass('pager__ellipsis--right');
 
 		// Navigate to page 4 with the next page button
 		fireEvent.click(screen.getByRole('button', { name: 'next page' }));
@@ -310,9 +307,9 @@ describe('<Pager />', () => {
 		);
 
 		// Page 4 is currently active page
-		expect(screen.getByRole('button', { name: 'page 4' })).toHaveAttribute(
-			'class',
-			'pager__button active'
+		expect(screen.getByRole('button', { name: 'page 4' })).toHaveClass(
+			'pager__button active',
+			{ exact: true }
 		);
 
 		// Page 3 is left neighbour of 4 and should be displayed
@@ -330,15 +327,14 @@ describe('<Pager />', () => {
 			screen.queryByRole('button', { name: 'page 6' })
 		).not.toBeInTheDocument();
 
-		// Left ellipsis is displayed
-		expect(
-			container.querySelector('li.pager__ellipsis--left')
-		).toHaveTextContent('...');
+		// Order matters here. Left ellipsis shows up before the right.
+		const ellipsisClasses = ['pager__ellipsis--left', 'pager__ellipsis--right'];
+		let ellipsisItems = screen.getAllByText('...');
 
-		// Right ellipsis is displayed
-		expect(
-			container.querySelector('li.pager__ellipsis--right')
-		).toHaveTextContent('...');
+		// Left and right ellipsis are displayed
+		for (let i = 0; i < ellipsisItems.length; i++) {
+			expect(ellipsisItems[i]).toHaveClass(ellipsisClasses[i]);
+		}
 
 		// Last page, page 11 is displayed
 		expect(screen.getByRole('button', { name: 'page 11' })).toHaveTextContent(
@@ -365,9 +361,9 @@ describe('<Pager />', () => {
 		);
 
 		// Page 5 is currently active page
-		expect(screen.getByRole('button', { name: 'page 5' })).toHaveAttribute(
-			'class',
-			'pager__button active'
+		expect(screen.getByRole('button', { name: 'page 5' })).toHaveClass(
+			'pager__button active',
+			{ exact: true }
 		);
 
 		// Page 4 is not displayed as left neighbour
@@ -380,15 +376,12 @@ describe('<Pager />', () => {
 			screen.queryByRole('button', { name: 'page 6' })
 		).not.toBeInTheDocument();
 
-		// Left ellipsis is displayed
-		expect(
-			container.querySelector('li.pager__ellipsis--left')
-		).toHaveTextContent('...');
+		ellipsisItems = screen.getAllByText('...');
 
-		// Right ellipsis is displayed
-		expect(
-			container.querySelector('li.pager__ellipsis--right')
-		).toHaveTextContent('...');
+		// Left and right ellipsis are displayed
+		for (let i = 0; i < ellipsisItems.length; i++) {
+			expect(ellipsisItems[i]).toHaveClass(ellipsisClasses[i]);
+		}
 
 		// Last page, page 11 is displayed
 		expect(screen.getByRole('button', { name: 'page 11' })).toHaveTextContent(

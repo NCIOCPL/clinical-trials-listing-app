@@ -399,7 +399,7 @@ describe('CTLViewsHoc Error Conditions', () => {
 					</MemoryRouter>
 				</MockAnalyticsProvider>
 			);
-		}).toThrowError(
+		}).toThrow(
 			'You must supply a routeParamMap to your CTLViewsHoC wrapped component.'
 		);
 		console.error = originalError;
@@ -449,7 +449,7 @@ describe('CTLViewsHoc Error Conditions', () => {
 					</MemoryRouter>
 				</MockAnalyticsProvider>
 			);
-		}).toThrowError('INVALID route param type is unknown.');
+		}).toThrow('INVALID route param type is unknown.');
 		console.error = originalError;
 	});
 });

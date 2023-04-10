@@ -74,7 +74,7 @@ describe('data-route-param-util', () => {
 						},
 					]
 				);
-			}).toThrowError('Unknown parameter type foo-bar');
+			}).toThrow('Unknown parameter type foo-bar');
 		});
 	});
 
@@ -98,7 +98,7 @@ describe('data-route-param-util', () => {
 						},
 					]
 				);
-			}).toThrowError('Unknown parameter type foo-bar');
+			}).toThrow('Unknown parameter type foo-bar');
 		});
 	});
 
@@ -126,7 +126,7 @@ describe('data-route-param-util', () => {
 						},
 					]
 				);
-			}).toThrowError('Unknown parameter type foo-bar');
+			}).toThrow('Unknown parameter type foo-bar');
 		});
 	});
 
@@ -154,7 +154,7 @@ describe('data-route-param-util', () => {
 						},
 					]
 				);
-			}).toThrowError('Unknown parameter type foo-bar');
+			}).toThrow('Unknown parameter type foo-bar');
 		});
 	});
 });

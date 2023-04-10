@@ -4,7 +4,7 @@ import React from 'react';
 import { InvalidParameters } from '../index';
 
 describe('<InvalidParameters />', () => {
-	test('should render expected text', () => {
+	it('should render expected text', () => {
 		const param = 'trialListingPageType';
 
 		render(<InvalidParameters paramName={param} />);

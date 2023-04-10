@@ -17,7 +17,7 @@ describe('<Intervention />', () => {
 		jest.clearAllMocks();
 	});
 
-	test('should render <ErrorPage> Component', async () => {
+	it('should render <ErrorPage> Component', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
 		const data = [

@@ -74,7 +74,7 @@ const Pager = ({
 			const isLeftEllipsis =
 				isEllipsisPosition && !isNumberVisible && pageNumber < currentPage;
 
-			//Determine whether to display right ellipsis instead of page number
+			// Determine whether to display right ellipsis instead of page number
 			const isRightEllipsis =
 				isEllipsisPosition && !isNumberVisible && pageNumber > currentPage;
 

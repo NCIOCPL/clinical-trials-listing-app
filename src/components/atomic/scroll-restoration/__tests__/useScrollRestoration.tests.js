@@ -71,8 +71,8 @@ describe('useScrollRestoration()', () => {
 			</MemoryRouter>
 		);
 
-		await act(async () => {
-			await fireEvent.click(screen.getByText('Sample Link Test'));
+		await act(() => {
+			fireEvent.click(screen.getByText('Sample Link Test'));
 			history.back();
 		});
 

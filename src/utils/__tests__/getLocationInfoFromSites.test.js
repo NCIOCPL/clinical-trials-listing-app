@@ -6,7 +6,7 @@ describe('getLocationInfoFromSites', () => {
 	const currentTrialStatus = 'Active';
 	const nctId = 'NCT823704';
 
-	test('should return location info "Wingstop, Gaithersburg, Maryland" when only 1 US location exists', () => {
+	it('should return location info "Wingstop, Gaithersburg, Maryland" when only 1 US location exists', () => {
 		const sitesOneLocation = [
 			{
 				org_country: 'United States',
@@ -27,7 +27,7 @@ describe('getLocationInfoFromSites', () => {
 		).toMatchObject(expectedJSX);
 	});
 
-	test('should return location info "Wingstop, Gaithersburg" when only 1 US location exists and no matching state code', () => {
+	it('should return location info "Wingstop, Gaithersburg" when only 1 US location exists and no matching state code', () => {
 		const sitesOneLocationNoMatchingStateCode = [
 			{
 				org_country: 'United States',
@@ -53,7 +53,7 @@ describe('getLocationInfoFromSites', () => {
 		).toMatchObject(expectedJSX);
 	});
 
-	test('should return location count "4 locations" when US locations are more than 1', () => {
+	it('should return location count "4 locations" when US locations are more than 1', () => {
 		const sitesMultipleLocations = [
 			{
 				org_country: 'United States',
@@ -107,7 +107,7 @@ describe('getLocationInfoFromSites', () => {
 		).toMatchObject(expectedJSX);
 	});
 
-	test('should return expected jsx when no US locations for Active trial status', () => {
+	it('should return expected jsx when no US locations for Active trial status', () => {
 		const sitesNoUSLocation = [
 			{
 				org_country: 'United Kingdom',
@@ -146,7 +146,7 @@ describe('getLocationInfoFromSites', () => {
 		).toMatchObject(expectedJSX);
 	});
 
-	test('should return expected string when no US locations for [approved | in review | not yet active] trials status', () => {
+	it('should return expected string when no US locations for [approved | in review | not yet active] trials status', () => {
 		const sitesNoUSLocation = [
 			{
 				org_country: 'United Kingdom',
@@ -180,7 +180,7 @@ describe('getLocationInfoFromSites', () => {
 		).toMatchObject(expectedJSX);
 	});
 
-	test('should return expected string when recruitment status is "Completed, Closed_to_accrual, Administratively_complete, Closed_to_accrual_and_intervention, or Withdrawn"', () => {
+	it('should return expected string when recruitment status is "Completed, Closed_to_accrual, Administratively_complete, Closed_to_accrual_and_intervention, or Withdrawn"', () => {
 		const siteLinkCT = `https://www.clinicaltrials.gov/show/${nctId}`;
 		const sitesRecruitmentStatus = [
 			{

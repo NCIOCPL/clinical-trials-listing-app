@@ -15,7 +15,7 @@ useStateValue.mockReturnValue([
 ]);
 
 describe('reducers', () => {
-	test(`${LOAD_GLOBAL}`, () => {
+	it(`${LOAD_GLOBAL}`, () => {
 		const initialState = {
 			appId: 'mockAppId',
 			basePath: '/',
@@ -35,7 +35,7 @@ describe('reducers', () => {
 		});
 	});
 
-	test(`${LOAD_GLOBALS}`, () => {
+	it(`${LOAD_GLOBALS}`, () => {
 		const initialState = {
 			appId: 'mockAppId',
 			basePath: '/',
@@ -55,7 +55,7 @@ describe('reducers', () => {
 		});
 	});
 
-	test('undefined action type', () => {
+	it('undefined action type', () => {
 		const initialState = {
 			appId: 'mockAppId',
 			basePath: '/',

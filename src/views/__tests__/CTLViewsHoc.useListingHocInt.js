@@ -255,10 +255,12 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 	 */
 	it('handles navigation from ID to Name with only 1 pretty url', async () => {
 		getListingInformationById.mockImplementation((client, ids) => {
-			if (ids.includes('C1111') || ids.includes('C2222')) {
-				return CONCEPT_MULTI_ID;
-			} else if (ids.includes('C99999')) {
-				return CONCEPT_NO_PURL;
+			if (
+				ids.includes('C1111') ||
+				ids.includes('C2222') ||
+				ids.includes('C99999')
+			) {
+				return ids.includes('C99999') ? CONCEPT_NO_PURL : CONCEPT_MULTI_ID;
 			}
 		});
 

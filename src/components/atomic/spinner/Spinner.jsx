@@ -3,7 +3,7 @@ import React from 'react';
 import './Spinner.scss';
 
 const Spinner = () => (
-	<div className="nci-spinner">
+	<div className="nci-spinner" data-testid="ncids-spinner">
 		<div className="spinkit spinner">
 			<div className="dot1"></div>
 			<div className="dot2"></div>
