@@ -139,8 +139,7 @@ describe('<Manual />', () => {
 						associated_studies: null,
 						outcome_measures: [
 							{
-								name:
-									'Rates of two year progression free survival (2YPFS) for specific tumor types',
+								name: 'Rates of two year progression free survival (2YPFS) for specific tumor types',
 								description:
 									'Separate estimates of 2YPFS and overall survival (and associated confidence intervals) will be made for subjects with anaplastic oligodendroglioma and for subjects with oligoastrocytoma. Confidence intervals will also be used to describe differences between this subject series and our earlier subject series.',
 								timeframe: '2 years',
@@ -153,8 +152,7 @@ describe('<Manual />', () => {
 								type_code: 'PRIMARY',
 							},
 							{
-								name:
-									'MTD of melphalan, defined as one dose level below the dose that produces grade 4 toxicity in 33% of patients, graded in accordance with National Cancer Institute Common Toxicity Criteria (NCI CTC) (version 3.0) (Phase I)',
+								name: 'MTD of melphalan, defined as one dose level below the dose that produces grade 4 toxicity in 33% of patients, graded in accordance with National Cancer Institute Common Toxicity Criteria (NCI CTC) (version 3.0) (Phase I)',
 								description: null,
 								timeframe: '4 weeks',
 								type_code: 'PRIMARY',
@@ -179,8 +177,7 @@ describe('<Manual />', () => {
 								type_code: 'PRIMARY',
 							},
 							{
-								name:
-									'Incidence of severe neutropenia (specifically febrile neutropenia or sepsis) in accordance with NCI CTC (version 3.0)',
+								name: 'Incidence of severe neutropenia (specifically febrile neutropenia or sepsis) in accordance with NCI CTC (version 3.0)',
 								description:
 									'Incidence rates of grade III/IV events and associated 95% confidence intervals will be estimated.',
 								timeframe: '1 year',
@@ -1997,32 +1994,28 @@ describe('<Manual />', () => {
 								type_code: 'SECONDARY',
 							},
 							{
-								name:
-									'HRQoL measured using EuroQol health questionnaire-5-Dimension (EQ-5D)',
+								name: 'HRQoL measured using EuroQol health questionnaire-5-Dimension (EQ-5D)',
 								description:
 									'Descriptive statistics will be primarily used to summarize the scored scales. The 5-item index score from EQ-5D is transformed into a utility score between 0, “Worst health state,” and 1, “Best health state.” The index score or the cost-utility equation can be used in the quality adjusted survival analysis depending on the health state(s) of interest.',
 								timeframe: 'Up to 3 years',
 								type_code: 'SECONDARY',
 							},
 							{
-								name:
-									'Response rate (RR) (defined as complete response and partial response)',
+								name: 'Response rate (RR) (defined as complete response and partial response)',
 								description:
 									'RR will be measured according to the modified Response Evaluation Criteria in Solid Tumors (RECIST) 1.1.',
 								timeframe: 'Up to 3 years',
 								type_code: 'SECONDARY',
 							},
 							{
-								name:
-									'Health-related quality of life (HRQoL) measured using Functional Assessment of Cancer Therapy-General',
+								name: 'Health-related quality of life (HRQoL) measured using Functional Assessment of Cancer Therapy-General',
 								description:
 									'Descriptive statistics will be primarily used to summarize the scored scales.',
 								timeframe: 'Up to 3 years',
 								type_code: 'SECONDARY',
 							},
 							{
-								name:
-									'Maximum tolerated dose (MTD) of stereotactic radiosurgery (SRS), determined according to incidence of dose limiting toxicity as graded by National Cancer Institute (NCI) Common Toxicity Criteria for Adverse Events (CTCAE) version 4.0',
+								name: 'Maximum tolerated dose (MTD) of stereotactic radiosurgery (SRS), determined according to incidence of dose limiting toxicity as graded by National Cancer Institute (NCI) Common Toxicity Criteria for Adverse Events (CTCAE) version 4.0',
 								description:
 									'Treatment response will be measured to either reach the maximum tolerated dose or a dose of 30, 27, 24 or 21 Gy total for lesions measuring <=1cm, >1.0 - 2cm, >2.0 – 3.ocm, > 3.0 – 4.0 cm respectively, (whichever comes first) by escalating the dose of radiation beyond palliative doses toward tumoricidal doses.',
 								timeframe: 'Up to 90 days',
@@ -3083,22 +3076,19 @@ describe('<Manual />', () => {
 								type_code: 'SECONDARY',
 							},
 							{
-								name:
-									'Phase 1b: Evaluation of the safety and tolerability of AQ4N in combination with radiation therapy and temozolomide (TEMODAR®)for the treatment of glioblastoma multiforme (GBM). Dose levels for the Phase 2a will be selected.',
+								name: 'Phase 1b: Evaluation of the safety and tolerability of AQ4N in combination with radiation therapy and temozolomide (TEMODAR®)for the treatment of glioblastoma multiforme (GBM). Dose levels for the Phase 2a will be selected.',
 								description: null,
 								timeframe: null,
 								type_code: 'PRIMARY',
 							},
 							{
-								name:
-									'Phase 2a: Rate of progression-free survival at 6 months.',
+								name: 'Phase 2a: Rate of progression-free survival at 6 months.',
 								description: null,
 								timeframe: null,
 								type_code: 'PRIMARY',
 							},
 							{
-								name:
-									'Phase 2a: Rate of progression-free survival at 12 months',
+								name: 'Phase 2a: Rate of progression-free survival at 12 months',
 								description: null,
 								timeframe: null,
 								type_code: 'SECONDARY',
@@ -5037,15 +5027,13 @@ describe('<Manual />', () => {
 								type_code: 'PRIMARY',
 							},
 							{
-								name:
-									'Incidence of toxicity according to the National Cancer Institute Common Terminology Criteria for Adverse Events version 4.0 (Phase I)',
+								name: 'Incidence of toxicity according to the National Cancer Institute Common Terminology Criteria for Adverse Events version 4.0 (Phase I)',
 								description: null,
 								timeframe: 'Up to 7 days after the last infusion',
 								type_code: 'PRIMARY',
 							},
 							{
-								name:
-									'Changes in cytotoxic T-lymphocyte as measured by IFN-gamma EliSpots directed at autologous tumor or GBM cell lines',
+								name: 'Changes in cytotoxic T-lymphocyte as measured by IFN-gamma EliSpots directed at autologous tumor or GBM cell lines',
 								description:
 									'Mean, standard deviation, median and examine the distributions of these data will be calculated to ascertain whether normal theory methods are appropriate. Paired t-test or Wilcoxon signed-ranks test will be used for comparative analyses between each post-IMT time point versus pre-IMT. Bonferroni’s adjusted p-values will be reported to control type I error rate. In addition, will assess the pattern of changes in the immune responses over time using graphical techniques such as LOWESS curves.',
 								timeframe: 'Baseline to up to 1 year',
