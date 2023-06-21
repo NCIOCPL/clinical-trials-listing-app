@@ -127,7 +127,7 @@ describe('getLocationInfoFromSites', () => {
 
 		const jsxPartial = (
 			<a
-				href={`https://www.clinicaltrials.gov/show/${nctId}`}
+				href={`https://www.clinicaltrials.gov/study/${nctId}`}
 				rel="noopener noreferrer"
 				target="_blank">
 				ClinicalTrials.gov
@@ -181,7 +181,7 @@ describe('getLocationInfoFromSites', () => {
 	});
 
 	test('should return expected string when recruitment status is "Completed, Closed_to_accrual, Administratively_complete, Closed_to_accrual_and_intervention, or Withdrawn"', () => {
-		const siteLinkCT = `https://www.clinicaltrials.gov/show/${nctId}`;
+		const siteLinkCT = `https://www.clinicaltrials.gov/study/${nctId}`;
 		const sitesRecruitmentStatus = [
 			{
 				org_country: 'United States',
