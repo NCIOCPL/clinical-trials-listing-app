@@ -17,7 +17,7 @@ export const getLocationInfoFromSites = (
 ) => {
 	let totalUSLocations = 0;
 	let lastUSLocationSite = 0;
-	const siteLinkCT = `https://www.clinicaltrials.gov/show/${nctId}`;
+	const siteLinkCT = `https://www.clinicaltrials.gov/study/${nctId}`;
 
 	// Filter list of sites by recruitment status before deriving location
 	const filteredSites = sites?.filter((site) => {
