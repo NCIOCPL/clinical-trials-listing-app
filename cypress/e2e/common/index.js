@@ -108,10 +108,10 @@ And('the following links and texts exist on the page', (dataTable) => {
 	// Split the data table into array of pairs
 	const rawTable = dataTable.rawTable.slice();
 
-	// Verify the total number of links, plus 1 is to handle the floating delighter
+	// Verify the total number of links
 	cy.document().then((doc) => {
 		let docLinkArray = doc.querySelectorAll('#main-content a');
-		expect(docLinkArray.length).to.be.eq(rawTable.length + 1);
+		expect(docLinkArray.length).to.be.eq(rawTable.length);
 	});
 
 	// get the link with the provided url and assert it's text
@@ -312,15 +312,4 @@ When('user clicks on result item {int}', (resultIndex) => {
 
 And('user is brought to the top of a page', () => {
 	cy.window().its('scrollY').should('equal', 0);
-});
-
-Then('delighter is displayed with link {string}', (link) => {
-	cy.get('div div.floating-delighter')
-		.find('a')
-		.should('be.visible')
-		.and('have.attr', 'href', link);
-});
-
-And('delighter is not displayed', () => {
-	cy.get('div div.floating-delighter').should('not.exist');
 });

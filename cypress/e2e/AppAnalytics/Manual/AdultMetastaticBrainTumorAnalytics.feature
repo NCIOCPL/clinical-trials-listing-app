@@ -8,7 +8,6 @@ Feature: Manual listing page analytics
 		And "analyticsPublishedDate" is set to "02/02/2011"
 		When the user navigates to "/?cfg=4"
 		Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"
-		And delighter is displayed with link "https://cancer.gov/about-cancer/treatment/clinical-trials/search"
 		And browser waits
 		Then there should be an analytics event with the following details
 			| key                                         | value                                                                         |
