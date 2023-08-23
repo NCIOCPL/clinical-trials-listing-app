@@ -179,8 +179,8 @@ And('the search bar appears below', () => {
 */
 
 And('each result displays the trial title as a link to the trial description page', () => {
-	cy.get('.ct-list-item')
-		.find('a.ct-list-item__title')
+	cy.get('.ctla-results__list-item')
+		.find('a.ctla-results__list-item-title')
 		.should('have.attr', 'href')
 		.then((href) => {
 			expect(href).to.contain('/clinicaltrials/NCI-');
@@ -188,15 +188,15 @@ And('each result displays the trial title as a link to the trial description pag
 });
 
 And('each result displays the trial description below the link', () => {
-	cy.get('.ct-list-item p.body').should('not.be.empty');
+	cy.get('.ctla-results__list-item p.body').should('not.be.empty');
 });
 
 And('each result displays {string} below the description', (location) => {
-	cy.get('.ct-list-item .location-info').find('strong').should('include.text', location);
+	cy.get('.ctla-results__list-item .ctla-results__list-item-location').find('strong').should('include.text', location);
 });
 
 Then('the system displays {int} paragraph {string}', (numParagraph, text) => {
-	cy.get('div.intro-text')
+	cy.get('div.ctla-results__intro')
 		.find('p')
 		.eq(numParagraph - 1)
 		.should('have.text', text);
@@ -224,7 +224,7 @@ Given('screen breakpoint is set to {string}', (screenSize) => {
 */
 
 Then('the system displays {string} {string}', (perPage, total) => {
-	cy.get('.paging-section__page-info').should('include.text', perPage).and('include.text', total);
+	cy.get('.ctla-results__count').should('include.text', perPage).and('include.text', total);
 });
 And('pager displays the following navigation options', (dataTable) => {
 	const pagerItems = [];
@@ -300,7 +300,7 @@ And('the Chat Now button displays below', () => {
 });
 
 When('user clicks on result item {int}', (resultIndex) => {
-	cy.get('a.ct-list-item__title')
+	cy.get('a.ctla-results__list-item-title')
 		.eq(resultIndex - 1)
 		.trigger('click', { followRedirect: false });
 });
