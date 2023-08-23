@@ -40,9 +40,12 @@ export const setSuccessfulFetch = (fetchActionsHash, fetchResponse) => {
 	};
 };
 
-export const setRedirecting = () => {
+export const setRedirecting = (redirectStatus) => {
 	return {
 		type: REDIRECT_NEEDED,
+		payload: {
+			redirectStatus,
+		},
 	};
 };
 
@@ -73,50 +76,66 @@ const getNonLoadedStatusByAction = (type) => {
 
 // Reducer
 export const hocReducer = (state = {}, action) => {
-	if (action.type === SUCCESSFUL_FETCH) {
-		// If the status has changed, then the data must have changed
-		// so return a new object
-		if (state.status !== hocStates.LOADED_STATE) {
-			return {
-				status: hocStates.LOADED_STATE,
-				listingData: action.payload.fetchResponse,
-				actionsHash: action.payload.fetchActionsHash,
-			};
-		} else {
-			// Status is the same, did the payload change, or are we trying to update
-			// the same object?
-			const newResponseHash = convertObjectToBase64(action.payload.fetchResponse);
-			const oldResponseHash = convertObjectToBase64(state.listingData);
-			if (newResponseHash === oldResponseHash && action.payload.fetchActionsHash === state.actionsHash) {
-				// Same status, same object, same state
-				return state;
-			} else {
-				return {
+	// console.log('[hocReducer] Incoming State:', JSON.stringify(state, null, 2));
+	// console.log('[hocReducer] Action:', JSON.stringify(action, null, 2));
+	let nextState; // Define nextState variable
+
+	switch (action.type) {
+		case SUCCESSFUL_FETCH: {
+			// If the status has changed, then the data must have changed
+			// so return a new object
+			if (state.status !== hocStates.LOADED_STATE) {
+				nextState = {
 					status: hocStates.LOADED_STATE,
 					listingData: action.payload.fetchResponse,
 					actionsHash: action.payload.fetchActionsHash,
+					redirectStatus: null, // Reset immediate status
+					// Persist the status from the last HoC redirect
+					lastHoCRedirectStatus: state.lastHoCRedirectStatus,
 				};
-			}
-		}
-	} else {
-		switch (action.type) {
-			case RESET_LOADING:
-			case ENCOUNTERED_NOTFOUND:
-			case ERROR_OCCURRED:
-			case REDIRECT_NEEDED: {
-				const status = getNonLoadedStatusByAction(action.type);
-				if (state.status === status && state.listingData === null && state.actionsHash === '') {
-					return state;
+			} else {
+				// Status is the same, did the payload change, or are we trying to update
+				// the same object?
+				const newResponseHash = convertObjectToBase64(action.payload.fetchResponse);
+				const oldResponseHash = convertObjectToBase64(state.listingData);
+				if (newResponseHash === oldResponseHash && action.payload.fetchActionsHash === state.actionsHash) {
+					// Same status, same object, same state
+					nextState = state; // Assign to nextState
 				} else {
-					return {
-						status,
-						listingData: null,
-						actionsHash: '',
+					nextState = {
+						status: hocStates.LOADED_STATE,
+						listingData: action.payload.fetchResponse,
+						actionsHash: action.payload.fetchActionsHash,
+						redirectStatus: null, // Reset immediate status
+						// Persist the status from the last HoC redirect
+						lastHoCRedirectStatus: state.lastHoCRedirectStatus,
 					};
 				}
 			}
-			default:
-				return state;
+			break; // Add break for SUCCESSFUL_FETCH case
 		}
+		case RESET_LOADING:
+		case ENCOUNTERED_NOTFOUND:
+		case ERROR_OCCURRED:
+		case REDIRECT_NEEDED: {
+			const status = getNonLoadedStatusByAction(action.type);
+			if (state.status === status && state.listingData === null && state.actionsHash === '') {
+				nextState = state; // Assign to nextState
+			} else {
+				nextState = {
+					status: action.type === REDIRECT_NEEDED ? hocStates.REDIR_STATE : status,
+					listingData: null,
+					actionsHash: '',
+					redirectStatus: action.type === REDIRECT_NEEDED ? action.payload.redirectStatus : null,
+					// Persist lastHoCRedirectStatus unless it's a new redirect action
+					lastHoCRedirectStatus: action.type === REDIRECT_NEEDED ? action.payload.redirectStatus : state.lastHoCRedirectStatus,
+				};
+			}
+			break; // Add break to prevent fall-through
+		}
+		default:
+			nextState = state; // Assign default
 	}
+	// console.log('[hocReducer] Outgoing nextState:', JSON.stringify(nextState, null, 2));
+	return nextState; // Return the final state
 };

@@ -1,3 +1,8 @@
+const viewports = {
+	mobile: 'mobile',
+	tablet: 'tablet',
+	desktop: [1029, 720],
+};
 // Call to reinitialize application.
 
 beforeEach(() => {
@@ -16,8 +21,8 @@ beforeEach(() => {
 			baseHost: 'http://localhost:3000',
 			basePath: '/',
 			canonicalHost: 'https://www.cancer.gov',
-			cisBannerImgUrlLarge: '%PUBLIC_URL%/images/cts-cis-banner-xl.jpeg',
-			cisBannerImgUrlSmall: '%PUBLIC_URL%/images/cts-cis-banner-smartphone.jpeg',
+			cisBannerImgUrlLarge: '/images/cts-cis-banner-xl.jpeg',
+			cisBannerImgUrlSmall: '/images/cts-cis-banner-smartphone.jpeg',
 			dynamicListingPatterns: {
 				Disease: {
 					Disease: {
@@ -74,5 +79,17 @@ beforeEach(() => {
 			introText: '<p>Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer. All trials on the list are NCI-supported clinical trials, which are sponsored or otherwise financially supported by NCI.</p><p>NCI’s <a href="/about-cancer/treatment/clinical-trials/what-are-trials">basic information about clinical trials</a> explains the types and phases of trials and how they are carried out. Clinical trials look at new ways to prevent, detect, or treat disease. You may want to think about taking part in a clinical trial. Talk to your doctor for help in deciding if one is right for you.</p>',
 		};
 		console.log(win.INT_TEST_APP_PARAMS);
+
+		// Set up viewport based on test configuration
+		if (win.testConfig && win.testConfig.viewport) {
+			const viewport = viewports[win.testConfig.viewport];
+			if (Array.isArray(viewport)) {
+				cy.viewport(viewport[0], viewport[1]);
+			} else {
+				cy.viewport(viewport);
+			}
+		}
 	});
+
+	cy.get('.nci-spinner').should('not.exist');
 });

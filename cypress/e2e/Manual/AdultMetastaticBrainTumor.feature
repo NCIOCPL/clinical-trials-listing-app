@@ -1,3 +1,4 @@
+@manual @smoke
 Feature: As a user, I would like to view the trial results for a manual listing page that is given specific parameters, along with links to the trial's description page, the brief summary of the trial, and the number of locations of the trial
 
   Scenario: View manual listing page results
@@ -20,7 +21,7 @@ Feature: As a user, I would like to view the trial results for a manual listing 
       | 3      |
       | 4      |
       | 5      |
-      | Next > |
+      | Next   |
 
 
   Scenario: View manual listing page metadata
@@ -53,76 +54,70 @@ Feature: As a user, I would like to view the trial results for a manual listing 
       | pages  |
       | 1      |
       | 2      |
-      | 3      |
       | ...    |
       | 11     |
-      | Next > |
+      | Next   |
     And the page "1" is highlighted
-    When user clicks on "Next >" button
+    When user clicks on "Next" button
     Then pager displays the following navigation options
       | pages      |
-      | < Previous |
+      | Previous   |
       | 1          |
       | 2          |
       | 3          |
-      | 4          |
       | ...        |
       | 11         |
-      | Next >     |
+      | Next       |
     And the page "2" is highlighted
 		And the page contains meta tags with the following properties
 			| property | content                                          |
 			| og:url   | http://localhost:3000/?pn=2                      |
 		And there is a canonical link with the href "https://www.cancer.gov/?pn=2"
-    When user clicks on "Next >" button
+    When user clicks on "Next" button
     Then pager displays the following navigation options
       | pages      |
-      | < Previous |
+      | Previous   |
       | 1          |
       | 2          |
       | 3          |
       | 4          |
-      | 5          |
       | ...        |
       | 11         |
-      | Next >     |
+      | Next       |
     And the page "3" is highlighted
 		And the page contains meta tags with the following properties
 			| property | content                     |
 			| og:url   | http://localhost:3000/?pn=3 |
 		And there is a canonical link with the href "https://www.cancer.gov/?pn=3"
-		When user clicks on "Next >" button
+    When user clicks on "Next" button
     Then pager displays the following navigation options
       | pages      |
-      | < Previous |
+      | Previous   |
       | 1          |
-      | 2          |
+      | ...        |
       | 3          |
       | 4          |
       | 5          |
-      | 6          |
       | ...        |
       | 11         |
-      | Next >     |
+      | Next       |
     And the page "4" is highlighted
 		And the page contains meta tags with the following properties
 			| property | content                     |
 			| og:url   | http://localhost:3000/?pn=4 |
 		And there is a canonical link with the href "https://www.cancer.gov/?pn=4"
-		When user clicks on "Next >" button
+		When user clicks on "Next" button
     Then pager displays the following navigation options
       | pages      |
-      | < Previous |
+      | Previous   |
       | 1          |
       | ...        |
-      | 3          |
       | 4          |
       | 5          |
       | 6          |
-      | 7          |
       | ...        |
       | 11         |
-      | Next >     |
+      | Next       |
     And the page "5" is highlighted
 		And the page contains meta tags with the following properties
 			| property | content                     |
@@ -131,10 +126,9 @@ Feature: As a user, I would like to view the trial results for a manual listing 
 		When user clicks on "11" button
     Then pager displays the following navigation options
       | pages      |
-      | < Previous |
+      |  Previous  |
       | 1          |
       | ...        |
-      | 9          |
       | 10         |
       | 11         |
     And the page "11" is highlighted
@@ -142,71 +136,67 @@ Feature: As a user, I would like to view the trial results for a manual listing 
 			| property | content                      |
 			| og:url   | http://localhost:3000/?pn=11 |
 		And there is a canonical link with the href "https://www.cancer.gov/?pn=11"
-		When user clicks on "< Previous" button
+		When user clicks on "Previous" button
     Then pager displays the following navigation options
       | pages      |
-      | < Previous |
+      | Previous   |
       | 1          |
       | ...        |
-      | 8          |
       | 9          |
       | 10         |
       | 11         |
-      | Next >     |
+      | Next       |
     And the page "10" is highlighted
 		And the page contains meta tags with the following properties
 			| property | content                      |
 			| og:url   | http://localhost:3000/?pn=10 |
 		And there is a canonical link with the href "https://www.cancer.gov/?pn=10"
-		When user clicks on "< Previous" button
+    When user clicks on "Previous" button
     Then pager displays the following navigation options
       | pages      |
-      | < Previous |
+      | Previous   |
       | 1          |
       | ...        |
-      | 7          |
       | 8          |
       | 9          |
       | 10         |
       | 11         |
-      | Next >     |
+      | Next       |
     And the page "9" is highlighted
+
 		And the page contains meta tags with the following properties
 			| property | content                     |
 			| og:url   | http://localhost:3000/?pn=9 |
 		And there is a canonical link with the href "https://www.cancer.gov/?pn=9"
-		When user clicks on "< Previous" button
+		When user clicks on "Previous" button
     Then pager displays the following navigation options
       | pages      |
-      | < Previous |
+      | Previous   |
       | 1          |
       | ...        |
-      | 6          |
       | 7          |
       | 8          |
       | 9          |
-      | 10         |
+      | ...        |
       | 11         |
-      | Next >     |
+      | Next       |
     And the page "8" is highlighted
 		And the page contains meta tags with the following properties
 			| property | content                     |
 			| og:url   | http://localhost:3000/?pn=8 |
 		And there is a canonical link with the href "https://www.cancer.gov/?pn=8"
-		When user clicks on "< Previous" button
+		When user clicks on "Previous" button
     Then pager displays the following navigation options
       | pages      |
-      | < Previous |
+      | Previous   |
       | 1          |
       | ...        |
-      | 5          |
       | 6          |
       | 7          |
       | 8          |
-      | 9          |
       | ...        |
       | 11         |
-      | Next >     |
+      | Next       |
     And the page "7" is highlighted
 		And the page contains meta tags with the following properties
 			| property | content                     |

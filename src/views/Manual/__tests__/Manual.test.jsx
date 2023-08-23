@@ -1,12 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
 
 import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
 import Manual from '../Manual';
 import { useStateValue } from '../../../store/store';
-import { MockAnalyticsProvider } from '../../../tracking';
-
+import { CTLViewsTestWrapper } from '../../../test-utils/TestWrappers';
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 jest.mock('../../../store/store');
 
@@ -55,11 +53,9 @@ describe('<Manual />', () => {
 		});
 
 		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/']}>
-					<Manual />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+			<CTLViewsTestWrapper initialEntries={['/']}>
+				<Manual />
+			</CTLViewsTestWrapper>
 		);
 
 		expect(useCtsApi).toHaveBeenCalled();
@@ -5085,11 +5081,9 @@ describe('<Manual />', () => {
 		});
 
 		await render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/']}>
-					<Manual />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+			<CTLViewsTestWrapper initialEntries={['/']}>
+				<Manual />
+			</CTLViewsTestWrapper>
 		);
 
 		expect(useCtsApi).toHaveBeenCalled();
@@ -5099,23 +5093,27 @@ describe('<Manual />', () => {
 		expect(screen.getByText('Trials 1-1 of 4')).toBeInTheDocument();
 
 		// Check pager exists
-		expect(screen.getAllByRole('navigation', { name: 'pager navigation' })[0]).toBeInTheDocument();
+		expect(screen.getAllByRole('navigation', { name: 'Pagination' })[0]).toBeInTheDocument();
 
 		// Pager item count should be 10. 4 for pager item numbers, 1 for next page item for both top and bottom pager.
-		expect(screen.getAllByRole('button', { name: /page/ })).toHaveLength(10);
+		// Pager item number count should be 8
+		expect(screen.getAllByRole('link', { name: /Page/ })).toHaveLength(8);
+
+		// Pager item count for next page item should be 2 for top and bottom pager
+		expect(screen.getAllByRole('button', { name: /page/ })).toHaveLength(2);
 
 		// Result title and href value should match expected
-		expect(screen.getAllByRole('link')[0]).toHaveTextContent('Carboplatin, Melphalan, Etoposide Phosphate, Mannitol, and Sodium Thiosulfate in Treating Patients With Previously Treated Brain Tumors');
-		expect(screen.getAllByRole('link')[0]).toHaveAttribute('href', '/test/NCI-2013-00786');
+		expect(screen.getAllByRole('link')[4]).toHaveTextContent('Carboplatin, Melphalan, Etoposide Phosphate, Mannitol, and Sodium Thiosulfate in Treating Patients With Previously Treated Brain Tumors');
+		expect(screen.getAllByRole('link')[4]).toHaveAttribute('href', '/test/NCI-2013-00786');
 
 		// Location text should match expected
 		expect(screen.getByText('OHSU Knight Cancer Institute, Portland, Oregon')).toBeInTheDocument();
 
 		// Navigate to page 2 with next pager item. Confirm currently active page on top and bottom is 2
-		fireEvent.click(screen.getAllByRole('button', { name: 'next page' })[0]);
+		fireEvent.click(screen.getAllByRole('button', { name: 'Next page' })[0]);
 
-		expect(screen.getAllByRole('button', { name: 'page 2' })[0]).toHaveClass('pager__button active', { exact: true });
-		expect(screen.getAllByRole('button', { name: 'page 2' })[1]).toHaveClass('pager__button active', { exact: true });
+		expect(screen.getAllByRole('link', { name: 'Page 2' })[0]).toHaveClass('usa-pagination__button usa-current', { exact: true });
+		expect(screen.getAllByRole('link', { name: 'Page 2' })[1]).toHaveClass('usa-pagination__button usa-current', { exact: true });
 	});
 
 	it('should render <NoResults /> component when payload is empty', async () => {
@@ -5149,11 +5147,9 @@ describe('<Manual />', () => {
 		});
 
 		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/']}>
-					<Manual />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+			<CTLViewsTestWrapper initialEntries={['/']}>
+				<Manual />
+			</CTLViewsTestWrapper>
 		);
 
 		expect(screen.getByText('Manual Listing Page')).toBeInTheDocument();
@@ -5192,11 +5188,9 @@ describe('<Manual />', () => {
 		});
 
 		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/']}>
-					<Manual />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+			<CTLViewsTestWrapper initialEntries={['/']}>
+				<Manual />
+			</CTLViewsTestWrapper>
 		);
 
 		expect(screen.getByText('An error occurred. Please try again later.')).toBeInTheDocument();

@@ -1,3 +1,4 @@
+@misc
 Feature: As a user, I would like to see the Page Not Found page when I visit a dynamic listing page without parameters.
 
     Scenario: User visits disease trials listing page with no parameters

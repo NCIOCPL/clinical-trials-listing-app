@@ -1,3 +1,4 @@
+@intervention
 Feature: As the system, I want to be able to redirect users to the No Trials Found page for the dynamic listing pages, so that the pages are more user and SEO friendly.
 
 	Scenario: Page redirects to No Trials Found page if codes are given for Intervention and no trials are returned

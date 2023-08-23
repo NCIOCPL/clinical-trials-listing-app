@@ -1,3 +1,4 @@
+@manual
 Feature: As a user, I would like to see an error page when I visit a manual listing page with invalid parameters.
 
 	Scenario: User visits manual trial listing page with invalid parameters

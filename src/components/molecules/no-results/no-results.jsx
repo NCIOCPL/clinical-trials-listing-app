@@ -10,7 +10,7 @@ const NoResults = ({ replacedNoTrialsHtml }) => {
 
 	return (
 		<>
-			<div dangerouslySetInnerHTML={{ __html: noTrialsHtmlToDisplay }}></div>
+			<div className="no-results" dangerouslySetInnerHTML={{ __html: noTrialsHtmlToDisplay }}></div>
 		</>
 	);
 };

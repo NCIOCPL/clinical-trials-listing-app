@@ -69,7 +69,7 @@ const PageNotFound = () => {
 		<>
 			{renderHelmet()}
 			<div className="error-container">
-				<h1>{i18n.pageNotFoundTitle[language]}</h1>
+				<h1 className="nci-heading-h1">{i18n.pageNotFoundTitle[language]}</h1>
 				<>
 					{contentPar.map((content, index) => (
 						<p key={index}>{content}</p>

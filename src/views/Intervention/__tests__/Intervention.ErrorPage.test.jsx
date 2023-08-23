@@ -1,12 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { MemoryRouter } from 'react-router';
 
 import Intervention from '../Intervention';
 import { useStateValue } from '../../../store/store';
-import { MockAnalyticsProvider } from '../../../tracking';
 import { useAppPaths } from '../../../hooks/routing';
 import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
+import { CTLViewsTestWrapper } from '../../../test-utils/TestWrappers';
 
 jest.mock('../../../store/store');
 jest.mock('../../../hooks/routing');
@@ -81,11 +80,9 @@ describe('<Intervention />', () => {
 		];
 
 		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/trastuzumab']}>
-					<Intervention routeParamMap={routeParamMap} routePath={redirectPath} data={data} />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+			<CTLViewsTestWrapper initialEntries={['/trastuzumab']}>
+				<Intervention routeParamMap={routeParamMap} routePath={redirectPath} data={data} />
+			</CTLViewsTestWrapper>
 		);
 
 		expect(useCtsApi).toHaveBeenCalled();

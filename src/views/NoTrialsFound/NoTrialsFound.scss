@@ -1,0 +1,65 @@
+@use 'uswds-core' as *;
+
+// Import Disease styles first so we get those as a base
+@import "../Disease/Disease";
+
+// Make all styling specific to the no-trials-page
+.no-trials-page {
+  // Desktop styles
+  @include at-media('desktop') {
+    .disease-view__heading {
+      // Add more bottom margin to the heading
+      @include u-margin-bottom(1);
+    }
+
+    .disease-view__content {
+
+
+      // Explicitly set this to ensure the content appears below the heading
+      grid-row-start: 3;
+
+      // Add padding to the NoResults component specifically on desktop
+      .no-results {
+        @include u-padding-top(1);
+      }
+    }
+  }
+
+  // Make the intro element take minimal space since it's empty
+  .disease-view__intro {
+    min-height: 0;
+    height: 0;
+    @include u-margin(0);
+    @include u-padding(0);
+  }
+
+  // Override styles for disabled accordion button to match design
+  .ctla-sidebar .usa-accordion__button:disabled {
+    color: $theme-color-base-darkest !important; // Force text color to black
+    opacity: 1 !important; // Prevent graying out
+  }
+
+  // Mobile styles
+  @include at-media-max('desktop') {
+    // Change the grid template areas order on mobile to ensure filters appear at the bottom
+    .disease-view__container {
+      grid-template-areas:
+        "heading"
+        "intro"
+        "content"
+        "sidebar" !important;
+    }
+
+    // Add extra spacing between content and sidebar
+    .disease-view__content {
+      @include u-margin-bottom(4);
+    }
+
+    // Ensure the sidebar appears visually separated
+    .ctla-sidebar {
+      @include u-border-top(1px, 'solid', $theme-color-base-lighter);
+      @include u-padding-top(3);
+      @include u-margin-top(2);
+    }
+  }
+}
