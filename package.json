@@ -17,6 +17,8 @@
 		"registry": "https://npm.pkg.github.com/"
 	},
 	"dependencies": {
+		"@nciocpl/ncids-css": "^3.0.0",
+		"@nciocpl/ncids-js": "^3.0.0",
 		"axios": "^1.6.7",
 		"camelcase": "^5.3.1",
 		"core-js": "^3.6.4",
@@ -26,6 +28,7 @@
 		"es6-promise": "^4.2.8",
 		"fs-extra": "^8.1.0",
 		"history": "^5.0.0",
+		"postcss": "^8.4.28",
 		"prop-types": "^15.7.2",
 		"qs": "^6.10.1",
 		"react": "^16.13.1",
@@ -46,9 +49,8 @@
 		"start:silent": "BROWSER=none npm start",
 		"debug": "node --inspect --inspect-brk ./node_modeles/webpack/bin/webpack.js",
 		"dev:debug": "npm run debug -- --mode development",
-		"build:cgdp-legacy": "node scripts/generate-cgdp-legacy.js",
 		"build:cra": "node scripts/build.js",
-		"build": "npm run build:cra && npm run build:cgdp-legacy",
+		"build": "npm run build:cra",
 		"test": " npm run pa11y-tests && npm run unit-tests && npm run cy:ci && npm run merge-coverage",
 		"test:it": "NODE_ENV=test cypress open",
 		"test:pa11y": "npm run pa11y-ci",
@@ -79,8 +81,7 @@
 		"development": [
 			"last 1 chrome version",
 			"last 1 firefox version",
-			"last 1 safari version",
-			"ie 11"
+			"last 1 safari version"
 		]
 	},
 	"cypress-cucumber-preprocessor": {

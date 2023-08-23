@@ -90,6 +90,29 @@ module.exports = function (webpackEnv) {
 			},
 		].filter(Boolean);
 		if (preProcessor) {
+				/**
+				 * NCIDS CSS requires compiling your Sass with load paths using
+				 * dart-sass. Load paths must include a path to the `/packages`
+				 * directory for NCIDS packages and `/uswds-packages` for USWDS
+				 * packages.
+				 *
+				 * https://sass-lang.com/documentation/at-rules/use#load-paths
+				 */
+			const processorOpts = preProcessor === 'sass-loader' ?
+				{
+					sassOptions: {
+						includePaths: [
+							path.join(
+								__dirname,
+								'../node_modules/@nciocpl/ncids-css/packages'
+							),
+							path.join(
+								__dirname,
+								'../node_modules/@nciocpl/ncids-css/uswds-packages'
+							),
+						],
+					},
+				} : {};
 			loaders.push({
 				loader: require.resolve(preProcessor),
 				options: {
@@ -131,7 +154,8 @@ module.exports = function (webpackEnv) {
 			paths.appIndexJs,
 			// We include the app code last so that if there is a runtime error during
 			// initialization, it doesn't blow up the WebpackDevServer client, and
-			// changing JS code would still trigger a refr,
+			// changing JS code would still trigger a refresh.
+			path.join(__dirname, '../src/digitalPlatformMockWrapper.js'),
 		].filter(Boolean),
 		output: {
 			// The build folder.
@@ -330,6 +354,26 @@ module.exports = function (webpackEnv) {
 								filename: 'static/media/[name].[ext]',
 							},
 						},
+						// NCIDS/USWDS Sprites (assume other svgs that actually exist)
+						{
+							test: /\.svg$/,
+							// Temporarily let's inline these things.
+							use: [
+								{
+									loader: require.resolve('url-loader'),
+									options: {
+										limit: imageInlineSizeLimit,
+										//mimetype: 'svg+xml',
+									},
+								},
+							],
+							include: [
+								path.join(
+									__dirname,
+									'../node_modules/@nciocpl/ncids-css/uswds-img'
+								),
+							],
+						},
 						// Process application JS with Babel.
 						// The preset includes JSX, Flow, TypeScript, and some ESnext features.
 						{
@@ -448,6 +492,10 @@ module.exports = function (webpackEnv) {
 								{
 									importLoaders: 3,
 									sourceMap: isEnvProduction && shouldUseSourceMap,
+									url: (url, resourcePath) => {
+										// console.log(`URL: ${url} at ${resourcePath}`);
+										return true;
+									},
 								},
 								'sass-loader'
 							),
