@@ -11,5 +11,6 @@ module.exports = defineConfig({
 		},
 		specPattern: 'cypress/e2e/**/*.feature',
 		baseUrl: 'http://localhost:3000',
+		experimentalRunAllSpecs: true,
 	},
 });

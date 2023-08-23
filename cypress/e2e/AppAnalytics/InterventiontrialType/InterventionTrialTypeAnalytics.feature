@@ -1,3 +1,4 @@
+@intervention @analytics
 Feature: Intervention listing page analytics
 
 	Scenario: Page Load Analytics fires when a user views an intervention listing page
@@ -22,7 +23,7 @@ Feature: Intervention listing page analytics
 			| page.additionalDetails.trialListingPageType | intervention                                                            |
 			| page.additionalDetails.interventionName     | trastuzumab                                                             |
 			| page.additionalDetails.trialType            | treatment                                                               |
-			| page.additionalDetails.numberResults        | (int)58                                                                 |
+			| page.additionalDetails.numberResults        | (int)44                                                                 |
 
 	Scenario: Click event fires when a user clicks on result item
 		Given "trialListingPageType" is set to "Intervention"

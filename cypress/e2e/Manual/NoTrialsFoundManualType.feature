@@ -1,3 +1,4 @@
+@manual @smoke
 Feature: As a user I would like to have the Sample page displayed
 
 	Scenario: User visits manual trials listing page with no trials

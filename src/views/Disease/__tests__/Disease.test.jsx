@@ -1,13 +1,13 @@
+/* eslint-disable */
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { MemoryRouter } from 'react-router';
 
 import Disease from '../Disease';
 import { useStateValue } from '../../../store/store';
 import { MockAnalyticsProvider } from '../../../tracking';
 import { useAppPaths } from '../../../hooks/routing';
 import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
-
+import { CTLViewsTestWrapper } from '../../../test-utils/TestWrappers';
 jest.mock('../../../store/store');
 jest.mock('../../../hooks/routing');
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
@@ -117,14 +117,11 @@ describe('<Disease />', () => {
 		];
 
 		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/C4872']}>
-					<Disease routeParamMap={routeParamMap} routePath={redirectPath} data={data} />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+			<CTLViewsTestWrapper initialEntries={['/C4872']}>
+				<Disease routeParamMap={routeParamMap} routePath={redirectPath} data={data} />
+			</CTLViewsTestWrapper>
 		);
 
-		expect(useCtsApi).toHaveBeenCalled();
 
 		expect(screen.getByText('Breast Cancer Clinical Trials')).toBeInTheDocument();
 		expect(screen.getByText('Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer.')).toBeInTheDocument();

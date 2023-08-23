@@ -1,0 +1,16 @@
+// Override USWDS default margin-top specifically for the ZIP code filter form group
+#filter-group-location-by-zip-code-content .usa-form-group {
+  margin-top: 0;
+}
+
+// Override USWDS default margin-top for ZIP code filter form group with error
+#filter-group-location-by-zip-code-content .usa-form-group.usa-form-group--error {
+  margin-top: 0;
+}
+
+// Ensure error styling takes precedence over focus styling for ZIP code filter input
+#filter-group-location-by-zip-code-content .usa-input.usa-input--error:focus {
+  outline: none;
+  outline-offset: 0;
+  box-shadow: none;
+}

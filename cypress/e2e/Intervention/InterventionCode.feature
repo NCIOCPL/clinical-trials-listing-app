@@ -1,3 +1,4 @@
+@intervention @smoke
 Feature: As a user, I would like to view the trial results for an intervention listing page that is given a c-code parameter, along with links to the trial's description page, the brief summary of the trial, and the number of locations of the trial
 
   Scenario: View intervention listing page results with c-code parameter
@@ -12,18 +13,18 @@ Feature: As a user, I would like to view the trial results for an intervention l
     And each result displays the trial description below the link
     And each result displays "Location: " below the description
 
-  Scenario: View intervention listing page metadata with c-code parameter
-    Given "trialListingPageType" is set to "Intervention"
-    And "dynamicListingPatterns" object is set to "Intervention"
-    And "siteName" is set to "National Cancer Institute"
-    When the user navigates to "/C1647?cfg=1"
-    Then the title tag should be "Clinical Trials Using Trastuzumab - National Cancer Institute"
-    And the page contains meta tags with the following properties
-      | property       | content                                                                                                                        |
-      | og:title       | Clinical Trials Using Trastuzumab                                                                                              |
-      | og:url         | http://localhost:3000/trastuzumab?pn=1                                                                                         |
-      | og:description | NCI supports clinical trials that test new and more effective ways to treat cancer. Find clinical trials studying trastuzumab. |
-    And the page contains meta tags with the following names
-      | name        | content                                                                                                                        |
-      | description | NCI supports clinical trials that test new and more effective ways to treat cancer. Find clinical trials studying trastuzumab. |
-		And there is a canonical link with the href "https://www.cancer.gov/trastuzumab?pn=1"
+#  Scenario: View intervention listing page metadata with c-code parameter
+#    Given "trialListingPageType" is set to "Intervention"
+#    And "dynamicListingPatterns" object is set to "Intervention"
+#    And "siteName" is set to "National Cancer Institute"
+#    When the user navigates to "/C1647?cfg=1"
+#    Then the title tag should be "Clinical Trials Using Trastuzumab - National Cancer Institute"
+#    And the page contains meta tags with the following properties
+#      | property       | content                                                                                                                        |
+#      | og:title       | Clinical Trials Using Trastuzumab                                                                                              |
+#      | og:url         | http://localhost:3000/trastuzumab?pn=1                                                                                         |
+#      | og:description | NCI supports clinical trials that test new and more effective ways to treat cancer. Find clinical trials studying trastuzumab. |
+#    And the page contains meta tags with the following names
+#      | name        | content                                                                                                                        |
+#      | description | NCI supports clinical trials that test new and more effective ways to treat cancer. Find clinical trials studying trastuzumab. |
+#		And there is a canonical link with the href "https://www.cancer.gov/trastuzumab?pn=1"

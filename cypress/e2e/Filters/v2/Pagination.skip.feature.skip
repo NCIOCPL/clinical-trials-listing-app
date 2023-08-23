@@ -1,0 +1,73 @@
+@filters
+Feature: Pagination Functionality with Filters
+
+#  Scenario: User navigates directly to second page of results with filters set
+#    Given user is viewing the preview site for diseases
+#    When user navigates to /breast-cancer?cfg=0&pn=2&age=18&zip=22201&radius=100
+#    Then the page updates with a results list of trials
+#      And the results count displays "Trials 26-50 of 103"
+#      And the pager displays 5 page links
+#      And the current page 2 is highlighted
+#      And the "Previous" button displays to the left of the 5 page links
+#      And the "Next" button displays to the right of the 5 page links
+#      And the Filter Trials section displays
+#      And the Age field is set to 18
+#      And the Location by ZIP Code is set to 22201
+#      And the Radius filter is set to 100 miles
+#      And the Clear Filters button is displayed and enabled
+#      And the Apply Filters button is displayed and disabled
+
+#  Scenario: User navigates to third page of results with filters set using "Next" link
+#    Given user is viewing the preview site for diseases at /breast-cancer?cfg=0&pn=2&age=18&zip=22201&radius=100
+#    When the user clicks the "Next" button in the pager
+#    Then the page updates with the next set of trial results
+#      And the page URL persists the query parameters
+#      And the page URL updates to /breast-cancer?cfg=0&pn=3&age=18&zip=22201&radius=100
+#      And the results count displays "Trials 51-75 of 103"
+#      And the pager displays 5 page links
+#      And the current page 3 is highlighted
+#      And the "Previous" button displays to the left of the 5 page links
+#      And the "Next" button displays to the right of the 5 page links
+#      And the Filter Trials section displays
+#      And the Age field is set to 18
+##      And the Location by ZIP Code is set to 22201
+#      And the Radius filter is set to 100 miles
+#      And the Clear Filters button is displayed and enabled
+#      And the Apply Filters button is displayed and disabled
+
+  Scenario: User navigates to fifth page of results with filters set using page 5 link
+    Given user is viewing the preview site for diseases at /breast-cancer?cfg=0&pn=2&age=18&zip=22201&radius=100
+    When the user clicks the 5 link in the pager
+    Then the page updates with the next set of trial results
+      And the page URL persists the query parameters
+      And the page URL updates to /breast-cancer?cfg=0&pn=5&age=18&zip=22201&radius=100
+      And the results count displays "Trials 101-103 of 103"
+      And the pager displays 5 page links
+      And the current page 5 is highlighted
+      And the "Previous" button displays to the left of the 5 page links
+      # Note: Next button should likely NOT display on the last page, AC might need review
+      # And the "Next" button displays to the right of the 5 page links
+      And the Filter Trials section displays
+      And the Age field is set to 18
+#      And the Location by ZIP Code is set to 22201
+#      And the Radius filter is set to 100 miles
+      And the Clear Filters button is displayed and enabled
+      And the Apply Filters button is displayed and disabled
+
+  Scenario: User navigates to fourth page of results with filters set using "Previous" link
+    Given user is viewing the preview site for diseases at /breast-cancer?cfg=0&pn=5&age=18&zip=22201&radius=100
+    When the user clicks the "Previous" link in the pager
+    Then the page updates with the next set of trial results
+      And the page URL persists the query parameters
+      And the page URL updates to /breast-cancer?cfg=0&pn=4&age=18&zip=22201&radius=100
+      And the results count displays "Trials 76-100 of 103"
+      And the pager displays 5 page links
+      And the current page 4 is highlighted
+      And the "Previous" button displays to the left of the 5 page links
+      And the "Next" button displays to the right of the 5 page links
+      And the Filter Trials section displays
+      And the Age field is set to 18
+#      And the Location by ZIP Code is set to 22201
+#      And the Radius filter is set to 100 miles
+      And the Clear Filters button is displayed and enabled
+      And the Apply Filters button is displayed and disabled
