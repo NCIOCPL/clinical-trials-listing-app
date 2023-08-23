@@ -23,8 +23,6 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 
-const postcssNormalize = require('postcss-normalize');
-
 const appPackageJson = require(paths.appPackageJson);
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
@@ -87,36 +85,60 @@ module.exports = function (webpackEnv) {
 				options: {
 					// Necessary for external CSS imports to work
 					// https://github.com/facebook/create-react-app/issues/2677
-					ident: 'postcss',
-					plugins: () => [
-						require('postcss-flexbugs-fixes'),
-						require('postcss-preset-env')({
-							autoprefixer: {
-								flexbox: 'no-2009',
-							},
-							stage: 3,
-						}),
-						// Adds PostCSS Normalize as the reset css with default options,
-						// so that it honors browserslist config in package.json
-						// which in turn let's users customize the target behavior as per their needs.
-						postcssNormalize(),
-					],
+					// ident: 'postcss',
+					// plugins: () => [
+					// 	require('postcss-flexbugs-fixes'),
+					// 	require('postcss-preset-env')({
+					// 		autoprefixer: {
+					// 			flexbox: 'no-2009',
+					// 		},
+					// 		stage: 3,
+					// 	}),
+					// 	// Adds PostCSS Normalize as the reset css with default options,
+					// 	// so that it honors browserslist config in package.json
+					// 	// which in turn let's users customize the target behavior as per their needs.
+					// 	postcssNormalize(),
+					// ],
 					sourceMap: isEnvProduction && shouldUseSourceMap,
 				},
 			},
 		].filter(Boolean);
 		if (preProcessor) {
-			loaders.push(
+				/**
+				 * NCIDS CSS requires compiling your Sass with load paths using
+				 * dart-sass. Load paths must include a path to the `/packages`
+				 * directory for NCIDS packages and `/uswds-packages` for USWDS
+				 * packages.
+				 *
+				 * https://sass-lang.com/documentation/at-rules/use#load-paths
+				 */
+			const processorOpts = preProcessor === 'sass-loader' ?
 				{
-					loader: require.resolve('resolve-url-loader'),
-					options: {
-						sourceMap: isEnvProduction && shouldUseSourceMap,
+					sassOptions: {
+						includePaths: [
+							path.join(
+								__dirname,
+								'../node_modules/@nciocpl/ncids-css/packages'
+							),
+							path.join(
+								__dirname,
+								'../node_modules/@nciocpl/ncids-css/uswds-packages'
+							),
+						],
 					},
-				},
+				} : {};
+			loaders.push(
+				// {
+				// 	loader: require.resolve('resolve-url-loader'),
+				// 	options: {
+				// 		sourceMap: isEnvProduction && shouldUseSourceMap,
+				// 	},
+				// },
 				{
 					loader: require.resolve(preProcessor),
 					options: {
 						sourceMap: true,
+						...processorOpts,
 					},
 				}
 			);
@@ -154,6 +176,7 @@ module.exports = function (webpackEnv) {
 			// We include the app code last so that if there is a runtime error during
 			// initialization, it doesn't blow up the WebpackDevServer client, and
 			// changing JS code would still trigger a refresh.
+			path.join(__dirname, '../src/digitalPlatformMockWrapper.js'),
 		].filter(Boolean),
 		output: {
 			// The build folder.
@@ -359,6 +382,26 @@ module.exports = function (webpackEnv) {
 								name: 'static/media/[name].[ext]',
 							},
 						},
+						// NCIDS/USWDS Sprites (assume other svgs that actually exist)
+						{
+							test: /\.svg$/,
+							// Temporarily let's inline these things.
+							use: [
+								{
+									loader: require.resolve('url-loader'),
+									options: {
+										limit: imageInlineSizeLimit,
+										//mimetype: 'svg+xml',
+									},
+								},
+							],
+							include: [
+								path.join(
+									__dirname,
+									'../node_modules/@nciocpl/ncids-css/uswds-img'
+								),
+							],
+						},
 						// Process application JS with Babel.
 						// The preset includes JSX, Flow, TypeScript, and some ESnext features.
 						{
@@ -369,20 +412,35 @@ module.exports = function (webpackEnv) {
 								customize: require.resolve(
 									'babel-preset-react-app/webpack-overrides'
 								),
-
-								plugins: [
-									[
-										require.resolve('babel-plugin-named-asset-import'),
-										{
-											loaderMap: {
-												svg: {
-													ReactComponent:
-														'@svgr/webpack?-svgo,+titleProp,+ref![path]',
+								// If this is development, then additionally add in the istanbul plugin
+								plugins: isEnvProduction
+									? [
+											[
+												require.resolve('babel-plugin-named-asset-import'),
+												{
+													loaderMap: {
+														svg: {
+															ReactComponent:
+																'@svgr/webpack?-svgo,+titleProp,+ref![path]',
+														},
+													},
 												},
-											},
-										},
-									],
-								],
+											],
+									  ]
+									: [
+											[
+												require.resolve('babel-plugin-named-asset-import'),
+												{
+													loaderMap: {
+														svg: {
+															ReactComponent:
+																'@svgr/webpack?-svgo,+titleProp,+ref![path]',
+														},
+													},
+												},
+											],
+											require.resolve('babel-plugin-istanbul'),
+									  ],
 								// This is a feature of `babel-loader` for webpack (not Babel itself).
 								// It enables caching results in ./node_modules/.cache/babel-loader/
 								// directory for faster rebuilds.
@@ -461,6 +519,10 @@ module.exports = function (webpackEnv) {
 								{
 									importLoaders: 3,
 									sourceMap: isEnvProduction && shouldUseSourceMap,
+									url: (url, resourcePath) => {
+										console.log(`URL: ${url} at ${resourcePath}`);
+										return true;
+									},
 								},
 								'sass-loader'
 							),
