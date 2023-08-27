@@ -3,10 +3,10 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
 import NoResults from '../no-results';
-import { useStateValue } from '../../../../store/store.js';
+import { useStateValue } from '../../../../store/store';
 import { MockAnalyticsProvider } from '../../../../tracking';
 
-jest.mock('../../../../store/store.js');
+jest.mock('../../../../store/store');
 
 describe('<NoResults />', () => {
 	it('should contain component text', async () => {

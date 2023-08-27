@@ -4,11 +4,11 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
 import Manual from '../Manual';
-import { useStateValue } from '../../../store/store.js';
+import { useStateValue } from '../../../store/store';
 import { MockAnalyticsProvider } from '../../../tracking';
 
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
-jest.mock('../../../store/store.js');
+jest.mock('../../../store/store');
 
 describe('<Manual />', () => {
 	useCtsApi.mockReturnValue({

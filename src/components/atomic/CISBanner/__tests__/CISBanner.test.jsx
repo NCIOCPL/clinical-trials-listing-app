@@ -2,9 +2,9 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
 import CISBanner from '../CISBanner';
-import { useStateValue } from '../../../../store/store.js';
+import { useStateValue } from '../../../../store/store';
 
-jest.mock('../../../../store/store.js');
+jest.mock('../../../../store/store');
 let url;
 
 describe('CISBanner test', () => {

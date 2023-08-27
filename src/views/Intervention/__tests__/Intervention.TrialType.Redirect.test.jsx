@@ -3,12 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MemoryRouter, useLocation } from 'react-router';
 import Intervention from '../Intervention';
-import { useStateValue } from '../../../store/store.js';
+import { useStateValue } from '../../../store/store';
 import { MockAnalyticsProvider } from '../../../tracking';
 import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
 import { getClinicalTrials } from '../../../services/api/actions/getClinicalTrials';
 
-jest.mock('../../../store/store.js');
+jest.mock('../../../store/store');
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 
 let location;

@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router';
 import { MockAnalyticsProvider } from '../../../../../tracking';
 import ResultsListItem from '../results-list-item';
 
-jest.mock('../../../../../store/store.js');
+jest.mock('../../../../../store/store');
 
 describe('<ResultsListItem />', function () {
 	it('should display title, summary and location', () => {

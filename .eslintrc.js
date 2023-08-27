@@ -26,6 +26,9 @@ module.exports = {
 		Cypress: true,
 		getFixture: true,
 	},
+	rules: {
+		'react/jsx-filename-extension': [1, { allow: 'always' }],
+	},
 	overrides: [
 		{
 			files: ['cypress/**/*.js'],

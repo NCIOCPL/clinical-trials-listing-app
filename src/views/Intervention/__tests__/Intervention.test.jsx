@@ -3,12 +3,12 @@ import React from 'react';
 import { MemoryRouter } from 'react-router';
 
 import Intervention from '../Intervention';
-import { useStateValue } from '../../../store/store.js';
+import { useStateValue } from '../../../store/store';
 import { MockAnalyticsProvider } from '../../../tracking';
 import { useAppPaths } from '../../../hooks/routing';
 import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
 
-jest.mock('../../../store/store.js');
+jest.mock('../../../store/store');
 jest.mock('../../../hooks/routing');
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 
