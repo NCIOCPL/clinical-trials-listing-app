@@ -1,8 +1,8 @@
 import { LOAD_GLOBAL, LOAD_GLOBALS } from '../actions';
 import reducer from '../reducer';
-import { useStateValue } from '../store.js';
+import { useStateValue } from '../store';
 
-jest.mock('../store.js');
+jest.mock('../store');
 
 const dispatch = jest.fn();
 

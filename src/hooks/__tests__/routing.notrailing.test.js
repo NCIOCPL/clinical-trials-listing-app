@@ -1,7 +1,7 @@
 import { useAppPaths } from '../routing';
 
-import { useStateValue } from '../../store/store.js';
-jest.mock('../../store/store.js');
+import { useStateValue } from '../../store/store';
+jest.mock('../../store/store');
 
 describe('when base path missing trailing slash', () => {
 	useStateValue.mockReturnValue([

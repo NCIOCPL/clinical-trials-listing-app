@@ -3,39 +3,31 @@ import React from 'react';
 import { MemoryRouter } from 'react-router';
 
 import Intervention from '../Intervention';
-import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary';
-import { useStateValue } from '../../../store/store.js';
+import { useStateValue } from '../../../store/store';
 import { MockAnalyticsProvider } from '../../../tracking';
 import { useAppPaths } from '../../../hooks/routing';
 import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
 
-jest.mock('../../../store/store.js');
+jest.mock('../../../store/store');
 jest.mock('../../../hooks/routing');
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
-
-jest.mock('react-router', () => ({
-	...jest.requireActual('react-router'),
-	useParams: () => ({
-		foo: 'bar',
-	}),
-}));
 
 describe('<Intervention />', () => {
 	afterEach(() => {
 		jest.clearAllMocks();
 	});
 
-	it('should throw on unknown param', async () => {
+	it('should render <ErrorPage> Component', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
 		const data = [
 			{
-				conceptId: ['C4872'],
+				conceptId: ['C1647'],
 				name: {
-					label: 'Breast Cancer',
-					normalized: 'breast cancer',
+					label: 'Trastuzumab',
+					normalized: 'trastuzumab',
 				},
-				prettyUrlName: 'breast-cancer',
+				prettyUrlName: 'trastuzumab',
 			},
 		];
 		const detailedViewPagePrettyUrlFormatter = '/clinicaltrials/{{nci_id}}';
@@ -62,12 +54,12 @@ describe('<Intervention />', () => {
 				detailedViewPagePrettyUrlFormatter,
 				dynamicListingPatterns,
 				itemsPerPage: 25,
+				language: 'en',
 				title,
 				trialListingPageType,
 				apiClients: {
 					clinicalTrialsSearchClient: true,
 				},
-				language: 'en',
 			},
 		]);
 
@@ -76,18 +68,17 @@ describe('<Intervention />', () => {
 		});
 
 		useCtsApi.mockReturnValue({
-			error: new Error('Bad Mojo'),
+			error: false,
 			loading: false,
 			aborted: false,
 			payload: null,
 		});
 
 		const redirectPath = () => '/notrials';
-
 		const routeParamMap = [
 			{
-				paramName: 'chicken',
-				textReplacementKey: 'Intervention',
+				paramName: 'codeOrPurl',
+				textReplacementKey: 'disease',
 				type: 'listing-information',
 			},
 		];
@@ -95,21 +86,22 @@ describe('<Intervention />', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<ErrorBoundary>
-						<MemoryRouter initialEntries={['/C4872']}>
-							<Intervention
-								routeParamMap={routeParamMap}
-								routePath={redirectPath}
-								data={data}
-							/>
-						</MemoryRouter>
-					</ErrorBoundary>
+					<MemoryRouter initialEntries={['/trastuzumab']}>
+						<Intervention
+							routeParamMap={routeParamMap}
+							routePath={redirectPath}
+							data={data}
+						/>
+					</MemoryRouter>
 				</MockAnalyticsProvider>
 			);
 		});
 
-		expect(useCtsApi).not.toHaveBeenCalled();
+		expect(useCtsApi).toHaveBeenCalled();
 
+		expect(
+			screen.getByText('Clinical Trials Using Trastuzumab')
+		).toBeInTheDocument();
 		expect(
 			screen.getByText('An error occurred. Please try again later.')
 		).toBeInTheDocument();

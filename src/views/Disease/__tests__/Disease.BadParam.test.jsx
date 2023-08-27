@@ -3,41 +3,29 @@ import React from 'react';
 import { MemoryRouter } from 'react-router';
 
 import Disease from '../Disease';
-import { useStateValue } from '../../../store/store.js';
+import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary';
+import { useStateValue } from '../../../store/store';
 import { MockAnalyticsProvider } from '../../../tracking';
 import { useAppPaths } from '../../../hooks/routing';
 import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
 
-jest.mock('../../../store/store.js');
+jest.mock('../../../store/store');
 jest.mock('../../../hooks/routing');
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 
 jest.mock('react-router', () => ({
 	...jest.requireActual('react-router'),
 	useParams: () => ({
-		codeOrPurl: 'breast-cancer',
+		foo: 'bar',
 	}),
 }));
-
-const fixturePath = `/v2/trials`;
-const breastCancerFile = `breast-cancer-response.json`;
 
 describe('<Disease />', () => {
 	afterEach(() => {
 		jest.clearAllMocks();
 	});
 
-	useCtsApi.mockReturnValue({
-		error: false,
-		loading: false,
-		aborted: false,
-		payload: {
-			total: 0,
-			trials: [],
-		},
-	});
-
-	it('should render <ResultsList /> component', async () => {
+	it('should throw on unknown param', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
 		const data = [
@@ -88,8 +76,6 @@ describe('<Disease />', () => {
 			},
 		};
 
-		const trialResults = getFixture(`${fixturePath}/${breastCancerFile}`);
-
 		useStateValue.mockReturnValue([
 			{
 				appId: 'mockAppId',
@@ -103,6 +89,7 @@ describe('<Disease />', () => {
 				apiClients: {
 					clinicalTrialsSearchClient: true,
 				},
+				language: 'en',
 			},
 		]);
 
@@ -111,17 +98,17 @@ describe('<Disease />', () => {
 		});
 
 		useCtsApi.mockReturnValue({
-			error: false,
+			error: new Error('Bad Mojo'),
 			loading: false,
 			aborted: false,
-			payload: trialResults,
+			payload: null,
 		});
 
 		const redirectPath = () => '/notrials';
 
 		const routeParamMap = [
 			{
-				paramName: 'codeOrPurl',
+				paramName: 'chicken',
 				textReplacementKey: 'disease',
 				type: 'listing-information',
 			},
@@ -130,26 +117,23 @@ describe('<Disease />', () => {
 		await act(async () => {
 			render(
 				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/C4872']}>
-						<Disease
-							routeParamMap={routeParamMap}
-							routePath={redirectPath}
-							data={data}
-						/>
-					</MemoryRouter>
+					<ErrorBoundary>
+						<MemoryRouter initialEntries={['/C4872']}>
+							<Disease
+								routeParamMap={routeParamMap}
+								routePath={redirectPath}
+								data={data}
+							/>
+						</MemoryRouter>
+					</ErrorBoundary>
 				</MockAnalyticsProvider>
 			);
 		});
 
-		expect(useCtsApi).toHaveBeenCalled();
+		expect(useCtsApi).not.toHaveBeenCalled();
 
 		expect(
-			screen.getByText('Breast Cancer Clinical Trials')
-		).toBeInTheDocument();
-		expect(
-			screen.getByText(
-				'Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer.'
-			)
+			screen.getByText('An error occurred. Please try again later.')
 		).toBeInTheDocument();
 	});
 });

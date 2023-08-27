@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router';
 import { MockAnalyticsProvider } from '../../../../tracking';
 import { ResultsList } from '../../../index';
 
-jest.mock('../../../../store/store.js');
+jest.mock('../../../../store/store');
 
 describe('<ResultsList />', () => {
 	it('should ensure results list match expected outcome', () => {

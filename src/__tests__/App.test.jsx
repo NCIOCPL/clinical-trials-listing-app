@@ -5,11 +5,11 @@ import React from 'react';
 import { MemoryRouter, useLocation } from 'react-router';
 
 import { useAppPaths } from '../hooks';
-import { useStateValue } from '../store/store.js';
+import { useStateValue } from '../store/store';
 import { MockAnalyticsProvider } from '../tracking';
 import Manual from '../views/Manual';
 
-jest.mock('../store/store.js');
+jest.mock('../store/store');
 
 axios.defaults.adapter = require('axios/lib/adapters/http');
 

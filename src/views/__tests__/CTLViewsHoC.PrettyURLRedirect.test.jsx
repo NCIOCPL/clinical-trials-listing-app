@@ -4,12 +4,12 @@ import { MemoryRouter, Route, Routes } from 'react-router';
 
 import { MockAnalyticsProvider } from '../../tracking';
 import { useListingSupport } from '../../hooks';
-import { useStateValue } from '../../store/store.js';
+import { useStateValue } from '../../store/store';
 
 import CTLViewsHoC from '../CTLViewsHoC';
 
 jest.mock('../../hooks/listingSupport/useListingSupport');
-jest.mock('../../store/store.js');
+jest.mock('../../store/store');
 // Create our mock for checking if navigate was called correctly.
 const mockNavigate = jest.fn();
 jest.mock('react-router', () => ({

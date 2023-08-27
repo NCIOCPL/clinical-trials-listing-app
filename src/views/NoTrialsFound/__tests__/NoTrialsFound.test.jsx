@@ -3,10 +3,10 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
 import NoTrialsFound from '../NoTrialsFound';
-import { useStateValue } from '../../../store/store.js';
+import { useStateValue } from '../../../store/store';
 import { MockAnalyticsProvider } from '../../../tracking';
 
-jest.mock('../../../store/store.js');
+jest.mock('../../../store/store');
 jest.mock('react-router-dom', () => ({
 	...jest.requireActual('react-router-dom'),
 	useLocation: () => ({
