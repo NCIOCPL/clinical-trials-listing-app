@@ -17,7 +17,7 @@
 		"registry": "https://npm.pkg.github.com/"
 	},
 	"dependencies": {
-		"axios": "^0.21.4",
+		"axios": "^1.6.7",
 		"camelcase": "^5.3.1",
 		"core-js": "^3.6.4",
 		"dom-scroll-into-view": "^2.0.1",
@@ -38,8 +38,8 @@
 		"resolve": "1.15.0"
 	},
 	"engines": {
-		"node": ">=16.0.0 <17.0.0",
-		"npm": ">=8.0.0 <9.0.0"
+		"node": ">=20.0.0 <21.0.0",
+		"npm": ">=9.0.0 <11.0.0"
 	},
 	"scripts": {
 		"start": "node scripts/start.js",
@@ -75,67 +75,6 @@
 			"ie 11"
 		]
 	},
-	"jest": {
-		"roots": [
-			"<rootDir>/src"
-		],
-		"collectCoverage": true,
-		"coverageDirectory": "coverage/jest",
-		"collectCoverageFrom": [
-			"src/**/*.test.{js,jsx,ts,tsx}",
-			"!src/**/*.d.ts",
-			"!cypress/**/*.{spec,test}.{js,jsx,ts,tsx}"
-		],
-		"coverageThreshold": {
-			"global": {
-				"branches": 80,
-				"functions": 80,
-				"lines": 80
-			}
-		},
-		"setupFiles": [
-			"react-app-polyfill/jsdom",
-			"<rootDir>/jest-test-setup.js"
-		],
-		"setupFilesAfterEnv": [
-			"<rootDir>/src/setupTests.js"
-		],
-		"testMatch": [
-			"<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
-			"<rootDir>/src/**/*.test.{js,jsx,ts,tsx}"
-		],
-		"testEnvironment": "jest-environment-jsdom-global",
-		"transform": {
-			"^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
-			"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-			"^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-		},
-		"transformIgnorePatterns": [
-			"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
-			"^.+\\.module\\.(css|sass|scss)$"
-		],
-		"modulePaths": [],
-		"moduleNameMapper": {
-			"^react-native$": "react-native-web",
-			"^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
-		},
-		"moduleFileExtensions": [
-			"web.js",
-			"js",
-			"web.ts",
-			"ts",
-			"web.tsx",
-			"tsx",
-			"json",
-			"web.jsx",
-			"jsx",
-			"node"
-		],
-		"watchPlugins": [
-			"jest-watch-typeahead/filename",
-			"jest-watch-typeahead/testname"
-		]
-	},
 	"cypress-cucumber-preprocessor": {
 		"nonGlobalStepDefinitions": true,
 		"stepDefinitions": "cypress/e2e",
@@ -151,7 +90,7 @@
 		"@babel/core": "7.9.0",
 		"@cypress/code-coverage": "^3.10.0",
 		"@nciocpl/eslint-config-react": "^0.8.0",
-		"@svgr/webpack": "4.3.3",
+		"@svgr/webpack": "^8.1.0",
 		"@testing-library/jest-dom": "^5.11.9",
 		"@testing-library/react": "^12.1.2",
 		"@testing-library/user-event": "^12.8.3",
@@ -166,7 +105,7 @@
 		"babel-preset-react-app": "^9.1.2",
 		"case-sensitive-paths-webpack-plugin": "2.3.0",
 		"css-loader": "^5.2.7",
-		"cypress": "^10.9.0",
+		"cypress": "^13.6.6",
 		"cypress-cucumber-preprocessor": "^4.3.1",
 		"deep-equal": "^2.1.0",
 		"eslint": "^7.20.0",
@@ -184,26 +123,26 @@
 		"mini-css-extract-plugin": "^1.6.2",
 		"nock": "^11.7.2",
 		"nyc": "^15.1.0",
-		"optimize-css-assets-webpack-plugin": "5.0.3",
-		"pa11y-ci": "^3.0.1",
+		"optimize-css-assets-webpack-plugin": "^6.0.1",
+		"pa11y-ci": "^2.4.2",
 		"pnp-webpack-plugin": "1.6.4",
-		"postcss-flexbugs-fixes": "4.1.0",
-		"postcss-loader": "3.0.0",
-		"postcss-normalize": "8.0.1",
+		"postcss-flexbugs-fixes": "^5.0.2",
+		"postcss-loader": "^8.1.1",
+		"postcss-normalize": "^10.0.1",
 		"postcss-prefix-selector": "^1.16.0",
-		"postcss-preset-env": "6.7.0",
-		"postcss-safe-parser": "4.0.1",
+		"postcss-preset-env": "^9.4.0",
+		"postcss-safe-parser": "^7.0.0",
 		"react-dev-utils": "^12.0.1",
-		"resolve-url-loader": "^3.1.2",
+		"resolve-url-loader": "^5.0.0",
 		"sass": "^1.56.0",
 		"sass-loader": "^10.3.1",
-		"semver": "6.3.0",
-		"start-server-and-test": "^1.10.8",
+		"semver": "^6.3.1",
+		"start-server-and-test": "^2.0.3",
 		"style-loader": "^2.0.0",
 		"terser-webpack-plugin": "^4.1.0",
 		"ts-pnp": "1.1.6",
 		"url-loader": "2.3.0",
-		"webpack": "^4.42.1",
+		"webpack": "^5.90.3",
 		"webpack-dev-server": "^4.11.1",
 		"webpack-manifest-plugin": "2.2.0",
 		"workbox-webpack-plugin": "4.3.1"

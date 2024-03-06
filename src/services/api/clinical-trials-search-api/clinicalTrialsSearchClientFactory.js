@@ -9,6 +9,7 @@ const clinicalTrialsSearchClientFactory = (apiBase) => {
 	return axios.create({
 		baseURL: apiBase,
 		timeout: 15000,
+		adapter: 'http',
 	});
 };
 

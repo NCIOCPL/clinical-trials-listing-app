@@ -157,7 +157,7 @@ module.exports = function (webpackEnv) {
 		].filter(Boolean),
 		output: {
 			// The build folder.
-			path: isEnvProduction ? paths.appBuild : undefined,
+			path: isEnvProduction ? paths.appBuild : paths.appBuild,
 			// Add /* filename */ comments to generated require()s in the output.
 			pathinfo: isEnvDevelopment,
 			// There will be one main bundle, and one file per asynchronous chunk.
@@ -165,8 +165,6 @@ module.exports = function (webpackEnv) {
 			filename: isEnvProduction
 				? 'static/js/[name].js'
 				: isEnvDevelopment && 'static/js/bundle.js',
-			// TODO: remove this when upgrading to webpack 5
-			futureEmitAssets: true,
 			// There are also additional JS chunk files if you use code splitting.
 			chunkFilename: isEnvProduction
 				? 'static/js/[name].js'
@@ -188,7 +186,7 @@ module.exports = function (webpackEnv) {
 						path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
 			// Prevents conflicts when multiple webpack runtimes (from different apps)
 			// are used on the same page.
-			jsonpFunction: `webpackJsonp${appPackageJson.name}`,
+			chunkLoadingGlobal: `webpackJsonp${appPackageJson.name}`,
 			// this defaults to 'window', but by setting it to 'this' then
 			// module chunks which are built will work in web workers as well.
 			globalObject: 'this',
@@ -327,7 +325,7 @@ module.exports = function (webpackEnv) {
 				// First, run the linter.
 				// It's important to do this before Babel processes the JS.
 				{
-					test: /\.(js|mjs|jsx|ts|tsx)$/,
+					test: /\.(js|cjs|mjs|jsx|ts|tsx)$/,
 					enforce: 'pre',
 					use: [
 						{
@@ -362,7 +360,7 @@ module.exports = function (webpackEnv) {
 						// Process application JS with Babel.
 						// The preset includes JSX, Flow, TypeScript, and some ESnext features.
 						{
-							test: /\.(js|mjs|jsx|ts|tsx)$/,
+							test: /\.(js|cjs|mjs|jsx|ts|tsx)$/,
 							include: paths.appSrc,
 							loader: require.resolve('babel-loader'),
 							options: {
@@ -395,7 +393,7 @@ module.exports = function (webpackEnv) {
 						// Process any JS outside of the app with Babel.
 						// Unlike the application JS, we only compile the standard ES features.
 						{
-							test: /\.(js|mjs)$/,
+							test: /\.(js|cjs|mjs)$/,
 							exclude: /@babel(?:\/|\\{1,2})runtime/,
 							loader: require.resolve('babel-loader'),
 							options: {
@@ -496,7 +494,7 @@ module.exports = function (webpackEnv) {
 							// its runtime that would otherwise be processed through "file" loader.
 							// Also exclude `html` and `json` extensions so they get processed
 							// by webpacks internal loaders.
-							exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+							exclude: [/\.(js|cjs|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
 							options: {
 								name: 'static/media/[name].[ext]',
 							},
@@ -597,7 +595,10 @@ module.exports = function (webpackEnv) {
 			// solution that requires the user to opt into importing specific locales.
 			// https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
 			// You can remove this if you don't use Moment.js:
-			new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+			new webpack.IgnorePlugin({
+				resourceRegExp: /^\.\/locale$/, // Example RegExp
+				contextRegExp: /moment$/, // Optional: contextRegExp is used to further restrict which contexts to ignore
+			}),
 			// Generate a service worker script that will precache, and keep up to date,
 			// the HTML & assets that are part of the webpack build.
 			isEnvProduction &&
@@ -642,18 +643,6 @@ module.exports = function (webpackEnv) {
 					silent: true,
 				}),
 		].filter(Boolean),
-		// Some libraries import Node modules but don't use them in the browser.
-		// Tell webpack to provide empty mocks for them so importing them works.
-		node: {
-			module: 'empty',
-			dgram: 'empty',
-			dns: 'mock',
-			fs: 'empty',
-			http2: 'empty',
-			net: 'empty',
-			tls: 'empty',
-			child_process: 'empty',
-		},
 		// Turn off performance processing because we utilize
 		// our own hints via the FileSizeReporter
 		performance: false,
