@@ -1,8 +1,8 @@
 /// <reference types="Cypress" />
-import { Then } from 'cypress-cucumber-preprocessor/steps';
+import { And, Then } from 'cypress-cucumber-preprocessor/steps';
 
 Then('the page contains meta tags with the following names', (dataTable) => {
-	cy.document().then((doc) => {
+	cy.document().then(() => {
 		for (const { name, content } of dataTable.hashes()) {
 			const locator = `meta[name='${name}']`;
 			//find element, ensure it has attribute content
@@ -61,6 +61,9 @@ Then('there are no alternate links', () => {
 	cy.get("[rel='alternate']").should('not.exist');
 });
 
-And('meta tag with a {string} {string} does not exist',(propertyOrName, value)=>{
-	cy.get(`[${propertyOrName}='${value}']`).should('not.exist');
-});
+And(
+	'meta tag with a {string} {string} does not exist',
+	(propertyOrName, value) => {
+		cy.get(`[${propertyOrName}='${value}']`).should('not.exist');
+	}
+);

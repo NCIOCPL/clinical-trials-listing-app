@@ -1,8 +1,6 @@
 /// <reference types="Cypress" />
 import { And, Given, Then, When } from 'cypress-cucumber-preprocessor/steps';
 
-const baseURL = Cypress.config('baseUrl');
-
 Then('page title is {string}', (title) => {
 	cy.get('h1').should('contain', title);
 });
@@ -12,7 +10,7 @@ Then('the page title is {string}', (title) => {
 });
 
 Then('page title on error page is {string}', (title) => {
-	Cypress.on('uncaught:exception', (err, runnable) => {
+	Cypress.on('uncaught:exception', () => {
 		// returning false here to Cypress from
 		// failing the test
 		return false;
@@ -21,7 +19,7 @@ Then('page title on error page is {string}', (title) => {
 });
 
 Then('user navigates to non-existent page {string}', (path) => {
-	Cypress.on('uncaught:exception', (err, runnable) => {
+	Cypress.on('uncaught:exception', () => {
 		// returning false here to Cypress from
 		// failing the test
 		return false;
@@ -45,7 +43,7 @@ Given('the user navigates to {string}', (destURL) => {
 // Used when we don't want to automatically fail the test when non-200 responses are encountered.
 Given('the user navigates to {string} with error handling', (destURL) => {
 	cy.visit(destURL, {
-		failOnStatusCode: false
+		failOnStatusCode: false,
 	});
 });
 
@@ -90,7 +88,7 @@ Given('{string} object is set to {string}', (key, param) => {
 	----------------------------------------
 */
 Then('the user gets an error page that reads {string}', (errorMessage) => {
-	Cypress.on('uncaught:exception', (err, runnable) => {
+	Cypress.on('uncaught:exception', () => {
 		// returning false here to Cypress from
 		// failing the test
 		return false;
@@ -103,9 +101,9 @@ And('the page displays {string}', (text) => {
 });
 
 // Intercepts CTS API Calls
-Cypress.Commands.add("triggerServerError", () => {
+Cypress.Commands.add('triggerServerError', () => {
 	cy.intercept('/cts/mock-api/v2/*', {
-		statusCode: 500
+		statusCode: 500,
 	}).as('mockApiError');
 
 	cy.intercept('/cts/proxy-api/v2/*', {

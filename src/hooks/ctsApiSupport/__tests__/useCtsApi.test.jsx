@@ -1,14 +1,12 @@
 import React from 'react';
-import { act, render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { useCtsApi } from '../useCtsApi';
 import { useStateValue } from '../../../store/store';
 import { getClinicalTrials as getClinicalTrialsQuery } from '../../../services/api/actions/getClinicalTrials';
 import { getClinicalTrials } from '../../../services/api/clinical-trials-search-api/getClinicalTrials';
 
 jest.mock('../../../store/store');
-jest.mock(
-	'../../../services/api/clinical-trials-search-api/getClinicalTrials.js'
-);
+jest.mock('../../../services/api/clinical-trials-search-api/getClinicalTrials.js');
 
 describe('tests for useCtsApi', () => {
 	beforeEach(() => {
@@ -74,34 +72,16 @@ describe('tests for useCtsApi', () => {
 		});
 
 		const expected = {
-			current_trial_status: [
-				'Active',
-				'Approved',
-				'Enrolling by Invitation',
-				'In Review',
-				'Temporarily Closed to Accrual',
-				'Temporarily Closed to Accrual and Intervention',
-			],
-			include: [
-				'brief_summary',
-				'brief_title',
-				'current_trial_status',
-				'nci_id',
-				'nct_id',
-				'sites.org_name',
-				'sites.org_country',
-				'sites.org_state_or_province',
-				'sites.org_city',
-				'sites.recruitment_status',
-			],
+			current_trial_status: ['Active', 'Approved', 'Enrolling by Invitation', 'In Review', 'Temporarily Closed to Accrual', 'Temporarily Closed to Accrual and Intervention'],
+			include: ['brief_summary', 'brief_title', 'current_trial_status', 'nci_id', 'nct_id', 'sites.org_name', 'sites.org_country', 'sites.org_state_or_province', 'sites.org_city', 'sites.recruitment_status'],
 			'arms.interventions.intervention_code': ['C1234'],
 			from: 0,
 			size: 1,
 		};
 
-		await act(async () => {
-			render(<UseCtsApiSupportSample query={query} />);
-		});
+		render(<UseCtsApiSupportSample query={query} />);
+
+		expect(await screen.findByText('Payload')).toBeInTheDocument();
 
 		expect(getClinicalTrials.mock.calls).toHaveLength(1);
 		expect(getClinicalTrials.mock.calls[0][1]).toEqual(expected);
@@ -136,34 +116,16 @@ describe('tests for useCtsApi', () => {
 		});
 
 		const expected = {
-			current_trial_status: [
-				'Active',
-				'Approved',
-				'Enrolling by Invitation',
-				'In Review',
-				'Temporarily Closed to Accrual',
-				'Temporarily Closed to Accrual and Intervention',
-			],
-			include: [
-				'brief_summary',
-				'brief_title',
-				'current_trial_status',
-				'nci_id',
-				'nct_id',
-				'sites.org_name',
-				'sites.org_country',
-				'sites.org_state_or_province',
-				'sites.org_city',
-				'sites.recruitment_status',
-			],
+			current_trial_status: ['Active', 'Approved', 'Enrolling by Invitation', 'In Review', 'Temporarily Closed to Accrual', 'Temporarily Closed to Accrual and Intervention'],
+			include: ['brief_summary', 'brief_title', 'current_trial_status', 'nci_id', 'nct_id', 'sites.org_name', 'sites.org_country', 'sites.org_state_or_province', 'sites.org_city', 'sites.recruitment_status'],
 			'arms.interventions.intervention_code': ['C1234'],
 			from: 0,
 			size: 1,
 		};
 
-		await act(async () => {
-			render(<UseCtsApiSupportSample query={query} />);
-		});
+		render(<UseCtsApiSupportSample query={query} />);
+
+		expect(await screen.findByText('Aborted: This should not happen')).toBeInTheDocument();
 
 		expect(getClinicalTrials.mock.calls).toHaveLength(1);
 		expect(getClinicalTrials.mock.calls[0][1]).toEqual(expected);
@@ -198,34 +160,16 @@ describe('tests for useCtsApi', () => {
 		});
 
 		const expected = {
-			current_trial_status: [
-				'Active',
-				'Approved',
-				'Enrolling by Invitation',
-				'In Review',
-				'Temporarily Closed to Accrual',
-				'Temporarily Closed to Accrual and Intervention',
-			],
-			include: [
-				'brief_summary',
-				'brief_title',
-				'current_trial_status',
-				'nci_id',
-				'nct_id',
-				'sites.org_name',
-				'sites.org_country',
-				'sites.org_state_or_province',
-				'sites.org_city',
-				'sites.recruitment_status',
-			],
+			current_trial_status: ['Active', 'Approved', 'Enrolling by Invitation', 'In Review', 'Temporarily Closed to Accrual', 'Temporarily Closed to Accrual and Intervention'],
+			include: ['brief_summary', 'brief_title', 'current_trial_status', 'nci_id', 'nct_id', 'sites.org_name', 'sites.org_country', 'sites.org_state_or_province', 'sites.org_city', 'sites.recruitment_status'],
 			'arms.interventions.intervention_code': ['C1234'],
 			from: 0,
 			size: 1,
 		};
 
-		await act(async () => {
-			render(<UseCtsApiSupportSample query={query} />);
-		});
+		render(<UseCtsApiSupportSample query={query} />);
+
+		expect(await screen.findByText('Error: WIERDERROR')).toBeInTheDocument();
 
 		expect(getClinicalTrials.mock.calls).toHaveLength(1);
 		expect(getClinicalTrials.mock.calls[0][1]).toEqual(expected);

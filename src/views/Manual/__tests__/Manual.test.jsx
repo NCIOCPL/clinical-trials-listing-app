@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -55,15 +55,13 @@ describe('<Manual />', () => {
 			payload: {},
 		});
 
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/']}>
-						<Manual />
-					</MemoryRouter>
-				</MockAnalyticsProvider>
-			);
-		});
+		render(
+			<MockAnalyticsProvider>
+				<MemoryRouter initialEntries={['/']}>
+					<Manual />
+				</MemoryRouter>
+			</MockAnalyticsProvider>
+		);
 
 		expect(useCtsApi).toHaveBeenCalled();
 		expect(screen.getByText('Manual Listing Page')).toBeInTheDocument();
@@ -6917,15 +6915,13 @@ describe('<Manual />', () => {
 			},
 		});
 
-		await act(async () => {
-			await render(
-				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/']}>
-						<Manual />
-					</MemoryRouter>
-				</MockAnalyticsProvider>
-			);
-		});
+		await render(
+			<MockAnalyticsProvider>
+				<MemoryRouter initialEntries={['/']}>
+					<Manual />
+				</MemoryRouter>
+			</MockAnalyticsProvider>
+		);
 
 		expect(useCtsApi).toHaveBeenCalled();
 		expect(screen.getByRole('heading')).toHaveTextContent(
@@ -7001,15 +6997,13 @@ describe('<Manual />', () => {
 			payload: {},
 		});
 
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/']}>
-						<Manual />
-					</MemoryRouter>
-				</MockAnalyticsProvider>
-			);
-		});
+		render(
+			<MockAnalyticsProvider>
+				<MemoryRouter initialEntries={['/']}>
+					<Manual />
+				</MemoryRouter>
+			</MockAnalyticsProvider>
+		);
 
 		expect(screen.getByText('Manual Listing Page')).toBeInTheDocument();
 		expect(
@@ -7049,15 +7043,13 @@ describe('<Manual />', () => {
 			payload: null,
 		});
 
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/']}>
-						<Manual />
-					</MemoryRouter>
-				</MockAnalyticsProvider>
-			);
-		});
+		render(
+			<MockAnalyticsProvider>
+				<MemoryRouter initialEntries={['/']}>
+					<Manual />
+				</MemoryRouter>
+			</MockAnalyticsProvider>
+		);
 
 		expect(
 			screen.getByText('An error occurred. Please try again later.')

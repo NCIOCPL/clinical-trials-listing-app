@@ -17,7 +17,7 @@
 		"registry": "https://npm.pkg.github.com/"
 	},
 	"dependencies": {
-		"axios": "^0.21.4",
+		"axios": "^1.6.7",
 		"camelcase": "^5.3.1",
 		"core-js": "^3.6.4",
 		"dom-scroll-into-view": "^2.0.1",
@@ -38,35 +38,43 @@
 		"resolve": "1.15.0"
 	},
 	"engines": {
-		"node": ">=16.0.0 <17.0.0",
-		"npm": ">=8.0.0 <9.0.0"
+		"node": ">=20.9.0 <21.0.0",
+		"npm": ">=10.0.0 <12.0.0"
 	},
 	"scripts": {
 		"start": "node scripts/start.js",
+		"start:silent": "BROWSER=none npm start",
+		"debug": "node --inspect --inspect-brk ./node_modeles/webpack/bin/webpack.js",
+		"dev:debug": "npm run debug -- --mode development",
 		"build:cgdp-legacy": "node scripts/generate-cgdp-legacy.js",
 		"build:cra": "node scripts/build.js",
 		"build": "npm run build:cra && npm run build:cgdp-legacy",
-		"test": "NODE_ENV=test npm run lint && NODE_ENV=test npm run pa11y-tests && NODE_ENV=test npm run unit-tests && NODE_ENV=test npm run cy:ci",
+		"test": " npm run pa11y-tests && npm run unit-tests && npm run cy:ci && npm run merge-coverage",
 		"test:it": "NODE_ENV=test cypress open",
-		"test:pa11y": "./node_modules/.bin/pa11y-ci",
+		"test:pa11y": "npm run pa11y-ci",
 		"pa11y-tests": "start-server-and-test start http://localhost:3000 pa11y",
 		"pa11y": "pa11y-ci",
-		"cy:ci": "start-server-and-test start http://localhost:3000 integration-tests",
+		"cy:ci": "start-server-and-test start:silent http://localhost:3000 integration-tests",
 		"unit-tests": "jest",
-		"integration-tests": "cypress run",
-		"prereport:combined": "cp coverage/cypress/index.html coverage/from-cypress.html && cp coverage/jest/lcov-report/index.html coverage/from-jest.html",
-		"report:combined": "nyc merge coverage && mv coverage.html .nyc_output/out.html",
-		"postreport:combined": "nyc report --reporter html --report-dir coverage",
+		"integration-tests": "NODE_ENV=test cypress run && nyc report",
+		"merge-coverage": "npm run mc:pre && npm run mc:merge && npm run mc:report",
+		"mc:pre": "node scripts/pre-merge-coverage",
+		"mc:merge": "nyc merge coverage/tmp coverage/merged/coverage-final.json",
+		"mc:report": "nyc report --nycrc-path=merged.nyc.config.js",
 		"format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
-		"lint": "eslint src --ext .js,.jsx",
-		"lint:fix": "eslint src --ext .js,.jsx --fix"
+		"lint": "npm run lint:src && npm run lint:cypress",
+		"lint:src": "eslint src --ext .js,.jsx",
+		"lint:cypress": "eslint cypress/e2e --ext .js,.jsx",
+		"lint:fix": "npm run lint:src:fix && npm run lint:cypress:fix",
+		"lint:src:fix": "eslint src --ext .js,.jsx --fix",
+		"lint:cypress:fix": "eslint cypress/e2e --ext .js,.jsx --fix"
 	},
 	"browserslist": {
 		"production": [
-			">0.2%",
+			">1%",
+			"last 2 versions",
 			"not dead",
-			"not op_mini all",
-			"ie 11"
+			"not IE 11"
 		],
 		"development": [
 			"last 1 chrome version",
@@ -75,137 +83,76 @@
 			"ie 11"
 		]
 	},
-	"jest": {
-		"roots": [
-			"<rootDir>/src"
-		],
-		"collectCoverage": true,
-		"coverageDirectory": "coverage/jest",
-		"collectCoverageFrom": [
-			"src/**/*.test.{js,jsx,ts,tsx}",
-			"!src/**/*.d.ts",
-			"!cypress/**/*.{spec,test}.{js,jsx,ts,tsx}"
-		],
-		"coverageThreshold": {
-			"global": {
-				"branches": 80,
-				"functions": 80,
-				"lines": 80
-			}
-		},
-		"setupFiles": [
-			"react-app-polyfill/jsdom",
-			"<rootDir>/jest-test-setup.js"
-		],
-		"setupFilesAfterEnv": [
-			"<rootDir>/src/setupTests.js"
-		],
-		"testMatch": [
-			"<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
-			"<rootDir>/src/**/*.test.{js,jsx,ts,tsx}"
-		],
-		"testEnvironment": "jest-environment-jsdom-global",
-		"transform": {
-			"^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
-			"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-			"^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-		},
-		"transformIgnorePatterns": [
-			"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
-			"^.+\\.module\\.(css|sass|scss)$"
-		],
-		"modulePaths": [],
-		"moduleNameMapper": {
-			"^react-native$": "react-native-web",
-			"^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
-		},
-		"moduleFileExtensions": [
-			"web.js",
-			"js",
-			"web.ts",
-			"ts",
-			"web.tsx",
-			"tsx",
-			"json",
-			"web.jsx",
-			"jsx",
-			"node"
-		],
-		"watchPlugins": [
-			"jest-watch-typeahead/filename",
-			"jest-watch-typeahead/testname"
-		]
-	},
 	"cypress-cucumber-preprocessor": {
 		"nonGlobalStepDefinitions": true,
 		"stepDefinitions": "cypress/e2e",
 		"commonPath": "cypress/e2e/common"
 	},
-	"nyc": {
-		"report-dir": "coverage/cypress",
-		"reporter": [
-			"html"
-		]
-	},
 	"devDependencies": {
 		"@babel/core": "7.9.0",
-		"@cypress/code-coverage": "^3.10.0",
-		"@nciocpl/eslint-config-react": "^0.8.0",
-		"@svgr/webpack": "4.3.3",
+		"@babel/eslint-parser": "^7.23.10",
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"@cypress/code-coverage": "^3.12.45",
+		"@nciocpl/eslint-config-react": "^1.0.0",
+		"@svgr/webpack": "^8.1.0",
 		"@testing-library/jest-dom": "^5.11.9",
 		"@testing-library/react": "^12.1.2",
 		"@testing-library/user-event": "^12.8.3",
 		"@types/express": "^4.17.2",
-		"@typescript-eslint/eslint-plugin": "^4.15.2",
-		"@typescript-eslint/parser": "^4.15.2",
-		"babel-eslint": "^10.1.0",
 		"babel-jest": "^29.3.1",
-		"babel-loader": "8.1.0",
-		"babel-plugin-istanbul": "^6.0.0",
+		"babel-loader": "^8.2.5",
+		"babel-plugin-istanbul": "^7.0.0",
 		"babel-plugin-named-asset-import": "^0.3.6",
 		"babel-preset-react-app": "^9.1.2",
+		"buffer": "^6.0.3",
 		"case-sensitive-paths-webpack-plugin": "2.3.0",
-		"css-loader": "^5.2.7",
-		"cypress": "^10.9.0",
+		"css-loader": "^6.10.0",
+		"css-minimizer-webpack-plugin": "^7.0.0",
+		"cypress": "^13.6.6",
 		"cypress-cucumber-preprocessor": "^4.3.1",
 		"deep-equal": "^2.1.0",
-		"eslint": "^7.20.0",
-		"eslint-loader": "^4.0.2",
-		"file-loader": "4.3.0",
-		"html-webpack-plugin": "4.0.0-beta.11",
-		"http-proxy-middleware": "^2.0.1",
+		"eslint": "^8.0.1",
+		"eslint-webpack-plugin": "^4.0.1",
+		"eslint-plugin-jest": "^28.7.0",
+		"eslint-plugin-jest-dom": "^5.4.0",
+		"eslint-plugin-testing-library": "^6.2.2",
+		"html-webpack-plugin": "^5.6.0",
+		"https-browserify": "^1.0.0",
 		"identity-obj-proxy": "3.0.0",
 		"istanbul-lib-coverage": "^3.0.0",
 		"jest": "^29.2.1",
 		"jest-environment-jsdom": "^29.3.1",
 		"jest-environment-jsdom-global": "^4.0.0",
 		"jest-resolve": "^29.3.1",
-		"jest-watch-typeahead": "^1.0.0",
+		"jest-watch-typeahead": "^2.1.1",
 		"mini-css-extract-plugin": "^1.6.2",
 		"nock": "^11.7.2",
 		"nyc": "^15.1.0",
-		"optimize-css-assets-webpack-plugin": "5.0.3",
+		"optimize-css-assets-webpack-plugin": "^6.0.1",
 		"pa11y-ci": "^3.0.1",
 		"pnp-webpack-plugin": "1.6.4",
-		"postcss-flexbugs-fixes": "4.1.0",
-		"postcss-loader": "3.0.0",
-		"postcss-normalize": "8.0.1",
+		"postcss-flexbugs-fixes": "^5.0.2",
+		"postcss-loader": "^8.1.1",
+		"postcss-normalize": "^10.0.1",
 		"postcss-prefix-selector": "^1.16.0",
-		"postcss-preset-env": "6.7.0",
-		"postcss-safe-parser": "4.0.1",
+		"postcss-preset-env": "^9.5.2",
+		"postcss-safe-parser": "^7.0.0",
+		"process": "^0.11.10",
 		"react-dev-utils": "^12.0.1",
-		"resolve-url-loader": "^3.1.2",
-		"sass": "^1.56.0",
+		"resolve-url-loader": "^5.0.0",
+		"sass": "^1.63.6",
 		"sass-loader": "^10.3.1",
-		"semver": "6.3.0",
-		"start-server-and-test": "^1.10.8",
+		"semver": "^6.3.1",
+		"start-server-and-test": "2.0.0",
+		"stream-http": "^3.2.0",
 		"style-loader": "^2.0.0",
 		"terser-webpack-plugin": "^4.1.0",
 		"ts-pnp": "1.1.6",
-		"url-loader": "2.3.0",
-		"webpack": "^4.42.1",
+		"url": "^0.11.3",
+		"webpack": "^5.90.3",
+		"webpack-cli": "^5.1.4",
 		"webpack-dev-server": "^4.11.1",
-		"webpack-manifest-plugin": "2.2.0",
+		"webpack-manifest-plugin": "3.0.0",
 		"workbox-webpack-plugin": "4.3.1"
 	}
 }

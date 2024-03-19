@@ -24,6 +24,7 @@ const publicUrlOrPath = getPublicUrlOrPath(
 const moduleFileExtensions = [
 	'web.mjs',
 	'mjs',
+	'cjs',
 	'web.js',
 	'js',
 	'web.ts',
@@ -62,6 +63,7 @@ module.exports = {
 	appHtml: resolveApp('public/index.html'),
 	appIndexJs: resolveModule(resolveApp, 'src/index'),
 	appPackageJson: resolveApp('package.json'),
+	entry: resolveApp('./src/index.jsx'),
 	appSrc: resolveApp('src'),
 	appTsConfig: resolveApp('tsconfig.json'),
 	appJsConfig: resolveApp('jsconfig.json'),

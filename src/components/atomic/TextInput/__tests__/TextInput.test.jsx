@@ -80,32 +80,18 @@ describe('TextInput component', function () {
 			expect(retMockActionObject.hasCorrectTargetEventValue).toBe(true);
 		});
 
-		it('Trigger error and validate', function () {
-			const mockEvent = {
-				event: {
-					target: {
-						value: 'error',
-					},
-				},
-			};
-
-			const setErrorMessage = ({ event }) => {
-				const { value } = event.target;
-				if (value === 'error') {
-					errorMessage = `You typed in "${value}" which generated an error`;
-				} else {
-					errorMessage = '';
-				}
-			};
-
-			setErrorMessage(mockEvent);
+		it('Displays error message when error is present', function () {
+			const errorMessage = 'You typed in "error" which generated an error';
 			render(<TextInput errorMessage={errorMessage} {...mockTextInput} />);
-			const textInput = screen.getByPlaceholderText(placeholderText);
-			fireEvent.change(textInput, { target: { value: 'error' } });
-			const error = screen.getByTestId('tid-error');
 
-			expect(error).toBeInTheDocument();
+			expect(screen.getByTestId('tid-error')).toBeInTheDocument();
 			expect(screen.getByText(errorMessage)).toBeInTheDocument();
+		});
+
+		it('Does not display error message when no error is present', function () {
+			render(<TextInput {...mockTextInput} />);
+
+			expect(screen.queryByTestId('tid-error')).not.toBeInTheDocument();
 		});
 	});
 });
