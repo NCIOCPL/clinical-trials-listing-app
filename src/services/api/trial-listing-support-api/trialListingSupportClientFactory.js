@@ -10,6 +10,7 @@ const trialListingClientFactory = (apiBase) => {
 	return axios.create({
 		baseURL: apiBase,
 		timeout: 15000,
+		adapter: 'http',
 		paramsSerializer: (params) =>
 			// The listing api requires multiple parameters with the same name
 			// to be in the format '?foo=1&foo=2&foo=3'. The default serializer

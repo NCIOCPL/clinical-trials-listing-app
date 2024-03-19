@@ -1,14 +1,14 @@
-import axios from 'axios';
 import nock from 'nock';
 
 import { getClinicalTrials as getClinicalTrialsQuery } from '../../actions/getClinicalTrials';
-import clinicalTrialsSearchClientFactory from '../clinicalTrialsSearchClientFactory';
 import { getClinicalTrials } from '../getClinicalTrials';
+import axios from 'axios';
 
-// Required for unit tests to not have CORS issues
-axios.defaults.adapter = require('axios/lib/adapters/http');
-
-const client = clinicalTrialsSearchClientFactory('http://example.org');
+const client = axios.create({
+	baseURL: 'http://example.org',
+	timeout: 15000,
+	adapter: 'http', // must override the default XHR for jest
+});
 
 describe('testing getClinicalTrials', () => {
 	beforeAll(() => {
@@ -37,7 +37,7 @@ describe('testing getClinicalTrials', () => {
 			.post('/trials', query.payload)
 			.reply(200, { total: 57, data: [{}] });
 		const response = await getClinicalTrials(client, query.payload);
-		expect(response.total).toEqual(57);
+		expect(response.total).toBe(57);
 		scope.isDone();
 	});
 

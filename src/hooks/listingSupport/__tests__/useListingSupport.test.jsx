@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import {
 	ListingSupportCache,
 	ListingSupportContext,
@@ -108,9 +108,8 @@ describe('useListingSupport', () => {
 			const actions = [IdAction({ ids: ['C4872'] })];
 
 			const cache = new ListingSupportCache();
-			await act(async () => {
-				render(<UseListingSupportSample cache={cache} actions={actions} />);
-			});
+
+			render(<UseListingSupportSample cache={cache} actions={actions} />);
 
 			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
 			expect(getListingInformationById.mock.calls).toHaveLength(1);
@@ -139,9 +138,8 @@ describe('useListingSupport', () => {
 			const actions = [NameAction({ name: 'breast-cancer' })];
 
 			const cache = new ListingSupportCache();
-			await act(async () => {
-				render(<UseListingSupportSample cache={cache} actions={actions} />);
-			});
+
+			render(<UseListingSupportSample cache={cache} actions={actions} />);
 
 			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
 			expect(getListingInformationByName.mock.calls).toHaveLength(1);
@@ -167,9 +165,8 @@ describe('useListingSupport', () => {
 			const actions = [TrialTypeAction({ trialType: 'treatment' })];
 
 			const cache = new ListingSupportCache();
-			await act(async () => {
-				render(<UseListingSupportSample cache={cache} actions={actions} />);
-			});
+
+			render(<UseListingSupportSample cache={cache} actions={actions} />);
 
 			expect(screen.getByText('Payload[0]-ids: treatment')).toBeInTheDocument();
 			expect(getTrialType.mock.calls).toHaveLength(1);
@@ -209,16 +206,15 @@ describe('useListingSupport', () => {
 			];
 
 			const cache = new ListingSupportCache();
-			await act(async () => {
-				render(<UseListingSupportSample cache={cache} actions={actions} />);
-			});
+
+			render(<UseListingSupportSample cache={cache} actions={actions} />);
 
 			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
 			expect(screen.getByText('Payload[1]-ids: treatment')).toBeInTheDocument();
 			expect(getListingInformationById.mock.calls).toHaveLength(1);
 			expect(getListingInformationById.mock.calls[0][1]).toEqual(['C4872']);
 			expect(getTrialType.mock.calls).toHaveLength(1);
-			expect(getTrialType.mock.calls[0][1]).toEqual('treatment');
+			expect(getTrialType.mock.calls[0][1]).toBe('treatment');
 		});
 	});
 
@@ -257,28 +253,26 @@ describe('useListingSupport', () => {
 
 			// Pass 1.
 			const actions = [IdAction({ ids: ['C4872'] })];
-			await act(async () => {
-				renderRtn = render(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actions}
-						testId={'round1'}
-					/>
-				);
-			});
+
+			renderRtn = render(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actions}
+					testId={'round1'}
+				/>
+			);
 			expect(screen.getByText('TestId: round1')).toBeInTheDocument();
 			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
 
 			const actionsPt2 = [IdAction({ ids: ['C99999'] })];
-			await act(async () => {
-				renderRtn.rerender(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actionsPt2}
-						testId={'round2'}
-					/>
-				);
-			});
+
+			renderRtn.rerender(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actionsPt2}
+					testId={'round2'}
+				/>
+			);
 			expect(screen.getByText('Payload[0]-ids: C99999')).toBeInTheDocument();
 			expect(screen.getByText('TestId: round2')).toBeInTheDocument();
 			expect(screen.queryByText('TestId: round1')).not.toBeInTheDocument();
@@ -312,30 +306,28 @@ describe('useListingSupport', () => {
 
 			// Pass 1.
 			const actions = [IdAction({ ids: ['C1111'] })];
-			await act(async () => {
-				renderRtn = render(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actions}
-						testId={'round1'}
-					/>
-				);
-			});
+
+			renderRtn = render(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actions}
+					testId={'round1'}
+				/>
+			);
 			expect(screen.getByText('TestId: round1')).toBeInTheDocument();
 			expect(
 				screen.getByText('Payload[0]-ids: C1111,C2222')
 			).toBeInTheDocument();
 
 			const actionsPt2 = [IdAction({ ids: ['C2222'] })];
-			await act(async () => {
-				renderRtn.rerender(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actionsPt2}
-						testId={'round2'}
-					/>
-				);
-			});
+
+			renderRtn.rerender(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actionsPt2}
+					testId={'round2'}
+				/>
+			);
 			expect(
 				screen.getByText('Payload[0]-ids: C1111,C2222')
 			).toBeInTheDocument();
@@ -374,28 +366,26 @@ describe('useListingSupport', () => {
 
 			// Pass 1.
 			const actions = [IdAction({ ids: ['C4872'] })];
-			await act(async () => {
-				renderRtn = render(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actions}
-						testId={'round1'}
-					/>
-				);
-			});
+
+			renderRtn = render(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actions}
+					testId={'round1'}
+				/>
+			);
 			expect(screen.getByText('TestId: round1')).toBeInTheDocument();
 			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
 
 			const actionsPt2 = [NameAction({ name: 'breast-cancer' })];
-			await act(async () => {
-				renderRtn.rerender(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actionsPt2}
-						testId={'round2'}
-					/>
-				);
-			});
+
+			renderRtn.rerender(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actionsPt2}
+					testId={'round2'}
+				/>
+			);
 			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
 			expect(screen.getByText('TestId: round2')).toBeInTheDocument();
 			expect(screen.queryByText('TestId: round1')).not.toBeInTheDocument();
@@ -474,15 +464,13 @@ describe('useListingSupport', () => {
 			// Round 1
 			const actions = [IdAction({ ids: ['C1111', 'C2222'] })];
 
-			await act(async () => {
-				renderRtn = render(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actions}
-						testId={'round1'}
-					/>
-				);
-			});
+			renderRtn = render(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actions}
+					testId={'round1'}
+				/>
+			);
 
 			expect(
 				screen.getByText('Payload[0]-ids: C1111,C2222')
@@ -500,15 +488,13 @@ describe('useListingSupport', () => {
 				TrialTypeAction({ trialType: 'treatment' }),
 			];
 
-			await act(async () => {
-				renderRtn.rerender(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actions2}
-						testId={'round2'}
-					/>
-				);
-			});
+			renderRtn.rerender(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actions2}
+					testId={'round2'}
+				/>
+			);
 			expect(
 				screen.getByText('Payload[0]-ids: C1111,C2222')
 			).toBeInTheDocument();
@@ -522,7 +508,7 @@ describe('useListingSupport', () => {
 
 			// Trial type should be added.
 			expect(getTrialType.mock.calls).toHaveLength(1);
-			expect(getTrialType.mock.calls[0][1]).toEqual('treatment');
+			expect(getTrialType.mock.calls[0][1]).toBe('treatment');
 
 			// Round 3
 			const actions3 = [
@@ -531,15 +517,13 @@ describe('useListingSupport', () => {
 				NameAction({ name: 'dummy-concept' }),
 			];
 
-			await act(async () => {
-				renderRtn.rerender(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actions3}
-						testId={'round3'}
-					/>
-				);
-			});
+			renderRtn.rerender(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actions3}
+					testId={'round3'}
+				/>
+			);
 			expect(
 				screen.getByText('Payload[0]-ids: C1111,C2222')
 			).toBeInTheDocument();
@@ -558,22 +542,20 @@ describe('useListingSupport', () => {
 			// A new call to get by name hsould have happened because of
 			// the new third parameter.
 			expect(getListingInformationByName.mock.calls).toHaveLength(1);
-			expect(getListingInformationByName.mock.calls[0][1]).toEqual(
+			expect(getListingInformationByName.mock.calls[0][1]).toBe(
 				'dummy-concept'
 			);
 
 			// Round 4
 			const actions4 = [IdAction({ ids: ['C99999'] })];
 
-			await act(async () => {
-				renderRtn.rerender(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actions4}
-						testId={'round4'}
-					/>
-				);
-			});
+			renderRtn.rerender(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actions4}
+					testId={'round4'}
+				/>
+			);
 			expect(screen.getByText('Payload[0]-ids: C99999')).toBeInTheDocument();
 			expect(screen.getByText('TestId: round4')).toBeInTheDocument();
 
@@ -602,9 +584,8 @@ describe('useListingSupport', () => {
 			const actions = [IdAction({ ids: ['C4872'] })];
 
 			const cache = new ListingSupportCache();
-			await act(async () => {
-				render(<UseListingSupportSample cache={cache} actions={actions} />);
-			});
+
+			render(<UseListingSupportSample cache={cache} actions={actions} />);
 
 			// TODO: Make this actually check the payload
 			expect(screen.getByText('Payload[0]: null')).toBeInTheDocument();
@@ -628,9 +609,7 @@ describe('useListingSupport', () => {
 				},
 			];
 
-			await act(async () => {
-				render(<UseListingSupportSample actions={actions} />);
-			});
+			render(<UseListingSupportSample actions={actions} />);
 
 			expect(
 				screen.getByText('Error: Unknown trial listing support request')
@@ -654,9 +633,8 @@ describe('useListingSupport', () => {
 			const actions = [IdAction({ ids: ['C4872'] })];
 
 			const cache = new ListingSupportCache();
-			await act(async () => {
-				render(<UseListingSupportSample cache={cache} actions={actions} />);
-			});
+
+			render(<UseListingSupportSample cache={cache} actions={actions} />);
 
 			expect(screen.getByText('Error: Bad Mojo')).toBeInTheDocument();
 			expect(getListingInformationById.mock.calls).toHaveLength(1);

@@ -26,6 +26,7 @@ export const getClinicalTrials = async (client, query) => {
 			);
 		}
 	} catch (error) {
+		console.log(error);
 		// This conditional will be hit for any status >= 300.
 		if (error.response) {
 			throw new Error(

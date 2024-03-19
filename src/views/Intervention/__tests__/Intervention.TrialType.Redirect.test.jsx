@@ -1,4 +1,4 @@
-import { act, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MemoryRouter, useLocation } from 'react-router';
@@ -118,15 +118,13 @@ describe('<Intervention Trial Type display />', () => {
 			);
 		};
 
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/spiroplatin']}>
-						<ComponentWithLocation RenderComponent={InterventionWithData} />
-					</MemoryRouter>
-				</MockAnalyticsProvider>
-			);
-		});
+		render(
+			<MockAnalyticsProvider>
+				<MemoryRouter initialEntries={['/spiroplatin']}>
+					<ComponentWithLocation RenderComponent={InterventionWithData} />
+				</MemoryRouter>
+			</MockAnalyticsProvider>
+		);
 
 		const expectedLocationObject = {
 			pathname: '/notrials',
@@ -234,15 +232,13 @@ describe('<Intervention Trial Type display />', () => {
 			);
 		};
 
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/C1234']}>
-						<ComponentWithLocation RenderComponent={InterventionWithData} />
-					</MemoryRouter>
-				</MockAnalyticsProvider>
-			);
-		});
+		render(
+			<MockAnalyticsProvider>
+				<MemoryRouter initialEntries={['/C1234']}>
+					<ComponentWithLocation RenderComponent={InterventionWithData} />
+				</MemoryRouter>
+			</MockAnalyticsProvider>
+		);
 
 		const expectedLocationObject = {
 			pathname: '/notrials',

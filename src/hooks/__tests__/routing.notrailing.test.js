@@ -12,6 +12,6 @@ describe('when base path missing trailing slash', () => {
 
 	it('will replace paths with params', () => {
 		const { BasePath } = useAppPaths();
-		expect(BasePath()).toEqual('/');
+		expect(BasePath()).toBe('/');
 	});
 });
