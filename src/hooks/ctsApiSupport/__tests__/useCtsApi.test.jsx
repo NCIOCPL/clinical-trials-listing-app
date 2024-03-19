@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { useCtsApi } from '../useCtsApi';
 import { useStateValue } from '../../../store/store';
 import { getClinicalTrials as getClinicalTrialsQuery } from '../../../services/api/actions/getClinicalTrials';
@@ -99,9 +99,7 @@ describe('tests for useCtsApi', () => {
 			size: 1,
 		};
 
-		await act(async () => {
-			render(<UseCtsApiSupportSample query={query} />);
-		});
+		render(<UseCtsApiSupportSample query={query} />);
 
 		expect(getClinicalTrials.mock.calls).toHaveLength(1);
 		expect(getClinicalTrials.mock.calls[0][1]).toEqual(expected);
@@ -161,9 +159,7 @@ describe('tests for useCtsApi', () => {
 			size: 1,
 		};
 
-		await act(async () => {
-			render(<UseCtsApiSupportSample query={query} />);
-		});
+		render(<UseCtsApiSupportSample query={query} />);
 
 		expect(getClinicalTrials.mock.calls).toHaveLength(1);
 		expect(getClinicalTrials.mock.calls[0][1]).toEqual(expected);
@@ -223,9 +219,7 @@ describe('tests for useCtsApi', () => {
 			size: 1,
 		};
 
-		await act(async () => {
-			render(<UseCtsApiSupportSample query={query} />);
-		});
+		render(<UseCtsApiSupportSample query={query} />);
 
 		expect(getClinicalTrials.mock.calls).toHaveLength(1);
 		expect(getClinicalTrials.mock.calls[0][1]).toEqual(expected);

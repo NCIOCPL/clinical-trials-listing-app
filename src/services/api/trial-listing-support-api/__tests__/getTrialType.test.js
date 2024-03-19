@@ -1,9 +1,6 @@
 import axios from 'axios';
 import nock from 'nock';
-import { getTrialType, default as factory } from '../';
-
-// Required for unit tests to not have CORS issues
-axios.defaults.adapter = require('axios/lib/adapters/http');
+import { getTrialType } from '../';
 
 describe('Get trial type information', () => {
 	beforeAll(() => {
@@ -15,7 +12,11 @@ describe('Get trial type information', () => {
 		nock.enableNetConnect();
 	});
 
-	const client = factory('http://example.org');
+	const client = axios.create({
+		baseURL: 'http://example.org',
+		timeout: 15000,
+		adapter: 'http', // must override the default XHR for jest
+	});
 
 	it('should return expected response with valid trial type', async () => {
 		const expected = {

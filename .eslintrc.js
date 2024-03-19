@@ -19,19 +19,62 @@ const cypressRuleDisables = {
 	...disableAllRules('testing-library', testLibRules),
 };
 
+// Default to development if we've somehow hit the linter without it being set
+// react-scritps technically sets this to development also
+if (process.env.NODE_ENV == null) {
+	process.env.NODE_ENV = 'development';
+}
+
 module.exports = {
-	extends: '@nciocpl/eslint-config-react',
+	extends: [
+		'@nciocpl/eslint-config-react',
+		'plugin:jest/recommended',
+		'plugin:jest-dom/recommended',
+	],
+	plugins: ['testing-library', 'jest', 'jest-dom'],
+	env: {
+		browser: true,
+		es6: true,
+		node: true,
+		jest: true,
+	},
+	settings: {
+		react: {
+			version: 'detect',
+		},
+	},
+	parser: '@babel/eslint-parser',
+	parserOptions: {
+		ecmaVersion: 'latest',
+		sourceType: 'module',
+		ecmaFeatures: {
+			jsx: true,
+		},
+		babelOptions: {
+			presets: ['@babel/preset-react'],
+		},
+	},
+	rules: {
+		'testing-library/no-render-in-setup': 'off', // This is now no-render-in-lifecycle.  Remove when NCIOCPL standards are updated.
+		'testing-library/no-render-in-lifecycle': 'error',
+
+		'testing-library/prefer-wait-for': 'off', // This is now prefer-find-by. Remove when NCIOCPL standards are updated.
+		'testing-library/prefer-find-by': 'error',
+
+		'jest/no-if': 'off', // Removed in eslint-plugin-jest 28. This is now no-conditional-in-test.  Note: v28 and above only supports for node 20+. Remove when NCIOCPL standards are updated.
+		'jest/no-conditional-in-test': 'error',
+
+		'react/jsx-filename-extension': [1, { allow: 'always' }],
+	},
 	globals: {
 		cy: true,
 		Cypress: true,
 		getFixture: true,
 	},
-	rules: {
-		'react/jsx-filename-extension': [1, { allow: 'always' }],
-	},
+	ignorePatterns: ['**/node_modules/***', 'build/', 'dist/', '*/node_modules/'],
 	overrides: [
 		{
-			files: ['cypress/**/*.js'],
+			files: ['cypress/**'],
 			rules: cypressRuleDisables,
 		},
 	],

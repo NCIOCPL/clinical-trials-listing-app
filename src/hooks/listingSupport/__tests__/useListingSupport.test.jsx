@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import {
 	ListingSupportCache,
 	ListingSupportContext,
@@ -22,6 +22,9 @@ jest.mock(
 );
 
 jest.mock('../../../services/api/trial-listing-support-api/getTrialType');
+// We are choosing to opt out of the standard practice here
+// in favor of more closely capturing the business logic
+/* eslint-disable jest/no-conditional-in-test */
 
 /* eslint-disable react/prop-types */
 const InternalListingSupportSample = ({ actions, testId }) => {
@@ -85,11 +88,8 @@ describe('useListingSupport', () => {
 		jest.clearAllMocks();
 	});
 
-	describe('one paramater use cases', () => {
+	describe('one parameter use cases', () => {
 		it('should fetch the data with one ID', async () => {
-			// This will work for now because we don't care it is
-			// an axios instance. When we add in aborting, we will
-			// very much care.
 			useStateValue.mockReturnValue([
 				{
 					appId: 'mockAppId',
@@ -97,7 +97,7 @@ describe('useListingSupport', () => {
 				},
 			]);
 
-			getListingInformationById.mockReturnValue({
+			getListingInformationById.mockResolvedValue({
 				conceptId: ['C4872'],
 				name: {
 					label: 'Breast Cancer',
@@ -108,19 +108,16 @@ describe('useListingSupport', () => {
 			const actions = [IdAction({ ids: ['C4872'] })];
 
 			const cache = new ListingSupportCache();
-			await act(async () => {
-				render(<UseListingSupportSample cache={cache} actions={actions} />);
-			});
+			render(<UseListingSupportSample cache={cache} actions={actions} />);
 
-			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
+			await waitFor(() => {
+				expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
+			});
 			expect(getListingInformationById.mock.calls).toHaveLength(1);
 			expect(getListingInformationById.mock.calls[0][1]).toEqual(['C4872']);
 		});
 
 		it('should fetch the data with one Name', async () => {
-			// This will work for now because we don't care it is
-			// an axios instance. When we add in aborting, we will
-			// very much care.
 			useStateValue.mockReturnValue([
 				{
 					appId: 'mockAppId',
@@ -128,7 +125,7 @@ describe('useListingSupport', () => {
 				},
 			]);
 
-			getListingInformationByName.mockReturnValue({
+			getListingInformationByName.mockResolvedValue({
 				conceptId: ['C4872'],
 				name: {
 					label: 'Breast Cancer',
@@ -139,18 +136,15 @@ describe('useListingSupport', () => {
 			const actions = [NameAction({ name: 'breast-cancer' })];
 
 			const cache = new ListingSupportCache();
-			await act(async () => {
-				render(<UseListingSupportSample cache={cache} actions={actions} />);
-			});
+			render(<UseListingSupportSample cache={cache} actions={actions} />);
 
-			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
+			await waitFor(() => {
+				expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
+			});
 			expect(getListingInformationByName.mock.calls).toHaveLength(1);
 		});
 
 		it('should fetch the data for a trial type', async () => {
-			// This will work for now because we don't care it is
-			// an axios instance. When we add in aborting, we will
-			// very much care.
 			useStateValue.mockReturnValue([
 				{
 					appId: 'mockAppId',
@@ -158,7 +152,7 @@ describe('useListingSupport', () => {
 				},
 			]);
 
-			getTrialType.mockReturnValue({
+			getTrialType.mockResolvedValue({
 				prettyUrlName: 'treatment',
 				idString: 'treatment',
 				label: 'Treatment',
@@ -167,20 +161,19 @@ describe('useListingSupport', () => {
 			const actions = [TrialTypeAction({ trialType: 'treatment' })];
 
 			const cache = new ListingSupportCache();
-			await act(async () => {
-				render(<UseListingSupportSample cache={cache} actions={actions} />);
-			});
+			render(<UseListingSupportSample cache={cache} actions={actions} />);
 
-			expect(screen.getByText('Payload[0]-ids: treatment')).toBeInTheDocument();
+			await waitFor(() => {
+				expect(
+					screen.getByText('Payload[0]-ids: treatment')
+				).toBeInTheDocument();
+			});
 			expect(getTrialType.mock.calls).toHaveLength(1);
 		});
 	});
 
 	describe('multi-parameter use cases', () => {
 		it('handles multiple parameters', async () => {
-			// This will work for now because we don't care it is
-			// an axios instance. When we add in aborting, we will
-			// very much care.
 			useStateValue.mockReturnValue([
 				{
 					appId: 'mockAppId',
@@ -188,7 +181,7 @@ describe('useListingSupport', () => {
 				},
 			]);
 
-			getListingInformationById.mockReturnValue({
+			getListingInformationById.mockResolvedValue({
 				conceptId: ['C4872'],
 				name: {
 					label: 'Breast Cancer',
@@ -197,7 +190,7 @@ describe('useListingSupport', () => {
 				prettyUrlName: 'breast-cancer',
 			});
 
-			getTrialType.mockReturnValue({
+			getTrialType.mockResolvedValue({
 				prettyUrlName: 'treatment',
 				idString: 'treatment',
 				label: 'Treatment',
@@ -209,24 +202,22 @@ describe('useListingSupport', () => {
 			];
 
 			const cache = new ListingSupportCache();
-			await act(async () => {
-				render(<UseListingSupportSample cache={cache} actions={actions} />);
+			render(<UseListingSupportSample cache={cache} actions={actions} />);
+
+			await waitFor(() => {
+				expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
 			});
 
-			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
 			expect(screen.getByText('Payload[1]-ids: treatment')).toBeInTheDocument();
 			expect(getListingInformationById.mock.calls).toHaveLength(1);
 			expect(getListingInformationById.mock.calls[0][1]).toEqual(['C4872']);
 			expect(getTrialType.mock.calls).toHaveLength(1);
-			expect(getTrialType.mock.calls[0][1]).toEqual('treatment');
+			expect(getTrialType.mock.calls[0][1]).toBe('treatment');
 		});
 	});
 
 	describe('route changing use cases', () => {
 		it('handles changing concepts from one to another', async () => {
-			// This will work for now because we don't care it is
-			// an axios instance. When we add in aborting, we will
-			// very much care.
 			useStateValue.mockReturnValue([
 				{
 					appId: 'mockAppId',
@@ -235,7 +226,7 @@ describe('useListingSupport', () => {
 			]);
 
 			getListingInformationById
-				.mockReturnValueOnce({
+				.mockResolvedValueOnce({
 					conceptId: ['C4872'],
 					name: {
 						label: 'Breast Cancer',
@@ -243,7 +234,7 @@ describe('useListingSupport', () => {
 					},
 					prettyUrlName: 'breast-cancer',
 				})
-				.mockReturnValueOnce({
+				.mockResolvedValueOnce({
 					conceptId: ['C99999'],
 					name: {
 						label: 'Dummy Concept',
@@ -257,29 +248,30 @@ describe('useListingSupport', () => {
 
 			// Pass 1.
 			const actions = [IdAction({ ids: ['C4872'] })];
-			await act(async () => {
-				renderRtn = render(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actions}
-						testId={'round1'}
-					/>
-				);
-			});
-			expect(screen.getByText('TestId: round1')).toBeInTheDocument();
-			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
+			renderRtn = render(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actions}
+					testId={'round1'}
+				/>
+			);
 
-			const actionsPt2 = [IdAction({ ids: ['C99999'] })];
-			await act(async () => {
-				renderRtn.rerender(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actionsPt2}
-						testId={'round2'}
-					/>
-				);
+			await waitFor(() => {
+				expect(screen.getByText('TestId: round1')).toBeInTheDocument();
 			});
-			expect(screen.getByText('Payload[0]-ids: C99999')).toBeInTheDocument();
+			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
+			const actionsPt2 = [IdAction({ ids: ['C99999'] })];
+			renderRtn.rerender(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actionsPt2}
+					testId={'round2'}
+				/>
+			);
+
+			await waitFor(() => {
+				expect(screen.getByText('Payload[0]-ids: C99999')).toBeInTheDocument();
+			});
 			expect(screen.getByText('TestId: round2')).toBeInTheDocument();
 			expect(screen.queryByText('TestId: round1')).not.toBeInTheDocument();
 			expect(getListingInformationById.mock.calls).toHaveLength(2);
@@ -288,9 +280,6 @@ describe('useListingSupport', () => {
 		});
 
 		it('handles same concept but changing ids from one to another', async () => {
-			// This will work for now because we don't care it is
-			// an axios instance. When we add in aborting, we will
-			// very much care.
 			useStateValue.mockReturnValue([
 				{
 					appId: 'mockAppId',
@@ -298,7 +287,7 @@ describe('useListingSupport', () => {
 				},
 			]);
 
-			getListingInformationById.mockReturnValueOnce({
+			getListingInformationById.mockResolvedValue({
 				conceptId: ['C1111', 'C2222'],
 				name: {
 					label: 'Multi-id concept',
@@ -312,33 +301,36 @@ describe('useListingSupport', () => {
 
 			// Pass 1.
 			const actions = [IdAction({ ids: ['C1111'] })];
-			await act(async () => {
-				renderRtn = render(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actions}
-						testId={'round1'}
-					/>
-				);
+			renderRtn = render(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actions}
+					testId={'round1'}
+				/>
+			);
+
+			await waitFor(() => {
+				expect(screen.getByText('TestId: round1')).toBeInTheDocument();
 			});
-			expect(screen.getByText('TestId: round1')).toBeInTheDocument();
+
 			expect(
 				screen.getByText('Payload[0]-ids: C1111,C2222')
 			).toBeInTheDocument();
 
 			const actionsPt2 = [IdAction({ ids: ['C2222'] })];
-			await act(async () => {
-				renderRtn.rerender(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actionsPt2}
-						testId={'round2'}
-					/>
-				);
+			renderRtn.rerender(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actionsPt2}
+					testId={'round2'}
+				/>
+			);
+
+			await waitFor(() => {
+				expect(
+					screen.getByText('Payload[0]-ids: C1111,C2222')
+				).toBeInTheDocument();
 			});
-			expect(
-				screen.getByText('Payload[0]-ids: C1111,C2222')
-			).toBeInTheDocument();
 			expect(screen.getByText('TestId: round2')).toBeInTheDocument();
 			expect(screen.queryByText('TestId: round1')).not.toBeInTheDocument();
 			expect(getListingInformationById.mock.calls).toHaveLength(1);
@@ -346,9 +338,6 @@ describe('useListingSupport', () => {
 		});
 
 		it('handles id to name transition', async () => {
-			// This will work for now because we don't care it is
-			// an axios instance. When we add in aborting, we will
-			// very much care.
 			useStateValue.mockReturnValue([
 				{
 					appId: 'mockAppId',
@@ -356,7 +345,7 @@ describe('useListingSupport', () => {
 				},
 			]);
 
-			getListingInformationById.mockReturnValueOnce({
+			getListingInformationById.mockResolvedValue({
 				conceptId: ['C4872'],
 				name: {
 					label: 'Breast Cancer',
@@ -374,29 +363,30 @@ describe('useListingSupport', () => {
 
 			// Pass 1.
 			const actions = [IdAction({ ids: ['C4872'] })];
-			await act(async () => {
-				renderRtn = render(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actions}
-						testId={'round1'}
-					/>
-				);
-			});
-			expect(screen.getByText('TestId: round1')).toBeInTheDocument();
-			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
+			renderRtn = render(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actions}
+					testId={'round1'}
+				/>
+			);
 
-			const actionsPt2 = [NameAction({ name: 'breast-cancer' })];
-			await act(async () => {
-				renderRtn.rerender(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actionsPt2}
-						testId={'round2'}
-					/>
-				);
+			await waitFor(() => {
+				expect(screen.getByText('TestId: round1')).toBeInTheDocument();
 			});
 			expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
+			const actionsPt2 = [NameAction({ name: 'breast-cancer' })];
+			renderRtn.rerender(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actionsPt2}
+					testId={'round2'}
+				/>
+			);
+
+			await waitFor(() => {
+				expect(screen.getByText('Payload[0]-ids: C4872')).toBeInTheDocument();
+			});
 			expect(screen.getByText('TestId: round2')).toBeInTheDocument();
 			expect(screen.queryByText('TestId: round1')).not.toBeInTheDocument();
 			expect(getListingInformationById.mock.calls).toHaveLength(1);
@@ -404,9 +394,6 @@ describe('useListingSupport', () => {
 		});
 
 		it('handles adding then removing parameters', async () => {
-			// This will work for now because we don't care it is
-			// an axios instance. When we add in aborting, we will
-			// very much care.
 			useStateValue.mockReturnValue([
 				{
 					appId: 'mockAppId',
@@ -416,55 +403,55 @@ describe('useListingSupport', () => {
 
 			getListingInformationById.mockImplementation((client, ids) => {
 				if (ids.includes('C1111') || ids.includes('C2222')) {
-					return {
+					return Promise.resolve({
 						conceptId: ['C1111', 'C2222'],
 						name: {
 							label: 'Multi-id concept',
 							normalized: 'multi-id concept',
 						},
 						prettyUrlName: 'multi-id-concept',
-					};
+					});
 				} else if (ids.includes('C99999')) {
-					return {
+					return Promise.resolve({
 						conceptId: ['C99999'],
 						name: {
 							label: 'Dummy Concept',
 							normalized: 'dummy concept',
 						},
 						prettyUrlName: 'dummy-concept',
-					};
+					});
 				}
 			});
 
 			getListingInformationByName.mockImplementation((client, name) => {
 				if (name === 'multi-id-concept') {
-					return {
+					return Promise.resolve({
 						conceptId: ['C1111', 'C2222'],
 						name: {
 							label: 'Multi-id concept',
 							normalized: 'multi-id concept',
 						},
 						prettyUrlName: 'multi-id-concept',
-					};
+					});
 				} else if (name === 'dummy-concept') {
-					return {
+					return Promise.resolve({
 						conceptId: ['C99999'],
 						name: {
 							label: 'Dummy Concept',
 							normalized: 'dummy concept',
 						},
 						prettyUrlName: 'dummy-concept',
-					};
+					});
 				}
 			});
 
 			getTrialType.mockImplementation((client, trialType) => {
 				if (trialType === 'treatment') {
-					return {
+					return Promise.resolve({
 						prettyUrlName: 'treatment',
 						idString: 'treatment',
 						label: 'Treatment',
-					};
+					});
 				}
 			});
 
@@ -474,19 +461,20 @@ describe('useListingSupport', () => {
 			// Round 1
 			const actions = [IdAction({ ids: ['C1111', 'C2222'] })];
 
-			await act(async () => {
-				renderRtn = render(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actions}
-						testId={'round1'}
-					/>
-				);
+			renderRtn = render(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actions}
+					testId={'round1'}
+				/>
+			);
+
+			await waitFor(() => {
+				expect(
+					screen.getByText('Payload[0]-ids: C1111,C2222')
+				).toBeInTheDocument();
 			});
 
-			expect(
-				screen.getByText('Payload[0]-ids: C1111,C2222')
-			).toBeInTheDocument();
 			expect(screen.getByText('TestId: round1')).toBeInTheDocument();
 			expect(getListingInformationById.mock.calls).toHaveLength(1);
 			expect(getListingInformationById.mock.calls[0][1]).toEqual([
@@ -500,18 +488,20 @@ describe('useListingSupport', () => {
 				TrialTypeAction({ trialType: 'treatment' }),
 			];
 
-			await act(async () => {
-				renderRtn.rerender(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actions2}
-						testId={'round2'}
-					/>
-				);
+			renderRtn.rerender(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actions2}
+					testId={'round2'}
+				/>
+			);
+
+			await waitFor(() => {
+				expect(
+					screen.getByText('Payload[0]-ids: C1111,C2222')
+				).toBeInTheDocument();
 			});
-			expect(
-				screen.getByText('Payload[0]-ids: C1111,C2222')
-			).toBeInTheDocument();
+
 			expect(screen.getByText('Payload[1]-ids: treatment')).toBeInTheDocument();
 			expect(screen.getByText('TestId: round2')).toBeInTheDocument();
 			// ID Should still only be one cause it was not in the actions list.
@@ -522,7 +512,7 @@ describe('useListingSupport', () => {
 
 			// Trial type should be added.
 			expect(getTrialType.mock.calls).toHaveLength(1);
-			expect(getTrialType.mock.calls[0][1]).toEqual('treatment');
+			expect(getTrialType.mock.calls[0][1]).toBe('treatment');
 
 			// Round 3
 			const actions3 = [
@@ -531,21 +521,22 @@ describe('useListingSupport', () => {
 				NameAction({ name: 'dummy-concept' }),
 			];
 
-			await act(async () => {
-				renderRtn.rerender(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actions3}
-						testId={'round3'}
-					/>
-				);
+			renderRtn.rerender(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actions3}
+					testId={'round3'}
+				/>
+			);
+
+			await waitFor(() => {
+				expect(
+					screen.getByText('Payload[0]-ids: C1111,C2222')
+				).toBeInTheDocument();
 			});
-			expect(
-				screen.getByText('Payload[0]-ids: C1111,C2222')
-			).toBeInTheDocument();
+
 			expect(screen.getByText('Payload[1]-ids: treatment')).toBeInTheDocument();
 			expect(screen.getByText('Payload[2]-ids: C99999')).toBeInTheDocument();
-
 			expect(screen.getByText('TestId: round3')).toBeInTheDocument();
 
 			// ID should still only be 1 because it was cached.
@@ -555,28 +546,28 @@ describe('useListingSupport', () => {
 			// because it is cached.
 			expect(getTrialType.mock.calls).toHaveLength(1);
 
-			// A new call to get by name hsould have happened because of
+			// A new call to get by name should have happened because of
 			// the new third parameter.
 			expect(getListingInformationByName.mock.calls).toHaveLength(1);
-			expect(getListingInformationByName.mock.calls[0][1]).toEqual(
+			expect(getListingInformationByName.mock.calls[0][1]).toBe(
 				'dummy-concept'
 			);
 
 			// Round 4
 			const actions4 = [IdAction({ ids: ['C99999'] })];
 
-			await act(async () => {
-				renderRtn.rerender(
-					<UseListingSupportSample
-						cache={cache}
-						actions={actions4}
-						testId={'round4'}
-					/>
-				);
-			});
-			expect(screen.getByText('Payload[0]-ids: C99999')).toBeInTheDocument();
-			expect(screen.getByText('TestId: round4')).toBeInTheDocument();
+			renderRtn.rerender(
+				<UseListingSupportSample
+					cache={cache}
+					actions={actions4}
+					testId={'round4'}
+				/>
+			);
 
+			await waitFor(() => {
+				expect(screen.getByText('Payload[0]-ids: C99999')).toBeInTheDocument();
+			});
+			expect(screen.getByText('TestId: round4')).toBeInTheDocument();
 			// Nothing should be fetched now since C99999 is in the cache.
 			expect(getListingInformationById.mock.calls).toHaveLength(1);
 			expect(getTrialType.mock.calls).toHaveLength(1);
@@ -586,9 +577,6 @@ describe('useListingSupport', () => {
 
 	describe('error cases', () => {
 		it('should handle a 404', async () => {
-			// This will work for now because we don't care it is
-			// an axios instance. When we add in aborting, we will
-			// very much care.
 			useStateValue.mockReturnValue([
 				{
 					appId: 'mockAppId',
@@ -596,24 +584,18 @@ describe('useListingSupport', () => {
 				},
 			]);
 
-			getListingInformationById.mockImplementation(() => {
-				return null;
-			});
+			getListingInformationById.mockResolvedValue(null);
 			const actions = [IdAction({ ids: ['C4872'] })];
 
 			const cache = new ListingSupportCache();
-			await act(async () => {
-				render(<UseListingSupportSample cache={cache} actions={actions} />);
-			});
+			render(<UseListingSupportSample cache={cache} actions={actions} />);
 
-			// TODO: Make this actually check the payload
-			expect(screen.getByText('Payload[0]: null')).toBeInTheDocument();
+			await waitFor(() => {
+				expect(screen.getByText('Payload[0]: null')).toBeInTheDocument();
+			});
 		});
 
 		it('should handle a error with unknown type', async () => {
-			// This will work for now because we don't care it is
-			// an axios instance. When we add in aborting, we will
-			// very much care.
 			useStateValue.mockReturnValue([
 				{
 					appId: 'mockAppId',
@@ -628,19 +610,16 @@ describe('useListingSupport', () => {
 				},
 			];
 
-			await act(async () => {
-				render(<UseListingSupportSample actions={actions} />);
-			});
+			render(<UseListingSupportSample actions={actions} />);
 
-			expect(
-				screen.getByText('Error: Unknown trial listing support request')
-			).toBeInTheDocument();
+			await waitFor(() => {
+				expect(
+					screen.getByText('Error: Unknown trial listing support request')
+				).toBeInTheDocument();
+			});
 		});
 
 		it('should handle a generic error from a fetch', async () => {
-			// This will work for now because we don't care it is
-			// an axios instance. When we add in aborting, we will
-			// very much care.
 			useStateValue.mockReturnValue([
 				{
 					appId: 'mockAppId',
@@ -648,17 +627,15 @@ describe('useListingSupport', () => {
 				},
 			]);
 
-			getListingInformationById.mockImplementation(() => {
-				throw new Error('Bad Mojo');
-			});
+			getListingInformationById.mockRejectedValue(new Error('Bad Mojo'));
 			const actions = [IdAction({ ids: ['C4872'] })];
 
 			const cache = new ListingSupportCache();
-			await act(async () => {
-				render(<UseListingSupportSample cache={cache} actions={actions} />);
-			});
+			render(<UseListingSupportSample cache={cache} actions={actions} />);
 
-			expect(screen.getByText('Error: Bad Mojo')).toBeInTheDocument();
+			await waitFor(() => {
+				expect(screen.getByText('Error: Bad Mojo')).toBeInTheDocument();
+			});
 			expect(getListingInformationById.mock.calls).toHaveLength(1);
 		});
 	});
