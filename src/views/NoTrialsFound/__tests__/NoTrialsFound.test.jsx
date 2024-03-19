@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -14,6 +14,7 @@ jest.mock('react-router-dom', () => ({
 		search: '?p1=chronic-fatigue-syndrome',
 	}),
 }));
+
 describe('<NoTrialsHtml />', () => {
 	it('Should assert NoTrialsHtml is displayed with replaced text', async () => {
 		const basePath = '/';
@@ -60,16 +61,14 @@ describe('<NoTrialsHtml />', () => {
 			},
 		]);
 
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<MemoryRouter
-						initialEntries={['/notrials?p1=chronic-fatigue-syndrome']}>
-						<NoTrialsFound routeParamMap={routeParamMap} data={data} />
-					</MemoryRouter>
-				</MockAnalyticsProvider>
-			);
-		});
+		render(
+			<MockAnalyticsProvider>
+				<MemoryRouter
+					initialEntries={['/notrials?p1=chronic-fatigue-syndrome']}>
+					<NoTrialsFound routeParamMap={routeParamMap} data={data} />
+				</MemoryRouter>
+			</MockAnalyticsProvider>
+		);
 
 		expect(
 			screen.getByText('Chronic Fatigue Syndrome Clinical Trials')

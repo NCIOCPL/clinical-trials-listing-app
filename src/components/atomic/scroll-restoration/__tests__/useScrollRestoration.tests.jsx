@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
@@ -71,10 +71,8 @@ describe('useScrollRestoration()', () => {
 			</MemoryRouter>
 		);
 
-		await act(() => {
-			fireEvent.click(screen.getByText('Sample Link Test'));
-			history.back();
-		});
+		fireEvent.click(screen.getByText('Sample Link Test'));
+		history.back();
 
 		expect(window.history.replaceState).toHaveBeenLastCalledWith(
 			{

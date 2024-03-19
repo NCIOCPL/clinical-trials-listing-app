@@ -21,6 +21,6 @@ describe('Check Radio Button', function () {
 		fireEvent.click(radio);
 		expect(radio.value).toBe('1');
 		expect(radio).toBeChecked();
-		expect(radio.disabled).toBe(false);
+		expect(radio).toBeEnabled();
 	});
 });
