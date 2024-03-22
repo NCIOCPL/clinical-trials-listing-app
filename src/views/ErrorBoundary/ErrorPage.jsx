@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { useTracking } from 'react-tracking';
 
 import { useStateValue } from '../../store/store';
@@ -21,10 +22,24 @@ const ErrorPage = () => {
 		});
 	}, []);
 
+	const renderHelmet = () => {
+		return (
+			<Helmet>
+				<title>Errors Occurred</title>
+				<meta property="dcterms.subject" content="Error Pages" />
+				<meta property="dcterms.type" content="errorpage" />
+				<meta name="prerender-status-code" content="500" />
+			</Helmet>
+		);
+	};
+
 	return (
-		<div className="error-container">
-			<h1>{i18n.errorPageText[language]}</h1>
-		</div>
+		<>
+			{renderHelmet()}
+			<div className="error-container">
+				<h1>{i18n.errorPageText[language]}</h1>
+			</div>
+		</>
 	);
 };
 
