@@ -1,9 +1,5 @@
-import axios from 'axios';
 import nock from 'nock';
 import { getListingInformationById, default as factory } from '../';
-
-// Required for unit tests to not have CORS issues
-axios.defaults.adapter = require('axios/lib/adapters/http');
 
 describe('Get listing information by id', () => {
 	beforeAll(() => {

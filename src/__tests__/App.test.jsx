@@ -1,5 +1,4 @@
 import { act, render } from '@testing-library/react';
-import axios from 'axios';
 import nock from 'nock';
 import React from 'react';
 import { MemoryRouter, useLocation } from 'react-router';
@@ -10,8 +9,6 @@ import { MockAnalyticsProvider } from '../tracking';
 import Manual from '../views/Manual';
 
 jest.mock('../store/store');
-
-axios.defaults.adapter = require('axios/lib/adapters/http');
 
 describe('App component', () => {
 	let location;
