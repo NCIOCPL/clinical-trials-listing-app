@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
 import PageNotFound from '../PageNotFound';
@@ -24,13 +24,11 @@ describe('PageNotFound component', () => {
 			},
 		]);
 
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<PageNotFound />
-				</MockAnalyticsProvider>
-			);
-		});
+		render(
+			<MockAnalyticsProvider>
+				<PageNotFound />
+			</MockAnalyticsProvider>
+		);
 
 		const expectedPageTitle = 'Page Not Found';
 		expect(screen.getByText(expectedPageTitle)).toBeInTheDocument();
@@ -55,13 +53,11 @@ describe('PageNotFound component', () => {
 			},
 		]);
 
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<PageNotFound />
-				</MockAnalyticsProvider>
-			);
-		});
+		render(
+			<MockAnalyticsProvider>
+				<PageNotFound />
+			</MockAnalyticsProvider>
+		);
 
 		const expectedPageTitle = 'No se encontró la página';
 		expect(screen.getByText(expectedPageTitle)).toBeInTheDocument();

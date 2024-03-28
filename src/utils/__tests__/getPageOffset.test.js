@@ -16,6 +16,6 @@ describe('getPageOffset()', () => {
 	it('should return NaN value for page offset, when parameters provided are strings', () => {
 		const page = 'a';
 		const itemsPerPage = 'b';
-		expect(getPageOffset(page, itemsPerPage)).toEqual(NaN);
+		expect(getPageOffset(page, itemsPerPage)).toBeNaN();
 	});
 });

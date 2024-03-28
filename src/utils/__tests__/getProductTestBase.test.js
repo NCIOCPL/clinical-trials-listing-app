@@ -22,6 +22,6 @@ describe('getProductTestBase', () => {
 			href: 'https://www.cancer.gov/publications/dictionaries/cancer-terms',
 			pathname: '/publications/dictionaries/cancer-terms',
 		};
-		expect(getProductTestBase()).toEqual('/publications/dictionaries');
+		expect(getProductTestBase()).toBe('/publications/dictionaries');
 	});
 });
