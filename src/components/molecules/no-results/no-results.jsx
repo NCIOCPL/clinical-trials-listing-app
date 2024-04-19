@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useStateValue } from '../../../store/store.js';
+import { useStateValue } from '../../../store/store';
 
 const NoResults = ({ replacedNoTrialsHtml }) => {
 	const [{ noTrialsHtml }] = useStateValue();

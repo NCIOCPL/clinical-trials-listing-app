@@ -17,7 +17,7 @@ describe('Get trial type information', () => {
 
 	const client = factory('http://example.org');
 
-	test('should return expected response with valid trial type', async () => {
+	it('should return expected response with valid trial type', async () => {
 		const expected = {
 			prettyUrlName: 'treatment',
 			idString: 'treatment',
@@ -34,7 +34,7 @@ describe('Get trial type information', () => {
 		scope.isDone();
 	});
 
-	test('should return expected response with valid trial type when given idString', async () => {
+	it('should return expected response with valid trial type when given idString', async () => {
 		const expected = {
 			prettyUrlName: 'health-services-research',
 			idString: 'health_services_research',
@@ -51,7 +51,7 @@ describe('Get trial type information', () => {
 		scope.isDone();
 	});
 
-	test('handles not found', async () => {
+	it('handles not found', async () => {
 		const scope = nock('http://example.org').get('/trial-type/asdf').reply(404);
 
 		const actual = await getTrialType(client, 'asdf');
@@ -60,7 +60,7 @@ describe('Get trial type information', () => {
 		scope.isDone();
 	});
 
-	test('handles error', async () => {
+	it('handles error', async () => {
 		const scope = nock('http://example.org').get('/trial-type/asdf').reply(500);
 
 		await expect(getTrialType(client, 'asdf')).rejects.toThrow(
@@ -70,7 +70,7 @@ describe('Get trial type information', () => {
 		scope.isDone();
 	});
 
-	test('handles unexpected status', async () => {
+	it('handles unexpected status', async () => {
 		const scope = nock('http://example.org').get('/trial-type/asdf').reply(201);
 
 		await expect(getTrialType(client, 'asdf')).rejects.toThrow(
@@ -80,7 +80,7 @@ describe('Get trial type information', () => {
 		scope.isDone();
 	});
 
-	test('validates name', async () => {
+	it('validates name', async () => {
 		await expect(getTrialType(client, '!$')).rejects.toThrow(
 			'Name does not match valid string, can only include a-z,0-9, dashes (-), and underscores (_)'
 		);

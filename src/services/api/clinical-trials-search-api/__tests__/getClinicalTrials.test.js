@@ -24,7 +24,7 @@ describe('testing getClinicalTrials', () => {
 		nock.enableNetConnect();
 	});
 
-	test('makes a request to api and returns 57 trials, for trastuzumab', async () => {
+	it('makes a request to api and returns 57 trials, for trastuzumab', async () => {
 		const requestFilters = {
 			'arms.interventions.intervention_code': ['C1647'],
 		};
@@ -41,7 +41,7 @@ describe('testing getClinicalTrials', () => {
 		scope.isDone();
 	});
 
-	test.each([
+	it.each([
 		['empty object', {}],
 		['null total', { total: null }],
 		['count with null trials', { total: 32 }],
@@ -66,7 +66,7 @@ describe('testing getClinicalTrials', () => {
 		scope.isDone();
 	});
 
-	test('makes a request where the response is 201', async () => {
+	it('makes a request where the response is 201', async () => {
 		const requestFilters = {
 			'bad_request.interventions.intervention_code_request': ['BAD404'],
 		};
@@ -84,7 +84,7 @@ describe('testing getClinicalTrials', () => {
 		scope.isDone();
 	});
 
-	test('throws a 500 error status', async () => {
+	it('throws a 500 error status', async () => {
 		const requestFilters = {
 			'arms.interventions.intervention_code': ['C1647'],
 		};
@@ -102,7 +102,7 @@ describe('testing getClinicalTrials', () => {
 		scope.isDone();
 	});
 
-	test('handles an error thrown by http client', async () => {
+	it('handles an error thrown by http client', async () => {
 		const requestFilters = {
 			'arms.interventions.intervention_code': ['C1647'],
 		};

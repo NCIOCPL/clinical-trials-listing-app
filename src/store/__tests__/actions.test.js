@@ -1,7 +1,7 @@
 import { LOAD_GLOBAL, updateGlobalValue } from '../actions';
 
 describe('reducers actions', () => {
-	test('updateGlobalValue', () => {
+	it('updateGlobalValue', () => {
 		const payload = {
 			field: 'dictionaryName',
 			value: 'Genetics',

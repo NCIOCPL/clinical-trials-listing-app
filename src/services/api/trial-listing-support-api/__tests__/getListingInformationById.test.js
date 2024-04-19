@@ -17,7 +17,7 @@ describe('Get listing information by id', () => {
 
 	const client = factory('https://example.org');
 
-	test('works with single id', async () => {
+	it('works with single id', async () => {
 		const expected = {
 			conceptId: ['C1234'],
 			name: {
@@ -37,7 +37,7 @@ describe('Get listing information by id', () => {
 		scope.isDone();
 	});
 
-	test('works with multiple ids', async () => {
+	it('works with multiple ids', async () => {
 		const expected = {
 			conceptId: ['C7768', 'C139538', 'C139569'],
 			name: {
@@ -60,7 +60,7 @@ describe('Get listing information by id', () => {
 		scope.isDone();
 	});
 
-	test('handles not found', async () => {
+	it('handles not found', async () => {
 		const scope = nock('https://example.org')
 			.get('/listing-information/get?ccode=c9999')
 			.reply(404);
@@ -71,7 +71,7 @@ describe('Get listing information by id', () => {
 		scope.isDone();
 	});
 
-	test('handles error', async () => {
+	it('handles error', async () => {
 		const scope = nock('https://example.org')
 			.get('/listing-information/get?ccode=c9999')
 			.reply(500);
@@ -83,7 +83,7 @@ describe('Get listing information by id', () => {
 		scope.isDone();
 	});
 
-	test('handles unexpected good status', async () => {
+	it('handles unexpected good status', async () => {
 		const scope = nock('https://example.org')
 			.get('/listing-information/get?ccode=c9999')
 			.reply(201);

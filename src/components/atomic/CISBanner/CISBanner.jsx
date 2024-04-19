@@ -5,9 +5,8 @@ import { useStateValue } from '../../../store/store';
 import './CISBanner.scss';
 
 const CISBanner = ({ onLiveHelpClick }) => {
-	const [
-		{ cisBannerImgUrlLarge, cisBannerImgUrlSmall, liveHelpUrl },
-	] = useStateValue();
+	const [{ cisBannerImgUrlLarge, cisBannerImgUrlSmall, liveHelpUrl }] =
+		useStateValue();
 
 	const liveHelpClickHandler = (url) => {
 		if (url !== null) {
