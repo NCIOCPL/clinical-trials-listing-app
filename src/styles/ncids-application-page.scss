@@ -1,0 +1,183 @@
+@use 'uswds-core' as *;
+
+@forward "usa-sidenav";
+
+// fixed spacing issues with the sound, pause, and resume button
+#NCI-glossary-app-root,
+#NCI-sws-app-root {
+	.btnAudio {
+		&:before {
+			width: 30px;
+			height: 30px;
+		}
+		&.paused,
+		&.playing {
+			&:before {
+				width: 20px;
+				height: 20px;
+			}
+		}
+		padding: 0;
+		height: initial;
+		width: 30px;
+	}
+
+	.pronunciation {
+    .pronunciation__audio {
+      padding-top: 4px;
+    }
+		.pronunciation__term {
+			@include u-font-family('body');
+			margin-right: 5px;
+		}
+
+		.pronunciation__key {
+			@include u-font-family('body');
+			margin-left: 10px;
+			padding-top: 4px;
+      padding-bottom: 4px;
+		}
+	}
+
+
+	.dictionary-list-container {
+		.dictionary-list{
+			dt {
+				margin: 0;
+			}
+			a {
+				margin-right: 5px;
+			}
+
+			.pronunciation {
+				.pronunciation__key {
+					margin-left: 5px;
+				}
+			}
+		}
+
+		// Setting to 24px inline with line-height
+		.btnAudio {
+			&:before {
+				width: 24px;
+				height: 24px;
+			}
+			&.paused,
+			&.playing {
+				&:before {
+					width: 14px;
+					height: 14px;
+				}
+			}
+			padding: 0;
+			height: initial;
+			width: 30px;
+		}
+	}
+}
+
+#NCI-glossary-app-root {
+	margin-bottom: 39px;
+
+	.ncids-radio__label {
+		font-weight: 400;
+	}
+}
+
+// reduces padding between the "locations" label and descriptive text
+// in the trial listing app root
+// Changed padding-top and margin for .list for focus cutoff
+#NCI-trial-listing-app-root {
+	margin-bottom: 24px;
+	.ct-list-item__body {
+		margin: 0.25em 0;
+	}
+	.paging-section__pager {
+		padding-top: 1em;
+	}
+	.pager__container {
+		.pager__navigation {
+			.pager__button {
+				@include u-font-family('body');
+			}
+		}
+	}
+	.list {
+		margin: 1em 0 1em;
+	}
+}
+
+// Issue 3683
+// Adds margin to all the pager containers at lower viewport widths
+.pager__container ol.pager__navigation > li {
+	margin: 2px;
+}
+
+// increases spacing between the numbers for page navigation
+#NCI-trial-listing-app-root,
+#NCI-sws-app-root {
+	.pager__navigation button {
+		padding-left: 4px;
+		padding-right: 4px;
+	}
+}
+
+#NCI-sws-app-root {
+	.definition__toggle {
+		button {
+			@include u-font-family('body');
+		}
+	}
+
+	.results__feature--bestbet--definition {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.result__list-item {
+		@include u-font-family('body');
+	}
+
+	// increases spacing between number and arrows for page selector
+	.pager__select {
+		margin: 0 16px 0 16px;
+		padding: 0.5em 2em 0.5em 0.75em;
+	}
+
+	.pager__container {
+		display: block;
+	}
+}
+
+// fixed spacing issue with toggle button in CTS Advanced search field
+#NCI-CTS-root {
+	margin-bottom: 24px;
+	.cts-toggle {
+		padding-right: 3px;
+	}
+
+	.cts-toggle__label {
+		height: 32px;
+	}
+
+	.pager__container {
+		.pager__navigation {
+			.pager__button {
+				@include u-font-family('body');
+			}
+		}
+	}
+}
+
+#NCI-dd-app-root {
+	//Override _mainContent.scss for only this use case
+	margin-bottom: 39px;
+	.search-results-alias-list {
+		li {
+			margin: 0 16px 0 0;
+			&::before {
+				display: none;
+			}
+		}
+	}
+}
