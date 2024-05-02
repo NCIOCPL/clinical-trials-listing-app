@@ -6,9 +6,9 @@ Feature: As the system, I want to be able to redirect users to pretty URLs for t
 		Given the user navigates to "/C1647?cfg=1"
 		Then the user is redirected to "/trastuzumab?cfg=1&redirect=true"
 		And the page contains meta tags with the following names
-				| name                  | content 																		 |
-				| prerender-status-code | 301     																		 |
-				| prerender-header		  | Location: http://localhost:3000/trastuzumab  |
+				| name                  | content 																	  |
+				| prerender-status-code | 301     																	  |
+				| prerender-header		  | Location: http://localhost:3000/trastuzumab |
 
 	Scenario: Page goes to prettyURL, without appending redirect=true, when not given a c-code
 		Given "trialListingPageType" is set to "Intervention"
