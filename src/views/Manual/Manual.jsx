@@ -71,14 +71,16 @@ const Manual = () => {
 	};
 
 	const renderHelmet = () => {
+		const pathAndPage = window.location.pathname + `?pn=${pager.page}`;
+
 		return (
 			<Helmet>
 				<title>{`${pageTitle} - ${siteName}`}</title>
 				<meta property="og:title" content={`${pageTitle}`} />
-				<meta property="og:url" content={baseHost + window.location.pathname} />
+				<meta property="og:url" content={baseHost + pathAndPage} />
 				<meta name="description" content={metaDescription} />
 				<meta property="og:description" content={metaDescription} />
-				<link rel="canonical" href={canonicalHost + window.location.pathname} />
+				<link rel="canonical" href={canonicalHost + pathAndPage} />
 			</Helmet>
 		);
 	};
