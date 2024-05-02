@@ -172,6 +172,7 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 	};
 
 	const renderHelmet = () => {
+		const pathAndPage = window.location.pathname + `?pn=${pager.page}`;
 		const prerenderHeader = baseHost + window.location.pathname;
 		const status = location.state?.redirectStatus;
 
@@ -179,10 +180,10 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 			<Helmet>
 				<title>{`${replacedText.browserTitle} - ${siteName}`}</title>
 				<meta property="og:title" content={`${replacedText.pageTitle}`} />
-				<meta property="og:url" content={baseHost + window.location.pathname} />
+				<meta property="og:url" content={baseHost + pathAndPage} />
 				<meta name="description" content={replacedText.metaDescription} />
 				<meta property="og:description" content={replacedText.metaDescription} />
-				<link rel="canonical" href={canonicalHost + window.location.pathname} />
+				<link rel="canonical" href={canonicalHost + pathAndPage} />
 				{(() => {
 					if (status) {
 						return <meta name="prerender-status-code" content={status} />;
