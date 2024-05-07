@@ -1,12 +1,8 @@
-import axios from 'axios';
 import nock from 'nock';
 
 import { getClinicalTrials as getClinicalTrialsQuery } from '../../actions/getClinicalTrials';
 import clinicalTrialsSearchClientFactory from '../clinicalTrialsSearchClientFactory';
 import { getClinicalTrials } from '../getClinicalTrials';
-
-// Required for unit tests to not have CORS issues
-axios.defaults.adapter = require('axios/lib/adapters/http');
 
 const client = clinicalTrialsSearchClientFactory('http://example.org');
 
