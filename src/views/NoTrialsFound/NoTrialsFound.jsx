@@ -109,9 +109,16 @@ const NoTrialsFound = ({ routeParamMap, data }) => {
 			? location.state?.prerenderLocation
 			: baseHost + window.location.pathname + window.location.search;
 
+		/*
+			=============================================================================
+					Issue #227: As long as a status code is not set on location state,
+					which currently sets a redirect code or a 404 for a non-existent page,
+					set 200 status code for trials that do not return results.
+			=============================================================================
+		*/
 		const status = location.state?.redirectStatus
 			? location.state?.redirectStatus
-			: '404';
+			: '200';
 
 		return (
 			<Helmet>

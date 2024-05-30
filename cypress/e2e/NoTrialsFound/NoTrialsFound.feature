@@ -12,10 +12,11 @@ Feature: As the system, I want to be able to view the No Trials Found page for t
 		And the Chat Now button displays below
 		And the page contains meta tags with the following names
 			| name                  | content |
-			| prerender-status-code | 404     |
+			| prerender-status-code | 200     |
+			| prerender-header | Location: http://localhost:3000/notrials?p1=chronic-fatigue-syndrome&cfg=0     |
 			| robots                | noindex |
 
-	Scenario: Page redirects to No Trials Found page if code is given as p1 parameter to /notrials route for Disease
+	Scenario: No Trials Found page is displayed if code is given as p1 parameter to /notrials route for Disease
 		Given "trialListingPageType" is set to "Disease"
 		And "dynamicListingPatterns" object is set to "Disease"
 		Given the user navigates to "/notrials?p1=C3037&cfg=0"
@@ -27,7 +28,8 @@ Feature: As the system, I want to be able to view the No Trials Found page for t
 		And the Chat Now button displays below
 		And the page contains meta tags with the following names
 			| name                  | content |
-			| prerender-status-code | 404     |
+			| prerender-status-code | 200     |
+			| prerender-header | Location: http://localhost:3000/notrials?p1=C3037&cfg=0     |
 			| robots                | noindex |
 
 	Scenario: No Trials Found page is displayed if pretty URL name is given as p1 parameter to /notrials route for Intervention
@@ -42,7 +44,8 @@ Feature: As the system, I want to be able to view the No Trials Found page for t
 		And the Chat Now button displays below
 		And the page contains meta tags with the following names
 			| name                  | content |
-			| prerender-status-code | 404     |
+			| prerender-status-code | 200     |
+			| prerender-header | Location: http://localhost:3000/notrials?p1=spiroplatin&cfg=1     |
 			| robots                | noindex |
 
 	Scenario: Page redirects to No Trials Found page if code is given as p1 parameter to /notrials route for Intervention
@@ -57,7 +60,8 @@ Feature: As the system, I want to be able to view the No Trials Found page for t
 		And the Chat Now button displays below
 		And the page contains meta tags with the following names
 			| name                  | content |
-			| prerender-status-code | 404     |
+			| prerender-status-code | 200     |
+			| prerender-header | Location: http://localhost:3000/notrials?p1=C1234&cfg=1     |
 			| robots                | noindex |
 
 	Scenario Outline: No Trials Found page is displayed when navigated to /notrials route for Disease Trial Type
@@ -72,7 +76,7 @@ Feature: As the system, I want to be able to view the No Trials Found page for t
 		And the Chat Now button displays below
 		And the page contains meta tags with the following names
 			| name                  | content |
-			| prerender-status-code | 404     |
+			| prerender-status-code | 200     |
 			| robots                | noindex |
 		Examples:
 			| url                                                        		 | title                                                         | infoMessage                                                                                                                                                                                                          |
@@ -93,7 +97,7 @@ Feature: As the system, I want to be able to view the No Trials Found page for t
 		And the Chat Now button displays below
 		And the page contains meta tags with the following names
 			| name                  | content |
-			| prerender-status-code | 404     |
+			| prerender-status-code | 200     |
 			| robots                | noindex |
 		Examples:
 			| url                                                        | title                                                         | infoMessage                                                                                                                                                                                                          |
@@ -113,7 +117,7 @@ Feature: As the system, I want to be able to view the No Trials Found page for t
 		And the Chat Now button displays below
 		And the page contains meta tags with the following names
 			| name                  | content |
-			| prerender-status-code | 404     |
+			| prerender-status-code | 200     |
 			| robots                | noindex |
 		Examples:
 			| url                                          | title                                        | infoMessage                                                                                                                                                                                             |
