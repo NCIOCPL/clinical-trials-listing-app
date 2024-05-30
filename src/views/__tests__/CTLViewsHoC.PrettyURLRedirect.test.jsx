@@ -84,9 +84,7 @@ describe('CTLViewsHoc redirect', () => {
 		);
 		// Expect the first argument of the first call to mockComponent
 		// to match the expected props
-		expect(mockNavigate.mock.calls[0][0]).toEqual(
-			'/breast-cancer?redirect=true'
-		);
+		expect(mockNavigate.mock.calls[0][0]).toBe('/breast-cancer?redirect=true');
 		expect(mockNavigate.mock.calls[0][1]).toBeTruthy();
 
 		expect(useListingSupport.mock.calls[0][0]).toEqual([
@@ -171,7 +169,7 @@ describe('CTLViewsHoc redirect', () => {
 		);
 		// Expect the first argument of the first call to mockComponent
 		// to match the expected props
-		expect(mockNavigate.mock.calls[0][0]).toEqual(
+		expect(mockNavigate.mock.calls[0][0]).toBe(
 			'/breast-cancer/C99999,C1111111?redirect=true'
 		);
 		expect(mockNavigate.mock.calls[0][1]).toBeTruthy();
@@ -260,7 +258,7 @@ describe('CTLViewsHoc redirect', () => {
 		);
 		// Expect the first argument of the first call to mockComponent
 		// to match the expected props
-		expect(mockNavigate.mock.calls[0][0]).toEqual(
+		expect(mockNavigate.mock.calls[0][0]).toBe(
 			'/breast-cancer/basic-science?redirect=true'
 		);
 		expect(mockNavigate.mock.calls[0][1]).toBeTruthy();

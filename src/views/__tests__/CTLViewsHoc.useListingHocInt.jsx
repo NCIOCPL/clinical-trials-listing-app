@@ -10,7 +10,7 @@
  * the mockComponent is correctly called.
  */
 import React, { useEffect } from 'react';
-import { render, act } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { MemoryRouter, Route, Routes, useNavigate } from 'react-router';
 import {
 	ListingSupportCache,
@@ -129,28 +129,27 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 
 		// Hopefully this renders, and navigates and loads the
 		// new component.
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<ListingSupportContext.Provider
-						value={{ cache: new ListingSupportCache() }}>
-						<MemoryRouter initialEntries={['/C4872']}>
-							<Routes>
-								<Route
-									path="/:codeOrPurl"
-									element={
-										<WrappedComponent
-											redirectPath={mockRedirectPath}
-											routeParamMap={diseaseRouteParamMap}
-										/>
-									}
-								/>
-							</Routes>
-						</MemoryRouter>
-					</ListingSupportContext.Provider>
-				</MockAnalyticsProvider>
-			);
-		});
+
+		render(
+			<MockAnalyticsProvider>
+				<ListingSupportContext.Provider
+					value={{ cache: new ListingSupportCache() }}>
+					<MemoryRouter initialEntries={['/C4872']}>
+						<Routes>
+							<Route
+								path="/:codeOrPurl"
+								element={
+									<WrappedComponent
+										redirectPath={mockRedirectPath}
+										routeParamMap={diseaseRouteParamMap}
+									/>
+								}
+							/>
+						</Routes>
+					</MemoryRouter>
+				</ListingSupportContext.Provider>
+			</MockAnalyticsProvider>
+		);
 
 		// Initial Call
 		expect(getListingInformationById.mock.calls).toHaveLength(1);
@@ -201,37 +200,36 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 
 		// Hopefully this renders, and navigates and loads the
 		// new component.
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<ListingSupportContext.Provider
-						value={{ cache: new ListingSupportCache() }}>
-						<MemoryRouter initialEntries={['/C99999']}>
-							<Routes>
-								<Route
-									path="/:codeOrPurl"
-									element={
-										<WrappedComponentConcept
-											redirectPath={mockRedirectPath}
-											routeParamMap={diseaseRouteParamMap}
-										/>
-									}
-								/>
-								<Route
-									path="/notrials"
-									element={
-										<WrappedComponentConceptNoTrials
-											redirectPath={mockRedirectPath}
-											routeParamMap={diseaseRouteParamMap}
-										/>
-									}
-								/>
-							</Routes>
-						</MemoryRouter>
-					</ListingSupportContext.Provider>
-				</MockAnalyticsProvider>
-			);
-		});
+
+		render(
+			<MockAnalyticsProvider>
+				<ListingSupportContext.Provider
+					value={{ cache: new ListingSupportCache() }}>
+					<MemoryRouter initialEntries={['/C99999']}>
+						<Routes>
+							<Route
+								path="/:codeOrPurl"
+								element={
+									<WrappedComponentConcept
+										redirectPath={mockRedirectPath}
+										routeParamMap={diseaseRouteParamMap}
+									/>
+								}
+							/>
+							<Route
+								path="/notrials"
+								element={
+									<WrappedComponentConceptNoTrials
+										redirectPath={mockRedirectPath}
+										routeParamMap={diseaseRouteParamMap}
+									/>
+								}
+							/>
+						</Routes>
+					</MemoryRouter>
+				</ListingSupportContext.Provider>
+			</MockAnalyticsProvider>
+		);
 
 		// Total API calls for first render, and redirect
 		expect(getListingInformationById.mock.calls).toHaveLength(1);
@@ -291,28 +289,27 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 
 		// Hopefully this renders, and navigates and loads the
 		// new component.
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<ListingSupportContext.Provider
-						value={{ cache: new ListingSupportCache() }}>
-						<MemoryRouter initialEntries={['/C99999/treatment/C2222']}>
-							<Routes>
-								<Route
-									path="/:codeOrPurl/:type/:interCodeOrPurl"
-									element={
-										<WrappedComponent
-											redirectPath={mockRedirectPath}
-											routeParamMap={diseaseRouteParamMap}
-										/>
-									}
-								/>
-							</Routes>
-						</MemoryRouter>
-					</ListingSupportContext.Provider>
-				</MockAnalyticsProvider>
-			);
-		});
+
+		render(
+			<MockAnalyticsProvider>
+				<ListingSupportContext.Provider
+					value={{ cache: new ListingSupportCache() }}>
+					<MemoryRouter initialEntries={['/C99999/treatment/C2222']}>
+						<Routes>
+							<Route
+								path="/:codeOrPurl/:type/:interCodeOrPurl"
+								element={
+									<WrappedComponent
+										redirectPath={mockRedirectPath}
+										routeParamMap={diseaseRouteParamMap}
+									/>
+								}
+							/>
+						</Routes>
+					</MemoryRouter>
+				</ListingSupportContext.Provider>
+			</MockAnalyticsProvider>
+		);
 
 		// Total API calls for first render, and redirect
 		expect(getListingInformationById.mock.calls).toHaveLength(2);
@@ -322,7 +319,7 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 		// First render API Calls
 		expect(getListingInformationById.mock.calls[0][1]).toEqual(['C99999']);
 		expect(getListingInformationById.mock.calls[1][1]).toEqual(['C2222']);
-		expect(getTrialType.mock.calls[0][1]).toEqual('treatment');
+		expect(getTrialType.mock.calls[0][1]).toBe('treatment');
 
 		// There should only be 1 call to our component as the HoC would have:
 		// Fetched the ID, then redirected, then fetched the second, then it
@@ -375,34 +372,31 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 
 		// Hopefully this renders, and navigates and loads the
 		// new component.
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<ListingSupportContext.Provider
-						value={{ cache: new ListingSupportCache() }}>
-						<MemoryRouter initialEntries={['/breast-cancer']}>
-							<Routes>
-								<Route
-									path="/:codeOrPurl"
-									element={
-										<WrappedComponent
-											redirectPath={mockRedirectPath}
-											routeParamMap={diseaseRouteParamMap}
-										/>
-									}
-								/>
-							</Routes>
-						</MemoryRouter>
-					</ListingSupportContext.Provider>
-				</MockAnalyticsProvider>
-			);
-		});
+
+		render(
+			<MockAnalyticsProvider>
+				<ListingSupportContext.Provider
+					value={{ cache: new ListingSupportCache() }}>
+					<MemoryRouter initialEntries={['/breast-cancer']}>
+						<Routes>
+							<Route
+								path="/:codeOrPurl"
+								element={
+									<WrappedComponent
+										redirectPath={mockRedirectPath}
+										routeParamMap={diseaseRouteParamMap}
+									/>
+								}
+							/>
+						</Routes>
+					</MemoryRouter>
+				</ListingSupportContext.Provider>
+			</MockAnalyticsProvider>
+		);
 
 		// First request
 		expect(getListingInformationByName.mock.calls).toHaveLength(1);
-		expect(getListingInformationByName.mock.calls[0][1]).toEqual(
-			'breast-cancer'
-		);
+		expect(getListingInformationByName.mock.calls[0][1]).toBe('breast-cancer');
 
 		// Call after redirect
 		expect(getListingInformationById.mock.calls).toHaveLength(1);
@@ -461,37 +455,36 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 
 		// Hopefully this renders, and navigates and loads the
 		// new component.
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<ListingSupportContext.Provider
-						value={{ cache: new ListingSupportCache() }}>
-						<MemoryRouter initialEntries={['/C99999']}>
-							<Routes>
-								<Route
-									path="/:codeOrPurl"
-									element={
-										<WrappedComponentConcept
-											redirectPath={mockRedirectPath}
-											routeParamMap={diseaseRouteParamMap}
-										/>
-									}
-								/>
-								<Route
-									path="/:codeOrPurl/:type"
-									element={
-										<WrappedComponentConceptPlusType
-											redirectPath={mockRedirectPath}
-											routeParamMap={diseaseRouteParamMap}
-										/>
-									}
-								/>
-							</Routes>
-						</MemoryRouter>
-					</ListingSupportContext.Provider>
-				</MockAnalyticsProvider>
-			);
-		});
+
+		render(
+			<MockAnalyticsProvider>
+				<ListingSupportContext.Provider
+					value={{ cache: new ListingSupportCache() }}>
+					<MemoryRouter initialEntries={['/C99999']}>
+						<Routes>
+							<Route
+								path="/:codeOrPurl"
+								element={
+									<WrappedComponentConcept
+										redirectPath={mockRedirectPath}
+										routeParamMap={diseaseRouteParamMap}
+									/>
+								}
+							/>
+							<Route
+								path="/:codeOrPurl/:type"
+								element={
+									<WrappedComponentConceptPlusType
+										redirectPath={mockRedirectPath}
+										routeParamMap={diseaseRouteParamMap}
+									/>
+								}
+							/>
+						</Routes>
+					</MemoryRouter>
+				</ListingSupportContext.Provider>
+			</MockAnalyticsProvider>
+		);
 
 		// Total API calls for first render, and redirect
 		expect(getListingInformationById.mock.calls).toHaveLength(1);
@@ -501,7 +494,7 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 		expect(getListingInformationById.mock.calls[0][1]).toEqual(['C99999']);
 
 		// After redirect API Calls
-		expect(getTrialType.mock.calls[0][1]).toEqual('treatment');
+		expect(getTrialType.mock.calls[0][1]).toBe('treatment');
 
 		// The mock component should only be called once as that would
 		// only be when the redirects have stopped. So 2 calls with a

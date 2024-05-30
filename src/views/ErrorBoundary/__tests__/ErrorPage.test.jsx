@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import ErrorPage from '../ErrorPage';
@@ -22,13 +22,11 @@ describe('ErrorPage component', () => {
 			},
 		]);
 
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<ErrorPage />
-				</MockAnalyticsProvider>
-			);
-		});
+		render(
+			<MockAnalyticsProvider>
+				<ErrorPage />
+			</MockAnalyticsProvider>
+		);
 
 		const expectedPageTitle = 'An error occurred. Please try again later.';
 		expect(screen.getByText(expectedPageTitle)).toBeInTheDocument();

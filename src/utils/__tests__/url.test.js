@@ -7,7 +7,7 @@ describe('getKeyValueFromQueryString()', () => {
 	it('should return value for key from query string if key exists in query string', () => {
 		const queryString =
 			'?dictionary=term&searchText=cancer&language=English&searchType=exact&offset=0&maxResults=0';
-		expect(getKeyValueFromQueryString('searchText', queryString)).toEqual(
+		expect(getKeyValueFromQueryString('searchText', queryString)).toBe(
 			'cancer'
 		);
 	});

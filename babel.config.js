@@ -4,6 +4,9 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 module.exports = {
-  presets: ['react-app'],
-  plugins
+	presets: 	[["react-app", {
+		"absoluteRuntime": false
+	}]],
+
+	plugins,
 };

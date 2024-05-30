@@ -14,7 +14,7 @@ describe('useURLQuery', () => {
 		});
 
 		const urlQuery = useURLQuery();
-		expect(urlQuery.get('swKeyword')).toEqual('achoo');
+		expect(urlQuery.get('swKeyword')).toBe('achoo');
 		const expectedQueryStr = 'swKeyword=gesundheit';
 		urlQuery.set('swKeyword', 'gesundheit');
 		expect(urlQuery.toString()).toEqual(expectedQueryStr);

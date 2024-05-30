@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter } from 'react-router';
 
@@ -83,19 +83,17 @@ describe('<Intervention />', () => {
 			},
 		];
 
-		await act(async () => {
-			render(
-				<MockAnalyticsProvider>
-					<MemoryRouter initialEntries={['/trastuzumab']}>
-						<Intervention
-							routeParamMap={routeParamMap}
-							routePath={redirectPath}
-							data={data}
-						/>
-					</MemoryRouter>
-				</MockAnalyticsProvider>
-			);
-		});
+		render(
+			<MockAnalyticsProvider>
+				<MemoryRouter initialEntries={['/trastuzumab']}>
+					<Intervention
+						routeParamMap={routeParamMap}
+						routePath={redirectPath}
+						data={data}
+					/>
+				</MemoryRouter>
+			</MockAnalyticsProvider>
+		);
 
 		expect(useCtsApi).toHaveBeenCalled();
 

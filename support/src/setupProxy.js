@@ -27,7 +27,7 @@ module.exports = function (app) {
 		createProxyMiddleware({
 			target: 'https://clinicaltrialsapi.cancer.gov',
 			headers: {
-				'X-API-KEY': process.env.CTS_API_KEY,
+				'X-API-KEY': 'Uho2aXhS3k6xhxznJt4PH5AsDWYV925Ta3Sn1h6W',
 			},
 			pathRewrite: {
 				'^/cts/proxy-api/v2': '/api/v2',
