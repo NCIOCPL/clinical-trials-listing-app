@@ -90,20 +90,22 @@ const Manual = () => {
 		const pagerOffset = getPageOffset(page, itemsPerPage);
 		return (
 			<>
-				<div className="paging-section">
-					{placement === 'top' && (
-						<div className="paging-section__page-info">
-							{`
-							Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.payload.total)} of
-							${fetchState.payload.total}
-						`}
-						</div>
-					)}
-					{fetchState.payload.total > itemsPerPage && (
-						<div className="paging-section__pager">
-							<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={fetchState.payload.total} />
-						</div>
-					)}
+				<div className="ctla-results__summary grid-container">
+					<div className="grid-row">
+						{placement === 'top' && (
+							<div className="ctla-results__count grid-col-1">
+								{`
+								Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.payload.total)} of
+								${fetchState.payload.total}
+							`}
+							</div>
+						)}
+						{fetchState.payload.total > itemsPerPage && (
+							<div className="ctla-results__pager grid-col-2">
+								<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={fetchState.payload.total} />
+							</div>
+						)}
+					</div>
 				</div>
 			</>
 		);
@@ -113,47 +115,61 @@ const Manual = () => {
 		currentPage: Number(pager.page),
 	})(ResultsList);
 	return (
-		<div>
-			{renderHelmet()}
-			<h1>{pageTitle}</h1>
-			<div className="page-options-container" />
-			{(() => {
-				if (fetchState.loading) {
-					return <Spinner />;
-				} else if (!fetchState.loading && fetchState.payload) {
-					if (fetchState.payload.total > 0) {
-						return (
-							<>
-								{/* ::: Intro Text ::: */}
-								{introText.length > 0 && <div className="intro-text" dangerouslySetInnerHTML={{ __html: introText }} />}
+		<div className="grid-container">
+			<div className="grid-row">
+				<div className="grid-col">
+					{renderHelmet()}
+					<h1>{pageTitle}</h1>
+					<div className="page-options-container" />
+					{(() => {
+						if (fetchState.loading) {
+							return <Spinner />;
+						} else if (!fetchState.loading && fetchState.payload) {
+							if (fetchState.payload.total > 0) {
+								return (
+									<>
+										{/* ::: Intro Text ::: */}
+										{introText.length > 0 && (
+											<div className="ctla-results__intro grid-container">
+												<div className="grid-row">
+													<div
+														className="grid-col"
+														dangerouslySetInnerHTML={{
+															__html: introText,
+														}}></div>
+												</div>
+											</div>
+										)}
 
-								{/* ::: Top Paging Section ::: */}
-								{renderPagerSection('top')}
+										{/* ::: Top Paging Section ::: */}
+										{renderPagerSection('top')}
 
-								<ScrollRestoration />
-								<ResultsListWithPage results={fetchState.payload.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
-								{/* ::: Bottom Paging Section ::: */}
-								{renderPagerSection('bottom')}
-							</>
-						);
-					} else {
-						return <NoResults />;
-					}
-				}
-				if (!fetchState.loading && fetchState.error != null && fetchState.error.message === 'Trial count mismatch from the API') {
-					return (
-						<>
-							<div
-								className="No_Trials_Found"
-								dangerouslySetInnerHTML={{
-									__html: noTrialsHtml,
-								}}></div>
-						</>
-					);
-				} else {
-					return <ErrorPage />;
-				}
-			})()}
+										<ScrollRestoration />
+										<ResultsListWithPage results={fetchState.payload.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
+										{/* ::: Bottom Paging Section ::: */}
+										{renderPagerSection('bottom')}
+									</>
+								);
+							} else {
+								return <NoResults />;
+							}
+						}
+						if (!fetchState.loading && fetchState.error != null && fetchState.error.message === 'Trial count mismatch from the API') {
+							return (
+								<>
+									<div
+										className="No_Trials_Found"
+										dangerouslySetInnerHTML={{
+											__html: noTrialsHtml,
+										}}></div>
+								</>
+							);
+						} else {
+							return <ErrorPage />;
+						}
+					})()}
+				</div>
+			</div>
 		</div>
 	);
 };
