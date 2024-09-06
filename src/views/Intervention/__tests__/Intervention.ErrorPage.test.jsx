@@ -36,12 +36,9 @@ describe('<Intervention />', () => {
 		const dynamicListingPatterns = {
 			Intervention: {
 				browserTitle: 'Clinical Trials Using {{intervention_label}}',
-				introText:
-					'<p>Clinical trials are research studies that involve people. The clinical trials on this list are studying {{intervention_normalized}}.</p>',
-				metaDescription:
-					'Find clinical trials using {{intervention_normalized}}.',
-				noTrialsHtml:
-					'<p>There are currently no available trials using {{intervention_normalized}}.</p>',
+				introText: '<p>Clinical trials are research studies that involve people. The clinical trials on this list are studying {{intervention_normalized}}.</p>',
+				metaDescription: 'Find clinical trials using {{intervention_normalized}}.',
+				noTrialsHtml: '<p>There are currently no available trials using {{intervention_normalized}}.</p>',
 				pageTitle: 'Clinical Trials Using {{intervention_label}}',
 			},
 		};
@@ -86,22 +83,14 @@ describe('<Intervention />', () => {
 		render(
 			<MockAnalyticsProvider>
 				<MemoryRouter initialEntries={['/trastuzumab']}>
-					<Intervention
-						routeParamMap={routeParamMap}
-						routePath={redirectPath}
-						data={data}
-					/>
+					<Intervention routeParamMap={routeParamMap} routePath={redirectPath} data={data} />
 				</MemoryRouter>
 			</MockAnalyticsProvider>
 		);
 
 		expect(useCtsApi).toHaveBeenCalled();
 
-		expect(
-			screen.getByText('Clinical Trials Using Trastuzumab')
-		).toBeInTheDocument();
-		expect(
-			screen.getByText('An error occurred. Please try again later.')
-		).toBeInTheDocument();
+		expect(screen.getByText('Clinical Trials Using Trastuzumab')).toBeInTheDocument();
+		expect(screen.getByText('An error occurred. Please try again later.')).toBeInTheDocument();
 	});
 });

@@ -58,12 +58,9 @@ describe('<Intervention />', () => {
 		const dynamicListingPatterns = {
 			Intervention: {
 				browserTitle: 'Clinical Trials Using {{intervention_label}}',
-				introText:
-					'<p>Clinical trials are research studies that involve people. The clinical trials on this list are studying {{intervention_normalized}}.</p>',
-				metaDescription:
-					'Find clinical trials using {{intervention_normalized}}.',
-				noTrialsHtml:
-					'<p>There are currently no available trials using {{intervention_normalized}}.</p>',
+				introText: '<p>Clinical trials are research studies that involve people. The clinical trials on this list are studying {{intervention_normalized}}.</p>',
+				metaDescription: 'Find clinical trials using {{intervention_normalized}}.',
+				noTrialsHtml: '<p>There are currently no available trials using {{intervention_normalized}}.</p>',
 				pageTitle: 'Clinical Trials Using {{intervention_label}}',
 			},
 		};
@@ -93,13 +90,7 @@ describe('<Intervention />', () => {
 		];
 
 		const InterventionWithData = () => {
-			return (
-				<Intervention
-					routeParamMap={routeParamMap}
-					routePath={redirectPath}
-					data={data}
-				/>
-			);
+			return <Intervention routeParamMap={routeParamMap} routePath={redirectPath} data={data} />;
 		};
 
 		render(
@@ -153,12 +144,9 @@ describe('<Intervention />', () => {
 		const dynamicListingPatterns = {
 			Intervention: {
 				browserTitle: 'Clinical Trials Using {{intervention_label}}',
-				introText:
-					'<p>Clinical trials are research studies that involve people. The clinical trials on this list are studying {{intervention_normalized}}.</p>',
-				metaDescription:
-					'Find clinical trials using {{intervention_normalized}}.',
-				noTrialsHtml:
-					'<p>There are currently no available trials using {{intervention_normalized}}.</p>',
+				introText: '<p>Clinical trials are research studies that involve people. The clinical trials on this list are studying {{intervention_normalized}}.</p>',
+				metaDescription: 'Find clinical trials using {{intervention_normalized}}.',
+				noTrialsHtml: '<p>There are currently no available trials using {{intervention_normalized}}.</p>',
 				pageTitle: 'Clinical Trials Using {{intervention_label}}',
 			},
 		};
@@ -188,13 +176,7 @@ describe('<Intervention />', () => {
 		];
 
 		const InterventionWithData = () => {
-			return (
-				<Intervention
-					routeParamMap={routeParamMap}
-					routePath={redirectPath}
-					data={data}
-				/>
-			);
+			return <Intervention routeParamMap={routeParamMap} routePath={redirectPath} data={data} />;
 		};
 
 		render(

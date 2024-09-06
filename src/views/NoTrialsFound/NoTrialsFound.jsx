@@ -11,21 +11,10 @@ import { TokenParser } from '../../utils';
 const NoTrialsFound = ({ routeParamMap, data }) => {
 	const location = useLocation();
 	const tracking = useTracking();
-	const [
-		{
-			baseHost,
-			canonicalHost,
-			dynamicListingPatterns,
-			language,
-			siteName,
-			trialListingPageType,
-		},
-	] = useStateValue();
+	const [{ baseHost, canonicalHost, dynamicListingPatterns, language, siteName, trialListingPageType }] = useStateValue();
 
 	const listingPatternIndex = routeParamMap.length - 1;
-	const listingPattern = Object.values(dynamicListingPatterns)[
-		listingPatternIndex
-	];
+	const listingPattern = Object.values(dynamicListingPatterns)[listingPatternIndex];
 
 	const setupReplacementText = () => {
 		// Replace tokens within page title, browser title, meta description, and no trials html
@@ -36,33 +25,22 @@ const NoTrialsFound = ({ routeParamMap, data }) => {
 				return {
 					...ac,
 					[`${contextEntryInfo.textReplacementKey}_label`]: info.name.label,
-					[`${contextEntryInfo.textReplacementKey}_normalized`]:
-						info.name.normalized,
+					[`${contextEntryInfo.textReplacementKey}_normalized`]: info.name.normalized,
 				};
 			}
 
 			return {
 				...ac,
 				[`${contextEntryInfo.textReplacementKey}_label`]: info.label,
-				[`${contextEntryInfo.textReplacementKey}_normalized`]:
-					info.label.toLowerCase(),
+				[`${contextEntryInfo.textReplacementKey}_normalized`]: info.label.toLowerCase(),
 			};
 		}, {});
 
 		return {
 			pageTitle: TokenParser.replaceTokens(listingPattern.pageTitle, context),
-			browserTitle: TokenParser.replaceTokens(
-				listingPattern.browserTitle,
-				context
-			),
-			metaDescription: TokenParser.replaceTokens(
-				listingPattern.metaDescription,
-				context
-			),
-			noTrialsHtml: TokenParser.replaceTokens(
-				listingPattern.noTrialsHtml,
-				context
-			),
+			browserTitle: TokenParser.replaceTokens(listingPattern.browserTitle, context),
+			metaDescription: TokenParser.replaceTokens(listingPattern.metaDescription, context),
+			noTrialsHtml: TokenParser.replaceTokens(listingPattern.noTrialsHtml, context),
 		};
 	};
 
@@ -90,9 +68,7 @@ const NoTrialsFound = ({ routeParamMap, data }) => {
 			// These properties are required.
 			type: 'PageLoad',
 			event: 'TrialListingApp:Load:NoTrialsFound',
-			name:
-				canonicalHost.replace(/^(http|https):\/\//, '') +
-				window.location.pathname,
+			name: canonicalHost.replace(/^(http|https):\/\//, '') + window.location.pathname,
 			title: replacementText.pageTitle,
 			language: language === 'en' ? 'english' : 'spanish',
 			metaTitle: `${replacementText.pageTitle} - ${siteName}`,
@@ -105,13 +81,9 @@ const NoTrialsFound = ({ routeParamMap, data }) => {
 	}, []);
 
 	const renderHelmet = () => {
-		const prerenderHeader = location.state?.prerenderLocation
-			? location.state?.prerenderLocation
-			: baseHost + window.location.pathname + window.location.search;
+		const prerenderHeader = location.state?.prerenderLocation ? location.state?.prerenderLocation : baseHost + window.location.pathname + window.location.search;
 
-		const status = location.state?.redirectStatus
-			? location.state?.redirectStatus
-			: '404';
+		const status = location.state?.redirectStatus ? location.state?.redirectStatus : '404';
 
 		return (
 			<Helmet>
@@ -119,20 +91,12 @@ const NoTrialsFound = ({ routeParamMap, data }) => {
 				<meta property="og:title" content={`${replacementText.pageTitle}`} />
 				<meta property="og:url" content={baseHost + window.location.pathname} />
 				<meta name="description" content={replacementText.metaDescription} />
-				<meta
-					property="og:description"
-					content={replacementText.metaDescription}
-				/>
+				<meta property="og:description" content={replacementText.metaDescription} />
 				<link rel="canonical" href={canonicalHost + window.location.pathname} />
 				<meta name="prerender-status-code" content={status} />
 				{(() => {
 					if (status !== '404') {
-						return (
-							<meta
-								name="prerender-header"
-								content={`Location: ${prerenderHeader}`}
-							/>
-						);
+						return <meta name="prerender-header" content={`Location: ${prerenderHeader}`} />;
 					}
 				})()}
 				<meta name="robots" content="noindex" />

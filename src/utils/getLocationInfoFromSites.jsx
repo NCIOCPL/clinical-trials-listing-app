@@ -10,31 +10,18 @@ import { getStateNameFromAbbr } from './getStateNameFromAbbr';
  * @param {Array} sites
  * @return {JSX.Element}
  */
-export const getLocationInfoFromSites = (
-	currentTrialStatus,
-	nctId,
-	sites = []
-) => {
+export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites = []) => {
 	let totalUSLocations = 0;
 	let lastUSLocationSite = 0;
 	const siteLinkCT = `https://www.clinicaltrials.gov/study/${nctId}`;
 
 	// Filter list of sites by recruitment status before deriving location
 	const filteredSites = sites?.filter((site) => {
-		return (
-			site.recruitment_status.toLowerCase() === 'active' ||
-			site.recruitment_status.toLowerCase() === 'approved' ||
-			site.recruitment_status.toLowerCase() === 'enrolling_by_invitation' ||
-			site.recruitment_status.toLowerCase() === 'in_review' ||
-			site.recruitment_status.toLowerCase() === 'temporarily_closed_to_accrual'
-		);
+		return site.recruitment_status.toLowerCase() === 'active' || site.recruitment_status.toLowerCase() === 'approved' || site.recruitment_status.toLowerCase() === 'enrolling_by_invitation' || site.recruitment_status.toLowerCase() === 'in_review' || site.recruitment_status.toLowerCase() === 'temporarily_closed_to_accrual';
 	});
 
 	for (let i = 0; i < filteredSites?.length; i++) {
-		if (
-			sites[i].org_country === 'United States' &&
-			sites[i].recruitment_status
-		) {
+		if (sites[i].org_country === 'United States' && sites[i].recruitment_status) {
 			totalUSLocations += 1;
 			lastUSLocationSite = i;
 		}
@@ -43,11 +30,7 @@ export const getLocationInfoFromSites = (
 	// No locations found
 	if (totalUSLocations === 0) {
 		// Current trial status is of one of the listed, return info not available text
-		if (
-			currentTrialStatus.toLowerCase() === 'not yet active' ||
-			currentTrialStatus.toLowerCase() === 'in review' ||
-			currentTrialStatus.toLowerCase() === 'approved'
-		) {
+		if (currentTrialStatus.toLowerCase() === 'not yet active' || currentTrialStatus.toLowerCase() === 'in review' || currentTrialStatus.toLowerCase() === 'approved') {
 			return (
 				<>
 					<strong>Location: </strong>Location information is not yet available.
@@ -72,17 +55,12 @@ export const getLocationInfoFromSites = (
 	// One location found
 	if (totalUSLocations === 1) {
 		// Get full state name from state code
-		const stateName = getStateNameFromAbbr(
-			sites[lastUSLocationSite].org_state_or_province.toUpperCase()
-		);
+		const stateName = getStateNameFromAbbr(sites[lastUSLocationSite].org_state_or_province.toUpperCase());
 		// Return text in format "org name, org city, state"
 		return (
 			<>
 				<strong>Location: </strong>
-				{sites[lastUSLocationSite].org_name +
-					', ' +
-					sites[lastUSLocationSite].org_city +
-					(stateName?.length ? ', ' + stateName : '')}
+				{sites[lastUSLocationSite].org_name + ', ' + sites[lastUSLocationSite].org_city + (stateName?.length ? ', ' + stateName : '')}
 			</>
 		);
 	}

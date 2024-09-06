@@ -69,15 +69,7 @@ describe('CTLViewsHoc redirect', () => {
 			<MockAnalyticsProvider>
 				<MemoryRouter initialEntries={['/C4872']}>
 					<Routes>
-						<Route
-							path="/:codeOrPurl"
-							element={
-								<WrappedComponent
-									redirectPath={mockRedirectPath}
-									routeParamMap={SINGLE_PARAM_MAP}
-								/>
-							}
-						/>
+						<Route path="/:codeOrPurl" element={<WrappedComponent redirectPath={mockRedirectPath} routeParamMap={SINGLE_PARAM_MAP} />} />
 					</Routes>
 				</MemoryRouter>
 			</MockAnalyticsProvider>
@@ -132,9 +124,7 @@ describe('CTLViewsHoc redirect', () => {
 			},
 		]);
 
-		const mockRedirectPath = jest
-			.fn()
-			.mockReturnValue('/breast-cancer/C99999,C1111111');
+		const mockRedirectPath = jest.fn().mockReturnValue('/breast-cancer/C99999,C1111111');
 
 		const multiparam_map = [
 			{
@@ -154,24 +144,14 @@ describe('CTLViewsHoc redirect', () => {
 			<MockAnalyticsProvider>
 				<MemoryRouter initialEntries={['/C4872/C99999,C1111111']}>
 					<Routes>
-						<Route
-							path="/:codeOrPurl/:otherCodeOrPurl"
-							element={
-								<WrappedComponent
-									redirectPath={mockRedirectPath}
-									routeParamMap={multiparam_map}
-								/>
-							}
-						/>
+						<Route path="/:codeOrPurl/:otherCodeOrPurl" element={<WrappedComponent redirectPath={mockRedirectPath} routeParamMap={multiparam_map} />} />
 					</Routes>
 				</MemoryRouter>
 			</MockAnalyticsProvider>
 		);
 		// Expect the first argument of the first call to mockComponent
 		// to match the expected props
-		expect(mockNavigate.mock.calls[0][0]).toBe(
-			'/breast-cancer/C99999,C1111111?redirect=true'
-		);
+		expect(mockNavigate.mock.calls[0][0]).toBe('/breast-cancer/C99999,C1111111?redirect=true');
 		expect(mockNavigate.mock.calls[0][1]).toBeTruthy();
 
 		expect(useListingSupport.mock.calls[0][0]).toEqual([
@@ -221,9 +201,7 @@ describe('CTLViewsHoc redirect', () => {
 			},
 		]);
 
-		const mockRedirectPath = jest
-			.fn()
-			.mockReturnValue('/breast-cancer/basic-science');
+		const mockRedirectPath = jest.fn().mockReturnValue('/breast-cancer/basic-science');
 
 		const multiparam_map = [
 			{
@@ -243,24 +221,14 @@ describe('CTLViewsHoc redirect', () => {
 			<MockAnalyticsProvider>
 				<MemoryRouter initialEntries={['/breast-cancer/basic_science']}>
 					<Routes>
-						<Route
-							path="/:codeOrPurl/:type"
-							element={
-								<WrappedComponent
-									redirectPath={mockRedirectPath}
-									routeParamMap={multiparam_map}
-								/>
-							}
-						/>
+						<Route path="/:codeOrPurl/:type" element={<WrappedComponent redirectPath={mockRedirectPath} routeParamMap={multiparam_map} />} />
 					</Routes>
 				</MemoryRouter>
 			</MockAnalyticsProvider>
 		);
 		// Expect the first argument of the first call to mockComponent
 		// to match the expected props
-		expect(mockNavigate.mock.calls[0][0]).toBe(
-			'/breast-cancer/basic-science?redirect=true'
-		);
+		expect(mockNavigate.mock.calls[0][0]).toBe('/breast-cancer/basic-science?redirect=true');
 		expect(mockNavigate.mock.calls[0][1]).toBeTruthy();
 
 		expect(useListingSupport.mock.calls[0][0]).toEqual([

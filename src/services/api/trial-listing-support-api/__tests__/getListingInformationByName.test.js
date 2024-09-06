@@ -23,9 +23,7 @@ describe('Get listing information by name', () => {
 			prettyUrlName: 'spiroplatin',
 		};
 
-		const scope = nock('http://example.org')
-			.get('/listing-information/spiroplatin')
-			.reply(200, expected);
+		const scope = nock('http://example.org').get('/listing-information/spiroplatin').reply(200, expected);
 
 		const actual = await getListingInformationByName(client, 'spiroplatin');
 
@@ -34,9 +32,7 @@ describe('Get listing information by name', () => {
 	});
 
 	it('handles not found', async () => {
-		const scope = nock('http://example.org')
-			.get('/listing-information/asdf')
-			.reply(404);
+		const scope = nock('http://example.org').get('/listing-information/asdf').reply(404);
 
 		const actual = await getListingInformationByName(client, 'asdf');
 
@@ -45,32 +41,22 @@ describe('Get listing information by name', () => {
 	});
 
 	it('handles error', async () => {
-		const scope = nock('http://example.org')
-			.get('/listing-information/asdf')
-			.reply(500);
+		const scope = nock('http://example.org').get('/listing-information/asdf').reply(500);
 
-		await expect(getListingInformationByName(client, 'asdf')).rejects.toThrow(
-			'Unexpected status 500 for fetching name'
-		);
+		await expect(getListingInformationByName(client, 'asdf')).rejects.toThrow('Unexpected status 500 for fetching name');
 
 		scope.isDone();
 	});
 
 	it('handles unexpected status', async () => {
-		const scope = nock('http://example.org')
-			.get('/listing-information/asdf')
-			.reply(201);
+		const scope = nock('http://example.org').get('/listing-information/asdf').reply(201);
 
-		await expect(getListingInformationByName(client, 'asdf')).rejects.toThrow(
-			'Unexpected status 201 for fetching name'
-		);
+		await expect(getListingInformationByName(client, 'asdf')).rejects.toThrow('Unexpected status 201 for fetching name');
 
 		scope.isDone();
 	});
 
 	it('validates name', async () => {
-		await expect(getListingInformationByName(client, '!$')).rejects.toThrow(
-			'Name does not match valid string, can only include a-z,0-9 and dashes (-)'
-		);
+		await expect(getListingInformationByName(client, '!$')).rejects.toThrow('Name does not match valid string, can only include a-z,0-9 and dashes (-)');
 	});
 });

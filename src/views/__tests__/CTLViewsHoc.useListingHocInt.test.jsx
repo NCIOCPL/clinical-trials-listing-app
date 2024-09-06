@@ -12,10 +12,7 @@
 import React, { useEffect } from 'react';
 import { render, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes, useNavigate } from 'react-router';
-import {
-	ListingSupportCache,
-	ListingSupportContext,
-} from '../../hooks/listingSupport';
+import { ListingSupportCache, ListingSupportContext } from '../../hooks/listingSupport';
 import { MockAnalyticsProvider } from '../../tracking';
 
 import { useStateValue } from '../../store/store';
@@ -26,12 +23,8 @@ import { getTrialType } from '../../services/api/trial-listing-support-api/getTr
 import CTLViewsHoC from '../CTLViewsHoC';
 
 jest.mock('../../store/store');
-jest.mock(
-	'../../services/api/trial-listing-support-api/getListingInformationById'
-);
-jest.mock(
-	'../../services/api/trial-listing-support-api/getListingInformationByName'
-);
+jest.mock('../../services/api/trial-listing-support-api/getListingInformationById');
+jest.mock('../../services/api/trial-listing-support-api/getListingInformationByName');
 
 jest.mock('../../services/api/trial-listing-support-api/getTrialType');
 // We are choosing to opt out of the standard practice within this file
@@ -135,19 +128,10 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 
 		render(
 			<MockAnalyticsProvider>
-				<ListingSupportContext.Provider
-					value={{ cache: new ListingSupportCache() }}>
+				<ListingSupportContext.Provider value={{ cache: new ListingSupportCache() }}>
 					<MemoryRouter initialEntries={['/C4872']}>
 						<Routes>
-							<Route
-								path="/:codeOrPurl"
-								element={
-									<WrappedComponent
-										redirectPath={mockRedirectPath}
-										routeParamMap={diseaseRouteParamMap}
-									/>
-								}
-							/>
+							<Route path="/:codeOrPurl" element={<WrappedComponent redirectPath={mockRedirectPath} routeParamMap={diseaseRouteParamMap} />} />
 						</Routes>
 					</MemoryRouter>
 				</ListingSupportContext.Provider>
@@ -181,9 +165,7 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 
 		// This should not get called.
 		const mockRedirectPath = jest.fn().mockImplementationOnce(() => {
-			throw new Error(
-				'I should not be getting called here, but this is required.'
-			);
+			throw new Error('I should not be getting called here, but this is required.');
 		});
 
 		const mockComponentConcept = jest.fn(() => {
@@ -208,28 +190,11 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 
 		render(
 			<MockAnalyticsProvider>
-				<ListingSupportContext.Provider
-					value={{ cache: new ListingSupportCache() }}>
+				<ListingSupportContext.Provider value={{ cache: new ListingSupportCache() }}>
 					<MemoryRouter initialEntries={['/C99999']}>
 						<Routes>
-							<Route
-								path="/:codeOrPurl"
-								element={
-									<WrappedComponentConcept
-										redirectPath={mockRedirectPath}
-										routeParamMap={diseaseRouteParamMap}
-									/>
-								}
-							/>
-							<Route
-								path="/notrials"
-								element={
-									<WrappedComponentConceptNoTrials
-										redirectPath={mockRedirectPath}
-										routeParamMap={diseaseRouteParamMap}
-									/>
-								}
-							/>
+							<Route path="/:codeOrPurl" element={<WrappedComponentConcept redirectPath={mockRedirectPath} routeParamMap={diseaseRouteParamMap} />} />
+							<Route path="/notrials" element={<WrappedComponentConceptNoTrials redirectPath={mockRedirectPath} routeParamMap={diseaseRouteParamMap} />} />
 						</Routes>
 					</MemoryRouter>
 				</ListingSupportContext.Provider>
@@ -261,11 +226,7 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 	 */
 	it('handles navigation from ID to Name with only 1 pretty url', async () => {
 		getListingInformationById.mockImplementation((client, ids) => {
-			if (
-				ids.includes('C1111') ||
-				ids.includes('C2222') ||
-				ids.includes('C99999')
-			) {
+			if (ids.includes('C1111') || ids.includes('C2222') || ids.includes('C99999')) {
 				return ids.includes('C99999') ? CONCEPT_NO_PURL : CONCEPT_MULTI_ID;
 			}
 		});
@@ -285,9 +246,7 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 		// We use RedirectPath to figure out the correct route for
 		// a redirect. This assumes /:codeOrPurl which matches our
 		// route below.
-		const mockRedirectPath = jest
-			.fn()
-			.mockReturnValue('/C99999/treatment/multi-id-concept');
+		const mockRedirectPath = jest.fn().mockReturnValue('/C99999/treatment/multi-id-concept');
 
 		const mockComponent = jest.fn(() => {
 			return <>This would be the disease component.</>;
@@ -300,19 +259,10 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 
 		render(
 			<MockAnalyticsProvider>
-				<ListingSupportContext.Provider
-					value={{ cache: new ListingSupportCache() }}>
+				<ListingSupportContext.Provider value={{ cache: new ListingSupportCache() }}>
 					<MemoryRouter initialEntries={['/C99999/treatment/C2222']}>
 						<Routes>
-							<Route
-								path="/:codeOrPurl/:type/:interCodeOrPurl"
-								element={
-									<WrappedComponent
-										redirectPath={mockRedirectPath}
-										routeParamMap={diseaseRouteParamMap}
-									/>
-								}
-							/>
+							<Route path="/:codeOrPurl/:type/:interCodeOrPurl" element={<WrappedComponent redirectPath={mockRedirectPath} routeParamMap={diseaseRouteParamMap} />} />
 						</Routes>
 					</MemoryRouter>
 				</ListingSupportContext.Provider>
@@ -338,11 +288,7 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 		expect(mockComponent.mock.calls).toHaveLength(1);
 		const { data: call1data } = mockComponent.mock.calls[0][0];
 
-		expect(call1data).toEqual([
-			CONCEPT_NO_PURL,
-			TRIAL_TYPE_TREATMENT,
-			CONCEPT_MULTI_ID,
-		]);
+		expect(call1data).toEqual([CONCEPT_NO_PURL, TRIAL_TYPE_TREATMENT, CONCEPT_MULTI_ID]);
 	});
 
 	// For both of these tests, your wrapped component would have to explicitly
@@ -360,9 +306,7 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 		// a redirect. This assumes /:codeOrPurl which matches our
 		// route below.
 		const mockRedirectPath = jest.fn().mockImplementationOnce(() => {
-			throw new Error(
-				'I should not be getting called here, but this is required.'
-			);
+			throw new Error('I should not be getting called here, but this is required.');
 		});
 
 		// This component will force a navigation
@@ -386,19 +330,10 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 
 		render(
 			<MockAnalyticsProvider>
-				<ListingSupportContext.Provider
-					value={{ cache: new ListingSupportCache() }}>
+				<ListingSupportContext.Provider value={{ cache: new ListingSupportCache() }}>
 					<MemoryRouter initialEntries={['/breast-cancer']}>
 						<Routes>
-							<Route
-								path="/:codeOrPurl"
-								element={
-									<WrappedComponent
-										redirectPath={mockRedirectPath}
-										routeParamMap={diseaseRouteParamMap}
-									/>
-								}
-							/>
+							<Route path="/:codeOrPurl" element={<WrappedComponent redirectPath={mockRedirectPath} routeParamMap={diseaseRouteParamMap} />} />
 						</Routes>
 					</MemoryRouter>
 				</ListingSupportContext.Provider>
@@ -442,9 +377,7 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 
 		// This should not get called.
 		const mockRedirectPath = jest.fn().mockImplementationOnce(() => {
-			throw new Error(
-				'I should not be getting called here, but this is required.'
-			);
+			throw new Error('I should not be getting called here, but this is required.');
 		});
 
 		const mockComponentConcept = jest.fn(() => {
@@ -462,37 +395,18 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 		});
 
 		const WrappedComponentConcept = CTLViewsHoC(mockComponentConcept);
-		const WrappedComponentConceptPlusType = CTLViewsHoC(
-			mockComponentConceptPlusType
-		);
+		const WrappedComponentConceptPlusType = CTLViewsHoC(mockComponentConceptPlusType);
 
 		// Hopefully this renders, and navigates and loads the
 		// new component.
 
 		render(
 			<MockAnalyticsProvider>
-				<ListingSupportContext.Provider
-					value={{ cache: new ListingSupportCache() }}>
+				<ListingSupportContext.Provider value={{ cache: new ListingSupportCache() }}>
 					<MemoryRouter initialEntries={['/C99999']}>
 						<Routes>
-							<Route
-								path="/:codeOrPurl"
-								element={
-									<WrappedComponentConcept
-										redirectPath={mockRedirectPath}
-										routeParamMap={diseaseRouteParamMap}
-									/>
-								}
-							/>
-							<Route
-								path="/:codeOrPurl/:type"
-								element={
-									<WrappedComponentConceptPlusType
-										redirectPath={mockRedirectPath}
-										routeParamMap={diseaseRouteParamMap}
-									/>
-								}
-							/>
+							<Route path="/:codeOrPurl" element={<WrappedComponentConcept redirectPath={mockRedirectPath} routeParamMap={diseaseRouteParamMap} />} />
+							<Route path="/:codeOrPurl/:type" element={<WrappedComponentConceptPlusType redirectPath={mockRedirectPath} routeParamMap={diseaseRouteParamMap} />} />
 						</Routes>
 					</MemoryRouter>
 				</ListingSupportContext.Provider>
@@ -517,8 +431,7 @@ describe('CTLViewsHoc & useListingSupport integration', () => {
 		expect(mockComponentConcept.mock.calls).toHaveLength(1);
 		const { data: conceptData } = mockComponentConcept.mock.calls[0][0];
 		expect(mockComponentConceptPlusType.mock.calls).toHaveLength(1);
-		const { data: conceptTypeData } =
-			mockComponentConceptPlusType.mock.calls[0][0];
+		const { data: conceptTypeData } = mockComponentConceptPlusType.mock.calls[0][0];
 
 		expect(conceptData).toEqual([CONCEPT_NO_PURL]);
 

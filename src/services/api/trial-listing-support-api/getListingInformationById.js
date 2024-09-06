@@ -23,9 +23,7 @@ export const getListingInformationById = async (client, conceptIds) => {
 			if (error.response.status === 404) {
 				return null;
 			} else {
-				throw new Error(
-					`Unexpected status ${error.response.status} for fetching ids`
-				);
+				throw new Error(`Unexpected status ${error.response.status} for fetching ids`);
 			}
 		}
 		throw error;

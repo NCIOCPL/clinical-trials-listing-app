@@ -25,9 +25,7 @@ describe('Get trial type information', () => {
 			label: 'Treatment',
 		};
 
-		const scope = nock('http://example.org')
-			.get('/trial-type/treatment')
-			.reply(200, expected);
+		const scope = nock('http://example.org').get('/trial-type/treatment').reply(200, expected);
 
 		const actual = await getTrialType(client, 'treatment');
 
@@ -42,9 +40,7 @@ describe('Get trial type information', () => {
 			label: 'Health Services Research',
 		};
 
-		const scope = nock('http://example.org')
-			.get('/trial-type/health_services_research')
-			.reply(200, expected);
+		const scope = nock('http://example.org').get('/trial-type/health_services_research').reply(200, expected);
 
 		const actual = await getTrialType(client, 'health_services_research');
 
@@ -64,9 +60,7 @@ describe('Get trial type information', () => {
 	it('handles error', async () => {
 		const scope = nock('http://example.org').get('/trial-type/asdf').reply(500);
 
-		await expect(getTrialType(client, 'asdf')).rejects.toThrow(
-			'Unexpected status 500 for fetching name'
-		);
+		await expect(getTrialType(client, 'asdf')).rejects.toThrow('Unexpected status 500 for fetching name');
 
 		scope.isDone();
 	});
@@ -74,16 +68,12 @@ describe('Get trial type information', () => {
 	it('handles unexpected status', async () => {
 		const scope = nock('http://example.org').get('/trial-type/asdf').reply(201);
 
-		await expect(getTrialType(client, 'asdf')).rejects.toThrow(
-			'Unexpected status 201 for fetching name'
-		);
+		await expect(getTrialType(client, 'asdf')).rejects.toThrow('Unexpected status 201 for fetching name');
 
 		scope.isDone();
 	});
 
 	it('validates name', async () => {
-		await expect(getTrialType(client, '!$')).rejects.toThrow(
-			'Name does not match valid string, can only include a-z,0-9, dashes (-), and underscores (_)'
-		);
+		await expect(getTrialType(client, '!$')).rejects.toThrow('Name does not match valid string, can only include a-z,0-9, dashes (-), and underscores (_)');
 	});
 });

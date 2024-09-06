@@ -6,21 +6,8 @@ import { Spinner } from '../components';
 import { ErrorPage, PageNotFound } from './ErrorBoundary';
 import { useAppPaths, useListingSupport } from '../hooks';
 import { getTrialType } from '../services/api/actions';
-import {
-	appendOrUpdateToQueryString,
-	getIdOrNameAction,
-	getKeyValueFromQueryString,
-	convertObjectToBase64,
-} from '../utils';
-import {
-	hocReducer,
-	hocStates,
-	setLoading,
-	setSuccessfulFetch,
-	setFailedFetch,
-	setNotFound,
-	setRedirecting,
-} from './hocReducer';
+import { appendOrUpdateToQueryString, getIdOrNameAction, getKeyValueFromQueryString, convertObjectToBase64 } from '../utils';
+import { hocReducer, hocStates, setLoading, setSuccessfulFetch, setFailedFetch, setNotFound, setRedirecting } from './hocReducer';
 
 /**
  * Higher order component for fetching disease information from the trial listing support API.
@@ -48,9 +35,7 @@ const CTLViewsHoC = (WrappedView) => {
 
 		// Setup the actions for the fetch.
 		if (!routeParamMap) {
-			throw new Error(
-				`You must supply a routeParamMap to your CTLViewsHoC wrapped component.`
-			);
+			throw new Error(`You must supply a routeParamMap to your CTLViewsHoC wrapped component.`);
 		}
 
 		// Remove any parameters we did not receive. Since react-router does not suck, we
@@ -63,26 +48,17 @@ const CTLViewsHoC = (WrappedView) => {
 		// ':codeOrPurl' first, then you are doing this wrong. In that case, your routeParamMap
 		// needs to have ':codeOrPurl' first. This is why we can assume order of the
 		// filtered list will be maintained, and that no "gaps" will be created.
-		const filteredRouteParamMap = isNoTrials
-			? routeParamMap.filter((param, idx) => search.includes(`p${idx + 1}=`))
-			: routeParamMap.filter((param) => params[param.paramName]);
+		const filteredRouteParamMap = isNoTrials ? routeParamMap.filter((param, idx) => search.includes(`p${idx + 1}=`)) : routeParamMap.filter((param) => params[param.paramName]);
 
 		// Collate provided fetch actions and filter out actions with no payloads
 		const fetchActions = filteredRouteParamMap.map((param, idx) => {
 			switch (param.type) {
 				case 'listing-information': {
-					return getIdOrNameAction(
-						isNoTrials,
-						params[param.paramName],
-						idx + 1,
-						search
-					);
+					return getIdOrNameAction(isNoTrials, params[param.paramName], idx + 1, search);
 				}
 				case 'trial-type': {
 					return getTrialType({
-						trialType: !isNoTrials
-							? params[param.paramName]
-							: getKeyValueFromQueryString(`p${idx + 1}`, search),
+						trialType: !isNoTrials ? params[param.paramName] : getKeyValueFromQueryString(`p${idx + 1}`, search),
 					});
 				}
 				default:
@@ -126,49 +102,30 @@ const CTLViewsHoC = (WrappedView) => {
 				// handle redirects if we are not showing /notrials, for
 				// sanity.
 				if (!isNoTrials) {
-					const redirectCheck = fetchActions.some(
-						(action, idx) =>
-							(action.type === 'id' &&
-								getListingInfo.payload[idx].prettyUrlName) ||
-							(action.type === 'trialType' &&
-								action.payload !== getListingInfo.payload[idx].prettyUrlName)
-					);
+					const redirectCheck = fetchActions.some((action, idx) => (action.type === 'id' && getListingInfo.payload[idx].prettyUrlName) || (action.type === 'trialType' && action.payload !== getListingInfo.payload[idx].prettyUrlName));
 
 					if (redirectCheck) {
-						const queryString = appendOrUpdateToQueryString(
-							search,
-							'redirect',
-							'true'
-						);
+						const queryString = appendOrUpdateToQueryString(search, 'redirect', 'true');
 
 						// Setup redirect params
-						const redirectParams = filteredRouteParamMap.reduce(
-							(ac, param, idx) => {
-								switch (param.type) {
-									case 'listing-information': {
-										return {
-											...ac,
-											[param.paramName]: getListingInfo.payload[idx]
-												?.prettyUrlName
-												? getListingInfo.payload[idx]?.prettyUrlName
-												: getListingInfo.payload[idx]?.conceptId.join(','),
-										};
-									}
-									case 'trial-type': {
-										return {
-											...ac,
-											[param.paramName]: getListingInfo.payload[idx]
-												?.prettyUrlName
-												? getListingInfo.payload[idx]?.prettyUrlName
-												: getListingInfo.payload[idx]?.idString,
-										};
-									}
-									// We know by this point if any types were invalid, so no need to
-									// have a default only to never get code coverage.
+						const redirectParams = filteredRouteParamMap.reduce((ac, param, idx) => {
+							switch (param.type) {
+								case 'listing-information': {
+									return {
+										...ac,
+										[param.paramName]: getListingInfo.payload[idx]?.prettyUrlName ? getListingInfo.payload[idx]?.prettyUrlName : getListingInfo.payload[idx]?.conceptId.join(','),
+									};
 								}
-							},
-							{}
-						);
+								case 'trial-type': {
+									return {
+										...ac,
+										[param.paramName]: getListingInfo.payload[idx]?.prettyUrlName ? getListingInfo.payload[idx]?.prettyUrlName : getListingInfo.payload[idx]?.idString,
+									};
+								}
+								// We know by this point if any types were invalid, so no need to
+								// have a default only to never get code coverage.
+							}
+						}, {});
 						// Let's set the state BEFORE we navigate
 						hocDispatch(setRedirecting());
 
@@ -185,9 +142,7 @@ const CTLViewsHoC = (WrappedView) => {
 				}
 
 				// At this point, the wrapped view is going to handle this request.
-				hocDispatch(
-					setSuccessfulFetch(currentActionsHash, getListingInfo.payload)
-				);
+				hocDispatch(setSuccessfulFetch(currentActionsHash, getListingInfo.payload));
 			} else if (!getListingInfo.loading && getListingInfo.error) {
 				// Raise error for ErrorBoundary for now.
 				hocDispatch(setFailedFetch());
@@ -207,13 +162,7 @@ const CTLViewsHoC = (WrappedView) => {
 				<div className="page-options-container" />
 				{(() => {
 					// Show loading.
-					if (
-						getListingInfo.loading ||
-						state.status === hocStates.REDIR_STATE ||
-						state.status === hocStates.LOADING_STATE ||
-						(state.status === hocStates.LOADED_STATE &&
-							state.actionsHash !== currentActionsHash)
-					) {
+					if (getListingInfo.loading || state.status === hocStates.REDIR_STATE || state.status === hocStates.LOADING_STATE || (state.status === hocStates.LOADED_STATE && state.actionsHash !== currentActionsHash)) {
 						return <Spinner />;
 					} else {
 						// We have finished loading and either need to display
@@ -224,22 +173,9 @@ const CTLViewsHoC = (WrappedView) => {
 							}
 							case hocStates.LOADED_STATE: {
 								if (isNoTrials) {
-									return (
-										<WrappedView
-											routeParamMap={filteredRouteParamMap}
-											{...props}
-											data={state.listingData}
-										/>
-									);
+									return <WrappedView routeParamMap={filteredRouteParamMap} {...props} data={state.listingData} />;
 								} else {
-									return (
-										<WrappedView
-											routeParamMap={filteredRouteParamMap}
-											routePath={redirectPath}
-											{...props}
-											data={state.listingData}
-										/>
-									);
+									return <WrappedView routeParamMap={filteredRouteParamMap} routePath={redirectPath} {...props} data={state.listingData} />;
 								}
 							}
 							default: {

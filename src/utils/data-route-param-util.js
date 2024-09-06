@@ -12,15 +12,13 @@ export const getTextReplacementContext = (data, routeParamMap) => {
 				return {
 					...ac,
 					[`${paramInfo.textReplacementKey}_label`]: paramData.name.label,
-					[`${paramInfo.textReplacementKey}_normalized`]:
-						paramData.name.normalized,
+					[`${paramInfo.textReplacementKey}_normalized`]: paramData.name.normalized,
 				};
 			case 'trial-type':
 				return {
 					...ac,
 					[`${paramInfo.textReplacementKey}_label`]: paramData.label,
-					[`${paramInfo.textReplacementKey}_normalized`]:
-						paramData.label.toLowerCase(),
+					[`${paramInfo.textReplacementKey}_normalized`]: paramData.label.toLowerCase(),
 				};
 			default:
 				throw new Error(`Unknown parameter type ${paramInfo.type}`);
@@ -40,20 +38,12 @@ export const getNoTrialsRedirectParams = (data, routeParamMap) => {
 
 		switch (paramInfo.type) {
 			case 'listing-information': {
-				const paramVal = paramData.prettyUrlName
-					? paramData.prettyUrlName
-					: paramData.conceptId.join(',');
+				const paramVal = paramData.prettyUrlName ? paramData.prettyUrlName : paramData.conceptId.join(',');
 
-				return (
-					tmpParams + (tmpParams !== '' ? '&' : '') + `p${idx + 1}=${paramVal}`
-				);
+				return tmpParams + (tmpParams !== '' ? '&' : '') + `p${idx + 1}=${paramVal}`;
 			}
 			case 'trial-type': {
-				return (
-					tmpParams +
-					(tmpParams !== '' ? '&' : '') +
-					`p${idx + 1}=${paramData.prettyUrlName}`
-				);
+				return tmpParams + (tmpParams !== '' ? '&' : '') + `p${idx + 1}=${paramData.prettyUrlName}`;
 			}
 			default:
 				throw new Error(`Unknown parameter type ${paramInfo.type}`);
@@ -76,17 +66,13 @@ export const getParamsForRoute = (data, routeParamMap) => {
 			case 'listing-information': {
 				return {
 					...acQuery,
-					[paramInfo.paramName]: paramData.prettyUrlName
-						? paramData.prettyUrlName
-						: paramData.conceptId.join(','),
+					[paramInfo.paramName]: paramData.prettyUrlName ? paramData.prettyUrlName : paramData.conceptId.join(','),
 				};
 			}
 			case 'trial-type': {
 				return {
 					...acQuery,
-					[paramInfo.paramName]: paramData.prettyUrlName
-						? paramData.prettyUrlName
-						: paramData.idString,
+					[paramInfo.paramName]: paramData.prettyUrlName ? paramData.prettyUrlName : paramData.idString,
 				};
 			}
 			default:

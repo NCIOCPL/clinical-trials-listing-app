@@ -43,8 +43,7 @@ describe('<NoTrialsHtml />', () => {
 			Disease: {
 				browserTitle: '{{disease_name}} Clinical Trials',
 				metaDescription: 'Find clinical trials for {{disease_normalized}}.',
-				noTrialsHtml:
-					'<p>There are currently no available trials for {{disease_normalized}}.</p>',
+				noTrialsHtml: '<p>There are currently no available trials for {{disease_normalized}}.</p>',
 				pageTitle: '{{disease_label}} Clinical Trials',
 			},
 		};
@@ -63,20 +62,13 @@ describe('<NoTrialsHtml />', () => {
 
 		render(
 			<MockAnalyticsProvider>
-				<MemoryRouter
-					initialEntries={['/notrials?p1=chronic-fatigue-syndrome']}>
+				<MemoryRouter initialEntries={['/notrials?p1=chronic-fatigue-syndrome']}>
 					<NoTrialsFound routeParamMap={routeParamMap} data={data} />
 				</MemoryRouter>
 			</MockAnalyticsProvider>
 		);
 
-		expect(
-			screen.getByText('Chronic Fatigue Syndrome Clinical Trials')
-		).toBeInTheDocument();
-		expect(
-			screen.getByText(
-				'There are currently no available trials for chronic fatigue syndrome.'
-			)
-		).toBeInTheDocument();
+		expect(screen.getByText('Chronic Fatigue Syndrome Clinical Trials')).toBeInTheDocument();
+		expect(screen.getByText('There are currently no available trials for chronic fatigue syndrome.')).toBeInTheDocument();
 	});
 });

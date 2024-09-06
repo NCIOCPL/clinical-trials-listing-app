@@ -56,13 +56,9 @@ describe('testing getClinicalTrials', () => {
 			requestFilters,
 		});
 
-		const scope = nock('http://example.org')
-			.post('/trials', query.payload)
-			.reply(200, resObj);
+		const scope = nock('http://example.org').post('/trials', query.payload).reply(200, resObj);
 
-		await expect(getClinicalTrials(client, query.payload)).rejects.toThrow(
-			'Trial count mismatch from the API'
-		);
+		await expect(getClinicalTrials(client, query.payload)).rejects.toThrow('Trial count mismatch from the API');
 		scope.isDone();
 	});
 
@@ -75,12 +71,8 @@ describe('testing getClinicalTrials', () => {
 			requestFilters,
 		});
 
-		const scope = nock('http://example.org')
-			.post('/trials', query.payload)
-			.reply(201);
-		await expect(getClinicalTrials(client, query.payload)).rejects.toThrow(
-			'Unexpected status 201 for fetching clinical trials'
-		);
+		const scope = nock('http://example.org').post('/trials', query.payload).reply(201);
+		await expect(getClinicalTrials(client, query.payload)).rejects.toThrow('Unexpected status 201 for fetching clinical trials');
 		scope.isDone();
 	});
 
@@ -93,12 +85,8 @@ describe('testing getClinicalTrials', () => {
 			requestFilters,
 		});
 
-		const scope = nock('http://example.org')
-			.post('/trials', query.payload)
-			.reply(500);
-		await expect(getClinicalTrials(client, query.payload)).rejects.toThrow(
-			'Unexpected status 500 for fetching clinical trials'
-		);
+		const scope = nock('http://example.org').post('/trials', query.payload).reply(500);
+		await expect(getClinicalTrials(client, query.payload)).rejects.toThrow('Unexpected status 500 for fetching clinical trials');
 		scope.isDone();
 	});
 
@@ -111,12 +99,8 @@ describe('testing getClinicalTrials', () => {
 			requestFilters,
 		});
 
-		const scope = nock('http://example.org')
-			.post('/trials', query.payload)
-			.replyWithError('connection refused');
-		await expect(getClinicalTrials(client, query.payload)).rejects.toThrow(
-			'connection refused'
-		);
+		const scope = nock('http://example.org').post('/trials', query.payload).replyWithError('connection refused');
+		await expect(getClinicalTrials(client, query.payload)).rejects.toThrow('connection refused');
 		scope.isDone();
 	});
 });

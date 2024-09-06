@@ -164,12 +164,9 @@ And('the text {string} appears on the page', (text) => {
 	cy.get('div.error-container').should('contain', text);
 });
 
-And(
-	'the link {string} to {string} appears on the page',
-	(linkText, linkHref) => {
-		cy.get(`a[href="${linkHref}"]`).should('have.text', linkText);
-	}
-);
+And('the link {string} to {string} appears on the page', (linkText, linkHref) => {
+	cy.get(`a[href="${linkHref}"]`).should('have.text', linkText);
+});
 
 And('the search bar appears below', () => {
 	cy.get('input#keywords').should('be.visible');
@@ -181,26 +178,21 @@ And('the search bar appears below', () => {
 	-----------------------
 */
 
-And(
-	'each result displays the trial title as a link to the trial description page',
-	() => {
-		cy.get('.ct-list-item')
-			.find('a.ct-list-item__title')
-			.should('have.attr', 'href')
-			.then((href) => {
-				expect(href).to.contain('/clinicaltrials/NCI-');
-			});
-	}
-);
+And('each result displays the trial title as a link to the trial description page', () => {
+	cy.get('.ct-list-item')
+		.find('a.ct-list-item__title')
+		.should('have.attr', 'href')
+		.then((href) => {
+			expect(href).to.contain('/clinicaltrials/NCI-');
+		});
+});
 
 And('each result displays the trial description below the link', () => {
 	cy.get('.ct-list-item p.body').should('not.be.empty');
 });
 
 And('each result displays {string} below the description', (location) => {
-	cy.get('.ct-list-item .location-info')
-		.find('strong')
-		.should('include.text', location);
+	cy.get('.ct-list-item .location-info').find('strong').should('include.text', location);
 });
 
 Then('the system displays {int} paragraph {string}', (numParagraph, text) => {
@@ -210,12 +202,9 @@ Then('the system displays {int} paragraph {string}', (numParagraph, text) => {
 		.should('have.text', text);
 });
 
-And(
-	'the link {string} to {string} appears on the page',
-	(linkText, linkHref) => {
-		cy.get(`a[href="${linkHref}"]`).should('have.text', linkText);
-	}
-);
+And('the link {string} to {string} appears on the page', (linkText, linkHref) => {
+	cy.get(`a[href="${linkHref}"]`).should('have.text', linkText);
+});
 
 /*
 	-----------------------
@@ -235,9 +224,7 @@ Given('screen breakpoint is set to {string}', (screenSize) => {
 */
 
 Then('the system displays {string} {string}', (perPage, total) => {
-	cy.get('.paging-section__page-info')
-		.should('include.text', perPage)
-		.and('include.text', total);
+	cy.get('.paging-section__page-info').should('include.text', perPage).and('include.text', total);
 });
 And('pager displays the following navigation options', (dataTable) => {
 	const pagerItems = [];
@@ -246,14 +233,8 @@ And('pager displays the following navigation options', (dataTable) => {
 	}
 	let counter = 0;
 	//verify that pager displays correct number of page items
-	cy.get('.pager__navigation:first li:visible').should(
-		'have.length',
-		pagerItems.length
-	);
-	cy.get('.pager__navigation:last li:visible').should(
-		'have.length',
-		pagerItems.length
-	);
+	cy.get('.pager__navigation:first li:visible').should('have.length', pagerItems.length);
+	cy.get('.pager__navigation:last li:visible').should('have.length', pagerItems.length);
 
 	//verify that the order of displayed page items is correct
 	cy.get('.pager__navigation:first li:visible').each(($el) => {
@@ -263,13 +244,8 @@ And('pager displays the following navigation options', (dataTable) => {
 });
 
 And('the page {string} is highlighted', (pageNum) => {
-	cy.get(
-		'.pager__navigation:first button[class="pager__button active"]'
-	).should('have.text', pageNum);
-	cy.get('.pager__navigation:last button[class="pager__button active"]').should(
-		'have.text',
-		pageNum
-	);
+	cy.get('.pager__navigation:first button[class="pager__button active"]').should('have.text', pageNum);
+	cy.get('.pager__navigation:last button[class="pager__button active"]').should('have.text', pageNum);
 });
 When('user clicks on {string} button', (arrow) => {
 	cy.get('.pager__navigation li').contains(arrow).click();
@@ -311,17 +287,12 @@ Then('the redirect parameter is not appended', () => {
 	cy.location('href').should('not.include', 'redirect=true');
 });
 
-Then(
-	'the user is redirected to {string} with query parameters {string}',
-	(redirectUrl, queryParams) => {
-		cy.location('href').should('include', `${redirectUrl}?${queryParams}`);
-	}
-);
+Then('the user is redirected to {string} with query parameters {string}', (redirectUrl, queryParams) => {
+	cy.location('href').should('include', `${redirectUrl}?${queryParams}`);
+});
 
 And('the CIS Banner displays below', () => {
-	cy.get('[alt="Questions? Chat with an information specialist"]').should(
-		'be.visible'
-	);
+	cy.get('[alt="Questions? Chat with an information specialist"]').should('be.visible');
 });
 
 And('the Chat Now button displays below', () => {

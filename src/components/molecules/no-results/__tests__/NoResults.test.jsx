@@ -26,15 +26,12 @@ describe('<NoResults />', () => {
 				</MemoryRouter>
 			</MockAnalyticsProvider>
 		);
-		expect(
-			screen.getByText('There are currently no available trials.')
-		).toBeInTheDocument();
+		expect(screen.getByText('There are currently no available trials.')).toBeInTheDocument();
 	});
 
 	it('should contain replaced component text', async () => {
 		const noTrialsHtml = 'There are currently no available trials.';
-		const replacedNoTrialsHtml =
-			'There are currently no available trials for chronic fatigue syndrome.';
+		const replacedNoTrialsHtml = 'There are currently no available trials for chronic fatigue syndrome.';
 
 		useStateValue.mockReturnValue([
 			{
@@ -50,10 +47,6 @@ describe('<NoResults />', () => {
 				</MemoryRouter>
 			</MockAnalyticsProvider>
 		);
-		expect(
-			screen.getByText(
-				'There are currently no available trials for chronic fatigue syndrome.'
-			)
-		).toBeInTheDocument();
+		expect(screen.getByText('There are currently no available trials for chronic fatigue syndrome.')).toBeInTheDocument();
 	});
 });

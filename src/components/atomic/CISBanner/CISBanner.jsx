@@ -5,8 +5,7 @@ import { useStateValue } from '../../../store/store';
 import './CISBanner.scss';
 
 const CISBanner = ({ onLiveHelpClick }) => {
-	const [{ cisBannerImgUrlLarge, cisBannerImgUrlSmall, liveHelpUrl }] =
-		useStateValue();
+	const [{ cisBannerImgUrlLarge, cisBannerImgUrlSmall, liveHelpUrl }] = useStateValue();
 
 	const liveHelpClickHandler = (url) => {
 		if (url !== null) {
@@ -16,20 +15,14 @@ const CISBanner = ({ onLiveHelpClick }) => {
 
 	return (
 		<div className="banner-cis">
-			<button
-				type="button"
-				className="banner-cis__button"
-				onClick={() => liveHelpClickHandler(liveHelpUrl)}>
+			<button type="button" className="banner-cis__button" onClick={() => liveHelpClickHandler(liveHelpUrl)}>
 				Chat Now
 			</button>
 
 			<picture>
 				<source srcSet={cisBannerImgUrlSmall} media="(max-width: 640px)" />
 				<source srcSet={cisBannerImgUrlLarge} />
-				<img
-					src={cisBannerImgUrlLarge}
-					alt="Questions? Chat with an information specialist"
-				/>
+				<img src={cisBannerImgUrlLarge} alt="Questions? Chat with an information specialist" />
 			</picture>
 		</div>
 	);

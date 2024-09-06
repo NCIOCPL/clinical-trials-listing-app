@@ -26,14 +26,8 @@ describe('useScrollRestoration()', () => {
 			top: 0,
 			behavior: 'smooth',
 		});
-		expect(window.addEventListener).toHaveBeenCalledWith(
-			'beforeunload',
-			expect.any(Function)
-		);
-		expect(window.addEventListener).toHaveBeenCalledWith(
-			'click',
-			expect.any(Function)
-		);
+		expect(window.addEventListener).toHaveBeenCalledWith('beforeunload', expect.any(Function));
+		expect(window.addEventListener).toHaveBeenCalledWith('click', expect.any(Function));
 	});
 
 	it('should assert window history replaceState has expected attributes after scroll is set, link is clicked and history back is traversed', async () => {

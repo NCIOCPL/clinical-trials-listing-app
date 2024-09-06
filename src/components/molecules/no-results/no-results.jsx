@@ -6,8 +6,7 @@ import { useStateValue } from '../../../store/store';
 const NoResults = ({ replacedNoTrialsHtml }) => {
 	const [{ noTrialsHtml }] = useStateValue();
 
-	const noTrialsHtmlToDisplay =
-		replacedNoTrialsHtml == null ? noTrialsHtml : replacedNoTrialsHtml;
+	const noTrialsHtmlToDisplay = replacedNoTrialsHtml == null ? noTrialsHtml : replacedNoTrialsHtml;
 
 	return (
 		<>

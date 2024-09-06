@@ -16,9 +16,7 @@ const PageNotFound = () => {
 		tracking.trackEvent({
 			event: 'TrialListingApp:Load:PageNotFound',
 			metaTitle: pageTitle,
-			name: `${canonicalHost.replace(/^(http|https):\/\//, '')}${
-				window.location.pathname
-			}`,
+			name: `${canonicalHost.replace(/^(http|https):\/\//, '')}${window.location.pathname}`,
 			title: pageTitle,
 			type: 'PageLoad',
 			trialListingPageType: trialListingPageType.toLowerCase(),
@@ -30,28 +28,19 @@ const PageNotFound = () => {
 			? [
 					<>No podemos encontrar la página que busca.</>,
 					<>
-						Visite la{' '}
-						<a href="https://www.cancer.gov/espanol">página principal</a>,
-						busque por{' '}
-						<a href="https://www.cancer.gov/espanol/tipos">tipo de cáncer</a>, o
-						use la casilla de búsqueda en la parte de abajo de esta página.
+						Visite la <a href="https://www.cancer.gov/espanol">página principal</a>, busque por <a href="https://www.cancer.gov/espanol/tipos">tipo de cáncer</a>, o use la casilla de búsqueda en la parte de abajo de esta página.
 					</>,
 					<>
-						¿Tiene una pregunta?{' '}
-						<a href="https://www.cancer.gov/espanol/contactenos">Contáctenos</a>
-						.
+						¿Tiene una pregunta? <a href="https://www.cancer.gov/espanol/contactenos">Contáctenos</a>.
 					</>,
 			  ]
 			: [
 					<>We can&apos;t find the page you&apos;re looking for.</>,
 					<>
-						Visit the <a href="https://www.cancer.gov">homepage</a>, browse by{' '}
-						<a href="https://www.cancer.gov/types">cancer type</a>, or use the
-						search below.
+						Visit the <a href="https://www.cancer.gov">homepage</a>, browse by <a href="https://www.cancer.gov/types">cancer type</a>, or use the search below.
 					</>,
 					<>
-						Have a question?{' '}
-						<a href="https://www.cancer.gov/contact">Get in touch</a>.
+						Have a question? <a href="https://www.cancer.gov/contact">Get in touch</a>.
 					</>,
 			  ];
 
@@ -88,20 +77,8 @@ const PageNotFound = () => {
 				</>
 				<div className="error-searchbar">
 					<form onSubmit={executeSearch}>
-						<TextInput
-							id="keywords"
-							action={updateTextInput}
-							label={i18n.search[language]}
-							labelHidden
-						/>
-						<input
-							type="submit"
-							className="submit button postfix"
-							id="btnSearch"
-							title={i18n.search[language]}
-							value={i18n.search[language]}
-							onClick={executeSearch}
-						/>
+						<TextInput id="keywords" action={updateTextInput} label={i18n.search[language]} labelHidden />
+						<input type="submit" className="submit button postfix" id="btnSearch" title={i18n.search[language]} value={i18n.search[language]} onClick={executeSearch} />
 					</form>
 				</div>
 			</div>

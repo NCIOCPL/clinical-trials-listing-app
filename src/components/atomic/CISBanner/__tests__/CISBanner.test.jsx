@@ -17,10 +17,8 @@ describe('CISBanner test', () => {
 	};
 
 	const cisBannerImgUrlLarge = '%PUBLIC_URL%/images/cts-cis-banner-xl.jpeg';
-	const cisBannerImgUrlSmall =
-		'%PUBLIC_URL%/images/cts-cis-banner-smartphone.jpeg';
-	const liveHelpUrl =
-		'https://livehelp.cancer.gov/app/chat/chat_landing?_icf_22=92';
+	const cisBannerImgUrlSmall = '%PUBLIC_URL%/images/cts-cis-banner-smartphone.jpeg';
+	const liveHelpUrl = 'https://livehelp.cancer.gov/app/chat/chat_landing?_icf_22=92';
 	const altText = 'Questions? Chat with an information specialist';
 
 	useStateValue.mockReturnValue([

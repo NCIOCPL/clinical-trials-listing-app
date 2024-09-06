@@ -8,10 +8,6 @@ describe('<InvalidParameters />', () => {
 		const param = 'trialListingPageType';
 
 		render(<InvalidParameters paramName={param} />);
-		expect(
-			screen.getByText(
-				'Missing or invalid "trialListingPageType" provided to app initialization.'
-			)
-		).toBeInTheDocument();
+		expect(screen.getByText('Missing or invalid "trialListingPageType" provided to app initialization.')).toBeInTheDocument();
 	});
 });

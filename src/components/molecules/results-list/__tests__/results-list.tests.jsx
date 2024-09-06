@@ -46,10 +46,7 @@ describe('<ResultsList />', () => {
 		render(
 			<MemoryRouter initialEntries={['/']}>
 				<MockAnalyticsProvider>
-					<ResultsList
-						results={resultsList}
-						resultsItemTitleLink={'http://sample.com/test-url/v?id={{nci_id}}'}
-					/>
+					<ResultsList results={resultsList} resultsItemTitleLink={'http://sample.com/test-url/v?id={{nci_id}}'} />
 				</MockAnalyticsProvider>
 			</MemoryRouter>
 		);
@@ -59,18 +56,12 @@ describe('<ResultsList />', () => {
 
 		expect(screen.getByText('Test brief summary 1')).toBeInTheDocument();
 		expect(screen.getByText('Test brief title 1')).toBeInTheDocument();
-		expect(resultLinks[0]).toHaveAttribute(
-			'href',
-			'http://sample.com/test-url/v?id=NCI-120803'
-		);
+		expect(resultLinks[0]).toHaveAttribute('href', 'http://sample.com/test-url/v?id=NCI-120803');
 		expectedLocationInfo = 'Wingstop, Gaithersburg, Maryland';
 		expect(screen.getByText(expectedLocationInfo)).toBeInTheDocument();
 		expect(screen.getByText('Test brief summary 2')).toBeInTheDocument();
 		expect(screen.getByText('Test brief title 2')).toBeInTheDocument();
-		expect(resultLinks[1]).toHaveAttribute(
-			'href',
-			'http://sample.com/test-url/v?id=NCI-354788'
-		);
+		expect(resultLinks[1]).toHaveAttribute('href', 'http://sample.com/test-url/v?id=NCI-354788');
 		expectedLocationInfo = 'Location information is not yet available.';
 		expect(screen.getByText(expectedLocationInfo)).toBeInTheDocument();
 	});

@@ -6,9 +6,7 @@
  */
 export const getTrialType = async (client, type) => {
 	if (!type.match(/[a-zA-Z0-9-_]+/)) {
-		throw new Error(
-			'Name does not match valid string, can only include a-z,0-9, dashes (-), and underscores (_)'
-		);
+		throw new Error('Name does not match valid string, can only include a-z,0-9, dashes (-), and underscores (_)');
 	}
 
 	try {
@@ -25,9 +23,7 @@ export const getTrialType = async (client, type) => {
 			if (error.response.status === 404) {
 				return null;
 			} else {
-				throw new Error(
-					`Unexpected status ${error.response.status} for fetching name`
-				);
+				throw new Error(`Unexpected status ${error.response.status} for fetching name`);
 			}
 		}
 		throw error;

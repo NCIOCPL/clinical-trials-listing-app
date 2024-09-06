@@ -25,8 +25,7 @@ class ErrorBoundary extends Component {
 		const { error, hasError } = this.state;
 
 		if (hasError) {
-			const showPageNotFound =
-				typeof error === 'string' && error.indexOf('404') > -1;
+			const showPageNotFound = typeof error === 'string' && error.indexOf('404') > -1;
 			return showPageNotFound ? <PageNotFound /> : <ErrorPage />;
 		}
 		return this.props.children;
