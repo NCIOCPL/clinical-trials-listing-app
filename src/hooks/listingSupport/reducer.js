@@ -1,9 +1,4 @@
-import {
-	FETCH_SUCCESS,
-	FETCH_ERROR,
-	SET_LOADING,
-	SET_ABORTED,
-} from './actions';
+import { FETCH_SUCCESS, FETCH_ERROR, SET_LOADING, SET_ABORTED } from './actions';
 
 // Reducer
 const reducer = (state = { _cache: {} }, action) => {

@@ -1,9 +1,6 @@
 import { queryParamType } from '../constants';
 import { matchQueryParam, getKeyValueFromQueryString } from './index';
-import {
-	getListingInformationById,
-	getListingInformationByName,
-} from '../services/api/actions';
+import { getListingInformationById, getListingInformationByName } from '../services/api/actions';
 
 /**
  * Returns an trial listing support api ID or Name action.
@@ -15,9 +12,7 @@ import {
  */
 export const getIdOrNameAction = (isNoTrials, param, position, search) => {
 	// 1. Determine what the value we should be looking at.
-	const paramValue = isNoTrials
-		? getKeyValueFromQueryString(`p${position}`, search)
-		: param;
+	const paramValue = isNoTrials ? getKeyValueFromQueryString(`p${position}`, search) : param;
 
 	// 2. Determine if it is a purl or set of ccodes
 	const matchedQuery = matchQueryParam(paramValue);
@@ -31,8 +26,6 @@ export const getIdOrNameAction = (isNoTrials, param, position, search) => {
 			return getListingInformationByName({ name: matchedQuery.queryParam });
 		}
 		default:
-			throw new Error(
-				`Unknown listing info action type, ${matchedQuery.paramType}`
-			);
+			throw new Error(`Unknown listing info action type, ${matchedQuery.paramType}`);
 	}
 };

@@ -6,9 +6,7 @@
  */
 export const getListingInformationByName = async (client, name) => {
 	if (!name.match(/[a-zA-Z0-9-]+/)) {
-		throw new Error(
-			'Name does not match valid string, can only include a-z,0-9 and dashes (-)'
-		);
+		throw new Error('Name does not match valid string, can only include a-z,0-9 and dashes (-)');
 	}
 
 	try {
@@ -25,9 +23,7 @@ export const getListingInformationByName = async (client, name) => {
 			if (error.response.status === 404) {
 				return null;
 			} else {
-				throw new Error(
-					`Unexpected status ${error.response.status} for fetching name`
-				);
+				throw new Error(`Unexpected status ${error.response.status} for fetching name`);
 			}
 		}
 		throw error;

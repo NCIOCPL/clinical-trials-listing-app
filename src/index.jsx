@@ -58,12 +58,10 @@ const initialize = ({
 	const isRehydrating = appRootDOMNode.getAttribute('data-isRehydrating');
 
 	// Setup API clients
-	const trialListingSupportClient =
-		listingSupportApiFactory(listingApiEndpoint);
+	const trialListingSupportClient = listingSupportApiFactory(listingApiEndpoint);
 
 	// Set up Clinical Trials API URL using given parameters.
-	const clinicalTrialsSearchClient =
-		clinicalTrialsSearchClientFactory(ctsApiEndpoint);
+	const clinicalTrialsSearchClient = clinicalTrialsSearchClientFactory(ctsApiEndpoint);
 
 	// populate global state with init params
 	const initialState = {
@@ -105,17 +103,11 @@ const initialize = ({
 	// their own custom handler.
 	const AnalyticsHoC = ({ children }) =>
 		analyticsHandler === 'EddlAnalyticsHandler' ? (
-			<EddlAnalyticsProvider
-				pageLanguage={language === 'es' ? 'spanish' : 'english'}
-				pageChannel={analyticsChannel}
-				pageContentGroup={analyticsContentGroup}
-				publishedDate={analyticsPublishedDate}>
+			<EddlAnalyticsProvider pageLanguage={language === 'es' ? 'spanish' : 'english'} pageChannel={analyticsChannel} pageContentGroup={analyticsContentGroup} publishedDate={analyticsPublishedDate}>
 				{children}
 			</EddlAnalyticsProvider>
 		) : (
-			<AnalyticsProvider analyticsHandler={analyticsHandler}>
-				{children}
-			</AnalyticsProvider>
+			<AnalyticsProvider analyticsHandler={analyticsHandler}>{children}</AnalyticsProvider>
 		);
 
 	AnalyticsHoC.propTypes = {

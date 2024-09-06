@@ -3,22 +3,12 @@ import { Helmet } from 'react-helmet';
 import { useLocation, useNavigate } from 'react-router';
 import track, { useTracking } from 'react-tracking';
 
-import {
-	NoResults,
-	Pager,
-	ResultsList,
-	ScrollRestoration,
-	Spinner,
-} from '../../components';
+import { NoResults, Pager, ResultsList, ScrollRestoration, Spinner } from '../../components';
 import ErrorPage from '../ErrorBoundary/ErrorPage';
 import { useAppPaths, useCtsApi } from '../../hooks';
 import { getClinicalTrials } from '../../services/api/actions';
 import { useStateValue } from '../../store/store';
-import {
-	appendOrUpdateToQueryString,
-	getKeyValueFromQueryString,
-	getPageOffset,
-} from '../../utils';
+import { appendOrUpdateToQueryString, getKeyValueFromQueryString, getPageOffset } from '../../utils';
 
 const Manual = () => {
 	const { BasePath } = useAppPaths();
@@ -26,22 +16,7 @@ const Manual = () => {
 	const navigate = useNavigate();
 	const { search } = location;
 	const tracking = useTracking();
-	const [
-		{
-			detailedViewPagePrettyUrlFormatter,
-			pageTitle,
-			requestFilters,
-			siteName,
-			introText,
-			language,
-			canonicalHost,
-			trialListingPageType,
-			baseHost,
-			metaDescription,
-			itemsPerPage,
-			noTrialsHtml,
-		},
-	] = useStateValue();
+	const [{ detailedViewPagePrettyUrlFormatter, pageTitle, requestFilters, siteName, introText, language, canonicalHost, trialListingPageType, baseHost, metaDescription, itemsPerPage, noTrialsHtml }] = useStateValue();
 
 	const pn = getKeyValueFromQueryString('pn', search.toLowerCase());
 	const pagerDefaults = {
@@ -66,9 +41,7 @@ const Manual = () => {
 				// These properties are required.
 				type: 'PageLoad',
 				event: 'TrialListingApp:Load:Results',
-				name:
-					canonicalHost.replace(/^(http|https):\/\//, '') +
-					window.location.pathname,
+				name: canonicalHost.replace(/^(http|https):\/\//, '') + window.location.pathname,
 				title: pageTitle,
 				language: language === 'en' ? 'english' : 'spanish',
 				metaTitle: `${pageTitle} - ${siteName}`,
@@ -121,22 +94,14 @@ const Manual = () => {
 					{placement === 'top' && (
 						<div className="paging-section__page-info">
 							{`
-							Trials ${pagerOffset + 1}-${Math.min(
-								pagerOffset + itemsPerPage,
-								fetchState.payload.total
-							)} of
+							Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.payload.total)} of
 							${fetchState.payload.total}
 						`}
 						</div>
 					)}
 					{fetchState.payload.total > itemsPerPage && (
 						<div className="paging-section__pager">
-							<Pager
-								current={Number(pager.page)}
-								onPageNavigationChange={onPageNavigationChangeHandler}
-								resultsPerPage={pager.pageUnit}
-								totalResults={fetchState.payload.total}
-							/>
+							<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={fetchState.payload.total} />
 						</div>
 					)}
 				</div>
@@ -160,21 +125,13 @@ const Manual = () => {
 						return (
 							<>
 								{/* ::: Intro Text ::: */}
-								{introText.length > 0 && (
-									<div
-										className="intro-text"
-										dangerouslySetInnerHTML={{ __html: introText }}
-									/>
-								)}
+								{introText.length > 0 && <div className="intro-text" dangerouslySetInnerHTML={{ __html: introText }} />}
 
 								{/* ::: Top Paging Section ::: */}
 								{renderPagerSection('top')}
 
 								<ScrollRestoration />
-								<ResultsListWithPage
-									results={fetchState.payload.data}
-									resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
-								/>
+								<ResultsListWithPage results={fetchState.payload.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
 								{/* ::: Bottom Paging Section ::: */}
 								{renderPagerSection('bottom')}
 							</>
@@ -183,11 +140,7 @@ const Manual = () => {
 						return <NoResults />;
 					}
 				}
-				if (
-					!fetchState.loading &&
-					fetchState.error != null &&
-					fetchState.error.message === 'Trial count mismatch from the API'
-				) {
+				if (!fetchState.loading && fetchState.error != null && fetchState.error.message === 'Trial count mismatch from the API') {
 					return (
 						<>
 							<div

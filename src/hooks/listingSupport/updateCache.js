@@ -7,10 +7,7 @@ const getCacheForConcept = (concept) => {
 		return {};
 	} else {
 		return {
-			...concept.conceptId.reduce(
-				(ac, curr) => ({ ...ac, [curr]: concept }),
-				{}
-			),
+			...concept.conceptId.reduce((ac, curr) => ({ ...ac, [curr]: concept }), {}),
 			...(concept.prettyUrlName ? { [concept.prettyUrlName]: concept } : {}),
 		};
 	}
@@ -26,9 +23,7 @@ const getCacheForTrialType = (trialType) => {
 	} else {
 		return {
 			[trialType.idString]: trialType,
-			...(trialType.prettyUrlName !== trialType.idString
-				? { [trialType.prettyUrlName]: trialType }
-				: {}),
+			...(trialType.prettyUrlName !== trialType.idString ? { [trialType.prettyUrlName]: trialType } : {}),
 		};
 	}
 };

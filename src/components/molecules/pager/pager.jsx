@@ -1,23 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Pager = ({
-	current = 1,
-	currentPageNeighbours = 2,
-	nextLabel = 'Next >',
-	onPageNavigationChange,
-	previousLabel = '< Previous',
-	resultsPerPage = 25,
-	totalResults,
-}) => {
+const Pager = ({ current = 1, currentPageNeighbours = 2, nextLabel = 'Next >', onPageNavigationChange, previousLabel = '< Previous', resultsPerPage = 25, totalResults }) => {
 	// Max number of neighbours is set to 3
 	const currentPageNeighboursMax = 3;
 	const firstPage = 1;
 	// Ensure range for page neighbours is within specified boundaries (0 to 3)
-	currentPageNeighbours = Math.max(
-		0,
-		Math.min(currentPageNeighbours, currentPageNeighboursMax)
-	);
+	currentPageNeighbours = Math.max(0, Math.min(currentPageNeighbours, currentPageNeighboursMax));
 	const maxNumberedPagerItems = 5;
 	const pageCount = Math.ceil(totalResults / resultsPerPage);
 
@@ -58,37 +47,27 @@ const Pager = ({
 			// The active page will always be displayed
 			const isCurrentlyActivePage = currentPage === pageNumber;
 			// The first and last pages will always be displayed
-			const isFirstORLastPage =
-				pageNumber === firstPage || pageNumber === pageCount;
+			const isFirstORLastPage = pageNumber === firstPage || pageNumber === pageCount;
 
 			// Is the given pageNumber in the position to be replaced by the ellipses if renderable
 			// (i.e. in the 2nd position or 2nd to last position)
-			const isEllipsisPosition =
-				pageNumber === 2 || pageNumber === pageCount - 1;
+			const isEllipsisPosition = pageNumber === 2 || pageNumber === pageCount - 1;
 
 			// This page number is visible if any of the conditions are met
-			const isNumberVisible =
-				showAll || isFirstORLastPage || isCurrentlyActivePage || isNeighbor;
+			const isNumberVisible = showAll || isFirstORLastPage || isCurrentlyActivePage || isNeighbor;
 
 			// Determine whether to display left ellipsis instead of page number
-			const isLeftEllipsis =
-				isEllipsisPosition && !isNumberVisible && pageNumber < currentPage;
+			const isLeftEllipsis = isEllipsisPosition && !isNumberVisible && pageNumber < currentPage;
 
 			// Determine whether to display right ellipsis instead of page number
-			const isRightEllipsis =
-				isEllipsisPosition && !isNumberVisible && pageNumber > currentPage;
+			const isRightEllipsis = isEllipsisPosition && !isNumberVisible && pageNumber > currentPage;
 
 			let pagerItem;
 
 			if (isNumberVisible) {
 				pagerItem = (
 					<li className="pager__list-item" key={`page-${pageNumber}`}>
-						<button
-							className={`pager__button${
-								pageNumber === currentPage ? ' active' : ''
-							}`}
-							onClick={() => pageNavigationChangeHandler(pageNumber)}
-							aria-label={`page ${pageNumber}`}>
+						<button className={`pager__button${pageNumber === currentPage ? ' active' : ''}`} onClick={() => pageNavigationChangeHandler(pageNumber)} aria-label={`page ${pageNumber}`}>
 							{pageNumber}
 						</button>
 					</li>
@@ -112,26 +91,14 @@ const Pager = ({
 
 		const previousPager = (
 			<li key={previousLabel}>
-				<button
-					className={`pager__button pager__previous${
-						currentPage === 1 ? ' hidden' : ''
-					}`}
-					onClick={() => pageNavigationChangeHandler(currentPage - 1)}
-					aria-hidden={currentPage === 1}
-					aria-label="previous page">
+				<button className={`pager__button pager__previous${currentPage === 1 ? ' hidden' : ''}`} onClick={() => pageNavigationChangeHandler(currentPage - 1)} aria-hidden={currentPage === 1} aria-label="previous page">
 					{previousLabel}
 				</button>
 			</li>
 		);
 		const nextPager = (
 			<li key={nextLabel}>
-				<button
-					className={`pager__button pager__next${
-						currentPage === pageCount ? ' hidden' : ''
-					}`}
-					onClick={() => pageNavigationChangeHandler(currentPage + 1)}
-					aria-hidden={currentPage === pageCount}
-					aria-label="next page">
+				<button className={`pager__button pager__next${currentPage === pageCount ? ' hidden' : ''}`} onClick={() => pageNavigationChangeHandler(currentPage + 1)} aria-hidden={currentPage === pageCount} aria-label="next page">
 					{nextLabel}
 				</button>
 			</li>
@@ -145,9 +112,7 @@ const Pager = ({
 		<>
 			{totalResults > resultsPerPage && (
 				<nav className="pager__container" aria-label="pager navigation">
-					<ol className="pager__navigation">
-						{buildNavigation().map((nav) => nav)}
-					</ol>
+					<ol className="pager__navigation">{buildNavigation().map((nav) => nav)}</ol>
 				</nav>
 			)}
 		</>

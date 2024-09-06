@@ -63,11 +63,9 @@ describe('<Disease />', () => {
 		const dynamicListingPatterns = {
 			Disease: {
 				browserTitle: '{{disease_name}} Clinical Trials',
-				introText:
-					'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>',
+				introText: '<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>',
 				metaDescription: 'Find clinical trials for {{disease_normalized}}.',
-				noTrialsHtml:
-					'<p>There are currently no available trials for {{disease_normalized}}.</p>',
+				noTrialsHtml: '<p>There are currently no available trials for {{disease_normalized}}.</p>',
 				pageTitle: '{{disease_label}} Clinical Trials',
 			},
 		};
@@ -98,13 +96,7 @@ describe('<Disease />', () => {
 		];
 
 		const DiseaseWithData = () => {
-			return (
-				<Disease
-					routeParamMap={routeParamMap}
-					routePath={redirectPath}
-					data={data}
-				/>
-			);
+			return <Disease routeParamMap={routeParamMap} routePath={redirectPath} data={data} />;
 		};
 
 		render(
@@ -157,11 +149,9 @@ describe('<Disease />', () => {
 		const dynamicListingPatterns = {
 			Disease: {
 				browserTitle: '{{disease_name}} Clinical Trials',
-				introText:
-					'<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>',
+				introText: '<p>Clinical trials are research studies that involve people. The clinical trials on this list are for {{disease_normalized}}.</p>',
 				metaDescription: 'Find clinical trials for {{disease_normalized}}.',
-				noTrialsHtml:
-					'<p>There are currently no available trials for {{disease_normalized}}.</p>',
+				noTrialsHtml: '<p>There are currently no available trials for {{disease_normalized}}.</p>',
 				pageTitle: '{{disease_label}} Clinical Trials',
 			},
 		};
@@ -192,13 +182,7 @@ describe('<Disease />', () => {
 		];
 
 		const DiseaseWithData = () => {
-			return (
-				<Disease
-					routeParamMap={routeParamMap}
-					routePath={redirectPath}
-					data={data}
-				/>
-			);
+			return <Disease routeParamMap={routeParamMap} routePath={redirectPath} data={data} />;
 		};
 
 		render(

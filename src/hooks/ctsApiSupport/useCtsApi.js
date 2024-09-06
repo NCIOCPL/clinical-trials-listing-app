@@ -1,11 +1,6 @@
 import { useEffect, useReducer, useRef, useCallback } from 'react';
 
-import {
-	setSuccessfulFetch,
-	setFailedFetch,
-	setLoading,
-	setAborted,
-} from './actions';
+import { setSuccessfulFetch, setFailedFetch, setLoading, setAborted } from './actions';
 import reducer from './reducer';
 import { getClinicalTrials } from '../../services/api/clinical-trials-search-api';
 import { convertObjectToBase64 } from '../../utils/objects';
@@ -80,10 +75,7 @@ export const useCtsApi = (trialQueryAction) => {
 		let response;
 
 		try {
-			response = await getClinicalTrials(
-				clinicalTrialsSearchClient,
-				trialQueryAction.payload
-			);
+			response = await getClinicalTrials(clinicalTrialsSearchClient, trialQueryAction.payload);
 			if (isMounted.current) {
 				// We successfully fetched from the API, and our component is still loaded,
 				// so go send back results.

@@ -22,9 +22,7 @@ describe('getLocationInfoFromSites', () => {
 			</>
 		);
 
-		expect(
-			getLocationInfoFromSites(currentTrialStatus, nctId, sitesOneLocation)
-		).toMatchObject(expectedJSX);
+		expect(getLocationInfoFromSites(currentTrialStatus, nctId, sitesOneLocation)).toMatchObject(expectedJSX);
 	});
 
 	it('should return location info "Wingstop, Gaithersburg" when only 1 US location exists and no matching state code', () => {
@@ -44,13 +42,7 @@ describe('getLocationInfoFromSites', () => {
 			</>
 		);
 
-		expect(
-			getLocationInfoFromSites(
-				currentTrialStatus,
-				nctId,
-				sitesOneLocationNoMatchingStateCode
-			)
-		).toMatchObject(expectedJSX);
+		expect(getLocationInfoFromSites(currentTrialStatus, nctId, sitesOneLocationNoMatchingStateCode)).toMatchObject(expectedJSX);
 	});
 
 	it('should return location count "4 locations" when US locations are more than 1', () => {
@@ -98,13 +90,7 @@ describe('getLocationInfoFromSites', () => {
 			</>
 		);
 
-		expect(
-			getLocationInfoFromSites(
-				currentTrialStatus,
-				nctId,
-				sitesMultipleLocations
-			)
-		).toMatchObject(expectedJSX);
+		expect(getLocationInfoFromSites(currentTrialStatus, nctId, sitesMultipleLocations)).toMatchObject(expectedJSX);
 	});
 
 	it('should return expected jsx when no US locations for Active trial status', () => {
@@ -126,10 +112,7 @@ describe('getLocationInfoFromSites', () => {
 		];
 
 		const jsxPartial = (
-			<a
-				href={`https://www.clinicaltrials.gov/study/${nctId}`}
-				rel="noopener noreferrer"
-				target="_blank">
+			<a href={`https://www.clinicaltrials.gov/study/${nctId}`} rel="noopener noreferrer" target="_blank">
 				ClinicalTrials.gov
 			</a>
 		);
@@ -141,9 +124,7 @@ describe('getLocationInfoFromSites', () => {
 			</>
 		);
 
-		expect(
-			getLocationInfoFromSites(currentTrialStatus, nctId, sitesNoUSLocation)
-		).toMatchObject(expectedJSX);
+		expect(getLocationInfoFromSites(currentTrialStatus, nctId, sitesNoUSLocation)).toMatchObject(expectedJSX);
 	});
 
 	it('should return expected string when no US locations for [approved | in review | not yet active] trials status', () => {
@@ -169,15 +150,9 @@ describe('getLocationInfoFromSites', () => {
 				<strong>Location: </strong>Location information is not yet available.
 			</>
 		);
-		expect(
-			getLocationInfoFromSites('not yet active', nctId, sitesNoUSLocation)
-		).toMatchObject(expectedJSX);
-		expect(
-			getLocationInfoFromSites('in review', nctId, sitesNoUSLocation)
-		).toMatchObject(expectedJSX);
-		expect(
-			getLocationInfoFromSites('approved', nctId, sitesNoUSLocation)
-		).toMatchObject(expectedJSX);
+		expect(getLocationInfoFromSites('not yet active', nctId, sitesNoUSLocation)).toMatchObject(expectedJSX);
+		expect(getLocationInfoFromSites('in review', nctId, sitesNoUSLocation)).toMatchObject(expectedJSX);
+		expect(getLocationInfoFromSites('approved', nctId, sitesNoUSLocation)).toMatchObject(expectedJSX);
 	});
 
 	it('should return expected string when recruitment status is "Completed, Closed_to_accrual, Administratively_complete, Closed_to_accrual_and_intervention, or Withdrawn"', () => {
@@ -231,8 +206,6 @@ describe('getLocationInfoFromSites', () => {
 			</>
 		);
 
-		expect(
-			getLocationInfoFromSites('completed', nctId, sitesRecruitmentStatus)
-		).toMatchObject(expectedJSX);
+		expect(getLocationInfoFromSites('completed', nctId, sitesRecruitmentStatus)).toMatchObject(expectedJSX);
 	});
 });

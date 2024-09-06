@@ -35,11 +35,7 @@ TokenParser.extractTokens = function (incomingString) {
 TokenParser.parseTokens = function (Tokens, Context, incomingString) {
 	Tokens.forEach(function (token) {
 		if (token !== null && Context[token] !== undefined) {
-			incomingString = TokenParser.parseToken(
-				token,
-				Context[token],
-				incomingString
-			);
+			incomingString = TokenParser.parseToken(token, Context[token], incomingString);
 		} else if (token !== null && Context[token] === undefined) {
 			incomingString = TokenParser.parseToken(token, '', incomingString);
 		}

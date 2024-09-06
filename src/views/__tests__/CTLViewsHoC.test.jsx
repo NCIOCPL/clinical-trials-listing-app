@@ -63,15 +63,7 @@ describe('CTLViewsHoc Normal Conditions', () => {
 			<MockAnalyticsProvider>
 				<MemoryRouter initialEntries={['/breast-cancer']}>
 					<Routes>
-						<Route
-							path="/:codeOrPurl"
-							element={
-								<WrappedComponent
-									redirectPath={NO_OP_REDIRECT_PATH}
-									routeParamMap={SINGLE_PARAM_MAP}
-								/>
-							}
-						/>
+						<Route path="/:codeOrPurl" element={<WrappedComponent redirectPath={NO_OP_REDIRECT_PATH} routeParamMap={SINGLE_PARAM_MAP} />} />
 					</Routes>
 				</MemoryRouter>
 			</MockAnalyticsProvider>
@@ -92,9 +84,7 @@ describe('CTLViewsHoc Normal Conditions', () => {
 			},
 		]);
 
-		expect(
-			screen.getByText('This would be the disease component.')
-		).toBeInTheDocument();
+		expect(screen.getByText('This would be the disease component.')).toBeInTheDocument();
 	});
 
 	it('Should have fetched info passed in as props with other props', async () => {
@@ -128,16 +118,7 @@ describe('CTLViewsHoc Normal Conditions', () => {
 			<MockAnalyticsProvider>
 				<MemoryRouter initialEntries={['/breast-cancer']}>
 					<Routes>
-						<Route
-							path="/:codeOrPurl"
-							element={
-								<WrappedComponent
-									color="blue"
-									redirectPath={NO_OP_REDIRECT_PATH}
-									routeParamMap={SINGLE_PARAM_MAP}
-								/>
-							}
-						/>
+						<Route path="/:codeOrPurl" element={<WrappedComponent color="blue" redirectPath={NO_OP_REDIRECT_PATH} routeParamMap={SINGLE_PARAM_MAP} />} />
 					</Routes>
 				</MemoryRouter>
 			</MockAnalyticsProvider>
@@ -159,9 +140,7 @@ describe('CTLViewsHoc Normal Conditions', () => {
 			},
 		]);
 
-		expect(
-			screen.getByText('This would be the disease component.')
-		).toBeInTheDocument();
+		expect(screen.getByText('This would be the disease component.')).toBeInTheDocument();
 	});
 
 	it('Should handle multiple ids', async () => {
@@ -215,15 +194,7 @@ describe('CTLViewsHoc Normal Conditions', () => {
 			<MockAnalyticsProvider>
 				<MemoryRouter initialEntries={['/breast-cancer/lung-cancer']}>
 					<Routes>
-						<Route
-							path="/:codeOrPurl/:otherCodeOrPurl"
-							element={
-								<WrappedComponent
-									redirectPath={NO_OP_REDIRECT_PATH}
-									routeParamMap={multiparam_map}
-								/>
-							}
-						/>
+						<Route path="/:codeOrPurl/:otherCodeOrPurl" element={<WrappedComponent redirectPath={NO_OP_REDIRECT_PATH} routeParamMap={multiparam_map} />} />
 					</Routes>
 				</MemoryRouter>
 			</MockAnalyticsProvider>
@@ -248,9 +219,7 @@ describe('CTLViewsHoc Normal Conditions', () => {
 			},
 		]);
 
-		expect(
-			screen.getByText('This would be the disease component.')
-		).toBeInTheDocument();
+		expect(screen.getByText('This would be the disease component.')).toBeInTheDocument();
 	});
 });
 
@@ -292,15 +261,7 @@ describe('CTLViewsHoc Error Conditions', () => {
 			<MockAnalyticsProvider>
 				<MemoryRouter initialEntries={['/asdf']}>
 					<Routes>
-						<Route
-							path="/:codeOrPurl"
-							element={
-								<WrappedComponent
-									redirectPath={NO_OP_REDIRECT_PATH}
-									routeParamMap={SINGLE_PARAM_MAP}
-								/>
-							}
-						/>
+						<Route path="/:codeOrPurl" element={<WrappedComponent redirectPath={NO_OP_REDIRECT_PATH} routeParamMap={SINGLE_PARAM_MAP} />} />
 					</Routes>
 				</MemoryRouter>
 			</MockAnalyticsProvider>
@@ -344,15 +305,7 @@ describe('CTLViewsHoc Error Conditions', () => {
 			<MockAnalyticsProvider>
 				<MemoryRouter initialEntries={['/asdf']}>
 					<Routes>
-						<Route
-							path="/:codeOrPurl"
-							element={
-								<WrappedComponent
-									redirectPath={NO_OP_REDIRECT_PATH}
-									routeParamMap={SINGLE_PARAM_MAP}
-								/>
-							}
-						/>
+						<Route path="/:codeOrPurl" element={<WrappedComponent redirectPath={NO_OP_REDIRECT_PATH} routeParamMap={SINGLE_PARAM_MAP} />} />
 					</Routes>
 				</MemoryRouter>
 			</MockAnalyticsProvider>
@@ -399,9 +352,7 @@ describe('CTLViewsHoc Error Conditions', () => {
 					</MemoryRouter>
 				</MockAnalyticsProvider>
 			);
-		}).toThrow(
-			'You must supply a routeParamMap to your CTLViewsHoC wrapped component.'
-		);
+		}).toThrow('You must supply a routeParamMap to your CTLViewsHoC wrapped component.');
 		console.error = originalError;
 	});
 
@@ -441,10 +392,7 @@ describe('CTLViewsHoc Error Conditions', () => {
 				<MockAnalyticsProvider>
 					<MemoryRouter initialEntries={['/asdf']}>
 						<Routes>
-							<Route
-								path="/:codeOrPurl"
-								element={<WrappedComponent routeParamMap={error_param_map} />}
-							/>
+							<Route path="/:codeOrPurl" element={<WrappedComponent routeParamMap={error_param_map} />} />
 						</Routes>
 					</MemoryRouter>
 				</MockAnalyticsProvider>

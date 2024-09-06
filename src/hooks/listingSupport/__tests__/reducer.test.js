@@ -1,10 +1,5 @@
 import reducer from '../reducer';
-import {
-	setSuccessfulFetch,
-	setFailedFetch,
-	setLoading,
-	setAborted,
-} from '../actions';
+import { setSuccessfulFetch, setFailedFetch, setLoading, setAborted } from '../actions';
 import { getListingInformationById as IdAction } from '../../../services/api/actions/getListingInformationById';
 
 const CONCEPT_NO_PURL = {
@@ -18,10 +13,7 @@ const CONCEPT_NO_PURL = {
 
 describe('listingSupport reducer', () => {
 	it('should handle successful fetch action', () => {
-		const actual = reducer(
-			{},
-			setSuccessfulFetch([IdAction({ ids: ['C99999'] })], [CONCEPT_NO_PURL])
-		);
+		const actual = reducer({}, setSuccessfulFetch([IdAction({ ids: ['C99999'] })], [CONCEPT_NO_PURL]));
 		expect(actual).toEqual({
 			loading: false,
 			error: null,

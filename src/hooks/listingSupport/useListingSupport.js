@@ -1,18 +1,9 @@
 import { useEffect, useReducer, useRef, useCallback, useContext } from 'react';
 
-import {
-	setSuccessfulFetch,
-	setFailedFetch,
-	setLoading,
-	setAborted,
-} from './actions';
+import { setSuccessfulFetch, setFailedFetch, setLoading, setAborted } from './actions';
 import reducer from './reducer';
 import { updateCache } from './updateCache';
-import {
-	getListingInformationById,
-	getListingInformationByName,
-	getTrialType,
-} from '../../services/api/trial-listing-support-api';
+import { getListingInformationById, getListingInformationByName, getTrialType } from '../../services/api/trial-listing-support-api';
 import { convertObjectToBase64 } from '../../utils/objects';
 import { useStateValue } from '../../store/store';
 import { ListingSupportContext } from './listingSupportContext';
@@ -51,10 +42,7 @@ const internalFetch = async (trialListingSupportClient, actions, cache) => {
 						}
 					}
 					// TODO: Add an abort token to getListingInformationById
-					return getListingInformationById(
-						trialListingSupportClient,
-						req.payload
-					);
+					return getListingInformationById(trialListingSupportClient, req.payload);
 				}
 				case 'name': {
 					//check Cache
@@ -62,10 +50,7 @@ const internalFetch = async (trialListingSupportClient, actions, cache) => {
 						return cache.get(req.payload);
 					} else {
 						// TODO: Add an abort token to getListingInformationByName
-						return getListingInformationByName(
-							trialListingSupportClient,
-							req.payload
-						);
+						return getListingInformationByName(trialListingSupportClient, req.payload);
 					}
 				}
 				case 'trialType': {
@@ -163,17 +148,10 @@ export const useListingSupport = (actions) => {
 		// or it will be an error object. This allows us to have one object
 		// that we return for the useCallback to "cache".
 		// TODO: Pass in a cancellation token for this request to handle aborts
-		const response = await internalFetch(
-			trialListingSupportClient,
-			actions,
-			cache
-		);
+		const response = await internalFetch(trialListingSupportClient, actions, cache);
 
 		// So if we did not abort, then we should dispatch an update for the state.
-		if (
-			isMounted.current &&
-			!(response.errorObject && response.errorObject.name === 'AbortError')
-		) {
+		if (isMounted.current && !(response.errorObject && response.errorObject.name === 'AbortError')) {
 			if (response.errorObject) {
 				dispatch(setFailedFetch(response.errorObject));
 			} else {
@@ -191,11 +169,7 @@ export const useListingSupport = (actions) => {
 		// unless our component unmounted AND a fetch was in progress, in which case
 		// we really don't care about the response. So we can set an aborted flag in
 		// case we will.
-		if (
-			isMounted.current &&
-			response.errorObject &&
-			response.errorObject.name === 'AbortError'
-		) {
+		if (isMounted.current && response.errorObject && response.errorObject.name === 'AbortError') {
 			dispatch(setAborted());
 		}
 

@@ -47,19 +47,7 @@ export const EDDLAnalyticsHandler = (window, isDebugging) => {
 				break;
 			}
 			case 'PageLoad': {
-				const {
-					type,
-					event,
-					name,
-					title,
-					metaTitle,
-					language,
-					audience,
-					channel,
-					contentGroup,
-					publishedDate,
-					...additionalDetails
-				} = payload;
+				const { type, event, name, title, metaTitle, language, audience, channel, contentGroup, publishedDate, ...additionalDetails } = payload;
 				const eventData = {
 					type,
 					event,

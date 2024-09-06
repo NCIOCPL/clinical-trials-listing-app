@@ -22,23 +22,13 @@ describe('<ResultsListItem />', function () {
 		render(
 			<MemoryRouter initialEntries={['/']}>
 				<MockAnalyticsProvider>
-					<ResultsListItem
-						summary={summary}
-						title={title}
-						locationInfo={locationJSX}
-						nciId={nciId}
-						resultIndex={0}
-						resultsItemTitleLink={resultsItemTitleLink}
-					/>
+					<ResultsListItem summary={summary} title={title} locationInfo={locationJSX} nciId={nciId} resultIndex={0} resultsItemTitleLink={resultsItemTitleLink} />
 				</MockAnalyticsProvider>
 			</MemoryRouter>
 		);
 		expect(screen.getByText('sample title')).toBeInTheDocument();
 		expect(screen.getByText('sample summary')).toBeInTheDocument();
 		expect(screen.getByText('3 locations')).toBeInTheDocument();
-		expect(screen.getByRole('link')).toHaveAttribute(
-			'href',
-			'/clinicaltrials/NCI-12984'
-		);
+		expect(screen.getByRole('link')).toHaveAttribute('href', '/clinicaltrials/NCI-12984');
 	});
 });

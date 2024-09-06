@@ -1,9 +1,4 @@
-import {
-	FETCH_SUCCESS,
-	FETCH_ERROR,
-	SET_LOADING,
-	SET_ABORTED,
-} from './actions';
+import { FETCH_SUCCESS, FETCH_ERROR, SET_LOADING, SET_ABORTED } from './actions';
 
 // Reducer
 const reducer = (state = {}, action) => {
@@ -23,12 +18,7 @@ const reducer = (state = {}, action) => {
 				aborted: false,
 			};
 		case SET_LOADING:
-			if (
-				state.loading === true &&
-				state.payload === null &&
-				state.error === null &&
-				state.aborted === false
-			) {
+			if (state.loading === true && state.payload === null && state.error === null && state.aborted === false) {
 				return state;
 			} else {
 				return {

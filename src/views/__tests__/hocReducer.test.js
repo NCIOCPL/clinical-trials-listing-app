@@ -1,19 +1,8 @@
-import {
-	hocReducer,
-	setLoading,
-	setSuccessfulFetch,
-	setFailedFetch,
-	setNotFound,
-	setRedirecting,
-	hocStates,
-} from '../hocReducer';
+import { hocReducer, setLoading, setSuccessfulFetch, setFailedFetch, setNotFound, setRedirecting, hocStates } from '../hocReducer';
 
 describe('hocReducer', () => {
 	it('sets successful from empty', () => {
-		const actual = hocReducer(
-			{},
-			setSuccessfulFetch('actionshash', [{ a: 1 }])
-		);
+		const actual = hocReducer({}, setSuccessfulFetch('actionshash', [{ a: 1 }]));
 		expect(actual).toEqual({
 			status: hocStates.LOADED_STATE,
 			listingData: [{ a: 1 }],
@@ -27,10 +16,7 @@ describe('hocReducer', () => {
 			listingData: [{ b: 2 }],
 			actionsHash: 'actionshash2',
 		};
-		const actual = hocReducer(
-			initialState,
-			setSuccessfulFetch('actionshash', [{ a: 1 }])
-		);
+		const actual = hocReducer(initialState, setSuccessfulFetch('actionshash', [{ a: 1 }]));
 		expect(actual).toEqual({
 			status: hocStates.LOADED_STATE,
 			listingData: [{ a: 1 }],
@@ -44,10 +30,7 @@ describe('hocReducer', () => {
 			listingData: [{ a: 1 }],
 			actionsHash: 'actionshash',
 		};
-		const actual = hocReducer(
-			initialState,
-			setSuccessfulFetch('actionshash', [{ a: 1 }])
-		);
+		const actual = hocReducer(initialState, setSuccessfulFetch('actionshash', [{ a: 1 }]));
 		expect(actual).toBe(initialState);
 	});
 

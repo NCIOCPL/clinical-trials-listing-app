@@ -4,27 +4,12 @@ import { Helmet } from 'react-helmet';
 import { useLocation, useNavigate } from 'react-router';
 import track, { useTracking } from 'react-tracking';
 
-import {
-	Pager,
-	NoResults,
-	ResultsList,
-	ScrollRestoration,
-	Spinner,
-} from '../../components';
+import { Pager, NoResults, ResultsList, ScrollRestoration, Spinner } from '../../components';
 import ErrorPage from '../ErrorBoundary/ErrorPage';
 import { useAppPaths, useCtsApi } from '../../hooks';
 import { getClinicalTrials } from '../../services/api/actions';
 import { useStateValue } from '../../store/store';
-import {
-	appendOrUpdateToQueryString,
-	getKeyValueFromQueryString,
-	getPageOffset,
-	TokenParser,
-	getTextReplacementContext,
-	getNoTrialsRedirectParams,
-	getParamsForRoute,
-	getAnalyticsParamsForRoute,
-} from '../../utils';
+import { appendOrUpdateToQueryString, getKeyValueFromQueryString, getPageOffset, TokenParser, getTextReplacementContext, getNoTrialsRedirectParams, getParamsForRoute, getAnalyticsParamsForRoute } from '../../utils';
 
 const Disease = ({ routeParamMap, routePath, data }) => {
 	const { NoTrialsPath } = useAppPaths();
@@ -32,18 +17,7 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 	const navigate = useNavigate();
 	const { search } = location;
 
-	const [
-		{
-			baseHost,
-			canonicalHost,
-			detailedViewPagePrettyUrlFormatter,
-			dynamicListingPatterns,
-			itemsPerPage,
-			language,
-			siteName,
-			trialListingPageType,
-		},
-	] = useStateValue();
+	const [{ baseHost, canonicalHost, detailedViewPagePrettyUrlFormatter, dynamicListingPatterns, itemsPerPage, language, siteName, trialListingPageType }] = useStateValue();
 
 	const pn = getKeyValueFromQueryString('pn', search.toLowerCase());
 	const pagerDefaults = {
@@ -89,21 +63,13 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 		// number of params that this route has.
 		// TODO: move this to app.js, the route setup, should control which listing pattern to use
 		const listingPatternIndex = routeParamMap.length - 1;
-		const listingPattern = Object.values(dynamicListingPatterns)[
-			listingPatternIndex
-		];
+		const listingPattern = Object.values(dynamicListingPatterns)[listingPatternIndex];
 
 		return {
 			pageTitle: TokenParser.replaceTokens(listingPattern.pageTitle, context),
-			browserTitle: TokenParser.replaceTokens(
-				listingPattern.browserTitle,
-				context
-			),
+			browserTitle: TokenParser.replaceTokens(listingPattern.browserTitle, context),
 			introText: TokenParser.replaceTokens(listingPattern.introText, context),
-			metaDescription: TokenParser.replaceTokens(
-				listingPattern.metaDescription,
-				context
-			),
+			metaDescription: TokenParser.replaceTokens(listingPattern.metaDescription, context),
 		};
 	};
 
@@ -123,60 +89,42 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 	useEffect(() => {
 		//if you try to access a nonexistent page, eg: try to access page 41 of 1-40 pages
 
-		if (
-			!fetchState.loading &&
-			fetchState.error != null &&
-			fetchState.error.message === 'Trial count mismatch from the API'
-		) {
-			const redirectStatusCode = location.state?.redirectStatus
-				? location.state?.redirectStatus
-				: '404';
+		if (!fetchState.loading && fetchState.error != null && fetchState.error.message === 'Trial count mismatch from the API') {
+			const redirectStatusCode = location.state?.redirectStatus ? location.state?.redirectStatus : '404';
 
-			const prerenderLocation = location.state?.redirectStatus
-				? baseHost + window.location.pathname
-				: null;
+			const prerenderLocation = location.state?.redirectStatus ? baseHost + window.location.pathname : null;
 
 			// So this is handling the redirect to the no trials page.
 			// it is the job of the dynamic route views to property
 			// set the p1,p2,p3 parameters.
 			const redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
 
-			navigate(
-				`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`,
-				{
-					replace: true,
-					state: {
-						redirectStatus: redirectStatusCode,
-						prerenderLocation: prerenderLocation,
-					},
-				}
-			);
+			navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
+				replace: true,
+				state: {
+					redirectStatus: redirectStatusCode,
+					prerenderLocation: prerenderLocation,
+				},
+			});
 		} else if (!fetchState.loading && fetchState.payload) {
 			if (fetchState.payload.total === 0) {
 				//
-				const redirectStatusCode = location.state?.redirectStatus
-					? location.state?.redirectStatus
-					: '302';
+				const redirectStatusCode = location.state?.redirectStatus ? location.state?.redirectStatus : '302';
 
-				const prerenderLocation = location.state?.redirectStatus
-					? baseHost + window.location.pathname
-					: null;
+				const prerenderLocation = location.state?.redirectStatus ? baseHost + window.location.pathname : null;
 
 				// So this is handling the redirect to the no trials page.
 				// it is the job of the dynamic route views to property
 				// set the p1,p2,p3 parameters.
 				const redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
 
-				navigate(
-					`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`,
-					{
-						replace: true,
-						state: {
-							redirectStatus: redirectStatusCode,
-							prerenderLocation: prerenderLocation,
-						},
-					}
-				);
+				navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
+					replace: true,
+					state: {
+						redirectStatus: redirectStatusCode,
+						prerenderLocation: prerenderLocation,
+					},
+				});
 				// return ;
 			}
 
@@ -187,9 +135,7 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 					// These properties are required.
 					type: 'PageLoad',
 					event: 'TrialListingApp:Load:Results',
-					name:
-						canonicalHost.replace(/^(http|https):\/\//, '') +
-						window.location.pathname,
+					name: canonicalHost.replace(/^(http|https):\/\//, '') + window.location.pathname,
 					title: replacedText.pageTitle,
 					language: language === 'en' ? 'english' : 'spanish',
 					metaTitle: `${replacedText.pageTitle} - ${siteName}`,
@@ -235,10 +181,7 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 				<meta property="og:title" content={`${replacedText.pageTitle}`} />
 				<meta property="og:url" content={baseHost + window.location.pathname} />
 				<meta name="description" content={replacedText.metaDescription} />
-				<meta
-					property="og:description"
-					content={replacedText.metaDescription}
-				/>
+				<meta property="og:description" content={replacedText.metaDescription} />
 				<link rel="canonical" href={canonicalHost + window.location.pathname} />
 				{(() => {
 					if (status) {
@@ -247,12 +190,7 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 				})()}
 				{(() => {
 					if (status === '301') {
-						return (
-							<meta
-								name="prerender-header"
-								content={`Location: ${prerenderHeader}`}
-							/>
-						);
+						return <meta name="prerender-header" content={`Location: ${prerenderHeader}`} />;
 					}
 				})()}
 			</Helmet>
@@ -272,22 +210,14 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 					{placement === 'top' && (
 						<div className="paging-section__page-info">
 							{`
-							Trials ${pagerOffset + 1}-${Math.min(
-								pagerOffset + itemsPerPage,
-								fetchState.payload.total
-							)} of
+							Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.payload.total)} of
 							${fetchState.payload.total}
 						`}
 						</div>
 					)}
 					{fetchState.payload.total > itemsPerPage && (
 						<div className="paging-section__pager">
-							<Pager
-								current={Number(pager.page)}
-								onPageNavigationChange={onPageNavigationChangeHandler}
-								resultsPerPage={pager.pageUnit}
-								totalResults={fetchState.payload.total}
-							/>
+							<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={fetchState.payload.total} />
 						</div>
 					)}
 				</div>
@@ -320,10 +250,7 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 								{/* ::: Top Paging Section ::: */}
 								{renderPagerSection('top')}
 								<ScrollRestoration />
-								<ResultsListWithPage
-									results={fetchState.payload.data}
-									resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
-								/>
+								<ResultsListWithPage results={fetchState.payload.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
 								{/* ::: Bottom Paging Section ::: */}
 								{renderPagerSection('bottom')}
 							</>

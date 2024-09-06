@@ -69,15 +69,7 @@ describe('CTLViewsHoc For No Trials', () => {
 						},
 					]}>
 					<Routes>
-						<Route
-							path="/notrials"
-							element={
-								<WrappedComponent
-									redirectPath={NO_OP_REDIRECT_PATH}
-									routeParamMap={SINGLE_PARAM_MAP}
-								/>
-							}
-						/>
+						<Route path="/notrials" element={<WrappedComponent redirectPath={NO_OP_REDIRECT_PATH} routeParamMap={SINGLE_PARAM_MAP} />} />
 					</Routes>
 				</MemoryRouter>
 			</MockAnalyticsProvider>
@@ -97,9 +89,7 @@ describe('CTLViewsHoc For No Trials', () => {
 			},
 		]);
 
-		expect(
-			screen.getByText('This would be the NoTrials component.')
-		).toBeInTheDocument();
+		expect(screen.getByText('This would be the NoTrials component.')).toBeInTheDocument();
 	});
 
 	it('Should handle multiple codes', async () => {
@@ -159,15 +149,7 @@ describe('CTLViewsHoc For No Trials', () => {
 						},
 					]}>
 					<Routes>
-						<Route
-							path="/notrials"
-							element={
-								<WrappedComponent
-									redirectPath={NO_OP_REDIRECT_PATH}
-									routeParamMap={multiparam_map}
-								/>
-							}
-						/>
+						<Route path="/notrials" element={<WrappedComponent redirectPath={NO_OP_REDIRECT_PATH} routeParamMap={multiparam_map} />} />
 					</Routes>
 				</MemoryRouter>
 			</MockAnalyticsProvider>
@@ -191,8 +173,6 @@ describe('CTLViewsHoc For No Trials', () => {
 			},
 		]);
 
-		expect(
-			screen.getByText('This would be the NoTrials component.')
-		).toBeInTheDocument();
+		expect(screen.getByText('This would be the NoTrials component.')).toBeInTheDocument();
 	});
 });

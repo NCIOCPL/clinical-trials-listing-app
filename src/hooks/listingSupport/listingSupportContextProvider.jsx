@@ -11,11 +11,7 @@ const cache = new ListingSupportCache();
  * @param {Object} props.children the child controls
  */
 export const ListingSupportContextProvider = ({ children }) => {
-	return (
-		<ListingSupportContext.Provider value={{ cache }}>
-			{children}
-		</ListingSupportContext.Provider>
-	);
+	return <ListingSupportContext.Provider value={{ cache }}>{children}</ListingSupportContext.Provider>;
 };
 
 ListingSupportContextProvider.propTypes = {

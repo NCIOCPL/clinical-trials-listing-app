@@ -23,9 +23,7 @@ describe('Get listing information by id', () => {
 			prettyUrlName: 'spiroplatin',
 		};
 
-		const scope = nock('https://example.org')
-			.get('/listing-information/get?ccode=C1234')
-			.reply(200, expected);
+		const scope = nock('https://example.org').get('/listing-information/get?ccode=C1234').reply(200, expected);
 
 		const actual = await getListingInformationById(client, ['C1234']);
 
@@ -43,23 +41,16 @@ describe('Get listing information by id', () => {
 			prettyUrlName: 'stage-ii-breast-cancer',
 		};
 
-		const scope = nock('https://example.org')
-			.get('/listing-information/get?ccode=c7768&ccode=C139538')
-			.reply(200, expected);
+		const scope = nock('https://example.org').get('/listing-information/get?ccode=c7768&ccode=C139538').reply(200, expected);
 
-		const actual = await getListingInformationById(client, [
-			'c7768',
-			'C139538',
-		]);
+		const actual = await getListingInformationById(client, ['c7768', 'C139538']);
 
 		expect(actual).toEqual(expected);
 		scope.isDone();
 	});
 
 	it('handles not found', async () => {
-		const scope = nock('https://example.org')
-			.get('/listing-information/get?ccode=c9999')
-			.reply(404);
+		const scope = nock('https://example.org').get('/listing-information/get?ccode=c9999').reply(404);
 
 		const actual = await getListingInformationById(client, ['c9999']);
 
@@ -68,25 +59,17 @@ describe('Get listing information by id', () => {
 	});
 
 	it('handles error', async () => {
-		const scope = nock('https://example.org')
-			.get('/listing-information/get?ccode=c9999')
-			.reply(500);
+		const scope = nock('https://example.org').get('/listing-information/get?ccode=c9999').reply(500);
 
-		await expect(getListingInformationById(client, ['c9999'])).rejects.toThrow(
-			'Unexpected status 500 for fetching ids'
-		);
+		await expect(getListingInformationById(client, ['c9999'])).rejects.toThrow('Unexpected status 500 for fetching ids');
 
 		scope.isDone();
 	});
 
 	it('handles unexpected good status', async () => {
-		const scope = nock('https://example.org')
-			.get('/listing-information/get?ccode=c9999')
-			.reply(201);
+		const scope = nock('https://example.org').get('/listing-information/get?ccode=c9999').reply(201);
 
-		await expect(getListingInformationById(client, ['c9999'])).rejects.toThrow(
-			'Unexpected status 201 for fetching ids'
-		);
+		await expect(getListingInformationById(client, ['c9999'])).rejects.toThrow('Unexpected status 201 for fetching ids');
 
 		scope.isDone();
 	});

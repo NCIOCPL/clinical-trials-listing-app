@@ -46,17 +46,9 @@ describe('updateCache', () => {
 		label: 'Supportive Care',
 	};
 
-	const DEFAULT_FETCH_RESPONSE = [
-		CONCEPT_MULTI_ID,
-		TRIAL_TYPE_TREATMENT,
-		CONCEPT_NO_PURL,
-	];
+	const DEFAULT_FETCH_RESPONSE = [CONCEPT_MULTI_ID, TRIAL_TYPE_TREATMENT, CONCEPT_NO_PURL];
 
-	const DEFAULT_FETCH_ACTIONS = [
-		NameAction({ name: 'multi-id-concept' }),
-		TrialTypeAction({ trialType: 'treatment' }),
-		IdAction({ ids: ['C99999'] }),
-	];
+	const DEFAULT_FETCH_ACTIONS = [NameAction({ name: 'multi-id-concept' }), TrialTypeAction({ trialType: 'treatment' }), IdAction({ ids: ['C99999'] })];
 
 	// HACK: We should not be looking at ._cache, but for now to get this out
 	// the door it can stay. (Seeing as how this is the only thing that ever
@@ -85,11 +77,7 @@ describe('updateCache', () => {
 			'supportive-care': TRIAL_TYPE_SUPP_CARE,
 		};
 
-		updateCache(
-			cache,
-			[TrialTypeAction({ trialType: 'supportive-care' })],
-			[TRIAL_TYPE_SUPP_CARE]
-		);
+		updateCache(cache, [TrialTypeAction({ trialType: 'supportive-care' })], [TRIAL_TYPE_SUPP_CARE]);
 		expect(cache._cache).toEqual(expected);
 	});
 
@@ -131,11 +119,7 @@ describe('updateCache', () => {
 			C99999: CONCEPT_NO_PURL,
 		};
 
-		updateCache(cache, DEFAULT_FETCH_ACTIONS, [
-			CONCEPT_MULTI_ID,
-			null,
-			CONCEPT_NO_PURL,
-		]);
+		updateCache(cache, DEFAULT_FETCH_ACTIONS, [CONCEPT_MULTI_ID, null, CONCEPT_NO_PURL]);
 		expect(cache._cache).toEqual(expected);
 	});
 

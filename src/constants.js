@@ -36,10 +36,4 @@ export const queryParamType = {
 	purl: 'purl',
 };
 
-export const textProperties = [
-	'browserTitle',
-	'introText',
-	'metaDescription',
-	'noTrialsHtml',
-	'pageTitle',
-];
+export const textProperties = ['browserTitle', 'introText', 'metaDescription', 'noTrialsHtml', 'pageTitle'];

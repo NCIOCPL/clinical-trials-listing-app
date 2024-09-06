@@ -25,8 +25,7 @@ describe('<Manual />', () => {
 		const basePath = '/';
 		const noTrialsHtml = 'There are currently no available trials.';
 		const pageTitle = 'Manual Listing Page';
-		const requestFilters =
-			'{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose": "treatment"}';
+		const requestFilters = '{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose": "treatment"}';
 		const title = 'NCI Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
 		const trialListingPageType = 'Manual';
@@ -65,17 +64,14 @@ describe('<Manual />', () => {
 
 		expect(useCtsApi).toHaveBeenCalled();
 		expect(screen.getByText('Manual Listing Page')).toBeInTheDocument();
-		expect(
-			screen.getByText('There are currently no available trials.')
-		).toBeInTheDocument();
+		expect(screen.getByText('There are currently no available trials.')).toBeInTheDocument();
 	});
 
 	it('should render <Manual /> component', async () => {
 		const basePath = '/';
 		const noTrialsHtml = 'There are currently no available trials.';
 		const pageTitle = 'Clinical Trials for Adult Brain Tumors';
-		const requestFilters =
-			'{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose": "treatment"}';
+		const requestFilters = '{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose": "treatment"}';
 		const title = 'NCI Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
 		const trialListingPageType = 'Manual';
@@ -128,8 +124,7 @@ describe('<Manual />', () => {
 						outcome_measures: [
 							{
 								name: 'Rates of two year progression free survival (2YPFS) for specific tumor types',
-								description:
-									'Separate estimates of 2YPFS and overall survival (and associated confidence intervals) will be made for subjects with anaplastic oligodendroglioma and for subjects with oligoastrocytoma. Confidence intervals will also be used to describe differences between this subject series and our earlier subject series.',
+								description: 'Separate estimates of 2YPFS and overall survival (and associated confidence intervals) will be made for subjects with anaplastic oligodendroglioma and for subjects with oligoastrocytoma. Confidence intervals will also be used to describe differences between this subject series and our earlier subject series.',
 								timeframe: '2 years',
 								type_code: 'SECONDARY',
 							},
@@ -153,8 +148,7 @@ describe('<Manual />', () => {
 							},
 							{
 								name: 'Functional outcomes',
-								description:
-									'Descriptive numeric and graphical summaries for functional status, quality of life, and cognitive function will be estimated for all subjects and separately for subjects with anaplastic oligodendrogliomas and oligoastrocytomas.',
+								description: 'Descriptive numeric and graphical summaries for functional status, quality of life, and cognitive function will be estimated for all subjects and separately for subjects with anaplastic oligodendrogliomas and oligoastrocytomas.',
 								timeframe: '1 year',
 								type_code: 'SECONDARY',
 							},
@@ -166,15 +160,13 @@ describe('<Manual />', () => {
 							},
 							{
 								name: 'Incidence of severe neutropenia (specifically febrile neutropenia or sepsis) in accordance with NCI CTC (version 3.0)',
-								description:
-									'Incidence rates of grade III/IV events and associated 95% confidence intervals will be estimated.',
+								description: 'Incidence rates of grade III/IV events and associated 95% confidence intervals will be estimated.',
 								timeframe: '1 year',
 								type_code: 'SECONDARY',
 							},
 							{
 								name: 'Progression free survival (Phase II)',
-								description:
-									'Kaplan-Meier method will be used. 95% confidence intervals estimated. Cox proportional hazards regression models will be fit to explore potential predictors.',
+								description: 'Kaplan-Meier method will be used. 95% confidence intervals estimated. Cox proportional hazards regression models will be fit to explore potential predictors.',
 								timeframe: '1 year',
 								type_code: 'PRIMARY',
 							},
@@ -187,16 +179,12 @@ describe('<Manual />', () => {
 						completion_date: '2023-12-31',
 						completion_date_type_code: 'ANTICIPATED',
 						record_verification_date: '2020-11-23',
-						brief_title:
-							'Carboplatin, Melphalan, Etoposide Phosphate, Mannitol, and Sodium Thiosulfate in Treating Patients With Previously Treated Brain Tumors',
-						official_title:
-							'Phase I / II Study of Carboplatin, Melphalan and Etoposide Phosphate in Conjunction with Osmotic Opening of the Blood-Brain Barrier and Delayed Intravenous Sodium Thiosulfate Chemoprotection, in Previously Treated Subjects with Anaplastic Oligodendroglioma or Oligoastrocytoma',
+						brief_title: 'Carboplatin, Melphalan, Etoposide Phosphate, Mannitol, and Sodium Thiosulfate in Treating Patients With Previously Treated Brain Tumors',
+						official_title: 'Phase I / II Study of Carboplatin, Melphalan and Etoposide Phosphate in Conjunction with Osmotic Opening of the Blood-Brain Barrier and Delayed Intravenous Sodium Thiosulfate Chemoprotection, in Previously Treated Subjects with Anaplastic Oligodendroglioma or Oligoastrocytoma',
 						acronym: null,
 						keywords: null,
-						brief_summary:
-							'This phase I / II trial studies the side effects and best dose of melphalan when given together with carboplatin, etoposide phosphate, mannitol, and sodium thiosulfate and to see how well they work in treating patients with previously treated brain tumors. Drugs used in chemotherapy, such as melphalan, carboplatin, and etoposide phosphate, work in different ways to stop the growth of tumor cells, either by killing the cells or by stopping them from dividing, or by stopping them from spreading. Osmotic blood-brain barrier disruption (BBBD) uses mannitol to open the blood vessels around the brain and allow cancer-killing substances to be carried directly to the brain. Sodium thiosulfate may help lessen or prevent hearing loss and toxicities in patients undergoing chemotherapy with carboplatin and BBBD. Giving carboplatin, melphalan, etoposide phosphate, mannitol, and sodium thiosulfate together may be an effective treatment for brain tumors.',
-						detail_description:
-							'PRIMARY OBJECTIVES:\r\nI. To evaluate toxicity and estimate the maximum tolerated dose (MTD) of melphalan (intra-arterially [i.a.]) administered in conjunction with carboplatin (i.a.) and etoposide phosphate (intravenously [i.v.]) undergoing BBBD, in subjects with anaplastic oligodendroglioma or oligoastrocytoma. (Phase I)\r\nII. To examine the efficacy (one year progression free survival [1YPFS]) of carboplatin (i.a.), melphalan (i.a.) and etoposide phosphate (i.v.) in conjunction with BBBD, in subjects with anaplastic oligodendroglioma or oligoastrocytoma. (Phase II)\r\n\r\nSECONDARY OBJECTIVES:\r\nI. To evaluate the incidence of severe neutropenia (specifically febrile neutropenia or sepsis) of carboplatin (i.a.), melphalan (i.a.) and etoposide phosphate (i.v.) in conjunction with BBBD, in subjects with anaplastic oligodendroglioma or oligoastrocytoma.\r\nII. To evaluate the overall toxicity of carboplatin (i.a.), melphalan (i.a.), and etoposide phosphate (i.v.) in conjunction with BBBD.\r\nIII. To estimate the differences in tumor response, 1YPFS and survival, in subjects with allelic loss of chromosomes 1p and 19q, and tumor protein p53 (p53) immunocytochemistry, versus subjects without allelic loss.\r\nIV. To assess quality of life, cognitive function, and performance status of subjects undergoing treatment with carboplatin, melphalan and etoposide phosphate in conjunction with BBBD.\r\nV. To estimate differences in 1YPFS between subjects with anaplastic oligodendroglioma and patients with oligoastrocytoma.\r\nVI. To describe the role of biopsy versus extent of surgery (sub-maximal versus maximal safe resection) on 1YPFS and survival.\r\nVII. To describe the role of prior radiation on tumor response, 1YPFS and survival.\r\n\r\nOUTLINE: This is a phase I, dose-escalation study of melphalan followed by a phase II study.\r\n\r\nPatients receive etoposide phosphate IV over 10 minutes, mannitol IA over 30 seconds, melphalan IA over 10 minutes, and carboplatin IA over 10 minutes on days 1 and 2. Patients then receive sodium thiosulfate IV over 15 minutes at 4 and 8 hours after carboplatin. Courses repeat every 4 to 6 weeks for up to 12 months.\r\n\r\nAfter completion of study treatment, patients are followed up every 3 months for 1 year, every 6 months for 2 years, and then annually thereafter.',
+						brief_summary: 'This phase I / II trial studies the side effects and best dose of melphalan when given together with carboplatin, etoposide phosphate, mannitol, and sodium thiosulfate and to see how well they work in treating patients with previously treated brain tumors. Drugs used in chemotherapy, such as melphalan, carboplatin, and etoposide phosphate, work in different ways to stop the growth of tumor cells, either by killing the cells or by stopping them from dividing, or by stopping them from spreading. Osmotic blood-brain barrier disruption (BBBD) uses mannitol to open the blood vessels around the brain and allow cancer-killing substances to be carried directly to the brain. Sodium thiosulfate may help lessen or prevent hearing loss and toxicities in patients undergoing chemotherapy with carboplatin and BBBD. Giving carboplatin, melphalan, etoposide phosphate, mannitol, and sodium thiosulfate together may be an effective treatment for brain tumors.',
+						detail_description: 'PRIMARY OBJECTIVES:\r\nI. To evaluate toxicity and estimate the maximum tolerated dose (MTD) of melphalan (intra-arterially [i.a.]) administered in conjunction with carboplatin (i.a.) and etoposide phosphate (intravenously [i.v.]) undergoing BBBD, in subjects with anaplastic oligodendroglioma or oligoastrocytoma. (Phase I)\r\nII. To examine the efficacy (one year progression free survival [1YPFS]) of carboplatin (i.a.), melphalan (i.a.) and etoposide phosphate (i.v.) in conjunction with BBBD, in subjects with anaplastic oligodendroglioma or oligoastrocytoma. (Phase II)\r\n\r\nSECONDARY OBJECTIVES:\r\nI. To evaluate the incidence of severe neutropenia (specifically febrile neutropenia or sepsis) of carboplatin (i.a.), melphalan (i.a.) and etoposide phosphate (i.v.) in conjunction with BBBD, in subjects with anaplastic oligodendroglioma or oligoastrocytoma.\r\nII. To evaluate the overall toxicity of carboplatin (i.a.), melphalan (i.a.), and etoposide phosphate (i.v.) in conjunction with BBBD.\r\nIII. To estimate the differences in tumor response, 1YPFS and survival, in subjects with allelic loss of chromosomes 1p and 19q, and tumor protein p53 (p53) immunocytochemistry, versus subjects without allelic loss.\r\nIV. To assess quality of life, cognitive function, and performance status of subjects undergoing treatment with carboplatin, melphalan and etoposide phosphate in conjunction with BBBD.\r\nV. To estimate differences in 1YPFS between subjects with anaplastic oligodendroglioma and patients with oligoastrocytoma.\r\nVI. To describe the role of biopsy versus extent of surgery (sub-maximal versus maximal safe resection) on 1YPFS and survival.\r\nVII. To describe the role of prior radiation on tumor response, 1YPFS and survival.\r\n\r\nOUTLINE: This is a phase I, dose-escalation study of melphalan followed by a phase II study.\r\n\r\nPatients receive etoposide phosphate IV over 10 minutes, mannitol IA over 30 seconds, melphalan IA over 10 minutes, and carboplatin IA over 10 minutes on days 1 and 2. Patients then receive sodium thiosulfate IV over 15 minutes at 4 and 8 hours after carboplatin. Courses repeat every 4 to 6 weeks for up to 12 months.\r\n\r\nAfter completion of study treatment, patients are followed up every 3 months for 1 year, every 6 months for 2 years, and then annually thereafter.',
 						classification_code: 'Safety/Efficacy',
 						interventional_model: 'Single Group',
 						study_source: 'Institutional',
@@ -334,20 +322,7 @@ describe('<Manual />', () => {
 									},
 								],
 								type: ['stage'],
-								synonyms: [
-									'Recurrent Adult Brain Neoplasm',
-									'Recurrent Adult Brain Tumor',
-									'Recurrent Neoplasm of Adult Brain',
-									'Recurrent Neoplasm of the Adult Brain',
-									'Recurrent Tumor of Adult Brain',
-									'Recurrent Tumor of the Adult Brain',
-									'Relapsed Adult Brain Neoplasm',
-									'Relapsed Adult Brain Tumor',
-									'Relapsed Neoplasm of Adult Brain',
-									'Relapsed Neoplasm of the Adult Brain',
-									'Relapsed Tumor of Adult Brain',
-									'Relapsed Tumor of the Adult Brain',
-								],
+								synonyms: ['Recurrent Adult Brain Neoplasm', 'Recurrent Adult Brain Tumor', 'Recurrent Neoplasm of Adult Brain', 'Recurrent Neoplasm of the Adult Brain', 'Recurrent Tumor of Adult Brain', 'Recurrent Tumor of the Adult Brain', 'Relapsed Adult Brain Neoplasm', 'Relapsed Adult Brain Tumor', 'Relapsed Neoplasm of Adult Brain', 'Relapsed Neoplasm of the Adult Brain', 'Relapsed Tumor of Adult Brain', 'Relapsed Tumor of the Adult Brain'],
 								parents: ['C7710', 'C71698'],
 							},
 							{
@@ -379,11 +354,7 @@ describe('<Manual />', () => {
 									},
 								],
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'Anaplastic Mixed Glioma',
-									'Anaplastic oligoastrocytoma',
-									'WHO Grade III Mixed Glioma',
-								],
+								synonyms: ['Anaplastic Mixed Glioma', 'Anaplastic oligoastrocytoma', 'WHO Grade III Mixed Glioma'],
 								parents: ['C36025', 'C3729', 'C3903', 'C127816'],
 							},
 							{
@@ -415,16 +386,7 @@ describe('<Manual />', () => {
 									},
 								],
 								type: ['subtype'],
-								synonyms: [
-									'GLIOMA, MIXED, MALIGNANT',
-									'Glioma, Mixed',
-									'Mixed Glial Neoplasm',
-									'Mixed Glial Tumor',
-									'Mixed Neuroglial Neoplasm',
-									'Mixed Neuroglial Tumor',
-									'Mixed glioma',
-									'mixed glioma',
-								],
+								synonyms: ['GLIOMA, MIXED, MALIGNANT', 'Glioma, Mixed', 'Mixed Glial Neoplasm', 'Mixed Glial Tumor', 'Mixed Neuroglial Neoplasm', 'Mixed Neuroglial Tumor', 'Mixed glioma', 'mixed glioma'],
 								parents: ['C129325', 'C6930'],
 							},
 							{
@@ -456,15 +418,7 @@ describe('<Manual />', () => {
 									},
 								],
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'Anaplastic oligodendroglioma',
-									'Malignant Oligodendroglioma',
-									'Oligodendroglioma, Malignant',
-									'Oligodendroglioma, anaplastic',
-									'Undifferentiated Oligodendroglioma',
-									'WHO Grade III Oligodendroglial Neoplasm',
-									'WHO Grade III Oligodendroglial Tumor',
-								],
+								synonyms: ['Anaplastic oligodendroglioma', 'Malignant Oligodendroglioma', 'Oligodendroglioma, Malignant', 'Oligodendroglioma, anaplastic', 'Undifferentiated Oligodendroglioma', 'WHO Grade III Oligodendroglial Neoplasm', 'WHO Grade III Oligodendroglial Tumor'],
 								parents: ['C36025', 'C129325', 'C6960', 'C127816'],
 							},
 							{
@@ -496,15 +450,7 @@ describe('<Manual />', () => {
 									},
 								],
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'GLIOMA, MIXED, BENIGN',
-									'Mixed Astrocytic-Oligodendroglial Neoplasm',
-									'Mixed Astrocytic-Oligodendroglial Tumor',
-									'Mixed Astrocytoma-Oligodendroglioma',
-									'Mixed Oligo-Astrocytoma',
-									'WHO Grade II Mixed Glioma',
-									'oligoastrocytoma',
-								],
+								synonyms: ['GLIOMA, MIXED, BENIGN', 'Mixed Astrocytic-Oligodendroglial Neoplasm', 'Mixed Astrocytic-Oligodendroglial Tumor', 'Mixed Astrocytoma-Oligodendroglioma', 'Mixed Oligo-Astrocytoma', 'WHO Grade II Mixed Glioma', 'oligoastrocytoma'],
 								parents: ['C3903', 'C132505'],
 							},
 							{
@@ -515,11 +461,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Mixed Neoplasm',
 								preferred_name: 'Malignant Mixed Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Malignant Mixed Tumor',
-									'Mixed tumor, malignant, NOS',
-									'TUMOR, MIXED, MALIGNANT',
-								],
+								synonyms: ['Malignant Mixed Tumor', 'Mixed tumor, malignant, NOS', 'TUMOR, MIXED, MALIGNANT'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4788',
@@ -529,14 +471,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Nervous System Neoplasm',
 								preferred_name: 'Malignant Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Malignant Neoplasm of Nervous System',
-									'Malignant Neoplasm of the Nervous System',
-									'Malignant Nervous System Tumor',
-									'Malignant Tumor of Nervous System',
-									'Malignant Tumor of the Nervous System',
-									'Nervous System Neoplasms, Malignant',
-								],
+								synonyms: ['Malignant Neoplasm of Nervous System', 'Malignant Neoplasm of the Nervous System', 'Malignant Nervous System Tumor', 'Malignant Tumor of Nervous System', 'Malignant Tumor of the Nervous System', 'Nervous System Neoplasms, Malignant'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C2907',
@@ -546,15 +481,7 @@ describe('<Manual />', () => {
 								display_name: 'Brain Tumor',
 								preferred_name: 'Brain Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Brain Neoplasm',
-									'Brain Neoplasms',
-									'Neoplasm of Brain',
-									'Neoplasm of the Brain',
-									'Tumor of Brain',
-									'Tumor of the Brain',
-									'brain tumor',
-								],
+								synonyms: ['Brain Neoplasm', 'Brain Neoplasms', 'Neoplasm of Brain', 'Neoplasm of the Brain', 'Tumor of Brain', 'Tumor of the Brain', 'brain tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C5131',
@@ -564,24 +491,7 @@ describe('<Manual />', () => {
 								display_name: 'Central Nervous System Neoplasm',
 								preferred_name: 'Adult Central Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Adult CNS Neoplasm',
-									'Adult CNS Neoplasms',
-									'Adult CNS Tumor',
-									'Adult CNS Tumors',
-									'Adult Central Nervous System Neoplasm',
-									'Adult Central Nervous System Neoplasms',
-									'Adult Central Nervous System Tumor',
-									'Adult Central Nervous System Tumors',
-									'Neoplasm of Adult CNS',
-									'Neoplasm of Adult Central Nervous System',
-									'Neoplasm of the Adult CNS',
-									'Neoplasm of the Adult Central Nervous System',
-									'Tumor of Adult CNS',
-									'Tumor of Adult Central Nervous System',
-									'Tumor of the Adult CNS',
-									'Tumor of the Adult Central Nervous System',
-								],
+								synonyms: ['Adult CNS Neoplasm', 'Adult CNS Neoplasms', 'Adult CNS Tumor', 'Adult CNS Tumors', 'Adult Central Nervous System Neoplasm', 'Adult Central Nervous System Neoplasms', 'Adult Central Nervous System Tumor', 'Adult Central Nervous System Tumors', 'Neoplasm of Adult CNS', 'Neoplasm of Adult Central Nervous System', 'Neoplasm of the Adult CNS', 'Neoplasm of the Adult Central Nervous System', 'Tumor of Adult CNS', 'Tumor of Adult Central Nervous System', 'Tumor of the Adult CNS', 'Tumor of the Adult Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4798',
@@ -591,13 +501,7 @@ describe('<Manual />', () => {
 								display_name: 'Recurrent Neoplasm',
 								preferred_name: 'Recurrent Neoplasm',
 								type: ['stage'],
-								synonyms: [
-									'Neoplasm Recurrence',
-									'Recurrence',
-									'Recurrent',
-									'Recurrent Tumor',
-									'recurrence',
-								],
+								synonyms: ['Neoplasm Recurrence', 'Recurrence', 'Recurrent', 'Recurrent Tumor', 'recurrence'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3262',
@@ -607,18 +511,7 @@ describe('<Manual />', () => {
 								display_name: 'Other Neoplasm',
 								preferred_name: 'Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Neoplasia',
-									'Neoplasm',
-									'Neoplasm, NOS',
-									'Neoplasms, NOS',
-									'Neoplastic Disease',
-									'Neoplastic Growth',
-									'Tumor, NOS',
-									'neoplasia',
-									'neoplasm',
-									'tumor',
-								],
+								synonyms: ['Neoplasia', 'Neoplasm', 'Neoplasm, NOS', 'Neoplasms, NOS', 'Neoplastic Disease', 'Neoplastic Growth', 'Tumor, NOS', 'neoplasia', 'neoplasm', 'tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3268',
@@ -628,15 +521,7 @@ describe('<Manual />', () => {
 								display_name: 'Nervous System Tumor',
 								preferred_name: 'Nervous System Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Neoplasm of Nervous System',
-									'Neoplasm of the Nervous System',
-									'Nervous System Neoplasm',
-									'Nervous System Neoplasms',
-									'Nervous System Tumour',
-									'Tumor of Nervous System',
-									'Tumor of the Nervous System',
-								],
+								synonyms: ['Neoplasm of Nervous System', 'Neoplasm of the Nervous System', 'Nervous System Neoplasm', 'Nervous System Neoplasms', 'Nervous System Tumour', 'Tumor of Nervous System', 'Tumor of the Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3059',
@@ -646,19 +531,7 @@ describe('<Manual />', () => {
 								display_name: 'Glioma',
 								preferred_name: 'Glioma',
 								type: ['maintype', 'subtype'],
-								synonyms: [
-									'Glial Neoplasm',
-									'Glial Tumor',
-									'Glioma, NOS',
-									'Neoplasm of Neuroglia',
-									'Neoplasm of the Neuroglia',
-									'Neuroglial Neoplasm',
-									'Neuroglial Tumor',
-									'Tumor of Neuroglia',
-									'Tumor of the Neuroglia',
-									'glial tumor',
-									'glioma',
-								],
+								synonyms: ['Glial Neoplasm', 'Glial Tumor', 'Glioma, NOS', 'Neoplasm of Neuroglia', 'Neoplasm of the Neuroglia', 'Neuroglial Neoplasm', 'Neuroglial Tumor', 'Tumor of Neuroglia', 'Tumor of the Neuroglia', 'glial tumor', 'glioma'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C7710',
@@ -668,15 +541,7 @@ describe('<Manual />', () => {
 								display_name: 'Brain Neoplasm',
 								preferred_name: 'Adult Brain Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Adult Brain Neoplasm',
-									'Adult Brain Tumor',
-									'Brain Neoplasms, Adult',
-									'Neoplasm of Adult Brain',
-									'Neoplasm of the Adult Brain',
-									'Tumor of Adult Brain',
-									'Tumor of the Adult Brain',
-								],
+								synonyms: ['Adult Brain Neoplasm', 'Adult Brain Tumor', 'Brain Neoplasms, Adult', 'Neoplasm of Adult Brain', 'Neoplasm of the Adult Brain', 'Tumor of Adult Brain', 'Tumor of the Adult Brain'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C170814',
@@ -696,20 +561,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Neoplasm',
 								preferred_name: 'Malignant Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'CA',
-									'Cancer',
-									'Malignancy',
-									'Malignant Growth',
-									'Malignant Neoplastic Disease',
-									'Malignant Tumor',
-									'NEOPLASM, MALIGNANT',
-									'Neoplasm, malignant',
-									'Tumor, malignant, NOS',
-									'Unclassified tumor, malignant',
-									'cancer',
-									'malignancy',
-								],
+								synonyms: ['CA', 'Cancer', 'Malignancy', 'Malignant Growth', 'Malignant Neoplastic Disease', 'Malignant Tumor', 'NEOPLASM, MALIGNANT', 'Neoplasm, malignant', 'Tumor, malignant, NOS', 'Unclassified tumor, malignant', 'cancer', 'malignancy'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C6930',
@@ -759,16 +611,7 @@ describe('<Manual />', () => {
 								display_name: 'Mixed Glioma',
 								preferred_name: 'Mixed Glioma',
 								type: ['subtype'],
-								synonyms: [
-									'GLIOMA, MIXED, MALIGNANT',
-									'Glioma, Mixed',
-									'Mixed Glial Neoplasm',
-									'Mixed Glial Tumor',
-									'Mixed Neuroglial Neoplasm',
-									'Mixed Neuroglial Tumor',
-									'Mixed glioma',
-									'mixed glioma',
-								],
+								synonyms: ['GLIOMA, MIXED, MALIGNANT', 'Glioma, Mixed', 'Mixed Glial Neoplasm', 'Mixed Glial Tumor', 'Mixed Neuroglial Neoplasm', 'Mixed Neuroglial Tumor', 'Mixed glioma', 'mixed glioma'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3787',
@@ -778,20 +621,7 @@ describe('<Manual />', () => {
 								display_name: 'Neuroepithelial Neoplasm',
 								preferred_name: 'Neuroepithelial Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Neoplasm of Neuroepithelial Tissue',
-									'Neoplasm of Neuroepithelium',
-									'Neoplasm of the Neuroepithelium',
-									'Neuroepithelial Neoplasms',
-									'Neuroepithelial Tissue Neoplasm',
-									'Neuroepithelial Tissue Tumor',
-									'Neuroepithelial Tumor',
-									'Neuroepithelial Tumors',
-									'Neuroepitheliomatous Neoplasms',
-									'Tumor of Neuroepithelial Tissue',
-									'Tumor of Neuroepithelium',
-									'Tumor of the Neuroepithelium',
-								],
+								synonyms: ['Neoplasm of Neuroepithelial Tissue', 'Neoplasm of Neuroepithelium', 'Neoplasm of the Neuroepithelium', 'Neuroepithelial Neoplasms', 'Neuroepithelial Tissue Neoplasm', 'Neuroepithelial Tissue Tumor', 'Neuroepithelial Tumor', 'Neuroepithelial Tumors', 'Neuroepitheliomatous Neoplasms', 'Tumor of Neuroepithelial Tissue', 'Tumor of Neuroepithelium', 'Tumor of the Neuroepithelium'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C102871',
@@ -808,10 +638,8 @@ describe('<Manual />', () => {
 								inclusion_indicator: 'TREE',
 								parents: ['C4741', 'C3268'],
 								lead_disease_indicator: 'YES',
-								display_name:
-									'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
-								preferred_name:
-									'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
+								display_name: 'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
+								preferred_name: 'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
 								type: ['subtype'],
 								synonyms: ['Neural Neoplasm', 'Neural Tumor'],
 							},
@@ -833,19 +661,7 @@ describe('<Manual />', () => {
 								display_name: 'Glioma',
 								preferred_name: 'Glioma',
 								type: ['maintype', 'subtype'],
-								synonyms: [
-									'Glial Neoplasm',
-									'Glial Tumor',
-									'Glioma, NOS',
-									'Neoplasm of Neuroglia',
-									'Neoplasm of the Neuroglia',
-									'Neuroglial Neoplasm',
-									'Neuroglial Tumor',
-									'Tumor of Neuroglia',
-									'Tumor of the Neuroglia',
-									'glial tumor',
-									'glioma',
-								],
+								synonyms: ['Glial Neoplasm', 'Glial Tumor', 'Glioma, NOS', 'Neoplasm of Neuroglia', 'Neoplasm of the Neuroglia', 'Neuroglial Neoplasm', 'Neuroglial Tumor', 'Tumor of Neuroglia', 'Tumor of the Neuroglia', 'glial tumor', 'glioma'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C102871',
@@ -865,12 +681,7 @@ describe('<Manual />', () => {
 								display_name: 'Nervous System Disorder',
 								preferred_name: 'Nervous System Disorder',
 								type: ['subtype'],
-								synonyms: [
-									'Disorder of Nervous System',
-									'Neurologic Disorder',
-									'Neurological Disorder',
-									'Unspecified Nervous System Problem',
-								],
+								synonyms: ['Disorder of Nervous System', 'Neurologic Disorder', 'Neurological Disorder', 'Unspecified Nervous System Problem'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C7057',
@@ -920,10 +731,7 @@ describe('<Manual />', () => {
 								display_name: 'Adult Intracranial Neoplasm',
 								preferred_name: 'Adult Intracranial Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Adult Intracranial Neoplasms',
-									'Adult Intracranial Tumor',
-								],
+								synonyms: ['Adult Intracranial Neoplasms', 'Adult Intracranial Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C2934',
@@ -933,10 +741,7 @@ describe('<Manual />', () => {
 								display_name: 'Central Nervous System Disorder',
 								preferred_name: 'Central Nervous System Disorder',
 								type: ['subtype'],
-								synonyms: [
-									'Central Nervous System Disease',
-									'Disorder of Central Nervous System',
-								],
+								synonyms: ['Central Nervous System Disease', 'Disorder of Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C173154',
@@ -956,10 +761,7 @@ describe('<Manual />', () => {
 								display_name: 'Central Nervous System Disorder',
 								preferred_name: 'Central Nervous System Disorder',
 								type: ['subtype'],
-								synonyms: [
-									'Central Nervous System Disease',
-									'Disorder of Central Nervous System',
-								],
+								synonyms: ['Central Nervous System Disease', 'Disorder of Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C7057',
@@ -979,33 +781,15 @@ describe('<Manual />', () => {
 								display_name: 'Other Disease',
 								preferred_name: 'Disease or Disorder',
 								type: ['maintype'],
-								synonyms: [
-									'Diagnosis',
-									'Disease',
-									'Disease or Disorder',
-									'Disease or Disorder, Non-Neoplastic',
-									'Diseases',
-									'Diseases and Disorders',
-									'Disorder',
-									'Disorders',
-									'condition',
-									'disease',
-									'disease term',
-									'disease type',
-									'disease_term',
-									'disease_type',
-									'disorder',
-								],
+								synonyms: ['Diagnosis', 'Disease', 'Disease or Disorder', 'Disease or Disorder, Non-Neoplastic', 'Diseases', 'Diseases and Disorders', 'Disorder', 'Disorders', 'condition', 'disease', 'disease term', 'disease type', 'disease_term', 'disease_type', 'disorder'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C35562',
 								inclusion_indicator: 'TREE',
 								parents: ['C4741', 'C3268'],
 								lead_disease_indicator: 'NO',
-								display_name:
-									'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
-								preferred_name:
-									'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
+								display_name: 'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
+								preferred_name: 'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
 								type: ['subtype'],
 								synonyms: ['Neural Neoplasm', 'Neural Tumor'],
 							},
@@ -1017,11 +801,7 @@ describe('<Manual />', () => {
 								display_name: 'Low Grade Glioma',
 								preferred_name: 'Low Grade Glioma',
 								type: ['grade'],
-								synonyms: [
-									'CNS, low grade glioma (LGG)',
-									'LGG',
-									'Low-Grade Glioma',
-								],
+								synonyms: ['CNS, low grade glioma (LGG)', 'LGG', 'Low-Grade Glioma'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4953',
@@ -1031,12 +811,7 @@ describe('<Manual />', () => {
 								display_name: 'Intracranial Neoplasm',
 								preferred_name: 'Intracranial Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Intracranial Central Nervous System Neoplasm',
-									'Intracranial Central Nervous System Tumor',
-									'Intracranial Tumor',
-									'intracranial tumor',
-								],
+								synonyms: ['Intracranial Central Nervous System Neoplasm', 'Intracranial Central Nervous System Tumor', 'Intracranial Tumor', 'intracranial tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3787',
@@ -1046,20 +821,7 @@ describe('<Manual />', () => {
 								display_name: 'Neuroepithelial Neoplasm',
 								preferred_name: 'Neuroepithelial Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Neoplasm of Neuroepithelial Tissue',
-									'Neoplasm of Neuroepithelium',
-									'Neoplasm of the Neuroepithelium',
-									'Neuroepithelial Neoplasms',
-									'Neuroepithelial Tissue Neoplasm',
-									'Neuroepithelial Tissue Tumor',
-									'Neuroepithelial Tumor',
-									'Neuroepithelial Tumors',
-									'Neuroepitheliomatous Neoplasms',
-									'Tumor of Neuroepithelial Tissue',
-									'Tumor of Neuroepithelium',
-									'Tumor of the Neuroepithelium',
-								],
+								synonyms: ['Neoplasm of Neuroepithelial Tissue', 'Neoplasm of Neuroepithelium', 'Neoplasm of the Neuroepithelium', 'Neuroepithelial Neoplasms', 'Neuroepithelial Tissue Neoplasm', 'Neuroepithelial Tissue Tumor', 'Neuroepithelial Tumor', 'Neuroepithelial Tumors', 'Neuroepitheliomatous Neoplasms', 'Tumor of Neuroepithelial Tissue', 'Tumor of Neuroepithelium', 'Tumor of the Neuroepithelium'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C2991',
@@ -1069,23 +831,7 @@ describe('<Manual />', () => {
 								display_name: 'Other Disease',
 								preferred_name: 'Disease or Disorder',
 								type: ['maintype'],
-								synonyms: [
-									'Diagnosis',
-									'Disease',
-									'Disease or Disorder',
-									'Disease or Disorder, Non-Neoplastic',
-									'Diseases',
-									'Diseases and Disorders',
-									'Disorder',
-									'Disorders',
-									'condition',
-									'disease',
-									'disease term',
-									'disease type',
-									'disease_term',
-									'disease_type',
-									'disorder',
-								],
+								synonyms: ['Diagnosis', 'Disease', 'Disease or Disorder', 'Disease or Disorder, Non-Neoplastic', 'Diseases', 'Diseases and Disorders', 'Disorder', 'Disorders', 'condition', 'disease', 'disease term', 'disease type', 'disease_term', 'disease_type', 'disorder'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C7062',
@@ -1135,16 +881,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Glioma',
 								preferred_name: 'Malignant Glioma',
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'GLIOMA, MALIGNANT',
-									'Glioma, malignant',
-									'High Grade Glioma',
-									'High-Grade Glioma',
-									'Malignant Glial Neoplasm',
-									'Malignant Glial Tumor',
-									'Malignant Neuroglial Neoplasm',
-									'Malignant Neuroglial Tumor',
-								],
+								synonyms: ['GLIOMA, MALIGNANT', 'Glioma, malignant', 'High Grade Glioma', 'High-Grade Glioma', 'Malignant Glial Neoplasm', 'Malignant Glial Tumor', 'Malignant Neuroglial Neoplasm', 'Malignant Neuroglial Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3903',
@@ -1154,16 +891,7 @@ describe('<Manual />', () => {
 								display_name: 'Mixed Glioma',
 								preferred_name: 'Mixed Glioma',
 								type: ['subtype'],
-								synonyms: [
-									'GLIOMA, MIXED, MALIGNANT',
-									'Glioma, Mixed',
-									'Mixed Glial Neoplasm',
-									'Mixed Glial Tumor',
-									'Mixed Neuroglial Neoplasm',
-									'Mixed Neuroglial Tumor',
-									'Mixed glioma',
-									'mixed glioma',
-								],
+								synonyms: ['GLIOMA, MIXED, MALIGNANT', 'Glioma, Mixed', 'Mixed Glial Neoplasm', 'Mixed Glial Tumor', 'Mixed Neuroglial Neoplasm', 'Mixed Neuroglial Tumor', 'Mixed glioma', 'mixed glioma'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C9293',
@@ -1173,21 +901,7 @@ describe('<Manual />', () => {
 								display_name: 'Brain/Spinal Cord Tumor',
 								preferred_name: 'Central Nervous System Neoplasm',
 								type: ['maintype', 'subtype'],
-								synonyms: [
-									'CNS Neoplasm',
-									'CNS Tumor',
-									'CNS tumor',
-									'Central Nervous System Neoplasm',
-									'Central Nervous System Tumor',
-									'Neoplasm of CNS',
-									'Neoplasm of Central Nervous System',
-									'Neoplasm of the Central Nervous System',
-									'Tumor of CNS',
-									'Tumor of Central Nervous System',
-									'Tumor of the CNS',
-									'Tumor of the Central Nervous System',
-									'central nervous system tumor',
-								],
+								synonyms: ['CNS Neoplasm', 'CNS Tumor', 'CNS tumor', 'Central Nervous System Neoplasm', 'Central Nervous System Tumor', 'Neoplasm of CNS', 'Neoplasm of Central Nervous System', 'Neoplasm of the Central Nervous System', 'Tumor of CNS', 'Tumor of Central Nervous System', 'Tumor of the CNS', 'Tumor of the Central Nervous System', 'central nervous system tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C6960',
@@ -1197,10 +911,7 @@ describe('<Manual />', () => {
 								display_name: 'Oligodendroglial Tumor',
 								preferred_name: 'Oligodendroglial Tumor',
 								type: ['subtype'],
-								synonyms: [
-									'Oligodendroglial Neoplasm',
-									'oligodendroglial tumor',
-								],
+								synonyms: ['Oligodendroglial Neoplasm', 'oligodendroglial tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4627',
@@ -1210,29 +921,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Central Nervous System Neoplasm',
 								preferred_name: 'Malignant Central Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'CNS Cancer',
-									'CNS Malignant Neoplasms',
-									'CNS Neoplasms, Malignant',
-									'Cancer of CNS',
-									'Cancer of Central Nervous System',
-									'Cancer of the CNS',
-									'Cancer of the Central Nervous System',
-									'Central Nervous System Cancer',
-									'Central Nervous System Neoplasms, Malignant',
-									'Malignant CNS Neoplasm',
-									'Malignant CNS Neoplasms',
-									'Malignant CNS Tumor',
-									'Malignant Central Nervous System Tumor',
-									'Malignant Neoplasm of CNS',
-									'Malignant Neoplasm of Central Nervous System',
-									'Malignant Neoplasm of the CNS',
-									'Malignant Neoplasm of the Central Nervous System',
-									'Malignant Tumor of CNS',
-									'Malignant Tumor of Central Nervous System',
-									'Malignant Tumor of the CNS',
-									'Malignant Tumor of the Central Nervous System',
-								],
+								synonyms: ['CNS Cancer', 'CNS Malignant Neoplasms', 'CNS Neoplasms, Malignant', 'Cancer of CNS', 'Cancer of Central Nervous System', 'Cancer of the CNS', 'Cancer of the Central Nervous System', 'Central Nervous System Cancer', 'Central Nervous System Neoplasms, Malignant', 'Malignant CNS Neoplasm', 'Malignant CNS Neoplasms', 'Malignant CNS Tumor', 'Malignant Central Nervous System Tumor', 'Malignant Neoplasm of CNS', 'Malignant Neoplasm of Central Nervous System', 'Malignant Neoplasm of the CNS', 'Malignant Neoplasm of the Central Nervous System', 'Malignant Tumor of CNS', 'Malignant Tumor of Central Nervous System', 'Malignant Tumor of the CNS', 'Malignant Tumor of the Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C129325',
@@ -1252,12 +941,7 @@ describe('<Manual />', () => {
 								display_name: 'Nervous System Disorder',
 								preferred_name: 'Nervous System Disorder',
 								type: ['subtype'],
-								synonyms: [
-									'Disorder of Nervous System',
-									'Neurologic Disorder',
-									'Neurological Disorder',
-									'Unspecified Nervous System Problem',
-								],
+								synonyms: ['Disorder of Nervous System', 'Neurologic Disorder', 'Neurological Disorder', 'Unspecified Nervous System Problem'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C71698',
@@ -1277,21 +961,7 @@ describe('<Manual />', () => {
 								display_name: 'Brain/Spinal Cord Tumor',
 								preferred_name: 'Central Nervous System Neoplasm',
 								type: ['maintype', 'subtype'],
-								synonyms: [
-									'CNS Neoplasm',
-									'CNS Tumor',
-									'CNS tumor',
-									'Central Nervous System Neoplasm',
-									'Central Nervous System Tumor',
-									'Neoplasm of CNS',
-									'Neoplasm of Central Nervous System',
-									'Neoplasm of the Central Nervous System',
-									'Tumor of CNS',
-									'Tumor of Central Nervous System',
-									'Tumor of the CNS',
-									'Tumor of the Central Nervous System',
-									'central nervous system tumor',
-								],
+								synonyms: ['CNS Neoplasm', 'CNS Tumor', 'CNS tumor', 'Central Nervous System Neoplasm', 'Central Nervous System Tumor', 'Neoplasm of CNS', 'Neoplasm of Central Nervous System', 'Neoplasm of the Central Nervous System', 'Tumor of CNS', 'Tumor of Central Nervous System', 'Tumor of the CNS', 'Tumor of the Central Nervous System', 'central nervous system tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3262',
@@ -1301,18 +971,7 @@ describe('<Manual />', () => {
 								display_name: 'Other Neoplasm',
 								preferred_name: 'Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Neoplasia',
-									'Neoplasm',
-									'Neoplasm, NOS',
-									'Neoplasms, NOS',
-									'Neoplastic Disease',
-									'Neoplastic Growth',
-									'Tumor, NOS',
-									'neoplasia',
-									'neoplasm',
-									'tumor',
-								],
+								synonyms: ['Neoplasia', 'Neoplasm', 'Neoplasm, NOS', 'Neoplasms, NOS', 'Neoplastic Disease', 'Neoplastic Growth', 'Tumor, NOS', 'neoplasia', 'neoplasm', 'tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4741',
@@ -1349,10 +1008,8 @@ describe('<Manual />', () => {
 								inclusion_indicator: 'TREE',
 								parents: ['C102871', 'C4798'],
 								lead_disease_indicator: 'YES',
-								display_name:
-									'Recurrent Primary Central Nervous System Neoplasm',
-								preferred_name:
-									'Recurrent Primary Central Nervous System Neoplasm',
+								display_name: 'Recurrent Primary Central Nervous System Neoplasm',
+								preferred_name: 'Recurrent Primary Central Nervous System Neoplasm',
 								type: ['stage'],
 								synonyms: ['Recurrent Primary Central Nervous System Tumor'],
 							},
@@ -1364,15 +1021,7 @@ describe('<Manual />', () => {
 								display_name: 'Nervous System Tumor',
 								preferred_name: 'Nervous System Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Neoplasm of Nervous System',
-									'Neoplasm of the Nervous System',
-									'Nervous System Neoplasm',
-									'Nervous System Neoplasms',
-									'Nervous System Tumour',
-									'Tumor of Nervous System',
-									'Tumor of the Nervous System',
-								],
+								synonyms: ['Neoplasm of Nervous System', 'Neoplasm of the Nervous System', 'Nervous System Neoplasm', 'Nervous System Neoplasms', 'Nervous System Tumour', 'Tumor of Nervous System', 'Tumor of the Nervous System'],
 							},
 						],
 						biomarkers: null,
@@ -1393,32 +1042,27 @@ describe('<Manual />', () => {
 								{
 									display_order: 1,
 									inclusion_indicator: true,
-									description:
-										'Subjects with pathologic evidence of an anaplastic oligodendroglioma or mixed glioma (i.e. oligoastrocytoma) are eligible; histopathologic diagnosis will be made using World Health Organization classification criteria; to qualify as a mixed tumor there must be a minimum of 25% oligodendroglial element',
+									description: 'Subjects with pathologic evidence of an anaplastic oligodendroglioma or mixed glioma (i.e. oligoastrocytoma) are eligible; histopathologic diagnosis will be made using World Health Organization classification criteria; to qualify as a mixed tumor there must be a minimum of 25% oligodendroglial element',
 								},
 								{
 									display_order: 2,
 									inclusion_indicator: true,
-									description:
-										'Surgical procedure may have been complete resection, partial resection, or biopsy',
+									description: 'Surgical procedure may have been complete resection, partial resection, or biopsy',
 								},
 								{
 									display_order: 3,
 									inclusion_indicator: true,
-									description:
-										'Subjects must have had prior treatment with temozolomide; at least 28 days must have elapsed since completion of temozolomide or other chemotherapy',
+									description: 'Subjects must have had prior treatment with temozolomide; at least 28 days must have elapsed since completion of temozolomide or other chemotherapy',
 								},
 								{
 									display_order: 4,
 									inclusion_indicator: true,
-									description:
-										'If subject has not undergone radiation therapy, then subject must have undergone prior consultation with a radiation oncologist (who is not an investigator on this study); if the subject has undergone radiation therapy, then at least 14 days must have elapsed since completion of radiation',
+									description: 'If subject has not undergone radiation therapy, then subject must have undergone prior consultation with a radiation oncologist (who is not an investigator on this study); if the subject has undergone radiation therapy, then at least 14 days must have elapsed since completion of radiation',
 								},
 								{
 									display_order: 5,
 									inclusion_indicator: true,
-									description:
-										'Subjects performance status must be (Karnofsky performance status [KPS] greater than or equal to 50; Eastern Cooperative Oncology Group [ECOG] less than or equal to 2)',
+									description: 'Subjects performance status must be (Karnofsky performance status [KPS] greater than or equal to 50; Eastern Cooperative Oncology Group [ECOG] less than or equal to 2)',
 								},
 								{
 									display_order: 6,
@@ -1448,93 +1092,67 @@ describe('<Manual />', () => {
 								{
 									display_order: 11,
 									inclusion_indicator: true,
-									description:
-										'Subjects baseline serum glutamic oxaloacetic transaminase (SGOT)/serum glutamate pyruvate transaminase (SGPT) must be < 2.5 x institutional upper limit of normal',
+									description: 'Subjects baseline serum glutamic oxaloacetic transaminase (SGOT)/serum glutamate pyruvate transaminase (SGPT) must be < 2.5 x institutional upper limit of normal',
 								},
 								{
 									display_order: 12,
 									inclusion_indicator: true,
-									description:
-										'Subjects must sign a written informed consent in accordance with institutional guidelines',
+									description: 'Subjects must sign a written informed consent in accordance with institutional guidelines',
 								},
 								{
 									display_order: 13,
 									inclusion_indicator: true,
-									description:
-										'The effects of carboplatin, melphalan and etoposide phosphate on the developing human fetus at the recommended therapeutic dose are unknown. For this reason and because these agents as well as other therapeutic agents used in this trial are known to be teratogenic. Sexually active women of child-bearing potential and men must agree to use adequate contraception (hormonal or barrier method of birth control; abstinence) prior to study treatment and for the duration of study treatment; should a woman become pregnant or suspect she is pregnant while participating in this study, she should inform her treating physician immediately',
+									description: 'The effects of carboplatin, melphalan and etoposide phosphate on the developing human fetus at the recommended therapeutic dose are unknown. For this reason and because these agents as well as other therapeutic agents used in this trial are known to be teratogenic. Sexually active women of child-bearing potential and men must agree to use adequate contraception (hormonal or barrier method of birth control; abstinence) prior to study treatment and for the duration of study treatment; should a woman become pregnant or suspect she is pregnant while participating in this study, she should inform her treating physician immediately',
 								},
 								{
 									display_order: 14,
 									inclusion_indicator: false,
-									description:
-										'Subjects with radiographic signs of excessive intracranial mass effect with associated rapid neurologic deterioration, and/or spinal cord block',
+									description: 'Subjects with radiographic signs of excessive intracranial mass effect with associated rapid neurologic deterioration, and/or spinal cord block',
 								},
 								{
 									display_order: 15,
 									inclusion_indicator: false,
-									description:
-										'Subjects at significant risk for general anesthesia',
+									description: 'Subjects at significant risk for general anesthesia',
 								},
 								{
 									display_order: 16,
 									inclusion_indicator: false,
-									description:
-										'Subjects with uncontrolled (over the last 30 days) clinically significant confounding medical conditions',
+									description: 'Subjects with uncontrolled (over the last 30 days) clinically significant confounding medical conditions',
 								},
 								{
 									display_order: 17,
 									inclusion_indicator: false,
-									description:
-										'Subject is pregnant, has a positive serum human chorionic gonadotropin (hCG) or is lactating',
+									description: 'Subject is pregnant, has a positive serum human chorionic gonadotropin (hCG) or is lactating',
 								},
 								{
 									display_order: 18,
 									inclusion_indicator: false,
-									description:
-										'Subjects who have contraindications to carboplatin, melphalan, etoposide phosphate, or sodium thiosulfate',
+									description: 'Subjects who have contraindications to carboplatin, melphalan, etoposide phosphate, or sodium thiosulfate',
 								},
 							],
 						},
 						number_of_arms: 1,
 						arms: [
 							{
-								arm_name:
-									'Treatment (etoposide, mannitol, melphalan, carboplatin, STS)',
+								arm_name: 'Treatment (etoposide, mannitol, melphalan, carboplatin, STS)',
 								arm_type: 'EXPERIMENTAL',
-								arm_description:
-									'Patients receive etoposide phosphate IV over 10 minutes, mannitol IA over 30 seconds, melphalan IA over 10 minutes, and carboplatin IA over 10 minutes on days 1 and 2. Patients then receive sodium thiosulfate IV over 15 minutes at 4 and 8 hours after carboplatin. Courses repeat every 4 to 6 weeks for up to 12 months.',
+								arm_description: 'Patients receive etoposide phosphate IV over 10 minutes, mannitol IA over 30 seconds, melphalan IA over 10 minutes, and carboplatin IA over 10 minutes on days 1 and 2. Patients then receive sodium thiosulfate IV over 15 minutes at 4 and 8 hours after carboplatin. Courses repeat every 4 to 6 weeks for up to 12 months.',
 								interventions: [
 									{
 										intervention_name: 'Carboplatin',
 										intervention_type: 'Drug',
 										intervention_code: 'C1282',
-										intervention_description:
-											'A second-generation platinum compound with a broad spectrum of antineoplastic properties.  Carboplatin contains a platinum atom complexed with two ammonia groups and a cyclobutane-dicarboxyl residue.  This agent is activated intracellularly to form reactive platinum complexes that bind to nucleophilic groups such as GC-rich sites in DNA, thereby inducing intrastrand and interstrand DNA cross-links, as well as DNA-protein cross-links.  These carboplatin-induced DNA and protein effects result in apoptosis and cell growth inhibition.  This agent possesses tumoricidal activity similar to that of its parent compound, cisplatin, but is more stable and less toxic. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
+										intervention_description: 'A second-generation platinum compound with a broad spectrum of antineoplastic properties.  Carboplatin contains a platinum atom complexed with two ammonia groups and a cyclobutane-dicarboxyl residue.  This agent is activated intracellularly to form reactive platinum complexes that bind to nucleophilic groups such as GC-rich sites in DNA, thereby inducing intrastrand and interstrand DNA cross-links, as well as DNA-protein cross-links.  These carboplatin-induced DNA and protein effects result in apoptosis and cell growth inhibition.  This agent possesses tumoricidal activity similar to that of its parent compound, cisplatin, but is more stable and less toxic. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
 										parents: ['C1450'],
 										inclusion_indicator: 'TRIAL',
-										synonyms: [
-											'Blastocarb',
-											'Carboplat',
-											'Carbosin',
-											'Carbosol',
-											'Carbotec',
-											'Displata',
-											'Ercar',
-											'Nealorin',
-											'Novoplatinum',
-											'Paraplatin AQ',
-											'Paraplatine',
-											'Platinwas',
-											'Ribocarbo',
-										],
+										synonyms: ['Blastocarb', 'Carboplat', 'Carbosin', 'Carbosol', 'Carbotec', 'Displata', 'Ercar', 'Nealorin', 'Novoplatinum', 'Paraplatin AQ', 'Paraplatine', 'Platinwas', 'Ribocarbo'],
 										intervention_category: 'Agent',
 									},
 									{
 										intervention_name: 'Melphalan',
 										intervention_type: 'Drug',
 										intervention_code: 'C633',
-										intervention_description:
-											'A phenylalanine derivative of nitrogen mustard with antineoplastic activity. Melphalan alkylates DNA at the N7 position of guanine and induces DNA inter-strand cross-linkages, resulting in the inhibition of DNA and RNA synthesis and cytotoxicity against both dividing and non-dividing tumor cells. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
+										intervention_description: 'A phenylalanine derivative of nitrogen mustard with antineoplastic activity. Melphalan alkylates DNA at the N7 position of guanine and induces DNA inter-strand cross-linkages, resulting in the inhibition of DNA and RNA synthesis and cytotoxicity against both dividing and non-dividing tumor cells. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
 										parents: ['C697'],
 										inclusion_indicator: 'TRIAL',
 										synonyms: ['Melphalanum', 'Sarkolysin'],
@@ -1544,8 +1162,7 @@ describe('<Manual />', () => {
 										intervention_name: 'Etoposide Phosphate',
 										intervention_type: 'Drug',
 										intervention_code: 'C1093',
-										intervention_description:
-											'A phosphate salt of a semisynthetic derivative of podophyllotoxin. Etoposide binds to the enzyme topoisomerase II, inducing double-strand DNA breaks, inhibiting DNA repair, and resulting in decreased DNA synthesis and tumor cell proliferation. Cells in the S and G2 phases of the cell cycle are most sensitive to this agent. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
+										intervention_description: 'A phosphate salt of a semisynthetic derivative of podophyllotoxin. Etoposide binds to the enzyme topoisomerase II, inducing double-strand DNA breaks, inhibiting DNA repair, and resulting in decreased DNA synthesis and tumor cell proliferation. Cells in the S and G2 phases of the cell cycle are most sensitive to this agent. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
 										parents: ['C1331'],
 										inclusion_indicator: 'TRIAL',
 										synonyms: ['Etopophos'],
@@ -1555,15 +1172,10 @@ describe('<Manual />', () => {
 										intervention_name: 'Sodium Thiosulfate',
 										intervention_type: 'Drug',
 										intervention_code: 'C1230',
-										intervention_description:
-											'A water soluble salt and reducing agent that reacts with oxidizing agents.  Although its exact mechanism of action is unknown, thiosulfate likely provides an exogenous source of sulfur, thereby hastening the detoxification of cyanide through the enzyme rhodanese (thiosulfate cyanide sulfurtransferase) which converts cyanide to the relatively nontoxic, excretable thiocyanate ion. In addition, this agent neutralizes the reactive alkylating species of nitrogen mustard, thereby decreasing skin toxicity related to nitrogen mustard extravasation. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
+										intervention_description: 'A water soluble salt and reducing agent that reacts with oxidizing agents.  Although its exact mechanism of action is unknown, thiosulfate likely provides an exogenous source of sulfur, thereby hastening the detoxification of cyanide through the enzyme rhodanese (thiosulfate cyanide sulfurtransferase) which converts cyanide to the relatively nontoxic, excretable thiocyanate ion. In addition, this agent neutralizes the reactive alkylating species of nitrogen mustard, thereby decreasing skin toxicity related to nitrogen mustard extravasation. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
 										parents: ['C26170'],
 										inclusion_indicator: 'TRIAL',
-										synonyms: [
-											'Cyanide Antidote Package',
-											'S-Hydril',
-											'Sodothiol',
-										],
+										synonyms: ['Cyanide Antidote Package', 'S-Hydril', 'Sodothiol'],
 										intervention_category: 'Agent',
 									},
 									{
@@ -1590,8 +1202,7 @@ describe('<Manual />', () => {
 										intervention_name: 'Mannitol',
 										intervention_type: 'Drug',
 										intervention_code: 'C625',
-										intervention_description:
-											'A naturally occurring alcohol found in fruits and vegetables and used as an osmotic diuretic. Mannitol is freely filtered by the glomerulus and poorly reabsorbed from the renal tubule, thereby causing an increase in osmolarity of the glomerular filtrate. An increase in osmolarity limits tubular reabsorption of water and inhibits the renal tubular reabsorption of sodium, chloride, and other solutes, thereby promoting diuresis. In addition, mannitol elevates blood plasma osmolarity, resulting in enhanced flow of water from tissues into interstitial fluid and plasma. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
+										intervention_description: 'A naturally occurring alcohol found in fruits and vegetables and used as an osmotic diuretic. Mannitol is freely filtered by the glomerulus and poorly reabsorbed from the renal tubule, thereby causing an increase in osmolarity of the glomerular filtrate. An increase in osmolarity limits tubular reabsorption of water and inhibits the renal tubular reabsorption of sodium, chloride, and other solutes, thereby promoting diuresis. In addition, mannitol elevates blood plasma osmolarity, resulting in enhanced flow of water from tissues into interstitial fluid and plasma. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
 										parents: ['C49187'],
 										inclusion_indicator: 'TRIAL',
 										synonyms: ['Osmitrol', 'Resectisol'],
@@ -1601,8 +1212,7 @@ describe('<Manual />', () => {
 										intervention_name: 'Etoposide',
 										intervention_type: 'Drug',
 										intervention_code: 'C491',
-										intervention_description:
-											'A semisynthetic derivative of podophyllotoxin, a substance extracted from the mandrake root Podophyllum peltatum.  Possessing potent antineoplastic properties, etoposide binds to and inhibits topoisomerase II and its function in ligating cleaved DNA molecules, resulting in the accumulation of single- or double-strand DNA breaks, the inhibition of DNA replication and transcription, and apoptotic cell death.  Etoposide acts primarily in the G2 and S phases of the cell cycle. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
+										intervention_description: 'A semisynthetic derivative of podophyllotoxin, a substance extracted from the mandrake root Podophyllum peltatum.  Possessing potent antineoplastic properties, etoposide binds to and inhibits topoisomerase II and its function in ligating cleaved DNA molecules, resulting in the accumulation of single- or double-strand DNA breaks, the inhibition of DNA replication and transcription, and apoptotic cell death.  Etoposide acts primarily in the G2 and S phases of the cell cycle. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
 										parents: ['C1331'],
 										inclusion_indicator: 'TRIAL',
 										synonyms: ['Lastet'],
@@ -1616,10 +1226,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C1590', 'C2163', 'C798'],
-										synonyms: [
-											'Platinum Agents',
-											'Platinum-Based Chemotherapy',
-										],
+										synonyms: ['Platinum Agents', 'Platinum-Based Chemotherapy'],
 									},
 									{
 										intervention_code: 'C1590',
@@ -1629,10 +1236,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C274'],
-										synonyms: [
-											'Chemotherapy Alkylating Agents',
-											'Chemotherapy Alkylators',
-										],
+										synonyms: ['Chemotherapy Alkylating Agents', 'Chemotherapy Alkylators'],
 									},
 									{
 										intervention_code: 'C274',
@@ -1642,18 +1246,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C1909'],
-										synonyms: [
-											'Anti-Cancer Agents',
-											'Anti-Tumor Agents',
-											'Anti-Tumor Drugs',
-											'Antineoplastic Drugs',
-											'Antineoplastics',
-											'Antiproliferative Agents',
-											'Antiproliferative Drugs',
-											'Cancer Drug',
-											'Chemotherapeutic Agents, Neoplastic Disease',
-											'Tumor-Specific Treatment Agents',
-										],
+										synonyms: ['Anti-Cancer Agents', 'Anti-Tumor Agents', 'Anti-Tumor Drugs', 'Antineoplastic Drugs', 'Antineoplastics', 'Antiproliferative Agents', 'Antiproliferative Drugs', 'Cancer Drug', 'Chemotherapeutic Agents, Neoplastic Disease', 'Tumor-Specific Treatment Agents'],
 									},
 									{
 										intervention_code: 'C1909',
@@ -1663,20 +1256,11 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C1908'],
-										synonyms: [
-											'Agent',
-											'Drug',
-											'Drug Substance',
-											'Pharmaceutical Agent',
-											'Pharmaceuticals',
-											'Pharmacologic Agent',
-											'Pharmacological Substance',
-										],
+										synonyms: ['Agent', 'Drug', 'Drug Substance', 'Pharmaceutical Agent', 'Pharmaceuticals', 'Pharmacologic Agent', 'Pharmacological Substance'],
 									},
 									{
 										intervention_code: 'C1908',
-										intervention_name:
-											'Drug, Food, Chemical or Biomedical Material',
+										intervention_name: 'Drug, Food, Chemical or Biomedical Material',
 										inclusion_indicator: 'TREE',
 										intervention_type: 'Drug',
 										intervention_description: '',
@@ -1712,13 +1296,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C274'],
-										synonyms: [
-											'Radiation Sensitizers',
-											'Radiation-Sensitizing Agents',
-											'Radiation-Sensitizing Drugs',
-											'Radiosensitizers',
-											'Radiosensitizing Drugs',
-										],
+										synonyms: ['Radiation Sensitizers', 'Radiation-Sensitizing Agents', 'Radiation-Sensitizing Drugs', 'Radiosensitizers', 'Radiosensitizing Drugs'],
 									},
 									{
 										intervention_code: 'C697',
@@ -1788,10 +1366,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C471'],
-										synonyms: [
-											'DNA Topoisomerase Inhibitors',
-											'Topoisomerase Inhibitors',
-										],
+										synonyms: ['DNA Topoisomerase Inhibitors', 'Topoisomerase Inhibitors'],
 									},
 									{
 										intervention_code: 'C471',
@@ -1801,11 +1376,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C1909'],
-										synonyms: [
-											'Enzyme Antagonist',
-											'Enzyme Inhibitor Agent',
-											'Enzyme Inhibitor Drug',
-										],
+										synonyms: ['Enzyme Antagonist', 'Enzyme Inhibitor Agent', 'Enzyme Inhibitor Drug'],
 									},
 									{
 										intervention_code: 'C26170',
@@ -1825,11 +1396,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'NONE',
 										parents: ['C49236'],
-										synonyms: [
-											'Supportive Therapy',
-											'Symptom Management',
-											'Therapy, Supportive',
-										],
+										synonyms: ['Supportive Therapy', 'Symptom Management', 'Therapy, Supportive'],
 									},
 									{
 										intervention_code: 'C49236',
@@ -1839,13 +1406,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'NONE',
 										parents: ['C25218'],
-										synonyms: [
-											'TX',
-											'Therapeutic Interventions',
-											'Therapeutic Method',
-											'Therapeutic Technique',
-											'Therapy',
-										],
+										synonyms: ['TX', 'Therapeutic Interventions', 'Therapeutic Method', 'Therapeutic Technique', 'Therapy'],
 									},
 									{
 										intervention_code: 'C25218',
@@ -1855,11 +1416,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'NONE',
 										parents: ['C16203'],
-										synonyms: [
-											'Intervention',
-											'Intervention Strategies',
-											'Procedure',
-										],
+										synonyms: ['Intervention', 'Intervention Strategies', 'Procedure'],
 									},
 									{
 										intervention_code: 'C16203',
@@ -1909,13 +1466,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'NONE',
 										parents: ['C25218'],
-										synonyms: [
-											'Lab Test',
-											'Lab Tests',
-											'Laboratory Test',
-											'Test',
-											'Tests',
-										],
+										synonyms: ['Lab Test', 'Lab Tests', 'Laboratory Test', 'Test', 'Tests'],
 									},
 									{
 										intervention_code: 'C49187',
@@ -1976,44 +1527,38 @@ describe('<Manual />', () => {
 						outcome_measures: [
 							{
 								name: 'Incidence of toxicity according to CTCAE version 4.0',
-								description:
-									'The incidence of adverse events together with the 95% confidence interval will be reported.',
+								description: 'The incidence of adverse events together with the 95% confidence interval will be reported.',
 								timeframe: 'Up to 12 weeks',
 								type_code: 'SECONDARY',
 							},
 							{
 								name: 'HRQoL measured using EuroQol health questionnaire-5-Dimension (EQ-5D)',
-								description:
-									'Descriptive statistics will be primarily used to summarize the scored scales. The 5-item index score from EQ-5D is transformed into a utility score between 0, “Worst health state,” and 1, “Best health state.” The index score or the cost-utility equation can be used in the quality adjusted survival analysis depending on the health state(s) of interest.',
+								description: 'Descriptive statistics will be primarily used to summarize the scored scales. The 5-item index score from EQ-5D is transformed into a utility score between 0, “Worst health state,” and 1, “Best health state.” The index score or the cost-utility equation can be used in the quality adjusted survival analysis depending on the health state(s) of interest.',
 								timeframe: 'Up to 3 years',
 								type_code: 'SECONDARY',
 							},
 							{
 								name: 'Response rate (RR) (defined as complete response and partial response)',
-								description:
-									'RR will be measured according to the modified Response Evaluation Criteria in Solid Tumors (RECIST) 1.1.',
+								description: 'RR will be measured according to the modified Response Evaluation Criteria in Solid Tumors (RECIST) 1.1.',
 								timeframe: 'Up to 3 years',
 								type_code: 'SECONDARY',
 							},
 							{
 								name: 'Health-related quality of life (HRQoL) measured using Functional Assessment of Cancer Therapy-General',
-								description:
-									'Descriptive statistics will be primarily used to summarize the scored scales.',
+								description: 'Descriptive statistics will be primarily used to summarize the scored scales.',
 								timeframe: 'Up to 3 years',
 								type_code: 'SECONDARY',
 							},
 							{
 								name: 'Maximum tolerated dose (MTD) of stereotactic radiosurgery (SRS), determined according to incidence of dose limiting toxicity as graded by National Cancer Institute (NCI) Common Toxicity Criteria for Adverse Events (CTCAE) version 4.0',
-								description:
-									'Treatment response will be measured to either reach the maximum tolerated dose or a dose of 30, 27, 24 or 21 Gy total for lesions measuring <=1cm, >1.0 - 2cm, >2.0 – 3.ocm, > 3.0 – 4.0 cm respectively, (whichever comes first) by escalating the dose of radiation beyond palliative doses toward tumoricidal doses.',
+								description: 'Treatment response will be measured to either reach the maximum tolerated dose or a dose of 30, 27, 24 or 21 Gy total for lesions measuring <=1cm, >1.0 - 2cm, >2.0 – 3.ocm, > 3.0 – 4.0 cm respectively, (whichever comes first) by escalating the dose of radiation beyond palliative doses toward tumoricidal doses.',
 								timeframe: 'Up to 90 days',
 								type_code: 'PRIMARY',
 							},
 							{
 								name: 'Overall survival',
 								description: null,
-								timeframe:
-									'The time between the date of SRS and the date of death due to any cause, assessed up to 3 years',
+								timeframe: 'The time between the date of SRS and the date of death due to any cause, assessed up to 3 years',
 								type_code: 'SECONDARY',
 							},
 						],
@@ -2025,16 +1570,12 @@ describe('<Manual />', () => {
 						completion_date: '2022-12-31',
 						completion_date_type_code: 'ANTICIPATED',
 						record_verification_date: '2018-11-21',
-						brief_title:
-							'Stereotactic Radiosurgery in Treating Patients with Brain Metastasis',
-						official_title:
-							'SRS Dose-Escalation Study for Brain Metastasis a Phase I Dose-Escalation Study of Stereotactic Radiosurgery for Brain Metastasis without Whole Brain Radiation',
+						brief_title: 'Stereotactic Radiosurgery in Treating Patients with Brain Metastasis',
+						official_title: 'SRS Dose-Escalation Study for Brain Metastasis a Phase I Dose-Escalation Study of Stereotactic Radiosurgery for Brain Metastasis without Whole Brain Radiation',
 						acronym: null,
 						keywords: null,
-						brief_summary:
-							'This phase I trial studies the side effects and best dose of stereotactic radiosurgery (SRS) in treating patients with brain metastasis. Brain metastases are tumors that have spread to the brain from another place in the body. SRS is a specialized radiation therapy that delivers a single, high dose of radiation directly to the tumor and may kill more tumor cells and cause less damage to normal tissue.',
-						detail_description:
-							'PRIMARY OBJECTIVES:\r\nI. To identify the maximal tolerated doses for single-fraction stereotactic radiosurgery, within 90 days from the date of procedure, in patients with brain metastases who have not undergone prior brain irradiation.\r\n\r\nSECONDARY OBJECTIVES:\r\nI. To evaluate the overall survival (OS), which is defined as the time between date of SRS and the date of death due to any cause.\r\nII. To evaluate time to progression (TTP), which is defined as the time between date of SRS and date of documented progression.\r\nIII. To evaluate the local progression rate of the target lesion.\r\nIV. To evaluate the response rate, consisting of complete response (CR) and partial response according to the modified Response Evaluation Criteria in Solid Tumors (RECIST) 1.1.\r\nV. To measure the improvement in health-related quality of life (HRQoL).\r\nVI. To identify the chronic toxicity for single-fraction stereotactic radiosurgery, after 90 days up to 3 years from the date of procedure, in patients with brain metastases who have not undergone prior brain irradiation.\r\nVII. To perform subgroup analysis of the variables listed above.\r\n\r\nOUTLINE: This is a dose escalation study.\r\n\r\nPatients undergo SRS, typically on day 1 only. Multiple sessions are allowed, as long as all lesions are treated within 14 days. \r\n\r\nAfter completion of study treatment, patients are followed up every 3 months for the first 12 months and then every 6 months until 3 years.',
+						brief_summary: 'This phase I trial studies the side effects and best dose of stereotactic radiosurgery (SRS) in treating patients with brain metastasis. Brain metastases are tumors that have spread to the brain from another place in the body. SRS is a specialized radiation therapy that delivers a single, high dose of radiation directly to the tumor and may kill more tumor cells and cause less damage to normal tissue.',
+						detail_description: 'PRIMARY OBJECTIVES:\r\nI. To identify the maximal tolerated doses for single-fraction stereotactic radiosurgery, within 90 days from the date of procedure, in patients with brain metastases who have not undergone prior brain irradiation.\r\n\r\nSECONDARY OBJECTIVES:\r\nI. To evaluate the overall survival (OS), which is defined as the time between date of SRS and the date of death due to any cause.\r\nII. To evaluate time to progression (TTP), which is defined as the time between date of SRS and date of documented progression.\r\nIII. To evaluate the local progression rate of the target lesion.\r\nIV. To evaluate the response rate, consisting of complete response (CR) and partial response according to the modified Response Evaluation Criteria in Solid Tumors (RECIST) 1.1.\r\nV. To measure the improvement in health-related quality of life (HRQoL).\r\nVI. To identify the chronic toxicity for single-fraction stereotactic radiosurgery, after 90 days up to 3 years from the date of procedure, in patients with brain metastases who have not undergone prior brain irradiation.\r\nVII. To perform subgroup analysis of the variables listed above.\r\n\r\nOUTLINE: This is a dose escalation study.\r\n\r\nPatients undergo SRS, typically on day 1 only. Multiple sessions are allowed, as long as all lesions are treated within 14 days. \r\n\r\nAfter completion of study treatment, patients are followed up every 3 months for the first 12 months and then every 6 months until 3 years.',
 						classification_code: 'SAFETY',
 						interventional_model: 'Single Group',
 						study_source: 'Institutional',
@@ -2142,8 +1683,7 @@ describe('<Manual />', () => {
 								inclusion_indicator: 'TRIAL',
 								lead_disease_indicator: 'YES',
 								nci_thesaurus_concept_id: 'C5816',
-								preferred_name:
-									'Metastatic Malignant Neoplasm in the Adult Brain',
+								preferred_name: 'Metastatic Malignant Neoplasm in the Adult Brain',
 								display_name: 'Metastatic Malignant Neoplasm in the Brain',
 								paths: [
 									{
@@ -2163,16 +1703,7 @@ describe('<Manual />', () => {
 									},
 								],
 								type: ['subtype'],
-								synonyms: [
-									'Brain Metastases, Adult',
-									'Metastasis to the Adult Brain',
-									'Metastatic Malignant Neoplasm in the Adult Brain',
-									'Metastatic Malignant Neoplasm to the Adult Brain',
-									'Metastatic Neoplasm to the Adult Brain',
-									'Metastatic Tumor to the Adult Brain',
-									'Secondary Malignant Neoplasm to the Adult Brain',
-									'Secondary Malignant Tumor to the Adult Brain',
-								],
+								synonyms: ['Brain Metastases, Adult', 'Metastasis to the Adult Brain', 'Metastatic Malignant Neoplasm in the Adult Brain', 'Metastatic Malignant Neoplasm to the Adult Brain', 'Metastatic Neoplasm to the Adult Brain', 'Metastatic Tumor to the Adult Brain', 'Secondary Malignant Neoplasm to the Adult Brain', 'Secondary Malignant Tumor to the Adult Brain'],
 								parents: ['C5115', 'C3813'],
 							},
 							{
@@ -2193,18 +1724,7 @@ describe('<Manual />', () => {
 								display_name: 'Other Neoplasm',
 								preferred_name: 'Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Neoplasia',
-									'Neoplasm',
-									'Neoplasm, NOS',
-									'Neoplasms, NOS',
-									'Neoplastic Disease',
-									'Neoplastic Growth',
-									'Tumor, NOS',
-									'neoplasia',
-									'neoplasm',
-									'tumor',
-								],
+								synonyms: ['Neoplasia', 'Neoplasm', 'Neoplasm, NOS', 'Neoplasms, NOS', 'Neoplastic Disease', 'Neoplastic Growth', 'Tumor, NOS', 'neoplasia', 'neoplasm', 'tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C7062',
@@ -2234,29 +1754,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Central Nervous System Neoplasm',
 								preferred_name: 'Malignant Central Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'CNS Cancer',
-									'CNS Malignant Neoplasms',
-									'CNS Neoplasms, Malignant',
-									'Cancer of CNS',
-									'Cancer of Central Nervous System',
-									'Cancer of the CNS',
-									'Cancer of the Central Nervous System',
-									'Central Nervous System Cancer',
-									'Central Nervous System Neoplasms, Malignant',
-									'Malignant CNS Neoplasm',
-									'Malignant CNS Neoplasms',
-									'Malignant CNS Tumor',
-									'Malignant Central Nervous System Tumor',
-									'Malignant Neoplasm of CNS',
-									'Malignant Neoplasm of Central Nervous System',
-									'Malignant Neoplasm of the CNS',
-									'Malignant Neoplasm of the Central Nervous System',
-									'Malignant Tumor of CNS',
-									'Malignant Tumor of Central Nervous System',
-									'Malignant Tumor of the CNS',
-									'Malignant Tumor of the Central Nervous System',
-								],
+								synonyms: ['CNS Cancer', 'CNS Malignant Neoplasms', 'CNS Neoplasms, Malignant', 'Cancer of CNS', 'Cancer of Central Nervous System', 'Cancer of the CNS', 'Cancer of the Central Nervous System', 'Central Nervous System Cancer', 'Central Nervous System Neoplasms, Malignant', 'Malignant CNS Neoplasm', 'Malignant CNS Neoplasms', 'Malignant CNS Tumor', 'Malignant Central Nervous System Tumor', 'Malignant Neoplasm of CNS', 'Malignant Neoplasm of Central Nervous System', 'Malignant Neoplasm of the CNS', 'Malignant Neoplasm of the Central Nervous System', 'Malignant Tumor of CNS', 'Malignant Tumor of Central Nervous System', 'Malignant Tumor of the CNS', 'Malignant Tumor of the Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C9305',
@@ -2266,20 +1764,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Neoplasm',
 								preferred_name: 'Malignant Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'CA',
-									'Cancer',
-									'Malignancy',
-									'Malignant Growth',
-									'Malignant Neoplastic Disease',
-									'Malignant Tumor',
-									'NEOPLASM, MALIGNANT',
-									'Neoplasm, malignant',
-									'Tumor, malignant, NOS',
-									'Unclassified tumor, malignant',
-									'cancer',
-									'malignancy',
-								],
+								synonyms: ['CA', 'Cancer', 'Malignancy', 'Malignant Growth', 'Malignant Neoplastic Disease', 'Malignant Tumor', 'NEOPLASM, MALIGNANT', 'Neoplasm, malignant', 'Tumor, malignant, NOS', 'Unclassified tumor, malignant', 'cancer', 'malignancy'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C2934',
@@ -2289,10 +1774,7 @@ describe('<Manual />', () => {
 								display_name: 'Central Nervous System Disorder',
 								preferred_name: 'Central Nervous System Disorder',
 								type: ['subtype'],
-								synonyms: [
-									'Central Nervous System Disease',
-									'Disorder of Central Nervous System',
-								],
+								synonyms: ['Central Nervous System Disease', 'Disorder of Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C2991',
@@ -2302,23 +1784,7 @@ describe('<Manual />', () => {
 								display_name: 'Other Disease',
 								preferred_name: 'Disease or Disorder',
 								type: ['maintype'],
-								synonyms: [
-									'Diagnosis',
-									'Disease',
-									'Disease or Disorder',
-									'Disease or Disorder, Non-Neoplastic',
-									'Diseases',
-									'Diseases and Disorders',
-									'Disorder',
-									'Disorders',
-									'condition',
-									'disease',
-									'disease term',
-									'disease type',
-									'disease_term',
-									'disease_type',
-									'disorder',
-								],
+								synonyms: ['Diagnosis', 'Disease', 'Disease or Disorder', 'Disease or Disorder, Non-Neoplastic', 'Diseases', 'Diseases and Disorders', 'Disorder', 'Disorders', 'condition', 'disease', 'disease term', 'disease type', 'disease_term', 'disease_type', 'disorder'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C36263',
@@ -2335,20 +1801,10 @@ describe('<Manual />', () => {
 								inclusion_indicator: 'TREE',
 								parents: ['C4788', 'C36263'],
 								lead_disease_indicator: 'YES',
-								display_name:
-									'Metastatic Malignant Neoplasm in the Nervous System',
-								preferred_name:
-									'Metastatic Malignant Neoplasm in the Nervous System',
+								display_name: 'Metastatic Malignant Neoplasm in the Nervous System',
+								preferred_name: 'Metastatic Malignant Neoplasm in the Nervous System',
 								type: ['subtype'],
-								synonyms: [
-									'Metastases to Nervous System',
-									'Metastasis to the Nervous System',
-									'Metastatic Malignant Neoplasm to the Nervous System',
-									'Metastatic Neoplasm to the Nervous System',
-									'Metastatic Tumor to the Nervous System',
-									'Secondary Malignant Neoplasm to the Nervous System',
-									'Secondary Malignant Tumor to the Nervous System',
-								],
+								synonyms: ['Metastases to Nervous System', 'Metastasis to the Nervous System', 'Metastatic Malignant Neoplasm to the Nervous System', 'Metastatic Neoplasm to the Nervous System', 'Metastatic Tumor to the Nervous System', 'Secondary Malignant Neoplasm to the Nervous System', 'Secondary Malignant Tumor to the Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C7057',
@@ -2368,17 +1824,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Brain Tumor',
 								preferred_name: 'Malignant Brain Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Brain Cancer',
-									'Brain Neoplasms, Malignant',
-									'Cancer of Brain',
-									'Cancer of the Brain',
-									'Malignant Brain Neoplasm',
-									'Malignant Neoplasm of Brain',
-									'Malignant Neoplasm of the Brain',
-									'Malignant Tumor of Brain',
-									'Malignant Tumor of the Brain',
-								],
+								synonyms: ['Brain Cancer', 'Brain Neoplasms, Malignant', 'Cancer of Brain', 'Cancer of the Brain', 'Malignant Brain Neoplasm', 'Malignant Neoplasm of Brain', 'Malignant Neoplasm of the Brain', 'Malignant Tumor of Brain', 'Malignant Tumor of the Brain'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C7057',
@@ -2398,13 +1844,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Brain Neoplasm',
 								preferred_name: 'Malignant Adult Brain Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Brain Neoplasms, Adult, Malignant',
-									'Malignant Adult Brain Neoplasm',
-									'Malignant Adult Brain Tumor',
-									'Malignant Tumor of Adult Brain',
-									'Malignant Tumor of the Adult Brain',
-								],
+								synonyms: ['Brain Neoplasms, Adult, Malignant', 'Malignant Adult Brain Neoplasm', 'Malignant Adult Brain Tumor', 'Malignant Tumor of Adult Brain', 'Malignant Tumor of the Adult Brain'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C9293',
@@ -2414,21 +1854,7 @@ describe('<Manual />', () => {
 								display_name: 'Brain/Spinal Cord Tumor',
 								preferred_name: 'Central Nervous System Neoplasm',
 								type: ['maintype', 'subtype'],
-								synonyms: [
-									'CNS Neoplasm',
-									'CNS Tumor',
-									'CNS tumor',
-									'Central Nervous System Neoplasm',
-									'Central Nervous System Tumor',
-									'Neoplasm of CNS',
-									'Neoplasm of Central Nervous System',
-									'Neoplasm of the Central Nervous System',
-									'Tumor of CNS',
-									'Tumor of Central Nervous System',
-									'Tumor of the CNS',
-									'Tumor of the Central Nervous System',
-									'central nervous system tumor',
-								],
+								synonyms: ['CNS Neoplasm', 'CNS Tumor', 'CNS tumor', 'Central Nervous System Neoplasm', 'Central Nervous System Tumor', 'Neoplasm of CNS', 'Neoplasm of Central Nervous System', 'Neoplasm of the Central Nervous System', 'Tumor of CNS', 'Tumor of Central Nervous System', 'Tumor of the CNS', 'Tumor of the Central Nervous System', 'central nervous system tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C2991',
@@ -2438,23 +1864,7 @@ describe('<Manual />', () => {
 								display_name: 'Other Disease',
 								preferred_name: 'Disease or Disorder',
 								type: ['maintype'],
-								synonyms: [
-									'Diagnosis',
-									'Disease',
-									'Disease or Disorder',
-									'Disease or Disorder, Non-Neoplastic',
-									'Diseases',
-									'Diseases and Disorders',
-									'Disorder',
-									'Disorders',
-									'condition',
-									'disease',
-									'disease term',
-									'disease type',
-									'disease_term',
-									'disease_type',
-									'disorder',
-								],
+								synonyms: ['Diagnosis', 'Disease', 'Disease or Disorder', 'Disease or Disorder, Non-Neoplastic', 'Diseases', 'Diseases and Disorders', 'Disorder', 'Disorders', 'condition', 'disease', 'disease term', 'disease type', 'disease_term', 'disease_type', 'disorder'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4788',
@@ -2464,14 +1874,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Nervous System Neoplasm',
 								preferred_name: 'Malignant Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Malignant Neoplasm of Nervous System',
-									'Malignant Neoplasm of the Nervous System',
-									'Malignant Nervous System Tumor',
-									'Malignant Tumor of Nervous System',
-									'Malignant Tumor of the Nervous System',
-									'Nervous System Neoplasms, Malignant',
-								],
+								synonyms: ['Malignant Neoplasm of Nervous System', 'Malignant Neoplasm of the Nervous System', 'Malignant Nervous System Tumor', 'Malignant Tumor of Nervous System', 'Malignant Tumor of the Nervous System', 'Nervous System Neoplasms, Malignant'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3261',
@@ -2481,15 +1884,7 @@ describe('<Manual />', () => {
 								display_name: 'Metastatic Neoplasm',
 								preferred_name: 'Metastatic Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Metastasis',
-									'Metastatic',
-									'Metastatic Disease',
-									'Metastatic Tumor',
-									'Neoplasm, metastatic',
-									'Tumor, metastatic',
-									'metastasis',
-								],
+								synonyms: ['Metastasis', 'Metastatic', 'Metastatic Disease', 'Metastatic Tumor', 'Neoplasm, metastatic', 'Tumor, metastatic', 'metastasis'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C26835',
@@ -2499,12 +1894,7 @@ describe('<Manual />', () => {
 								display_name: 'Nervous System Disorder',
 								preferred_name: 'Nervous System Disorder',
 								type: ['subtype'],
-								synonyms: [
-									'Disorder of Nervous System',
-									'Neurologic Disorder',
-									'Neurological Disorder',
-									'Unspecified Nervous System Problem',
-								],
+								synonyms: ['Disorder of Nervous System', 'Neurologic Disorder', 'Neurological Disorder', 'Unspecified Nervous System Problem'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C96413',
@@ -2534,12 +1924,7 @@ describe('<Manual />', () => {
 								display_name: 'Secondary Neoplasm',
 								preferred_name: 'Secondary Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Neoplasm, secondary',
-									'Secondary Tumor',
-									'Tumor, secondary',
-									'secondary tumor',
-								],
+								synonyms: ['Neoplasm, secondary', 'Secondary Tumor', 'Tumor, secondary', 'secondary tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3813',
@@ -2549,16 +1934,7 @@ describe('<Manual />', () => {
 								display_name: 'Metastatic Malignant Neoplasm to the Brain',
 								preferred_name: 'Metastatic Malignant Neoplasm in the Brain',
 								type: ['subtype'],
-								synonyms: [
-									'Brain Metastases',
-									'Brain Metastasis',
-									'Metast. to brain parenchyma, NOS',
-									'Metastases to brain parenchyma, NOS',
-									'Metastatic Malignant Neoplasm in the Brain',
-									'Metastatic Neoplasm to the Brain',
-									'Metastatic Tumor to the Brain',
-									'brain metastasis',
-								],
+								synonyms: ['Brain Metastases', 'Brain Metastasis', 'Metast. to brain parenchyma, NOS', 'Metastases to brain parenchyma, NOS', 'Metastatic Malignant Neoplasm in the Brain', 'Metastatic Neoplasm to the Brain', 'Metastatic Tumor to the Brain', 'brain metastasis'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C5114',
@@ -2568,12 +1944,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Intracranial Neoplasm',
 								preferred_name: 'Malignant Intracranial Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Intracranial Cancer',
-									'Intracranial Neoplasms, Malignant',
-									'Intracranial Tumors, Malignant',
-									'Malignant Intracranial Tumor',
-								],
+								synonyms: ['Intracranial Cancer', 'Intracranial Neoplasms, Malignant', 'Intracranial Tumors, Malignant', 'Malignant Intracranial Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3268',
@@ -2583,15 +1954,7 @@ describe('<Manual />', () => {
 								display_name: 'Nervous System Tumor',
 								preferred_name: 'Nervous System Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Neoplasm of Nervous System',
-									'Neoplasm of the Nervous System',
-									'Nervous System Neoplasm',
-									'Nervous System Neoplasms',
-									'Nervous System Tumour',
-									'Tumor of Nervous System',
-									'Tumor of the Nervous System',
-								],
+								synonyms: ['Neoplasm of Nervous System', 'Neoplasm of the Nervous System', 'Nervous System Neoplasm', 'Nervous System Neoplasms', 'Nervous System Tumour', 'Tumor of Nervous System', 'Tumor of the Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C5478',
@@ -2601,10 +1964,7 @@ describe('<Manual />', () => {
 								display_name: 'Adult Intracranial Neoplasm',
 								preferred_name: 'Adult Intracranial Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Adult Intracranial Neoplasms',
-									'Adult Intracranial Tumor',
-								],
+								synonyms: ['Adult Intracranial Neoplasms', 'Adult Intracranial Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4968',
@@ -2614,12 +1974,7 @@ describe('<Manual />', () => {
 								display_name: 'Secondary Malignant Neoplasm',
 								preferred_name: 'Secondary Malignant Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Development of SMN',
-									'Secondary Cancer',
-									'Secondary Malignancy',
-									'secondary cancer',
-								],
+								synonyms: ['Development of SMN', 'Secondary Cancer', 'Secondary Malignancy', 'secondary cancer'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3262',
@@ -2629,18 +1984,7 @@ describe('<Manual />', () => {
 								display_name: 'Other Neoplasm',
 								preferred_name: 'Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Neoplasia',
-									'Neoplasm',
-									'Neoplasm, NOS',
-									'Neoplasms, NOS',
-									'Neoplastic Disease',
-									'Neoplastic Growth',
-									'Tumor, NOS',
-									'neoplasia',
-									'neoplasm',
-									'tumor',
-								],
+								synonyms: ['Neoplasia', 'Neoplasm', 'Neoplasm, NOS', 'Neoplasms, NOS', 'Neoplastic Disease', 'Neoplastic Growth', 'Tumor, NOS', 'neoplasia', 'neoplasm', 'tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4953',
@@ -2650,12 +1994,7 @@ describe('<Manual />', () => {
 								display_name: 'Intracranial Neoplasm',
 								preferred_name: 'Intracranial Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Intracranial Central Nervous System Neoplasm',
-									'Intracranial Central Nervous System Tumor',
-									'Intracranial Tumor',
-									'intracranial tumor',
-								],
+								synonyms: ['Intracranial Central Nervous System Neoplasm', 'Intracranial Central Nervous System Tumor', 'Intracranial Tumor', 'intracranial tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C2907',
@@ -2665,15 +2004,7 @@ describe('<Manual />', () => {
 								display_name: 'Brain Tumor',
 								preferred_name: 'Brain Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Brain Neoplasm',
-									'Brain Neoplasms',
-									'Neoplasm of Brain',
-									'Neoplasm of the Brain',
-									'Tumor of Brain',
-									'Tumor of the Brain',
-									'brain tumor',
-								],
+								synonyms: ['Brain Neoplasm', 'Brain Neoplasms', 'Neoplasm of Brain', 'Neoplasm of the Brain', 'Tumor of Brain', 'Tumor of the Brain', 'brain tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C7710',
@@ -2683,15 +2014,7 @@ describe('<Manual />', () => {
 								display_name: 'Brain Neoplasm',
 								preferred_name: 'Adult Brain Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Adult Brain Neoplasm',
-									'Adult Brain Tumor',
-									'Brain Neoplasms, Adult',
-									'Neoplasm of Adult Brain',
-									'Neoplasm of the Adult Brain',
-									'Tumor of Adult Brain',
-									'Tumor of the Adult Brain',
-								],
+								synonyms: ['Adult Brain Neoplasm', 'Adult Brain Tumor', 'Brain Neoplasms, Adult', 'Neoplasm of Adult Brain', 'Neoplasm of the Adult Brain', 'Tumor of Adult Brain', 'Tumor of the Adult Brain'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C9292',
@@ -2701,12 +2024,7 @@ describe('<Manual />', () => {
 								display_name: 'Solid Tumor',
 								preferred_name: 'Solid Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Solid Neoplasm',
-									'Solid Tumour',
-									'Solid tumor, NOS',
-									'solid tumor',
-								],
+								synonyms: ['Solid Neoplasm', 'Solid Tumour', 'Solid tumor, NOS', 'solid tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C5131',
@@ -2716,48 +2034,17 @@ describe('<Manual />', () => {
 								display_name: 'Central Nervous System Neoplasm',
 								preferred_name: 'Adult Central Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Adult CNS Neoplasm',
-									'Adult CNS Neoplasms',
-									'Adult CNS Tumor',
-									'Adult CNS Tumors',
-									'Adult Central Nervous System Neoplasm',
-									'Adult Central Nervous System Neoplasms',
-									'Adult Central Nervous System Tumor',
-									'Adult Central Nervous System Tumors',
-									'Neoplasm of Adult CNS',
-									'Neoplasm of Adult Central Nervous System',
-									'Neoplasm of the Adult CNS',
-									'Neoplasm of the Adult Central Nervous System',
-									'Tumor of Adult CNS',
-									'Tumor of Adult Central Nervous System',
-									'Tumor of the Adult CNS',
-									'Tumor of the Adult Central Nervous System',
-								],
+								synonyms: ['Adult CNS Neoplasm', 'Adult CNS Neoplasms', 'Adult CNS Tumor', 'Adult CNS Tumors', 'Adult Central Nervous System Neoplasm', 'Adult Central Nervous System Neoplasms', 'Adult Central Nervous System Tumor', 'Adult Central Nervous System Tumors', 'Neoplasm of Adult CNS', 'Neoplasm of Adult Central Nervous System', 'Neoplasm of the Adult CNS', 'Neoplasm of the Adult Central Nervous System', 'Tumor of Adult CNS', 'Tumor of Adult Central Nervous System', 'Tumor of the Adult CNS', 'Tumor of the Adult Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4015',
 								inclusion_indicator: 'TREE',
 								parents: ['C4627', 'C8547'],
 								lead_disease_indicator: 'YES',
-								display_name:
-									'Metastatic Malignant Neoplasm to the Central Nervous System',
-								preferred_name:
-									'Metastatic Malignant Neoplasm in the Central Nervous System',
+								display_name: 'Metastatic Malignant Neoplasm to the Central Nervous System',
+								preferred_name: 'Metastatic Malignant Neoplasm in the Central Nervous System',
 								type: ['subtype'],
-								synonyms: [
-									'CNS Metastases',
-									'CNS Metastasis',
-									'CNS metastasis',
-									'Central Nervous System Metastases',
-									'Central Nervous System Metastasis',
-									'Metastatic Malignant Neoplasm in the Central Nervous System',
-									'Metastatic Neoplasm to the CNS',
-									'Metastatic Neoplasm to the Central Nervous System',
-									'Metastatic Tumor to the CNS',
-									'Metastatic Tumor to the Central Nervous System',
-									'central nervous system metastasis',
-								],
+								synonyms: ['CNS Metastases', 'CNS Metastasis', 'CNS metastasis', 'Central Nervous System Metastases', 'Central Nervous System Metastasis', 'Metastatic Malignant Neoplasm in the Central Nervous System', 'Metastatic Neoplasm to the CNS', 'Metastatic Neoplasm to the Central Nervous System', 'Metastatic Tumor to the CNS', 'Metastatic Tumor to the Central Nervous System', 'central nervous system metastasis'],
 							},
 						],
 						biomarkers: null,
@@ -2778,20 +2065,17 @@ describe('<Manual />', () => {
 								{
 									display_order: 1,
 									inclusion_indicator: true,
-									description:
-										'Biopsy-proven non-hematopoietic malignancy, except for small cell lung cancer, germ cell cancer, or unknown primary tumor',
+									description: 'Biopsy-proven non-hematopoietic malignancy, except for small cell lung cancer, germ cell cancer, or unknown primary tumor',
 								},
 								{
 									display_order: 2,
 									inclusion_indicator: true,
-									description:
-										'Radiographic evidence by magnetic resonance imaging (MRI) of brain metastasis (if patient is unstable to tolerate contrast, an MRI without contrast is acceptable)',
+									description: 'Radiographic evidence by magnetic resonance imaging (MRI) of brain metastasis (if patient is unstable to tolerate contrast, an MRI without contrast is acceptable)',
 								},
 								{
 									display_order: 3,
 									inclusion_indicator: true,
-									description:
-										'All brain metastases must be outside the brain stem (midbrain, pons and medulla)',
+									description: 'All brain metastases must be outside the brain stem (midbrain, pons and medulla)',
 								},
 								{
 									display_order: 4,
@@ -2801,44 +2085,37 @@ describe('<Manual />', () => {
 								{
 									display_order: 5,
 									inclusion_indicator: true,
-									description:
-										'The maximum diameter of any lesion must be less than 4.0 cm',
+									description: 'The maximum diameter of any lesion must be less than 4.0 cm',
 								},
 								{
 									display_order: 6,
 									inclusion_indicator: true,
-									description:
-										'Previous treatment with surgery, radiation, chemotherapy, immunotherapy or any targeted agents are allowed provided that:\r\n* Systemic therapy was administered >= 7 days before SRS\r\n* Radiation was not to the brain\r\n* Surgery to the brain was >= 7 days prior to SRS and there remains at least one additional brain metastasis that can be targeted with SRS',
+									description: 'Previous treatment with surgery, radiation, chemotherapy, immunotherapy or any targeted agents are allowed provided that:\r\n* Systemic therapy was administered >= 7 days before SRS\r\n* Radiation was not to the brain\r\n* Surgery to the brain was >= 7 days prior to SRS and there remains at least one additional brain metastasis that can be targeted with SRS',
 								},
 								{
 									display_order: 7,
 									inclusion_indicator: true,
-									description:
-										'Eastern Cooperative Oncology Group (ECOG) performance score of 2 or better',
+									description: 'Eastern Cooperative Oncology Group (ECOG) performance score of 2 or better',
 								},
 								{
 									display_order: 8,
 									inclusion_indicator: true,
-									description:
-										'Women of child-bearing potential and men must agree to use adequate contraception (hormonal or barrier method of birth control; abstinence) prior to study entry and for the duration of protocol therapy\r\n* A female of child-bearing potential is any woman (regardless of sexual orientation, having undergone a tubal ligation, or remaining celibate by choice) who meets the following criteria:\r\n** Has not undergone a hysterectomy or bilateral oophorectomy OR\r\n** Has not been naturally postmenopausal for at least 12 consecutive months (i.e., has had menses at any time in the preceding 12 consecutive months)',
+									description: 'Women of child-bearing potential and men must agree to use adequate contraception (hormonal or barrier method of birth control; abstinence) prior to study entry and for the duration of protocol therapy\r\n* A female of child-bearing potential is any woman (regardless of sexual orientation, having undergone a tubal ligation, or remaining celibate by choice) who meets the following criteria:\r\n** Has not undergone a hysterectomy or bilateral oophorectomy OR\r\n** Has not been naturally postmenopausal for at least 12 consecutive months (i.e., has had menses at any time in the preceding 12 consecutive months)',
 								},
 								{
 									display_order: 9,
 									inclusion_indicator: true,
-									description:
-										'Ability to understand and the willingness to sign a written informed consent',
+									description: 'Ability to understand and the willingness to sign a written informed consent',
 								},
 								{
 									display_order: 10,
 									inclusion_indicator: false,
-									description:
-										'Patients who have had chemotherapy, immunotherapy or any targeted therapy within 7 days prior to anticipated SRS treatment date or those planning for systemic therapy within 7 days following the protocol treatment',
+									description: 'Patients who have had chemotherapy, immunotherapy or any targeted therapy within 7 days prior to anticipated SRS treatment date or those planning for systemic therapy within 7 days following the protocol treatment',
 								},
 								{
 									display_order: 11,
 									inclusion_indicator: false,
-									description:
-										'Patients had craniotomy and surgery to the brain within 7 days from the date of SRS',
+									description: 'Patients had craniotomy and surgery to the brain within 7 days from the date of SRS',
 								},
 								{
 									display_order: 12,
@@ -2848,8 +2125,7 @@ describe('<Manual />', () => {
 								{
 									display_order: 13,
 									inclusion_indicator: false,
-									description:
-										'Patients with a contraindication to MRI such as implanted metal devices or foreign bodies or severe claustrophobia',
+									description: 'Patients with a contraindication to MRI such as implanted metal devices or foreign bodies or severe claustrophobia',
 								},
 								{
 									display_order: 14,
@@ -2859,20 +2135,17 @@ describe('<Manual />', () => {
 								{
 									display_order: 15,
 									inclusion_indicator: false,
-									description:
-										'Uncontrolled intercurrent illness, including but not limited to, ongoing or active infection, symptomatic congestive heart failure, unstable angina pectoris, cardiac arrhythmia',
+									description: 'Uncontrolled intercurrent illness, including but not limited to, ongoing or active infection, symptomatic congestive heart failure, unstable angina pectoris, cardiac arrhythmia',
 								},
 								{
 									display_order: 16,
 									inclusion_indicator: false,
-									description:
-										'Psychiatric illness/social situations that would limit compliance with study requirements',
+									description: 'Psychiatric illness/social situations that would limit compliance with study requirements',
 								},
 								{
 									display_order: 17,
 									inclusion_indicator: false,
-									description:
-										'Patients must not be pregnant at the time of SRS treatment',
+									description: 'Patients must not be pregnant at the time of SRS treatment',
 								},
 							],
 						},
@@ -2881,8 +2154,7 @@ describe('<Manual />', () => {
 							{
 								arm_name: 'Treatment (SRS)',
 								arm_type: 'EXPERIMENTAL',
-								arm_description:
-									'Patients undergo SRS, typically on day 1 only. Multiple sessions are allowed, as long as all lesions are treated within 14 days.',
+								arm_description: 'Patients undergo SRS, typically on day 1 only. Multiple sessions are allowed, as long as all lesions are treated within 14 days.',
 								interventions: [
 									{
 										intervention_name: 'Stereotactic Radiosurgery',
@@ -2891,11 +2163,7 @@ describe('<Manual />', () => {
 										intervention_description: null,
 										parents: ['C15696'],
 										inclusion_indicator: 'TRIAL',
-										synonyms: [
-											'Stereotactic External Beam Irradiation',
-											'Stereotactic Radiation Therapy',
-											'Stereotactic Radiotherapy',
-										],
+										synonyms: ['Stereotactic External Beam Irradiation', 'Stereotactic Radiation Therapy', 'Stereotactic Radiotherapy'],
 										intervention_category: 'Other',
 									},
 									{
@@ -2926,17 +2194,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'NONE',
 										parents: ['C49236'],
-										synonyms: [
-											'Cancer Radiotherapy',
-											'Irradiate',
-											'Irradiated',
-											'Irradiation',
-											'RT',
-											'Radiation',
-											'Radiotherapeutics',
-											'Radiotherapy',
-											'Therapy, Radiation',
-										],
+										synonyms: ['Cancer Radiotherapy', 'Irradiate', 'Irradiated', 'Irradiation', 'RT', 'Radiation', 'Radiotherapeutics', 'Radiotherapy', 'Therapy, Radiation'],
 									},
 									{
 										intervention_code: 'C49236',
@@ -2946,13 +2204,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'NONE',
 										parents: ['C25218'],
-										synonyms: [
-											'TX',
-											'Therapeutic Interventions',
-											'Therapeutic Method',
-											'Therapeutic Technique',
-											'Therapy',
-										],
+										synonyms: ['TX', 'Therapeutic Interventions', 'Therapeutic Method', 'Therapeutic Technique', 'Therapy'],
 									},
 									{
 										intervention_code: 'C25218',
@@ -2962,11 +2214,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'NONE',
 										parents: ['C16203'],
-										synonyms: [
-											'Intervention',
-											'Intervention Strategies',
-											'Procedure',
-										],
+										synonyms: ['Intervention', 'Intervention Strategies', 'Procedure'],
 									},
 									{
 										intervention_code: 'C16203',
@@ -3006,12 +2254,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'NONE',
 										parents: ['C25218'],
-										synonyms: [
-											'Operation',
-											'Surgery',
-											'Surgical Interventions',
-											'Surgical Procedures',
-										],
+										synonyms: ['Operation', 'Surgery', 'Surgical Interventions', 'Surgical Procedures'],
 									},
 									{
 										intervention_code: 'C64982',
@@ -3031,11 +2274,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'NONE',
 										parents: ['C49236'],
-										synonyms: [
-											'Supportive Therapy',
-											'Symptom Management',
-											'Therapy, Supportive',
-										],
+										synonyms: ['Supportive Therapy', 'Symptom Management', 'Therapy, Supportive'],
 									},
 								],
 							},
@@ -3102,19 +2341,11 @@ describe('<Manual />', () => {
 						completion_date: null,
 						completion_date_type_code: null,
 						record_verification_date: '2007-05-01',
-						brief_title:
-							'AQ4N in Combination With Radiotherapy and Temozolomide in Subjects With Newly Diagnosed Glioblastoma Multiforme',
-						official_title:
-							'A Phase 1b / 2a, Multicenter, Open-Label Study of AQ4N in Combination With Radiation Therapy and Temozolomide, to Evaluate the Safety, Tolerability, and Efficacy in Subjects With Newly Diagnosed Glioblastoma Multiforme',
+						brief_title: 'AQ4N in Combination With Radiotherapy and Temozolomide in Subjects With Newly Diagnosed Glioblastoma Multiforme',
+						official_title: 'A Phase 1b / 2a, Multicenter, Open-Label Study of AQ4N in Combination With Radiation Therapy and Temozolomide, to Evaluate the Safety, Tolerability, and Efficacy in Subjects With Newly Diagnosed Glioblastoma Multiforme',
 						acronym: null,
-						keywords: [
-							'Glioblastoma Multiforme',
-							'Radiotherapy',
-							'temozolomide',
-							'adjuvant temozolomide',
-						],
-						brief_summary:
-							'Phase 1b of the study, will evaluate the safety and tolerability of AQ4N treatment at three different dose levels. Phase 2a of the study, will further evaluate the safety, tolerability, and in addition efficacy of AQ4N treatment at a tolerated dose selected from Phase 1b.',
+						keywords: ['Glioblastoma Multiforme', 'Radiotherapy', 'temozolomide', 'adjuvant temozolomide'],
+						brief_summary: 'Phase 1b of the study, will evaluate the safety and tolerability of AQ4N treatment at three different dose levels. Phase 2a of the study, will further evaluate the safety, tolerability, and in addition efficacy of AQ4N treatment at a tolerated dose selected from Phase 1b.',
 						detail_description: null,
 						classification_code: null,
 						interventional_model: 'Single Group',
@@ -3300,12 +2531,7 @@ describe('<Manual />', () => {
 									},
 								],
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'Adult Glioblastoma',
-									'Adult Glioblastoma Multiforme',
-									'Grade IV Adult Astrocytic Neoplasm',
-									'Grade IV Adult Astrocytic Tumor',
-								],
+								synonyms: ['Adult Glioblastoma', 'Adult Glioblastoma Multiforme', 'Grade IV Adult Astrocytic Neoplasm', 'Grade IV Adult Astrocytic Tumor'],
 								parents: ['C8289', 'C3058'],
 							},
 							{
@@ -3326,11 +2552,7 @@ describe('<Manual />', () => {
 								display_name: 'Glioblastoma, IDH-Wildtype',
 								preferred_name: 'Glioblastoma, IDH-Wildtype',
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'Primary Glioblastoma',
-									'Primary Glioblastoma Multiforme',
-									'Primary Glioblastoma, IDH-Wildtype',
-								],
+								synonyms: ['Primary Glioblastoma', 'Primary Glioblastoma Multiforme', 'Primary Glioblastoma, IDH-Wildtype'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3263',
@@ -3350,18 +2572,7 @@ describe('<Manual />', () => {
 								display_name: 'Other Neoplasm',
 								preferred_name: 'Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Neoplasia',
-									'Neoplasm',
-									'Neoplasm, NOS',
-									'Neoplasms, NOS',
-									'Neoplastic Disease',
-									'Neoplastic Growth',
-									'Tumor, NOS',
-									'neoplasia',
-									'neoplasm',
-									'tumor',
-								],
+								synonyms: ['Neoplasia', 'Neoplasm', 'Neoplasm, NOS', 'Neoplasms, NOS', 'Neoplastic Disease', 'Neoplastic Growth', 'Tumor, NOS', 'neoplasia', 'neoplasm', 'tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4090',
@@ -3371,11 +2582,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Giant Cell Neoplasm',
 								preferred_name: 'Malignant Giant Cell Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'GIANT CELL TUMOR, MALIGNANT',
-									'Malignant Giant Cell Tumor',
-									'Malignant tumor, giant cell type',
-								],
+								synonyms: ['GIANT CELL TUMOR, MALIGNANT', 'Malignant Giant Cell Tumor', 'Malignant tumor, giant cell type'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C7049',
@@ -3385,10 +2592,7 @@ describe('<Manual />', () => {
 								display_name: 'Astrocytic Tumor',
 								preferred_name: 'Adult Astrocytic Tumor',
 								type: ['subtype'],
-								synonyms: [
-									'Adult Astrocytic Neoplasm',
-									'Adult Astrocytic Tumor',
-								],
+								synonyms: ['Adult Astrocytic Neoplasm', 'Adult Astrocytic Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3787',
@@ -3398,20 +2602,7 @@ describe('<Manual />', () => {
 								display_name: 'Neuroepithelial Neoplasm',
 								preferred_name: 'Neuroepithelial Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Neoplasm of Neuroepithelial Tissue',
-									'Neoplasm of Neuroepithelium',
-									'Neoplasm of the Neuroepithelium',
-									'Neuroepithelial Neoplasms',
-									'Neuroepithelial Tissue Neoplasm',
-									'Neuroepithelial Tissue Tumor',
-									'Neuroepithelial Tumor',
-									'Neuroepithelial Tumors',
-									'Neuroepitheliomatous Neoplasms',
-									'Tumor of Neuroepithelial Tissue',
-									'Tumor of Neuroepithelium',
-									'Tumor of the Neuroepithelium',
-								],
+								synonyms: ['Neoplasm of Neuroepithelial Tissue', 'Neoplasm of Neuroepithelium', 'Neoplasm of the Neuroepithelium', 'Neuroepithelial Neoplasms', 'Neuroepithelial Tissue Neoplasm', 'Neuroepithelial Tissue Tumor', 'Neuroepithelial Tumor', 'Neuroepithelial Tumors', 'Neuroepitheliomatous Neoplasms', 'Tumor of Neuroepithelial Tissue', 'Tumor of Neuroepithelium', 'Tumor of the Neuroepithelium'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4741',
@@ -3431,14 +2622,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Nervous System Neoplasm',
 								preferred_name: 'Malignant Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Malignant Neoplasm of Nervous System',
-									'Malignant Neoplasm of the Nervous System',
-									'Malignant Nervous System Tumor',
-									'Malignant Tumor of Nervous System',
-									'Malignant Tumor of the Nervous System',
-									'Nervous System Neoplasms, Malignant',
-								],
+								synonyms: ['Malignant Neoplasm of Nervous System', 'Malignant Neoplasm of the Nervous System', 'Malignant Nervous System Tumor', 'Malignant Tumor of Nervous System', 'Malignant Tumor of the Nervous System', 'Nervous System Neoplasms, Malignant'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C9305',
@@ -3448,20 +2632,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Neoplasm',
 								preferred_name: 'Malignant Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'CA',
-									'Cancer',
-									'Malignancy',
-									'Malignant Growth',
-									'Malignant Neoplastic Disease',
-									'Malignant Tumor',
-									'NEOPLASM, MALIGNANT',
-									'Neoplasm, malignant',
-									'Tumor, malignant, NOS',
-									'Unclassified tumor, malignant',
-									'cancer',
-									'malignancy',
-								],
+								synonyms: ['CA', 'Cancer', 'Malignancy', 'Malignant Growth', 'Malignant Neoplastic Disease', 'Malignant Tumor', 'NEOPLASM, MALIGNANT', 'Neoplasm, malignant', 'Tumor, malignant, NOS', 'Unclassified tumor, malignant', 'cancer', 'malignancy'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C102871',
@@ -3481,29 +2652,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Central Nervous System Neoplasm',
 								preferred_name: 'Malignant Central Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'CNS Cancer',
-									'CNS Malignant Neoplasms',
-									'CNS Neoplasms, Malignant',
-									'Cancer of CNS',
-									'Cancer of Central Nervous System',
-									'Cancer of the CNS',
-									'Cancer of the Central Nervous System',
-									'Central Nervous System Cancer',
-									'Central Nervous System Neoplasms, Malignant',
-									'Malignant CNS Neoplasm',
-									'Malignant CNS Neoplasms',
-									'Malignant CNS Tumor',
-									'Malignant Central Nervous System Tumor',
-									'Malignant Neoplasm of CNS',
-									'Malignant Neoplasm of Central Nervous System',
-									'Malignant Neoplasm of the CNS',
-									'Malignant Neoplasm of the Central Nervous System',
-									'Malignant Tumor of CNS',
-									'Malignant Tumor of Central Nervous System',
-									'Malignant Tumor of the CNS',
-									'Malignant Tumor of the Central Nervous System',
-								],
+								synonyms: ['CNS Cancer', 'CNS Malignant Neoplasms', 'CNS Neoplasms, Malignant', 'Cancer of CNS', 'Cancer of Central Nervous System', 'Cancer of the CNS', 'Cancer of the Central Nervous System', 'Central Nervous System Cancer', 'Central Nervous System Neoplasms, Malignant', 'Malignant CNS Neoplasm', 'Malignant CNS Neoplasms', 'Malignant CNS Tumor', 'Malignant Central Nervous System Tumor', 'Malignant Neoplasm of CNS', 'Malignant Neoplasm of Central Nervous System', 'Malignant Neoplasm of the CNS', 'Malignant Neoplasm of the Central Nervous System', 'Malignant Tumor of CNS', 'Malignant Tumor of Central Nervous System', 'Malignant Tumor of the CNS', 'Malignant Tumor of the Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C26835',
@@ -3513,12 +2662,7 @@ describe('<Manual />', () => {
 								display_name: 'Nervous System Disorder',
 								preferred_name: 'Nervous System Disorder',
 								type: ['subtype'],
-								synonyms: [
-									'Disorder of Nervous System',
-									'Neurologic Disorder',
-									'Neurological Disorder',
-									'Unspecified Nervous System Problem',
-								],
+								synonyms: ['Disorder of Nervous System', 'Neurologic Disorder', 'Neurological Disorder', 'Unspecified Nervous System Problem'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3263',
@@ -3558,23 +2702,7 @@ describe('<Manual />', () => {
 								display_name: 'Other Disease',
 								preferred_name: 'Disease or Disorder',
 								type: ['maintype'],
-								synonyms: [
-									'Diagnosis',
-									'Disease',
-									'Disease or Disorder',
-									'Disease or Disorder, Non-Neoplastic',
-									'Diseases',
-									'Diseases and Disorders',
-									'Disorder',
-									'Disorders',
-									'condition',
-									'disease',
-									'disease term',
-									'disease type',
-									'disease_term',
-									'disease_type',
-									'disorder',
-								],
+								synonyms: ['Diagnosis', 'Disease', 'Disease or Disorder', 'Disease or Disorder, Non-Neoplastic', 'Diseases', 'Diseases and Disorders', 'Disorder', 'Disorders', 'condition', 'disease', 'disease term', 'disease type', 'disease_term', 'disease_type', 'disorder'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C102897',
@@ -3584,11 +2712,7 @@ describe('<Manual />', () => {
 								display_name: 'High Grade Astrocytic Tumor',
 								preferred_name: 'High Grade Astrocytic Tumor',
 								type: ['grade'],
-								synonyms: [
-									'High Grade Astrocytic Neoplasm',
-									'High-Grade Astrocytic Neoplasm',
-									'High-Grade Astrocytic Tumor',
-								],
+								synonyms: ['High Grade Astrocytic Neoplasm', 'High-Grade Astrocytic Neoplasm', 'High-Grade Astrocytic Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4822',
@@ -3598,16 +2722,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Glioma',
 								preferred_name: 'Malignant Glioma',
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'GLIOMA, MALIGNANT',
-									'Glioma, malignant',
-									'High Grade Glioma',
-									'High-Grade Glioma',
-									'Malignant Glial Neoplasm',
-									'Malignant Glial Tumor',
-									'Malignant Neuroglial Neoplasm',
-									'Malignant Neuroglial Tumor',
-								],
+								synonyms: ['GLIOMA, MALIGNANT', 'Glioma, malignant', 'High Grade Glioma', 'High-Grade Glioma', 'Malignant Glial Neoplasm', 'Malignant Glial Tumor', 'Malignant Neuroglial Neoplasm', 'Malignant Neuroglial Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C129325',
@@ -3627,10 +2742,7 @@ describe('<Manual />', () => {
 								display_name: 'Gliosarcoma',
 								preferred_name: 'Gliosarcoma',
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'Glioblastoma with a Sarcomatous Component',
-									'gliosarcoma',
-								],
+								synonyms: ['Glioblastoma with a Sarcomatous Component', 'gliosarcoma'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4741',
@@ -3650,18 +2762,7 @@ describe('<Manual />', () => {
 								display_name: 'Other Neoplasm',
 								preferred_name: 'Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Neoplasia',
-									'Neoplasm',
-									'Neoplasm, NOS',
-									'Neoplasms, NOS',
-									'Neoplastic Disease',
-									'Neoplastic Growth',
-									'Tumor, NOS',
-									'neoplasia',
-									'neoplasm',
-									'tumor',
-								],
+								synonyms: ['Neoplasia', 'Neoplasm', 'Neoplasm, NOS', 'Neoplasms, NOS', 'Neoplastic Disease', 'Neoplastic Growth', 'Tumor, NOS', 'neoplasia', 'neoplasm', 'tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3058',
@@ -3671,20 +2772,7 @@ describe('<Manual />', () => {
 								display_name: 'Glioblastoma',
 								preferred_name: 'Glioblastoma',
 								type: ['grade', 'maintype', 'subtype'],
-								synonyms: [
-									'CNS, glioblastoma (GBM)',
-									'GBM',
-									'GBM (Glioblastoma)',
-									'Glioblastoma Multiforme',
-									'Glioblastoma multiforme',
-									'Grade IV Astrocytic Neoplasm',
-									'Grade IV Astrocytic Tumor',
-									'Spongioblastoma Multiforme',
-									'Spongioblastoma multiforme',
-									'WHO Grade IV Glioma',
-									'glioblastoma',
-									'glioblastoma multiforme',
-								],
+								synonyms: ['CNS, glioblastoma (GBM)', 'GBM', 'GBM (Glioblastoma)', 'Glioblastoma Multiforme', 'Glioblastoma multiforme', 'Grade IV Astrocytic Neoplasm', 'Grade IV Astrocytic Tumor', 'Spongioblastoma Multiforme', 'Spongioblastoma multiforme', 'WHO Grade IV Glioma', 'glioblastoma', 'glioblastoma multiforme'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C27551',
@@ -3704,21 +2792,15 @@ describe('<Manual />', () => {
 								display_name: 'High Grade Astrocytic Tumor',
 								preferred_name: 'High Grade Astrocytic Tumor',
 								type: ['grade'],
-								synonyms: [
-									'High Grade Astrocytic Neoplasm',
-									'High-Grade Astrocytic Neoplasm',
-									'High-Grade Astrocytic Tumor',
-								],
+								synonyms: ['High Grade Astrocytic Neoplasm', 'High-Grade Astrocytic Neoplasm', 'High-Grade Astrocytic Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C35562',
 								inclusion_indicator: 'TREE',
 								parents: ['C4741', 'C3268'],
 								lead_disease_indicator: 'YES',
-								display_name:
-									'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
-								preferred_name:
-									'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
+								display_name: 'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
+								preferred_name: 'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
 								type: ['subtype'],
 								synonyms: ['Neural Neoplasm', 'Neural Tumor'],
 							},
@@ -3740,20 +2822,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Neoplasm',
 								preferred_name: 'Malignant Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'CA',
-									'Cancer',
-									'Malignancy',
-									'Malignant Growth',
-									'Malignant Neoplastic Disease',
-									'Malignant Tumor',
-									'NEOPLASM, MALIGNANT',
-									'Neoplasm, malignant',
-									'Tumor, malignant, NOS',
-									'Unclassified tumor, malignant',
-									'cancer',
-									'malignancy',
-								],
+								synonyms: ['CA', 'Cancer', 'Malignancy', 'Malignant Growth', 'Malignant Neoplastic Disease', 'Malignant Tumor', 'NEOPLASM, MALIGNANT', 'Neoplasm, malignant', 'Tumor, malignant, NOS', 'Unclassified tumor, malignant', 'cancer', 'malignancy'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3268',
@@ -3763,15 +2832,7 @@ describe('<Manual />', () => {
 								display_name: 'Nervous System Tumor',
 								preferred_name: 'Nervous System Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Neoplasm of Nervous System',
-									'Neoplasm of the Nervous System',
-									'Nervous System Neoplasm',
-									'Nervous System Neoplasms',
-									'Nervous System Tumour',
-									'Tumor of Nervous System',
-									'Tumor of the Nervous System',
-								],
+								synonyms: ['Neoplasm of Nervous System', 'Neoplasm of the Nervous System', 'Nervous System Neoplasm', 'Nervous System Neoplasms', 'Nervous System Tumour', 'Tumor of Nervous System', 'Tumor of the Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C7049',
@@ -3781,10 +2842,7 @@ describe('<Manual />', () => {
 								display_name: 'Astrocytic Tumor',
 								preferred_name: 'Adult Astrocytic Tumor',
 								type: ['subtype'],
-								synonyms: [
-									'Adult Astrocytic Neoplasm',
-									'Adult Astrocytic Tumor',
-								],
+								synonyms: ['Adult Astrocytic Neoplasm', 'Adult Astrocytic Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C102871',
@@ -3804,12 +2862,7 @@ describe('<Manual />', () => {
 								display_name: 'Nervous System Disorder',
 								preferred_name: 'Nervous System Disorder',
 								type: ['subtype'],
-								synonyms: [
-									'Disorder of Nervous System',
-									'Neurologic Disorder',
-									'Neurological Disorder',
-									'Unspecified Nervous System Problem',
-								],
+								synonyms: ['Disorder of Nervous System', 'Neurologic Disorder', 'Neurological Disorder', 'Unspecified Nervous System Problem'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C2934',
@@ -3819,10 +2872,7 @@ describe('<Manual />', () => {
 								display_name: 'Central Nervous System Disorder',
 								preferred_name: 'Central Nervous System Disorder',
 								type: ['subtype'],
-								synonyms: [
-									'Central Nervous System Disease',
-									'Disorder of Central Nervous System',
-								],
+								synonyms: ['Central Nervous System Disease', 'Disorder of Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C6958',
@@ -3842,10 +2892,7 @@ describe('<Manual />', () => {
 								display_name: 'Central Nervous System Disorder',
 								preferred_name: 'Central Nervous System Disorder',
 								type: ['subtype'],
-								synonyms: [
-									'Central Nervous System Disease',
-									'Disorder of Central Nervous System',
-								],
+								synonyms: ['Central Nervous System Disease', 'Disorder of Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C9293',
@@ -3855,21 +2902,7 @@ describe('<Manual />', () => {
 								display_name: 'Brain/Spinal Cord Tumor',
 								preferred_name: 'Central Nervous System Neoplasm',
 								type: ['maintype', 'subtype'],
-								synonyms: [
-									'CNS Neoplasm',
-									'CNS Tumor',
-									'CNS tumor',
-									'Central Nervous System Neoplasm',
-									'Central Nervous System Tumor',
-									'Neoplasm of CNS',
-									'Neoplasm of Central Nervous System',
-									'Neoplasm of the Central Nervous System',
-									'Tumor of CNS',
-									'Tumor of Central Nervous System',
-									'Tumor of the CNS',
-									'Tumor of the Central Nervous System',
-									'central nervous system tumor',
-								],
+								synonyms: ['CNS Neoplasm', 'CNS Tumor', 'CNS tumor', 'Central Nervous System Neoplasm', 'Central Nervous System Tumor', 'Neoplasm of CNS', 'Neoplasm of Central Nervous System', 'Neoplasm of the Central Nervous System', 'Tumor of CNS', 'Tumor of Central Nervous System', 'Tumor of the CNS', 'Tumor of the Central Nervous System', 'central nervous system tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4788',
@@ -3879,14 +2912,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Nervous System Neoplasm',
 								preferred_name: 'Malignant Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Malignant Neoplasm of Nervous System',
-									'Malignant Neoplasm of the Nervous System',
-									'Malignant Nervous System Tumor',
-									'Malignant Tumor of Nervous System',
-									'Malignant Tumor of the Nervous System',
-									'Nervous System Neoplasms, Malignant',
-								],
+								synonyms: ['Malignant Neoplasm of Nervous System', 'Malignant Neoplasm of the Nervous System', 'Malignant Nervous System Tumor', 'Malignant Tumor of Nervous System', 'Malignant Tumor of the Nervous System', 'Nervous System Neoplasms, Malignant'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C7062',
@@ -3906,29 +2932,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Central Nervous System Neoplasm',
 								preferred_name: 'Malignant Central Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'CNS Cancer',
-									'CNS Malignant Neoplasms',
-									'CNS Neoplasms, Malignant',
-									'Cancer of CNS',
-									'Cancer of Central Nervous System',
-									'Cancer of the CNS',
-									'Cancer of the Central Nervous System',
-									'Central Nervous System Cancer',
-									'Central Nervous System Neoplasms, Malignant',
-									'Malignant CNS Neoplasm',
-									'Malignant CNS Neoplasms',
-									'Malignant CNS Tumor',
-									'Malignant Central Nervous System Tumor',
-									'Malignant Neoplasm of CNS',
-									'Malignant Neoplasm of Central Nervous System',
-									'Malignant Neoplasm of the CNS',
-									'Malignant Neoplasm of the Central Nervous System',
-									'Malignant Tumor of CNS',
-									'Malignant Tumor of Central Nervous System',
-									'Malignant Tumor of the CNS',
-									'Malignant Tumor of the Central Nervous System',
-								],
+								synonyms: ['CNS Cancer', 'CNS Malignant Neoplasms', 'CNS Neoplasms, Malignant', 'Cancer of CNS', 'Cancer of Central Nervous System', 'Cancer of the CNS', 'Cancer of the Central Nervous System', 'Central Nervous System Cancer', 'Central Nervous System Neoplasms, Malignant', 'Malignant CNS Neoplasm', 'Malignant CNS Neoplasms', 'Malignant CNS Tumor', 'Malignant Central Nervous System Tumor', 'Malignant Neoplasm of CNS', 'Malignant Neoplasm of Central Nervous System', 'Malignant Neoplasm of the CNS', 'Malignant Neoplasm of the Central Nervous System', 'Malignant Tumor of CNS', 'Malignant Tumor of Central Nervous System', 'Malignant Tumor of the CNS', 'Malignant Tumor of the Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3059',
@@ -3938,19 +2942,7 @@ describe('<Manual />', () => {
 								display_name: 'Glioma',
 								preferred_name: 'Glioma',
 								type: ['maintype', 'subtype'],
-								synonyms: [
-									'Glial Neoplasm',
-									'Glial Tumor',
-									'Glioma, NOS',
-									'Neoplasm of Neuroglia',
-									'Neoplasm of the Neuroglia',
-									'Neuroglial Neoplasm',
-									'Neuroglial Tumor',
-									'Tumor of Neuroglia',
-									'Tumor of the Neuroglia',
-									'glial tumor',
-									'glioma',
-								],
+								synonyms: ['Glial Neoplasm', 'Glial Tumor', 'Glioma, NOS', 'Neoplasm of Neuroglia', 'Neoplasm of the Neuroglia', 'Neuroglial Neoplasm', 'Neuroglial Tumor', 'Tumor of Neuroglia', 'Tumor of the Neuroglia', 'glial tumor', 'glioma'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C5131',
@@ -3960,24 +2952,7 @@ describe('<Manual />', () => {
 								display_name: 'Central Nervous System Neoplasm',
 								preferred_name: 'Adult Central Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Adult CNS Neoplasm',
-									'Adult CNS Neoplasms',
-									'Adult CNS Tumor',
-									'Adult CNS Tumors',
-									'Adult Central Nervous System Neoplasm',
-									'Adult Central Nervous System Neoplasms',
-									'Adult Central Nervous System Tumor',
-									'Adult Central Nervous System Tumors',
-									'Neoplasm of Adult CNS',
-									'Neoplasm of Adult Central Nervous System',
-									'Neoplasm of the Adult CNS',
-									'Neoplasm of the Adult Central Nervous System',
-									'Tumor of Adult CNS',
-									'Tumor of Adult Central Nervous System',
-									'Tumor of the Adult CNS',
-									'Tumor of the Adult Central Nervous System',
-								],
+								synonyms: ['Adult CNS Neoplasm', 'Adult CNS Neoplasms', 'Adult CNS Tumor', 'Adult CNS Tumors', 'Adult Central Nervous System Neoplasm', 'Adult Central Nervous System Neoplasms', 'Adult Central Nervous System Tumor', 'Adult Central Nervous System Tumors', 'Neoplasm of Adult CNS', 'Neoplasm of Adult Central Nervous System', 'Neoplasm of the Adult CNS', 'Neoplasm of the Adult Central Nervous System', 'Tumor of Adult CNS', 'Tumor of Adult Central Nervous System', 'Tumor of the Adult CNS', 'Tumor of the Adult Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C2991',
@@ -3987,23 +2962,7 @@ describe('<Manual />', () => {
 								display_name: 'Other Disease',
 								preferred_name: 'Disease or Disorder',
 								type: ['maintype'],
-								synonyms: [
-									'Diagnosis',
-									'Disease',
-									'Disease or Disorder',
-									'Disease or Disorder, Non-Neoplastic',
-									'Diseases',
-									'Diseases and Disorders',
-									'Disorder',
-									'Disorders',
-									'condition',
-									'disease',
-									'disease term',
-									'disease type',
-									'disease_term',
-									'disease_type',
-									'disorder',
-								],
+								synonyms: ['Diagnosis', 'Disease', 'Disease or Disorder', 'Disease or Disorder, Non-Neoplastic', 'Diseases', 'Diseases and Disorders', 'Disorder', 'Disorders', 'condition', 'disease', 'disease term', 'disease type', 'disease_term', 'disease_type', 'disorder'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4822',
@@ -4013,16 +2972,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Glioma',
 								preferred_name: 'Malignant Glioma',
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'GLIOMA, MALIGNANT',
-									'Glioma, malignant',
-									'High Grade Glioma',
-									'High-Grade Glioma',
-									'Malignant Glial Neoplasm',
-									'Malignant Glial Tumor',
-									'Malignant Neuroglial Neoplasm',
-									'Malignant Neuroglial Tumor',
-								],
+								synonyms: ['GLIOMA, MALIGNANT', 'Glioma, malignant', 'High Grade Glioma', 'High-Grade Glioma', 'Malignant Glial Neoplasm', 'Malignant Glial Tumor', 'Malignant Neuroglial Neoplasm', 'Malignant Neuroglial Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C8289',
@@ -4042,24 +2992,7 @@ describe('<Manual />', () => {
 								display_name: 'Central Nervous System Neoplasm',
 								preferred_name: 'Adult Central Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Adult CNS Neoplasm',
-									'Adult CNS Neoplasms',
-									'Adult CNS Tumor',
-									'Adult CNS Tumors',
-									'Adult Central Nervous System Neoplasm',
-									'Adult Central Nervous System Neoplasms',
-									'Adult Central Nervous System Tumor',
-									'Adult Central Nervous System Tumors',
-									'Neoplasm of Adult CNS',
-									'Neoplasm of Adult Central Nervous System',
-									'Neoplasm of the Adult CNS',
-									'Neoplasm of the Adult Central Nervous System',
-									'Tumor of Adult CNS',
-									'Tumor of Adult Central Nervous System',
-									'Tumor of the Adult CNS',
-									'Tumor of the Adult Central Nervous System',
-								],
+								synonyms: ['Adult CNS Neoplasm', 'Adult CNS Neoplasms', 'Adult CNS Tumor', 'Adult CNS Tumors', 'Adult Central Nervous System Neoplasm', 'Adult Central Nervous System Neoplasms', 'Adult Central Nervous System Tumor', 'Adult Central Nervous System Tumors', 'Neoplasm of Adult CNS', 'Neoplasm of Adult Central Nervous System', 'Neoplasm of the Adult CNS', 'Neoplasm of the Adult Central Nervous System', 'Tumor of Adult CNS', 'Tumor of Adult Central Nervous System', 'Tumor of the Adult CNS', 'Tumor of the Adult Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C6958',
@@ -4079,20 +3012,7 @@ describe('<Manual />', () => {
 								display_name: 'Neuroepithelial Neoplasm',
 								preferred_name: 'Neuroepithelial Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Neoplasm of Neuroepithelial Tissue',
-									'Neoplasm of Neuroepithelium',
-									'Neoplasm of the Neuroepithelium',
-									'Neuroepithelial Neoplasms',
-									'Neuroepithelial Tissue Neoplasm',
-									'Neuroepithelial Tissue Tumor',
-									'Neuroepithelial Tumor',
-									'Neuroepithelial Tumors',
-									'Neuroepitheliomatous Neoplasms',
-									'Tumor of Neuroepithelial Tissue',
-									'Tumor of Neuroepithelium',
-									'Tumor of the Neuroepithelium',
-								],
+								synonyms: ['Neoplasm of Neuroepithelial Tissue', 'Neoplasm of Neuroepithelium', 'Neoplasm of the Neuroepithelium', 'Neuroepithelial Neoplasms', 'Neuroepithelial Tissue Neoplasm', 'Neuroepithelial Tissue Tumor', 'Neuroepithelial Tumor', 'Neuroepithelial Tumors', 'Neuroepitheliomatous Neoplasms', 'Tumor of Neuroepithelial Tissue', 'Tumor of Neuroepithelium', 'Tumor of the Neuroepithelium'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3058',
@@ -4102,20 +3022,7 @@ describe('<Manual />', () => {
 								display_name: 'Glioblastoma',
 								preferred_name: 'Glioblastoma',
 								type: ['grade', 'maintype', 'subtype'],
-								synonyms: [
-									'CNS, glioblastoma (GBM)',
-									'GBM',
-									'GBM (Glioblastoma)',
-									'Glioblastoma Multiforme',
-									'Glioblastoma multiforme',
-									'Grade IV Astrocytic Neoplasm',
-									'Grade IV Astrocytic Tumor',
-									'Spongioblastoma Multiforme',
-									'Spongioblastoma multiforme',
-									'WHO Grade IV Glioma',
-									'glioblastoma',
-									'glioblastoma multiforme',
-								],
+								synonyms: ['CNS, glioblastoma (GBM)', 'GBM', 'GBM (Glioblastoma)', 'Glioblastoma Multiforme', 'Glioblastoma multiforme', 'Grade IV Astrocytic Neoplasm', 'Grade IV Astrocytic Tumor', 'Spongioblastoma Multiforme', 'Spongioblastoma multiforme', 'WHO Grade IV Glioma', 'glioblastoma', 'glioblastoma multiforme'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3268',
@@ -4125,15 +3032,7 @@ describe('<Manual />', () => {
 								display_name: 'Nervous System Tumor',
 								preferred_name: 'Nervous System Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Neoplasm of Nervous System',
-									'Neoplasm of the Nervous System',
-									'Nervous System Neoplasm',
-									'Nervous System Neoplasms',
-									'Nervous System Tumour',
-									'Tumor of Nervous System',
-									'Tumor of the Nervous System',
-								],
+								synonyms: ['Neoplasm of Nervous System', 'Neoplasm of the Nervous System', 'Nervous System Neoplasm', 'Nervous System Neoplasms', 'Nervous System Tumour', 'Tumor of Nervous System', 'Tumor of the Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4325',
@@ -4153,19 +3052,7 @@ describe('<Manual />', () => {
 								display_name: 'Glioma',
 								preferred_name: 'Glioma',
 								type: ['maintype', 'subtype'],
-								synonyms: [
-									'Glial Neoplasm',
-									'Glial Tumor',
-									'Glioma, NOS',
-									'Neoplasm of Neuroglia',
-									'Neoplasm of the Neuroglia',
-									'Neuroglial Neoplasm',
-									'Neuroglial Tumor',
-									'Tumor of Neuroglia',
-									'Tumor of the Neuroglia',
-									'glial tumor',
-									'glioma',
-								],
+								synonyms: ['Glial Neoplasm', 'Glial Tumor', 'Glioma, NOS', 'Neoplasm of Neuroglia', 'Neoplasm of the Neuroglia', 'Neuroglial Neoplasm', 'Neuroglial Tumor', 'Tumor of Neuroglia', 'Tumor of the Neuroglia', 'glial tumor', 'glioma'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C27551',
@@ -4202,10 +3089,8 @@ describe('<Manual />', () => {
 								inclusion_indicator: 'TREE',
 								parents: ['C4741', 'C3268'],
 								lead_disease_indicator: 'NO',
-								display_name:
-									'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
-								preferred_name:
-									'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
+								display_name: 'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
+								preferred_name: 'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
 								type: ['subtype'],
 								synonyms: ['Neural Neoplasm', 'Neural Tumor'],
 							},
@@ -4217,21 +3102,7 @@ describe('<Manual />', () => {
 								display_name: 'Brain/Spinal Cord Tumor',
 								preferred_name: 'Central Nervous System Neoplasm',
 								type: ['maintype', 'subtype'],
-								synonyms: [
-									'CNS Neoplasm',
-									'CNS Tumor',
-									'CNS tumor',
-									'Central Nervous System Neoplasm',
-									'Central Nervous System Tumor',
-									'Neoplasm of CNS',
-									'Neoplasm of Central Nervous System',
-									'Neoplasm of the Central Nervous System',
-									'Tumor of CNS',
-									'Tumor of Central Nervous System',
-									'Tumor of the CNS',
-									'Tumor of the Central Nervous System',
-									'central nervous system tumor',
-								],
+								synonyms: ['CNS Neoplasm', 'CNS Tumor', 'CNS tumor', 'Central Nervous System Neoplasm', 'Central Nervous System Tumor', 'Neoplasm of CNS', 'Neoplasm of Central Nervous System', 'Neoplasm of the Central Nervous System', 'Tumor of CNS', 'Tumor of Central Nervous System', 'Tumor of the CNS', 'Tumor of the Central Nervous System', 'central nervous system tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C9094',
@@ -4241,12 +3112,7 @@ describe('<Manual />', () => {
 								display_name: 'Glioblastoma',
 								preferred_name: 'Adult Glioblastoma',
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'Adult Glioblastoma',
-									'Adult Glioblastoma Multiforme',
-									'Grade IV Adult Astrocytic Neoplasm',
-									'Grade IV Adult Astrocytic Tumor',
-								],
+								synonyms: ['Adult Glioblastoma', 'Adult Glioblastoma Multiforme', 'Grade IV Adult Astrocytic Neoplasm', 'Grade IV Adult Astrocytic Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C8289',
@@ -4287,26 +3153,22 @@ describe('<Manual />', () => {
 								{
 									display_order: 0,
 									inclusion_indicator: true,
-									description:
-										'Histologically proven intracranial Glioblastoma Multiforme (GBM) with diagnosis established by biopsy or resection within 5 weeks prior to enrollment.',
+									description: 'Histologically proven intracranial Glioblastoma Multiforme (GBM) with diagnosis established by biopsy or resection within 5 weeks prior to enrollment.',
 								},
 								{
 									display_order: 1,
 									inclusion_indicator: true,
-									description:
-										'Cranial MRI or contrast CT performed 14 days prior to study entry. Subjects without measurable or assessable disease are eligible.',
+									description: 'Cranial MRI or contrast CT performed 14 days prior to study entry. Subjects without measurable or assessable disease are eligible.',
 								},
 								{
 									display_order: 2,
 									inclusion_indicator: true,
-									description:
-										'Plan to begin partial brain radiotherapy within 24-72 hours after beginning AQ4N, and within 35 days (5 weeks) of the surgery, or if surgery cannot be performed, the biopsy that confirms GBM diagnosis. Radiation therapy must be given by external beam to a partial brian field in daily fractions of 2.0 Gy, to a planned total dose to the tumor of 60.0 Gy over 6 weeks.',
+									description: 'Plan to begin partial brain radiotherapy within 24-72 hours after beginning AQ4N, and within 35 days (5 weeks) of the surgery, or if surgery cannot be performed, the biopsy that confirms GBM diagnosis. Radiation therapy must be given by external beam to a partial brian field in daily fractions of 2.0 Gy, to a planned total dose to the tumor of 60.0 Gy over 6 weeks.',
 								},
 								{
 									display_order: 3,
 									inclusion_indicator: true,
-									description:
-										'Age equal to or greater than 18 years and life expectancy > 10 weeks.',
+									description: 'Age equal to or greater than 18 years and life expectancy > 10 weeks.',
 								},
 								{
 									display_order: 4,
@@ -4316,20 +3178,17 @@ describe('<Manual />', () => {
 								{
 									display_order: 5,
 									inclusion_indicator: true,
-									description:
-										'Adequate bone marrow, liver and renal functions (tests must be performed within 14 days prior to enrollment).',
+									description: 'Adequate bone marrow, liver and renal functions (tests must be performed within 14 days prior to enrollment).',
 								},
 								{
 									display_order: 6,
 									inclusion_indicator: true,
-									description:
-										'Negative serum or urine pregnancy test (females of childbearing potential only).',
+									description: 'Negative serum or urine pregnancy test (females of childbearing potential only).',
 								},
 								{
 									display_order: 7,
 									inclusion_indicator: true,
-									description:
-										'Willingness to use effective contraception (both males and females of child-bearing potential) throughout the study and for at least 2 months after study treatment.',
+									description: 'Willingness to use effective contraception (both males and females of child-bearing potential) throughout the study and for at least 2 months after study treatment.',
 								},
 								{
 									display_order: 8,
@@ -4344,20 +3203,17 @@ describe('<Manual />', () => {
 								{
 									display_order: 10,
 									inclusion_indicator: false,
-									description:
-										'Previous cytotoxic drug therapy, non-cytotoxic drug therapy, or experimental drug therapy directed against the brain tumor. Subjects who received Gliadel wafers will be excluded.',
+									description: 'Previous cytotoxic drug therapy, non-cytotoxic drug therapy, or experimental drug therapy directed against the brain tumor. Subjects who received Gliadel wafers will be excluded.',
 								},
 								{
 									display_order: 11,
 									inclusion_indicator: false,
-									description:
-										'Subjects previously treated with enzyme-induced antiepileptic drugs (EIAEDs) must have discontinued treatment with these agent(s) greater than or equal to 2 weeks prior to enrollment.',
+									description: 'Subjects previously treated with enzyme-induced antiepileptic drugs (EIAEDs) must have discontinued treatment with these agent(s) greater than or equal to 2 weeks prior to enrollment.',
 								},
 								{
 									display_order: 12,
 									inclusion_indicator: false,
-									description:
-										'A history of any other primary malignancy that has not been treated with curative intent and that has not been in complete remission for at least 2 years (exempt from the two year limit are non-melanoma skin cancer and cervical carcinoma in-situ on biopsy or a squamous intraepithelial lesion on PAP smear).',
+									description: 'A history of any other primary malignancy that has not been treated with curative intent and that has not been in complete remission for at least 2 years (exempt from the two year limit are non-melanoma skin cancer and cervical carcinoma in-situ on biopsy or a squamous intraepithelial lesion on PAP smear).',
 								},
 								{
 									display_order: 13,
@@ -4367,20 +3223,17 @@ describe('<Manual />', () => {
 								{
 									display_order: 14,
 									inclusion_indicator: false,
-									description:
-										'Any significant medical illnesses or toxicities that in the investigator’s opinion cannot be adequately controlled with appropriate therapy or would compromise the subjects’ ability to tolerate this therapy. Subjects must not have any disease that will obscure toxicity or dangerously alter drug metabolism, e.g. congestive heart failure, moderate to severe liver and renal disease, other cancers.',
+									description: 'Any significant medical illnesses or toxicities that in the investigator’s opinion cannot be adequately controlled with appropriate therapy or would compromise the subjects’ ability to tolerate this therapy. Subjects must not have any disease that will obscure toxicity or dangerously alter drug metabolism, e.g. congestive heart failure, moderate to severe liver and renal disease, other cancers.',
 								},
 								{
 									display_order: 15,
 									inclusion_indicator: false,
-									description:
-										'Cardiac ejection fraction (LVEF) by multiple gated acquisition scan (MUGA) less than the institutional lower limit of normal.',
+									description: 'Cardiac ejection fraction (LVEF) by multiple gated acquisition scan (MUGA) less than the institutional lower limit of normal.',
 								},
 								{
 									display_order: 16,
 									inclusion_indicator: false,
-									description:
-										'Prior investigational therapy within the past 28 days.',
+									description: 'Prior investigational therapy within the past 28 days.',
 								},
 								{
 									display_order: 17,
@@ -4390,14 +3243,12 @@ describe('<Manual />', () => {
 								{
 									display_order: 18,
 									inclusion_indicator: false,
-									description:
-										'Hypersensitivity to AQ4N or to any ingredients contained in the drug formulation.',
+									description: 'Hypersensitivity to AQ4N or to any ingredients contained in the drug formulation.',
 								},
 								{
 									display_order: 19,
 									inclusion_indicator: false,
-									description:
-										'Hypersensitivity to temozolomide or to any ingredients contained in the drug formulation and dacarbazine (DTIC).',
+									description: 'Hypersensitivity to temozolomide or to any ingredients contained in the drug formulation and dacarbazine (DTIC).',
 								},
 								{
 									display_order: 20,
@@ -4420,41 +3271,24 @@ describe('<Manual />', () => {
 										intervention_description: null,
 										parents: ['C49236'],
 										inclusion_indicator: 'TRIAL',
-										synonyms: [
-											'Cancer Radiotherapy',
-											'Irradiate',
-											'Irradiated',
-											'Irradiation',
-											'RT',
-											'Radiation',
-											'Radiotherapeutics',
-											'Radiotherapy',
-											'Therapy, Radiation',
-										],
+										synonyms: ['Cancer Radiotherapy', 'Irradiate', 'Irradiated', 'Irradiation', 'RT', 'Radiation', 'Radiotherapeutics', 'Radiotherapy', 'Therapy, Radiation'],
 										intervention_category: 'Other',
 									},
 									{
 										intervention_name: 'Temozolomide',
 										intervention_type: 'Drug',
 										intervention_code: 'C1244',
-										intervention_description:
-											'A triazene analog of dacarbazine with antineoplastic activity.  As a cytotoxic alkylating agent, temozolomide is converted at physiologic pH to the short-lived active compound, monomethyl triazeno imidazole carboxamide (MTIC). The cytotoxicity of MTIC is due primarily to methylation of DNA at the O6 and N7 positions of guanine, resulting in inhibition of  DNA replication.  Unlike dacarbazine, which is metabolized to MITC only in the liver, temozolomide is metabolized to MITC at all sites. Temozolomide is administered orally and penetrates well into the central nervous system. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
+										intervention_description: 'A triazene analog of dacarbazine with antineoplastic activity.  As a cytotoxic alkylating agent, temozolomide is converted at physiologic pH to the short-lived active compound, monomethyl triazeno imidazole carboxamide (MTIC). The cytotoxicity of MTIC is due primarily to methylation of DNA at the O6 and N7 positions of guanine, resulting in inhibition of  DNA replication.  Unlike dacarbazine, which is metabolized to MITC only in the liver, temozolomide is metabolized to MITC at all sites. Temozolomide is administered orally and penetrates well into the central nervous system. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
 										parents: ['C902'],
 										inclusion_indicator: 'TRIAL',
-										synonyms: [
-											'Methazolastone',
-											'Temcad',
-											'Temodal',
-											'Temodar',
-										],
+										synonyms: ['Methazolastone', 'Temcad', 'Temodal', 'Temodar'],
 										intervention_category: 'Agent',
 									},
 									{
 										intervention_name: 'Banoxantrone',
 										intervention_type: 'Drug',
 										intervention_code: 'C79528',
-										intervention_description:
-											'A bioreductive, alkylaminoanthraquinone prodrug with antineoplastic activity. Under hypoxic conditions, often seen in solid tumors, banoxantrone (AQ4N) is converted and activated by cytochrome P450 enzymes, which are upregulated in certain tumors, to the cytotoxic DNA-binding agent AQ4. Banoxantrone intercalates into and crosslinks DNA, and inhibits topoisomerase II. This results in an inhibition of DNA replication and repair in tumor cells. Combined with conventional therapeutic agents, both oxygenic and hypoxic regions of tumors can be targeted. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
+										intervention_description: 'A bioreductive, alkylaminoanthraquinone prodrug with antineoplastic activity. Under hypoxic conditions, often seen in solid tumors, banoxantrone (AQ4N) is converted and activated by cytochrome P450 enzymes, which are upregulated in certain tumors, to the cytotoxic DNA-binding agent AQ4. Banoxantrone intercalates into and crosslinks DNA, and inhibits topoisomerase II. This results in an inhibition of DNA replication and repair in tumor cells. Combined with conventional therapeutic agents, both oxygenic and hypoxic regions of tumors can be targeted. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
 										parents: ['C253'],
 										inclusion_indicator: 'TRIAL',
 										synonyms: [],
@@ -4468,13 +3302,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'NONE',
 										parents: ['C25218'],
-										synonyms: [
-											'TX',
-											'Therapeutic Interventions',
-											'Therapeutic Method',
-											'Therapeutic Technique',
-											'Therapy',
-										],
+										synonyms: ['TX', 'Therapeutic Interventions', 'Therapeutic Method', 'Therapeutic Technique', 'Therapy'],
 									},
 									{
 										intervention_code: 'C25218',
@@ -4484,11 +3312,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'NONE',
 										parents: ['C16203'],
-										synonyms: [
-											'Intervention',
-											'Intervention Strategies',
-											'Procedure',
-										],
+										synonyms: ['Intervention', 'Intervention Strategies', 'Procedure'],
 									},
 									{
 										intervention_code: 'C16203',
@@ -4528,10 +3352,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C274'],
-										synonyms: [
-											'Chemotherapy Alkylating Agents',
-											'Chemotherapy Alkylators',
-										],
+										synonyms: ['Chemotherapy Alkylating Agents', 'Chemotherapy Alkylators'],
 									},
 									{
 										intervention_code: 'C274',
@@ -4541,18 +3362,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C1909'],
-										synonyms: [
-											'Anti-Cancer Agents',
-											'Anti-Tumor Agents',
-											'Anti-Tumor Drugs',
-											'Antineoplastic Drugs',
-											'Antineoplastics',
-											'Antiproliferative Agents',
-											'Antiproliferative Drugs',
-											'Cancer Drug',
-											'Chemotherapeutic Agents, Neoplastic Disease',
-											'Tumor-Specific Treatment Agents',
-										],
+										synonyms: ['Anti-Cancer Agents', 'Anti-Tumor Agents', 'Anti-Tumor Drugs', 'Antineoplastic Drugs', 'Antineoplastics', 'Antiproliferative Agents', 'Antiproliferative Drugs', 'Cancer Drug', 'Chemotherapeutic Agents, Neoplastic Disease', 'Tumor-Specific Treatment Agents'],
 									},
 									{
 										intervention_code: 'C1909',
@@ -4562,20 +3372,11 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C1908'],
-										synonyms: [
-											'Agent',
-											'Drug',
-											'Drug Substance',
-											'Pharmaceutical Agent',
-											'Pharmaceuticals',
-											'Pharmacologic Agent',
-											'Pharmacological Substance',
-										],
+										synonyms: ['Agent', 'Drug', 'Drug Substance', 'Pharmaceutical Agent', 'Pharmaceuticals', 'Pharmacologic Agent', 'Pharmacological Substance'],
 									},
 									{
 										intervention_code: 'C1908',
-										intervention_name:
-											'Drug, Food, Chemical or Biomedical Material',
+										intervention_name: 'Drug, Food, Chemical or Biomedical Material',
 										inclusion_indicator: 'TREE',
 										intervention_type: 'Drug',
 										intervention_description: '',
@@ -4591,12 +3392,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C582', 'C796', 'C1968'],
-										synonyms: [
-											'Anthracenedione',
-											'Anthracenediones',
-											'Anthraquinone Compound',
-											'Anthraquinones',
-										],
+										synonyms: ['Anthracenedione', 'Anthracenediones', 'Anthraquinone Compound', 'Anthraquinones'],
 									},
 									{
 										intervention_code: 'C582',
@@ -4606,11 +3402,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C2842'],
-										synonyms: [
-											'DNA Intercalator',
-											'Intercalating Agent',
-											'Intercalating Ligand',
-										],
+										synonyms: ['DNA Intercalator', 'Intercalating Agent', 'Intercalating Ligand'],
 									},
 									{
 										intervention_code: 'C2842',
@@ -4670,10 +3462,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C471'],
-										synonyms: [
-											'DNA Topoisomerase Inhibitors',
-											'Topoisomerase Inhibitors',
-										],
+										synonyms: ['DNA Topoisomerase Inhibitors', 'Topoisomerase Inhibitors'],
 									},
 									{
 										intervention_code: 'C471',
@@ -4683,11 +3472,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C1909'],
-										synonyms: [
-											'Enzyme Antagonist',
-											'Enzyme Inhibitor Agent',
-											'Enzyme Inhibitor Drug',
-										],
+										synonyms: ['Enzyme Antagonist', 'Enzyme Inhibitor Agent', 'Enzyme Inhibitor Drug'],
 									},
 								],
 							},
@@ -4702,17 +3487,7 @@ describe('<Manual />', () => {
 										intervention_code: 'C15313',
 										intervention_description: null,
 										inclusion_indicator: 'TRIAL',
-										synonyms: [
-											'Cancer Radiotherapy',
-											'Irradiate',
-											'Irradiated',
-											'Irradiation',
-											'RT',
-											'Radiation',
-											'Radiotherapeutics',
-											'Radiotherapy',
-											'Therapy, Radiation',
-										],
+										synonyms: ['Cancer Radiotherapy', 'Irradiate', 'Irradiated', 'Irradiation', 'RT', 'Radiation', 'Radiotherapeutics', 'Radiotherapy', 'Therapy, Radiation'],
 										intervention_category: 'Other',
 										parents: ['C49236'],
 									},
@@ -4720,15 +3495,9 @@ describe('<Manual />', () => {
 										intervention_name: 'Temozolomide',
 										intervention_type: 'Drug',
 										intervention_code: 'C1244',
-										intervention_description:
-											'A triazene analog of dacarbazine with antineoplastic activity.  As a cytotoxic alkylating agent, temozolomide is converted at physiologic pH to the short-lived active compound, monomethyl triazeno imidazole carboxamide (MTIC). The cytotoxicity of MTIC is due primarily to methylation of DNA at the O6 and N7 positions of guanine, resulting in inhibition of  DNA replication.  Unlike dacarbazine, which is metabolized to MITC only in the liver, temozolomide is metabolized to MITC at all sites. Temozolomide is administered orally and penetrates well into the central nervous system. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
+										intervention_description: 'A triazene analog of dacarbazine with antineoplastic activity.  As a cytotoxic alkylating agent, temozolomide is converted at physiologic pH to the short-lived active compound, monomethyl triazeno imidazole carboxamide (MTIC). The cytotoxicity of MTIC is due primarily to methylation of DNA at the O6 and N7 positions of guanine, resulting in inhibition of  DNA replication.  Unlike dacarbazine, which is metabolized to MITC only in the liver, temozolomide is metabolized to MITC at all sites. Temozolomide is administered orally and penetrates well into the central nervous system. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
 										inclusion_indicator: 'TRIAL',
-										synonyms: [
-											'Methazolastone',
-											'Temcad',
-											'Temodal',
-											'Temodar',
-										],
+										synonyms: ['Methazolastone', 'Temcad', 'Temodal', 'Temodar'],
 										intervention_category: 'Agent',
 										parents: ['C902'],
 									},
@@ -4736,8 +3505,7 @@ describe('<Manual />', () => {
 										intervention_name: 'Banoxantrone',
 										intervention_type: 'Drug',
 										intervention_code: 'C79528',
-										intervention_description:
-											'A bioreductive, alkylaminoanthraquinone prodrug with antineoplastic activity. Under hypoxic conditions, often seen in solid tumors, banoxantrone (AQ4N) is converted and activated by cytochrome P450 enzymes, which are upregulated in certain tumors, to the cytotoxic DNA-binding agent AQ4. Banoxantrone intercalates into and crosslinks DNA, and inhibits topoisomerase II. This results in an inhibition of DNA replication and repair in tumor cells. Combined with conventional therapeutic agents, both oxygenic and hypoxic regions of tumors can be targeted. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
+										intervention_description: 'A bioreductive, alkylaminoanthraquinone prodrug with antineoplastic activity. Under hypoxic conditions, often seen in solid tumors, banoxantrone (AQ4N) is converted and activated by cytochrome P450 enzymes, which are upregulated in certain tumors, to the cytotoxic DNA-binding agent AQ4. Banoxantrone intercalates into and crosslinks DNA, and inhibits topoisomerase II. This results in an inhibition of DNA replication and repair in tumor cells. Combined with conventional therapeutic agents, both oxygenic and hypoxic regions of tumors can be targeted. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
 										inclusion_indicator: 'TRIAL',
 										synonyms: [],
 										intervention_category: 'Agent',
@@ -4751,13 +3519,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'NONE',
 										parents: ['C25218'],
-										synonyms: [
-											'TX',
-											'Therapeutic Interventions',
-											'Therapeutic Method',
-											'Therapeutic Technique',
-											'Therapy',
-										],
+										synonyms: ['TX', 'Therapeutic Interventions', 'Therapeutic Method', 'Therapeutic Technique', 'Therapy'],
 									},
 									{
 										intervention_code: 'C25218',
@@ -4767,11 +3529,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'NONE',
 										parents: ['C16203'],
-										synonyms: [
-											'Intervention',
-											'Intervention Strategies',
-											'Procedure',
-										],
+										synonyms: ['Intervention', 'Intervention Strategies', 'Procedure'],
 									},
 									{
 										intervention_code: 'C16203',
@@ -4811,10 +3569,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C274'],
-										synonyms: [
-											'Chemotherapy Alkylating Agents',
-											'Chemotherapy Alkylators',
-										],
+										synonyms: ['Chemotherapy Alkylating Agents', 'Chemotherapy Alkylators'],
 									},
 									{
 										intervention_code: 'C274',
@@ -4824,18 +3579,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C1909'],
-										synonyms: [
-											'Anti-Cancer Agents',
-											'Anti-Tumor Agents',
-											'Anti-Tumor Drugs',
-											'Antineoplastic Drugs',
-											'Antineoplastics',
-											'Antiproliferative Agents',
-											'Antiproliferative Drugs',
-											'Cancer Drug',
-											'Chemotherapeutic Agents, Neoplastic Disease',
-											'Tumor-Specific Treatment Agents',
-										],
+										synonyms: ['Anti-Cancer Agents', 'Anti-Tumor Agents', 'Anti-Tumor Drugs', 'Antineoplastic Drugs', 'Antineoplastics', 'Antiproliferative Agents', 'Antiproliferative Drugs', 'Cancer Drug', 'Chemotherapeutic Agents, Neoplastic Disease', 'Tumor-Specific Treatment Agents'],
 									},
 									{
 										intervention_code: 'C1909',
@@ -4845,20 +3589,11 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C1908'],
-										synonyms: [
-											'Agent',
-											'Drug',
-											'Drug Substance',
-											'Pharmaceutical Agent',
-											'Pharmaceuticals',
-											'Pharmacologic Agent',
-											'Pharmacological Substance',
-										],
+										synonyms: ['Agent', 'Drug', 'Drug Substance', 'Pharmaceutical Agent', 'Pharmaceuticals', 'Pharmacologic Agent', 'Pharmacological Substance'],
 									},
 									{
 										intervention_code: 'C1908',
-										intervention_name:
-											'Drug, Food, Chemical or Biomedical Material',
+										intervention_name: 'Drug, Food, Chemical or Biomedical Material',
 										inclusion_indicator: 'TREE',
 										intervention_type: 'Drug',
 										intervention_description: '',
@@ -4874,12 +3609,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C582', 'C796', 'C1968'],
-										synonyms: [
-											'Anthracenedione',
-											'Anthracenediones',
-											'Anthraquinone Compound',
-											'Anthraquinones',
-										],
+										synonyms: ['Anthracenedione', 'Anthracenediones', 'Anthraquinone Compound', 'Anthraquinones'],
 									},
 									{
 										intervention_code: 'C582',
@@ -4889,11 +3619,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C2842'],
-										synonyms: [
-											'DNA Intercalator',
-											'Intercalating Agent',
-											'Intercalating Ligand',
-										],
+										synonyms: ['DNA Intercalator', 'Intercalating Agent', 'Intercalating Ligand'],
 									},
 									{
 										intervention_code: 'C2842',
@@ -4953,10 +3679,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C471'],
-										synonyms: [
-											'DNA Topoisomerase Inhibitors',
-											'Topoisomerase Inhibitors',
-										],
+										synonyms: ['DNA Topoisomerase Inhibitors', 'Topoisomerase Inhibitors'],
 									},
 									{
 										intervention_code: 'C471',
@@ -4966,11 +3689,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C1909'],
-										synonyms: [
-											'Enzyme Antagonist',
-											'Enzyme Inhibitor Agent',
-											'Enzyme Inhibitor Drug',
-										],
+										synonyms: ['Enzyme Antagonist', 'Enzyme Inhibitor Agent', 'Enzyme Inhibitor Drug'],
 									},
 								],
 							},
@@ -4994,24 +3713,20 @@ describe('<Manual />', () => {
 							},
 							{
 								name: 'Human anti-mouse antibody responses',
-								description:
-									'Serial serum samples will be tested and evaluated for the development of immunoglobulin G (IgG) and IgM anti-mouse antibody responses.',
+								description: 'Serial serum samples will be tested and evaluated for the development of immunoglobulin G (IgG) and IgM anti-mouse antibody responses.',
 								timeframe: 'Up to 1 year',
 								type_code: 'SECONDARY',
 							},
 							{
 								name: 'Persistence of aATC in blood',
-								description:
-									'Will be evaluated whether the infused cells persist in vivo using fluorescence-activated cell sorting analysis for the mouse immunoglobulin G 2 alpha (IgG2a) (OKT3 part of the EGFRBi).',
+								description: 'Will be evaluated whether the infused cells persist in vivo using fluorescence-activated cell sorting analysis for the mouse immunoglobulin G 2 alpha (IgG2a) (OKT3 part of the EGFRBi).',
 								timeframe: 'Up to 1 year',
 								type_code: 'OTHER_PRE_SPECIFIED',
 							},
 							{
 								name: 'Overall survival (OS) (Phase II)',
-								description:
-									'The median OS will be estimated with 95% confidence interval. Kaplan–Meier estimate of OS will be plotted. For quantitative measurements in immune evaluations, will calculate their means, standard deviations, medians, and examine the distributions of these data to ascertain whether normal theory methods are appropriate. Paired t-test or Wilcoxon signed-ranks test will be used for comparative analyses between each post-IMT time point versus pre-IMT.',
-								timeframe:
-									'From study enrollment to death due to any cause, assessed up to 2 years',
+								description: 'The median OS will be estimated with 95% confidence interval. Kaplan–Meier estimate of OS will be plotted. For quantitative measurements in immune evaluations, will calculate their means, standard deviations, medians, and examine the distributions of these data to ascertain whether normal theory methods are appropriate. Paired t-test or Wilcoxon signed-ranks test will be used for comparative analyses between each post-IMT time point versus pre-IMT.',
+								timeframe: 'From study enrollment to death due to any cause, assessed up to 2 years',
 								type_code: 'PRIMARY',
 							},
 							{
@@ -5022,29 +3737,25 @@ describe('<Manual />', () => {
 							},
 							{
 								name: 'Changes in cytotoxic T-lymphocyte as measured by IFN-gamma EliSpots directed at autologous tumor or GBM cell lines',
-								description:
-									'Mean, standard deviation, median and examine the distributions of these data will be calculated to ascertain whether normal theory methods are appropriate. Paired t-test or Wilcoxon signed-ranks test will be used for comparative analyses between each post-IMT time point versus pre-IMT. Bonferroni’s adjusted p-values will be reported to control type I error rate. In addition, will assess the pattern of changes in the immune responses over time using graphical techniques such as LOWESS curves.',
+								description: 'Mean, standard deviation, median and examine the distributions of these data will be calculated to ascertain whether normal theory methods are appropriate. Paired t-test or Wilcoxon signed-ranks test will be used for comparative analyses between each post-IMT time point versus pre-IMT. Bonferroni’s adjusted p-values will be reported to control type I error rate. In addition, will assess the pattern of changes in the immune responses over time using graphical techniques such as LOWESS curves.',
 								timeframe: 'Baseline to up to 1 year',
 								type_code: 'SECONDARY',
 							},
 							{
 								name: 'Changes in activated T cells',
-								description:
-									'Mean, standard deviation, median and examine the distributions of these data will be calculated to ascertain whether normal theory methods are appropriate. Paired t-test or Wilcoxon signed-ranks test will be used for comparative analyses between each post-IMT time point versus pre-IMT. Bonferroni’s adjusted p-values will be reported to control type I error rate. In addition, will assess the pattern of changes in the immune responses over time using graphical techniques such as LOWESS curves.',
+								description: 'Mean, standard deviation, median and examine the distributions of these data will be calculated to ascertain whether normal theory methods are appropriate. Paired t-test or Wilcoxon signed-ranks test will be used for comparative analyses between each post-IMT time point versus pre-IMT. Bonferroni’s adjusted p-values will be reported to control type I error rate. In addition, will assess the pattern of changes in the immune responses over time using graphical techniques such as LOWESS curves.',
 								timeframe: 'Baseline to up to 1 year',
 								type_code: 'SECONDARY',
 							},
 							{
 								name: 'Change in cytokines profiles',
-								description:
-									'Mean, standard deviation, median and examine the distributions of these data will be calculated to ascertain whether normal theory methods are appropriate. Paired t-test or Wilcoxon signed-ranks test will be used for comparative analyses between each post-IMT time point versus pre-IMT. Bonferroni’s adjusted p-values will be reported to control type I error rate. In addition, will assess the pattern of changes in the immune responses over time using graphical techniques such as LOWESS curves.',
+								description: 'Mean, standard deviation, median and examine the distributions of these data will be calculated to ascertain whether normal theory methods are appropriate. Paired t-test or Wilcoxon signed-ranks test will be used for comparative analyses between each post-IMT time point versus pre-IMT. Bonferroni’s adjusted p-values will be reported to control type I error rate. In addition, will assess the pattern of changes in the immune responses over time using graphical techniques such as LOWESS curves.',
 								timeframe: 'Baseline to up to 1 year',
 								type_code: 'SECONDARY',
 							},
 							{
 								name: 'Changes induced by IMT',
-								description:
-									'Mean, standard deviation, median and examine the distributions of these data will be calculated to ascertain whether normal theory methods are appropriate. Paired t-test or Wilcoxon signed-ranks test will be used for comparative analyses between each post-IMT time point versus pre-IMT. Bonferroni’s adjusted p-values will be reported to control type I error rate. In addition, will assess the pattern of changes in the immune responses over time using graphical techniques such as LOWESS curves.',
+								description: 'Mean, standard deviation, median and examine the distributions of these data will be calculated to ascertain whether normal theory methods are appropriate. Paired t-test or Wilcoxon signed-ranks test will be used for comparative analyses between each post-IMT time point versus pre-IMT. Bonferroni’s adjusted p-values will be reported to control type I error rate. In addition, will assess the pattern of changes in the immune responses over time using graphical techniques such as LOWESS curves.',
 								timeframe: 'Baseline to up to 1 year',
 								type_code: 'SECONDARY',
 							},
@@ -5057,16 +3768,12 @@ describe('<Manual />', () => {
 						completion_date: null,
 						completion_date_type_code: null,
 						record_verification_date: '2021-02-17',
-						brief_title:
-							'EGFRBi-Armed Autologous T Cells in Treating Patients with Recurrent or Refractory Glioblastoma',
-						official_title:
-							'Targeting Recurrent Glioblastoma with Anti-CD3 x Anti-EGFR Bispecific Antibody Armed T Cells: A Phase I / II Study',
+						brief_title: 'EGFRBi-Armed Autologous T Cells in Treating Patients with Recurrent or Refractory Glioblastoma',
+						official_title: 'Targeting Recurrent Glioblastoma with Anti-CD3 x Anti-EGFR Bispecific Antibody Armed T Cells: A Phase I / II Study',
 						acronym: null,
 						keywords: null,
-						brief_summary:
-							'This phase I / II trial studies the side effects and best dose of epidermal growth factor receptor bispecific antibody (EGFRBi)-armed autologous T cells and how well it works in treating patients with glioblastoma that have come back or does not respond to treatment. EGFRBi-armed autologous T cells coated with antibodies (proteins used by the immune system to target and kill foreign objects such as cancer cells) may have great ability to seek out, attach to, and destroy glioblastoma cells.',
-						detail_description:
-							'PRIMARY OBJECTIVES:\r\nI. To determine the maximum tolerated dose (MTD) for 8 intrathecal (IT) injections (via lumbar puncture) of anti-cluster of differentiation (CD)3 × anti-EGFRBi armed activated T cells (aATC) (EGFRBi-armed autologous T cells) given twice per week for 4 weeks in a standard 3+3 dose escalation schema with 0.10, 0.50 and 1.00 × 10^9 EGFRBi-aATC per IT injection for a total of 0.8, 4.0, and 8.0 × 10^9 cells, respectively. (Phase I)\r\nII. To explore efficacy and confirm the toxicity profile of EGFRBi-aATC. (Phase II)\r\n\r\nSECONDARY OBJECTIVES:\r\nI. Measure immune responses in participants of the phase I/II trial by sequential monitoring of phenotype, interferon gamma (IFN-g) enzyme-linked immunoSpots (EliSpots), anti-glioblastoma (GBM) cytotoxicity of peripheral blood mononuclear cell (PBMC) (direct cytotoxicity against GBM cells) directed at GBM cell lines, T-helper 1 (Th1)/T-helper 2 (Th2) serum cytokine patterns, and anti-glioma antibodies in the cerebrospinal fluid (CSF)/serum during the “vaccinate and consolidate” process.\r\nII. Assess survival and persistence of aATC in the CSF, and trafficking of IT-injected aATC out of the CSF into the bloodstream. \r\nIII. Image patients’ brain with magnetic resonance imaging (MRI) (performed clinically in 2-month intervals; includes standard structural sequences and perfusion imaging) and alpha-[11C]methyl-L-tryptophan (AMT) positron emission tomography (PET) scan (under Wayne State University [WSU] Internal Review Board [IRB]/Karmanos Cancer Institute [KCI]-approved research protocol) before and after the aATC treatment regimen.\r\n\r\nOUTLINE: This is a phase I dose-escalation study followed by a phase II study.\r\n\r\nPHASE I: Patients receive EGFRBi-armed autologous T cells IT twice weekly for 4 weeks.\r\n\r\nPHASE II: Patients receive EGFRBi-armed autologous T cells* IT twice weekly for 4 weeks and then intravenously (IV) over 15-30 minutes twice weekly for 2 weeks.\r\n\r\n*NOTE: Six selected patients receive EGFRBi-armed autologous T cells IV on day -3, -2, or -1 prior to first IT infusion.\r\n\r\nAfter completion of study treatment, patients are followed up every 3 months for 1 year and then every 6 months thereafter.',
+						brief_summary: 'This phase I / II trial studies the side effects and best dose of epidermal growth factor receptor bispecific antibody (EGFRBi)-armed autologous T cells and how well it works in treating patients with glioblastoma that have come back or does not respond to treatment. EGFRBi-armed autologous T cells coated with antibodies (proteins used by the immune system to target and kill foreign objects such as cancer cells) may have great ability to seek out, attach to, and destroy glioblastoma cells.',
+						detail_description: 'PRIMARY OBJECTIVES:\r\nI. To determine the maximum tolerated dose (MTD) for 8 intrathecal (IT) injections (via lumbar puncture) of anti-cluster of differentiation (CD)3 × anti-EGFRBi armed activated T cells (aATC) (EGFRBi-armed autologous T cells) given twice per week for 4 weeks in a standard 3+3 dose escalation schema with 0.10, 0.50 and 1.00 × 10^9 EGFRBi-aATC per IT injection for a total of 0.8, 4.0, and 8.0 × 10^9 cells, respectively. (Phase I)\r\nII. To explore efficacy and confirm the toxicity profile of EGFRBi-aATC. (Phase II)\r\n\r\nSECONDARY OBJECTIVES:\r\nI. Measure immune responses in participants of the phase I/II trial by sequential monitoring of phenotype, interferon gamma (IFN-g) enzyme-linked immunoSpots (EliSpots), anti-glioblastoma (GBM) cytotoxicity of peripheral blood mononuclear cell (PBMC) (direct cytotoxicity against GBM cells) directed at GBM cell lines, T-helper 1 (Th1)/T-helper 2 (Th2) serum cytokine patterns, and anti-glioma antibodies in the cerebrospinal fluid (CSF)/serum during the “vaccinate and consolidate” process.\r\nII. Assess survival and persistence of aATC in the CSF, and trafficking of IT-injected aATC out of the CSF into the bloodstream. \r\nIII. Image patients’ brain with magnetic resonance imaging (MRI) (performed clinically in 2-month intervals; includes standard structural sequences and perfusion imaging) and alpha-[11C]methyl-L-tryptophan (AMT) positron emission tomography (PET) scan (under Wayne State University [WSU] Internal Review Board [IRB]/Karmanos Cancer Institute [KCI]-approved research protocol) before and after the aATC treatment regimen.\r\n\r\nOUTLINE: This is a phase I dose-escalation study followed by a phase II study.\r\n\r\nPHASE I: Patients receive EGFRBi-armed autologous T cells IT twice weekly for 4 weeks.\r\n\r\nPHASE II: Patients receive EGFRBi-armed autologous T cells* IT twice weekly for 4 weeks and then intravenously (IV) over 15-30 minutes twice weekly for 2 weeks.\r\n\r\n*NOTE: Six selected patients receive EGFRBi-armed autologous T cells IV on day -3, -2, or -1 prior to first IT infusion.\r\n\r\nAfter completion of study treatment, patients are followed up every 3 months for 1 year and then every 6 months thereafter.',
 						classification_code: 'Safety/Efficacy',
 						interventional_model: 'Single Group',
 						study_source: 'Institutional',
@@ -5246,10 +3953,7 @@ describe('<Manual />', () => {
 									},
 								],
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'Adult Brain Glioblastoma',
-									'Adult Brain Glioblastoma Multiforme',
-								],
+								synonyms: ['Adult Brain Glioblastoma', 'Adult Brain Glioblastoma Multiforme'],
 								parents: ['C9094', 'C4642', 'C5115'],
 							},
 							{
@@ -5280,10 +3984,7 @@ describe('<Manual />', () => {
 								display_name: 'Central Nervous System Disorder',
 								preferred_name: 'Central Nervous System Disorder',
 								type: ['subtype'],
-								synonyms: [
-									'Central Nervous System Disease',
-									'Disorder of Central Nervous System',
-								],
+								synonyms: ['Central Nervous System Disease', 'Disorder of Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3263',
@@ -5303,12 +4004,7 @@ describe('<Manual />', () => {
 								display_name: 'Nervous System Disorder',
 								preferred_name: 'Nervous System Disorder',
 								type: ['subtype'],
-								synonyms: [
-									'Disorder of Nervous System',
-									'Neurologic Disorder',
-									'Neurological Disorder',
-									'Unspecified Nervous System Problem',
-								],
+								synonyms: ['Disorder of Nervous System', 'Neurologic Disorder', 'Neurological Disorder', 'Unspecified Nervous System Problem'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3268',
@@ -5318,15 +4014,7 @@ describe('<Manual />', () => {
 								display_name: 'Nervous System Tumor',
 								preferred_name: 'Nervous System Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Neoplasm of Nervous System',
-									'Neoplasm of the Nervous System',
-									'Nervous System Neoplasm',
-									'Nervous System Neoplasms',
-									'Nervous System Tumour',
-									'Tumor of Nervous System',
-									'Tumor of the Nervous System',
-								],
+								synonyms: ['Neoplasm of Nervous System', 'Neoplasm of the Nervous System', 'Nervous System Neoplasm', 'Nervous System Neoplasms', 'Nervous System Tumour', 'Tumor of Nervous System', 'Tumor of the Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C7057',
@@ -5346,15 +4034,7 @@ describe('<Manual />', () => {
 								display_name: 'Nervous System Tumor',
 								preferred_name: 'Nervous System Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Neoplasm of Nervous System',
-									'Neoplasm of the Nervous System',
-									'Nervous System Neoplasm',
-									'Nervous System Neoplasms',
-									'Nervous System Tumour',
-									'Tumor of Nervous System',
-									'Tumor of the Nervous System',
-								],
+								synonyms: ['Neoplasm of Nervous System', 'Neoplasm of the Nervous System', 'Nervous System Neoplasm', 'Nervous System Neoplasms', 'Nervous System Tumour', 'Tumor of Nervous System', 'Tumor of the Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C129325',
@@ -5374,21 +4054,7 @@ describe('<Manual />', () => {
 								display_name: 'Brain/Spinal Cord Tumor',
 								preferred_name: 'Central Nervous System Neoplasm',
 								type: ['maintype', 'subtype'],
-								synonyms: [
-									'CNS Neoplasm',
-									'CNS Tumor',
-									'CNS tumor',
-									'Central Nervous System Neoplasm',
-									'Central Nervous System Tumor',
-									'Neoplasm of CNS',
-									'Neoplasm of Central Nervous System',
-									'Neoplasm of the Central Nervous System',
-									'Tumor of CNS',
-									'Tumor of Central Nervous System',
-									'Tumor of the CNS',
-									'Tumor of the Central Nervous System',
-									'central nervous system tumor',
-								],
+								synonyms: ['CNS Neoplasm', 'CNS Tumor', 'CNS tumor', 'Central Nervous System Neoplasm', 'Central Nervous System Tumor', 'Neoplasm of CNS', 'Neoplasm of Central Nervous System', 'Neoplasm of the Central Nervous System', 'Tumor of CNS', 'Tumor of Central Nervous System', 'Tumor of the CNS', 'Tumor of the Central Nervous System', 'central nervous system tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4627',
@@ -5398,29 +4064,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Central Nervous System Neoplasm',
 								preferred_name: 'Malignant Central Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'CNS Cancer',
-									'CNS Malignant Neoplasms',
-									'CNS Neoplasms, Malignant',
-									'Cancer of CNS',
-									'Cancer of Central Nervous System',
-									'Cancer of the CNS',
-									'Cancer of the Central Nervous System',
-									'Central Nervous System Cancer',
-									'Central Nervous System Neoplasms, Malignant',
-									'Malignant CNS Neoplasm',
-									'Malignant CNS Neoplasms',
-									'Malignant CNS Tumor',
-									'Malignant Central Nervous System Tumor',
-									'Malignant Neoplasm of CNS',
-									'Malignant Neoplasm of Central Nervous System',
-									'Malignant Neoplasm of the CNS',
-									'Malignant Neoplasm of the Central Nervous System',
-									'Malignant Tumor of CNS',
-									'Malignant Tumor of Central Nervous System',
-									'Malignant Tumor of the CNS',
-									'Malignant Tumor of the Central Nervous System',
-								],
+								synonyms: ['CNS Cancer', 'CNS Malignant Neoplasms', 'CNS Neoplasms, Malignant', 'Cancer of CNS', 'Cancer of Central Nervous System', 'Cancer of the CNS', 'Cancer of the Central Nervous System', 'Central Nervous System Cancer', 'Central Nervous System Neoplasms, Malignant', 'Malignant CNS Neoplasm', 'Malignant CNS Neoplasms', 'Malignant CNS Tumor', 'Malignant Central Nervous System Tumor', 'Malignant Neoplasm of CNS', 'Malignant Neoplasm of Central Nervous System', 'Malignant Neoplasm of the CNS', 'Malignant Neoplasm of the Central Nervous System', 'Malignant Tumor of CNS', 'Malignant Tumor of Central Nervous System', 'Malignant Tumor of the CNS', 'Malignant Tumor of the Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4788',
@@ -5430,14 +4074,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Nervous System Neoplasm',
 								preferred_name: 'Malignant Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Malignant Neoplasm of Nervous System',
-									'Malignant Neoplasm of the Nervous System',
-									'Malignant Nervous System Tumor',
-									'Malignant Tumor of Nervous System',
-									'Malignant Tumor of the Nervous System',
-									'Nervous System Neoplasms, Malignant',
-								],
+								synonyms: ['Malignant Neoplasm of Nervous System', 'Malignant Neoplasm of the Nervous System', 'Malignant Nervous System Tumor', 'Malignant Tumor of Nervous System', 'Malignant Tumor of the Nervous System', 'Nervous System Neoplasms, Malignant'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C102897',
@@ -5447,11 +4084,7 @@ describe('<Manual />', () => {
 								display_name: 'High Grade Astrocytic Tumor',
 								preferred_name: 'High Grade Astrocytic Tumor',
 								type: ['grade'],
-								synonyms: [
-									'High Grade Astrocytic Neoplasm',
-									'High-Grade Astrocytic Neoplasm',
-									'High-Grade Astrocytic Tumor',
-								],
+								synonyms: ['High Grade Astrocytic Neoplasm', 'High-Grade Astrocytic Neoplasm', 'High-Grade Astrocytic Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C36025',
@@ -5471,21 +4104,7 @@ describe('<Manual />', () => {
 								display_name: 'Brain/Spinal Cord Tumor',
 								preferred_name: 'Central Nervous System Neoplasm',
 								type: ['maintype', 'subtype'],
-								synonyms: [
-									'CNS Neoplasm',
-									'CNS Tumor',
-									'CNS tumor',
-									'Central Nervous System Neoplasm',
-									'Central Nervous System Tumor',
-									'Neoplasm of CNS',
-									'Neoplasm of Central Nervous System',
-									'Neoplasm of the Central Nervous System',
-									'Tumor of CNS',
-									'Tumor of Central Nervous System',
-									'Tumor of the CNS',
-									'Tumor of the Central Nervous System',
-									'central nervous system tumor',
-								],
+								synonyms: ['CNS Neoplasm', 'CNS Tumor', 'CNS tumor', 'Central Nervous System Neoplasm', 'Central Nervous System Tumor', 'Neoplasm of CNS', 'Neoplasm of Central Nervous System', 'Neoplasm of the Central Nervous System', 'Tumor of CNS', 'Tumor of Central Nervous System', 'Tumor of the CNS', 'Tumor of the Central Nervous System', 'central nervous system tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4953',
@@ -5495,12 +4114,7 @@ describe('<Manual />', () => {
 								display_name: 'Intracranial Neoplasm',
 								preferred_name: 'Intracranial Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Intracranial Central Nervous System Neoplasm',
-									'Intracranial Central Nervous System Tumor',
-									'Intracranial Tumor',
-									'intracranial tumor',
-								],
+								synonyms: ['Intracranial Central Nervous System Neoplasm', 'Intracranial Central Nervous System Tumor', 'Intracranial Tumor', 'intracranial tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C162993',
@@ -5510,13 +4124,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Brain Glioma',
 								preferred_name: 'Malignant Brain Glioma',
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'Brain High Grade Glioma',
-									'Brain High-Grade Glioma',
-									'Brain Malignant Glioma',
-									'High Grade Brain Glioma',
-									'High-Grade Brain Glioma',
-								],
+								synonyms: ['Brain High Grade Glioma', 'Brain High-Grade Glioma', 'Brain Malignant Glioma', 'High Grade Brain Glioma', 'High-Grade Brain Glioma'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C26835',
@@ -5526,12 +4134,7 @@ describe('<Manual />', () => {
 								display_name: 'Nervous System Disorder',
 								preferred_name: 'Nervous System Disorder',
 								type: ['subtype'],
-								synonyms: [
-									'Disorder of Nervous System',
-									'Neurologic Disorder',
-									'Neurological Disorder',
-									'Unspecified Nervous System Problem',
-								],
+								synonyms: ['Disorder of Nervous System', 'Neurologic Disorder', 'Neurological Disorder', 'Unspecified Nervous System Problem'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C2991',
@@ -5541,23 +4144,7 @@ describe('<Manual />', () => {
 								display_name: 'Other Disease',
 								preferred_name: 'Disease or Disorder',
 								type: ['maintype'],
-								synonyms: [
-									'Diagnosis',
-									'Disease',
-									'Disease or Disorder',
-									'Disease or Disorder, Non-Neoplastic',
-									'Diseases',
-									'Diseases and Disorders',
-									'Disorder',
-									'Disorders',
-									'condition',
-									'disease',
-									'disease term',
-									'disease type',
-									'disease_term',
-									'disease_type',
-									'disorder',
-								],
+								synonyms: ['Diagnosis', 'Disease', 'Disease or Disorder', 'Disease or Disorder, Non-Neoplastic', 'Diseases', 'Diseases and Disorders', 'Disorder', 'Disorders', 'condition', 'disease', 'disease term', 'disease type', 'disease_term', 'disease_type', 'disorder'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C5131',
@@ -5567,24 +4154,7 @@ describe('<Manual />', () => {
 								display_name: 'Central Nervous System Neoplasm',
 								preferred_name: 'Adult Central Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Adult CNS Neoplasm',
-									'Adult CNS Neoplasms',
-									'Adult CNS Tumor',
-									'Adult CNS Tumors',
-									'Adult Central Nervous System Neoplasm',
-									'Adult Central Nervous System Neoplasms',
-									'Adult Central Nervous System Tumor',
-									'Adult Central Nervous System Tumors',
-									'Neoplasm of Adult CNS',
-									'Neoplasm of Adult Central Nervous System',
-									'Neoplasm of the Adult CNS',
-									'Neoplasm of the Adult Central Nervous System',
-									'Tumor of Adult CNS',
-									'Tumor of Adult Central Nervous System',
-									'Tumor of the Adult CNS',
-									'Tumor of the Adult Central Nervous System',
-								],
+								synonyms: ['Adult CNS Neoplasm', 'Adult CNS Neoplasms', 'Adult CNS Tumor', 'Adult CNS Tumors', 'Adult Central Nervous System Neoplasm', 'Adult Central Nervous System Neoplasms', 'Adult Central Nervous System Tumor', 'Adult Central Nervous System Tumors', 'Neoplasm of Adult CNS', 'Neoplasm of Adult Central Nervous System', 'Neoplasm of the Adult CNS', 'Neoplasm of the Adult Central Nervous System', 'Tumor of Adult CNS', 'Tumor of Adult Central Nervous System', 'Tumor of the Adult CNS', 'Tumor of the Adult Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4788',
@@ -5594,14 +4164,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Nervous System Neoplasm',
 								preferred_name: 'Malignant Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Malignant Neoplasm of Nervous System',
-									'Malignant Neoplasm of the Nervous System',
-									'Malignant Nervous System Tumor',
-									'Malignant Tumor of Nervous System',
-									'Malignant Tumor of the Nervous System',
-									'Nervous System Neoplasms, Malignant',
-								],
+								synonyms: ['Malignant Neoplasm of Nervous System', 'Malignant Neoplasm of the Nervous System', 'Malignant Nervous System Tumor', 'Malignant Tumor of Nervous System', 'Malignant Tumor of the Nervous System', 'Nervous System Neoplasms, Malignant'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4642',
@@ -5611,17 +4174,7 @@ describe('<Manual />', () => {
 								display_name: 'Brain Glioblastoma',
 								preferred_name: 'Brain Glioblastoma',
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'Brain Glioblastoma Multiforme',
-									'Glioblastoma Multiforme of Brain',
-									'Glioblastoma Multiforme of the Brain',
-									'Grade IV Astrocytic Neoplasm of Brain',
-									'Grade IV Astrocytic Neoplasm of the Brain',
-									'Grade IV Astrocytic Tumor of Brain',
-									'Grade IV Astrocytic Tumor of the Brain',
-									'Grade IV Brain Astrocytic Neoplasm',
-									'Grade IV Brain Astrocytic Tumor',
-								],
+								synonyms: ['Brain Glioblastoma Multiforme', 'Glioblastoma Multiforme of Brain', 'Glioblastoma Multiforme of the Brain', 'Grade IV Astrocytic Neoplasm of Brain', 'Grade IV Astrocytic Neoplasm of the Brain', 'Grade IV Astrocytic Tumor of Brain', 'Grade IV Astrocytic Tumor of the Brain', 'Grade IV Brain Astrocytic Neoplasm', 'Grade IV Brain Astrocytic Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3787',
@@ -5631,20 +4184,7 @@ describe('<Manual />', () => {
 								display_name: 'Neuroepithelial Neoplasm',
 								preferred_name: 'Neuroepithelial Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Neoplasm of Neuroepithelial Tissue',
-									'Neoplasm of Neuroepithelium',
-									'Neoplasm of the Neuroepithelium',
-									'Neuroepithelial Neoplasms',
-									'Neuroepithelial Tissue Neoplasm',
-									'Neuroepithelial Tissue Tumor',
-									'Neuroepithelial Tumor',
-									'Neuroepithelial Tumors',
-									'Neuroepitheliomatous Neoplasms',
-									'Tumor of Neuroepithelial Tissue',
-									'Tumor of Neuroepithelium',
-									'Tumor of the Neuroepithelium',
-								],
+								synonyms: ['Neoplasm of Neuroepithelial Tissue', 'Neoplasm of Neuroepithelium', 'Neoplasm of the Neuroepithelium', 'Neuroepithelial Neoplasms', 'Neuroepithelial Tissue Neoplasm', 'Neuroepithelial Tissue Tumor', 'Neuroepithelial Tumor', 'Neuroepithelial Tumors', 'Neuroepitheliomatous Neoplasms', 'Tumor of Neuroepithelial Tissue', 'Tumor of Neuroepithelium', 'Tumor of the Neuroepithelium'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C7057',
@@ -5674,20 +4214,15 @@ describe('<Manual />', () => {
 								display_name: 'Gliosarcoma',
 								preferred_name: 'Gliosarcoma',
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'Glioblastoma with a Sarcomatous Component',
-									'gliosarcoma',
-								],
+								synonyms: ['Glioblastoma with a Sarcomatous Component', 'gliosarcoma'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C71700',
 								inclusion_indicator: 'TREE',
 								parents: ['C102871', 'C4798'],
 								lead_disease_indicator: 'NO',
-								display_name:
-									'Recurrent Primary Central Nervous System Neoplasm',
-								preferred_name:
-									'Recurrent Primary Central Nervous System Neoplasm',
+								display_name: 'Recurrent Primary Central Nervous System Neoplasm',
+								preferred_name: 'Recurrent Primary Central Nervous System Neoplasm',
 								type: ['stage'],
 								synonyms: ['Recurrent Primary Central Nervous System Tumor'],
 							},
@@ -5699,17 +4234,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Brain Tumor',
 								preferred_name: 'Malignant Brain Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Brain Cancer',
-									'Brain Neoplasms, Malignant',
-									'Cancer of Brain',
-									'Cancer of the Brain',
-									'Malignant Brain Neoplasm',
-									'Malignant Neoplasm of Brain',
-									'Malignant Neoplasm of the Brain',
-									'Malignant Tumor of Brain',
-									'Malignant Tumor of the Brain',
-								],
+								synonyms: ['Brain Cancer', 'Brain Neoplasms, Malignant', 'Cancer of Brain', 'Cancer of the Brain', 'Malignant Brain Neoplasm', 'Malignant Neoplasm of Brain', 'Malignant Neoplasm of the Brain', 'Malignant Tumor of Brain', 'Malignant Tumor of the Brain'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C5478',
@@ -5719,10 +4244,7 @@ describe('<Manual />', () => {
 								display_name: 'Adult Intracranial Neoplasm',
 								preferred_name: 'Adult Intracranial Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Adult Intracranial Neoplasms',
-									'Adult Intracranial Tumor',
-								],
+								synonyms: ['Adult Intracranial Neoplasms', 'Adult Intracranial Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C5131',
@@ -5732,24 +4254,7 @@ describe('<Manual />', () => {
 								display_name: 'Central Nervous System Neoplasm',
 								preferred_name: 'Adult Central Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Adult CNS Neoplasm',
-									'Adult CNS Neoplasms',
-									'Adult CNS Tumor',
-									'Adult CNS Tumors',
-									'Adult Central Nervous System Neoplasm',
-									'Adult Central Nervous System Neoplasms',
-									'Adult Central Nervous System Tumor',
-									'Adult Central Nervous System Tumors',
-									'Neoplasm of Adult CNS',
-									'Neoplasm of Adult Central Nervous System',
-									'Neoplasm of the Adult CNS',
-									'Neoplasm of the Adult Central Nervous System',
-									'Tumor of Adult CNS',
-									'Tumor of Adult Central Nervous System',
-									'Tumor of the Adult CNS',
-									'Tumor of the Adult Central Nervous System',
-								],
+								synonyms: ['Adult CNS Neoplasm', 'Adult CNS Neoplasms', 'Adult CNS Tumor', 'Adult CNS Tumors', 'Adult Central Nervous System Neoplasm', 'Adult Central Nervous System Neoplasms', 'Adult Central Nervous System Tumor', 'Adult Central Nervous System Tumors', 'Neoplasm of Adult CNS', 'Neoplasm of Adult Central Nervous System', 'Neoplasm of the Adult CNS', 'Neoplasm of the Adult Central Nervous System', 'Tumor of Adult CNS', 'Tumor of Adult Central Nervous System', 'Tumor of the Adult CNS', 'Tumor of the Adult Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C36025',
@@ -5769,10 +4274,7 @@ describe('<Manual />', () => {
 								display_name: 'Astrocytic Tumor',
 								preferred_name: 'Adult Astrocytic Tumor',
 								type: ['subtype'],
-								synonyms: [
-									'Adult Astrocytic Neoplasm',
-									'Adult Astrocytic Tumor',
-								],
+								synonyms: ['Adult Astrocytic Neoplasm', 'Adult Astrocytic Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C5115',
@@ -5782,13 +4284,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Brain Neoplasm',
 								preferred_name: 'Malignant Adult Brain Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Brain Neoplasms, Adult, Malignant',
-									'Malignant Adult Brain Neoplasm',
-									'Malignant Adult Brain Tumor',
-									'Malignant Tumor of Adult Brain',
-									'Malignant Tumor of the Adult Brain',
-								],
+								synonyms: ['Brain Neoplasms, Adult, Malignant', 'Malignant Adult Brain Neoplasm', 'Malignant Adult Brain Tumor', 'Malignant Tumor of Adult Brain', 'Malignant Tumor of the Adult Brain'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4741',
@@ -5805,10 +4301,8 @@ describe('<Manual />', () => {
 								inclusion_indicator: 'TREE',
 								parents: ['C4741', 'C3268'],
 								lead_disease_indicator: 'NO',
-								display_name:
-									'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
-								preferred_name:
-									'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
+								display_name: 'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
+								preferred_name: 'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
 								type: ['subtype'],
 								synonyms: ['Neural Neoplasm', 'Neural Tumor'],
 							},
@@ -5820,12 +4314,7 @@ describe('<Manual />', () => {
 								display_name: 'Glioblastoma',
 								preferred_name: 'Adult Glioblastoma',
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'Adult Glioblastoma',
-									'Adult Glioblastoma Multiforme',
-									'Grade IV Adult Astrocytic Neoplasm',
-									'Grade IV Adult Astrocytic Tumor',
-								],
+								synonyms: ['Adult Glioblastoma', 'Adult Glioblastoma Multiforme', 'Grade IV Adult Astrocytic Neoplasm', 'Grade IV Adult Astrocytic Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C27551',
@@ -5855,15 +4344,7 @@ describe('<Manual />', () => {
 								display_name: 'Brain Tumor',
 								preferred_name: 'Brain Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Brain Neoplasm',
-									'Brain Neoplasms',
-									'Neoplasm of Brain',
-									'Neoplasm of the Brain',
-									'Tumor of Brain',
-									'Tumor of the Brain',
-									'brain tumor',
-								],
+								synonyms: ['Brain Neoplasm', 'Brain Neoplasms', 'Neoplasm of Brain', 'Neoplasm of the Brain', 'Tumor of Brain', 'Tumor of the Brain', 'brain tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3059',
@@ -5873,19 +4354,7 @@ describe('<Manual />', () => {
 								display_name: 'Glioma',
 								preferred_name: 'Glioma',
 								type: ['maintype', 'subtype'],
-								synonyms: [
-									'Glial Neoplasm',
-									'Glial Tumor',
-									'Glioma, NOS',
-									'Neoplasm of Neuroglia',
-									'Neoplasm of the Neuroglia',
-									'Neuroglial Neoplasm',
-									'Neuroglial Tumor',
-									'Tumor of Neuroglia',
-									'Tumor of the Neuroglia',
-									'glial tumor',
-									'glioma',
-								],
+								synonyms: ['Glial Neoplasm', 'Glial Tumor', 'Glioma, NOS', 'Neoplasm of Neuroglia', 'Neoplasm of the Neuroglia', 'Neuroglial Neoplasm', 'Neuroglial Tumor', 'Tumor of Neuroglia', 'Tumor of the Neuroglia', 'glial tumor', 'glioma'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4822',
@@ -5895,16 +4364,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Glioma',
 								preferred_name: 'Malignant Glioma',
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'GLIOMA, MALIGNANT',
-									'Glioma, malignant',
-									'High Grade Glioma',
-									'High-Grade Glioma',
-									'Malignant Glial Neoplasm',
-									'Malignant Glial Tumor',
-									'Malignant Neuroglial Neoplasm',
-									'Malignant Neuroglial Tumor',
-								],
+								synonyms: ['GLIOMA, MALIGNANT', 'Glioma, malignant', 'High Grade Glioma', 'High-Grade Glioma', 'Malignant Glial Neoplasm', 'Malignant Glial Tumor', 'Malignant Neuroglial Neoplasm', 'Malignant Neuroglial Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C102871',
@@ -5934,20 +4394,7 @@ describe('<Manual />', () => {
 								display_name: 'Glioblastoma',
 								preferred_name: 'Glioblastoma',
 								type: ['grade', 'maintype', 'subtype'],
-								synonyms: [
-									'CNS, glioblastoma (GBM)',
-									'GBM',
-									'GBM (Glioblastoma)',
-									'Glioblastoma Multiforme',
-									'Glioblastoma multiforme',
-									'Grade IV Astrocytic Neoplasm',
-									'Grade IV Astrocytic Tumor',
-									'Spongioblastoma Multiforme',
-									'Spongioblastoma multiforme',
-									'WHO Grade IV Glioma',
-									'glioblastoma',
-									'glioblastoma multiforme',
-								],
+								synonyms: ['CNS, glioblastoma (GBM)', 'GBM', 'GBM (Glioblastoma)', 'Glioblastoma Multiforme', 'Glioblastoma multiforme', 'Grade IV Astrocytic Neoplasm', 'Grade IV Astrocytic Tumor', 'Spongioblastoma Multiforme', 'Spongioblastoma multiforme', 'WHO Grade IV Glioma', 'glioblastoma', 'glioblastoma multiforme'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C6958',
@@ -5967,22 +4414,15 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Intracranial Neoplasm',
 								preferred_name: 'Malignant Intracranial Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Intracranial Cancer',
-									'Intracranial Neoplasms, Malignant',
-									'Intracranial Tumors, Malignant',
-									'Malignant Intracranial Tumor',
-								],
+								synonyms: ['Intracranial Cancer', 'Intracranial Neoplasms, Malignant', 'Intracranial Tumors, Malignant', 'Malignant Intracranial Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C35562',
 								inclusion_indicator: 'TREE',
 								parents: ['C4741', 'C3268'],
 								lead_disease_indicator: 'YES',
-								display_name:
-									'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
-								preferred_name:
-									'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
+								display_name: 'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
+								preferred_name: 'Neuroepithelial, Perineurial, and Schwann Cell Neoplasm',
 								type: ['subtype'],
 								synonyms: ['Neural Neoplasm', 'Neural Tumor'],
 							},
@@ -5994,10 +4434,7 @@ describe('<Manual />', () => {
 								display_name: 'Astrocytic Tumor',
 								preferred_name: 'Adult Astrocytic Tumor',
 								type: ['subtype'],
-								synonyms: [
-									'Adult Astrocytic Neoplasm',
-									'Adult Astrocytic Tumor',
-								],
+								synonyms: ['Adult Astrocytic Neoplasm', 'Adult Astrocytic Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C7062',
@@ -6047,20 +4484,7 @@ describe('<Manual />', () => {
 								display_name: 'Glioblastoma',
 								preferred_name: 'Glioblastoma',
 								type: ['grade', 'maintype', 'subtype'],
-								synonyms: [
-									'CNS, glioblastoma (GBM)',
-									'GBM',
-									'GBM (Glioblastoma)',
-									'Glioblastoma Multiforme',
-									'Glioblastoma multiforme',
-									'Grade IV Astrocytic Neoplasm',
-									'Grade IV Astrocytic Tumor',
-									'Spongioblastoma Multiforme',
-									'Spongioblastoma multiforme',
-									'WHO Grade IV Glioma',
-									'glioblastoma',
-									'glioblastoma multiforme',
-								],
+								synonyms: ['CNS, glioblastoma (GBM)', 'GBM', 'GBM (Glioblastoma)', 'Glioblastoma Multiforme', 'Glioblastoma multiforme', 'Grade IV Astrocytic Neoplasm', 'Grade IV Astrocytic Tumor', 'Spongioblastoma Multiforme', 'Spongioblastoma multiforme', 'WHO Grade IV Glioma', 'glioblastoma', 'glioblastoma multiforme'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C9094',
@@ -6070,12 +4494,7 @@ describe('<Manual />', () => {
 								display_name: 'Glioblastoma',
 								preferred_name: 'Adult Glioblastoma',
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'Adult Glioblastoma',
-									'Adult Glioblastoma Multiforme',
-									'Grade IV Adult Astrocytic Neoplasm',
-									'Grade IV Adult Astrocytic Tumor',
-								],
+								synonyms: ['Adult Glioblastoma', 'Adult Glioblastoma Multiforme', 'Grade IV Adult Astrocytic Neoplasm', 'Grade IV Adult Astrocytic Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4822',
@@ -6085,16 +4504,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Glioma',
 								preferred_name: 'Malignant Glioma',
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'GLIOMA, MALIGNANT',
-									'Glioma, malignant',
-									'High Grade Glioma',
-									'High-Grade Glioma',
-									'Malignant Glial Neoplasm',
-									'Malignant Glial Tumor',
-									'Malignant Neuroglial Neoplasm',
-									'Malignant Neuroglial Tumor',
-								],
+								synonyms: ['GLIOMA, MALIGNANT', 'Glioma, malignant', 'High Grade Glioma', 'High-Grade Glioma', 'Malignant Glial Neoplasm', 'Malignant Glial Tumor', 'Malignant Neuroglial Neoplasm', 'Malignant Neuroglial Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C2907',
@@ -6104,15 +4514,7 @@ describe('<Manual />', () => {
 								display_name: 'Brain Tumor',
 								preferred_name: 'Brain Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Brain Neoplasm',
-									'Brain Neoplasms',
-									'Neoplasm of Brain',
-									'Neoplasm of the Brain',
-									'Tumor of Brain',
-									'Tumor of the Brain',
-									'brain tumor',
-								],
+								synonyms: ['Brain Neoplasm', 'Brain Neoplasms', 'Neoplasm of Brain', 'Neoplasm of the Brain', 'Tumor of Brain', 'Tumor of the Brain', 'brain tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C7710',
@@ -6122,15 +4524,7 @@ describe('<Manual />', () => {
 								display_name: 'Brain Neoplasm',
 								preferred_name: 'Adult Brain Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Adult Brain Neoplasm',
-									'Adult Brain Tumor',
-									'Brain Neoplasms, Adult',
-									'Neoplasm of Adult Brain',
-									'Neoplasm of the Adult Brain',
-									'Tumor of Adult Brain',
-									'Tumor of the Adult Brain',
-								],
+								synonyms: ['Adult Brain Neoplasm', 'Adult Brain Tumor', 'Brain Neoplasms, Adult', 'Neoplasm of Adult Brain', 'Neoplasm of the Adult Brain', 'Tumor of Adult Brain', 'Tumor of the Adult Brain'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3262',
@@ -6140,18 +4534,7 @@ describe('<Manual />', () => {
 								display_name: 'Other Neoplasm',
 								preferred_name: 'Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Neoplasia',
-									'Neoplasm',
-									'Neoplasm, NOS',
-									'Neoplasms, NOS',
-									'Neoplastic Disease',
-									'Neoplastic Growth',
-									'Tumor, NOS',
-									'neoplasia',
-									'neoplasm',
-									'tumor',
-								],
+								synonyms: ['Neoplasia', 'Neoplasm', 'Neoplasm, NOS', 'Neoplasms, NOS', 'Neoplastic Disease', 'Neoplastic Growth', 'Tumor, NOS', 'neoplasia', 'neoplasm', 'tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C102897',
@@ -6161,11 +4544,7 @@ describe('<Manual />', () => {
 								display_name: 'High Grade Astrocytic Tumor',
 								preferred_name: 'High Grade Astrocytic Tumor',
 								type: ['grade'],
-								synonyms: [
-									'High Grade Astrocytic Neoplasm',
-									'High-Grade Astrocytic Neoplasm',
-									'High-Grade Astrocytic Tumor',
-								],
+								synonyms: ['High Grade Astrocytic Neoplasm', 'High-Grade Astrocytic Neoplasm', 'High-Grade Astrocytic Tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4798',
@@ -6175,13 +4554,7 @@ describe('<Manual />', () => {
 								display_name: 'Recurrent Neoplasm',
 								preferred_name: 'Recurrent Neoplasm',
 								type: ['stage'],
-								synonyms: [
-									'Neoplasm Recurrence',
-									'Recurrence',
-									'Recurrent',
-									'Recurrent Tumor',
-									'recurrence',
-								],
+								synonyms: ['Neoplasm Recurrence', 'Recurrence', 'Recurrent', 'Recurrent Tumor', 'recurrence'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C2934',
@@ -6191,10 +4564,7 @@ describe('<Manual />', () => {
 								display_name: 'Central Nervous System Disorder',
 								preferred_name: 'Central Nervous System Disorder',
 								type: ['subtype'],
-								synonyms: [
-									'Central Nervous System Disease',
-									'Disorder of Central Nervous System',
-								],
+								synonyms: ['Central Nervous System Disease', 'Disorder of Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C8289',
@@ -6224,11 +4594,7 @@ describe('<Manual />', () => {
 								display_name: 'Glioblastoma, IDH-Wildtype',
 								preferred_name: 'Glioblastoma, IDH-Wildtype',
 								type: ['grade', 'subtype'],
-								synonyms: [
-									'Primary Glioblastoma',
-									'Primary Glioblastoma Multiforme',
-									'Primary Glioblastoma, IDH-Wildtype',
-								],
+								synonyms: ['Primary Glioblastoma', 'Primary Glioblastoma Multiforme', 'Primary Glioblastoma, IDH-Wildtype'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3059',
@@ -6238,19 +4604,7 @@ describe('<Manual />', () => {
 								display_name: 'Glioma',
 								preferred_name: 'Glioma',
 								type: ['maintype', 'subtype'],
-								synonyms: [
-									'Glial Neoplasm',
-									'Glial Tumor',
-									'Glioma, NOS',
-									'Neoplasm of Neuroglia',
-									'Neoplasm of the Neuroglia',
-									'Neuroglial Neoplasm',
-									'Neuroglial Tumor',
-									'Tumor of Neuroglia',
-									'Tumor of the Neuroglia',
-									'glial tumor',
-									'glioma',
-								],
+								synonyms: ['Glial Neoplasm', 'Glial Tumor', 'Glioma, NOS', 'Neoplasm of Neuroglia', 'Neoplasm of the Neuroglia', 'Neuroglial Neoplasm', 'Neuroglial Tumor', 'Tumor of Neuroglia', 'Tumor of the Neuroglia', 'glial tumor', 'glioma'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4953',
@@ -6260,12 +4614,7 @@ describe('<Manual />', () => {
 								display_name: 'Intracranial Neoplasm',
 								preferred_name: 'Intracranial Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Intracranial Central Nervous System Neoplasm',
-									'Intracranial Central Nervous System Tumor',
-									'Intracranial Tumor',
-									'intracranial tumor',
-								],
+								synonyms: ['Intracranial Central Nervous System Neoplasm', 'Intracranial Central Nervous System Tumor', 'Intracranial Tumor', 'intracranial tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3787',
@@ -6275,20 +4624,7 @@ describe('<Manual />', () => {
 								display_name: 'Neuroepithelial Neoplasm',
 								preferred_name: 'Neuroepithelial Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'Neoplasm of Neuroepithelial Tissue',
-									'Neoplasm of Neuroepithelium',
-									'Neoplasm of the Neuroepithelium',
-									'Neuroepithelial Neoplasms',
-									'Neuroepithelial Tissue Neoplasm',
-									'Neuroepithelial Tissue Tumor',
-									'Neuroepithelial Tumor',
-									'Neuroepithelial Tumors',
-									'Neuroepitheliomatous Neoplasms',
-									'Tumor of Neuroepithelial Tissue',
-									'Tumor of Neuroepithelium',
-									'Tumor of the Neuroepithelium',
-								],
+								synonyms: ['Neoplasm of Neuroepithelial Tissue', 'Neoplasm of Neuroepithelium', 'Neoplasm of the Neuroepithelium', 'Neuroepithelial Neoplasms', 'Neuroepithelial Tissue Neoplasm', 'Neuroepithelial Tissue Tumor', 'Neuroepithelial Tumor', 'Neuroepithelial Tumors', 'Neuroepitheliomatous Neoplasms', 'Tumor of Neuroepithelial Tissue', 'Tumor of Neuroepithelium', 'Tumor of the Neuroepithelium'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C96413',
@@ -6308,23 +4644,7 @@ describe('<Manual />', () => {
 								display_name: 'Other Disease',
 								preferred_name: 'Disease or Disorder',
 								type: ['maintype'],
-								synonyms: [
-									'Diagnosis',
-									'Disease',
-									'Disease or Disorder',
-									'Disease or Disorder, Non-Neoplastic',
-									'Diseases',
-									'Diseases and Disorders',
-									'Disorder',
-									'Disorders',
-									'condition',
-									'disease',
-									'disease term',
-									'disease type',
-									'disease_term',
-									'disease_type',
-									'disorder',
-								],
+								synonyms: ['Diagnosis', 'Disease', 'Disease or Disorder', 'Disease or Disorder, Non-Neoplastic', 'Diseases', 'Diseases and Disorders', 'Disorder', 'Disorders', 'condition', 'disease', 'disease term', 'disease type', 'disease_term', 'disease_type', 'disorder'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C3262',
@@ -6334,18 +4654,7 @@ describe('<Manual />', () => {
 								display_name: 'Other Neoplasm',
 								preferred_name: 'Neoplasm',
 								type: ['maintype'],
-								synonyms: [
-									'Neoplasia',
-									'Neoplasm',
-									'Neoplasm, NOS',
-									'Neoplasms, NOS',
-									'Neoplastic Disease',
-									'Neoplastic Growth',
-									'Tumor, NOS',
-									'neoplasia',
-									'neoplasm',
-									'tumor',
-								],
+								synonyms: ['Neoplasia', 'Neoplasm', 'Neoplasm, NOS', 'Neoplasms, NOS', 'Neoplastic Disease', 'Neoplastic Growth', 'Tumor, NOS', 'neoplasia', 'neoplasm', 'tumor'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C4741',
@@ -6365,29 +4674,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Central Nervous System Neoplasm',
 								preferred_name: 'Malignant Central Nervous System Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'CNS Cancer',
-									'CNS Malignant Neoplasms',
-									'CNS Neoplasms, Malignant',
-									'Cancer of CNS',
-									'Cancer of Central Nervous System',
-									'Cancer of the CNS',
-									'Cancer of the Central Nervous System',
-									'Central Nervous System Cancer',
-									'Central Nervous System Neoplasms, Malignant',
-									'Malignant CNS Neoplasm',
-									'Malignant CNS Neoplasms',
-									'Malignant CNS Tumor',
-									'Malignant Central Nervous System Tumor',
-									'Malignant Neoplasm of CNS',
-									'Malignant Neoplasm of Central Nervous System',
-									'Malignant Neoplasm of the CNS',
-									'Malignant Neoplasm of the Central Nervous System',
-									'Malignant Tumor of CNS',
-									'Malignant Tumor of Central Nervous System',
-									'Malignant Tumor of the CNS',
-									'Malignant Tumor of the Central Nervous System',
-								],
+								synonyms: ['CNS Cancer', 'CNS Malignant Neoplasms', 'CNS Neoplasms, Malignant', 'Cancer of CNS', 'Cancer of Central Nervous System', 'Cancer of the CNS', 'Cancer of the Central Nervous System', 'Central Nervous System Cancer', 'Central Nervous System Neoplasms, Malignant', 'Malignant CNS Neoplasm', 'Malignant CNS Neoplasms', 'Malignant CNS Tumor', 'Malignant Central Nervous System Tumor', 'Malignant Neoplasm of CNS', 'Malignant Neoplasm of Central Nervous System', 'Malignant Neoplasm of the CNS', 'Malignant Neoplasm of the Central Nervous System', 'Malignant Tumor of CNS', 'Malignant Tumor of Central Nervous System', 'Malignant Tumor of the CNS', 'Malignant Tumor of the Central Nervous System'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C170814',
@@ -6417,20 +4704,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Neoplasm',
 								preferred_name: 'Malignant Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'CA',
-									'Cancer',
-									'Malignancy',
-									'Malignant Growth',
-									'Malignant Neoplastic Disease',
-									'Malignant Tumor',
-									'NEOPLASM, MALIGNANT',
-									'Neoplasm, malignant',
-									'Tumor, malignant, NOS',
-									'Unclassified tumor, malignant',
-									'cancer',
-									'malignancy',
-								],
+								synonyms: ['CA', 'Cancer', 'Malignancy', 'Malignant Growth', 'Malignant Neoplastic Disease', 'Malignant Tumor', 'NEOPLASM, MALIGNANT', 'Neoplasm, malignant', 'Tumor, malignant, NOS', 'Unclassified tumor, malignant', 'cancer', 'malignancy'],
 							},
 							{
 								nci_thesaurus_concept_id: 'C9305',
@@ -6440,20 +4714,7 @@ describe('<Manual />', () => {
 								display_name: 'Malignant Neoplasm',
 								preferred_name: 'Malignant Neoplasm',
 								type: ['subtype'],
-								synonyms: [
-									'CA',
-									'Cancer',
-									'Malignancy',
-									'Malignant Growth',
-									'Malignant Neoplastic Disease',
-									'Malignant Tumor',
-									'NEOPLASM, MALIGNANT',
-									'Neoplasm, malignant',
-									'Tumor, malignant, NOS',
-									'Unclassified tumor, malignant',
-									'cancer',
-									'malignancy',
-								],
+								synonyms: ['CA', 'Cancer', 'Malignancy', 'Malignant Growth', 'Malignant Neoplastic Disease', 'Malignant Tumor', 'NEOPLASM, MALIGNANT', 'Neoplasm, malignant', 'Tumor, malignant, NOS', 'Unclassified tumor, malignant', 'cancer', 'malignancy'],
 							},
 						],
 						biomarkers: null,
@@ -6474,44 +4735,37 @@ describe('<Manual />', () => {
 								{
 									display_order: 1,
 									inclusion_indicator: true,
-									description:
-										'Histologically-confirmed intracranial glioblastoma or gliosarcoma (World Health Organization [WHO] grade IV) with evidence of clinical and radiographic (computed tomography [CT] or MRI brain) tumor progression (need not be biopsy proven)',
+									description: 'Histologically-confirmed intracranial glioblastoma or gliosarcoma (World Health Organization [WHO] grade IV) with evidence of clinical and radiographic (computed tomography [CT] or MRI brain) tumor progression (need not be biopsy proven)',
 								},
 								{
 									display_order: 2,
 									inclusion_indicator: true,
-									description:
-										'Patients who have undergone prior resection, radiation therapy, and/or chemotherapy (except bevacizumab)',
+									description: 'Patients who have undergone prior resection, radiation therapy, and/or chemotherapy (except bevacizumab)',
 								},
 								{
 									display_order: 3,
 									inclusion_indicator: true,
-									description:
-										'Karnofsky performance score >= 70 or Eastern Cooperative Oncology Group (ECOG) performance status = 0 or 1',
+									description: 'Karnofsky performance score >= 70 or Eastern Cooperative Oncology Group (ECOG) performance status = 0 or 1',
 								},
 								{
 									display_order: 4,
 									inclusion_indicator: true,
-									description:
-										'Patient agrees to undergo a baseline and a follow-up 11C-alpha-methyl-L-tryptophan (AMT)-PET scan during immunotherapy (IMT)',
+									description: 'Patient agrees to undergo a baseline and a follow-up 11C-alpha-methyl-L-tryptophan (AMT)-PET scan during immunotherapy (IMT)',
 								},
 								{
 									display_order: 5,
 									inclusion_indicator: true,
-									description:
-										'No serious medical or psychiatric illness which prevents informed consent or intensive treatment is allowed',
+									description: 'No serious medical or psychiatric illness which prevents informed consent or intensive treatment is allowed',
 								},
 								{
 									display_order: 6,
 									inclusion_indicator: true,
-									description:
-										'Non pregnant: negative serum test for pregnancy, unless male, prior hysterectomy, tubal ligation, or postmenopausal; (Note: postmenopausal is defined as age > 55 with amenorrhea for > 1 year or age < 55 years with amenorrhea for 2 years and follicle stimulating hormone (FSH) level within postmenopausal range of institutional parameters; patients requiring FSH level to determine menopausal status need not have this performed and may choose to proceed with serum pregnancy testing)',
+									description: 'Non pregnant: negative serum test for pregnancy, unless male, prior hysterectomy, tubal ligation, or postmenopausal; (Note: postmenopausal is defined as age > 55 with amenorrhea for > 1 year or age < 55 years with amenorrhea for 2 years and follicle stimulating hormone (FSH) level within postmenopausal range of institutional parameters; patients requiring FSH level to determine menopausal status need not have this performed and may choose to proceed with serum pregnancy testing)',
 								},
 								{
 									display_order: 7,
 									inclusion_indicator: true,
-									description:
-										'Required initial laboratory data (normal limits per treating institution; minor changes from the indicated laboratory guidelines will be allowed at the discretion of the treating team under special circumstances and reasons for the changes will be documented):',
+									description: 'Required initial laboratory data (normal limits per treating institution; minor changes from the indicated laboratory guidelines will be allowed at the discretion of the treating team under special circumstances and reasons for the changes will be documented):',
 								},
 								{
 									display_order: 8,
@@ -6546,8 +4800,7 @@ describe('<Manual />', () => {
 								{
 									display_order: 14,
 									inclusion_indicator: true,
-									description:
-										'Creatinine clearance >= 50 ml/mm (can be calculated utilizing the Cockcroft & Gault equation)',
+									description: 'Creatinine clearance >= 50 ml/mm (can be calculated utilizing the Cockcroft & Gault equation)',
 								},
 								{
 									display_order: 15,
@@ -6557,26 +4810,22 @@ describe('<Manual />', () => {
 								{
 									display_order: 16,
 									inclusion_indicator: true,
-									description:
-										'Alanine aminotransferase (ALT) and aspartate aminotransferase (AST) < 5 times upper limit of normal',
+									description: 'Alanine aminotransferase (ALT) and aspartate aminotransferase (AST) < 5 times upper limit of normal',
 								},
 								{
 									display_order: 17,
 									inclusion_indicator: true,
-									description:
-										'Alkaline phosphatase < 5 times upper limit of normal',
+									description: 'Alkaline phosphatase < 5 times upper limit of normal',
 								},
 								{
 									display_order: 18,
 									inclusion_indicator: true,
-									description:
-										'Prothrombin time (PT) or international normalized ratio (INR) and activated partial thromboplastin time (aPTT) < 1.2 times upper limit of normal',
+									description: 'Prothrombin time (PT) or international normalized ratio (INR) and activated partial thromboplastin time (aPTT) < 1.2 times upper limit of normal',
 								},
 								{
 									display_order: 19,
 									inclusion_indicator: true,
-									description:
-										'Negative human immunodeficiency virus (HIV)-1/2 serology',
+									description: 'Negative human immunodeficiency virus (HIV)-1/2 serology',
 								},
 								{
 									display_order: 20,
@@ -6591,44 +4840,37 @@ describe('<Manual />', () => {
 								{
 									display_order: 22,
 									inclusion_indicator: true,
-									description:
-										'Left ventricular ejection fraction (LVEF) >= 45% at rest (multi gated acquisition [MUGA] or echocardiogram [ECHO])',
+									description: 'Left ventricular ejection fraction (LVEF) >= 45% at rest (multi gated acquisition [MUGA] or echocardiogram [ECHO])',
 								},
 								{
 									display_order: 23,
 									inclusion_indicator: true,
-									description:
-										'Each patient must be aware of the nature of their disease and must willingly consent to treatment after being informed of alternatives, potential benefits, side effects, and risks',
+									description: 'Each patient must be aware of the nature of their disease and must willingly consent to treatment after being informed of alternatives, potential benefits, side effects, and risks',
 								},
 								{
 									display_order: 24,
 									inclusion_indicator: true,
-									description:
-										'Surgery is done prior to IMT if needed for palliation, tumor debulking, pathological documentation of tumor recurrence; the patients may continue on study therapy even if they do not have measurable disease',
+									description: 'Surgery is done prior to IMT if needed for palliation, tumor debulking, pathological documentation of tumor recurrence; the patients may continue on study therapy even if they do not have measurable disease',
 								},
 								{
 									display_order: 25,
 									inclusion_indicator: true,
-									description:
-										'No other investigational agents, immunomodulating agents, or cancer chemotherapy are permitted for the duration and 12 months following the study IMT unless there is disease progression; radiotherapy is not permitted; appropriate antibiotics, blood products, antiemetics, fluids, electrolytes and general supportive care are to be used as necessary',
+									description: 'No other investigational agents, immunomodulating agents, or cancer chemotherapy are permitted for the duration and 12 months following the study IMT unless there is disease progression; radiotherapy is not permitted; appropriate antibiotics, blood products, antiemetics, fluids, electrolytes and general supportive care are to be used as necessary',
 								},
 								{
 									display_order: 26,
 									inclusion_indicator: false,
-									description:
-										'Resective surgery within 2 months prior to the initial pre-treatment AMT-PET scan',
+									description: 'Resective surgery within 2 months prior to the initial pre-treatment AMT-PET scan',
 								},
 								{
 									display_order: 27,
 									inclusion_indicator: false,
-									description:
-										'Severe increased intracranial pressure, status epilepticus, or other serious complications from the brain tumor, requiring emergency or urgent intervention',
+									description: 'Severe increased intracranial pressure, status epilepticus, or other serious complications from the brain tumor, requiring emergency or urgent intervention',
 								},
 								{
 									display_order: 28,
 									inclusion_indicator: false,
-									description:
-										'Patients with a history of another malignancy within 5 years of study enrollment',
+									description: 'Patients with a history of another malignancy within 5 years of study enrollment',
 								},
 								{
 									display_order: 29,
@@ -6638,14 +4880,12 @@ describe('<Manual />', () => {
 								{
 									display_order: 30,
 									inclusion_indicator: false,
-									description:
-										'Evidence of active bleeding or bleeding diathesis',
+									description: 'Evidence of active bleeding or bleeding diathesis',
 								},
 								{
 									display_order: 31,
 									inclusion_indicator: false,
-									description:
-										'Patients will be ineligible for treatment on this protocol if (prior to protocol entry):\r\n* There is a history of a recent (within one year) myocardial infarction\r\n* There is a current or prior history of angina/coronary symptoms requiring medications and/or evidence of depressed left ventricular function (LVEF < 45% by MUGA or ECHO)\r\n* There is clinical evidence of congestive heart failure requiring medical management (irrespective of MUGA or ECHO results)',
+									description: 'Patients will be ineligible for treatment on this protocol if (prior to protocol entry):\r\n* There is a history of a recent (within one year) myocardial infarction\r\n* There is a current or prior history of angina/coronary symptoms requiring medications and/or evidence of depressed left ventricular function (LVEF < 45% by MUGA or ECHO)\r\n* There is clinical evidence of congestive heart failure requiring medical management (irrespective of MUGA or ECHO results)',
 								},
 							],
 						},
@@ -6654,8 +4894,7 @@ describe('<Manual />', () => {
 							{
 								arm_name: 'Treatment (EGFRBi-armed autologous T cells)',
 								arm_type: 'EXPERIMENTAL',
-								arm_description:
-									'PHASE I: Patients receive EGFRBi-armed autologous T cells IT twice weekly for 4 weeks.\r\n\r\nPHASE II: Patients receive EGFRBi-armed autologous T cells* IT twice weekly for 4 weeks and then IV over 15-30 minutes twice weekly for 2 weeks.\r\n\r\n*NOTE: Six selected patients receive EGFRBi-armed autologous T cells IV on day -3, -2, or -1 prior to first IT infusion.',
+								arm_description: 'PHASE I: Patients receive EGFRBi-armed autologous T cells IT twice weekly for 4 weeks.\r\n\r\nPHASE II: Patients receive EGFRBi-armed autologous T cells* IT twice weekly for 4 weeks and then IV over 15-30 minutes twice weekly for 2 weeks.\r\n\r\n*NOTE: Six selected patients receive EGFRBi-armed autologous T cells IV on day -3, -2, or -1 prior to first IT infusion.',
 								interventions: [
 									{
 										intervention_name: 'Laboratory Biomarker Analysis',
@@ -6671,8 +4910,7 @@ describe('<Manual />', () => {
 										intervention_name: 'EGFRBi-Armed Autologous T Cells',
 										intervention_type: 'Biological / Vaccine',
 										intervention_code: 'C71536',
-										intervention_description:
-											'Autologous activated T cells, loaded with a bispecific antibody produced by heteroconjugation of anti-CD3 and anti-epidermal growth factor receptor (EGFR) monoclonal antibodies, with potential antineoplastic activity. Binding of EGFRBi-armed autologous activated T cells to EGFR-positive tumor cells may result in increased T cell-mediated cytotoxicity towards tumor cells expressing EGFR.  Arming activated T cells with this bispecific antibody may significantly increase T cell secretion of anti-tumor associated cytokines such as IL2, RANTES, IFN-gamma, and TNF-alpha. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
+										intervention_description: 'Autologous activated T cells, loaded with a bispecific antibody produced by heteroconjugation of anti-CD3 and anti-epidermal growth factor receptor (EGFR) monoclonal antibodies, with potential antineoplastic activity. Binding of EGFRBi-armed autologous activated T cells to EGFR-positive tumor cells may result in increased T cell-mediated cytotoxicity towards tumor cells expressing EGFR.  Arming activated T cells with this bispecific antibody may significantly increase T cell secretion of anti-tumor associated cytokines such as IL2, RANTES, IFN-gamma, and TNF-alpha. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional',
 										parents: ['C129826', 'C28681'],
 										inclusion_indicator: 'TRIAL',
 										synonyms: [],
@@ -6696,11 +4934,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'NONE',
 										parents: ['C16203'],
-										synonyms: [
-											'Intervention',
-											'Intervention Strategies',
-											'Procedure',
-										],
+										synonyms: ['Intervention', 'Intervention Strategies', 'Procedure'],
 									},
 									{
 										intervention_code: 'C16203',
@@ -6740,13 +4974,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'NONE',
 										parents: ['C25218'],
-										synonyms: [
-											'Lab Test',
-											'Lab Tests',
-											'Laboratory Test',
-											'Test',
-											'Tests',
-										],
+										synonyms: ['Lab Test', 'Lab Tests', 'Laboratory Test', 'Test', 'Tests'],
 									},
 									{
 										intervention_code: 'C129826',
@@ -6756,10 +4984,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C142078', 'C129821', 'C129820'],
-										synonyms: [
-											'Anti-cancer Immune Cell',
-											'Antineoplastic Immune Cells',
-										],
+										synonyms: ['Anti-cancer Immune Cell', 'Antineoplastic Immune Cells'],
 									},
 									{
 										intervention_code: 'C142078',
@@ -6769,13 +4994,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C307', 'C308'],
-										synonyms: [
-											'ACT Agent',
-											'Adoptive Cell Transfer Agent',
-											'Adoptive Cell-based Agent',
-											'Adoptive Cellular Therapy Agent',
-											'Adoptive Cell Therapy Agent',
-										],
+										synonyms: ['ACT Agent', 'Adoptive Cell Transfer Agent', 'Adoptive Cell-based Agent', 'Adoptive Cellular Therapy Agent', 'Adoptive Cell Therapy Agent'],
 									},
 									{
 										intervention_code: 'C307',
@@ -6785,14 +5004,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C1909'],
-										synonyms: [
-											'Biological Products',
-											'Biologicals',
-											'Biologics',
-											'Biopharmaceuticals',
-											'Immunologic, Immunochemical',
-											'Immunologics',
-										],
+										synonyms: ['Biological Products', 'Biologicals', 'Biologics', 'Biopharmaceuticals', 'Immunologic, Immunochemical', 'Immunologics'],
 									},
 									{
 										intervention_code: 'C1909',
@@ -6802,20 +5014,11 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C1908'],
-										synonyms: [
-											'Agent',
-											'Drug',
-											'Drug Substance',
-											'Pharmaceutical Agent',
-											'Pharmaceuticals',
-											'Pharmacologic Agent',
-											'Pharmacological Substance',
-										],
+										synonyms: ['Agent', 'Drug', 'Drug Substance', 'Pharmaceutical Agent', 'Pharmaceuticals', 'Pharmacologic Agent', 'Pharmacological Substance'],
 									},
 									{
 										intervention_code: 'C1908',
-										intervention_name:
-											'Drug, Food, Chemical or Biomedical Material',
+										intervention_name: 'Drug, Food, Chemical or Biomedical Material',
 										inclusion_indicator: 'TREE',
 										intervention_type: 'Biological / Vaccine',
 										intervention_description: '',
@@ -6831,20 +5034,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C1909'],
-										synonyms: [
-											'BRM',
-											'Biological Response Modifier',
-											'Biomodulators',
-											'Immune Mediators',
-											'Immune Modulators',
-											'Immune Regulators',
-											'Immunomodulating Agent',
-											'Immunomodulators',
-											'Immunomodulatory Agent',
-											'Immunopotentiators',
-											'Immunotherapy Agent',
-											'Immunotherapeutic Agent',
-										],
+										synonyms: ['BRM', 'Biological Response Modifier', 'Biomodulators', 'Immune Mediators', 'Immune Modulators', 'Immune Regulators', 'Immunomodulating Agent', 'Immunomodulators', 'Immunomodulatory Agent', 'Immunopotentiators', 'Immunotherapy Agent', 'Immunotherapeutic Agent'],
 									},
 									{
 										intervention_code: 'C129821',
@@ -6854,12 +5044,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C274', 'C307'],
-										synonyms: [
-											'Anti-cancer Biological Agent',
-											'Anticancer Biological',
-											'Antineoplastic Biological',
-											'Antineoplastic Biotherapeutic',
-										],
+										synonyms: ['Anti-cancer Biological Agent', 'Anticancer Biological', 'Antineoplastic Biological', 'Antineoplastic Biotherapeutic'],
 									},
 									{
 										intervention_code: 'C274',
@@ -6869,18 +5054,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C1909'],
-										synonyms: [
-											'Anti-Cancer Agents',
-											'Anti-Tumor Agents',
-											'Anti-Tumor Drugs',
-											'Antineoplastic Drugs',
-											'Antineoplastics',
-											'Antiproliferative Agents',
-											'Antiproliferative Drugs',
-											'Cancer Drug',
-											'Chemotherapeutic Agents, Neoplastic Disease',
-											'Tumor-Specific Treatment Agents',
-										],
+										synonyms: ['Anti-Cancer Agents', 'Anti-Tumor Agents', 'Anti-Tumor Drugs', 'Antineoplastic Drugs', 'Antineoplastics', 'Antiproliferative Agents', 'Antiproliferative Drugs', 'Cancer Drug', 'Chemotherapeutic Agents, Neoplastic Disease', 'Tumor-Specific Treatment Agents'],
 									},
 									{
 										intervention_code: 'C129820',
@@ -6890,12 +5064,7 @@ describe('<Manual />', () => {
 										intervention_description: '',
 										intervention_category: 'Agent Category',
 										parents: ['C274', 'C308'],
-										synonyms: [
-											'Anti-cancer Immunotherapeutic',
-											'Antineoplastic BRM',
-											'Antineoplastic Biological Response Modifier',
-											'Antineoplastic Immunotherapeutic',
-										],
+										synonyms: ['Anti-cancer Immunotherapeutic', 'Antineoplastic BRM', 'Antineoplastic Biological Response Modifier', 'Antineoplastic Immunotherapeutic'],
 									},
 									{
 										intervention_code: 'C28681',
@@ -6924,54 +5093,36 @@ describe('<Manual />', () => {
 		);
 
 		expect(useCtsApi).toHaveBeenCalled();
-		expect(screen.getByRole('heading')).toHaveTextContent(
-			'Clinical Trials for Adult Brain Tumors'
-		);
+		expect(screen.getByRole('heading')).toHaveTextContent('Clinical Trials for Adult Brain Tumors');
 
 		// Check page result count info exists
 		expect(screen.getByText('Trials 1-1 of 4')).toBeInTheDocument();
 
 		// Check pager exists
-		expect(
-			screen.getAllByRole('navigation', { name: 'pager navigation' })[0]
-		).toBeInTheDocument();
+		expect(screen.getAllByRole('navigation', { name: 'pager navigation' })[0]).toBeInTheDocument();
 
 		// Pager item count should be 10. 4 for pager item numbers, 1 for next page item for both top and bottom pager.
 		expect(screen.getAllByRole('button', { name: /page/ })).toHaveLength(10);
 
 		// Result title and href value should match expected
-		expect(screen.getAllByRole('link')[0]).toHaveTextContent(
-			'Carboplatin, Melphalan, Etoposide Phosphate, Mannitol, and Sodium Thiosulfate in Treating Patients With Previously Treated Brain Tumors'
-		);
-		expect(screen.getAllByRole('link')[0]).toHaveAttribute(
-			'href',
-			'/test/NCI-2013-00786'
-		);
+		expect(screen.getAllByRole('link')[0]).toHaveTextContent('Carboplatin, Melphalan, Etoposide Phosphate, Mannitol, and Sodium Thiosulfate in Treating Patients With Previously Treated Brain Tumors');
+		expect(screen.getAllByRole('link')[0]).toHaveAttribute('href', '/test/NCI-2013-00786');
 
 		// Location text should match expected
-		expect(
-			screen.getByText('OHSU Knight Cancer Institute, Portland, Oregon')
-		).toBeInTheDocument();
+		expect(screen.getByText('OHSU Knight Cancer Institute, Portland, Oregon')).toBeInTheDocument();
 
 		// Navigate to page 2 with next pager item. Confirm currently active page on top and bottom is 2
 		fireEvent.click(screen.getAllByRole('button', { name: 'next page' })[0]);
 
-		expect(screen.getAllByRole('button', { name: 'page 2' })[0]).toHaveClass(
-			'pager__button active',
-			{ exact: true }
-		);
-		expect(screen.getAllByRole('button', { name: 'page 2' })[1]).toHaveClass(
-			'pager__button active',
-			{ exact: true }
-		);
+		expect(screen.getAllByRole('button', { name: 'page 2' })[0]).toHaveClass('pager__button active', { exact: true });
+		expect(screen.getAllByRole('button', { name: 'page 2' })[1]).toHaveClass('pager__button active', { exact: true });
 	});
 
 	it('should render <NoResults /> component when payload is empty', async () => {
 		const basePath = '/';
 		const noTrialsHtml = 'There are currently no available trials.';
 		const pageTitle = 'Manual Listing Page';
-		const requestFilters =
-			'{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose": "treatment"}';
+		const requestFilters = '{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose": "treatment"}';
 		const title = 'NCI Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
 		const trialListingPageType = 'Manual';
@@ -7006,17 +5157,14 @@ describe('<Manual />', () => {
 		);
 
 		expect(screen.getByText('Manual Listing Page')).toBeInTheDocument();
-		expect(
-			screen.getByText('There are currently no available trials.')
-		).toBeInTheDocument();
+		expect(screen.getByText('There are currently no available trials.')).toBeInTheDocument();
 	});
 
 	it('should render <ErrorPage /> component when error occurs', async () => {
 		const basePath = '/';
 		const noTrialsHtml = 'There are currently no available trials.';
 		const pageTitle = 'Manual Listing Page';
-		const requestFilters =
-			'{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose": "treatment"}';
+		const requestFilters = '{"diseases.nci_thesaurus_concept_id": ["chicken", "foo", "oknn"], "primary_purpose": "treatment"}';
 		const title = 'NCI Clinical Trials';
 		const canonicalHost = 'https://www.cancer.gov';
 		const trialListingPageType = 'Manual';
@@ -7051,8 +5199,6 @@ describe('<Manual />', () => {
 			</MockAnalyticsProvider>
 		);
 
-		expect(
-			screen.getByText('An error occurred. Please try again later.')
-		).toBeInTheDocument();
+		expect(screen.getByText('An error occurred. Please try again later.')).toBeInTheDocument();
 	});
 });
