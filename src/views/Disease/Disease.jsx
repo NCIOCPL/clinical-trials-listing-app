@@ -207,20 +207,22 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 
 		return (
 			<>
-				<div className="paging-section">
-					{placement === 'top' && (
-						<div className="paging-section__page-info">
-							{`
-							Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.payload.total)} of
-							${fetchState.payload.total}
-						`}
-						</div>
-					)}
-					{fetchState.payload.total > itemsPerPage && (
-						<div className="paging-section__pager">
-							<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={fetchState.payload.total} />
-						</div>
-					)}
+				<div className="ctla-results__summary grid-container">
+					<div className="grid-row">
+						{placement === 'top' && (
+							<div className="ctla-results__count grid-col-1">
+								{`
+								Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.payload.total)} of
+								${fetchState.payload.total}
+							`}
+							</div>
+						)}
+						{fetchState.payload.total > itemsPerPage && (
+							<div className="ctla-results__pager grid-col-2">
+								<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={fetchState.payload.total} />
+							</div>
+						)}
+					</div>
 				</div>
 			</>
 		);
@@ -231,38 +233,48 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 
 	return (
 		<>
-			{renderHelmet()}
-			<h1>{replacedText.pageTitle}</h1>
-			{(() => {
-				if (fetchState.loading) {
-					return <Spinner />;
-				} else if (!fetchState.loading && fetchState.payload) {
-					if (fetchState.payload.total > 0) {
-						return (
-							<>
-								{/* ::: Intro Text ::: */}
-								{replacedText.introText.length > 0 && (
-									<div
-										className="intro-text"
-										dangerouslySetInnerHTML={{
-											__html: replacedText.introText,
-										}}></div>
-								)}
-								{/* ::: Top Paging Section ::: */}
-								{renderPagerSection('top')}
-								<ScrollRestoration />
-								<ResultsListWithPage results={fetchState.payload.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
-								{/* ::: Bottom Paging Section ::: */}
-								{renderPagerSection('bottom')}
-							</>
-						);
-					} else {
-						return <NoResults />;
-					}
-				} else {
-					return <ErrorPage />;
-				}
-			})()}
+			<div className="grid-container">
+				<div className="grid-row">
+					<div className="grid-col">
+						{renderHelmet()}
+						<h1>{replacedText.pageTitle}</h1>
+						{(() => {
+							if (fetchState.loading) {
+								return <Spinner />;
+							} else if (!fetchState.loading && fetchState.payload) {
+								if (fetchState.payload.total > 0) {
+									return (
+										<>
+											{/* ::: Intro Text ::: */}
+											{replacedText.introText.length > 0 && (
+												<div className="ctla-results__intro grid-container">
+													<div className="grid-row">
+														<div
+															className="grid-col"
+															dangerouslySetInnerHTML={{
+																__html: replacedText.introText,
+															}}></div>
+													</div>
+												</div>
+											)}
+											{/* ::: Top Paging Section ::: */}
+											{renderPagerSection('top')}
+											<ScrollRestoration />
+											<ResultsListWithPage results={fetchState.payload.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
+											{/* ::: Bottom Paging Section ::: */}
+											{renderPagerSection('bottom')}
+										</>
+									);
+								} else {
+									return <NoResults />;
+								}
+							} else {
+								return <ErrorPage />;
+							}
+						})()}
+					</div>
+				</div>
+			</div>
 		</>
 	);
 };

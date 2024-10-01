@@ -1,5 +1,5 @@
-.paging-section {
-	&__pager {
+.ctla-results__summary .grid-row {
+	.ctla-results__pager {
 		display: block;
 		margin-top: 20px;
 		padding-top: 1.25em;
@@ -15,12 +15,12 @@
 		display: flex;
 		justify-content: space-between;
 		padding-top: 3px;
-		&__page-info {
+		.ctla-results__count {
 			padding-top: 3px;
 			padding-bottom: 3px;
 		}
 
-		&__pager {
+		.ctla-results__pager {
 			padding-top: 3px;
 			margin-left: auto;
 			margin-top: 0;
@@ -30,19 +30,19 @@
 	}
 }
 
-.list {
+.ctla-results__list {
 	border-top: 1px solid #ddd;
 	margin: 1.25em 0 1em;
 }
 
 @media only screen and (min-width: 1024px) {
-	.list {
+	.ctla-results__list {
 		border-top: 1px solid #ddd;
 	}
 }
 
 @media only screen and (min-width: 1024px) {
-	.list+.paging-section:not(:empty) {
+	.ctla-results__list+.ctla-results__summary:not(:empty) {
 		border-top: 1px solid #ddd;
 		padding-top: 25px;
 	}

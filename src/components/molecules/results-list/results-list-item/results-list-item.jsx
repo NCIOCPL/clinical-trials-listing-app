@@ -18,12 +18,18 @@ const ResultsListItem = ({ locationInfo, nciId, resultsItemTitleLink, summary, t
 		});
 	};
 	return (
-		<li className="ct-list-item">
-			<a className="ct-list-item__title" href={titleLink} onClick={handleResultItemTitleClick}>
-				{title}
-			</a>
-			<p className="ct-list-item__body">{summary}</p>
-			<div className="location-info">{locationInfo}</div>
+		<li className="ctla-results__list-item grid-container">
+			<div className="grid-row">
+				<a className="ctla-results__list-item-title grid-col" href={titleLink} onClick={handleResultItemTitleClick}>
+					{title}
+				</a>
+			</div>
+			<div className="grid-row">
+				<p className="ctla-results__list-item-body grid-col">{summary}</p>
+			</div>
+			<div className="grid-row">
+				<div className="ctla-results__list-item-location grid-col">{locationInfo}</div>
+			</div>
 		</li>
 	);
 };
