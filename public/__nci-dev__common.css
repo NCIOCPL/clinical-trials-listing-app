@@ -95,7 +95,7 @@
 	font-style: italic;
 }
 
-.contentzone ul.no-bullets,
+/* .contentzone ul.no-bullets,
 .rawHtml ul.no-bullets,
 ul.no-bullets {
 	padding: 0;
@@ -127,7 +127,7 @@ ul.no-bullets ul {
 ul.no-bullets ul > li {
 	padding: 0 0 0 10px;
 	margin: 0 0 5px;
-}
+} */
 
 a.arrow-link-white:focus,
 a.arrow-link-white:hover,
@@ -1697,14 +1697,14 @@ ul {
 }
 
 a {
-	color: #2ba6cb;
+	color: #01679D;
 	text-decoration: none;
 	line-height: inherit;
 }
 
 a:focus,
 a:hover {
-	color: #2795b6;
+	color: #01679D;
 }
 
 a img {
@@ -2090,7 +2090,7 @@ blockquote p {
 	display: block;
 }
 
-ul.pagination {
+/* ul.pagination {
 	display: block;
 	height: 1.5em;
 	margin-left: -0.3125em;
@@ -2148,7 +2148,7 @@ ul.pagination li {
 .pagination-centered ul.pagination li {
 	float: none;
 	display: inline-block;
-}
+} */
 
 .panel {
 	border: 1px solid #bdbdc2;
@@ -8151,14 +8151,7 @@ button.nav-search:before {
 	}
 }
 
-.main-content {
-	padding: 0;
-	background: #f7f8f3
-		url(https://cancer.gov/PublishedContent/images/images/design-elements/background-graphics/hexagon_molecular_structure_body.png)
-		no-repeat 110% 600px;
-}
-
-.main-content a {
+q.main-content a {
 	color: #2b7bba;
 }
 
@@ -8198,13 +8191,9 @@ a.definition:hover {
 }
 
 .general-page-body-container {
-	background: #fffffb;
+	background: white;
 	padding-bottom: 1.5em;
 	position: relative;
-	-webkit-box-shadow: 10px 0 10px -7px rgba(0, 0, 0, 0.5),
-		-10px 0 10px -7px rgba(0, 0, 0, 0.5);
-	box-shadow: 10px 0 10px -7px rgba(0, 0, 0, 0.5),
-		-10px 0 10px -7px rgba(0, 0, 0, 0.5);
 }
 
 .no-boxshadow .general-page-body-container {
@@ -8327,7 +8316,7 @@ ol.upper-roman {
 }
 
 .contentzone ol,
-.contentzone ul,
+.contentzone ul:not(.usa-pagination__list),
 .rawHtml ol,
 .rawHtml ul {
 	margin-bottom: 1em;
@@ -8338,26 +8327,6 @@ ol.upper-roman {
 	margin-left: 38px;
 }
 
-.contentzone li,
-.rawHtml li {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-	margin-left: 28px;
-}
-
-.contentzone li li,
-.rawHtml li li {
-	margin-left: 32px;
-}
-
-.contentzone ol.no-bullets > li,
-.contentzone ul.no-bullets > li,
-.rawHtml ol.no-bullets > li,
-.rawHtml ul.no-bullets > li {
-	margin-top: 30px;
-	margin-bottom: 30px;
-	margin-left: 0;
-}
 
 .contentzone ul.no-description > li {
 	margin-top: 4px;
@@ -8367,19 +8336,6 @@ ol.upper-roman {
 .contentzone ul > li,
 .rawHtml ul > li {
 	list-style-type: none;
-}
-
-.contentzone ul > li:before,
-.rawHtml ul > li:before {
-	content: '\2022';
-	display: inline;
-	position: relative;
-	float: left;
-	left: -0.5em;
-	top: 0.25em;
-	margin: 0 -0.2em;
-	font-size: 1.1em;
-	line-height: 0.90909em;
 }
 
 .toptoc ul > li:before {
@@ -12311,8 +12267,8 @@ h4.video100title {
 }
 
 .ic-carousel .slick-slide {
-	background-color: #fffffb;
-	border-color: #fffffb;
+	background-color: white;
+	border-color: white;
 	float: none;
 }
 
@@ -12422,8 +12378,8 @@ span.ic-arrow-button {
 }
 
 .ytc-thumb-container {
-	background-color: #fffffb;
-	border-color: #fffffb;
+	background-color: white;
+	border-color: white;
 	padding-top: 10px;
 	padding-right: 10px;
 }
@@ -13722,7 +13678,7 @@ html[lang='es'] .nav-menu .nav-item.item-6 {
 	.navigation,
 	.other-nci-sites,
 	.page-options,
-	.pagination,
+	/* .pagination, */
 	.previous-next-links,
 	.site-footer,
 	.syndication,

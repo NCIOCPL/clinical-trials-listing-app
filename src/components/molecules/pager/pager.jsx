@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Pager = ({ current = 1, currentPageNeighbours = 2, nextLabel = 'Next >', onPageNavigationChange, previousLabel = '< Previous', resultsPerPage = 25, totalResults }) => {
+import img from '@nciocpl/ncids-css/uswds-img/sprite.svg';
+
+const Pager = ({ current = 1, currentPageNeighbours = 2, nextLabel = 'Next', onPageNavigationChange, previousLabel = 'Previous', resultsPerPage = 25, totalResults }) => {
 	// Max number of neighbours is set to 3
-	const currentPageNeighboursMax = 3;
+	const currentPageNeighboursMax = 1;
 	const firstPage = 1;
 	// Ensure range for page neighbours is within specified boundaries (0 to 3)
 	currentPageNeighbours = Math.max(0, Math.min(currentPageNeighbours, currentPageNeighboursMax));
@@ -32,7 +34,6 @@ const Pager = ({ current = 1, currentPageNeighbours = 2, nextLabel = 'Next >', o
 
 	const buildNavigation = () => {
 		const pagerBar = [];
-
 		// Iterate over the page number to either render or elide
 		for (let pageNumber = 1; pageNumber <= pageCount; pageNumber++) {
 			// Show all pages as long as total number of pages is less than or equal to max (e.g:5)
@@ -66,21 +67,22 @@ const Pager = ({ current = 1, currentPageNeighbours = 2, nextLabel = 'Next >', o
 
 			if (isNumberVisible) {
 				pagerItem = (
-					<li className="pager__list-item" key={`page-${pageNumber}`}>
-						<button className={`pager__button${pageNumber === currentPage ? ' active' : ''}`} onClick={() => pageNavigationChangeHandler(pageNumber)} aria-label={`page ${pageNumber}`}>
+					<li className="usa-pagination__item usa-pagination__page-no" key={`page-${pageNumber}`}>
+						{/* eslint-disable-next-line */}
+						<a href="#" className={`usa-pagination__button${pageNumber === currentPage ? ' usa-current' : ''}`} onClick={() => pageNavigationChangeHandler(pageNumber)} aria-label={`Page ${pageNumber}`}>
 							{pageNumber}
-						</button>
+						</a>
 					</li>
 				);
 			} else if (isLeftEllipsis) {
 				pagerItem = (
-					<li key="left-ellipsis" className="pager__ellipsis--left">
+					<li key="left-ellipsis" className="usa-pagination__item usa-pagination__overflow ellipsis--left" aria-label="Ellipsis indicating non-visible page">
 						...
 					</li>
 				);
 			} else if (isRightEllipsis) {
 				pagerItem = (
-					<li key="right-ellipsis" className="pager__ellipsis--right">
+					<li key="right-ellipsis" className="usa-pagination__item usa-pagination__overflow ellipsis--right" aria-label="Ellipsis indicating non-visible page">
 						...
 					</li>
 				);
@@ -90,17 +92,25 @@ const Pager = ({ current = 1, currentPageNeighbours = 2, nextLabel = 'Next >', o
 		}
 
 		const previousPager = (
-			<li key={previousLabel}>
-				<button className={`pager__button pager__previous${currentPage === 1 ? ' hidden' : ''}`} onClick={() => pageNavigationChangeHandler(currentPage - 1)} aria-hidden={currentPage === 1} aria-label="previous page">
-					{previousLabel}
-				</button>
+			<li className="usa-pagination__item usa-pagination__arrow" key={previousLabel}>
+				{/* eslint-disable-next-line */}
+				<a href="#" className={`usa-pagination__link usa-pagination__previous-page${currentPage === 1 ? ' hidden' : ''}`} onClick={() => pageNavigationChangeHandler(currentPage - 1)} role="button" aria-hidden={currentPage === 1} aria-label="Previous page">
+					<svg className="usa-icon" aria-hidden="true" focusable="false" role="img">
+						<use href={img + '#navigate_before'} />
+					</svg>
+					<span className="usa-pagination__link-text">{previousLabel}</span>
+				</a>
 			</li>
 		);
 		const nextPager = (
-			<li key={nextLabel}>
-				<button className={`pager__button pager__next${currentPage === pageCount ? ' hidden' : ''}`} onClick={() => pageNavigationChangeHandler(currentPage + 1)} aria-hidden={currentPage === pageCount} aria-label="next page">
-					{nextLabel}
-				</button>
+			<li className="usa-pagination__item usa-pagination__arrow" key={nextLabel}>
+				{/* eslint-disable-next-line */}
+				<a href="#" className={`usa-pagination__link usa-pagination__next-page${currentPage === pageCount ? ' hidden' : ''}`} onClick={() => pageNavigationChangeHandler(currentPage + 1)} role="button" aria-hidden={currentPage === pageCount} aria-label="Next page">
+					<span className="usa-pagination__link-text">{nextLabel}</span>
+					<svg className="usa-icon" aria-hidden="true" focusable="false" role="img">
+						<use href={img + '#navigate_next'} />
+					</svg>
+				</a>
 			</li>
 		);
 		pagerBar.unshift(previousPager);
@@ -111,8 +121,8 @@ const Pager = ({ current = 1, currentPageNeighbours = 2, nextLabel = 'Next >', o
 	return (
 		<>
 			{totalResults > resultsPerPage && (
-				<nav className="pager__container" aria-label="pager navigation">
-					<ol className="pager__navigation">{buildNavigation().map((nav) => nav)}</ol>
+				<nav className="usa-pagination" aria-label="Pagination">
+					<ul className="usa-pagination__list">{buildNavigation().map((nav) => nav)}</ul>
 				</nav>
 			)}
 		</>

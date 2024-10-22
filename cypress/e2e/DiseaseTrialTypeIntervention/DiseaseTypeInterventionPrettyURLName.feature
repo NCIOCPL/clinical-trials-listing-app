@@ -15,8 +15,8 @@ Feature: As a user, I would like to view the trial results for a disease listing
       | pages  |
       | 1      |
       | 2      |
-      | Next > |
-    When user clicks on "Next >" button
+      | Next   |
+    When user clicks on "Next" button
     Then the user is redirected to "/breast-cancer/treatment/trastuzumab" with query parameters "cfg=0&pn=2"
     And user is brought to the top of a page
 		And the page contains meta tags with the following properties
@@ -56,4 +56,4 @@ Feature: As a user, I would like to view the trial results for a disease listing
       | pages  |
       | 1      |
       | 2      |
-      | Next > |
+      | Next   |

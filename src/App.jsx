@@ -63,7 +63,7 @@ const App = () => {
 			// service. The names should be just like they are in the route
 			// and the type is either listing-information, trial-type, or
 			// whatever future info type there could be returned by the API.
-			// Additionally the textReplacementKey is used by NoTrialsFound
+			// Additionally, the textReplacementKey is used by NoTrialsFound
 			// to setup the replacement text context vars.
 			// Order matters!
 			const diseaseRouteParamMap = [
