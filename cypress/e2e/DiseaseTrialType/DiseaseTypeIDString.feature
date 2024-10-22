@@ -15,11 +15,10 @@ Feature: As a user, I would like to view the trial results for a disease listing
       | pages  |
       | 1      |
       | 2      |
-      | 3      |
       | ...    |
-      | 6     |
-      | Next > |
-    When user clicks on "Next >" button
+      | 6      |
+      | Next   |
+    When user clicks on "Next" button
     Then the user is redirected to "/breast-cancer/supportive-care" with query parameters "cfg=0&pn=2"
     And user is brought to the top of a page
 
@@ -53,10 +52,9 @@ Feature: As a user, I would like to view the trial results for a disease listing
       | pages  |
       | 1      |
       | 2      |
-      | 3      |
       | ...    |
-      | 6     |
-      | Next > |
-    When user clicks on "Next >" button
+      | 6      |
+      | Next   |
+    When user clicks on "Next" button
     Then the user is redirected to "/breast-cancer/supportive-care" with query parameters "cfg=0&pn=2"
     And user is brought to the top of a page
