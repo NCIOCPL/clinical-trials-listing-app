@@ -16,8 +16,8 @@ Feature: As a user, I would like to view the trial results for an intervention l
       | 1      |
       | 2      |
       | 3      |
-      | Next > |
-    When user clicks on "Next >" button
+      | Next   |
+    When user clicks on "Next" button
     Then the user is redirected to "/trastuzumab" with query parameters "cfg=1&pn=2"
 
   Scenario: View intervention listing page metadata with pretty URL name parameter
@@ -50,4 +50,4 @@ Feature: As a user, I would like to view the trial results for an intervention l
       | 1      |
       | 2      |
       | 3      |
-      | Next > |
+      | Next   |
