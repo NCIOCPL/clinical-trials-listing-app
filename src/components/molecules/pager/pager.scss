@@ -1,73 +1,75 @@
-.pager__navigation,
-.pager__container {
-	display: block;
-	margin-left: 0;
-}
+@forward 'usa-pagination';
 
-.pager__container {
-	.pager__navigation {
-		color: #25619b;
-		list-style-type: none;
+// .pager__navigation,
+// .pager__container {
+// 	display: block;
+// 	margin-left: 0;
+// }
 
-		padding: 0;
-		margin-bottom: 0;
+// .pager__container {
+// 	.pager__navigation {
+// 		color: #25619b;
+// 		list-style-type: none;
 
-		& > li {
-			align-items: center;
-			cursor: pointer;
-			display: inline-flex;
-			justify-content: center;
-			list-style-type: none;
-			margin: 0 2px 0;
-		}
+// 		padding: 0;
+// 		margin-bottom: 0;
 
-		.pager__button {
-			border: none;
-			border-radius: 3px;
-			display: block;
-			min-width: 24px;
-			padding: 2px 6px;
-			background-color: #fff;
-			color: #2b7bba;
-			font-size: 100%;
-			font-family: Noto Sans, Century Gothic, Arial, sans-serif;
-			cursor: pointer;
-			text-decoration: none;
-			white-space: nowrap;
+// 		& > li {
+// 			align-items: center;
+// 			cursor: pointer;
+// 			display: inline-flex;
+// 			justify-content: center;
+// 			list-style-type: none;
+// 			margin: 0 2px 0;
+// 		}
 
-			&.active {
-				background: #25619b;
-				color: #fff;
-				&:hover {
-					background: #25619b;
-				}
-			}
+// 		.pager__button {
+// 			border: none;
+// 			border-radius: 3px;
+// 			display: block;
+// 			min-width: 24px;
+// 			padding: 2px 6px;
+// 			background-color: #fff;
+// 			color: #2b7bba;
+// 			font-size: 100%;
+// 			font-family: Noto Sans, Century Gothic, Arial, sans-serif;
+// 			cursor: pointer;
+// 			text-decoration: none;
+// 			white-space: nowrap;
 
-			&.hidden {
-				display: none;
-			}
+// 			&.active {
+// 				background: #25619b;
+// 				color: #fff;
+// 				&:hover {
+// 					background: #25619b;
+// 				}
+// 			}
 
-			&:hover {
-				background: #cbe8fc;
-			}
-		}
+// 			&.hidden {
+// 				display: none;
+// 			}
 
-		.pager__ellipsis--right,
-		.pager__ellipsis--left {
-			padding: 2px 4px;
-			cursor: default;
-		}
-	}
-}
+// 			&:hover {
+// 				background: #cbe8fc;
+// 			}
+// 		}
 
-@media only screen and (min-width: 641px) {
-	.pager__navigation,
-	.pager__container {
-		margin-left: auto;
-	}
+// 		.pager__ellipsis--right,
+// 		.pager__ellipsis--left {
+// 			padding: 2px 4px;
+// 			cursor: default;
+// 		}
+// 	}
+// }
 
-	.pager__container {
-		border: none;
-		margin-top: 0;
-	}
-}
+// @media only screen and (min-width: 641px) {
+// 	.pager__navigation,
+// 	.pager__container {
+// 		margin-left: auto;
+// 	}
+
+// 	.pager__container {
+// 		border: none;
+// 		margin-top: 0;
+// 	}
+// }
