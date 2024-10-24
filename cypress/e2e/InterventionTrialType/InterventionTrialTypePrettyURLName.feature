@@ -16,8 +16,8 @@ Feature: As a user, I would like to view the trial results for an intervention l
       | 1      |
       | 2      |
       | 3      |
-      | Next > |
-    When user clicks on "Next >" button
+      | Next   |
+    When user clicks on "Next" button
     Then the user is redirected to "/trastuzumab/treatment" with query parameters "cfg=1&pn=2"
     And user is brought to the top of a page
 
@@ -52,4 +52,4 @@ Feature: As a user, I would like to view the trial results for an intervention l
       | 1      |
       | 2      |
       | 3      |
-      | Next > |
+      | Next   |
