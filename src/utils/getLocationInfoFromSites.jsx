@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { getStateNameFromAbbr } from './getStateNameFromAbbr';
-
 /**
  * getLocationInfoFromSites - Derives location information from list of sites
  *
@@ -10,7 +9,7 @@ import { getStateNameFromAbbr } from './getStateNameFromAbbr';
  * @param {Array} sites
  * @return {JSX.Element}
  */
-export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites = []) => {
+export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites = [], hasZipInput, zipInputReturn) => {
 	let totalUSLocations = 0;
 	let lastUSLocationSite = 0;
 	const siteLinkCT = `https://www.clinicaltrials.gov/study/${nctId}`;
@@ -61,6 +60,15 @@ export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites = []) 
 			<>
 				<strong>Location: </strong>
 				{sites[lastUSLocationSite].org_name + ', ' + sites[lastUSLocationSite].org_city + (stateName?.length ? ', ' + stateName : '')}
+			</>
+		);
+	}
+
+	if (hasZipInput) {
+		return (
+			<>
+				<strong>Location: </strong>
+				{`${totalUSLocations} locations` + zipInputReturn}
 			</>
 		);
 	}

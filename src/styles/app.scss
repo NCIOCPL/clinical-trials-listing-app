@@ -1,13 +1,122 @@
 // molecules
-@import '../components/molecules/pager/pager';
-@import '../components/molecules/results-list/results-list-item/results-list-item';
+@use '../components/molecules/Pager/Pager';
+@use '../components/molecules/ResultsList/ResultsListItem/ResultsListItem';
 
 //views
-@import '../views/Manual/Manual';
-@import '../views/Disease/Disease';
-@import '../views/Intervention/Intervention';
-@import '../views/ErrorBoundary/PageNotFound';
+@use '../views/Manual/Manual';
+@use '../views/Disease/Disease';
+@use '../views/Intervention/Intervention';
+@use '../views/ErrorBoundary/PageNotFound';
+
+@use '../features/filters/components/Sidebar/Sidebar';
 
 h1 {
 	margin-bottom: 20px;
+}
+
+// styles/app.scss
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &-content {
+    flex: 1;
+    display: flex;
+    position: relative;
+    max-width: 100vw; // Ensure full width
+    margin: 0; // Remove any margin
+    padding: 0; // Remove any padding
+  }
+}
+
+
+
+// Global styles
+h1 {
+  margin-bottom: 20px;
+	color: #1b1b1b;
+}
+
+// Utility classes for layout
+.grid-container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+}
+
+.grid-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.grid-col {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+// Analytics tracking container
+.analytics-tracking {
+  display: none;
+}
+
+
+@media only screen and (max-width: 640px) {
+	.resize-content .page-options-container {
+		width:calc(100% + 15px)
+	}
+}
+
+@media only screen and (max-width: 390px) {
+	.resize-content .page-options-container {
+		width:100%
+	}
+}
+
+
+.disease-view {
+	&__main {
+		// Add relative positioning to contain the spinner
+		position: relative;
+		min-height: 400px; // Add minimum height to prevent layout shifts
+	}
+}
+
+// Update Spinner.scss to work with relative container
+.nci-spinner {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	min-height: unset; // Remove default min-height
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

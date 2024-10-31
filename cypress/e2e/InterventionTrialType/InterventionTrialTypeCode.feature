@@ -21,9 +21,9 @@ Feature: As a user, I would like to view the trial results for an intervention l
     And the page contains meta tags with the following properties
       | property       | content                                                                                                                                                 |
       | og:title       | Treatment Clinical Trials Using Trastuzumab                                                                                                             |
-      | og:url         | http://localhost:3000/trastuzumab/treatment                                                                                                             |
+      | og:url         | http://localhost:3000/trastuzumab/treatment?pn=1                                                                                                        |
       | og:description | NCI supports clinical trials studying new and more effective ways to treat cancer. Find clinical trials testing treatment methods that use trastuzumab. |
     And the page contains meta tags with the following names
       | name        | content                                                                                                                                                 |
       | description | NCI supports clinical trials studying new and more effective ways to treat cancer. Find clinical trials testing treatment methods that use trastuzumab. |
-    And there is a canonical link with the href "https://www.cancer.gov/trastuzumab/treatment"
+		And there is a canonical link with the href "https://www.cancer.gov/trastuzumab/treatment?pn=1"
