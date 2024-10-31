@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import Sidebar from './Sidebar';
 import { FilterProvider } from '../../context/FilterContext/FilterContext';

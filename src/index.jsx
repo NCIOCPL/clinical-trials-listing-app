@@ -5,7 +5,6 @@ import './polyfills';
 import PropTypes from 'prop-types';
 import { createRoot } from 'react-dom/client';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
@@ -17,7 +16,6 @@ import { StateProvider } from './store/store';
 import { AnalyticsProvider, EddlAnalyticsProvider } from './tracking';
 import { getProductTestBase } from './utils';
 import { ErrorBoundary } from './views';
-import { QueryProvider } from './providers/QueryProvider';
 
 import clinicalTrialsSearchClientFactory from './services/api/clinical-trials-search-api/clinicalTrialsSearchClientFactory';
 

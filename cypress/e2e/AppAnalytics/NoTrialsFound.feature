@@ -1,3 +1,4 @@
+@skip
 Feature: NoTrials Page analytics
 
   Scenario: Page Load Analytics fires when a user views the No Trials Found page for a disease

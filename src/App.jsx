@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { FilterProvider } from './features/filters/context/FilterContext/FilterContext';
 import './styles/app.scss';
@@ -149,9 +148,11 @@ const App = () => {
 
 	return (
 		<Router>
-			<div className="app">
-				<div className="app-content">{dynamicRoutes}</div>
-			</div>
+			<FilterProvider>
+				<div className="app">
+					<div className="app-content">{dynamicRoutes}</div>
+				</div>
+			</FilterProvider>
 		</Router>
 	);
 };

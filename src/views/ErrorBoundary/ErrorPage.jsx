@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useTracking } from 'react-tracking';

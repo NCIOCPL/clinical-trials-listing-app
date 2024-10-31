@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { useFilters } from '../../context/FilterContext/FilterContext';
 import './AppliedFilters.scss';

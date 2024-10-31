@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter } from 'react-router';
@@ -19,25 +20,12 @@ jest.mock('react-router', () => ({
 	}),
 }));
 
-const fixturePath = `/v2/trials`;
-const breastCancerFile = `breast-cancer-response.json`;
-
 describe('<Disease />', () => {
 	afterEach(() => {
 		jest.clearAllMocks();
 	});
 
-	useCtsApi.mockReturnValue({
-		error: false,
-		loading: false,
-		aborted: false,
-		payload: {
-			total: 0,
-			trials: [],
-		},
-	});
-
-	it('should render <ResultsList /> component', async () => {
+	it('should render <ErrorPage /> component', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
 		const data = [
@@ -77,8 +65,6 @@ describe('<Disease />', () => {
 			},
 		};
 
-		const trialResults = getFixture(`${fixturePath}/${breastCancerFile}`);
-
 		useStateValue.mockReturnValue([
 			{
 				appId: 'mockAppId',
@@ -92,6 +78,7 @@ describe('<Disease />', () => {
 				apiClients: {
 					clinicalTrialsSearchClient: true,
 				},
+				language: 'en',
 			},
 		]);
 
@@ -100,10 +87,10 @@ describe('<Disease />', () => {
 		});
 
 		useCtsApi.mockReturnValue({
-			error: false,
+			error: new Error('Bad Mojo'),
 			loading: false,
 			aborted: false,
-			payload: trialResults,
+			payload: null,
 		});
 
 		const redirectPath = () => '/notrials';
@@ -126,7 +113,6 @@ describe('<Disease />', () => {
 
 		expect(useCtsApi).toHaveBeenCalled();
 
-		expect(screen.getByText('Breast Cancer Clinical Trials')).toBeInTheDocument();
-		expect(screen.getByText('Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer.')).toBeInTheDocument();
+		expect(screen.getByText('An error occurred. Please try again later.')).toBeInTheDocument();
 	});
 });

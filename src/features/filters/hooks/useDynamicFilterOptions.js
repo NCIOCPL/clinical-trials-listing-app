@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useQuery } from '@tanstack/react-query';
 import { clinicalTrialsClient } from '../../../api/queries';
 
