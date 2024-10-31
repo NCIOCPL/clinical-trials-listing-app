@@ -1697,7 +1697,7 @@ ul {
 }
 
 a {
-	color: #2ba6cb;
+	color: #01679D;
 	text-decoration: none;
 	line-height: inherit;
 }
@@ -2029,7 +2029,7 @@ blockquote p {
 .breadcrumbs > * a,
 .breadcrumbs > * span {
 	text-transform: uppercase;
-	color: #2ba6cb;
+	color: #01679D;
 }
 
 .breadcrumbs > .current,
@@ -2133,7 +2133,7 @@ ul.pagination li.current a {
 
 ul.pagination li.current a:focus,
 ul.pagination li.current a:hover {
-	background: #2ba6cb;
+	background: #01679D;
 }
 
 ul.pagination li {
@@ -2204,7 +2204,7 @@ ul.pagination li {
 	border: 1px solid #bdbdc2;
 	margin-bottom: 1.25em;
 	padding: 1.25em;
-	background: #2ba6cb;
+	background: #01679D;
 	-webkit-box-shadow: 0 1px 0 hsla(0, 0%, 100%, 0.5) inset;
 	box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.5);
 }
@@ -2339,7 +2339,7 @@ a.th {
 .has-tip:focus,
 .has-tip:hover {
 	border-bottom: 1px dotted #196177;
-	color: #2ba6cb;
+	color: #01679D;
 }
 
 .has-tip.tip-left,
@@ -2375,7 +2375,7 @@ a.th {
 }
 
 .tooltip.opened {
-	color: #2ba6cb !important;
+	color: #01679D !important;
 	border-bottom: 1px dotted #196177 !important;
 }
 
@@ -2446,7 +2446,7 @@ ul.breadcrumbs > :before {
 
 ul.breadcrumbs > * a {
 	text-transform: none;
-	color: #2b7bba;
+	color: #01679D;
 }
 
 ul li ul {
@@ -2614,7 +2614,7 @@ ul.slick-dots li:before {
 
 ul.slick-dots li button {
 	display: block;
-	border: 3px solid #2b7bba;
+	border: 3px solid #01679D;
 	border-radius: 50%;
 	background-color: #fff;
 	height: 20px;
@@ -2627,7 +2627,7 @@ ul.slick-dots li button {
 }
 
 ul.slick-dots li button:focus {
-	outline: 1px dotted #2b7bba;
+	outline: 1px dotted #01679D;
 }
 
 ul.slick-dots li button:hover {
@@ -2636,7 +2636,7 @@ ul.slick-dots li button:hover {
 
 ul.slick-dots li.slick-active button,
 ul.slick-dots li button:active {
-	background-color: #2b7bba;
+	background-color: #01679D;
 }
 
 .ui-draggable-handle {
@@ -4729,7 +4729,7 @@ a.ui-button:active {
 .ui-selectmenu-button span.ui-icon {
 	position: relative;
 	background-image: none;
-	background-color: #2b7bba;
+	background-color: #01679D;
 	top: 0;
 	right: 0;
 	margin-top: 0;
@@ -4758,7 +4758,7 @@ a.ui-button:active {
 .ui-selectmenu-button:focus span.ui-icon,
 .ui-selectmenu-button:hover span.ui-icon {
 	background-image: none;
-	background-color: #2b7bba;
+	background-color: #01679D;
 }
 
 .ui-menu .ui-state-active {
@@ -4971,7 +4971,7 @@ form button {
 	text-decoration: none;
 	text-align: center;
 	display: inline-block;
-	background-color: #2ba6cb;
+	background-color: #01679D;
 	border: 0 #2284a1;
 	color: #fff;
 	border-radius: 2px;
@@ -5020,7 +5020,7 @@ form button[type='reset'] {
 	background-color: transparent;
 	border-color: transparent;
 	color: #fff;
-	color: #2b7bba;
+	color: #01679D;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	font-weight: 400;
@@ -5042,7 +5042,7 @@ form button[type='reset']:hover {
 .button[type='reset']:hover,
 form button.reset:hover,
 form button[type='reset']:hover {
-	color: #2b7bba;
+	color: #01679D;
 	text-decoration: underline;
 }
 
@@ -6319,14 +6319,14 @@ fieldset fieldset .legend {
 	line-height: 1;
 	font-family: 'Montserrat', 'Avant Garde', Arial, sans-serif;
 	font-weight: 700;
-	color: #2b7bba;
+	color: #01679D;
 	background-color: #fff;
 	display: inline-block;
 	height: 1.5625em;
 	width: 1.5625em;
 	padding: 0.21875em;
 	text-align: center;
-	border: 2px solid #2b7bba;
+	border: 2px solid #01679D;
 	border-radius: 1em;
 	-webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1) inset;
 	box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.1);
@@ -7678,7 +7678,7 @@ button.nav-search:before {
 }
 
 .sitewide-language a {
-	color: #2b7bba;
+	color: #01679D;
 }
 
 .sitewide-language ul {
@@ -8151,8 +8151,15 @@ button.nav-search:before {
 	}
 }
 
+/* .main-content {
+	padding: 0;
+	background: white;
+		/* url(https://cancer.gov/PublishedContent/images/images/design-elements/background-graphics/hexagon_molecular_structure_body.png)
+		no-repeat 110% 600px; */
+} */
+
 .main-content a {
-	color: #2b7bba;
+	color: #01679D;
 }
 
 .main-content a:focus,
@@ -8194,10 +8201,10 @@ a.definition:hover {
 	background: white;
 	padding-bottom: 1.5em;
 	position: relative;
-	-webkit-box-shadow: 10px 0 10px -7px rgba(0, 0, 0, 0.5),
+	/* -webkit-box-shadow: 10px 0 10px -7px rgba(0, 0, 0, 0.5),
 		-10px 0 10px -7px rgba(0, 0, 0, 0.5);
 	box-shadow: 10px 0 10px -7px rgba(0, 0, 0, 0.5),
-		-10px 0 10px -7px rgba(0, 0, 0, 0.5);
+		-10px 0 10px -7px rgba(0, 0, 0, 0.5); */
 }
 
 .no-boxshadow .general-page-body-container {
@@ -8278,7 +8285,7 @@ div.row > div.contentzone:first-child {
 #my-toc ul {
 	margin: 0 1em;
 	list-style-type: disc;
-	color: #2b7bba;
+	color: #01679D;
 }
 
 #my-toc li {
@@ -8289,7 +8296,7 @@ div.row > div.contentzone:first-child {
 }
 
 #my-toc ul a {
-	color: #2b7bba;
+	color: #01679D;
 	font-weight: 700;
 }
 
@@ -9400,7 +9407,7 @@ a.social-share--custom-tweet:after {
 		margin: 0 0.875em 0 0;
 		width: 35px;
 		height: 35px;
-		background-color: #2b7bba;
+		background-color: #01679D;
 		border-radius: 50%;
 	}
 
@@ -11939,7 +11946,7 @@ h4.video100title {
 		display: block;
 		width: calc(100% - 68px);
 		height: 10px;
-		border: 2px solid #2ba6cb;
+		border: 2px solid #01679D;
 		border-top: none;
 		background-color: transparent;
 		position: absolute;
@@ -12445,7 +12452,7 @@ span.ic-arrow-button {
 }
 
 @media only screen and (min-width: 1441px) {
-	.yt-carousel-arrowsb button.previous {
+	.yt-carousel-arrows button.previous {
 		margin-right: 7px;
 	}
 
@@ -12811,14 +12818,14 @@ table[data-sortable] {
 }
 
 table[data-sortable] thead tr {
-	background-color: #2b7bba !important;
+	background-color: #01679D !important;
 }
 
 table[data-sortable] thead th {
 	position: relative;
 	padding: 10px 10px 20px;
 	border-left: none;
-	background-color: #2b7bba;
+	background-color: #01679D;
 	color: #fff;
 	font-family: 'Montserrat', 'Avant Garde', Arial, sans-serif;
 	font-size: 14px;
@@ -13595,7 +13602,7 @@ html[lang='es'] .nav-menu .nav-item.item-6 {
 		font-size: 15px;
 		text-transform: uppercase;
 		font-weight: 700;
-		color: #2b7bba;
+		color: #01679D;
 		display: block;
 		font-family: 'Montserrat', 'Avant Garde', Arial, sans-serif;
 		line-height: 19px;

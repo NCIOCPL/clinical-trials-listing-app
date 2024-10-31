@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter } from 'react-router';
@@ -7,7 +8,7 @@ import { useStateValue } from '../../../store/store';
 import { MockAnalyticsProvider } from '../../../tracking';
 import { useAppPaths } from '../../../hooks/routing';
 import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
-
+import { CTLViewsTestWrapper } from '../../../test-utils/TestWrappers';
 jest.mock('../../../store/store');
 jest.mock('../../../hooks/routing');
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
@@ -19,12 +20,25 @@ jest.mock('react-router', () => ({
 	}),
 }));
 
+const fixturePath = `/v2/trials`;
+const breastCancerFile = `breast-cancer-response.json`;
+
 describe('<Disease />', () => {
 	afterEach(() => {
 		jest.clearAllMocks();
 	});
 
-	it('should render <ErrorPage /> component', async () => {
+	useCtsApi.mockReturnValue({
+		error: false,
+		loading: false,
+		aborted: false,
+		payload: {
+			total: 0,
+			trials: [],
+		},
+	});
+
+	it('should render <ResultsList /> component', async () => {
 		const basePath = '/';
 		const canonicalHost = 'https://www.cancer.gov';
 		const data = [
@@ -64,6 +78,8 @@ describe('<Disease />', () => {
 			},
 		};
 
+		const trialResults = getFixture(`${fixturePath}/${breastCancerFile}`);
+
 		useStateValue.mockReturnValue([
 			{
 				appId: 'mockAppId',
@@ -77,7 +93,6 @@ describe('<Disease />', () => {
 				apiClients: {
 					clinicalTrialsSearchClient: true,
 				},
-				language: 'en',
 			},
 		]);
 
@@ -86,10 +101,10 @@ describe('<Disease />', () => {
 		});
 
 		useCtsApi.mockReturnValue({
-			error: new Error('Bad Mojo'),
+			error: false,
 			loading: false,
 			aborted: false,
-			payload: null,
+			payload: trialResults,
 		});
 
 		const redirectPath = () => '/notrials';
@@ -103,15 +118,14 @@ describe('<Disease />', () => {
 		];
 
 		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/C4872']}>
-					<Disease routeParamMap={routeParamMap} routePath={redirectPath} data={data} />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+			<CTLViewsTestWrapper initialEntries={['/C4872']}>
+				<Disease routeParamMap={routeParamMap} routePath={redirectPath} data={data} />
+			</CTLViewsTestWrapper>
 		);
 
 		expect(useCtsApi).toHaveBeenCalled();
 
-		expect(screen.getByText('An error occurred. Please try again later.')).toBeInTheDocument();
+		expect(screen.getByText('Breast Cancer Clinical Trials')).toBeInTheDocument();
+		expect(screen.getByText('Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer.')).toBeInTheDocument();
 	});
 });

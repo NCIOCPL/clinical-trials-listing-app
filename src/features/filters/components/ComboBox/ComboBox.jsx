@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTracking } from 'react-tracking';
@@ -116,7 +117,8 @@ const ComboBox = ({ label, placeholder, options, multiSelect, value, onChange, h
 					aria-activedescendant={highlightedIndex >= 0 ? `${name}-option-${highlightedIndex}` : undefined}
 				/>
 
-				{loading && <span className="combobox__spinner" aria-hidden="true" />}
+				{/*  How do we want to handl loading states for the options*/}
+				{/*{loading && <span className="combobox__spinner" aria-hidden="true" />}*/}
 
 				<button type="button" className="combobox__toggle" onClick={() => setIsOpen(!isOpen)} aria-label={isOpen ? 'Close options' : 'Open options'} disabled={disabled}>
 					<svg

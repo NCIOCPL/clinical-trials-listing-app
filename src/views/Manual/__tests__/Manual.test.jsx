@@ -1,12 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
 
 import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
 import Manual from '../Manual';
 import { useStateValue } from '../../../store/store';
-import { MockAnalyticsProvider } from '../../../tracking';
-
+import { CTLViewsTestWrapper } from '../../../test-utils/TestWrappers';
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 jest.mock('../../../store/store');
 
@@ -55,11 +53,9 @@ describe('<Manual />', () => {
 		});
 
 		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/']}>
-					<Manual />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+			<CTLViewsTestWrapper initialEntries={['/']}>
+				<Manual />
+			</CTLViewsTestWrapper>
 		);
 
 		expect(useCtsApi).toHaveBeenCalled();
@@ -5085,11 +5081,9 @@ describe('<Manual />', () => {
 		});
 
 		await render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/']}>
-					<Manual />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+			<CTLViewsTestWrapper initialEntries={['/']}>
+				<Manual />
+			</CTLViewsTestWrapper>
 		);
 
 		expect(useCtsApi).toHaveBeenCalled();
@@ -5153,11 +5147,9 @@ describe('<Manual />', () => {
 		});
 
 		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/']}>
-					<Manual />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+			<CTLViewsTestWrapper initialEntries={['/']}>
+				<Manual />
+			</CTLViewsTestWrapper>
 		);
 
 		expect(screen.getByText('Manual Listing Page')).toBeInTheDocument();
@@ -5196,11 +5188,9 @@ describe('<Manual />', () => {
 		});
 
 		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/']}>
-					<Manual />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+			<CTLViewsTestWrapper initialEntries={['/']}>
+				<Manual />
+			</CTLViewsTestWrapper>
 		);
 
 		expect(screen.getByText('An error occurred. Please try again later.')).toBeInTheDocument();
