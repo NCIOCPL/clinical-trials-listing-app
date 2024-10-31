@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { useURLQuery } from '../useURLQuery';
+import { useURLQuery } from '../../features/filters/hooks/useURLQuery';
 
 jest.mock('react-router');
 

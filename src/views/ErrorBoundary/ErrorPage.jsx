@@ -5,20 +5,22 @@ import { useTracking } from 'react-tracking';
 import { useStateValue } from '../../store/store';
 import { i18n } from '../../utils';
 
-const ErrorPage = () => {
+const ErrorPage = ({ error }) => {
 	const [{ canonicalHost, language }] = useStateValue();
 	const tracking = useTracking();
 
 	useEffect(() => {
 		const pageTitle = 'Errors Occurred';
 		tracking.trackEvent({
-			event: 'SitewideSearchApp:Load:Error',
+			event: 'TrialsListingApp:Load:Error',
 			metaTitle: pageTitle,
 			name: `${canonicalHost.replace(/^(http|https):\/\//g, '')}${window.location.pathname}`,
 			title: pageTitle,
 			type: 'PageLoad',
 		});
 	}, []);
+
+	console.error('Error Boundary caught error:', error);
 
 	const renderHelmet = () => {
 		return (

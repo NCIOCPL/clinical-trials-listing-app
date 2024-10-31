@@ -8153,9 +8153,9 @@ button.nav-search:before {
 
 .main-content {
 	padding: 0;
-	background: #f7f8f3
-		url(https://cancer.gov/PublishedContent/images/images/design-elements/background-graphics/hexagon_molecular_structure_body.png)
-		no-repeat 110% 600px;
+	background: white;
+		/* url(https://cancer.gov/PublishedContent/images/images/design-elements/background-graphics/hexagon_molecular_structure_body.png)
+		no-repeat 110% 600px; */
 }
 
 .main-content a {
@@ -8198,13 +8198,13 @@ a.definition:hover {
 }
 
 .general-page-body-container {
-	background: #fffffb;
+	background: #ffffff;
 	padding-bottom: 1.5em;
 	position: relative;
-	-webkit-box-shadow: 10px 0 10px -7px rgba(0, 0, 0, 0.5),
+	/* -webkit-box-shadow: 10px 0 10px -7px rgba(0, 0, 0, 0.5),
 		-10px 0 10px -7px rgba(0, 0, 0, 0.5);
 	box-shadow: 10px 0 10px -7px rgba(0, 0, 0, 0.5),
-		-10px 0 10px -7px rgba(0, 0, 0, 0.5);
+		-10px 0 10px -7px rgba(0, 0, 0, 0.5); */
 }
 
 .no-boxshadow .general-page-body-container {
@@ -12311,8 +12311,8 @@ h4.video100title {
 }
 
 .ic-carousel .slick-slide {
-	background-color: #fffffb;
-	border-color: #fffffb;
+	background-color: #ffffff;
+	border-color: #ffffff;
 	float: none;
 }
 
@@ -12422,8 +12422,8 @@ span.ic-arrow-button {
 }
 
 .ytc-thumb-container {
-	background-color: #fffffb;
-	border-color: #fffffb;
+	background-color: #ffffff;
+	border-color: #ffffff;
 	padding-top: 10px;
 	padding-right: 10px;
 }
