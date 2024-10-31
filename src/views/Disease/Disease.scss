@@ -28,7 +28,6 @@
 	}
 }
 
-// src/views/Disease/Disease.scss
 .disease-view {
 	width: 100%;
 
@@ -37,8 +36,8 @@
 		gap: 30px;
 		max-width: 1440px;
 		margin: 0 auto;
-		padding: 0; // Remove padding
-		min-height: calc(100vh - 100px); // Adjust based on your header/footer
+		padding: 0;
+		min-height: calc(100vh - 100px);
 
 		@media (max-width: 768px) {
 			flex-direction: column;
@@ -48,8 +47,8 @@
 
 	&__main {
 		flex: 1;
-		min-width: 0; // Prevent flex item from overflowing
-		padding: 20px; // Add padding to main content area
+		min-width: 0;
+		padding: 20px;
 
 		h1 {
 			margin-top: 0;

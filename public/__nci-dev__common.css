@@ -8151,6 +8151,13 @@ button.nav-search:before {
 	}
 }
 
+.main-content {
+	padding: 0;
+	background: white;
+		/* url(https://cancer.gov/PublishedContent/images/images/design-elements/background-graphics/hexagon_molecular_structure_body.png)
+		no-repeat 110% 600px; */
+}
+
 .main-content a {
 	color: #2b7bba;
 }
@@ -8194,10 +8201,10 @@ a.definition:hover {
 	background: white;
 	padding-bottom: 1.5em;
 	position: relative;
-	-webkit-box-shadow: 10px 0 10px -7px rgba(0, 0, 0, 0.5),
+	/* -webkit-box-shadow: 10px 0 10px -7px rgba(0, 0, 0, 0.5),
 		-10px 0 10px -7px rgba(0, 0, 0, 0.5);
 	box-shadow: 10px 0 10px -7px rgba(0, 0, 0, 0.5),
-		-10px 0 10px -7px rgba(0, 0, 0, 0.5);
+		-10px 0 10px -7px rgba(0, 0, 0, 0.5); */
 }
 
 .no-boxshadow .general-page-body-container {
@@ -12445,7 +12452,7 @@ span.ic-arrow-button {
 }
 
 @media only screen and (min-width: 1441px) {
-	.yt-carousel-arrowsb button.previous {
+	.yt-carousel-arrows button.previous {
 		margin-right: 7px;
 	}
 
