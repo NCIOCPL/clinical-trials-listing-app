@@ -4,6 +4,7 @@ import { setSuccessfulFetch, setFailedFetch, setLoading, setAborted } from './ac
 import reducer from './reducer';
 import { getClinicalTrials } from '../../services/api/clinical-trials-search-api';
 import { convertObjectToBase64 } from '../../utils/objects';
+
 import { useStateValue } from '../../store/store';
 
 /**

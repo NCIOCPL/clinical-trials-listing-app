@@ -1,158 +1,219 @@
-import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useLocation, useNavigate } from 'react-router';
 import track, { useTracking } from 'react-tracking';
+import PropTypes from 'prop-types';
 
 import { Pager, NoResults, ResultsList, ScrollRestoration, Spinner } from '../../components';
-import ErrorPage from '../ErrorBoundary/ErrorPage';
-import { useAppPaths, useCtsApi } from '../../hooks';
-import { getClinicalTrials } from '../../services/api/actions';
+import { ErrorPage } from '../ErrorBoundary';
+import { useAppPaths } from '../../hooks';
+import { useFilters } from '../../features/filters/context/FilterContext/FilterContext';
+import Sidebar from '../../features/filters/components/Sidebar/Sidebar';
 import { useStateValue } from '../../store/store';
-import { appendOrUpdateToQueryString, getKeyValueFromQueryString, getPageOffset, TokenParser, getTextReplacementContext, getNoTrialsRedirectParams, getParamsForRoute, getAnalyticsParamsForRoute } from '../../utils';
+import { useTrialSearch } from '../../features/filters/hooks/useTrialSearch';
+import { appendOrUpdateToQueryString, getKeyValueFromQueryString, getPageOffset, TokenParser, getAnalyticsParamsForRoute, getNoTrialsRedirectParams, getParamsForRoute, getTextReplacementContext } from '../../utils';
+import { hocStates } from '../../views/hocReducer';
+import NoResultsWithFilters from '../../components/molecules/NoResultsWithFilters/NoResultsWithFilters';
 
-const Disease = ({ routeParamMap, routePath, data }) => {
+const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) => {
 	const { NoTrialsPath } = useAppPaths();
 	const location = useLocation();
 	const navigate = useNavigate();
 	const { search } = location;
+	const tracking = useTracking();
 
 	const [{ baseHost, canonicalHost, detailedViewPagePrettyUrlFormatter, dynamicListingPatterns, itemsPerPage, language, siteName, trialListingPageType }] = useStateValue();
 
+	// Filter and pagination state
+	const { state: filterState, getCurrentFilters, isApplyingFilters } = useFilters();
+	const [shouldFetchTrials, setShouldFetchTrials] = useState(true);
 	const pn = getKeyValueFromQueryString('pn', search.toLowerCase());
-	const pagerDefaults = {
+	const [pager, setPager] = useState({
 		offset: pn ? getPageOffset(pn, itemsPerPage) : 0,
 		page: pn ?? 1,
 		pageUnit: itemsPerPage,
-	};
-	const [pager, setPager] = useState(pagerDefaults);
-
-	const setupRequestFilters = () => {
-		const query = data.reduce((acQuery, paramData, idx) => {
-			const paramInfo = routeParamMap[idx];
-
-			// TODO: Find some way to make this more generic
-			switch (paramInfo.paramName) {
-				case 'codeOrPurl':
-					return {
-						...acQuery,
-						'diseases.nci_thesaurus_concept_id': paramData.conceptId,
-					};
-				case 'type':
-					return {
-						...acQuery,
-						primary_purpose: paramData.idString,
-					};
-				case 'interCodeOrPurl':
-					return {
-						...acQuery,
-						'arms.interventions.nci_thesaurus_concept_id': paramData.conceptId,
-					};
-				default:
-					throw new Error(`Unknown parameter ${paramInfo.paramName}`);
-			}
-		}, {});
-		return query;
-	};
-
-	const setupReplacementText = () => {
-		// Replace tokens within page title, browser title, intro text, and meta description
-		const context = getTextReplacementContext(data, routeParamMap);
-
-		// The config to the app will provide an array of listing patterns that map to the
-		// number of params that this route has.
-		// TODO: move this to app.js, the route setup, should control which listing pattern to use
-		const listingPatternIndex = routeParamMap.length - 1;
-		const listingPattern = Object.values(dynamicListingPatterns)[listingPatternIndex];
-
-		return {
-			pageTitle: TokenParser.replaceTokens(listingPattern.pageTitle, context),
-			browserTitle: TokenParser.replaceTokens(listingPattern.browserTitle, context),
-			introText: TokenParser.replaceTokens(listingPattern.introText, context),
-			metaDescription: TokenParser.replaceTokens(listingPattern.metaDescription, context),
-		};
-	};
-
-	const requestFilters = setupRequestFilters();
-	const replacedText = setupReplacementText();
-	const tracking = useTracking();
-
-	const requestQuery = getClinicalTrials({
-		from: pager.offset,
-		requestFilters,
-		size: pager.pageUnit,
 	});
 
-	// Kick off the CTS Api Fetch
-	const fetchState = useCtsApi(requestQuery);
+	/**
+	 * Sets up text content by replacing placeholders with dynamic values from the provided data.
+	 * This includes page title, browser title, intro text, and meta description.
+	 */
+	const setupReplacementText = () => {
+		try {
+			const context = getTextReplacementContext(data, routeParamMap);
+			const listingPatternIndex = routeParamMap.length - 1 || 0;
+			const listingPattern = Object.values(dynamicListingPatterns)[listingPatternIndex];
+
+			if (!listingPattern) {
+				console.error('No listing pattern found');
+				return {
+					pageTitle: '',
+					browserTitle: '',
+					introText: '',
+					metaDescription: '',
+				};
+			}
+
+			return {
+				pageTitle: TokenParser.replaceTokens(listingPattern.pageTitle, context),
+				browserTitle: TokenParser.replaceTokens(listingPattern.browserTitle, context),
+				introText: TokenParser.replaceTokens(listingPattern.introText, context),
+				metaDescription: TokenParser.replaceTokens(listingPattern.metaDescription, context),
+			};
+		} catch (error) {
+			console.error('Error in setupReplacementText:', error);
+			return {
+				pageTitle: '',
+				browserTitle: '',
+				introText: '',
+				metaDescription: '',
+			};
+		}
+	};
+
+	/**
+	 * Builds API request filters based on route parameters and disease/intervention data.
+	 */
+	const setupRequestFilters = () => {
+		try {
+			if (!data || !routeParamMap) {
+				return {};
+			}
+
+			return data.reduce((acQuery, paramData, idx) => {
+				const paramInfo = routeParamMap[idx];
+
+				switch (paramInfo.paramName) {
+					case 'codeOrPurl':
+						return {
+							...acQuery,
+							'diseases.nci_thesaurus_concept_id': paramData?.conceptId || [],
+						};
+					case 'type':
+						return {
+							...acQuery,
+							primary_purpose: paramData?.idString || '',
+						};
+					case 'interCodeOrPurl':
+						return {
+							...acQuery,
+							'arms.interventions.nci_thesaurus_concept_id': paramData?.conceptId || [],
+						};
+					default:
+						console.warn(`Unknown parameter ${paramInfo.paramName}`);
+						return acQuery;
+				}
+			}, {});
+		} catch (error) {
+			console.error('Error in setupRequestFilters:', error);
+			return {};
+		}
+	};
+
+	const baseRequestFilters = setupRequestFilters();
+	const replacedText = setupReplacementText();
+	const searchFilters = {
+		...baseRequestFilters,
+		...getCurrentFilters(),
+	};
+	const hasRequiredData = Boolean(data && routeParamMap && !isInitialLoading);
+
+	// Fetch trials
+	const {
+		trials: fetchState,
+		isLoading: loading,
+		error,
+	} = useTrialSearch(
+		{
+			...searchFilters,
+			from: pager.offset,
+			size: pager.pageUnit,
+		},
+		shouldFetchTrials && hasRequiredData
+	);
 
 	useEffect(() => {
-		//if you try to access a nonexistent page, eg: try to access page 41 of 1-40 pages
-
-		if (!fetchState.loading && fetchState.error != null && fetchState.error.message === 'Trial count mismatch from the API') {
-			const redirectStatusCode = location.state?.redirectStatus ? location.state?.redirectStatus : '404';
-
-			const prerenderLocation = location.state?.redirectStatus ? baseHost + window.location.pathname : null;
-
-			// So this is handling the redirect to the no trials page.
-			// it is the job of the dynamic route views to property
-			// set the p1,p2,p3 parameters.
-			const redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
-
-			navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
-				replace: true,
-				state: {
-					redirectStatus: redirectStatusCode,
-					prerenderLocation: prerenderLocation,
-				},
-			});
-		} else if (!fetchState.loading && fetchState.payload) {
-			if (fetchState.payload.total === 0) {
-				//
-				const redirectStatusCode = location.state?.redirectStatus ? location.state?.redirectStatus : '302';
-
-				const prerenderLocation = location.state?.redirectStatus ? baseHost + window.location.pathname : null;
-
-				// So this is handling the redirect to the no trials page.
-				// it is the job of the dynamic route views to property
-				// set the p1,p2,p3 parameters.
-				const redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
-
-				navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
-					replace: true,
-					state: {
-						redirectStatus: redirectStatusCode,
-						prerenderLocation: prerenderLocation,
-					},
-				});
-				// return ;
-			}
-
-			// Fire off a page load event. Usually this would be in
-			// some effect when something loaded.
-			if (fetchState.payload.total > 0) {
-				tracking.trackEvent({
-					// These properties are required.
-					type: 'PageLoad',
-					event: 'TrialListingApp:Load:Results',
-					name: canonicalHost.replace(/^(http|https):\/\//, '') + window.location.pathname,
-					title: replacedText.pageTitle,
-					language: language === 'en' ? 'english' : 'spanish',
-					metaTitle: `${replacedText.pageTitle} - ${siteName}`,
-					// Any additional properties fall into the "page.additionalDetails" bucket
-					// for the event.
-					numberResults: fetchState.payload?.total,
-					trialListingPageType: `${trialListingPageType.toLowerCase()}`,
-					...trackingData,
-				});
-			}
+		if (fetchState && !fetchState.loading && fetchState.error != null && fetchState.error.message === 'Trial count mismatch from the API') {
+			handleRedirect('404');
 		}
 	}, [fetchState]);
 
-	// Setup data for tracking
-	const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
-
+	// Watch for filter changes
 	useEffect(() => {
+		if (filterState.shouldSearch && hasRequiredData) {
+			setShouldFetchTrials(true);
+		}
+	}, [filterState.shouldSearch, hasRequiredData]);
+
+	// Handle trial fetch results
+	// useEffect(() => {
+	// 	if (!loading && error?.message === 'Trial count mismatch from the API') {
+	// 		const redirectStatusCode = location.state?.redirectStatus ? location.state?.redirectStatus : '404';
+	// 		const prerenderLocation = location.state?.redirectStatus ? baseHost + window.location.pathname : null;
+	//
+	// 		const redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
+	// 		navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
+	// 			replace: true,
+	// 			state: {
+	// 				redirectStatus: redirectStatusCode,
+	// 				prerenderLocation,
+	// 			},
+	// 		});
+	// 	} else if (!loading && fetchState) {
+	// 		if (fetchState.total === 0) {
+	// 			const redirectStatusCode = location.state?.redirectStatus ? location.state?.redirectStatus : '302';
+	// 			const prerenderLocation = location.state?.redirectStatus ? baseHost + window.location.pathname : null;
+	//
+	// 			const redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
+	// 			navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
+	// 				replace: true,
+	// 				state: {
+	// 					redirectStatus: redirectStatusCode,
+	// 					prerenderLocation,
+	// 				},
+	// 			});
+	// 		} else if (fetchState.total > 0) {
+	// 			trackPageView();
+	// 		}
+	// 	}
+	// }, [loading, fetchState, error]);
+	useEffect(() => {
+		if (!loading && error?.message === 'Trial count mismatch from the API') {
+			handleRedirect('404');
+		} else if (!loading && fetchState) {
+			// If we have trials (total > 0) but current page is empty,
+			// this is an invalid page number situation
+			if (fetchState?.total > 0 && fetchState?.data && fetchState.data.length === 0) {
+				// Simply update the URL to page 1 instead of redirecting to NoTrialsFound
+				const qryStr = appendOrUpdateToQueryString(search, 'pn', 1);
+				const paramsObject = getParamsForRoute(data, routeParamMap);
+				navigate(`${routePath(paramsObject)}${qryStr}`, { replace: true });
+				return; // Exit early to prevent other conditions from executing
+			}
+
+			// Handle truly empty results (no trials at all)
+			if (fetchState?.total === 0) {
+				handleRedirect('302');
+			} else if (fetchState?.total > 0) {
+				trackPageView();
+			}
+		}
+	}, [loading, fetchState, error]);
+
+	// Handle pagination
+	useEffect(() => {
+		// Check if page number exceeds total pages
+		if (fetchState?.total && pn) {
+			const totalPages = Math.ceil(fetchState.total / itemsPerPage);
+			if (Number(pn) > totalPages) {
+				// Redirect to page 1
+				const qryStr = appendOrUpdateToQueryString(search, 'pn', 1);
+				const paramsObject = getParamsForRoute(data, routeParamMap);
+				navigate(`${routePath(paramsObject)}${qryStr}`, { replace: true });
+				return;
+			}
+		}
+
 		if (pn !== pager.page.toString()) {
 			setPager({
 				...pager,
@@ -160,122 +221,173 @@ const Disease = ({ routeParamMap, routePath, data }) => {
 				page: typeof pn === 'string' ? pn : 1,
 			});
 		}
-	}, [pn]);
+	}, [pn, location.pathname, location.search, fetchState?.total]);
+	const handleRedirect = (status) => {
+		let redirectParams = '';
 
-	const onPageNavigationChangeHandler = (pagination) => {
+		// If data is available, use getNoTrialsRedirectParams
+		if (data && routeParamMap) {
+			redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
+		} else {
+			// Extract disease name from URL path for direct navigation cases
+			const pathParts = location.pathname.split('/');
+			if (pathParts.length > 1 && pathParts[1]) {
+				redirectParams = `p1=${pathParts[1]}`;
+			}
+		}
+
+		const prerenderLocation = status === '404' ? null : baseHost + location.pathname;
+
+		// Preserve existing redirectStatus if present, otherwise use the new status
+		const redirectStatus = location.state?.redirectStatus || status;
+
+		// We want an immediate return to ensure the redirect happens synchronously
+		return navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
+			replace: true,
+			state: {
+				redirectStatus,
+				prerenderLocation,
+			},
+		});
+	};
+
+	const onPageNavigationChange = (pagination) => {
 		setPager(pagination);
 		const { page } = pagination;
 		const qryStr = appendOrUpdateToQueryString(search, 'pn', page);
 		const paramsObject = getParamsForRoute(data, routeParamMap);
-
 		navigate(`${routePath(paramsObject)}${qryStr}`);
 	};
 
-	const renderHelmet = () => {
-		const pathAndPage = window.location.pathname + `?pn=${pager.page}`;
-		const prerenderHeader = baseHost + window.location.pathname;
-		const status = location.state?.redirectStatus;
-
-		return (
-			<Helmet>
-				<title>{`${replacedText.browserTitle} - ${siteName}`}</title>
-				<meta property="og:title" content={`${replacedText.pageTitle}`} />
-				<meta property="og:url" content={baseHost + pathAndPage} />
-				<meta name="description" content={replacedText.metaDescription} />
-				<meta property="og:description" content={replacedText.metaDescription} />
-				<link rel="canonical" href={canonicalHost + pathAndPage} />
-				{(() => {
-					if (status) {
-						return <meta name="prerender-status-code" content={status} />;
-					}
-				})()}
-				{(() => {
-					if (status === '301') {
-						return <meta name="prerender-header" content={`Location: ${prerenderHeader}`} />;
-					}
-				})()}
-			</Helmet>
-		);
+	const trackPageView = () => {
+		const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
+		tracking.trackEvent({
+			type: 'PageLoad',
+			event: 'TrialListingApp:Load:Results',
+			name: canonicalHost.replace(/^(http|https):\/\//, '') + location.pathname,
+			title: replacedText.pageTitle,
+			language: language === 'en' ? 'english' : 'spanish',
+			metaTitle: `${replacedText.pageTitle} - ${siteName}`,
+			numberResults: fetchState.total,
+			trialListingPageType: `${trialListingPageType.toLowerCase()}`,
+			...trackingData,
+		});
 	};
 
-	// It is assumed this function will be called only if there are
-	// trials.
-
-	const renderPagerSection = (placement) => {
-		const page = pn ?? 1;
-		const pagerOffset = getPageOffset(page, itemsPerPage);
-
-		return (
-			<>
-				<div className="ctla-results__summary grid-container">
-					<div className="grid-row">
-						{placement === 'top' && (
-							<div className="ctla-results__count grid-col-1">
-								{`
-								Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.payload.total)} of
-								${fetchState.payload.total}
-							`}
-							</div>
-						)}
-						{fetchState.payload.total > itemsPerPage && (
-							<div className="ctla-results__pager grid-col-2">
-								<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={fetchState.payload.total} />
-							</div>
-						)}
-					</div>
-				</div>
-			</>
-		);
-	};
 	const ResultsListWithPage = track({
 		currentPage: Number(pager.page),
 	})(ResultsList);
 
-	return (
-		<>
-			<div className="grid-container">
+	const renderPagerSection = (placement) => {
+		if (!fetchState?.total) return null;
+
+		const pagerOffset = getPageOffset(pager.page, itemsPerPage);
+		const startCount = pagerOffset + 1;
+		const endCount = Math.min(pagerOffset + itemsPerPage, fetchState.total);
+
+		return (
+			<div className="ctla-results__summary grid-container">
+				<div className="grid-row">{placement === 'top' && <div className="ctla-results__count grid-col">{`Trials ${startCount}-${endCount} of ${fetchState.total}`}</div>}</div>
 				<div className="grid-row">
-					<div className="grid-col">
-						{renderHelmet()}
-						<h1>{replacedText.pageTitle}</h1>
-						{(() => {
-							if (fetchState.loading) {
-								return <Spinner />;
-							} else if (!fetchState.loading && fetchState.payload) {
-								if (fetchState.payload.total > 0) {
-									return (
-										<>
-											{/* ::: Intro Text ::: */}
-											{replacedText.introText.length > 0 && (
-												<div className="ctla-results__intro grid-container">
-													<div className="grid-row">
-														<div
-															className="grid-col"
-															dangerouslySetInnerHTML={{
-																__html: replacedText.introText,
-															}}></div>
-													</div>
-												</div>
-											)}
-											{/* ::: Top Paging Section ::: */}
-											{renderPagerSection('top')}
-											<ScrollRestoration />
-											<ResultsListWithPage results={fetchState.payload.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
-											{/* ::: Bottom Paging Section ::: */}
-											{renderPagerSection('bottom')}
-										</>
-									);
-								} else {
-									return <NoResults />;
-								}
-							} else {
-								return <ErrorPage />;
-							}
-						})()}
+					{fetchState.total > itemsPerPage && (
+						<div className="ctla-results__pager grid-col">
+							<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChange} resultsPerPage={pager.pageUnit} totalResults={fetchState.total} />
+						</div>
+					)}
+				</div>
+			</div>
+		);
+	};
+
+	const renderHelmet = () => {
+		const pathAndPage = window.location.pathname + `?pn=${pager.page}`;
+		// Get redirect status from state or location.state
+		let redirectStatus = '';
+
+		// Check if we're in a redirect state
+		if (state?.status === hocStates.REDIR_STATE) {
+			redirectStatus = '301';
+		} else if (state?.redirectStatus === '301' || location.state?.redirectStatus === '301') {
+			redirectStatus = '301';
+		} else if (location.state?.redirectStatus) {
+			redirectStatus = location.state.redirectStatus;
+		} else if (filterState.isInitialLoad && location.search.includes('redirect=true')) {
+			// Handle case where page is loaded initially with redirect=true parameter
+			redirectStatus = '301';
+		}
+
+		// Get prerender location from location.state
+		const prerenderLocation = location.state?.prerenderLocation || baseHost + location.pathname;
+
+		return (
+			<Helmet>
+				<title>{`${replacedText.browserTitle} - ${siteName}`}</title>
+				<meta property="og:title" content={replacedText.pageTitle} />
+				<meta property="og:url" content={baseHost + pathAndPage} />
+				<meta name="description" content={replacedText.metaDescription} />
+				<meta property="og:description" content={replacedText.metaDescription} />
+				<link rel="canonical" href={canonicalHost + pathAndPage} />
+				{redirectStatus && <meta name="prerender-status-code" content={redirectStatus} />}
+				{redirectStatus === '301' && <meta name="prerender-header" content={`Location: ${prerenderLocation}`} />}
+			</Helmet>
+		);
+	};
+
+	// Early return for loading state
+	if (isInitialLoading || !data || !routeParamMap) {
+		return (
+			<div className="disease-view">
+				<div className="disease-view__container">
+					<Sidebar pageType="Disease" />
+					<div className="disease-view__content">
+						<Spinner />
 					</div>
 				</div>
 			</div>
-		</>
+		);
+	}
+
+	return (
+		<div className="disease-view">
+			{renderHelmet()}
+
+			<div className="disease-view__container">
+				<Sidebar pageType="Disease" />
+
+				<h1 className="disease-view__heading">{replacedText.pageTitle}</h1>
+
+				{replacedText.introText && <div className="disease-view__intro ctla-results__intro" dangerouslySetInnerHTML={{ __html: replacedText.introText }} />}
+
+				<div className="disease-view__content">
+					<main className="disease-view__main">
+						{loading || isApplyingFilters || isInitialLoading ? (
+							<Spinner />
+						) : fetchState?.total === 0 ? (
+							<>
+								<div className="ctla-results__summary grid-container">
+									<div className="grid-row">
+										<div className="ctla-results__count grid-col">Trials 0 of 0</div>
+									</div>
+								</div>
+								<hr className="ctla-results__divider" />
+								<NoResultsWithFilters />
+							</>
+						) : fetchState?.total > 0 ? (
+							<>
+								{renderPagerSection('top')}
+								<ScrollRestoration />
+								<ResultsListWithPage results={fetchState.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
+								{renderPagerSection('bottom')}
+							</>
+						) : error ? (
+							<ErrorPage />
+						) : (
+							<NoResults />
+						)}
+					</main>
+				</div>
+			</div>
+		</div>
 	);
 };
 
@@ -298,6 +410,8 @@ Disease.propTypes = {
 			prettyUrlName: PropTypes.string,
 		})
 	),
+	isInitialLoading: PropTypes.bool,
+	state: PropTypes.object,
 };
 
 export default Disease;

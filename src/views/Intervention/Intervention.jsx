@@ -6,18 +6,25 @@ import track, { useTracking } from 'react-tracking';
 
 import { Pager, NoResults, ResultsList, ScrollRestoration, Spinner } from '../../components';
 import { ErrorPage } from '../ErrorBoundary';
-import { useAppPaths, useCtsApi } from '../../hooks';
-import { getClinicalTrials } from '../../services/api/actions';
+import { useAppPaths } from '../../hooks';
+import { useFilters } from '../../features/filters/context/FilterContext/FilterContext';
+import Sidebar from '../../features/filters/components/Sidebar/Sidebar';
 import { useStateValue } from '../../store/store';
 import { appendOrUpdateToQueryString, getKeyValueFromQueryString, getPageOffset, TokenParser, getAnalyticsParamsForRoute, getNoTrialsRedirectParams, getParamsForRoute } from '../../utils';
+import { hocStates } from '../hocReducer';
+import { useTrialSearch } from '../../features/filters/hooks/useTrialSearch';
 
-const Intervention = ({ routeParamMap, routePath, data }) => {
+const Intervention = ({ routeParamMap, routePath, data, state }) => {
 	const { NoTrialsPath } = useAppPaths();
 	const location = useLocation();
 	const navigate = useNavigate();
 	const { search } = location;
 
 	const [{ baseHost, canonicalHost, detailedViewPagePrettyUrlFormatter, dynamicListingPatterns, itemsPerPage, language, siteName, trialListingPageType }] = useStateValue();
+
+	// Add filter related state and hooks
+	const { state: filterState, getCurrentFilters, isApplyingFilters } = useFilters();
+	const [shouldFetchTrials, setShouldFetchTrials] = useState(true);
 
 	const pn = getKeyValueFromQueryString('pn', search.toLowerCase());
 	const pagerDefaults = {
@@ -81,23 +88,56 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 		};
 	};
 
-	const requestFilters = setupRequestFilters();
+	const baseRequestFilters = setupRequestFilters();
 	const replacedText = setupReplacementText();
 	const tracking = useTracking();
-	const requestQuery = getClinicalTrials({
-		from: pager.offset,
-		requestFilters,
-		size: pager.pageUnit,
-	});
 
-	const fetchState = useCtsApi(requestQuery);
+	// Watch for filter changes
+	useEffect(() => {
+		if (filterState.shouldSearch) {
+			setShouldFetchTrials(true);
+		}
+	}, [filterState.shouldSearch]);
+
+	// Combine base filters with applied filters
+	const searchFilters = {
+		...baseRequestFilters,
+		...getCurrentFilters(),
+	};
+
+	const {
+		trials: fetchState,
+		isLoading: loading,
+		error,
+	} = useTrialSearch(
+		{
+			...searchFilters,
+			from: pager.offset,
+			size: pager.pageUnit,
+		},
+		shouldFetchTrials
+	);
+
+	// const {
+	// 	loading,
+	// 	error,
+	// 	payload: fetchState,
+	// 	aborted,
+	// } = useCtsApi({
+	// 	type: 'fetchTrials',
+	// 	payload: {
+	// 		...searchFilters,
+	// 		from: pager.offset,
+	// 		size: pager.pageUnit,
+	// 	},
+	// });
 
 	// Setup data for tracking
 	const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
 
 	useEffect(() => {
 		//if you try to access a nonexistent page, eg: try to access page 41 of 1-40 pages
-		if (!fetchState.loading && fetchState.error != null && fetchState.error.message === 'Trial count mismatch from the API') {
+		if (!loading && error != null && error.message === 'Trial count mismatch from the API') {
 			const redirectStatusCode = location.state?.redirectStatus ? location.state?.redirectStatus : '404';
 
 			const prerenderLocation = location.state?.redirectStatus ? baseHost + window.location.pathname : null;
@@ -114,8 +154,8 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 					prerenderLocation: prerenderLocation,
 				},
 			});
-		} else if (!fetchState.loading && fetchState.payload) {
-			if (fetchState.payload.total === 0) {
+		} else if (!loading && fetchState) {
+			if (fetchState.total === 0) {
 				const redirectStatusCode = location.state?.redirectStatus ? location.state?.redirectStatus : '302';
 
 				const prerenderLocation = location.state?.redirectStatus ? baseHost + window.location.pathname : null;
@@ -136,7 +176,19 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 					}
 				}, {});
 
-				navigate(`${NoTrialsPath()}?${redirectParams}`, {
+				// Create a new URLSearchParams object with only the parameters we want
+				const params = new URLSearchParams();
+
+				// Split the redirectParams string by '&' to get individual parameters
+				redirectParams.split('&').forEach((param) => {
+					if (param) {
+						const [key, value] = param.split('=');
+						params.append(key, value);
+					}
+				});
+
+				// Navigate to the no trials page with only our specific parameters
+				navigate(`${NoTrialsPath()}?${params.toString()}`, {
 					replace: true,
 					state: {
 						redirectStatus: redirectStatusCode,
@@ -147,7 +199,7 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 
 			// Fire off a page load event. Usually this would be in
 			// some effect when something loaded.
-			if (fetchState.payload.total > 0) {
+			if (fetchState.total > 0) {
 				tracking.trackEvent({
 					// These properties are required.
 					type: 'PageLoad',
@@ -158,15 +210,27 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 					metaTitle: `${replacedText.pageTitle} - ${siteName}`,
 					// Any additional properties fall into the "page.additionalDetails" bucket
 					// for the event.
-					numberResults: fetchState.payload?.total,
+					numberResults: fetchState.total,
 					trialListingPageType: `${trialListingPageType.toLowerCase()}`,
 					...trackingData,
 				});
 			}
 		}
-	}, [fetchState]);
+	}, [loading, fetchState, error]);
 
 	useEffect(() => {
+		// Check if page number exceeds total pages
+		if (fetchState?.total && pn) {
+			const totalPages = Math.ceil(fetchState.total / itemsPerPage);
+			if (Number(pn) > totalPages) {
+				// Redirect to page 1
+				const qryStr = appendOrUpdateToQueryString(search, 'pn', 1);
+				const paramsObject = getParamsForRoute(data, routeParamMap);
+				navigate(`${routePath(paramsObject)}${qryStr}`, { replace: true });
+				return;
+			}
+		}
+
 		if (pn !== pager.page.toString()) {
 			setPager({
 				...pager,
@@ -174,7 +238,7 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 				page: typeof pn === 'string' ? pn : 1,
 			});
 		}
-	}, [pn]);
+	}, [pn, fetchState?.total]);
 
 	const onPageNavigationChangeHandler = (pagination) => {
 		setPager(pagination);
@@ -187,27 +251,37 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 
 	const renderHelmet = () => {
 		const pathAndPage = window.location.pathname + `?pn=${pager.page}`;
-		const prerenderHeader = baseHost + window.location.pathname;
-		const status = location.state?.redirectStatus;
+
+		// Get redirect status from state or location.state
+		let redirectStatus = '';
+
+		// Check if we're in a redirect state
+		if (state && state.status === hocStates.REDIR_STATE) {
+			redirectStatus = '301';
+		} else if ((state && state.redirectStatus === '301') || location.state?.redirectStatus === '301') {
+			redirectStatus = '301';
+		} else if (location.state?.redirectStatus) {
+			redirectStatus = location.state.redirectStatus;
+		}
+
+		// Force '301' status for code-to-pretty URL redirects
+		if (location.search.includes('redirect=true')) {
+			redirectStatus = '301';
+		}
+
+		// Get prerender location from location.state
+		const prerenderLocation = location.state?.prerenderLocation || baseHost + location.pathname;
 
 		return (
 			<Helmet>
 				<title>{`${replacedText.browserTitle} - ${siteName}`}</title>
-				<meta property="og:title" content={`${replacedText.pageTitle}`} />
+				<meta property="og:title" content={replacedText.pageTitle} />
 				<meta property="og:url" content={baseHost + pathAndPage} />
 				<meta name="description" content={replacedText.metaDescription} />
 				<meta property="og:description" content={replacedText.metaDescription} />
 				<link rel="canonical" href={canonicalHost + pathAndPage} />
-				{(() => {
-					if (status) {
-						return <meta name="prerender-status-code" content={status} />;
-					}
-				})()}
-				{(() => {
-					if (status === '301') {
-						return <meta name="prerender-header" content={`Location: ${prerenderHeader}`} />;
-					}
-				})()}
+				{redirectStatus && <meta name="prerender-status-code" content={redirectStatus} />}
+				{redirectStatus === '301' && <meta name="prerender-header" content={`Location: ${prerenderLocation}`} />}
 			</Helmet>
 		);
 	};
@@ -222,16 +296,18 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 				<div className="ctla-results__summary grid-container">
 					<div className="grid-row">
 						{placement === 'top' && (
-							<div className="ctla-results__count grid-col-1">
+							<div className="ctla-results__count grid-col">
 								{`
-								Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.payload.total)} of
-								${fetchState.payload.total}
-							`}
+   							Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.total)} of
+   							${fetchState.total}
+   						`}
 							</div>
 						)}
-						{fetchState.payload.total > itemsPerPage && (
-							<div className="ctla-results__pager grid-col-2">
-								<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={fetchState.payload.total} />
+					</div>
+					<div className="grid-row">
+						{fetchState.total > itemsPerPage && (
+							<div className="ctla-results__pager grid-col">
+								<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={fetchState.total} />
 							</div>
 						)}
 					</div>
@@ -245,17 +321,22 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 	})(ResultsList);
 
 	return (
-		<>
-			<div className="grid-container">
-				<div className="grid-row">
-					<div className="grid-col">
-						{renderHelmet()}
-						<h1>{replacedText.pageTitle}</h1>
+		<div className="disease-view">
+			<div className="disease-view__container">
+				<aside className="ctla-sidebar">
+					<Sidebar pageType="Intervention" />
+				</aside>
+
+				<div className="disease-view__content">
+					{renderHelmet()}
+					<h1>{replacedText.pageTitle}</h1>
+
+					<main className="disease-view__main">
 						{(() => {
-							if (fetchState.loading) {
+							if (loading || isApplyingFilters) {
 								return <Spinner />;
-							} else if (!fetchState.loading && fetchState.payload) {
-								if (fetchState.payload.total > 0) {
+							} else if (!loading && fetchState) {
+								if (fetchState.total > 0) {
 									return (
 										<>
 											{/* ::: Intro Text ::: */}
@@ -273,7 +354,7 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 											{/* ::: Top Paging Section ::: */}
 											{renderPagerSection('top')}
 											<ScrollRestoration />
-											<ResultsListWithPage results={fetchState.payload.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
+											<ResultsListWithPage results={fetchState.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
 											{/* ::: Bottom Paging Section ::: */}
 											{renderPagerSection('bottom')}
 										</>
@@ -285,10 +366,10 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 								return <ErrorPage />;
 							}
 						})()}
-					</div>
+					</main>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 
@@ -311,6 +392,8 @@ Intervention.propTypes = {
 			prettyUrlName: PropTypes.string,
 		})
 	),
+	state: PropTypes.object,
 };
 
 export default Intervention;
+``;

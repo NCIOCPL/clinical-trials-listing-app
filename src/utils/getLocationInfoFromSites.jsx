@@ -1,7 +1,7 @@
 import React from 'react';
+import { filterSitesByActiveRecruitment } from './filterSitesByActiveRecruitment';
 
 import { getStateNameFromAbbr } from './getStateNameFromAbbr';
-
 /**
  * getLocationInfoFromSites - Derives location information from list of sites
  *
@@ -10,18 +10,16 @@ import { getStateNameFromAbbr } from './getStateNameFromAbbr';
  * @param {Array} sites
  * @return {JSX.Element}
  */
-export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites = []) => {
+export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites = [], hasZipInput, zipInputReturn) => {
 	let totalUSLocations = 0;
 	let lastUSLocationSite = 0;
 	const siteLinkCT = `https://www.clinicaltrials.gov/study/${nctId}`;
 
 	// Filter list of sites by recruitment status before deriving location
-	const filteredSites = sites?.filter((site) => {
-		return site.recruitment_status.toLowerCase() === 'active' || site.recruitment_status.toLowerCase() === 'approved' || site.recruitment_status.toLowerCase() === 'enrolling_by_invitation' || site.recruitment_status.toLowerCase() === 'in_review' || site.recruitment_status.toLowerCase() === 'temporarily_closed_to_accrual';
-	});
+	const filteredSites = filterSitesByActiveRecruitment(sites);
 
 	for (let i = 0; i < filteredSites?.length; i++) {
-		if (sites[i].org_country === 'United States' && sites[i].recruitment_status) {
+		if (filteredSites[i].org_country === 'United States' && filteredSites[i].recruitment_status) {
 			totalUSLocations += 1;
 			lastUSLocationSite = i;
 		}
@@ -55,12 +53,23 @@ export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites = []) 
 	// One location found
 	if (totalUSLocations === 1) {
 		// Get full state name from state code
-		const stateName = getStateNameFromAbbr(sites[lastUSLocationSite].org_state_or_province.toUpperCase());
+		const stateName = getStateNameFromAbbr(filteredSites[lastUSLocationSite].org_state_or_province.toUpperCase());
+
+		console.log(sites[lastUSLocationSite]);
 		// Return text in format "org name, org city, state"
 		return (
 			<>
 				<strong>Location: </strong>
-				{sites[lastUSLocationSite].org_name + ', ' + sites[lastUSLocationSite].org_city + (stateName?.length ? ', ' + stateName : '')}
+				{filteredSites[lastUSLocationSite].org_name + ', ' + filteredSites[lastUSLocationSite].org_city + (stateName?.length ? ', ' + stateName : '')}
+			</>
+		);
+	}
+
+	if (hasZipInput) {
+		return (
+			<>
+				<strong>Location: </strong>
+				{`${totalUSLocations} locations` + zipInputReturn}
 			</>
 		);
 	}

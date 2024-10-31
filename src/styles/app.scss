@@ -1,13 +1,229 @@
 // molecules
-@import '../components/molecules/pager/pager';
-@import '../components/molecules/results-list/results-list-item/results-list-item';
+@use '../components/molecules/Pager/Pager';
+@use '../components/molecules/ResultsList/ResultsListItem/ResultsListItem';
 
 //views
-@import '../views/Manual/Manual';
-@import '../views/Disease/Disease';
-@import '../views/Intervention/Intervention';
-@import '../views/ErrorBoundary/PageNotFound';
+@use '../views/Manual/Manual';
+@use '../views/Disease/Disease';
+@use '../views/Intervention/Intervention';
+@use '../views/ErrorBoundary/PageNotFound';
 
+@use '../features/filters/components/Sidebar/Sidebar';
+
+@use 'uswds-core' as *;
+
+// h1 {
+// 	@include u-margin-bottom('205');
+// 	//margin-bottom: 20px;
+// }
+
+// styles/app.scss
+
+p {
+	@include u-margin-bottom(4);
+	@include u-line-height($theme-font-role-body, $theme-body-line-height);
+  //margin-bottom: 32px;
+  //line-height: 24px;
+}
+
+.app {
+	@include u-display('flex');
+	@include u-minh('viewport');
+	@include u-flex('column');
+
+	&-content {
+		@include u-display('flex');
+		@include u-margin(0); // Remove any margin
+		@include u-padding(0); // Remove any padding
+		max-width: 100vw; // Ensure full width
+		flex: 1;
+		position: relative;
+  }
+}
+
+
+
+// Global styles
 h1 {
-	margin-bottom: 20px;
+	@include u-margin-bottom('205');
+	@include u-text($theme-color-base-darkest); // #1B1B1B
+	@include u-line-height($theme-font-role-heading, $theme-heading-line-height); // 1.1em
+	@include u-font($theme-font-role-heading, $theme-h1-font-size); // 1.75em
+}
+
+h2 {
+	@include u-font($theme-font-role-heading, $theme-h2-font-size);
+	line-height: 1.215em;
+	//font-size: 1.4375em;
+}
+
+h3 {
+	@include u-font($theme-font-role-heading, $theme-h3-font-size);
+	line-height: 1.25em;
+	//font-size: 1.25em;
+}
+
+a {
+	@include u-text($theme-color-primary); // #007BBD
+	line-height: inherit;
+}
+
+a:focus,
+a:hover {
+	@include u-text($theme-color-primary-dark); // #004971
+}
+
+ul {
+	@include u-margin(0);
+	@include u-padding(0);
+	list-style: none;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+ul li ol,
+ul li ul {
+	@include u-margin-left('205');
+	@include u-margin-bottom(0);
+	font-size: 1em;
+}
+
+input[type='checkbox'],
+input[type='file'],
+input[type='radio'],
+select {
+	margin: 0 0 1em;
+}
+
+input[type='date'],
+input[type='datetime-local'],
+input[type='datetime'],
+input[type='email'],
+input[type='month'],
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='tel'],
+input[type='text'],
+input[type='time'],
+input[type='url'],
+input[type='week'],
+textarea {
+	border-radius: 0;
+	background-color: #f2f2f3;
+	font-family: inherit;
+	-webkit-box-shadow: 0 2px 4px 0 hsla(240, 4%, 95%, 0.05) inset;
+	box-shadow: inset 0 2px 4px 0 hsla(240, 4%, 95%, 0.05);
+	color: #2e2e2e;
+	display: block;
+	font-size: 1em;
+	margin: 0 0 1em;
+	padding: 0.5em;
+	height: 2.4375em;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: -webkit-box-shadow 0.45s, border-color 0.45s ease-in-out;
+	-webkit-transition: border-color 0.45s ease-in-out, -webkit-box-shadow 0.45s;
+	transition: border-color 0.45s ease-in-out, -webkit-box-shadow 0.45s;
+	transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
+	transition: box-shadow 0.45s, border-color 0.45s ease-in-out,
+		-webkit-box-shadow 0.45s;
+}
+
+// Jump Menu select css
+select {
+	width: auto;
+	font-size: inherit;
+	font-family: Noto Sans, Century Gothic, Arial, sans-serif;
+	color: #2e2e2e;
+	line-height: 1;
+	padding: 0.5em 1em 0.5em 0.75em;
+}
+
+// Utility classes for layout
+.app-content .grid-container {
+	@include u-width('full');
+	@include u-padding-x(2);
+	@include u-margin-right('auto');
+	@include u-margin-left('auto', !important);
+
+//   @media (min-width: 576px) {
+//     max-width: 540px;
+//   }
+
+//   @media (min-width: 768px) {
+//     max-width: 720px;
+//   }
+
+//   @media (min-width: 992px) {
+//     max-width: 960px;
+//   }
+
+//   @media (min-width: 1200px) {
+//     max-width: 1140px;
+//   }
+}
+
+.app-content .grid-row {
+	@include u-display('flex');
+	@include u-flex('wrap');
+	@include u-margin-x('neg-2');
+//   display: flex;
+//   flex-wrap: wrap;
+//   margin-right: -15px;
+//   margin-left: -15px;
+}
+
+.grid-col {
+	@include u-width('full');
+	@include u-padding-right(2);
+	@include u-maxw('full');
+
+	position: relative;
+	flex-basis: 0;
+	flex-grow: 1;
+}
+
+// Analytics tracking container
+.analytics-tracking {
+	@include u-display('none');
+}
+
+
+@media only screen and (max-width: 640px) {
+	.resize-content .page-options-container {
+		width:calc(100% + 15px)
+	}
+}
+
+@media only screen and (max-width: 390px) {
+	.resize-content .page-options-container {
+		@include u-width('full');
+	}
+}
+
+
+.disease-view {
+	&__main {
+		// Add relative positioning to contain the spinner
+		position: relative;
+		min-height: 400px; // Add minimum height to prevent layout shifts
+	}
+}
+
+// Update Spinner.scss to work with relative container
+.nci-spinner {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	min-height: unset; // Remove default min-height
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
