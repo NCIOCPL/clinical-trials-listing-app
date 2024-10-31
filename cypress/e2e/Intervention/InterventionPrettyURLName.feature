@@ -16,8 +16,8 @@ Feature: As a user, I would like to view the trial results for an intervention l
       | 1      |
       | 2      |
       | 3      |
-      | Next > |
-    When user clicks on "Next >" button
+      | Next   |
+    When user clicks on "Next" button
     Then the user is redirected to "/trastuzumab" with query parameters "cfg=1&pn=2"
 
   Scenario: View intervention listing page metadata with pretty URL name parameter
@@ -29,12 +29,12 @@ Feature: As a user, I would like to view the trial results for an intervention l
     And the page contains meta tags with the following properties
       | property       | content                                                                                                                        |
       | og:title       | Clinical Trials Using Trastuzumab                                                                                              |
-      | og:url         | http://localhost:3000/trastuzumab                                                                                              |
+      | og:url         | http://localhost:3000/trastuzumab?pn=1                                                                                         |
       | og:description | NCI supports clinical trials that test new and more effective ways to treat cancer. Find clinical trials studying trastuzumab. |
     And the page contains meta tags with the following names
       | name        | content                                                                                                                        |
       | description | NCI supports clinical trials that test new and more effective ways to treat cancer. Find clinical trials studying trastuzumab. |
-    And there is a canonical link with the href "https://www.cancer.gov/trastuzumab"
+    And there is a canonical link with the href "https://www.cancer.gov/trastuzumab?pn=1"
 
   Scenario: Mobile and Tablet Pager Display
     Given "trialListingPageType" is set to "Intervention"
@@ -50,4 +50,3 @@ Feature: As a user, I would like to view the trial results for an intervention l
       | 1      |
       | 2      |
       | 3      |
-      | Next > |

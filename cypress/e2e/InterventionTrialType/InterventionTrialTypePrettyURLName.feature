@@ -16,10 +16,14 @@ Feature: As a user, I would like to view the trial results for an intervention l
       | 1      |
       | 2      |
       | 3      |
-      | Next > |
-    When user clicks on "Next >" button
+      | Next   |
+    When user clicks on "Next" button
     Then the user is redirected to "/trastuzumab/treatment" with query parameters "cfg=1&pn=2"
     And user is brought to the top of a page
+		And the page contains meta tags with the following properties
+			| property | content                                              |
+			| og:url   | http://localhost:3000/trastuzumab/treatment?pn=2     |
+		And there is a canonical link with the href "https://www.cancer.gov/trastuzumab/treatment?pn=2"
 
   Scenario: View intervention listing page metadata with pretty URL name parameter
     Given "trialListingPageType" is set to "Intervention"
@@ -30,12 +34,12 @@ Feature: As a user, I would like to view the trial results for an intervention l
     And the page contains meta tags with the following properties
       | property       | content                                                                                                                                                 |
       | og:title       | Treatment Clinical Trials Using Trastuzumab                                                                                                             |
-      | og:url         | http://localhost:3000/trastuzumab/treatment                                                                                                             |
+      | og:url         | http://localhost:3000/trastuzumab/treatment?pn=1                                                                                                        |
       | og:description | NCI supports clinical trials studying new and more effective ways to treat cancer. Find clinical trials testing treatment methods that use trastuzumab. |
     And the page contains meta tags with the following names
       | name        | content                                                                                                                                                 |
       | description | NCI supports clinical trials studying new and more effective ways to treat cancer. Find clinical trials testing treatment methods that use trastuzumab. |
-    And there is a canonical link with the href "https://www.cancer.gov/trastuzumab/treatment"
+    And there is a canonical link with the href "https://www.cancer.gov/trastuzumab/treatment?pn=1"
     And meta tag with a "name" "prerender-status-code" does not exist
 
   Scenario: Mobile and Tablet Pager Display
@@ -52,4 +56,3 @@ Feature: As a user, I would like to view the trial results for an intervention l
       | 1      |
       | 2      |
       | 3      |
-      | Next > |

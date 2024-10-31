@@ -1,12 +1,12 @@
 /// <reference path="../../node_modules/@types/express/index.d.ts"/>
 
 const express = require('express');
-
+const mockZipCodeLookup = require('./mock-zipcode-lookup');
 const mockClinicalTrials = require('./mock-clinical-trials/clinical-trials');
 const mockListingInformationById = require('./mock-listing-information/listing-information-by-id');
 const mockListingInformationByName = require('./mock-listing-information/listing-information-by-name');
 const mockTrialTypeGetByName = require('./mock-trial-type/trial-type-by-name');
-const  { createProxyMiddleware } = require('http-proxy-middleware');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function (app) {
 	// Any posts done with application/json will have thier body convered as an object.
@@ -15,10 +15,18 @@ module.exports = function (app) {
 	// CTS API Mocks
 	// NOTE: The client does not allow us to change the base path.
 
+	// Log all requests
+	// app.use((req, res, next) => {
+	// 	console.log('Incoming request:', req.method, req.url);
+	// 	next();
+	// });
+
 	// v1 endpoints
 	app.use('/api/listing-information/get', mockListingInformationById);
 	app.use('/api/listing-information/:queryParam', mockListingInformationByName);
 	app.use('/api/trial-type/:name', mockTrialTypeGetByName);
+	// Handle mock requests for the zip code lookup API
+	app.use('/mock-api/zip_code_lookup/:zip', mockZipCodeLookup);
 
 	// new v2 endpoints
 	app.use('/cts/mock-api/v2/trials', mockClinicalTrials);

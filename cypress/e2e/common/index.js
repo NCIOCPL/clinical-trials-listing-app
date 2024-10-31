@@ -151,7 +151,7 @@ And('the following links and texts exist on the page', (dataTable) => {
 	-----------------------
 */
 And('the system displays message {string}', (noTrialsText) => {
-	cy.get('div p').should('have.text', noTrialsText);
+	cy.get('.main-content div p').should('have.text', noTrialsText);
 });
 
 /*
@@ -211,10 +211,13 @@ And('the link {string} to {string} appears on the page', (linkText, linkHref) =>
 		Manual Page results
 	-----------------------
 */
+var mobileScreen = false;
 Given('screen breakpoint is set to {string}', (screenSize) => {
 	if (screenSize === 'desktop') cy.viewport(1025, 600);
-	else if (screenSize === 'mobile') cy.viewport(600, 800);
-	else if (screenSize === 'tablet') cy.viewport(800, 900);
+	else if (screenSize === 'mobile') {
+		cy.viewport(600, 800);
+		mobileScreen = true;
+	} else if (screenSize === 'tablet') cy.viewport(800, 900);
 });
 
 /*
@@ -232,26 +235,38 @@ And('pager displays the following navigation options', (dataTable) => {
 		pagerItems.push(pages);
 	}
 	let counter = 0;
-	//verify that pager displays correct number of page items
-	cy.get('.pager__navigation:first li:visible').should('have.length', pagerItems.length);
-	cy.get('.pager__navigation:last li:visible').should('have.length', pagerItems.length);
 
-	//verify that the order of displayed page items is correct
-	cy.get('.pager__navigation:first li:visible').each(($el) => {
-		cy.wrap($el).should('have.text', pagerItems[counter]);
-		counter++;
-	});
+	if (mobileScreen) {
+		cy.get('.usa-pagination__list:first li a:not(.usa-pagination__link), .usa-pagination__list:first .usa-pagination__overflow').should('have.length', pagerItems.length);
+		cy.get('.usa-pagination__list:last li a:not(.usa-pagination__link), .usa-pagination__list:last .usa-pagination__overflow').should('have.length', pagerItems.length);
+
+		//verify that the order of displayed page items is correct
+		cy.get('.usa-pagination__list:first li a:not(.usa-pagination__link), .usa-pagination__list:first .usa-pagination__overflow').each(($el) => {
+			cy.wrap($el).should('have.text', pagerItems[counter]);
+			counter++;
+		});
+	} else {
+		//verify that pager displays correct number of page items
+		cy.get('.usa-pagination__list:first li a:not(.hidden), .usa-pagination__list:first .usa-pagination__overflow').should('have.length', pagerItems.length);
+		cy.get('.usa-pagination__list:last li a:not(.hidden), .usa-pagination__list:last .usa-pagination__overflow').should('have.length', pagerItems.length);
+
+		//verify that the order of displayed page items is correct
+		cy.get('.usa-pagination__list:first li a:not(.hidden), .usa-pagination__list:first .usa-pagination__overflow').each(($el) => {
+			cy.wrap($el).should('have.text', pagerItems[counter]);
+			counter++;
+		});
+	}
 });
 
 And('the page {string} is highlighted', (pageNum) => {
-	cy.get('.pager__navigation:first button[class="pager__button active"]').should('have.text', pageNum);
-	cy.get('.pager__navigation:last button[class="pager__button active"]').should('have.text', pageNum);
+	cy.get('.usa-pagination__list:first a[class="usa-pagination__button usa-current"]').should('have.text', pageNum);
+	cy.get('.usa-pagination__list:last a[class="usa-pagination__button usa-current"]').should('have.text', pageNum);
 });
 When('user clicks on {string} button', (arrow) => {
-	cy.get('.pager__navigation li').contains(arrow).click();
+	cy.get('.usa-pagination__list li').contains(arrow).click();
 });
 When('pager is not displayed', () => {
-	cy.get('.pager__navigation li').should('not.exist');
+	cy.get('.usa-pagination__list li').should('not.exist');
 });
 
 /*

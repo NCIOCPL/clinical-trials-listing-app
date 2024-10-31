@@ -6,10 +6,12 @@ import track, { useTracking } from 'react-tracking';
 
 import { Pager, NoResults, ResultsList, ScrollRestoration, Spinner } from '../../components';
 import { ErrorPage } from '../ErrorBoundary';
-import { useAppPaths, useCtsApi } from '../../hooks';
-import { getClinicalTrials } from '../../services/api/actions';
+import { useAppPaths } from '../../hooks';
+import { useFilters } from '../../features/filters/context/FilterContext/FilterContext';
+import Sidebar from '../../features/filters/components/Sidebar/Sidebar';
 import { useStateValue } from '../../store/store';
 import { appendOrUpdateToQueryString, getKeyValueFromQueryString, getPageOffset, TokenParser, getAnalyticsParamsForRoute, getNoTrialsRedirectParams, getParamsForRoute } from '../../utils';
+import { useTrialSearch } from '../../features/filters/hooks/useTrialSearch';
 
 const Intervention = ({ routeParamMap, routePath, data }) => {
 	const { NoTrialsPath } = useAppPaths();
@@ -18,6 +20,10 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 	const { search } = location;
 
 	const [{ baseHost, canonicalHost, detailedViewPagePrettyUrlFormatter, dynamicListingPatterns, itemsPerPage, language, siteName, trialListingPageType }] = useStateValue();
+
+	// Add filter related state and hooks
+	const { state: filterState, getCurrentFilters, isApplyingFilters } = useFilters();
+	const [shouldFetchTrials, setShouldFetchTrials] = useState(true);
 
 	const pn = getKeyValueFromQueryString('pn', search.toLowerCase());
 	const pagerDefaults = {
@@ -81,23 +87,42 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 		};
 	};
 
-	const requestFilters = setupRequestFilters();
+	const baseRequestFilters = setupRequestFilters();
 	const replacedText = setupReplacementText();
 	const tracking = useTracking();
-	const requestQuery = getClinicalTrials({
-		from: pager.offset,
-		requestFilters,
-		size: pager.pageUnit,
-	});
 
-	const fetchState = useCtsApi(requestQuery);
+	// Watch for filter changes
+	useEffect(() => {
+		if (filterState.shouldSearch) {
+			setShouldFetchTrials(true);
+		}
+	}, [filterState.shouldSearch]);
+
+	// Combine base filters with applied filters
+	const searchFilters = {
+		...baseRequestFilters,
+		...getCurrentFilters(),
+	};
+
+	const {
+		trials: fetchState,
+		isLoading: loading,
+		error,
+	} = useTrialSearch(
+		{
+			...searchFilters,
+			from: pager.offset,
+			size: pager.pageUnit,
+		},
+		shouldFetchTrials
+	);
 
 	// Setup data for tracking
 	const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
 
 	useEffect(() => {
 		//if you try to access a nonexistent page, eg: try to access page 41 of 1-40 pages
-		if (!fetchState.loading && fetchState.error != null && fetchState.error.message === 'Trial count mismatch from the API') {
+		if (!loading && error != null && error.message === 'Trial count mismatch from the API') {
 			const redirectStatusCode = location.state?.redirectStatus ? location.state?.redirectStatus : '404';
 
 			const prerenderLocation = location.state?.redirectStatus ? baseHost + window.location.pathname : null;
@@ -114,8 +139,8 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 					prerenderLocation: prerenderLocation,
 				},
 			});
-		} else if (!fetchState.loading && fetchState.payload) {
-			if (fetchState.payload.total === 0) {
+		} else if (!loading && fetchState) {
+			if (fetchState.total === 0) {
 				const redirectStatusCode = location.state?.redirectStatus ? location.state?.redirectStatus : '302';
 
 				const prerenderLocation = location.state?.redirectStatus ? baseHost + window.location.pathname : null;
@@ -147,7 +172,7 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 
 			// Fire off a page load event. Usually this would be in
 			// some effect when something loaded.
-			if (fetchState.payload.total > 0) {
+			if (fetchState.total > 0) {
 				tracking.trackEvent({
 					// These properties are required.
 					type: 'PageLoad',
@@ -158,13 +183,13 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 					metaTitle: `${replacedText.pageTitle} - ${siteName}`,
 					// Any additional properties fall into the "page.additionalDetails" bucket
 					// for the event.
-					numberResults: fetchState.payload?.total,
+					numberResults: fetchState.total,
 					trialListingPageType: `${trialListingPageType.toLowerCase()}`,
 					...trackingData,
 				});
 			}
 		}
-	}, [fetchState]);
+	}, [loading, fetchState, error]);
 
 	useEffect(() => {
 		if (pn !== pager.page.toString()) {
@@ -221,16 +246,18 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 				<div className="ctla-results__summary grid-container">
 					<div className="grid-row">
 						{placement === 'top' && (
-							<div className="ctla-results__count grid-col-1">
+							<div className="ctla-results__count grid-col">
 								{`
-								Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.payload.total)} of
-								${fetchState.payload.total}
-							`}
+   							Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.total)} of
+   							${fetchState.total}
+   						`}
 							</div>
 						)}
-						{fetchState.payload.total > itemsPerPage && (
-							<div className="ctla-results__pager grid-col-2">
-								<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={fetchState.payload.total} />
+					</div>
+					<div className="grid-row">
+						{fetchState.total > itemsPerPage && (
+							<div className="ctla-results__pager grid-col">
+								<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={fetchState.total} />
 							</div>
 						)}
 					</div>
@@ -244,17 +271,22 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 	})(ResultsList);
 
 	return (
-		<>
-			<div className="grid-container">
-				<div className="grid-row">
-					<div className="grid-col">
-						{renderHelmet()}
-						<h1>{replacedText.pageTitle}</h1>
+		<div className="disease-view">
+			<div className="disease-view__container">
+				<aside className="ctla-sidebar">
+					<Sidebar pageType="Intervention" />
+				</aside>
+
+				<div className="disease-view__content">
+					{renderHelmet()}
+					<h1>{replacedText.pageTitle}</h1>
+
+					<main className="disease-view__main">
 						{(() => {
-							if (fetchState.loading) {
+							if (loading || isApplyingFilters) {
 								return <Spinner />;
-							} else if (!fetchState.loading && fetchState.payload) {
-								if (fetchState.payload.total > 0) {
+							} else if (!loading && fetchState) {
+								if (fetchState.total > 0) {
 									return (
 										<>
 											{/* ::: Intro Text ::: */}
@@ -272,7 +304,7 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 											{/* ::: Top Paging Section ::: */}
 											{renderPagerSection('top')}
 											<ScrollRestoration />
-											<ResultsListWithPage results={fetchState.payload.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
+											<ResultsListWithPage results={fetchState.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
 											{/* ::: Bottom Paging Section ::: */}
 											{renderPagerSection('bottom')}
 										</>
@@ -284,10 +316,10 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 								return <ErrorPage />;
 							}
 						})()}
-					</div>
+					</main>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 
@@ -313,3 +345,4 @@ Intervention.propTypes = {
 };
 
 export default Intervention;
+``;

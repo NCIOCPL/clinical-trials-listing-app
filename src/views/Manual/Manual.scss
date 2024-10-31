@@ -1,49 +1,28 @@
 .ctla-results__summary .grid-row {
 	.ctla-results__pager {
 		display: block;
-		margin-top: 20px;
-		padding-top: 1.25em;
+		margin-top: 2rem;
 		border-top: 1px solid #ddd;
 
 		nav.pager__container {
 			display: block;
 		}
 	}
+}
 
-	@media only screen and (min-width: 1024px) {
-		height: auto;
-		display: flex;
-		justify-content: space-between;
-		padding-top: 3px;
-		.ctla-results__count {
-			padding-top: 3px;
-			padding-bottom: 3px;
-		}
-
-		.ctla-results__pager {
-			padding-top: 3px;
-			margin-left: auto;
-			margin-top: 0;
-			padding-top: 0;
-			border: none;
-		}
-	}
+@media (max-width: 63.99em) {
+    .usa-footer__nci-return-to-top a::after {
+        mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="m4 12 1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" fill="%231B1B1B"/></svg>') !important;
+    }
 }
 
 .ctla-results__list {
 	border-top: 1px solid #ddd;
-	margin: 1.25em 0 1em;
+	margin: 1em 0 1em;
 }
 
 @media only screen and (min-width: 1024px) {
-	.ctla-results__list {
-		border-top: 1px solid #ddd;
-	}
+.ctla-results__list {
+	border-top: 1px solid #ddd;
 }
-
-@media only screen and (min-width: 1024px) {
-	.ctla-results__list+.ctla-results__summary:not(:empty) {
-		border-top: 1px solid #ddd;
-		padding-top: 25px;
-	}
 }

@@ -13,11 +13,5 @@ module.exports = {
 	functions: 80,
 	statements: 80,
 	include: ['src/'],
-	exclude: [
-		'cypress/**/*.js',
-		'jest-test-setup.js',
-		'src/serviceWorker.js',
-		'src/setupTests.js',
-		'*.test.js',
-	],
+	exclude: ['cypress/**/*.js', 'jest-test-setup.js', 'src/serviceWorker.js', 'src/setupTests.js', '*.test.js'],
 };

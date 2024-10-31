@@ -2,48 +2,74 @@
 	.ctla-results__pager {
 		display: block;
 		margin-top: 20px;
-		padding-top: 1.25em;
 		border-top: 1px solid #ddd;
 
 		nav.pager__container {
 			display: block;
 		}
 	}
-
-	@media only screen and (min-width: 1024px) {
-		height: auto;
-		display: flex;
-		justify-content: space-between;
-		padding-top: 3px;
-		.ctla-results__count {
-			padding-top: 3px;
-			padding-bottom: 3px;
-		}
-
-		.ctla-results__pager {
-			padding-top: 3px;
-			margin-left: auto;
-			margin-top: 0;
-			padding-top: 0;
-			border: none;
-		}
-	}
 }
 
 .ctla-results__list {
 	border-top: 1px solid #ddd;
-	margin: 1.25em 0 1em;
 }
 
-@media only screen and (min-width: 1024px) {
-	.ctla-results__list {
-		border-top: 1px solid #ddd;
+.cddpl h2{
+	margin-top: 0;
+}
+.disease-view {
+	&__container {
+		display: grid;
+		max-width: 1440px;
+		margin: 0 auto;
+		gap: 0 4rem;
+		padding: 0 1rem;
+
+		// Desktop grid
+		grid-template-columns: 320px 1fr;
+		grid-template-areas:
+      "sidebar heading"
+      "sidebar intro"
+      "sidebar content";
+
+		@media (max-width: 1028px) {
+			// Mobile grid
+			grid-template-columns: 1fr;
+			grid-template-areas:
+        "heading"
+        "intro"
+        "sidebar"
+        "content";
+			padding: 16px;
+		}
+	}
+
+	&__heading {
+		grid-area: heading;
+		margin:0;
+		padding-top: 35px; // Desktop padding
+
+		@media (max-width: 1028px) {
+			padding-top: 8px; // Reduced padding for mobile
+		}
+	}
+
+	&__intro {
+		margin: 0;
+		grid-area: intro;
+	}
+
+	.ctla-sidebar {
+		grid-area: sidebar;
+		margin-bottom: 20px;
+		padding-top: 0;
+	 h2{
+			margin-top: 0;
+		}
+	}
+
+	&__content {
+		grid-area: content;
 	}
 }
 
-@media only screen and (min-width: 1024px) {
-	.ctla-results__list+.ctla-results__summary:not(:empty) {
-		border-top: 1px solid #ddd;
-		padding-top: 25px;
-	}
-}

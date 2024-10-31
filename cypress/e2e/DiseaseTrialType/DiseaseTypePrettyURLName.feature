@@ -15,13 +15,16 @@ Feature: As a user, I would like to view the trial results for a disease listing
       | pages  |
       | 1      |
       | 2      |
-      | 3      |
       | ...    |
-      | 6     |
-      | Next > |
-    When user clicks on "Next >" button
+      | 6      |
+      | Next   |
+    When user clicks on "Next" button
     Then the user is redirected to "/breast-cancer/supportive-care" with query parameters "cfg=0&pn=2"
     And user is brought to the top of a page
+		And the page contains meta tags with the following properties
+			| property | content                                                  |
+			| og:url   | http://localhost:3000/breast-cancer/supportive-care?pn=2 |
+		And there is a canonical link with the href "https://www.cancer.gov/breast-cancer/supportive-care?pn=2"
 
 
   Scenario: View disease trial type listing page metadata with pretty URL name parameters
@@ -33,12 +36,12 @@ Feature: As a user, I would like to view the trial results for a disease listing
     And the page contains meta tags with the following properties
       | property       | content                                                                                                                                               |
       | og:title       | Supportive Care Clinical Trials for Breast Cancer                                                                                                     |
-      | og:url         | http://localhost:3000/breast-cancer/supportive-care                                                                                                   |
+      | og:url         | http://localhost:3000/breast-cancer/supportive-care?pn=1                                                                                              |
       | og:description | NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find supportive care clinical trials for breast cancer. |
     And the page contains meta tags with the following names
       | name        | content                                                                                                                                                  |
       | description | NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find supportive care clinical trials for breast cancer. 	 |
-    And there is a canonical link with the href "https://www.cancer.gov/breast-cancer/supportive-care"
+		And there is a canonical link with the href "https://www.cancer.gov/breast-cancer/supportive-care?pn=1"
     And meta tag with a "name" "prerender-status-code" does not exist
 
   Scenario: Mobile and Tablet Pager Display
@@ -55,10 +58,12 @@ Feature: As a user, I would like to view the trial results for a disease listing
       | pages  |
       | 1      |
       | 2      |
-      | 3      |
       | ...    |
-      | 6     |
-      | Next > |
-    When user clicks on "Next >" button
+      | 6      |
+    When user clicks on "2" button
     Then the user is redirected to "/breast-cancer/supportive-care" with query parameters "cfg=0&pn=2"
     And user is brought to the top of a page
+		And the page contains meta tags with the following properties
+			| property | content                                                  |
+			| og:url   | http://localhost:3000/breast-cancer/supportive-care?pn=2 |
+		And there is a canonical link with the href "https://www.cancer.gov/breast-cancer/supportive-care?pn=2"
