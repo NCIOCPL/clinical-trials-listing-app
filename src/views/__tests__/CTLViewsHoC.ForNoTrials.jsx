@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { MemoryRouter, Route, Routes } from 'react-router';
+import { Route, Routes } from 'react-router';
 
-import { MockAnalyticsProvider } from '../../tracking';
 import { useListingSupport } from '../../hooks';
 import { useStateValue } from '../../store/store';
 
 import CTLViewsHoC from '../CTLViewsHoC';
+import { CTLViewsTestWrapper } from '../../test-utils/TestWrappers';
 
 jest.mock('../../hooks/listingSupport/useListingSupport');
 jest.mock('../../store/store');
@@ -60,19 +60,17 @@ describe('CTLViewsHoc For No Trials', () => {
 		const WrappedComponent = CTLViewsHoC(mockComponent);
 
 		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter
-					initialEntries={[
-						{
-							pathname: '/notrials',
-							search: '?p1=breast-cancer',
-						},
-					]}>
-					<Routes>
-						<Route path="/notrials" element={<WrappedComponent redirectPath={NO_OP_REDIRECT_PATH} routeParamMap={SINGLE_PARAM_MAP} />} />
-					</Routes>
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+			<CTLViewsTestWrapper
+				initialEntries={[
+					{
+						pathname: '/notrials',
+						search: '?p1=breast-cancer',
+					},
+				]}>
+				<Routes>
+					<Route path="/notrials" element={<WrappedComponent redirectPath={NO_OP_REDIRECT_PATH} routeParamMap={SINGLE_PARAM_MAP} />} />
+				</Routes>
+			</CTLViewsTestWrapper>
 		);
 
 		// Expect the first argument of the first call to mockComponent
@@ -140,19 +138,17 @@ describe('CTLViewsHoc For No Trials', () => {
 		const WrappedComponent = CTLViewsHoC(mockComponent);
 
 		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter
-					initialEntries={[
-						{
-							pathname: '/notrials',
-							search: '?p1=breast-cancer&p2=lung-cancer',
-						},
-					]}>
-					<Routes>
-						<Route path="/notrials" element={<WrappedComponent redirectPath={NO_OP_REDIRECT_PATH} routeParamMap={multiparam_map} />} />
-					</Routes>
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+			<CTLViewsTestWrapper
+				initialEntries={[
+					{
+						pathname: '/notrials',
+						search: '?p1=breast-cancer&p2=lung-cancer',
+					},
+				]}>
+				<Routes>
+					<Route path="/notrials" element={<WrappedComponent redirectPath={NO_OP_REDIRECT_PATH} routeParamMap={multiparam_map} />} />
+				</Routes>
+			</CTLViewsTestWrapper>
 		);
 
 		// Expect the first argument of the first call to mockComponent

@@ -4,27 +4,30 @@
  * @param {Array<Object>} routeParamMap the route parameter mapping providing listing API type, and key names
  */
 export const getTextReplacementContext = (data, routeParamMap) => {
-	const context = data.reduce((ac, paramData, idx) => {
+	if (!data || !routeParamMap) {
+		return {};
+	}
+
+	return data.reduce((ac, paramData, idx) => {
 		const paramInfo = routeParamMap[idx];
 
 		switch (paramInfo.type) {
 			case 'listing-information':
 				return {
 					...ac,
-					[`${paramInfo.textReplacementKey}_label`]: paramData.name.label,
-					[`${paramInfo.textReplacementKey}_normalized`]: paramData.name.normalized,
+					[`${paramInfo.textReplacementKey}_label`]: paramData?.name?.label || '',
+					[`${paramInfo.textReplacementKey}_normalized`]: paramData?.name?.normalized || '',
 				};
 			case 'trial-type':
 				return {
 					...ac,
-					[`${paramInfo.textReplacementKey}_label`]: paramData.label,
-					[`${paramInfo.textReplacementKey}_normalized`]: paramData.label.toLowerCase(),
+					[`${paramInfo.textReplacementKey}_label`]: paramData?.label || '',
+					[`${paramInfo.textReplacementKey}_normalized`]: paramData?.label?.toLowerCase() || '',
 				};
 			default:
 				throw new Error(`Unknown parameter type ${paramInfo.type}`);
 		}
 	}, {});
-	return context;
 };
 
 /**

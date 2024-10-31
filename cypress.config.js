@@ -1,4 +1,4 @@
-const { defineConfig } = require('cypress');
+	const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
 	video: false,
@@ -11,5 +11,6 @@ module.exports = defineConfig({
 		},
 		specPattern: 'cypress/e2e/**/*.feature',
 		baseUrl: 'http://localhost:3000',
+		experimentalRunAllSpecs: true,
 	},
 });

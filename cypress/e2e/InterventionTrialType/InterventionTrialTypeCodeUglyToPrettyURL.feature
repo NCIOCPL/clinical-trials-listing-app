@@ -4,7 +4,7 @@ Feature: As the system, I want to be able to redirect users to pretty URLs for t
 		Given "trialListingPageType" is set to "Intervention"
 		And "dynamicListingPatterns" object is set to "Intervention"
 		Given the user navigates to "/C1647/treatment?cfg=1"
-		Then the user is redirected to "/trastuzumab/treatment?cfg=1&redirect=true"
+		Then the user is redirected to "/trastuzumab/treatment?cfg=1&pn=1&redirect=true"
 		And the page contains meta tags with the following names
 			| name                  | content                                               |
 			| prerender-status-code | 301                                                   |
@@ -20,7 +20,7 @@ Feature: As the system, I want to be able to redirect users to pretty URLs for t
 		Given "trialListingPageType" is set to "Intervention"
 		And "dynamicListingPatterns" object is set to "Intervention"
 		Given the user navigates to "/trastuzumab/supportive_care?cfg=1"
-		Then the user is redirected to "/trastuzumab/supportive-care?cfg=1&redirect=true"
+		Then the user is redirected to "/trastuzumab/supportive-care?cfg=1&pn=1&redirect=true"
 		And the page contains meta tags with the following names
 			| name                  | content                                                     |
 			| prerender-status-code | 301                                                         |
