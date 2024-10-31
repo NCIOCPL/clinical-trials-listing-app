@@ -1,0 +1,46 @@
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    background-color: #2a71a5;
+    border-radius: 16px;
+    padding: 0.25rem 0.5rem;
+    color: white;
+    font-size: 0.875rem;
+  }
+
+  &__text {
+    margin-right: 0.5rem;
+  }
+
+  &__remove {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    &:focus {
+      outline: 2px solid white;
+      outline-offset: 1px;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@use "uswds-core" as *;
+
+$theme-pagination-breakpoint: mobile;
+$pagination-color-current: 'accent-cool-dark';
+
+@forward 'usa-pagination';
+
+.usa-pagination {
+    justify-content: left;
+}
+
+.usa-pagination__list {
+    margin-bottom: 0px;
+}
+
+.usa-pagination__arrow:has(a.hidden) {
+    display: none;
+}
+
+.usa-pagination .usa-current {
+    background-color: color($pagination-color-current);
+}

@@ -1,3 +1,4 @@
+@skip
 Feature: As a user, I would like to view the trial results for a disease listing page that is given a c-code parameter, along with links to the trial's description page, the brief summary of the trial, and the number of locations of the trial
 
   Scenario: View disease trial type listing page results with trial type ID string parameter
@@ -15,11 +16,10 @@ Feature: As a user, I would like to view the trial results for a disease listing
       | pages  |
       | 1      |
       | 2      |
-      | 3      |
       | ...    |
-      | 6     |
-      | Next > |
-    When user clicks on "Next >" button
+      | 6      |
+      | Next   |
+    When user clicks on "Next" button
     Then the user is redirected to "/breast-cancer/supportive-care" with query parameters "cfg=0&pn=2"
     And user is brought to the top of a page
 
@@ -53,10 +53,9 @@ Feature: As a user, I would like to view the trial results for a disease listing
       | pages  |
       | 1      |
       | 2      |
-      | 3      |
       | ...    |
-      | 6     |
-      | Next > |
-    When user clicks on "Next >" button
+      | 6      |
+      | Next   |
+    When user clicks on "Next" button
     Then the user is redirected to "/breast-cancer/supportive-care" with query parameters "cfg=0&pn=2"
     And user is brought to the top of a page

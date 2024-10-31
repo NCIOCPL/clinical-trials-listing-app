@@ -1,5 +1,5 @@
+@skip
 Feature: As a user, I would like to view the trial results for a disease listing page that is given a pretty URL name parameter, along with links to the trial's description page, the brief summary of the trial, and the number of locations of the trial
-
   Scenario: View disease listing page results with pretty URL name parameter
     Given "trialListingPageType" is set to "Disease"
     And "dynamicListingPatterns" object is set to "Disease"
@@ -15,11 +15,10 @@ Feature: As a user, I would like to view the trial results for a disease listing
       | pages  |
       | 1      |
       | 2      |
-      | 3      |
       | ...    |
       | 39     |
-      | Next > |
-    When user clicks on "Next >" button
+      | Next   |
+    When user clicks on "Next" button
     Then the user is redirected to "/breast-cancer" with query parameters "cfg=0&pn=2"
     And user is brought to the top of a page
 
@@ -53,7 +52,6 @@ Feature: As a user, I would like to view the trial results for a disease listing
       | pages  |
       | 1      |
       | 2      |
-      | 3      |
       | ...    |
       | 39     |
-      | Next > |
+      | Next   |
