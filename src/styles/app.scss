@@ -1,6 +1,6 @@
 // molecules
-@import '../components/molecules/pager/pager';
-@import '../components/molecules/results-list/results-list-item/results-list-item';
+@import '../components/molecules/Pager/Pager';
+@import '../components/molecules/ResultsList/ResultsListItem/ResultsListItem';
 
 //views
 @import '../views/Manual/Manual';
@@ -8,6 +8,97 @@
 @import '../views/Intervention/Intervention';
 @import '../views/ErrorBoundary/PageNotFound';
 
+@import '../components/molecules/Pager/Pager';
+@import '../components/molecules/ResultsList/ResultsListItem/ResultsListItem';
+@import '../features/filters/components/Sidebar/Sidebar';
+@import '../views/Manual/Manual';
+@import '../views/Disease/Disease';
+@import '../views/Intervention/Intervention';
+@import '../views/ErrorBoundary/PageNotFound';
 h1 {
 	margin-bottom: 20px;
+}
+
+// styles/app.scss
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &-content {
+    flex: 1;
+    display: flex;
+    position: relative;
+    max-width: 100vw; // Ensure full width
+    margin: 0; // Remove any margin
+    padding: 0; // Remove any padding
+  }
+}
+
+
+
+// Global styles
+h1 {
+  margin-bottom: 20px;
+}
+
+// Utility classes for layout
+.grid-container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+}
+
+.grid-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.grid-col {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+// Analytics tracking container
+.analytics-tracking {
+  display: none;
+}
+
+
+@media only screen and (max-width: 640px) {
+	.resize-content .page-options-container {
+		width:calc(100% + 15px)
+	}
+}
+
+@media only screen and (max-width: 390px) {
+	.resize-content .page-options-container {
+		width:100%
+	}
 }

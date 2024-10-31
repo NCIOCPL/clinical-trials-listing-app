@@ -14,6 +14,8 @@ class ErrorBoundary extends Component {
 	}
 
 	static getDerivedStateFromError(error) {
+		console.error('Error Boundary caught error:', error);
+
 		// Update state so the next render will show the error page.
 		return {
 			error,
@@ -26,7 +28,7 @@ class ErrorBoundary extends Component {
 
 		if (hasError) {
 			const showPageNotFound = typeof error === 'string' && error.indexOf('404') > -1;
-			return showPageNotFound ? <PageNotFound /> : <ErrorPage />;
+			return showPageNotFound ? <PageNotFound /> : <ErrorPage error={error} />;
 		}
 		return this.props.children;
 	}

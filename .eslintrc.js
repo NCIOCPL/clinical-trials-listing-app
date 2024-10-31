@@ -26,7 +26,7 @@ if (process.env.NODE_ENV == null) {
 }
 
 module.exports = {
-	extends: ['@nciocpl/eslint-config-react/minimal'],
+	extends: ['@nciocpl/eslint-config-react/minimal', 'plugin:storybook/recommended'],
 	env: {
 		browser: true,
 		es6: true,

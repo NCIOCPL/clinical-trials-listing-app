@@ -3,8 +3,11 @@ import 'react-app-polyfill/stable';
 import './polyfills';
 
 import PropTypes from 'prop-types';
+import { createRoot } from 'react-dom/client';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import App from './App';
 import listingSupportApiFactory from './services/api/trial-listing-support-api';
@@ -14,7 +17,19 @@ import { StateProvider } from './store/store';
 import { AnalyticsProvider, EddlAnalyticsProvider } from './tracking';
 import { getProductTestBase } from './utils';
 import { ErrorBoundary } from './views';
+import { QueryProvider } from './providers/QueryProvider';
+
 import clinicalTrialsSearchClientFactory from './services/api/clinical-trials-search-api/clinicalTrialsSearchClientFactory';
+
+// Create QueryClient instance outside initialize function
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			staleTime: 1000 * 60 * 5, // 5 minutes
+			retry: 1,
+		},
+	},
+});
 
 /**
  * Initializes the Clinical Trials Listing App.
@@ -116,21 +131,27 @@ const initialize = ({
 
 	const AppBlock = () => {
 		return (
-			<StateProvider initialState={initialState} reducer={reducer}>
-				<AnalyticsHoC>
-					<ErrorBoundary>
-						<App />
-					</ErrorBoundary>
-				</AnalyticsHoC>
-			</StateProvider>
+			<QueryClientProvider client={queryClient}>
+				<StateProvider initialState={initialState} reducer={reducer}>
+					<AnalyticsHoC>
+						<ErrorBoundary>
+							<App />
+						</ErrorBoundary>
+					</AnalyticsHoC>
+				</StateProvider>
+				<ReactQueryDevtools initialIsOpen={false} />
+			</QueryClientProvider>
 		);
 	};
 
+	const root = createRoot(appRootDOMNode);
+	// Render the app
 	if (isRehydrating) {
-		ReactDOM.hydrate(<AppBlock />, appRootDOMNode);
+		root.hydrate(<AppBlock />);
 	} else {
-		ReactDOM.render(<AppBlock />, appRootDOMNode);
+		root.render(<AppBlock />);
 	}
+
 	return appRootDOMNode;
 };
 
@@ -142,6 +163,7 @@ window.ClinicalTrialsListingApp = initialize;
 // The following lets us run the app in dev not in situ as would normally be the case.
 const appParams = window.APP_PARAMS || {};
 const integrationTestOverrides = window.INT_TEST_APP_PARAMS || {};
+
 if (process.env.NODE_ENV !== 'production') {
 	//This is DEV
 	const ctlSettings = {

@@ -1,0 +1,96 @@
+// src/features/filters/components/Sidebar/Sidebar.jsx
+import React from 'react';
+import { useFilters } from '../../context/FilterContext/FilterContext';
+import FilterGroup from '../FilterGroup';
+import CheckboxGroup from '../CheckboxGroup';
+import './Sidebar.scss';
+import { FILTER_CONFIG } from '../../config/filterConfig';
+
+const Sidebar = () => {
+	const { state, dispatch } = useFilters();
+	const { filters, isDirty } = state;
+
+	const handleAgeFilterChange = (values) => {
+		dispatch({
+			type: 'SET_FILTER',
+			payload: {
+				filterType: 'age',
+				value: values,
+			},
+		});
+	};
+
+	const handleZipCodeChange = (e) => {
+		dispatch({
+			type: 'SET_FILTER',
+			payload: {
+				filterType: 'location',
+				value: {
+					...filters.location,
+					zipCode: e.target.value,
+				},
+			},
+		});
+	};
+
+	const handleRadiusChange = (e) => {
+		dispatch({
+			type: 'SET_FILTER',
+			payload: {
+				filterType: 'location',
+				value: {
+					...filters.location,
+					radius: e.target.value,
+				},
+			},
+		});
+	};
+
+	const handleClearFilters = () => {
+		dispatch({ type: 'CLEAR_FILTERS' });
+	};
+
+	const handleApplyFilters = () => {
+		dispatch({ type: 'APPLY_FILTERS' });
+	};
+
+	return (
+		<aside className="ctla-sidebar">
+			<div className="ctla-sidebar__header">
+				<h2 className="ctla-sidebar__title">Filter Your Search</h2>
+			</div>
+
+			<div className="ctla-sidebar__content">
+				<FilterGroup title="Age">
+					<CheckboxGroup name="age" selectedValues={filters.age} onChange={handleAgeFilterChange} />
+				</FilterGroup>
+
+				<FilterGroup title="Location by Zip Code">
+					<input type="text" className="form-control" placeholder="Enter U.S. Zip Code" value={filters.location.zipCode} onChange={handleZipCodeChange} maxLength={5} />
+				</FilterGroup>
+
+				<FilterGroup title={FILTER_CONFIG.radius.title}>
+					<select className="form-control" value={filters.location.radius || ''} onChange={handleRadiusChange} disabled={!filters.location.zipCode}>
+						<option value="">Select</option>
+						{FILTER_CONFIG.radius.options.map((option) => (
+							<option key={option.id} value={option.value}>
+								{option.label}
+							</option>
+						))}
+					</select>
+				</FilterGroup>
+
+				<div className="ctla-sidebar__actions">
+					<button className="usa-button ctla-sidebar__button--clear" onClick={handleClearFilters} disabled={!isDirty && !filters.age.length}>
+						Clear All
+					</button>
+					<button className="usa-button ctla-sidebar__button--apply" onClick={handleApplyFilters} disabled={!isDirty}>
+						Apply Filters
+					</button>
+				</div>
+			</div>
+		</aside>
+	);
+};
+
+export default Sidebar;
