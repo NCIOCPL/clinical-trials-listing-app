@@ -17,13 +17,13 @@
 		width: 0;
 
 		&:focus-visible + .checkbox-group__label::before {
-			outline: 2px solid #2B7BBA;
+			outline: 2px solid #01679D;
 			outline-offset: 2px;
 		}
 
 		&:checked + .checkbox-group__label::before {
-			background-color: #2B7BBA;
-			border-color: #2B7BBA;
+			background-color: #01679D;
+			border-color: #01679D;
 		}
 
 		&:checked + .checkbox-group__label::after {

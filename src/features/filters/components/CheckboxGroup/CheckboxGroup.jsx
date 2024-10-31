@@ -26,7 +26,7 @@ const CheckboxGroup = ({ selectedValues = [], onChange, name, disabled = false }
 	return (
 		<div className="checkbox-group" role="group" aria-label={filterConfig.title}>
 			{filterConfig.options.map((option) => (
-				<div className="usa-checkbox checkbox-group__item">
+				<div className="usa-checkbox checkbox-group__item" key={option.id}>
 					<input className="usa-checkbox__input checkbox-group__input" id={option.value} type="checkbox" value={option.value} checked={selectedValues.includes(option.value)} onChange={(e) => handleChange(option.value, e.target.checked)} aria-label={option.label} />
 					<label className="usa-checkbox__label checkbox-group__label" htmlFor={option.value}>
 						{option.label}

@@ -1,8 +1,8 @@
+// src/components/molecules/ResultsList/__tests__/ResultsList.tests.jsx
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { MemoryRouter } from 'react-router';
-import { MockAnalyticsProvider } from '../../../../tracking';
 import { ResultsList } from '../../../index';
+import { TestWrapper } from '../../../../test-utils/TestWrappers';
 
 jest.mock('../../../../store/store');
 
@@ -44,11 +44,9 @@ describe('<ResultsList />', () => {
 		];
 
 		render(
-			<MemoryRouter initialEntries={['/']}>
-				<MockAnalyticsProvider>
-					<ResultsList results={resultsList} resultsItemTitleLink={'http://sample.com/test-url/v?id={{nci_id}}'} />
-				</MockAnalyticsProvider>
-			</MemoryRouter>
+			<TestWrapper>
+				<ResultsList results={resultsList} resultsItemTitleLink={'http://sample.com/test-url/v?id={{nci_id}}'} />
+			</TestWrapper>
 		);
 
 		let expectedLocationInfo;

@@ -149,9 +149,11 @@ const App = () => {
 
 	return (
 		<Router>
-			<div className="app">
-				<div className="app-content">{dynamicRoutes}</div>
-			</div>
+			<FilterProvider>
+				<div className="app">
+					<div className="app-content">{dynamicRoutes}</div>
+				</div>
+			</FilterProvider>
 		</Router>
 	);
 };

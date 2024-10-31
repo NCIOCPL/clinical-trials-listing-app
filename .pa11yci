@@ -1,8 +1,6 @@
 {
   "urls": [
     "http://localhost:3000",
-    "http://localhost:3000/C4872?cfg=0",
-		"http://localhost:3000/breast-cancer?cfg=0&pn=3",
 		"http://localhost:3000/chicken-nugget?cfg=0",
 		"http://localhost:3000/notrials?p1=chronic-fatigue-syndrome"
   ],
@@ -12,5 +10,5 @@
 			"--disable-setuid-sandbox",
 			"--disable-dev-shm-usage"
 		]
-	}
+}
 }

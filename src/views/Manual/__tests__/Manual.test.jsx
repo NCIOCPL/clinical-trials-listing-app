@@ -6,7 +6,7 @@ import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
 import Manual from '../Manual';
 import { useStateValue } from '../../../store/store';
 import { MockAnalyticsProvider } from '../../../tracking';
-
+import { CTLViewsTestWrapper } from '../../../test-utils/TestWrappers';
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
 jest.mock('../../../store/store');
 
@@ -55,11 +55,9 @@ describe('<Manual />', () => {
 		});
 
 		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/']}>
-					<Manual />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+			<CTLViewsTestWrapper initialEntries={['/']}>
+				<Manual />
+			</CTLViewsTestWrapper>
 		);
 
 		expect(useCtsApi).toHaveBeenCalled();
@@ -5085,11 +5083,9 @@ describe('<Manual />', () => {
 		});
 
 		await render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/']}>
+				<CTLViewsTestWrapper initialEntries={['/']}>
 					<Manual />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+				</CTLViewsTestWrapper>
 		);
 
 		expect(useCtsApi).toHaveBeenCalled();
@@ -5152,13 +5148,12 @@ describe('<Manual />', () => {
 			payload: {},
 		});
 
-		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/']}>
+
+			render(
+				<CTLViewsTestWrapper initialEntries={['/']}>
 					<Manual />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
-		);
+				</CTLViewsTestWrapper>
+			);
 
 		expect(screen.getByText('Manual Listing Page')).toBeInTheDocument();
 		expect(screen.getByText('There are currently no available trials.')).toBeInTheDocument();
@@ -5195,13 +5190,11 @@ describe('<Manual />', () => {
 			payload: null,
 		});
 
-		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/']}>
+			render(
+				<CTLViewsTestWrapper initialEntries={['/']}>
 					<Manual />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
-		);
+				</CTLViewsTestWrapper>
+			);
 
 		expect(screen.getByText('An error occurred. Please try again later.')).toBeInTheDocument();
 	});

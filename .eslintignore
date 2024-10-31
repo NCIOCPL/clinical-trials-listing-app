@@ -1,0 +1,7 @@
+src/features
+src/views
+src/index.jsx
+src/App.jsx
+src/stories/
+src/test-utils/
+src/providers
