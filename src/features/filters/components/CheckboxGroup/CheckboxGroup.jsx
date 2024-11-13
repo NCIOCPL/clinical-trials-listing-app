@@ -26,10 +26,12 @@ const CheckboxGroup = ({ selectedValues = [], onChange, name, disabled = false }
 	return (
 		<div className="checkbox-group" role="group" aria-label={filterConfig.title}>
 			{filterConfig.options.map((option) => (
-				<label key={option.value} className="checkbox-group__item">
-					<input type="checkbox" className="checkbox-group__input" checked={selectedValues.includes(option.value)} onChange={(e) => handleChange(option.value, e.target.checked)} disabled={disabled} value={option.value} aria-label={option.label} />
-					<span className="checkbox-group__label">{option.label}</span>
-				</label>
+				<div className="usa-checkbox checkbox-group__item">
+					<input className="usa-checkbox__input checkbox-group__input" id={option.value} type="checkbox" value={option.value} checked={selectedValues.includes(option.value)} onChange={(e) => handleChange(option.value, e.target.checked)} aria-label={option.label} />
+					<label className="usa-checkbox__label checkbox-group__label" htmlFor={option.value}>
+						{option.label}
+					</label>
+				</div>
 			))}
 		</div>
 	);

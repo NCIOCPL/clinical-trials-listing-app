@@ -1,5 +1,6 @@
 @use 'uswds-core' as *;
 
+@forward "usa-checkbox";
 @forward "usa-sidenav";
 
 // fixed spacing issues with the sound, pause, and resume button
