@@ -66,18 +66,20 @@ const Sidebar = () => {
 				</FilterGroup>
 
 				<FilterGroup title="Location by Zip Code">
-					<input type="text" className="form-control" placeholder="Enter U.S. Zip Code" value={filters.location.zipCode} onChange={handleZipCodeChange} maxLength={5} />
+					<input type="text" className="usa-input form-control" placeholder="Enter U.S. Zip Code" value={filters.location.zipCode} onChange={handleZipCodeChange} maxLength={5} />
 				</FilterGroup>
 
 				<FilterGroup title={FILTER_CONFIG.radius.title}>
-					<select className="form-control" value={filters.location.radius || ''} onChange={handleRadiusChange} disabled={!filters.location.zipCode}>
-						<option value="">Select</option>
-						{FILTER_CONFIG.radius.options.map((option) => (
-							<option key={option.id} value={option.value}>
-								{option.label}
-							</option>
-						))}
-					</select>
+					<div className="usa-combo-box">
+						<select className="usa-select usa-combo-box__select form-control" value={filters.location.radius || ''} onChange={handleRadiusChange} disabled={!filters.location.zipCode}>
+							<option value="">Select</option>
+							{FILTER_CONFIG.radius.options.map((option) => (
+								<option key={option.id} value={option.value}>
+									{option.label}
+								</option>
+							))}
+						</select>
+					</div>
 				</FilterGroup>
 
 				<div className="ctla-sidebar__actions">
