@@ -217,9 +217,11 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 		return (
 			<div className="ctla-results__summary grid-container">
 				<div className="grid-row">
-					{placement === 'top' && <div className="ctla-results__count grid-col-1">{`Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.payload.total)} of ${fetchState.payload.total}`}</div>}
+					{placement === 'top' && <div className="ctla-results__count grid-col">{`Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.payload.total)} of ${fetchState.payload.total}`}</div>}
+				</div>
+				<div className="grid-row">
 					{fetchState.payload.total > itemsPerPage && (
-						<div className="ctla-results__pager grid-col-2">
+						<div className="ctla-results__pager grid-col">
 							<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={fetchState.payload.total} />
 						</div>
 					)}

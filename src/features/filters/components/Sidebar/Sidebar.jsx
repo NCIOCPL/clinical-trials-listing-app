@@ -56,25 +56,47 @@ const Sidebar = () => {
 	};
 
 	const accordionOnClick = () => {
-		var content = document.getElementById('accordionContent');
+		var filterBtn = document.getElementById('filterButton');
+		var content = document.getElementById("accordionContent");
 
 		if (content.hidden == true) {
+			filterBtn.style.backgroundImage = `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="2" viewBox="0 0 14 2" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M14 2H0V0H14V2Z" fill="%231B1B1B"/></svg>')`;
 			content.hidden = false;
 		} else {
+			filterBtn.style.backgroundImage = `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="%231B1B1B"/></svg>')`;
 			content.hidden = true;
-		}
+  		}
 	};
+
+	// function setMobileOnClick() {
+	// 	const mobileSize = '(max-width: 768px)';
+	// 	const mediaQueryMobile = window.matchMedia(mobileSize);
+	// 	const filterBtn = document.getElementById('filterButton');
+	// 	var content = document.getElementById("accordionContent");
+
+	// 	function handleMediaQueryChange(event) {
+	// 		if (event.matches) {
+	// 			filterBtn.addEventListener('click', accordionOnClick);
+	// 		} else {
+	// 			filterBtn.removeEventListener('click', accordionOnClick);
+	// 			content.removeAttribute("hidden");
+	// 		}
+	// 	}
+
+	// 	handleMediaQueryChange(mediaQueryMobile);
+	// 	mediaQueryMobile.addEventListener('change', handleMediaQueryChange);
+		
+	// }
 
 	return (
 		<aside className="ctla-sidebar">
 			<div className="usa-accordion ctla-sidebar__header">
 				<h2 className="usa-accordion__heading ctla-sidebar__title">
-					<button type="button" className="usa-accordion__button" aria-expanded="true" aria-controls="accordionContent" onClick={accordionOnClick}>
+					<button id="filterButton" type="button" className="usa-accordion__button" aria-expanded="true" aria-controls="accordionContent" onClick={accordionOnClick}>
 						Filter Your Search
 					</button>
 				</h2>
 			</div>
-
 			<div id="accordionContent" className="usa-accordion__content ctla-sidebar__content">
 				<FilterGroup title="Age">
 					<CheckboxGroup name="age" selectedValues={filters.age} onChange={handleAgeFilterChange} />

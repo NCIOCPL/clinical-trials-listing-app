@@ -8151,12 +8151,12 @@ button.nav-search:before {
 	}
 }
 
-.main-content {
+/* .main-content {
 	padding: 0;
 	background: white;
 		/* url(https://cancer.gov/PublishedContent/images/images/design-elements/background-graphics/hexagon_molecular_structure_body.png)
 		no-repeat 110% 600px; */
-}
+} */
 
 .main-content a {
 	color: #2b7bba;
