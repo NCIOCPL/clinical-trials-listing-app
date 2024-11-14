@@ -54,13 +54,29 @@ const Sidebar = () => {
 		dispatch({ type: 'APPLY_FILTERS' });
 	};
 
+	const accordionOnClick = () => {
+		var content = document.getElementById("accordionContent");
+
+		if (content.hidden == true) {
+			content.hidden = false;
+
+			} else {
+
+			content.hidden = true;
+  		}
+	};
+
 	return (
 		<aside className="ctla-sidebar">
-			<div className="ctla-sidebar__header">
-				<h2 className="ctla-sidebar__title">Filter Your Search</h2>
+			<div className="usa-accordion ctla-sidebar__header">
+				<h2 className="usa-accordion__heading ctla-sidebar__title">
+					<button type="button" class="usa-accordion__button" aria-expanded="true" aria-controls="accordionContent" onClick={accordionOnClick}>
+						Filter Your Search
+					</button>
+				</h2>
 			</div>
 
-			<div className="ctla-sidebar__content">
+			<div id="accordionContent" className="usa-accordion__content ctla-sidebar__content">
 				<FilterGroup title="Age">
 					<CheckboxGroup name="age" selectedValues={filters.age} onChange={handleAgeFilterChange} />
 				</FilterGroup>
