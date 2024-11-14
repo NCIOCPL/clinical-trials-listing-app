@@ -1,5 +1,8 @@
 @use 'uswds-core' as *;
 
+@forward 'usa-select';
+@forward 'usa-input';
+@forward 'usa-combo-box';
 @forward "usa-checkbox";
 @forward "usa-sidenav";
 

@@ -1,3 +1,11 @@
+.usa-select {
+	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59003L12 13.17L7.41 8.59003L6 10L12 16L18 10L16.59 8.59003Z" fill="%231B1B1B"/></svg>') !important;
+}
+
+.usa-input.form-control {
+	background-color: #ffffff !important;
+}
+
 .ctla-sidebar {
 	width: 320px;
 	min-width: 320px;
@@ -68,17 +76,17 @@
 	}
 
 	// Form Controls
-	.form-control {
-		width: 100%;
-		padding: 0.75rem;
-		border: 1px solid #BDBDBD;
-		border-radius: 3px;
-		font-size: 1rem;
+	// .form-control {
+	// 	width: 100%;
+	// 	padding: 0.75rem;
+	// 	border: 1px solid #BDBDBD;
+	// 	border-radius: 3px;
+	// 	font-size: 1rem;
 
-		&::placeholder {
-			color: #666;
-		}
-	}
+	// 	&::placeholder {
+	// 		color: #666;
+	// 	}
+	// }
 
 	// Checkbox Group
 	.checkbox-group {
