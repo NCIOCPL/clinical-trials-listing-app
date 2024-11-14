@@ -40,6 +40,16 @@
 		padding: 1.25rem;
 	}
 
+	@media (max-width: 768px) {
+		width: 100%;
+	}
+
+	.usa-accordion__button:focus, .usa-accordion__button:hover {
+		@media (min-width: 769px) {
+			outline: unset;
+			background-color: #f0f0f0;
+		}
+	}
 
 	// Filter Group Styles
 	.filter-group {
