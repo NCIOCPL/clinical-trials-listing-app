@@ -1,0 +1,9 @@
+{
+	"total": 7301,
+	"aggregations": {
+		"doc_count": 1,
+		"principal_investigator": [
+			{ "key": "Benjamin David Smith", "doc_count": 1 }
+		]
+	}
+}

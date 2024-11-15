@@ -1,0 +1,26 @@
+{
+	"data": [
+		{
+			"name": "Ibuprofen",
+			"codes": [
+				"C561"
+			],
+			"synonyms": [
+				"Motrin"
+			],
+			"category": "agent",
+			"count": 3
+		},
+		{
+			"name": "Polymorphism Analysis",
+			"codes": [
+				"C18309"
+			],
+			"synonyms": [
+				"Polymorphism Detection"
+			],
+			"category": "other",
+			"count": 1
+		}
+	]
+}

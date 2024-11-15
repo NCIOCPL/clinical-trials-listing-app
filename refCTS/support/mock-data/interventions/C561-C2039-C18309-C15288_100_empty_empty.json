@@ -1,0 +1,52 @@
+{
+	"data": [
+		{
+			"name": "Bevacizumab",
+			"codes": [
+				"C2039"
+			],
+			"synonyms": [
+				"Avastin",
+				"Mvasi",
+				"Zirabev"
+			],
+			"category": "agent",
+			"count": 87
+		},
+		{
+			"name": "Ibuprofen",
+			"codes": [
+				"C561"
+			],
+			"synonyms": [
+				"Motrin"
+			],
+			"category": "agent",
+			"count": 3
+		},
+		{
+			"name": "Orchiectomy",
+			"codes": [
+				"C15288"
+			],
+			"synonyms": [
+				"Castration",
+				"Male Castration",
+				"Male Gonadectomy"
+			],
+			"category": "other",
+			"count": 3
+		},
+		{
+			"name": "Polymorphism Analysis",
+			"codes": [
+				"C18309"
+			],
+			"synonyms": [
+				"Polymorphism Detection"
+			],
+			"category": "other",
+			"count": 1
+		}
+	]
+}

@@ -1,0 +1,38 @@
+{
+    "data": [
+        {
+            "name": "Radiation Therapy",
+            "codes": [
+                "C15313"
+            ],
+            "synonyms": [
+                "Cancer Radiotherapy",
+                "Irradiate",
+                "Irradiated",
+                "Irradiation",
+                "Radiation",
+                "Radiotherapeutics",
+                "Radiotherapy",
+                "Therapy, Radiation",
+                "RT"
+            ],
+            "category": "none",
+            "count": 786
+        },
+        {
+            "name": "Radiosensitizing Agent",
+            "codes": [
+                "C798"
+            ],
+            "synonyms": [
+                "Radiation Sensitizers",
+                "Radiation-Sensitizing Agents",
+                "Radiation-Sensitizing Drugs",
+                "Radiosensitizers",
+                "Radiosensitizing Drugs"
+            ],
+            "category": "agent category",
+            "count": 487
+        }
+    ]
+}

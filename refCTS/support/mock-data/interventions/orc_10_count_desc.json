@@ -1,0 +1,23 @@
+{
+	"data": [
+		{
+			"name": "Orchiectomy",
+			"codes": [
+				"C15288"
+			],
+			"category": [
+				"other"
+			],
+			"type": [
+				"procedure/surgery"
+			],
+			"synonyms": [
+				"Castration",
+				"Male Castration",
+				"Male Gonadectomy",
+				"Orchiectomy"
+			],
+			"count": 3
+		}
+	]
+}

@@ -1,0 +1,92 @@
+{
+	"data": [
+		{
+			"name": "Iron Conjugated Polymers in Saline Suspension",
+			"codes": [
+				"C181082"
+			],
+			"category": [
+				"other"
+			],
+			"type": [
+				"other"
+			],
+			"synonyms": [
+				"FerroTrace (TM)",
+				"Iron Conjugated Polymers in Saline Suspension"
+			],
+			"count": 2
+		},
+		{
+			"name": "Activated Polyethylene Glycol/Polyethyleneimine-based Surgical Sealant",
+			"codes": [
+				"C176991"
+			],
+			"category": [
+				"other"
+			],
+			"type": [
+				"other"
+			],
+			"synonyms": [
+				"Activated Polyethylene Glycol/Polyethyleneimine-based Surgical Sealant",
+				"Adherus AutoSpray Dural Sealant",
+				"Adherus AutoSpray ET Dural Sealant",
+				"Adherus Dural In Situ Polymerizing Sealant",
+				"Adherus Dural Sealant"
+			],
+			"count": 1
+		},
+		{
+			"name": "Intracavity Hydrogel Packing",
+			"codes": [
+				"C177762"
+			],
+			"category": [
+				"other"
+			],
+			"type": [
+				"procedure/surgery"
+			],
+			"synonyms": [
+				"Intracavity Hydrogel Packing",
+				"Intracavity Polymer Hydrogel Packing"
+			],
+			"count": 1
+		},
+		{
+			"name": "Nanoscale Coordination Polymer Nanoparticles CPI-100",
+			"codes": [
+				"C157499"
+			],
+			"category": [
+				"other"
+			],
+			"type": [
+				"other"
+			],
+			"synonyms": [
+				"NCP Nanoparticles CPI-100",
+				"Nanoscale Coordination Polymer Nanoparticles CPI-100"
+			],
+			"count": 1
+		},
+		{
+			"name": "Polymorphism Analysis",
+			"codes": [
+				"C18309"
+			],
+			"category": [
+				"other"
+			],
+			"type": [
+				"genetic"
+			],
+			"synonyms": [
+				"Polymorphism Analysis",
+				"Polymorphism Detection"
+			],
+			"count": 1
+		}
+	]
+}

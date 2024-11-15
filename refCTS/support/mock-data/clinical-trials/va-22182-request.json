@@ -1,0 +1,39 @@
+{
+	"current_trial_status": [
+		"Active",
+		"Approved",
+		"Enrolling by Invitation",
+		"In Review",
+		"Temporarily Closed to Accrual",
+		"Temporarily Closed to Accrual and Intervention"
+	],
+	"include": [
+		"nci_id",
+		"nct_id",
+		"brief_title",
+		"sites.org_name",
+		"sites.org_postal_code",
+		"eligibility.structured",
+		"current_trial_status",
+		"sites.org_va",
+		"sites.org_country",
+		"sites.org_state_or_province",
+		"sites.org_city",
+		"sites.org_coordinates",
+		"sites.recruitment_status",
+		"diseases"
+	],
+    "sites.org_va": true,
+    "sites.org_coordinates_lat": "38.928",
+    "sites.org_coordinates_lon": "-77.2649",
+    "sites.org_coordinates_dist": "500mi",
+	"from":0,
+    "sites.recruitment_status": [
+        "active",
+        "approved",
+        "enrolling_by_invitation",
+        "in_review",
+        "temporarily_closed_to_accrual"
+    ],
+	"size":10
+}

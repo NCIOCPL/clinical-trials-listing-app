@@ -1,0 +1,32 @@
+{
+	"data": [
+		{
+			"name": "Antineoplastic Agent",
+			"codes": ["C274"],
+			"category": ["agent category", "agent", "none"],
+			"type": [
+				"drug",
+				"biological/vaccine",
+				"radiation",
+				"other",
+				"dietary supplement",
+				"procedure/surgery",
+				"device",
+				"genetic"
+			],
+			"synonyms": [
+				"Anti-Cancer Agents",
+				"Anti-Tumor Agents",
+				"Anti-Tumor Drugs",
+				"Antineoplastic Drugs",
+				"Antineoplastics",
+				"Antiproliferative Agents",
+				"Antiproliferative Drugs",
+				"Cancer Drug",
+				"Chemotherapeutic Agents, Neoplastic Disease",
+				"Tumor-Specific Treatment Agents"
+			],
+			"count": 4154
+		}
+	]
+}

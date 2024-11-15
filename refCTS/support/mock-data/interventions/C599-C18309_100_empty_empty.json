@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "name": "Isoflavone",
+      "codes": ["C599"],
+      "synonyms": ["3-phenylchromone", "Isoflavones", "Soy Isoflavones"],
+      "category": "agent category",
+      "count": 3
+    },
+    {
+      "name": "Polymorphism Analysis",
+      "codes": ["C18309"],
+      "synonyms": ["Polymorphism Detection"],
+      "category": "other",
+      "count": 1
+    }
+  ]
+}

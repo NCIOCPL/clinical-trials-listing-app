@@ -1,0 +1,1209 @@
+{
+	"other_ids": [
+		{
+			"name": "Duplicate NCI study protocol identifier",
+			"value": "NCI-2013-02071"
+		},
+		{
+			"name": "Study Protocol Other Identifier",
+			"value": "97-C-0143"
+		}
+	],
+	"amendment_date": null,
+	"keywords": [
+		"Autoimmune Disorder",
+		"Immune System Evaluation",
+		"Human Response Investigation",
+		"Tissue Acquisition",
+		"Natural History"
+	],
+	"dcp_id": null,
+	"interventional_model": null,
+	"lead_org": "National Cancer Institute",
+	"eligibility": {
+		"unstructured": [
+			{
+				"inclusion_indicator": true,
+				"display_order": 0,
+				"description": "-  INCLUSION CRITERIA:\r\n\r\n        Participants must meet at least one of these criteria:\r\n\r\n        Have suspected or known disorder of the immune system or cancer\r\n\r\n        Be a known or potential carrier of autoimmune disorder or immunodeficiency disease.\r\n        Specific disorders may include but are not limited to:\r\n\r\n          -  X-linked (severe combined immunodeficiency)\r\n\r\n          -  Autosomal recessive SCID\r\n\r\n          -  X-linked CD40 ligand deficiency\r\n\r\n          -  Common variable immunodeficiency\r\n\r\n          -  Ataxia-telangiectasia\r\n\r\n          -  Wiskott Aldrich syndrome\r\n\r\n          -  DiGeorge syndrome\r\n\r\n          -  Infection with HTLV-1\r\n\r\n        Age greater than or equal to 18 years.\r\n\r\n        Participant must be able to understand and sign informed consent.\r\n\r\n        Participants who will undergo apheresis must have hematocrit greater than 28%, and platelet\r\n        count greater than 50,000.\r\n\r\n        Subjects for whom apheresis is desired but whose counts are lower than those above must be\r\n        evaluated and approved by a Department of Transfusion Medicine consult physician.\r\n\r\n        Weight greater than 25 kg is necessary for apheresis.\r\n\r\n        EXCLUSION CRITERIA:\r\n\r\n        Overall Exclusion Criteria:\r\n\r\n        Pregnant women will not be eligible for any aspect of this protocol.\r\n\r\n        Exclusion Criteria for Apheresis Alone:\r\n\r\n        Any diagnosed medical condition which may be worsened by the apheresis procedure.\r\n        Specifically the participant should not have any of the following:\r\n\r\n          1. Congestive Heart Failure\r\n\r\n          2. History of angina\r\n\r\n          3. Severe hypotension (at the discretion of the participant's physician, the apheresis\r\n             staff and the attending physician from the Department of Transfusion Medicine (DTM)\r\n             per DTM Standard Operating Policies.)\r\n\r\n          4. Poorly controlled hypertension (average baseline blood pressure greater than 160/90)\r\n\r\n          5. History of a coagulation protein disorder.\r\n\r\n        Pediatric patients (less than 18 years) will not undergo apheresis."
+			}
+		],
+		"structured": {
+			"max_age": "999 Years",
+			"max_age_number": 999.0,
+			"min_age_unit": "Years",
+			"max_age_unit": "Years",
+			"max_age_in_years": 999.0,
+			"gender": "BOTH",
+			"accepts_healthy_volunteers": false,
+			"min_age": "18 Years",
+			"min_age_number": 18.0,
+			"min_age_in_years": 18.0
+		}
+	},
+	"sites": [
+		{
+			"org_state_or_province": "MD",
+			"contact_name": "National Cancer Institute Referral Office",
+			"contact_phone": "888-624-1937",
+			"recruitment_status_date": "1997-07-10",
+			"org_address_line_2": null,
+			"org_va": false,
+			"org_address_line_1": "10 Center Drive",
+			"org_tty": null,
+			"org_family": null,
+			"org_postal_code": "20892",
+			"contact_email": null,
+			"recruitment_status": "ACTIVE",
+			"org_city": "Bethesda",
+			"org_email": null,
+			"org_country": "United States",
+			"org_fax": null,
+			"org_phone": "800-411-1222",
+			"org_name": "National Institutes of Health Clinical Center",
+			"org_coordinates": {
+				"lon": -77.1056,
+				"lat": 39.0003
+			}
+		}
+	],
+	"completion_date_type_code": null,
+	"detail_description": "Background:\r\n\r\n        -  The evaluation of the cells of the immune system and HTLV-1 infection has been a central\r\n           focus of the Metabolism Branch for the past 30 years.\r\n\r\n        -  Blood obtained by apheresis or blood drawing, skin biopsies and other tissues will be\r\n           evaluated for abnormalities related to immunity, HTLV-1 infection and the immune system.\r\n\r\n        -  Advances in the characterization of acquired genetic changes in tumor samples has\r\n\r\n      led to insights for the development of targeted therapy of malignancy\r\n\r\n      Objectives:\r\n\r\n        -  To characterize the molecular biology and immunological features as well as the clinical\r\n           course of individuals with suspected or known disorders of the immune system or cancer\r\n\r\n        -  To define the nature of the immunological, genetic and epigenetic abnormalities in the\r\n           cells of patients with immunodeficiency diseases associated with infections and/or a\r\n           high incidence of malignancy and in patients with cancer.\r\n\r\n        -  To obtain whole blood, plasma and leukocytes, as well as skin, lymph node and bone\r\n           marrow biopsies on patients with immunodeficiency or cancer to investigate the immune\r\n           system.\r\n\r\n      Eligibility:\r\n\r\n        -  Subjects with cancer.\r\n\r\n        -  Subjects with immunodeficiency.\r\n\r\n        -  Subjects with HTLV-1 infection.\r\n\r\n      Design:\r\n\r\n      -This is a natural history study that permits tissue acquisition for analysis of the immune\r\n      system and HTLV-1 infection.",
+	"official_title": "Collection of Blood, Bone Marrow and Tissue Samples for the Investigation of the Human Immune Response, Lymphoma Biology and HTLV-1 Infection",
+	"_phase_sort_order": 7,
+	"collaborators": [],
+	"associated_studies": [],
+	"outcome_measures": [
+		{
+			"timeframe": "Ongoing",
+			"name": "Create Biobank",
+			"description": "No statistical endpoints are identified for this study; the purpose of the study is to acquire information regarding various immunodeficiency syndromes, HTLV-1 infection and malignancies. The data collected will not be combined for a summary report of the entire study; however, reports for specific disease entities may be published.",
+			"type_code": "PRIMARY"
+		}
+	],
+	"phase": "NA",
+	"central_contact": {
+		"phone": null,
+		"name": null,
+		"type": null,
+		"email": null
+	},
+	"primary_purpose": "OTHER",
+	"number_of_arms": null,
+	"_study_protocol_type_sort_order": 1,
+	"nct_id": "NCT00001582",
+	"biomarkers": [
+		{
+			"eligibility_criterion": "inclusion",
+			"inclusion_indicator": "TREE",
+			"synonyms": [
+				"+ Strand ssRNA Virus",
+				"Positive Strand ssRNA Virus",
+				"ssRNA Virus, (+) Strand"
+			],
+			"nci_thesaurus_concept_id": "C14351",
+			"name": "Positive Sense ssRNA Virus",
+			"semantic_types": [
+				"Virus"
+			],
+			"type": [],
+			"ancestors": [
+				"C14250",
+				"C14283",
+				"C14269"
+			],
+			"parents": [
+				"C14269"
+			],
+			"assay_purpose": "Eligibility Criterion - Inclusion"
+		},
+		{
+			"eligibility_criterion": "inclusion",
+			"inclusion_indicator": "TREE",
+			"synonyms": [
+				"Viruses",
+				"Viruses, General"
+			],
+			"nci_thesaurus_concept_id": "C14283",
+			"name": "Virus",
+			"semantic_types": [
+				"Virus"
+			],
+			"type": [],
+			"ancestors": [
+				"C14250"
+			],
+			"parents": [
+				"C14250"
+			],
+			"assay_purpose": "Eligibility Criterion - Inclusion"
+		},
+		{
+			"eligibility_criterion": "inclusion",
+			"inclusion_indicator": "TREE",
+			"synonyms": [
+				"BiologicEntity",
+				"Organismal",
+				"Organisms",
+				"Taxon"
+			],
+			"nci_thesaurus_concept_id": "C14250",
+			"name": "Organism",
+			"semantic_types": [
+				"Organism"
+			],
+			"type": [
+				"branch"
+			],
+			"ancestors": [],
+			"parents": [],
+			"assay_purpose": "Eligibility Criterion - Inclusion"
+		},
+		{
+			"eligibility_criterion": "inclusion",
+			"inclusion_indicator": "TREE",
+			"synonyms": [
+				"BLV-HTLV Retrovirus"
+			],
+			"nci_thesaurus_concept_id": "C14347",
+			"name": "Deltaretrovirus",
+			"semantic_types": [
+				"Virus"
+			],
+			"type": [],
+			"ancestors": [
+				"C54085",
+				"C14351",
+				"C14283",
+				"C14268",
+				"C14250",
+				"C14269"
+			],
+			"parents": [
+				"C14268"
+			],
+			"assay_purpose": "Eligibility Criterion - Inclusion"
+		},
+		{
+			"eligibility_criterion": "inclusion",
+			"inclusion_indicator": "TREE",
+			"synonyms": [],
+			"nci_thesaurus_concept_id": "C54085",
+			"name": "Retro-transcribing Virus",
+			"semantic_types": [
+				"Virus"
+			],
+			"type": [],
+			"ancestors": [
+				"C14283",
+				"C14250"
+			],
+			"parents": [
+				"C14283"
+			],
+			"assay_purpose": "Eligibility Criterion - Inclusion"
+		},
+		{
+			"eligibility_criterion": "inclusion",
+			"inclusion_indicator": "TREE",
+			"synonyms": [
+				"Retrovirus",
+				"Retroviruses",
+				"Virus-Retrovirus"
+			],
+			"nci_thesaurus_concept_id": "C14268",
+			"name": "Retroviridae",
+			"semantic_types": [
+				"Virus"
+			],
+			"type": [],
+			"ancestors": [
+				"C14269",
+				"C14283",
+				"C54085",
+				"C14351",
+				"C14250"
+			],
+			"parents": [
+				"C14351",
+				"C54085"
+			],
+			"assay_purpose": "Eligibility Criterion - Inclusion"
+		},
+		{
+			"eligibility_criterion": "inclusion",
+			"inclusion_indicator": "TREE",
+			"synonyms": [
+				"Virus-RNA",
+				"Viruses, RNA"
+			],
+			"nci_thesaurus_concept_id": "C14269",
+			"name": "RNA Virus",
+			"semantic_types": [
+				"Virus"
+			],
+			"type": [],
+			"ancestors": [
+				"C14283",
+				"C14250"
+			],
+			"parents": [
+				"C14283"
+			],
+			"assay_purpose": "Eligibility Criterion - Inclusion"
+		},
+		{
+			"eligibility_criterion": "inclusion",
+			"inclusion_indicator": "TRIAL",
+			"synonyms": [
+				"Adult T-cell Leukemia Lymphoma ATLL",
+				"Adult T-cell Lymphoma Virus Type 1",
+				"HTLV-I",
+				"Human T-Lymphotropic Virus 1",
+				"Human T-Lymphotropic Virus, Type I",
+				"Virus-HTLV-I",
+				"human T-cell leukemia virus type 1",
+				"human T-cell lymphotropic virus type 1"
+			],
+			"nci_thesaurus_concept_id": "C14223",
+			"name": "HTLV-1",
+			"semantic_types": [
+				"Virus"
+			],
+			"type": [],
+			"ancestors": [
+				"C54085",
+				"C14351",
+				"C14283",
+				"C14268",
+				"C14250",
+				"C14269",
+				"C14347"
+			],
+			"parents": [
+				"C14347"
+			],
+			"assay_purpose": "Eligibility Criterion - Inclusion"
+		}
+	],
+	"classification_code": null,
+	"current_trial_status_date": "1997-07-10",
+	"diseases": [
+		{
+			"inclusion_indicator": "TRIAL",
+			"is_lead_disease": true,
+			"synonyms": [
+				"Malignant Solid Neoplasm"
+			],
+			"nci_thesaurus_concept_id": "C132146",
+			"name": "Malignant Solid Tumor",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C9305",
+				"C9292"
+			]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Common variable immune deficiency (CVID)",
+				"Acquired Hypogammaglobulinemia",
+				"Secondary Hypogammaglobulinemia",
+				"Acquired Agammaglobulinemia"
+			],
+			"nci_thesaurus_concept_id": "C26725",
+			"name": "Common Variable Immunodeficiency",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C26931"
+			]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"is_lead_disease": true,
+			"synonyms": [
+				"Hematopoietic and Lymphoid Neoplasm",
+				"Hematopoietic malignancy, NOS",
+				"Hematopoietic Cancer",
+				"Hematopoietic Neoplasm",
+				"Malignant Hematologic Neoplasm",
+				"Hematopoietic Neoplasms Including Lymphomas",
+				"Hematologic Cancer",
+				"Hematologic Malignancy",
+				"HEMOLYMPHORETICULAR TUMOR, MALIGNANT",
+				"Hematological Neoplasm",
+				"Malignant Hematopoietic Neoplasm",
+				"Hematologic Neoplasm"
+			],
+			"nci_thesaurus_concept_id": "C27134",
+			"name": "Hematopoietic and Lymphoid Cell Neoplasm",
+			"type": [
+				"maintype"
+			],
+			"parents": [
+				"C35813",
+				"C26323",
+				"C4741"
+			]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Ataxia Telangiectasia",
+				"Ataxia-telangiectasia",
+				"Louis-Bar Syndrome"
+			],
+			"nci_thesaurus_concept_id": "C2887",
+			"name": "Ataxia Telangiectasia Syndrome",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C84348",
+				"C7757",
+				"C27871"
+			]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"is_lead_disease": false,
+			"synonyms": [
+				"CATCH-22",
+				"DiGeorge Sequence",
+				"Shprintzen Syndrome",
+				"22q11 deletion",
+				"DiGeorge Anomaly",
+				"DiGeorge's Syndrome",
+				"DGS1",
+				"22q Deletion Syndrome(s)",
+				"DiGeorge Syndrome",
+				"DiGeorge Syndrome Type 1",
+				"FACES"
+			],
+			"nci_thesaurus_concept_id": "C2989",
+			"name": "22q11.2 Deletion Syndrome",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C27872"
+			]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Aldrich syndrome",
+				"Wiskott Aldrich Syndrome"
+			],
+			"nci_thesaurus_concept_id": "C3448",
+			"name": "Wiskott-Aldrich Syndrome",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C27871",
+				"C3266"
+			]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Severe Combined Immune Deficiency",
+				"severe combined immunodeficiency disease",
+				"SCID"
+			],
+			"nci_thesaurus_concept_id": "C3472",
+			"name": "Severe Combined Immunodeficiency",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C27871"
+			]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"is_lead_disease": false,
+			"synonyms": [],
+			"nci_thesaurus_concept_id": "C39292",
+			"name": "HTLV-1 Infection",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C3439"
+			]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"is_lead_disease": false,
+			"synonyms": [
+				"XL IL2RG"
+			],
+			"nci_thesaurus_concept_id": "C4682",
+			"name": "X-Linked Severe Combined Immunodeficiency",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C3472"
+			]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"is_lead_disease": false,
+			"synonyms": [],
+			"nci_thesaurus_concept_id": "C61244",
+			"name": "CD40 Ligand Deficiency",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C3131"
+			]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"is_lead_disease": false,
+			"synonyms": [],
+			"nci_thesaurus_concept_id": "C85866",
+			"name": "Autosomal Recessive Disorder",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C3101"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": true,
+			"synonyms": [
+				"Blood Disorder",
+				"Blood Disease",
+				"Hematological Disorder",
+				"Hematologic Disorder"
+			],
+			"nci_thesaurus_concept_id": "C26323",
+			"name": "Hematologic and Lymphocytic Disorder",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C35814"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": true,
+			"synonyms": [
+				"Malignant Tumor",
+				"Tumor, malignant, NOS",
+				"CA",
+				"Neoplasm, malignant",
+				"Malignant Growth",
+				"Malignancy",
+				"Malignant Neoplastic Disease",
+				"Cancer",
+				"Unclassified tumor, malignant"
+			],
+			"nci_thesaurus_concept_id": "C9305",
+			"name": "Malignant Neoplasm",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C7062"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": true,
+			"synonyms": [],
+			"nci_thesaurus_concept_id": "C7062",
+			"name": "Neoplasm by Special Category",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C3262"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": true,
+			"synonyms": [
+				"Disease by Site"
+			],
+			"nci_thesaurus_concept_id": "C27551",
+			"name": "Disorder by Site",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C2991"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": true,
+			"synonyms": [
+				"Disease or Disorder, Non-Neoplastic",
+				"Disorder",
+				"Disease or Disorder",
+				"Diagnosis",
+				"Diseases",
+				"condition",
+				"disease_term",
+				"disease term",
+				"disease type",
+				"Disease",
+				"Disorders",
+				"Diseases and Disorders",
+				"disease_type"
+			],
+			"nci_thesaurus_concept_id": "C2991",
+			"name": "Other Disease",
+			"type": [
+				"maintype"
+			],
+			"parents": []
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": true,
+			"synonyms": [
+				"tumor",
+				"Neoplasms, NOS",
+				"Neoplasm, NOS",
+				"Neoplastic Disease",
+				"Neoplasm",
+				"Tumor, NOS",
+				"Neoplastic Growth",
+				"Neoplasia"
+			],
+			"nci_thesaurus_concept_id": "C3262",
+			"name": "Other Neoplasm",
+			"type": [
+				"maintype"
+			],
+			"parents": [
+				"C2991"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": true,
+			"synonyms": [
+				"Tumor_Morphology",
+				"Tumor Morphology"
+			],
+			"nci_thesaurus_concept_id": "C4741",
+			"name": "Neoplasm by Morphology",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C3262"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": true,
+			"synonyms": [
+				"Solid tumor, NOS",
+				"Solid Tumour",
+				"Solid Neoplasm"
+			],
+			"nci_thesaurus_concept_id": "C9292",
+			"name": "Solid Tumor",
+			"type": [
+				"maintype"
+			],
+			"parents": [
+				"C7062"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": true,
+			"synonyms": [
+				"Hematopoietic and Lymphoid System Disease"
+			],
+			"nci_thesaurus_concept_id": "C35814",
+			"name": "Hematopoietic and Lymphoid System Disorder",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C27551"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": true,
+			"synonyms": [
+				"Hematopoietic and Lymphoid System Tumor"
+			],
+			"nci_thesaurus_concept_id": "C35813",
+			"name": "Hematopoietic and Lymphoid System Neoplasm",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C3263",
+				"C35814"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": true,
+			"synonyms": [],
+			"nci_thesaurus_concept_id": "C3263",
+			"name": "Neoplasm by Site",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C3262"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Familial Tumor Syndrome",
+				"Familial Neoplastic Syndrome",
+				"Hereditary Tumor Syndrome",
+				"inherited cancer syndrome"
+			],
+			"nci_thesaurus_concept_id": "C3266",
+			"name": "Hereditary Neoplastic Syndrome",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C3101",
+				"C54705"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Phacomatosis",
+				"Neurocutaneous Syndrome"
+			],
+			"nci_thesaurus_concept_id": "C84348",
+			"name": "Phakomatosis",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C3266"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Immunodeficiency",
+				"Immunodeficiency Disorder"
+			],
+			"nci_thesaurus_concept_id": "C3131",
+			"name": "Immunodeficiency Syndrome",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C28193",
+				"C3507"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Immunodeficiency and Immunosuppression Disorders"
+			],
+			"nci_thesaurus_concept_id": "C27351",
+			"name": "Immune System and Related Disorders",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C27551"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [
+				"DNA Repair Deficiency"
+			],
+			"nci_thesaurus_concept_id": "C7757",
+			"name": "DNA Repair Disorder",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C3101"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Viral Disease",
+				"Viral Disorder"
+			],
+			"nci_thesaurus_concept_id": "C3439",
+			"name": "Viral Infection",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C26726"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [],
+			"nci_thesaurus_concept_id": "C27145",
+			"name": "T-Cell Immunodeficiency",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C3131"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Non-neoplastic condition, NOS",
+				"NON-NEOPLASTIC",
+				"Non-Neoplastic Disease",
+				"Non-neoplastic disorder, NOS"
+			],
+			"nci_thesaurus_concept_id": "C53529",
+			"name": "Non-Neoplastic Disorder",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C2991"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Tumor Syndrome",
+				"Neoplastic Syndrome"
+			],
+			"nci_thesaurus_concept_id": "C54705",
+			"name": "Cancer-Related Syndrome",
+			"type": [
+				"maintype"
+			],
+			"parents": [
+				"C28193"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Non-Neoplastic Disease by Special Category"
+			],
+			"nci_thesaurus_concept_id": "C53547",
+			"name": "Non-Neoplastic Disorder by Special Category",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C53529"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [],
+			"nci_thesaurus_concept_id": "C27872",
+			"name": "Congenital T-Cell Immunodeficiency",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C27145",
+				"C3101"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Unspecified Immune System Problem",
+				"Immune Disorders",
+				"Immune Disorder",
+				"Disorder of Immune System",
+				"Immune Dysfunction",
+				"Immune disorder, NOS",
+				"Immunologic Disorder"
+			],
+			"nci_thesaurus_concept_id": "C3507",
+			"name": "Immune System Disorder",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C27351"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [],
+			"nci_thesaurus_concept_id": "C27871",
+			"name": "Congenital Combined Immunodeficiency",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C3101",
+				"C3131"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Molecular Disease",
+				"Genetic Condition",
+				"Hereditary Disease",
+				"Inherited Disease",
+				"Hereditary Diseases",
+				"Genetic Syndrome"
+			],
+			"nci_thesaurus_concept_id": "C3101",
+			"name": "Genetic Disorder",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C2991"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Infection",
+				"Clinical Infection",
+				"Unspecified Infection",
+				"ID",
+				"Infectious Diseases and Manifestations",
+				"Infectious",
+				"Infectious Disease"
+			],
+			"nci_thesaurus_concept_id": "C26726",
+			"name": "Infectious Disorder",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C93210"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [],
+			"nci_thesaurus_concept_id": "C28193",
+			"name": "Syndrome",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C2991"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Agammaglobulinemia"
+			],
+			"nci_thesaurus_concept_id": "C26931",
+			"name": "Hypogammaglobulinemia",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C4799"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [
+				"B-Cell Deficiency"
+			],
+			"nci_thesaurus_concept_id": "C4799",
+			"name": "Deficiency of Humoral Immunity",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C3131"
+			]
+		},
+		{
+			"inclusion_indicator": "TREE",
+			"is_lead_disease": false,
+			"synonyms": [
+				"Inflammatory_Disease",
+				"Inflammatory Disease"
+			],
+			"nci_thesaurus_concept_id": "C93210",
+			"name": "Inflammatory Disorder",
+			"type": [
+				"subtype"
+			],
+			"parents": [
+				"C53547"
+			]
+		}
+	],
+	"_primary_purpose_sort_order": 7,
+	"protocol_id": "970143",
+	"active_sites_count": 1,
+	"lead_org_cancer_center": null,
+	"arms": [
+		{
+			"interventions": [],
+			"name": "1",
+			"description": "Suspected or known disorder of the immune system or cancer; or, known or potential carrier of autoimmune disorder or immunodeficiency disease.",
+			"type": null
+		},
+		{
+			"interventions": [
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [],
+					"nci_thesaurus_concept_id": "C16203",
+					"name": "Clinical or Research Activity",
+					"description": null,
+					"type": "Procedure/Surgery",
+					"category": "other",
+					"parents": [
+						"C43431"
+					]
+				},
+				{
+					"inclusion_indicator": "TRIAL",
+					"synonyms": [
+						"Biological Sample Collection"
+					],
+					"nci_thesaurus_concept_id": "C70945",
+					"name": "Biospecimen Collection",
+					"description": null,
+					"type": "Procedure/Surgery",
+					"category": "other",
+					"parents": [
+						"C18020"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"Intervention Strategies",
+						"Procedure",
+						"Intervention"
+					],
+					"nci_thesaurus_concept_id": "C25218",
+					"name": "Intervention or Procedure",
+					"description": null,
+					"type": "Procedure/Surgery",
+					"category": "other",
+					"parents": [
+						"C16203"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"Intervention Strategies",
+						"Procedure",
+						"Intervention"
+					],
+					"nci_thesaurus_concept_id": "C25218",
+					"name": "Intervention or Procedure",
+					"description": null,
+					"type": "Other",
+					"category": "other",
+					"parents": [
+						"C16203"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [],
+					"nci_thesaurus_concept_id": "C63333",
+					"name": "Biomarker Analysis",
+					"description": null,
+					"type": "Other",
+					"category": "other",
+					"parents": [
+						"C25218"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [],
+					"nci_thesaurus_concept_id": "C74957",
+					"name": "Mixed Category Laboratory Procedure",
+					"description": null,
+					"type": "Other",
+					"category": "other",
+					"parents": [
+						"C25294"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"Lab Test",
+						"Tests",
+						"Laboratory Test",
+						"Test",
+						"Lab Tests"
+					],
+					"nci_thesaurus_concept_id": "C25294",
+					"name": "Laboratory Procedure",
+					"description": null,
+					"type": "Other",
+					"category": "other",
+					"parents": [
+						"C25218"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [],
+					"nci_thesaurus_concept_id": "C43431",
+					"name": "Activity",
+					"description": null,
+					"type": "Procedure/Surgery",
+					"category": "other",
+					"parents": []
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [],
+					"nci_thesaurus_concept_id": "C16203",
+					"name": "Clinical or Research Activity",
+					"description": null,
+					"type": "Other",
+					"category": "other",
+					"parents": [
+						"C43431"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"Diagnostic Technique",
+						"Diagnostic Test",
+						"Diagnostic Method"
+					],
+					"nci_thesaurus_concept_id": "C18020",
+					"name": "Diagnostic Procedure",
+					"description": null,
+					"type": "Procedure/Surgery",
+					"category": "other",
+					"parents": [
+						"C25218"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [],
+					"nci_thesaurus_concept_id": "C43431",
+					"name": "Activity",
+					"description": null,
+					"type": "Other",
+					"category": "other",
+					"parents": []
+				},
+				{
+					"inclusion_indicator": "TRIAL",
+					"synonyms": [],
+					"nci_thesaurus_concept_id": "C64263",
+					"name": "Laboratory Biomarker Analysis",
+					"description": null,
+					"type": "Other",
+					"category": "other",
+					"parents": [
+						"C63333",
+						"C74957"
+					]
+				}
+			],
+			"name": "Arm not specified",
+			"description": null,
+			"type": null
+		}
+	],
+	"study_model_code": "COHORT",
+	"nci_id": "NCI-2018-02261",
+	"why_study_stopped": null,
+	"brief_summary": "This protocol is being submitted to consolidate, update, and expand two previously approved\r\n      protocols (77-C-0066 and 82-C-0044) into a single protocol. The purpose of this study is to\r\n      examine the factors involved in the regulation of the immune system of healthy individuals\r\n      and to define the abnormalities in this regulation that underlies the immunological disorders\r\n      of patients with a variety of immunodeficiency and malignant disorders. The studies will\r\n      include the ex vivo phenotypic and functional analysis of the network of cells involved in\r\n      humoral and cellular immune responses, and in vivo testing for the capacity to make\r\n      delayed-type hypersensitivity and humoral responses following immunization with a variety of\r\n      antigens. Individuals to be studied will include patients with a variety of malignancies and\r\n      patients with primary and secondary immunodeficiency disorders. Selected family members or\r\n      family members known to be genetic carriers of certain immunodeficiency diseases as well as\r\n      normal, unrelated individuals will also be studied. A small number of procedures will be used\r\n      including analysis of blood obtained by phlebotomy, apheresis, skin testing and recall\r\n      antigens and immunization to assess humoral immunity....",
+	"brief_title": "Investigation of the Human Immune Response in Normal Subjects and Patients With Disorders of the Immune System and Cancer",
+	"status_history": [
+		{
+			"status_date": "1997-07-10T00:00:00",
+			"status": "ACTIVE"
+		}
+	],
+	"study_population_description": "Primary clinical patients/population with a suspected or known disorder of the immune\r\n        system or cancer per the eligibility criteria.@@@",
+	"sampling_method_code": "NON_PROBABILITY_SAMPLE",
+	"minimum_target_accrual_number": 1000,
+	"_current_trial_status_sort_order": 0,
+	"start_date": "1997-06-07",
+	"record_verification_date": "2022-01-11",
+	"ctep_id": null,
+	"current_trial_status": "Active",
+	"study_model_other_text": null,
+	"masking": {
+		"role_caregiver": null,
+		"masking": null,
+		"role_investigator": null,
+		"role_outcome_assessor": null,
+		"role_subject": null,
+		"allocation_code": null
+	},
+	"acronym": null,
+	"nci_funded": "Direct",
+	"anatomic_sites": [
+		"Multiple"
+	],
+	"ccr_id": "97-C-0143",
+	"start_date_type_code": "ACTUAL",
+	"principal_investigator": "Thomas Alexander Waldmann",
+	"study_source": "Institutional",
+	"completion_date": null,
+	"study_subtype_code": "OBSERVATIONAL",
+	"study_protocol_type": "Non-interventional"
+}

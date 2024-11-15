@@ -1,0 +1,214 @@
+{
+	"data": [
+		{
+			"name": "Banner MD Anderson Cancer Center",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "602-747-9738",
+			"contact_email": "Alaeddin.Sagar@bannerhealth.com",
+			"org_address_line_1": "2946 East Banner Gateway Drive",
+			"org_address_line_2": null,
+			"org_city": "Gilbert",
+			"org_country": "United States",
+			"org_email": null,
+			"org_fax": null,
+			"org_state_or_province": "AZ",
+			"org_va": false,
+			"org_postal_code": "85234",
+			"org_family": null,
+			"org_coordinates": {
+				"lat": 33.36349996738136,
+				"lon": -111.75290001556277
+			},
+			"count": 21
+		},
+		{
+			"name": "Baptist MD Anderson Cancer Center",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "904-202-7468",
+			"contact_email": "beth.lesnikoski@hcahealthcare.com",
+			"org_address_line_1": "1301 Palm Avenue",
+			"org_address_line_2": null,
+			"org_city": "Jacksonville",
+			"org_country": "United States",
+			"org_email": null,
+			"org_fax": null,
+			"org_state_or_province": "FL",
+			"org_va": false,
+			"org_postal_code": "32207",
+			"org_family": null,
+			"org_coordinates": {
+				"lat": 30.29099999461323,
+				"lon": -81.63180006667972
+			},
+			"count": 21
+		},
+		{
+			"name": "M D Anderson Cancer Center",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "877-632-6789",
+			"contact_email": "askmdanderson@mdanderson.org",
+			"org_address_line_1": "1515 Holcombe Boulevard",
+			"org_address_line_2": null,
+			"org_city": "Houston",
+			"org_country": "United States",
+			"org_email": "askmdanderson@mdanderson.org",
+			"org_fax": null,
+			"org_state_or_province": "TX",
+			"org_va": false,
+			"org_postal_code": "77030",
+			"org_family": "MD Anderson Cancer Center",
+			"org_coordinates": {
+				"lat": 29.705899986438453,
+				"lon": -95.40260002948344
+			},
+			"count": 1795
+		},
+		{
+			"name": "MD Anderson Cancer Center at Cooper-Voorhees",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "856-325-6757",
+			"contact_email": "Efrat.dotan@fccc.edu",
+			"org_address_line_1": "900 Centennial Boulevard",
+			"org_address_line_2": "Voorhees Complex",
+			"org_city": "Voorhees",
+			"org_country": "United States",
+			"org_email": null,
+			"org_fax": null,
+			"org_state_or_province": "NJ",
+			"org_va": false,
+			"org_postal_code": "08043",
+			"org_family": null,
+			"org_coordinates": {
+				"lat": 39.84449998475611,
+				"lon": -74.95320003479719
+			},
+			"count": 21
+		},
+		{
+			"name": "MD Anderson Cancer Center at Cooper-Willingboro",
+			"contact_name": "Ashish Bharat Patel",
+			"contact_phone": "855-632-2667",
+			"contact_email": null,
+			"org_address_line_1": "1000 Salem Road",
+			"org_address_line_2": null,
+			"org_city": "Willingboro",
+			"org_country": "United States",
+			"org_email": "krieger-kimberly@cooperhealth.edu",
+			"org_fax": null,
+			"org_state_or_province": "NJ",
+			"org_va": false,
+			"org_postal_code": "08046",
+			"org_family": null,
+			"org_coordinates": {
+				"lat": 40.027799969539046,
+				"lon": -74.88250002264977
+			},
+			"count": 1
+		},
+		{
+			"name": "MD Anderson League City",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "877-632-6789",
+			"contact_email": "askmdanderson@mdanderson.org",
+			"org_address_line_1": "2280 Gulf Freeway South",
+			"org_address_line_2": null,
+			"org_city": "League City",
+			"org_country": "United States",
+			"org_email": "askmdanderson@mdanderson.org",
+			"org_fax": null,
+			"org_state_or_province": "TX",
+			"org_va": false,
+			"org_postal_code": "77573",
+			"org_family": "MD Anderson Cancer Center",
+			"org_coordinates": {
+				"lat": 29.488499988801777,
+				"lon": -95.10210008360445
+			},
+			"count": 50
+		},
+		{
+			"name": "MD Anderson West Houston",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "877-632-6789",
+			"contact_email": "askmdanderson@mdanderson.org",
+			"org_address_line_1": "13900 Katy Freeway",
+			"org_address_line_2": null,
+			"org_city": "Houston",
+			"org_country": "United States",
+			"org_email": "askmdanderson@mdanderson.org",
+			"org_fax": null,
+			"org_state_or_province": "TX",
+			"org_va": false,
+			"org_postal_code": "77079",
+			"org_family": "MD Anderson Cancer Center",
+			"org_coordinates": {
+				"lat": 29.775699991732836,
+				"lon": -95.60370007529855
+			},
+			"count": 55
+		},
+		{
+			"name": "MD Anderson in Sugar Land",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "877-632-6789",
+			"contact_email": "askmdanderson@mdanderson.org",
+			"org_address_line_1": "1327 Lake Pointe Parkway",
+			"org_address_line_2": null,
+			"org_city": "Sugar Land",
+			"org_country": "United States",
+			"org_email": "askmdanderson@mdanderson.org",
+			"org_fax": null,
+			"org_state_or_province": "TX",
+			"org_va": false,
+			"org_postal_code": "77478",
+			"org_family": "MD Anderson Cancer Center",
+			"org_coordinates": {
+				"lat": 29.61519999895245,
+				"lon": -95.60560000129044
+			},
+			"count": 56
+		},
+		{
+			"name": "MD Anderson in The Woodlands",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "866-632-6789",
+			"contact_email": "askmdanderson@mdanderson.org",
+			"org_address_line_1": "100 Fellowship Drive",
+			"org_address_line_2": null,
+			"org_city": "Conroe",
+			"org_country": "United States",
+			"org_email": "askmdanderson@mdanderson.org",
+			"org_fax": null,
+			"org_state_or_province": "TX",
+			"org_va": false,
+			"org_postal_code": "77384",
+			"org_family": "MD Anderson Cancer Center",
+			"org_coordinates": {
+				"lat": 30.237299990840256,
+				"lon": -95.50580003298819
+			},
+			"count": 53
+		},
+		{
+			"name": "Oncology Hematology Care Inc-Anderson",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "937-416-9270",
+			"contact_email": "clinical.trials@daytonncorp.org",
+			"org_address_line_1": "8000 Five Mile Road",
+			"org_address_line_2": "Suite 100",
+			"org_city": "Cincinnati",
+			"org_country": "United States",
+			"org_email": "clinical.trials@daytonncorp.org",
+			"org_fax": null,
+			"org_state_or_province": "OH",
+			"org_va": false,
+			"org_postal_code": "45230",
+			"org_family": null,
+			"org_coordinates": {
+				"lat": 39.076999998651445,
+				"lon": -84.38590007834136
+			},
+			"count": 10
+		}
+	]
+}

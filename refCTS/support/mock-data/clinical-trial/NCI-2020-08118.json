@@ -1,0 +1,2765 @@
+{
+	"arms": [
+		{
+			"arm_name": "Treatment (flotetuzumab)",
+			"arm_type": "EXPERIMENTAL",
+			"interventions": [
+				{
+					"intervention_code": "C198",
+					"intervention_name": "Acetaminophen",
+					"intervention_type": "Drug",
+					"intervention_description": "A p-aminophenol derivative with analgesic and antipyretic activities. Although the exact mechanism through which acetaminophen exert its effects has yet to be fully determined, acetaminophen may inhibit the nitric oxide (NO) pathway mediated by a variety of neurotransmitter receptors including N-methyl-D-aspartate (NMDA) and substance P, resulting in elevation of the pain threshold. The antipyretic activity may result from inhibition of prostaglandin synthesis and release in the central nervous system (CNS) and prostaglandin-mediated effects on the heat-regulating center in the anterior hypothalamus. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+					"parents": ["C2356"],
+					"inclusion_indicator": "TRIAL",
+					"synonyms": ["Tylenol"],
+					"intervention_category": "Agent"
+				},
+				{
+					"intervention_code": "C61728",
+					"intervention_name": "Diphenhydramine",
+					"intervention_type": "Drug",
+					"intervention_description": null,
+					"parents": ["C267", "C29578"],
+					"inclusion_indicator": "TRIAL",
+					"synonyms": ["Syntedril"],
+					"intervention_category": "Agent"
+				},
+				{
+					"intervention_code": "C422",
+					"intervention_name": "Dexamethasone",
+					"intervention_type": "Drug",
+					"intervention_description": "A synthetic adrenal corticosteroid with potent anti-inflammatory properties. In addition to binding to specific nuclear steroid receptors, dexamethasone also interferes with NF-kB activation and apoptotic pathways. This agent lacks the salt-retaining properties of other related adrenal hormones. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+					"parents": ["C267", "C521"],
+					"inclusion_indicator": "TRIAL",
+					"synonyms": [
+						"Aacidexam",
+						"Adexone",
+						"Aknichthol Dexa",
+						"Alba-Dex",
+						"Alin",
+						"Alin Depot",
+						"Alin Oftalmico",
+						"Amplidermis",
+						"Anemul mono",
+						"Auricularum",
+						"Auxiloson",
+						"Baycadron",
+						"Baycuten",
+						"Baycuten N",
+						"Cortidexason",
+						"Cortisumman",
+						"Decacort",
+						"Decadrol",
+						"Decadron",
+						"Decadron DP",
+						"Decalix",
+						"Decameth",
+						"Decasone R.p.",
+						"Dectancyl",
+						"Dekacort",
+						"Deltafluorene",
+						"Deronil",
+						"Desameton",
+						"Dexa-Mamallet",
+						"Dexa-Rhinosan",
+						"Dexa-Scheroson",
+						"Dexa-sine",
+						"Dexacortal",
+						"Dexacortin",
+						"Dexafarma",
+						"Dexafluorene",
+						"Dexalocal",
+						"Dexamecortin",
+						"Dexameth",
+						"Dexamethasone Intensol",
+						"Dexamonozon",
+						"Dexapos",
+						"Dexinoral",
+						"Dexone",
+						"Dinormon",
+						"Dxevo",
+						"Fluorodelta",
+						"Fortecortin",
+						"Gammacorten",
+						"Hemady",
+						"Hexadrol",
+						"Lokalison-F",
+						"Loverine",
+						"Millicorten",
+						"Mymethasone",
+						"Orgadrone",
+						"Spersadex",
+						"TaperDex",
+						"Visumetazone",
+						"ZoDex"
+					],
+					"intervention_category": "Agent"
+				},
+				{
+					"intervention_code": "C117238",
+					"intervention_name": "Flotetuzumab",
+					"intervention_type": "Biological / Vaccine",
+					"intervention_description": "An anti-CD123/anti-CD3 bispecific humanized monoclonal antibody with potential immunostimulatory and antineoplastic activities. Anti-CD123/CD3 monoclonal antibody MGD006 possesses two antigen-recognition and binding sites, one for the CD3 complex, a group of T-cell surface glycoproteins that complex with the T-cell receptor (TCR), and one for CD123, a tumor-associated antigen (TAA) overexpressed on the surface of certain tumor cells. Upon administration of MGD006, this bispecific antibody simultaneously binds to both CD3-expressing T-cells and CD123-expressing cancer cells, thereby crosslinking CD123-expressing tumor cells and cytotoxic T-lymphocytes (CTLs). This may result in potent CTL-mediated cell lysis of CD123-expressing tumor cells. CD123, the interleukin-3 receptor alpha chain, is overexpressed in a variety of hematological malignancies; its expression is low or absent in normal hematopoietic progenitors and stem cells. Check for active clinical trials or closed clinical trials",
+					"parents": ["C129822", "C28227"],
+					"inclusion_indicator": "TRIAL",
+					"synonyms": [],
+					"intervention_category": "Agent"
+				},
+				{
+					"intervention_code": "C29412",
+					"intervention_name": "Ranitidine",
+					"intervention_type": "Drug",
+					"intervention_description": null,
+					"parents": ["C29702"],
+					"inclusion_indicator": "TRIAL",
+					"synonyms": [],
+					"intervention_category": "Agent"
+				},
+				{
+					"intervention_code": "C561",
+					"intervention_name": "Ibuprofen",
+					"intervention_type": "Drug",
+					"intervention_description": "A propionic acid derivate and nonsteroidal anti-inflammatory drug (NSAID) with anti-inflammatory, analgesic, and antipyretic effects. Ibuprofen inhibits the activity of cyclo-oxygenase I and II, resulting in a decreased formation of precursors of prostaglandins and thromboxanes. This leads to decreased prostaglandin synthesis, by prostaglandin synthase, the main physiologic effect of ibuprofen. Ibuprofen also causes a decrease in the formation of thromboxane A2 synthesis, by thromboxane synthase, thereby inhibiting platelet aggregation. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+					"parents": ["C1323"],
+					"inclusion_indicator": "TRIAL",
+					"synonyms": ["Motrin"],
+					"intervention_category": "Agent"
+				},
+				{
+					"intervention_code": "C2356",
+					"intervention_name": "Analgesic and Antipyretic",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C2198"],
+					"synonyms": ["Antipyretic and Analgesic"]
+				},
+				{
+					"intervention_code": "C2198",
+					"intervention_name": "Nonnarcotic Analgesic",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C241"],
+					"synonyms": []
+				},
+				{
+					"intervention_code": "C241",
+					"intervention_name": "Analgesic Agent",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C78272"],
+					"synonyms": [
+						"Analgesic Drugs",
+						"Analgesics",
+						"Anodynes",
+						"Antinociceptive Agents",
+						"Pain-relief Medication"
+					]
+				},
+				{
+					"intervention_code": "C78272",
+					"intervention_name": "Agent Affecting Nervous System",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C1909"],
+					"synonyms": []
+				},
+				{
+					"intervention_code": "C1909",
+					"intervention_name": "Pharmacologic Substance",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C1908"],
+					"synonyms": []
+				},
+				{
+					"intervention_code": "C1908",
+					"intervention_name": "Drug, Food, Chemical or Biomedical Material",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": [],
+					"synonyms": []
+				},
+				{
+					"intervention_code": "C267",
+					"intervention_name": "Antiemetic Agent",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C78272"],
+					"synonyms": ["Anti-emetic Agent", "Antiemetic Drugs", "Antiemetics"]
+				},
+				{
+					"intervention_code": "C29578",
+					"intervention_name": "Histamine-1 Receptor Antagonist",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C308"],
+					"synonyms": ["Antihistamine", "H-1 Receptor Antagonist"]
+				},
+				{
+					"intervention_code": "C308",
+					"intervention_name": "Immunotherapy",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C1909"],
+					"synonyms": [
+						"BRM",
+						"Biological Response Modifier",
+						"Biomodulators",
+						"Immune Mediators",
+						"Immune Modulators",
+						"Immune Regulators",
+						"Immunomodulating Agent",
+						"Immunomodulators",
+						"Immunomodulatory Agent",
+						"Immunopotentiators",
+						"Immunotherapy Agent",
+						"Immunotherapeutic Agent"
+					]
+				},
+				{
+					"intervention_code": "C521",
+					"intervention_name": "Therapeutic Glucocorticoid",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C211"],
+					"synonyms": ["Glucocorticoid"]
+				},
+				{
+					"intervention_code": "C211",
+					"intervention_name": "Therapeutic Corticosteroid",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C2364", "C574"],
+					"synonyms": ["Corticosteroids"]
+				},
+				{
+					"intervention_code": "C2364",
+					"intervention_name": "Adrenal Agent",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C1636"],
+					"synonyms": ["Adrenal Drugs"]
+				},
+				{
+					"intervention_code": "C1636",
+					"intervention_name": "Therapeutic Steroid Hormone",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C548"],
+					"synonyms": ["Steroid Hormone", "Synthetic Steroids"]
+				},
+				{
+					"intervention_code": "C548",
+					"intervention_name": "Therapeutic Hormone",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C147908"],
+					"synonyms": ["Synthetic Hormone"]
+				},
+				{
+					"intervention_code": "C147908",
+					"intervention_name": "Hormone Therapy",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C1909"],
+					"synonyms": ["Hormonal Therapy Agent", "Hormone Therapy Agent"]
+				},
+				{
+					"intervention_code": "C574",
+					"intervention_name": "Immunosuppressant",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C308"],
+					"synonyms": ["Immunosuppressive Agents"]
+				},
+				{
+					"intervention_code": "C129822",
+					"intervention_name": "Antineoplastic Antibody",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Biological / Vaccine",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C129821"],
+					"synonyms": [
+						"Anti-cancer Antibody",
+						"Anticancer Antibody",
+						"Antineoplastic Ab"
+					]
+				},
+				{
+					"intervention_code": "C129821",
+					"intervention_name": "Antineoplastic Biological Agent",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Biological / Vaccine",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C274", "C307"],
+					"synonyms": [
+						"Anti-cancer Biological Agent",
+						"Anticancer Biological",
+						"Antineoplastic Biological",
+						"Antineoplastic Biotherapeutic"
+					]
+				},
+				{
+					"intervention_code": "C274",
+					"intervention_name": "Antineoplastic Agent",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Biological / Vaccine",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C1909"],
+					"synonyms": [
+						"Anti-Cancer Agents",
+						"Anti-Tumor Agents",
+						"Anti-Tumor Drugs",
+						"Antineoplastic Drugs",
+						"Antineoplastics",
+						"Antiproliferative Agents",
+						"Antiproliferative Drugs",
+						"Cancer Drug",
+						"Chemotherapeutic Agents, Neoplastic Disease",
+						"Tumor-Specific Treatment Agents"
+					]
+				},
+				{
+					"intervention_code": "C307",
+					"intervention_name": "Biological Agent",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Biological / Vaccine",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C1909"],
+					"synonyms": [
+						"Biological Products",
+						"Biologicals",
+						"Biologics",
+						"Biopharmaceuticals",
+						"Immunologic, Immunochemical",
+						"Immunologics"
+					]
+				},
+				{
+					"intervention_code": "C28227",
+					"intervention_name": "Bispecific Monoclonal Antibody",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Biological / Vaccine",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C1454", "C20401"],
+					"synonyms": []
+				},
+				{
+					"intervention_code": "C1454",
+					"intervention_name": "Bispecific Antibody",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Biological / Vaccine",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C307", "C308"],
+					"synonyms": ["Bispecific Antibodies"]
+				},
+				{
+					"intervention_code": "C20401",
+					"intervention_name": "Monoclonal Antibody Therapy",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Biological / Vaccine",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C307", "C308"],
+					"synonyms": ["Monoclonal Antibodies", "Monoclonal Antibody"]
+				},
+				{
+					"intervention_code": "C29702",
+					"intervention_name": "Histamine-2 Receptor Antagonist",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C29701"],
+					"synonyms": ["H2 Antagonist", "H2 Blocker", "H2 Receptor Antagonist"]
+				},
+				{
+					"intervention_code": "C29701",
+					"intervention_name": "Anti-ulcer Agent",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C78276"],
+					"synonyms": ["Antacid"]
+				},
+				{
+					"intervention_code": "C78276",
+					"intervention_name": "Agent Affecting Digestive System or Metabolism",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C1909"],
+					"synonyms": []
+				},
+				{
+					"intervention_code": "C1323",
+					"intervention_name": "Cyclooxygenase Inhibitor",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C471", "C257"],
+					"synonyms": [
+						"Clyclooxygenases Inhibitor",
+						"Prostaglandin G / H Synthase Inhibitor"
+					]
+				},
+				{
+					"intervention_code": "C471",
+					"intervention_name": "Enzyme Inhibitor",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C1909"],
+					"synonyms": [
+						"Enzyme Antagonist",
+						"Enzyme Inhibitor Agent",
+						"Enzyme Inhibitor Drug"
+					]
+				},
+				{
+					"intervention_code": "C257",
+					"intervention_name": "Nonsteroidal Antiinflammatory Drug",
+					"inclusion_indicator": "TREE",
+					"intervention_type": "Drug",
+					"intervention_description": "",
+					"intervention_category": "Agent Category",
+					"parents": ["C2356"],
+					"synonyms": []
+				}
+			],
+			"arm_description": "INDUCTION THERAPY: Patients receive flotetuzumab via continuous IV infusion on days 1-28. Patients who achieve SD/PR (Cohort A) or PR/CI (Cohort B), receive an additional induction cycle. Patients who achieve PR (Cohort A) or PR/CI/MMR (Cohort B) after cycle 2 re-induction, may continue induction therapy for up to 4 more cycles.\r\n\r\nCONSOLIDATION THERAPY: Patients who achieve CR/CRi/CRh (Cohort A) or CR/MR (Cohort B) after cycle 1 or cycle 2 of induction therapy, receive flotetuzumab via continuous IV infusion on days 1-28 for up to 5 and 6 cycles, respectively, in the absence of disease progression or unacceptable toxicity. Patients with PR (Cohort A) or PR/CI/MMR (Cohort B) who have received up to 6 cycles of induction therapy may receive up to 2 cycles of consolidation therapy in the absence of disease progression or unacceptable toxicity."
+		}
+	],
+	"phase": {
+		"phase": "I",
+		"phase_other_text": null,
+		"phase_additional_qualifier_code": "NO"
+	},
+	"sites": [
+		{
+			"contact_name": "Ibrahim T. Aldoss",
+			"contact_email": "ialdoss@coh.org",
+			"contact_phone": "626-218-0589",
+			"recruitment_status": "ACTIVE",
+			"local_site_identifier": "",
+			"recruitment_status_date": "2020-11-05",
+			"org_address_line_1": "1500 East Duarte Road",
+			"org_address_line_2": null,
+			"org_city": "Duarte",
+			"org_country": "United States",
+			"org_email": "becomingapatient@coh.org",
+			"org_family": "City of Hope National Medical Center",
+			"org_fax": null,
+			"org_name": "City of Hope Comprehensive Cancer Center",
+			"org_to_family_relationship": null,
+			"org_phone": "800-826-4673",
+			"org_postal_code": "91010",
+			"org_state_or_province": "CA",
+			"org_status": "ACTIVE",
+			"org_status_date": "2020-11-05",
+			"org_tty": null,
+			"org_va": false,
+			"org_coordinates": { "lat": 34.1357, "lon": -117.9655 }
+		}
+	],
+	"ccr_id": null,
+	"dcp_id": null,
+	"nci_id": "NCI-2020-08118",
+	"nct_id": "NCT04681105",
+	"acronym": null,
+	"ctep_id": null,
+	"masking": {
+		"masking": null,
+		"masking_role_subject": null,
+		"masking_role_caregiver": null,
+		"masking_allocation_code": "NA",
+		"masking_role_investigator": null,
+		"masking_role_outcome_assessor": null
+	},
+	"diseases": [
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C142811",
+			"preferred_name": "Recurrent B Acute Lymphoblastic Leukemia",
+			"display_name": "Recurrent B Acute Lymphoblastic Leukemia",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{
+									"idx": 0,
+									"label": "Acute Lymphoblastic Leukemia",
+									"code": "C3167"
+								},
+								{ "idx": 1, "label": "Lymphoid Leukemia", "code": "C7539" },
+								{ "idx": 2, "label": "Leukemia", "code": "C3161" },
+								{
+									"idx": 3,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["stage"],
+			"synonyms": ["Recurrent B-Cell Acute Lymphoblastic Leukemia"],
+			"parents": ["C8644", "C142810"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C142812",
+			"preferred_name": "Refractory B Acute Lymphoblastic Leukemia",
+			"display_name": "Refractory B Acute Lymphoblastic Leukemia",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{
+									"idx": 0,
+									"label": "Acute Lymphoblastic Leukemia",
+									"code": "C3167"
+								},
+								{ "idx": 1, "label": "Lymphoid Leukemia", "code": "C7539" },
+								{ "idx": 2, "label": "Leukemia", "code": "C3161" },
+								{
+									"idx": 3,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["subtype"],
+			"synonyms": ["Refractory B-Cell Acute Lymphoblastic Leukemia"],
+			"parents": ["C8644", "C136488"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C142882",
+			"preferred_name": "Recurrent Hairy Cell Leukemia",
+			"display_name": "Recurrent Hairy Cell Leukemia",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{ "idx": 0, "label": "Lymphoid Leukemia", "code": "C7539" },
+								{ "idx": 1, "label": "Leukemia", "code": "C3161" },
+								{
+									"idx": 2,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["stage"],
+			"synonyms": ["Relapsed Hairy Cell Leukemia"],
+			"parents": ["C7402", "C150043", "C172133"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C148429",
+			"preferred_name": "Recurrent Acute Leukemia",
+			"display_name": "Recurrent Acute Leukemia",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{ "idx": 0, "label": "Leukemia", "code": "C3161" },
+								{
+									"idx": 1,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["stage"],
+			"synonyms": [],
+			"parents": ["C9300", "C148425"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C148431",
+			"preferred_name": "Refractory Acute Leukemia",
+			"display_name": "Refractory Acute Leukemia",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{ "idx": 0, "label": "Leukemia", "code": "C3161" },
+								{
+									"idx": 1,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["subtype"],
+			"synonyms": [],
+			"parents": ["C9300", "C148426"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C150131",
+			"preferred_name": "Recurrent T Acute Lymphoblastic Leukemia",
+			"display_name": "Recurrent T Acute Lymphoblastic Leukemia",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{
+									"idx": 0,
+									"label": "Acute Lymphoblastic Leukemia",
+									"code": "C3167"
+								},
+								{ "idx": 1, "label": "Lymphoid Leukemia", "code": "C7539" },
+								{ "idx": 2, "label": "Leukemia", "code": "C3161" },
+								{
+									"idx": 3,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["stage"],
+			"synonyms": ["Recurrent T-Acute Lymphoblastic Leukemia"],
+			"parents": ["C142810", "C8695", "C3183"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C150510",
+			"preferred_name": "Refractory T Acute Lymphoblastic Leukemia",
+			"display_name": "Refractory T Acute Lymphoblastic Leukemia",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{
+									"idx": 0,
+									"label": "Acute Lymphoblastic Leukemia",
+									"code": "C3167"
+								},
+								{ "idx": 1, "label": "Lymphoid Leukemia", "code": "C7539" },
+								{ "idx": 2, "label": "Leukemia", "code": "C3161" },
+								{
+									"idx": 3,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["subtype"],
+			"synonyms": ["Refractory T-Acute Lymphoblastic Leukemia"],
+			"parents": ["C136488", "C8696", "C3183"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C156103",
+			"preferred_name": "Recurrent Blastic Plasmacytoid Dendritic Cell Neoplasm",
+			"display_name": "Recurrent Blastic Plasmacytoid Dendritic Cell Neoplasm",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{ "idx": 0, "label": "Myeloid Neoplasm", "code": "C9290" },
+								{
+									"idx": 1,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["stage"],
+			"synonyms": [],
+			"parents": ["C7203", "C150545", "C172132"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C156104",
+			"preferred_name": "Refractory Blastic Plasmacytoid Dendritic Cell Neoplasm",
+			"display_name": "Refractory Blastic Plasmacytoid Dendritic Cell Neoplasm",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{ "idx": 0, "label": "Myeloid Neoplasm", "code": "C9290" },
+								{
+									"idx": 1,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["subtype"],
+			"synonyms": [],
+			"parents": ["C7203", "C150546", "C172281"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C27357",
+			"preferred_name": "Refractory Hematologic Malignancy",
+			"display_name": "Refractory Hematologic Malignancy",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{
+									"idx": 0,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["subtype"],
+			"synonyms": ["Refractory Hematologic Cancer"],
+			"parents": ["C27134", "C120186"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "YES",
+			"nci_thesaurus_concept_id": "C27358",
+			"preferred_name": "Recurrent Hematologic Malignancy",
+			"display_name": "Recurrent Hematopoietic and Lymphoid Cell Neoplasm",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{
+									"idx": 0,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["stage"],
+			"synonyms": [
+				"Recurrent Hematologic Cancer",
+				"Recurrent Hematologic Malignancy",
+				"Relapsed Hematologic Cancer",
+				"Relapsed Hematologic Malignancy"
+			],
+			"parents": ["C27134", "C4813"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C4937",
+			"preferred_name": "Recurrent Hodgkin Lymphoma",
+			"display_name": "Recurrent Hodgkin Lymphoma",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{ "idx": 0, "label": "Hodgkin Lymphoma", "code": "C9357" },
+								{ "idx": 1, "label": "Lymphoma", "code": "C3208" },
+								{
+									"idx": 2,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["stage"],
+			"synonyms": [
+				"Recurrent Hodgkin's Disease",
+				"Recurrent Hodgkin's Lymphoma"
+			],
+			"parents": ["C9357", "C134157"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C7885",
+			"preferred_name": "Refractory Chronic Myelogenous Leukemia, BCR-ABL1 Positive",
+			"display_name": "Refractory Chronic Myelogenous Leukemia (CML)",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{
+									"idx": 0,
+									"label": "Chronic Myelogenous Leukemia, BCR-ABL1 Positive",
+									"code": "C3174"
+								},
+								{
+									"idx": 1,
+									"label": "Myeloproliferative Neoplasm",
+									"code": "C4345"
+								},
+								{ "idx": 2, "label": "Myeloid Neoplasm", "code": "C9290" },
+								{
+									"idx": 3,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						},
+						{
+							"direction": 1,
+							"concepts": [
+								{
+									"idx": 0,
+									"label": "Chronic Myelogenous Leukemia, BCR-ABL1 Positive",
+									"code": "C3174"
+								},
+								{ "idx": 1, "label": "Myeloid Leukemia", "code": "C3172" },
+								{ "idx": 2, "label": "Myeloid Neoplasm", "code": "C9290" },
+								{
+									"idx": 3,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						},
+						{
+							"direction": 1,
+							"concepts": [
+								{
+									"idx": 0,
+									"label": "Chronic Myelogenous Leukemia, BCR-ABL1 Positive",
+									"code": "C3174"
+								},
+								{ "idx": 1, "label": "Myeloid Leukemia", "code": "C3172" },
+								{ "idx": 2, "label": "Leukemia", "code": "C3161" },
+								{
+									"idx": 3,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["subtype"],
+			"synonyms": [
+				"Refractory CGL",
+				"Refractory CML",
+				"Refractory Chronic Granulocytic Leukemia",
+				"Refractory Chronic Myelocytic Leukemia",
+				"Refractory Chronic Myelogenous Leukemia",
+				"Refractory Chronic Myelogenous Leukemia, BCR-ABL1 Positive",
+				"Refractory Chronic Myeloid Leukemia"
+			],
+			"parents": ["C3174", "C150044", "C170911"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C8030",
+			"preferred_name": "Refractory Hairy Cell Leukemia",
+			"display_name": "Refractory Hairy Cell Leukemia",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{ "idx": 0, "label": "Lymphoid Leukemia", "code": "C7539" },
+								{ "idx": 1, "label": "Leukemia", "code": "C3161" },
+								{
+									"idx": 2,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["subtype"],
+			"synonyms": ["Hairy Cell Leukemia, Refractory"],
+			"parents": ["C7402", "C150044", "C172280"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C8836",
+			"preferred_name": "Refractory Hodgkin Lymphoma",
+			"display_name": "Refractory Hodgkin Lymphoma",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{ "idx": 0, "label": "Hodgkin Lymphoma", "code": "C9357" },
+								{ "idx": 1, "label": "Lymphoma", "code": "C3208" },
+								{
+									"idx": 2,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["subtype"],
+			"synonyms": [
+				"Refractory Hodgkin's Disease",
+				"Refractory Hodgkin's Lymphoma"
+			],
+			"parents": ["C9357", "C134154"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C9070",
+			"preferred_name": "Recurrent Chronic Myelogenous Leukemia, BCR-ABL1 Positive",
+			"display_name": "Recurrent Chronic Myelogenous Leukemia (CML)",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{
+									"idx": 0,
+									"label": "Chronic Myelogenous Leukemia, BCR-ABL1 Positive",
+									"code": "C3174"
+								},
+								{
+									"idx": 1,
+									"label": "Myeloproliferative Neoplasm",
+									"code": "C4345"
+								},
+								{ "idx": 2, "label": "Myeloid Neoplasm", "code": "C9290" },
+								{
+									"idx": 3,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						},
+						{
+							"direction": 1,
+							"concepts": [
+								{
+									"idx": 0,
+									"label": "Chronic Myelogenous Leukemia, BCR-ABL1 Positive",
+									"code": "C3174"
+								},
+								{ "idx": 1, "label": "Myeloid Leukemia", "code": "C3172" },
+								{ "idx": 2, "label": "Myeloid Neoplasm", "code": "C9290" },
+								{
+									"idx": 3,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						},
+						{
+							"direction": 1,
+							"concepts": [
+								{
+									"idx": 0,
+									"label": "Chronic Myelogenous Leukemia, BCR-ABL1 Positive",
+									"code": "C3174"
+								},
+								{ "idx": 1, "label": "Myeloid Leukemia", "code": "C3172" },
+								{ "idx": 2, "label": "Leukemia", "code": "C3161" },
+								{
+									"idx": 3,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["stage"],
+			"synonyms": [
+				"Recurrent Chronic Myelogenous Leukemia",
+				"Recurrent Chronic Myelogenous Leukemia, BCR-ABL1 Positive",
+				"Relapsed CGL",
+				"Relapsed CML",
+				"Relapsed Chronic Myelogenous Leukemia"
+			],
+			"parents": ["C3174", "C150043", "C166142"]
+		},
+		{
+			"inclusion_indicator": "TRIAL",
+			"lead_disease_indicator": "NO",
+			"nci_thesaurus_concept_id": "C9235",
+			"preferred_name": "Systemic Mastocytosis",
+			"display_name": "Systemic Mastocytosis",
+			"paths": [
+				{
+					"paths": [
+						{
+							"direction": 1,
+							"concepts": [
+								{ "idx": 0, "label": "Myeloid Neoplasm", "code": "C9290" },
+								{
+									"idx": 1,
+									"label": "Hematopoietic and Lymphoid Cell Neoplasm",
+									"code": "C27134"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": ["subtype"],
+			"synonyms": [
+				"Systemic Tissue Mast Cell Disease",
+				"Systemic mastocytosis, NOS",
+				"Systemic tissue mast cell disease",
+				"systemic mastocytosis"
+			],
+			"parents": ["C84269"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C150043",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3483", "C148425"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Recurrent Chronic Leukemia",
+			"preferred_name": "Recurrent Chronic Leukemia",
+			"type": ["stage"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C3183",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3167", "C8694"],
+			"lead_disease_indicator": "NO",
+			"display_name": "T Acute Lymphoblastic Leukemia",
+			"preferred_name": "T Acute Lymphoblastic Leukemia",
+			"type": ["subtype"],
+			"synonyms": [
+				"Acute T Cell Leukemia",
+				"Acute T Cell Lymphoblastic Leukemia",
+				"Acute T Cell Lymphocytic Leukemia",
+				"Acute T-Cell Leukemia",
+				"Acute T-Cell Lymphoblastic Leukemia",
+				"Acute T-Cell Lymphocytic Leukemia",
+				"Precursor T-Lymphoblastic Leukemia",
+				"Precursor T-lymphoblastic leukemia (T-cell ALL)",
+				"T-ALL",
+				"T-Acute Lymphoblastic Leukemia",
+				"T-Cell Acute Lymphoblastic Leukemia",
+				"T-Cell Type Acute Leukemia",
+				"T-cell ALL",
+				"T-cell acute lymphoblastic leukemia",
+				"T-cell acute lymphocytic leukemia",
+				"precursor T-lymphoblastic leukemia"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C4741",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3262"],
+			"lead_disease_indicator": "YES",
+			"display_name": "Neoplasm by Morphology",
+			"preferred_name": "Neoplasm by Morphology",
+			"type": ["subtype"],
+			"synonyms": ["Tumor Morphology", "Tumor_Morphology"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C179052",
+			"inclusion_indicator": "TREE",
+			"parents": ["C9308"],
+			"lead_disease_indicator": "NO",
+			"display_name": "B-Cell Lymphoproliferative Disorder",
+			"preferred_name": "B-Cell Lymphoproliferative Disorder",
+			"type": ["subtype"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C27134",
+			"inclusion_indicator": "TREE",
+			"parents": ["C26323", "C35813", "C4741"],
+			"lead_disease_indicator": "YES",
+			"display_name": "Hematopoietic and Lymphoid Cell Neoplasm",
+			"preferred_name": "Hematopoietic and Lymphoid Cell Neoplasm",
+			"type": ["maintype"],
+			"synonyms": [
+				"HEMOLYMPHORETICULAR TUMOR, MALIGNANT",
+				"Hematologic Cancer",
+				"Hematologic Malignancy",
+				"Hematologic Neoplasm",
+				"Hematological Neoplasm",
+				"Hematopoietic Cancer",
+				"Hematopoietic Neoplasm",
+				"Hematopoietic Neoplasms Including Lymphomas",
+				"Hematopoietic and Lymphoid Neoplasm",
+				"Hematopoietic malignancy, NOS",
+				"Malignant Hematologic Neoplasm",
+				"Malignant Hematopoietic Neoplasm",
+				"hematologic cancer"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C7062",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3262"],
+			"lead_disease_indicator": "YES",
+			"display_name": "Neoplasm by Special Category",
+			"preferred_name": "Neoplasm by Special Category",
+			"type": ["subtype"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C3263",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3262"],
+			"lead_disease_indicator": "YES",
+			"display_name": "Neoplasm by Site",
+			"preferred_name": "Neoplasm by Site",
+			"type": ["subtype"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C8696",
+			"inclusion_indicator": "TREE",
+			"parents": ["C172280", "C8694"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Refractory T Lymphoblastic Leukemia/Lymphoma",
+			"preferred_name": "Refractory T Lymphoblastic Leukemia/Lymphoma",
+			"type": ["subtype"],
+			"synonyms": [
+				"Precursor T Lymphoblastic Lymphoma/Leukemia Refractory",
+				"Refractory Precursor T-Lymphoblastic Lymphoma/Leukemia",
+				"Refractory T-Lymphoblastic Leukemia/Lymphoma"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C3262",
+			"inclusion_indicator": "TREE",
+			"parents": ["C2991"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Other Neoplasm",
+			"preferred_name": "Neoplasm",
+			"type": ["maintype"],
+			"synonyms": [
+				"Neoplasia",
+				"Neoplasm",
+				"Neoplasm, NOS",
+				"Neoplasms, NOS",
+				"Neoplastic Disease",
+				"Neoplastic Growth",
+				"Tumor, NOS",
+				"neoplasia",
+				"neoplasm",
+				"tumor"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C27134",
+			"inclusion_indicator": "TREE",
+			"parents": ["C26323", "C35813", "C4741"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Hematopoietic and Lymphoid Cell Neoplasm",
+			"preferred_name": "Hematopoietic and Lymphoid Cell Neoplasm",
+			"type": ["maintype"],
+			"synonyms": [
+				"HEMOLYMPHORETICULAR TUMOR, MALIGNANT",
+				"Hematologic Cancer",
+				"Hematologic Malignancy",
+				"Hematologic Neoplasm",
+				"Hematological Neoplasm",
+				"Hematopoietic Cancer",
+				"Hematopoietic Neoplasm",
+				"Hematopoietic Neoplasms Including Lymphomas",
+				"Hematopoietic and Lymphoid Neoplasm",
+				"Hematopoietic malignancy, NOS",
+				"Malignant Hematologic Neoplasm",
+				"Malignant Hematopoietic Neoplasm",
+				"hematologic cancer"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C2920",
+			"inclusion_indicator": "TREE",
+			"parents": ["C9305", "C3372"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Malignant Skin Neoplasm",
+			"preferred_name": "Malignant Skin Neoplasm",
+			"type": ["subtype"],
+			"synonyms": [
+				"Malignant Neoplasm of Skin",
+				"Malignant Neoplasm of the Skin",
+				"Malignant Skin Tumor",
+				"Malignant Tumor of Skin",
+				"Malignant Tumor of the Skin",
+				"Melanoma and Non-Melanoma Skin Cancer",
+				"Skin Cancer",
+				"Skin Cancer, Including Melanoma",
+				"Skin Neoplasm, Malignant",
+				"Skin cancer, NOS",
+				"skin cancer"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C35814",
+			"inclusion_indicator": "TREE",
+			"parents": ["C27551"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Hematopoietic and Lymphoid System Disorder",
+			"preferred_name": "Hematopoietic and Lymphoid System Disorder",
+			"type": ["subtype"],
+			"synonyms": ["Hematopoietic and Lymphoid System Disease"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C7057",
+			"inclusion_indicator": "TREE",
+			"parents": [],
+			"lead_disease_indicator": "YES",
+			"display_name": "Disease, Disorder or Finding",
+			"preferred_name": "Disease, Disorder or Finding",
+			"type": [],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C7062",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3262"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Neoplasm by Special Category",
+			"preferred_name": "Neoplasm by Special Category",
+			"type": ["subtype"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C27908",
+			"inclusion_indicator": "TREE",
+			"parents": ["C7065", "C179053"],
+			"lead_disease_indicator": "NO",
+			"display_name": "T-Cell and NK-Cell Neoplasm",
+			"preferred_name": "T-Cell and NK-Cell Neoplasm",
+			"type": ["subtype"],
+			"synonyms": ["T-Cell Neoplasm"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C4798",
+			"inclusion_indicator": "TREE",
+			"parents": ["C7062"],
+			"lead_disease_indicator": "YES",
+			"display_name": "Recurrent Neoplasm",
+			"preferred_name": "Recurrent Neoplasm",
+			"type": ["stage"],
+			"synonyms": [
+				"Neoplasm Recurrence",
+				"Recurrence",
+				"Recurrent",
+				"Recurrent Tumor",
+				"Recurrent tumor",
+				"recurrence"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C120186",
+			"inclusion_indicator": "TREE",
+			"parents": ["C9305", "C7628"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Refractory Malignant Neoplasm",
+			"preferred_name": "Refractory Malignant Neoplasm",
+			"type": ["subtype"],
+			"synonyms": [
+				"Refractory Cancer",
+				"clinical resistance",
+				"refractory cancer",
+				"resistant cancer"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C2991",
+			"inclusion_indicator": "TREE",
+			"parents": ["C7057"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Other Disease",
+			"preferred_name": "Disease or Disorder",
+			"type": ["maintype"],
+			"synonyms": [
+				"Diagnosis",
+				"Disease",
+				"Disease or Disorder",
+				"Disease or Disorder, Non-Neoplastic",
+				"Diseases",
+				"Diseases and Disorders",
+				"Disorder",
+				"Disorders",
+				"condition",
+				"disease",
+				"disease term",
+				"disease type",
+				"disease_term",
+				"disease_type",
+				"disorder"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C4813",
+			"inclusion_indicator": "TREE",
+			"parents": ["C9305", "C4798"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Recurrent Malignant Neoplasm",
+			"preferred_name": "Recurrent Malignant Neoplasm",
+			"type": ["stage"],
+			"synonyms": [
+				"Recurrence",
+				"Recurrent Cancer",
+				"Recurrent Malignant Tumor",
+				"recurrence",
+				"recurrent cancer"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C27907",
+			"inclusion_indicator": "TREE",
+			"parents": ["C179052", "C7065"],
+			"lead_disease_indicator": "NO",
+			"display_name": "B-Cell Neoplasm",
+			"preferred_name": "B-Cell Neoplasm",
+			"type": ["subtype"],
+			"synonyms": ["B-Cell Lymphocytic Neoplasm"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C4798",
+			"inclusion_indicator": "TREE",
+			"parents": ["C7062"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Recurrent Neoplasm",
+			"preferred_name": "Recurrent Neoplasm",
+			"type": ["stage"],
+			"synonyms": [
+				"Neoplasm Recurrence",
+				"Recurrence",
+				"Recurrent",
+				"Recurrent Tumor",
+				"Recurrent tumor",
+				"recurrence"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C148429",
+			"inclusion_indicator": "TREE",
+			"parents": ["C9300", "C148425"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Recurrent Acute Leukemia",
+			"preferred_name": "Recurrent Acute Leukemia",
+			"type": ["stage"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C2991",
+			"inclusion_indicator": "TREE",
+			"parents": ["C7057"],
+			"lead_disease_indicator": "YES",
+			"display_name": "Other Disease",
+			"preferred_name": "Disease or Disorder",
+			"type": ["maintype"],
+			"synonyms": [
+				"Diagnosis",
+				"Disease",
+				"Disease or Disorder",
+				"Disease or Disorder, Non-Neoplastic",
+				"Diseases",
+				"Diseases and Disorders",
+				"Disorder",
+				"Disorders",
+				"condition",
+				"disease",
+				"disease term",
+				"disease type",
+				"disease_term",
+				"disease_type",
+				"disorder"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C8694",
+			"inclusion_indicator": "TREE",
+			"parents": ["C7055", "C27908"],
+			"lead_disease_indicator": "NO",
+			"display_name": "T Lymphoblastic Leukemia/Lymphoma",
+			"preferred_name": "T Lymphoblastic Leukemia/Lymphoma",
+			"type": ["subtype"],
+			"synonyms": [
+				"Precursor T Lymphoblastic Leukemia/Lymphoma",
+				"Precursor T Lymphoblastic Lymphoma/Leukemia",
+				"Precursor T-Lymphoblastic Lymphoma/Leukemia",
+				"T lymphoblastic leukemia/lymphoma",
+				"T-Lymphoblastic Leukemia/Lymphoma"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C3263",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3262"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Neoplasm by Site",
+			"preferred_name": "Neoplasm by Site",
+			"type": ["subtype"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C3371",
+			"inclusion_indicator": "TREE",
+			"parents": ["C27551"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Skin Disorder",
+			"preferred_name": "Skin Disorder",
+			"type": ["subtype"],
+			"synonyms": [
+				"Cutaneous Disorder",
+				"Dermatologic Disorder",
+				"Disorder of Skin",
+				"Skin Diseases and Manifestations",
+				"Skin Disorders"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C9300",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3161"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Acute Leukemia",
+			"preferred_name": "Acute Leukemia",
+			"type": ["subtype"],
+			"synonyms": ["acute leukemia"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C9308",
+			"inclusion_indicator": "TREE",
+			"parents": ["C26323"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Lymphoproliferative Disorder",
+			"preferred_name": "Lymphoproliferative Disorder",
+			"type": ["subtype"],
+			"synonyms": [
+				"Lymphoproliferative disease, NOS",
+				"Lymphoproliferative disorder, NOS",
+				"lymphoproliferative disorder"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C26323",
+			"inclusion_indicator": "TREE",
+			"parents": ["C35814"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Hematologic and Lymphocytic Disorder",
+			"preferred_name": "Hematologic and Lymphocytic Disorder",
+			"type": ["subtype"],
+			"synonyms": [
+				"Blood Disease",
+				"Blood Disorder",
+				"Hematologic Disorder",
+				"Hematological Disorder"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C134157",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3208", "C172133"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Recurrent Lymphoma",
+			"preferred_name": "Recurrent Lymphoma",
+			"type": ["stage"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C9290",
+			"inclusion_indicator": "TREE",
+			"parents": ["C27134"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Myeloid Neoplasm",
+			"preferred_name": "Myeloid Neoplasm",
+			"type": ["maintype", "subtype"],
+			"synonyms": ["Myeloid Malignancy", "Myeloid Tumor"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C157686",
+			"inclusion_indicator": "TREE",
+			"parents": ["C9308"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Refractory Lymphoproliferative Disorder",
+			"preferred_name": "Refractory Lymphoproliferative Disorder",
+			"type": ["subtype"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C84269",
+			"inclusion_indicator": "TREE",
+			"parents": ["C9295"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Mastocytosis",
+			"preferred_name": "Mastocytosis",
+			"type": ["subtype"],
+			"synonyms": ["Mast Cell Disease"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C3172",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3161", "C35501", "C9290"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Myeloid Leukemia",
+			"preferred_name": "Myeloid Leukemia",
+			"type": ["maintype", "subtype"],
+			"synonyms": [
+				"LEUKEMIA, GRANULOCYTIC, MALIGNANT",
+				"Leukemia Granulocytic",
+				"Leukemia Myeloid",
+				"Myelocytic Leukemia",
+				"Myelogenous Leukemia",
+				"Myeloid leukemia, NOS",
+				"Non-Lymphoblastic Leukemia",
+				"Non-Lymphocytic Leukemia",
+				"Non-lymphoblastic Leukemia",
+				"Non-lymphocytic Leukemia"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C172281",
+			"inclusion_indicator": "TREE",
+			"parents": ["C9290", "C27357"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Refractory Myeloid Neoplasm",
+			"preferred_name": "Refractory Myeloid Neoplasm",
+			"type": ["subtype"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C27358",
+			"inclusion_indicator": "TREE",
+			"parents": ["C27134", "C4813"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Recurrent Hematopoietic and Lymphoid Cell Neoplasm",
+			"preferred_name": "Recurrent Hematologic Malignancy",
+			"type": ["stage"],
+			"synonyms": [
+				"Recurrent Hematologic Cancer",
+				"Recurrent Hematologic Malignancy",
+				"Relapsed Hematologic Cancer",
+				"Relapsed Hematologic Malignancy"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C3161",
+			"inclusion_indicator": "TREE",
+			"parents": ["C27134", "C9305"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Leukemia",
+			"preferred_name": "Leukemia",
+			"type": ["maintype", "subtype"],
+			"synonyms": [
+				"Blood (Leukemia)",
+				"LEUKEMIA, MALIGNANT",
+				"Leukemia NOS",
+				"Leukemia, Disease",
+				"Leukemia, NOS",
+				"Leukemias",
+				"Leukemias, General",
+				"leukemia"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C3372",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3263", "C3371"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Skin Tumor",
+			"preferred_name": "Skin Neoplasm",
+			"type": ["subtype"],
+			"synonyms": [
+				"Neoplasm of Skin",
+				"Neoplasm of the Skin",
+				"Skin Neoplasm",
+				"Skin Neoplasms",
+				"Tumor of Skin",
+				"Tumor of the Skin"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C142810",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3167", "C148429", "C172133"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Recurrent Acute Lymphoblastic Leukemia",
+			"preferred_name": "Recurrent Acute Lymphoblastic Leukemia",
+			"type": ["stage"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C35501",
+			"inclusion_indicator": "TREE",
+			"parents": ["C35370", "C9305"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Malignant Bone Marrow Neoplasm",
+			"preferred_name": "Malignant Bone Marrow Neoplasm",
+			"type": ["subtype"],
+			"synonyms": ["Malignant Bone Marrow Tumor", "bone marrow cancer"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C7057",
+			"inclusion_indicator": "TREE",
+			"parents": [],
+			"lead_disease_indicator": "NO",
+			"display_name": "Disease, Disorder or Finding",
+			"preferred_name": "Disease, Disorder or Finding",
+			"type": [],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C172280",
+			"inclusion_indicator": "TREE",
+			"parents": ["C7065", "C27357", "C157686"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Refractory Malignant Lymphoid Neoplasm",
+			"preferred_name": "Refractory Malignant Lymphoid Neoplasm",
+			"type": ["subtype"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C9305",
+			"inclusion_indicator": "TREE",
+			"parents": ["C7062"],
+			"lead_disease_indicator": "YES",
+			"display_name": "Malignant Neoplasm",
+			"preferred_name": "Malignant Neoplasm",
+			"type": ["subtype"],
+			"synonyms": [
+				"CA",
+				"Cancer",
+				"Malignancy",
+				"Malignant Growth",
+				"Malignant Neoplastic Disease",
+				"Malignant Tumor",
+				"NEOPLASM, MALIGNANT",
+				"Neoplasm, malignant",
+				"Tumor, malignant, NOS",
+				"Unclassified tumor, malignant",
+				"cancer",
+				"malignancy"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C27551",
+			"inclusion_indicator": "TREE",
+			"parents": ["C2991"],
+			"lead_disease_indicator": "YES",
+			"display_name": "Disorder by Site",
+			"preferred_name": "Disorder by Site",
+			"type": ["subtype"],
+			"synonyms": ["Disease by Site"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C7628",
+			"inclusion_indicator": "TREE",
+			"parents": ["C7062"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Refractory Neoplasm",
+			"preferred_name": "Refractory Neoplasm",
+			"type": ["subtype"],
+			"synonyms": ["Refractory Tumor", "Refractory tumor"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C35370",
+			"inclusion_indicator": "TREE",
+			"parents": ["C34433", "C35813"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Bone Marrow Neoplasm",
+			"preferred_name": "Bone Marrow Neoplasm",
+			"type": ["subtype"],
+			"synonyms": ["Bone Marrow Tumor", "Neoplasm of Bone Marrow"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C26323",
+			"inclusion_indicator": "TREE",
+			"parents": ["C35814"],
+			"lead_disease_indicator": "YES",
+			"display_name": "Hematologic and Lymphocytic Disorder",
+			"preferred_name": "Hematologic and Lymphocytic Disorder",
+			"type": ["subtype"],
+			"synonyms": [
+				"Blood Disease",
+				"Blood Disorder",
+				"Hematologic Disorder",
+				"Hematological Disorder"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C3483",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3161"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Chronic Leukemia",
+			"preferred_name": "Chronic Leukemia",
+			"type": ["subtype"],
+			"synonyms": ["Chronic leukemia, NOS", "chronic leukemia"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C8936",
+			"inclusion_indicator": "TREE",
+			"parents": ["C27907", "C7055"],
+			"lead_disease_indicator": "NO",
+			"display_name": "B Lymphoblastic Leukemia/Lymphoma",
+			"preferred_name": "B Lymphoblastic Leukemia/Lymphoma",
+			"type": ["subtype"],
+			"synonyms": [
+				"B-Lymphoblastic Leukemia/Lymphoma",
+				"Precursor B Lymphoblastic Leukemia/Lymphoma",
+				"Precursor B-Lymphoblastic Lymphoma/Leukemia"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C172132",
+			"inclusion_indicator": "TREE",
+			"parents": ["C9290", "C27358"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Recurrent Myeloid Neoplasm",
+			"preferred_name": "Recurrent Myeloid Neoplasm",
+			"type": ["stage"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C8644",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3167", "C8936"],
+			"lead_disease_indicator": "NO",
+			"display_name": "B Acute Lymphoblastic Leukemia",
+			"preferred_name": "B Acute Lymphoblastic Leukemia",
+			"type": ["subtype"],
+			"synonyms": [
+				"Acute B Cell Lymphocytic Leukemia",
+				"Acute B-Cell Lymphocytic Leukemia",
+				"B Cell Acute Lymphocytic Leukemia",
+				"B Cell Precursor Type Acute Leukemia",
+				"B-ALL",
+				"B-Acute Lymphoblastic Leukemia",
+				"B-Cell ALL",
+				"B-Cell Acute Lymphoblastic Leukemia",
+				"B-Cell Acute Lymphocytic Leukemia",
+				"B-Cell Lymphoblastic Leukemia",
+				"B-Cell Precursor Type Acute Leukemia",
+				"B-Cell Type Acute Leukemia",
+				"B-cell acute lymphoblastic leukemia",
+				"B-cell acute lymphocytic leukemia",
+				"B-precursor ALL",
+				"Precursor B-Lymphoblastic Leukemia",
+				"Precursor B-cell lymphoblastic leukemia",
+				"Precursor B-lymphoblastic leukemia (B-precursor ALL)",
+				"precursor B-lymphoblastic leukemia"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C9305",
+			"inclusion_indicator": "TREE",
+			"parents": ["C7062"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Malignant Neoplasm",
+			"preferred_name": "Malignant Neoplasm",
+			"type": ["subtype"],
+			"synonyms": [
+				"CA",
+				"Cancer",
+				"Malignancy",
+				"Malignant Growth",
+				"Malignant Neoplastic Disease",
+				"Malignant Tumor",
+				"NEOPLASM, MALIGNANT",
+				"Neoplasm, malignant",
+				"Tumor, malignant, NOS",
+				"Unclassified tumor, malignant",
+				"cancer",
+				"malignancy"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C27357",
+			"inclusion_indicator": "TREE",
+			"parents": ["C27134", "C120186"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Refractory Hematologic Malignancy",
+			"preferred_name": "Refractory Hematologic Malignancy",
+			"type": ["subtype"],
+			"synonyms": ["Refractory Hematologic Cancer"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C9295",
+			"inclusion_indicator": "TREE",
+			"parents": ["C7201", "C9290"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Mast Cell Neoplasm",
+			"preferred_name": "Mast Cell Neoplasm",
+			"type": ["subtype"],
+			"synonyms": [
+				"Mast Cell Proliferative Disease",
+				"Mast Cell Tumor",
+				"Mast Cell Tumors",
+				"Mast cell tumor, NOS",
+				"Neoplasm of Mast Cells",
+				"Neoplasm of the Mast Cells",
+				"Tumor of Mast Cells",
+				"Tumor of the Mast Cells",
+				"mast cell tumor"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C3174",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3172", "C4345"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Chronic Myelogenous Leukemia (CML)",
+			"preferred_name": "Chronic Myelogenous Leukemia, BCR-ABL1 Positive",
+			"type": ["maintype", "subtype"],
+			"synonyms": [
+				"BCR-ABL Positive Chronic Myelogenous Leukemia",
+				"CML",
+				"CML - Chronic Myelogenous Leukemia",
+				"Chronic Granulocytic Leukemia",
+				"Chronic Myelocytic Leukemia",
+				"Chronic Myelogenous Leukemia",
+				"Chronic Myelogenous Leukemia, BCR-ABL1 Positive",
+				"Chronic Myelogenous Leukemias",
+				"Chronic Myeloid Leukemia",
+				"Chronic myelogenous leukemia, BCR-ABL positive",
+				"Hematopoeitic - Chronic Myelocytic Leukemia (CML)",
+				"chronic granulocytic leukemia",
+				"chronic myelogenous leukemia",
+				"chronic myeloid leukemia"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C7539",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3161", "C7065"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Lymphoid Leukemia",
+			"preferred_name": "Lymphoid Leukemia",
+			"type": ["maintype", "subtype"],
+			"synonyms": [
+				"LEUKEMIA, LYMPHOCYTIC, MALIGNANT",
+				"Lymphocytic Leukemia",
+				"Lymphogenous Leukemia",
+				"Lymphoid leukemia, NOS",
+				"lymphocytic leukemia"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C7203",
+			"inclusion_indicator": "TREE",
+			"parents": ["C45240", "C2920", "C9290"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Blastic Plasmacytoid Dendritic Cell Neoplasm",
+			"preferred_name": "Blastic Plasmacytoid Dendritic Cell Neoplasm",
+			"type": ["subtype"],
+			"synonyms": [
+				"Agranular CD4+ CD56+ Hematodermic Neoplasm/Tumor",
+				"Agranular CD4+ Natural Killer Cell Leukemia",
+				"BPDCN",
+				"Blastic NK-Cell Lymphoma",
+				"Blastic Natural Killer Leukemia/Lymphoma",
+				"Blastic plasmacytoid dendritic cell neoplasm",
+				"CD4+/CD56+ Hematodermic Neoplasm",
+				"Monomorphic NK-Cell Lymphoma"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C4345",
+			"inclusion_indicator": "TREE",
+			"parents": ["C35501", "C9290"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Chronic Myeloproliferative Disease",
+			"preferred_name": "Myeloproliferative Neoplasm",
+			"type": ["maintype", "subtype"],
+			"synonyms": [
+				"CMPD",
+				"Chronic Myeloproliferative Disorder",
+				"Chronic Myeloproliferative Disorders",
+				"Chronic Myeloproliferative Neoplasm",
+				"Chronic myeloproliferative disease, NOS",
+				"Chronic myeloproliferative disorder",
+				"MPD",
+				"MPN",
+				"Myeloproliferative Disease",
+				"Myeloproliferative Disorder",
+				"Myeloproliferative Neoplasm",
+				"Myeloproliferative Tumor",
+				"Myeloproliferative disease, NOS",
+				"Myeloproliferative neoplasm, NOS",
+				"myeloproliferative disorder"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C150545",
+			"inclusion_indicator": "TREE",
+			"parents": ["C2920", "C4813"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Recurrent Malignant Skin Neoplasm",
+			"preferred_name": "Recurrent Malignant Skin Neoplasm",
+			"type": ["stage"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C7055",
+			"inclusion_indicator": "TREE",
+			"parents": ["C7065", "C9305"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Precursor Lymphoid Neoplasm",
+			"preferred_name": "Precursor Lymphoid Neoplasm",
+			"type": ["subtype"],
+			"synonyms": [
+				"Precursor Lymphoblastic Leukemia/Lymphoma",
+				"Precursor Lymphoblastic Lymphoma/Leukemia"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C166142",
+			"inclusion_indicator": "TREE",
+			"parents": ["C4345", "C172132"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Recurrent Myeloproliferative Neoplasm",
+			"preferred_name": "Recurrent Myeloproliferative Neoplasm",
+			"type": ["stage"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C35813",
+			"inclusion_indicator": "TREE",
+			"parents": ["C35814", "C3263"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Hematopoietic and Lymphoid System Neoplasm",
+			"preferred_name": "Hematopoietic and Lymphoid System Neoplasm",
+			"type": ["subtype"],
+			"synonyms": ["Hematopoietic and Lymphoid System Tumor"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C27551",
+			"inclusion_indicator": "TREE",
+			"parents": ["C2991"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Disorder by Site",
+			"preferred_name": "Disorder by Site",
+			"type": ["subtype"],
+			"synonyms": ["Disease by Site"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C3208",
+			"inclusion_indicator": "TREE",
+			"parents": ["C7065", "C9305"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Lymphoma",
+			"preferred_name": "Lymphoma",
+			"type": ["maintype", "subtype"],
+			"synonyms": [
+				"LYMPHOMA, MALIGNANT",
+				"Lymphoma (Hodgkin and Non-Hodgkin)",
+				"Lymphoma (Hodgkin's and Non-Hodgkin's)",
+				"Lymphoma, NOS",
+				"Lymphomatous",
+				"Malignant Lymphoma",
+				"lymphoma"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C148431",
+			"inclusion_indicator": "TREE",
+			"parents": ["C9300", "C148426"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Refractory Acute Leukemia",
+			"preferred_name": "Refractory Acute Leukemia",
+			"type": ["subtype"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C3167",
+			"inclusion_indicator": "TREE",
+			"parents": ["C9300", "C7539", "C7055"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Acute Lymphoblastic Leukemia (ALL)",
+			"preferred_name": "Acute Lymphoblastic Leukemia",
+			"type": ["maintype", "subtype"],
+			"synonyms": [
+				"ALL",
+				"ALL - Acute Lymphocytic Leukemia",
+				"ALL_TYPE",
+				"Acute Lymphoblastic Leukemia",
+				"Acute Lymphocytic Leukaemia",
+				"Acute Lymphocytic Leukemia",
+				"Acute Lymphocytic Leukemias",
+				"Acute Lymphogenous Leukemia",
+				"Acute Lymphoid Leukemia",
+				"Acute lymphatic leukemia",
+				"Acute lymphoblastic leukemia",
+				"Acute lymphoblastic leukemia (ALL)",
+				"Acute lymphoblastic leukemia, NOS",
+				"Acute lymphoblastic leukemia, precursor cell type",
+				"Acute lymphocytic leukemia",
+				"Acute lymphoid leukemia",
+				"LEUKEMIA, LYMPHOBLASTIC, MALIGNANT",
+				"Lymphoblastic Leukemia",
+				"Lymphoblastic leukemia, NOS",
+				"Precursor Cell Lymphoblastic Leukemia",
+				"Precursor Lymphoblasic Leukemia",
+				"Precursor Lymphoblastic Leukemia",
+				"Precursor cell lymphoblastic leukemia, NOS",
+				"acute lymphoblastic leukemia",
+				"acute lymphocytic leukemia"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C7402",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3483", "C7539", "C27910"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Hairy Cell Leukemia",
+			"preferred_name": "Hairy Cell Leukemia",
+			"type": ["subtype"],
+			"synonyms": [
+				"HCL",
+				"Hairy cell leukemia",
+				"Leukemic Reticuloendotheliosis",
+				"Leukemic reticuloendotheliosis",
+				"hairy cell leukemia"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C34433",
+			"inclusion_indicator": "TREE",
+			"parents": ["C35814"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Bone Marrow Disorder",
+			"preferred_name": "Bone Marrow Disorder",
+			"type": ["subtype"],
+			"synonyms": ["Bone Marrow Disease"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C147861",
+			"inclusion_indicator": "TREE",
+			"parents": ["C9308"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Recurrent Lymphoproliferative Disorder",
+			"preferred_name": "Recurrent Lymphoproliferative Disorder",
+			"type": ["stage"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C134154",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3208", "C172280"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Refractory Lymphoma",
+			"preferred_name": "Refractory Lymphoma",
+			"type": ["subtype"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C150044",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3483", "C148426"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Refractory Chronic Leukemia",
+			"preferred_name": "Refractory Chronic Leukemia",
+			"type": ["subtype"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C45240",
+			"inclusion_indicator": "TREE",
+			"parents": ["C27134", "C3372"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Cutaneous Hematopoietic and Lymphoid Cell Neoplasm",
+			"preferred_name": "Cutaneous Hematopoietic and Lymphoid Cell Neoplasm",
+			"type": ["subtype"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C3262",
+			"inclusion_indicator": "TREE",
+			"parents": ["C2991"],
+			"lead_disease_indicator": "YES",
+			"display_name": "Other Neoplasm",
+			"preferred_name": "Neoplasm",
+			"type": ["maintype"],
+			"synonyms": [
+				"Neoplasia",
+				"Neoplasm",
+				"Neoplasm, NOS",
+				"Neoplasms, NOS",
+				"Neoplastic Disease",
+				"Neoplastic Growth",
+				"Tumor, NOS",
+				"neoplasia",
+				"neoplasm",
+				"tumor"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C170911",
+			"inclusion_indicator": "TREE",
+			"parents": ["C4345", "C172281"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Refractory Myeloproliferative Neoplasm",
+			"preferred_name": "Refractory Myeloproliferative Neoplasm",
+			"type": ["subtype"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C7201",
+			"inclusion_indicator": "TREE",
+			"parents": ["C7062"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Infrequent Neoplasm",
+			"preferred_name": "Infrequent Neoplasm",
+			"type": ["subtype"],
+			"synonyms": ["Infrequent Tumor"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C35814",
+			"inclusion_indicator": "TREE",
+			"parents": ["C27551"],
+			"lead_disease_indicator": "YES",
+			"display_name": "Hematopoietic and Lymphoid System Disorder",
+			"preferred_name": "Hematopoietic and Lymphoid System Disorder",
+			"type": ["subtype"],
+			"synonyms": ["Hematopoietic and Lymphoid System Disease"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C179053",
+			"inclusion_indicator": "TREE",
+			"parents": ["C9308"],
+			"lead_disease_indicator": "NO",
+			"display_name": "T/NK-Cell Lymphoproliferative Disorder",
+			"preferred_name": "T/NK-Cell Lymphoproliferative Disorder",
+			"type": ["subtype"],
+			"synonyms": ["T-Cell Lymphoproliferative Disorder"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C7065",
+			"inclusion_indicator": "TREE",
+			"parents": ["C27134", "C9308"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Lymphocytic Neoplasm",
+			"preferred_name": "Lymphocytic Neoplasm",
+			"type": ["subtype"],
+			"synonyms": [
+				"Lymphocytic Tumor",
+				"Lymphocytic and Plasma Cell Neoplasm",
+				"Lymphocytic and Plasma Cell Tumor",
+				"Lymphocytic and Plasma Cell Tumour",
+				"Lymphocytic and Plasmacytic Neoplasm",
+				"Lymphoid Neoplasm",
+				"Lymphoid Tumor",
+				"Lymphoid and Plasma Cell Tumor",
+				"Lymphoid and Plasma Cell Tumour",
+				"Lymphoid and Plasmacytic Neoplasm",
+				"Lymphoid and Plasmacytic Tumor",
+				"Lymphoid and Plasmacytic Tumour"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C4741",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3262"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Neoplasm by Morphology",
+			"preferred_name": "Neoplasm by Morphology",
+			"type": ["subtype"],
+			"synonyms": ["Tumor Morphology", "Tumor_Morphology"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C35813",
+			"inclusion_indicator": "TREE",
+			"parents": ["C35814", "C3263"],
+			"lead_disease_indicator": "YES",
+			"display_name": "Hematopoietic and Lymphoid System Neoplasm",
+			"preferred_name": "Hematopoietic and Lymphoid System Neoplasm",
+			"type": ["subtype"],
+			"synonyms": ["Hematopoietic and Lymphoid System Tumor"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C8695",
+			"inclusion_indicator": "TREE",
+			"parents": ["C172133", "C8694"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Recurrent T Lymphoblastic Leukemia/Lymphoma",
+			"preferred_name": "Recurrent T Lymphoblastic Leukemia/Lymphoma",
+			"type": ["stage"],
+			"synonyms": [
+				"Recurrent Precursor T-Lymphoblastic Lymphoma/Leukemia",
+				"Recurrent T-Lymphoblastic Leukemia/Lymphoma",
+				"Relapsed Precursor T Lymphoblastic Lymphoma/Leukemia"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C172133",
+			"inclusion_indicator": "TREE",
+			"parents": ["C7065", "C27358", "C147861"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Recurrent Malignant Lymphoid Neoplasm",
+			"preferred_name": "Recurrent Malignant Lymphoid Neoplasm",
+			"type": ["stage"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C148425",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3161", "C27358"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Recurrent Leukemia",
+			"preferred_name": "Recurrent Leukemia",
+			"type": ["stage"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C150546",
+			"inclusion_indicator": "TREE",
+			"parents": ["C2920", "C120186"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Refractory Malignant Skin Neoplasm",
+			"preferred_name": "Refractory Malignant Skin Neoplasm",
+			"type": ["subtype"],
+			"synonyms": []
+		},
+		{
+			"nci_thesaurus_concept_id": "C148426",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3161", "C27357"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Advanced Leukemia",
+			"preferred_name": "Refractory Leukemia",
+			"type": ["subtype"],
+			"synonyms": ["Refractory Leukemia"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C136488",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3167", "C148431", "C172280"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Refractory Acute Lymphoblastic Leukemia (ALL)",
+			"preferred_name": "Refractory Acute Lymphoblastic Leukemia",
+			"type": ["subtype"],
+			"synonyms": ["Refractory Acute Lymphoblastic Leukemia"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C4813",
+			"inclusion_indicator": "TREE",
+			"parents": ["C9305", "C4798"],
+			"lead_disease_indicator": "YES",
+			"display_name": "Recurrent Malignant Neoplasm",
+			"preferred_name": "Recurrent Malignant Neoplasm",
+			"type": ["stage"],
+			"synonyms": [
+				"Recurrence",
+				"Recurrent Cancer",
+				"Recurrent Malignant Tumor",
+				"recurrence",
+				"recurrent cancer"
+			]
+		},
+		{
+			"nci_thesaurus_concept_id": "C27910",
+			"inclusion_indicator": "TREE",
+			"parents": ["C27907"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Mature B-Cell Neoplasm",
+			"preferred_name": "Mature B-Cell Neoplasm",
+			"type": ["subtype"],
+			"synonyms": ["Mature B-Cell Lymphocytic Neoplasm"]
+		},
+		{
+			"nci_thesaurus_concept_id": "C9357",
+			"inclusion_indicator": "TREE",
+			"parents": ["C3208"],
+			"lead_disease_indicator": "NO",
+			"display_name": "Hodgkin Lymphoma",
+			"preferred_name": "Hodgkin Lymphoma",
+			"type": ["maintype", "subtype"],
+			"synonyms": [
+				"HL",
+				"Hodgkin Lymphoma, NOS",
+				"Hodgkin disease",
+				"Hodgkin disease, NOS",
+				"Hodgkin lymphoma",
+				"Hodgkin lymphoma, NOS",
+				"Hodgkin's Disease",
+				"Hodgkin's Lymphoma",
+				"Malignant lymphoma, Hodgkin"
+			]
+		}
+	],
+	"keywords": null,
+	"lead_org": "City of Hope Comprehensive Cancer Center",
+	"other_ids": null,
+	"biomarkers": [
+		{
+			"name": "IL3RA Positive",
+			"synonyms": [
+				"IL3RX Positive",
+				"IL-3 Receptor Subunit Alpha Positive",
+				"CD123 Positive",
+				"CD123 Antigen Positive",
+				"Interleukin 3 Receptor Alpha Chain Positive",
+				"IL-3R-Alpha Positive",
+				"IL3R Positive",
+				"IL-3R Subunit Alpha Positive",
+				"IL-3RA Positive",
+				"IL3R-Alpha Positive",
+				"Interleukin-3 Receptor Subunit Alpha Positive",
+				"Interleukin 3 Receptor Alpha Positive",
+				"Interleukin 3 Receptor Positive",
+				"Low Affinity Interleukin 3 Receptor Alpha Positive"
+			],
+			"long_name": "Interleukin-3 Receptor Subunit Alpha Positive",
+			"assay_purpose": "Eligibility Criterion - Inclusion",
+			"hugo_biomarker_code": null,
+			"nci_thesaurus_concept_id": "C132655",
+			"eligibility_criterion": "inclusion"
+		}
+	],
+	"start_date": "2020-11-18",
+	"brief_title": "Flotetuzumab for the Treatment of Relapsed or Refractory Advanced CD123-Positive Hematological Malignancies",
+	"eligibility": {
+		"structured": {
+			"gender": "BOTH",
+			"max_age": "999 Years",
+			"min_age": "12 Years",
+			"max_age_unit": "Years",
+			"min_age_unit": "Years",
+			"max_age_number": 999,
+			"min_age_number": 12,
+			"max_age_in_years": 999,
+			"min_age_in_years": 12
+		},
+		"unstructured": [
+			{
+				"description": "Documented informed consent of the participant and/or legally authorized representative\r\n* Assent, when appropriate, will be obtained per institutional guidelines",
+				"display_order": 1,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Agreement to allow the use of archival tissue from diagnostic tumor biopsies\r\n* If unavailable, exceptions may be granted with study principal investigator (PI) approval",
+				"display_order": 2,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Eastern Cooperative Oncology Group (ECOG) =< 2",
+				"display_order": 3,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Histologically confirmed diagnosis of\r\n* Cohort A. Acute lymphoblastic leukemia\r\n** B-cell phenotype: patients with relapsed or refractory ALL who have received at least 2 prior regimens and failed or are ineligible for CD19-based targeted therapy\r\n** T-cell phenotype: patients with relapsed or refractory who have received at least 1 prior regimen\r\n* Cohort B. Other CD123+ hematological malignancies that failed standard regimens, excluding acute myeloid leukemia and myelodysplastic syndrome\r\n** Blastic plasmacytoid dendritic cell neoplasm (BPDCN) patients who have failed or relapsed after initial therapy\r\n** Chronic myelocytic leukemia (CML) patients who have failed or relapsed or ineligible for third generation tyrosine kinase inhibitor (ponatinib)\r\n** Hairy cell leukemia patients who have failed or progressed shortly after purine analogs or failed 2 cycles of purine analog\r\n** Systemic mastocytosis patients who have failed or progressed on midostaurin\r\n** Hodgkin lymphoma patients who have failed or relapsed after PD-1/PD-L1- inhibitors and brentuximab vedotin\r\n** Advanced acute leukemia patients with ambiguous lineage or biphenotypic leukemia that failed 2 lines of prior regimens\r\n** Patients with any other advanced CD123+ hematological malignancy who have failed standard therapy per the treating physician’s judgement",
+				"display_order": 4,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Relapsed or refractory disease as defined above",
+				"display_order": 5,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Tumor expressing CD123 either by flow cytometry or immunohistochemistry staining",
+				"display_order": 6,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Measurable disease of at least 1.5 cm on computed tomography (CT)/magnetic resonance imaging (MRI) for cases without bone marrow involvement",
+				"display_order": 7,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Peripheral blast count < 20,000/ul at the time of initiation of infusion on Cycle 1 Day 1",
+				"display_order": 8,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Life expectancy of at least 4 weeks",
+				"display_order": 9,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Fully recovered from the acute toxic effects (except grade 2 peripheral neuropathy, alopecia or other toxicities from prior anti-tumor therapy that are considered irreversible at principal investigator [PI] discretion) to =< grade 1 to prior anti-cancer therapy",
+				"display_order": 10,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Absolute neutrophil count (ANC) >= 1000/ul (without bone marrow involvement, performed within 14 days prior to day 1 of protocol therapy)",
+				"display_order": 11,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Platelets >= 75,000/ul (without bone marrow involvement, performed within 14 days prior to day 1 of protocol therapy)",
+				"display_order": 12,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Lumbar puncture to assess presence of central nervous system (CNS) disease if there are symptoms and signs concerning for CNS involvement (performed within 14 days prior to day 1 of protocol therapy)",
+				"display_order": 13,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Total bilirubin =< 1.5 X upper limit of normal (ULN) (unless has Gilbert’s disease) (performed within 14 days prior to day 1 of protocol therapy)",
+				"display_order": 14,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Aspartate aminotransferase (AST) =< 2.5 x ULN (performed within 14 days prior to day 1 of protocol therapy)",
+				"display_order": 15,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Alanine aminotransferase (ALT) =< 2.5 x ULN (performed within 14 days prior to day 1 of protocol therapy)",
+				"display_order": 16,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Left ventricular ejection fraction (LVEF) >= 50%. Note: To be performed within 28 days prior to day 1 of protocol therapy",
+				"display_order": 17,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Corrected QT (QTc) =< 480 ms. Note: To be performed within 28 days prior to day 1 of protocol therapy",
+				"display_order": 18,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "If able to perform pulmonary function tests: forced expiratory volume in 1 second (FEV1), forced vital capacity (FVC) and DLCO (diffusion capacity) >= 50% of predicted (corrected for hemoglobin). If unable to perform pulmonary function tests: oxygen (O2) saturation > 90% on room air. Note To be performed within 28 days prior to day 1 of protocol therapy",
+				"display_order": 19,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Calculated or measured creatinine clearance of > 50 ml/min (performed within 14 days prior to day 1 of protocol therapy)",
+				"display_order": 20,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Women of childbearing potential (WOCBP): negative urine or serum pregnancy test. If the urine test is positive or cannot be confirmed as negative, a serum pregnancy test will be required (performed within 14 days prior to day 1 of protocol therapy)",
+				"display_order": 21,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Agreement by females and males of childbearing potential* to use an effective method of birth control or abstain from heterosexual activity for the course of the study through at least 6 months after the last dose of protocol therapy\r\n* Childbearing potential defined as not being surgically sterilized (men and women) or have not been free from menses for > 1 year (women only)",
+				"display_order": 22,
+				"inclusion_indicator": true
+			},
+			{
+				"description": "Autologous or allogeneic hematopoietic cell transplant performed within 100 days prior to study drug administration in Day 1 of Cycle 1 of protocol therapy\r\n* However, patients who received allogeneic hematopoietic cell transplantation (HCT) more than 100 days are allowed if no active graft versus host disease (GVHD) > grade 1, not actively on systemic immunosuppressive therapy and off calcineurin inhibitors for at least 4 weeks prior to start therapy",
+				"display_order": 23,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Chemotherapy, radiation therapy, biological therapy, within 14 days prior to Day 1 of protocol therapy. Maintenance-type ALL chemotherapies, including vincristine and mercaptopurine are allowed up to 7 days before starting therapy. High dose steroids are allowed up to 3 days before starting therapy. Cytoreduction with hydroxyurea is allowed to control leukocytosis until to the day of starting therapy. Hydroxyurea can be given during cycle 1 of flotetuzumab administration to control leukocytosis but need to be discussed with the study PI",
+				"display_order": 24,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Previous treatment with immunotherapeutic agents (for example chimeric antigen receptor [CAR] T cells, long acting bispecific antibodies, etc) in the 28 days period prior to study drug administration on Day 1 Cycle 1, with the exception of short-half bispecific antibodies (blinatumomab) where the washout period is only 14 days",
+				"display_order": 25,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Requirement, at the time of study entry, for concurrent steroid > 10 mg/day of oral prednisone or the equivalent, except steroid inhaler, nasal spray or ophthalmic solution",
+				"display_order": 26,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Use of immunosuppressant medications (other than steroid as noted above) in the 2 weeks prior to study drug administration (Cycle 1 Day 1)",
+				"display_order": 27,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Known central nervous system involvement. Patients with suspected CNS involvement must be evaluated by lumbar puncture and be free of CNS disease prior to study entry. Previously treated CNS involvement is allowed provided adequate treatment has been provided and the patient is free of CNS disease",
+				"display_order": 28,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "History of allergic reactions attributed to compounds of similar chemical or biologic composition to flotetuzumab",
+				"display_order": 29,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Any active untreated autoimmune disorders (with the exception of vitiligo)",
+				"display_order": 30,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Dementia or altered mental status that would preclude sufficient understanding to provide informed consent",
+				"display_order": 31,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Second primary malignancy that requires active therapy. Adjuvant hormonal therapy is allowed",
+				"display_order": 32,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Active uncontrolled infection",
+				"display_order": 33,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Significant pulmonary compromise",
+				"display_order": 34,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Unstable angina or clinically significant heart disease (left ventricular ejection fraction < 50%)",
+				"display_order": 35,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Major trauma or surgery within 4 weeks before enrollment",
+				"display_order": 36,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Clinically significant uncontrolled illness",
+				"display_order": 37,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Females only: Pregnant or breastfeeding",
+				"display_order": 38,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Any other condition that would, in the Investigator’s judgment, contraindicate the patient’s participation in the clinical study due to safety concerns with clinical study procedures",
+				"display_order": 39,
+				"inclusion_indicator": false
+			},
+			{
+				"description": "Prospective participants who, in the opinion of the investigator, may not be able to comply with all study procedures (including compliance issues related to feasibility/logistics)",
+				"display_order": 40,
+				"inclusion_indicator": false
+			}
+		]
+	},
+	"protocol_id": "20472",
+	"bio_specimen": {
+		"f1": "bio_specimen_description",
+		"f2": null,
+		"f3": "bio_specimen_retention_code",
+		"f4": null
+	},
+	"nci_programs": [],
+	"study_source": "Institutional",
+	"brief_summary": "This phase I trial studies the best dose and side effects of flotetuzumab for the treatment of patients with blood cancers (hematological malignancies) that have spread to other places in the body (advanced) and have come back after a period of improvement (relapsed) or does not respond to treatment (refractory). Flotetuzumab is a monoclonal antibody that may interfere with the ability of cancer cells to grow and spread.",
+	"collaborators": null,
+	"amendment_date": "2020-12-29T00:00:00",
+	"anatomic_sites": ["Multiple"],
+	"number_of_arms": 1,
+	"official_title": "A Phase 1 Trial to Evaluate the Safety of Single Agent Flotetuzumab in Advanced CD123-Positive Hematological Malignancies",
+	"results_posted": null,
+	"central_contact": {
+		"central_contact_name": null,
+		"central_contact_type": null,
+		"central_contact_email": null,
+		"central_contact_phone": null
+	},
+	"completion_date": "2022-11-15",
+	"primary_purpose": {
+		"primary_purpose_code": "TREATMENT",
+		"primary_purpose_other_text": null,
+		"primary_purpose_additional_qualifier_code": null
+	},
+	"outcome_measures": [
+		{
+			"name": "Association between leukemia genetic and response",
+			"timeframe": "Up to 1 year",
+			"type_code": "OTHER_PRE_SPECIFIED",
+			"description": null
+		},
+		{
+			"name": "Association between tumor microenvironment and response",
+			"timeframe": "Up to 1 year",
+			"type_code": "OTHER_PRE_SPECIFIED",
+			"description": null
+		},
+		{
+			"name": "Best response of complete remission attained",
+			"timeframe": "By the end of induction/re-induction cycles",
+			"type_code": "SECONDARY",
+			"description": "Rates and 95% Clopper Pearson binomial confidence interval (CI) will be calculated for complete remission/response rate (confirmed complete remission [CR]/ complete remission with incomplete count recovery [CRi]/ complete remission with partial hematological recovery [CRh] [Cohort A] or CR/molecular response [MR] [Cohort B]). Remission rates will also be explored based on number/type of prior therapy(ies), the presence of extramedullary disease at the time of starting therapy, disease burden, and CD123 expression intensity."
+		},
+		{
+			"name": "CD123 expression",
+			"timeframe": "Up to 1 year",
+			"type_code": "OTHER_PRE_SPECIFIED",
+			"description": "Assessed by flow cytometry/staining."
+		},
+		{
+			"name": "Change in CD123 expression",
+			"timeframe": "At the time of relapse or progression",
+			"type_code": "OTHER_PRE_SPECIFIED",
+			"description": null
+		},
+		{
+			"name": "Cytokines profile",
+			"timeframe": "During therapy",
+			"type_code": "OTHER_PRE_SPECIFIED",
+			"description": null
+		},
+		{
+			"name": "Duration of remission",
+			"timeframe": "Up to 1 year",
+			"type_code": "SECONDARY",
+			"description": "Will be estimated using the product-limit method of Kaplan and Meier."
+		},
+		{
+			"name": "Immune cell profile",
+			"timeframe": "Up to 1 year",
+			"type_code": "OTHER_PRE_SPECIFIED",
+			"description": "Assessed using flow cytometry in peripheral blood and bone marrow."
+		},
+		{
+			"name": "Incidence of adverse events",
+			"timeframe": "Up to 30 days post-treatment",
+			"type_code": "PRIMARY",
+			"description": "Toxicity will be graded according to the National Cancer Institute (NCI)-Common Terminology Criteria for Adverse Events version 5.0 except  infusion-related reaction (IRR)/cytokine release syndrome (CRS) which will be by the modified criteria proposed by Lee et al. Safety and toxicity will be assessed for each cohort independently. Observed toxicities will be summarized in terms of type (organ affected or laboratory determination), severity, attribution, time of onset, duration, probable association with the study treatment and reversibility or outcome."
+		},
+		{
+			"name": "Minimal residual disease",
+			"timeframe": "Up to 1 year",
+			"type_code": "SECONDARY",
+			"description": "Assessed by multi-color flow cytometry in ALL the cohorts."
+		},
+		{
+			"name": "Number/percent who bridge to allogeneic hematopoietic cell transplantation (HCT)",
+			"timeframe": "Up to 1 year",
+			"type_code": "SECONDARY",
+			"description": null
+		},
+		{
+			"name": "Overall survival",
+			"timeframe": "Up to 1 year",
+			"type_code": "SECONDARY",
+			"description": "Will be estimated using the product-limit method of Kaplan and Meier."
+		}
+	],
+	"study_model_code": null,
+	"results_submitted": null,
+	"why_study_stopped": null,
+	"associated_studies": null,
+	"detail_description": "PRIMARY OBJECTIVES:\r\nI. To determine the maximum tolerated dose (recommended phase 2 dose, RP2D) of flotetuzumab, when given as a single agent.\r\nII. Evaluate the safety and tolerability of flotetuzumab in CD123-positive advanced acute lymphoblastic leukemia (ALL) (Cohort A) and other hematological malignancies (Cohort B), by evaluation of toxicities including: type, frequency, severity, attribution, and duration of the toxicity.\r\n\r\nSECONDARY OBJECTIVES:\r\nI. Obtain preliminary estimates of remission; (complete response/complete remission [CR]/CR with incomplete hematologic recovery [CRi]/CR with partial hematologic recovery [CRh] in Cohort A or CR/molecular response [MR] in Cohort B) rate and duration.\r\nII. Estimate 1-year overall survival.\r\nIII. Evaluate minimal residual disease (MRD) status in responders in the ALL cohort.\r\nIV. Evaluate the percentage of patients who receive subsequent allogeneic transplantation.\r\n\r\nEXPLORATORY OBJECTIVES:\r\nI. Examine immune profile pre- and post-treatment with flotetuzumab.\r\nII. Assess the association between CD123 expression and tumor response.\r\nIII. Assess the association between alterations in tumor genetic or microenvironment with response.\r\nIV. Assess cytokine levels during therapy.\r\n\r\nOUTLINE: This is a dose-escalation study.\r\n\r\nINDUCTION THERAPY: Patients receive flotetuzumab via continuous intravenous (IV) infusion on days 1-28. Patients who achieve stable disease (SD)/partial remission (PR) (Cohort A) or PR/clinical improvement (CI) (Cohort B), receive an additional induction cycle. Patients who achieve PR (Cohort A) or PR/CI/major molecular response (MMR) (Cohort B) after cycle 2 re-induction, may continue induction therapy for up to 4 more cycles.\r\n\r\nCONSOLIDATION THERAPY: Patients who achieve CR/CRi/CRh (Cohort A) or CR/MR (Cohort B) after cycle 1 or cycle 2 of induction therapy, receive flotetuzumab via continuous IV infusion on days 1-28 for up to 5 and 6 cycles, respectively, in the absence of disease progression or unacceptable toxicity. Patients with PR (Cohort A) or PR/CI/MMR (Cohort B) who have received up to 6 cycles of induction therapy may receive up to 2 cycles of consolidation therapy in the absence of disease progression or unacceptable toxicity.\r\n\r\nSUPPORTIVE CARE: Patients also receive acetaminophen orally (PO) or ibuprofen PO every 8 hours for 48 hours, diphenhydramine or equivalent IV or PO every 8 hours for 48 hours, ranitidine or equivalent IV every 8 hours for 48 hours, and dexamethasone IV up to 30 minutes prior to dosing and then at 12 hours after dosing on week 1 days 1 and 7.\r\n\r\nAfter completion of study treatment, patients are followed up at 30 days, then every 3 months for 1 year.",
+	"study_subtype_code": null,
+	"classification_code": null,
+	"study_protocol_type": "Interventional",
+	"current_trial_status": "Active",
+	"interventional_model": "Single Group",
+	"sampling_method_code": null,
+	"start_date_type_code": "ACTUAL",
+	"principal_investigator": "Ibrahim T. Aldoss",
+	"study_model_other_text": null,
+	"record_verification_date": "2021-08-30",
+	"completion_date_type_code": "ANTICIPATED",
+	"current_trial_status_date": "2020-11-05",
+	"study_population_description": null,
+	"minimum_target_accrual_number": 40,
+	"structured_eligibility_criteria": [],
+	"accepts_healthy_volunteers_indicator": "NO"
+}

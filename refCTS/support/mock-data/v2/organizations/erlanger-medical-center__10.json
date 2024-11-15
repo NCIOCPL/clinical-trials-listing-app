@@ -1,0 +1,25 @@
+{
+	"data":[
+		{
+			"name":"Erlanger Medical Center",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"423-778-6947",
+			"contact_email":"Sumana.nagireddy@erlanger.org",
+			"org_address_line_1":"975 East Third Street",
+			"org_address_line_2":null,
+			"org_city":"Chattanooga",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"TN",
+			"org_va":false,
+			"org_postal_code":"37403",
+			"org_family":null,
+			"org_coordinates":{
+				"lat":35.046299966052175,
+				"lon":-85.29590000398457
+			},
+			"count":2
+		}
+	]
+}

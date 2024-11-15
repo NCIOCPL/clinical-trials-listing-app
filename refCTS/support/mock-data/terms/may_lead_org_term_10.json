@@ -1,0 +1,69 @@
+{
+    "total": 4,
+    "terms": [
+        {
+            "term_key": "mayo_clinic_cancer_center_lao",
+            "term": "Mayo Clinic Cancer Center LAO",
+            "term_type": "lead_org",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL",
+                "ACTIVE",
+                "ADMINISTRATIVELY COMPLETE",
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "TEMPORARILY CLOSED TO ACCRUAL"
+            ],
+            "count": 7,
+            "count_normalized": 0.008854797886141502,
+            "score": null
+        },
+        {
+            "term_key": "mayo_clinic_in_arizona",
+            "term": "Mayo Clinic in Arizona",
+            "term_type": "lead_org",
+            "current_trial_statuses": [
+                "COMPLETE",
+                "CLOSED TO ACCRUAL",
+                "ADMINISTRATIVELY COMPLETE",
+                "ACTIVE",
+                "WITHDRAWN"
+            ],
+            "count": 32,
+            "count_normalized": 0.04004267563940839,
+            "score": null
+        },
+        {
+            "term_key": "mayo_clinic_in_florida",
+            "term": "Mayo Clinic in Florida",
+            "term_type": "lead_org",
+            "current_trial_statuses": [
+                "COMPLETE",
+                "ACTIVE",
+                "TEMPORARILY CLOSED TO ACCRUAL",
+                "WITHDRAWN",
+                "APPROVED",
+                "CLOSED TO ACCRUAL"
+            ],
+            "count": 39,
+            "count_normalized": 0.04865580594411641,
+            "score": null
+        },
+        {
+            "term_key": "mayo_clinic_in_rochester",
+            "term": "Mayo Clinic in Rochester",
+            "term_type": "lead_org",
+            "current_trial_statuses": [
+                "COMPLETE",
+                "CLOSED TO ACCRUAL",
+                "WITHDRAWN",
+                "ADMINISTRATIVELY COMPLETE",
+                "ACTIVE",
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "TEMPORARILY CLOSED TO ACCRUAL",
+                "APPROVED"
+            ],
+            "count": 187,
+            "count_normalized": 0.21967086791496981,
+            "score": null
+        }
+    ]
+}

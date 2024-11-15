@@ -1,0 +1,126 @@
+{
+	"data": [
+		{
+			"name": "Chimeric Antigen Receptor T-Cell Therapy",
+			"codes": ["C137999", "C126102"],
+			"category": ["agent category", "agent"],
+			"type": ["biological/vaccine", "drug"],
+			"synonyms": [
+				"Chimeric Antigen Receptor T-Cell Therapy",
+				"CAR T Cell",
+				"CAR T Cells",
+				"CAR T-cells",
+				"CAR-T Cell",
+				"CAR-T Cells",
+				"CAR-modified T-cells",
+				"Chimeric-antigen Receptor T-lymphocytes"
+			],
+			"count": 147
+		},
+		{
+			"name": "Flutamide",
+			"codes": ["C509"],
+			"category": ["agent"],
+			"type": ["drug"],
+			"synonyms": [
+				"Apimid",
+				"Cebatrol",
+				"Chimax",
+				"Cytomid",
+				"Drogenil",
+				"Euflex",
+				"Eulexine",
+				"Flucinome",
+				"Fluken",
+				"Flulem",
+				"Fluta-Gry",
+				"Flutabene",
+				"Flutacan",
+				"Flutamex",
+				"Flutamide",
+				"Flutamin",
+				"Flutan",
+				"Flutaplex",
+				"Fugerel",
+				"Grisetin",
+				"Oncosal",
+				"Profamid",
+				"Prostacur",
+				"Prostadirex",
+				"Prostica",
+				"Prostogenat",
+				"Tafenil",
+				"Tecnoflut",
+				"Testotard"
+			],
+			"count": 5
+		},
+		{
+			"name": "Autologous CD19/CD22 Chimeric Antigen Receptor T-cells CT120",
+			"codes": ["C142834"],
+			"category": ["agent"],
+			"type": ["biological/vaccine"],
+			"synonyms": [
+				"Autologous CD19/CD22 Chimeric Antigen Receptor T-cells CT120"
+			],
+			"count": 3
+		},
+		{
+			"name": "Autologous CD19-28z Chimeric Antigen Receptor-expressing T-lymphocytes",
+			"codes": ["C106247"],
+			"category": ["agent"],
+			"type": ["biological/vaccine"],
+			"synonyms": [
+				"Autologous CD19-28z Chimeric Antigen Receptor-expressing T-lymphocytes"
+			],
+			"count": 2
+		},
+		{
+			"name": "Autologous Anti-CD19 Chimeric Antigen Receptor T-cells SJCAR19",
+			"codes": ["C142887"],
+			"category": ["agent"],
+			"type": ["biological/vaccine"],
+			"synonyms": [
+				"Autologous Anti-CD19 Chimeric Antigen Receptor T-cells SJCAR19"
+			],
+			"count": 1
+		},
+		{
+			"name": "Autologous Desmoglein-3 Chimeric Autoantibody Receptor T-cells DSG3-CAART",
+			"codes": ["C182441"],
+			"category": ["agent"],
+			"type": ["biological/vaccine"],
+			"synonyms": [
+				"Autologous Desmoglein-3 Chimeric Autoantibody Receptor T-cells DSG3-CAART"
+			],
+			"count": 1
+		},
+		{
+			"name": "Bcl-XL Proteolysis Targeting Chimera DT2216",
+			"codes": ["C179922"],
+			"category": ["agent"],
+			"type": ["biological/vaccine"],
+			"synonyms": ["Bcl-XL Proteolysis Targeting Chimera DT2216"],
+			"count": 1
+		},
+		{
+			"name": "Chinese Herbal Formulation PHY906",
+			"codes": ["C91704"],
+			"category": ["agent"],
+			"type": ["dietary supplement"],
+			"synonyms": ["Chinese Herbal Formulation PHY906", "TCM PHY906"],
+			"count": 1
+		},
+		{
+			"name": "ER alpha Proteolysis-targeting Chimera Protein Degrader ARV-471",
+			"codes": ["C165420"],
+			"category": ["agent"],
+			"type": ["drug"],
+			"synonyms": [
+				"ER alpha Proteolysis-targeting Chimera Protein Degrader ARV-471"
+			],
+			"count": 1
+		}
+	],
+	"total": 9
+}

@@ -1,0 +1,176 @@
+{
+	"total": 7354,
+	"aggregations": {
+		"doc_count": 7354,
+		"sites.org_country": [
+			{
+				"key": "Argentina",
+				"doc_count": 3
+			},
+			{
+				"key": "Australia",
+				"doc_count": 29
+			},
+			{
+				"key": "Austria",
+				"doc_count": 1
+			},
+			{
+				"key": "Belgium",
+				"doc_count": 2
+			},
+			{
+				"key": "Brazil",
+				"doc_count": 3
+			},
+			{
+				"key": "Canada",
+				"doc_count": 109
+			},
+			{
+				"key": "China",
+				"doc_count": 5
+			},
+			{
+				"key": "Colombia",
+				"doc_count": 3
+			},
+			{
+				"key": "Cyprus",
+				"doc_count": 1
+			},
+			{
+				"key": "Denmark",
+				"doc_count": 1
+			},
+			{
+				"key": "Egypt",
+				"doc_count": 1
+			},
+			{
+				"key": "France",
+				"doc_count": 3
+			},
+			{
+				"key": "Germany",
+				"doc_count": 2
+			},
+			{
+				"key": "Honduras",
+				"doc_count": 1
+			},
+			{
+				"key": "Hong Kong",
+				"doc_count": 4
+			},
+			{
+				"key": "India",
+				"doc_count": 4
+			},
+			{
+				"key": "Ireland",
+				"doc_count": 2
+			},
+			{
+				"key": "Israel",
+				"doc_count": 6
+			},
+			{
+				"key": "Italy",
+				"doc_count": 4
+			},
+			{
+				"key": "Japan",
+				"doc_count": 7
+			},
+			{
+				"key": "Kenya",
+				"doc_count": 1
+			},
+			{
+				"key": "Korea, Republic of",
+				"doc_count": 10
+			},
+			{
+				"key": "Malawi",
+				"doc_count": 3
+			},
+			{
+				"key": "Mexico",
+				"doc_count": 4
+			},
+			{
+				"key": "Netherlands",
+				"doc_count": 4
+			},
+			{
+				"key": "New Zealand",
+				"doc_count": 15
+			},
+			{
+				"key": "Nigeria",
+				"doc_count": 2
+			},
+			{
+				"key": "Norway",
+				"doc_count": 1
+			},
+			{
+				"key": "Peru",
+				"doc_count": 3
+			},
+			{
+				"key": "Poland",
+				"doc_count": 2
+			},
+			{
+				"key": "Saudi Arabia",
+				"doc_count": 13
+			},
+			{
+				"key": "Singapore",
+				"doc_count": 4
+			},
+			{
+				"key": "Spain",
+				"doc_count": 3
+			},
+			{
+				"key": "Sweden",
+				"doc_count": 1
+			},
+			{
+				"key": "Switzerland",
+				"doc_count": 6
+			},
+			{
+				"key": "Taiwan",
+				"doc_count": 1
+			},
+			{
+				"key": "Tanzania",
+				"doc_count": 2
+			},
+			{
+				"key": "Uganda",
+				"doc_count": 1
+			},
+			{
+				"key": "United Kingdom",
+				"doc_count": 3
+			},
+			{
+				"key": "United States",
+				"doc_count": 7315
+			},
+			{
+				"key": "Zambia",
+				"doc_count": 1
+			},
+			{
+				"key": "Zimbabwe",
+				"doc_count": 1
+			}
+		]
+	}
+}

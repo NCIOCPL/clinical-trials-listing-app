@@ -1,0 +1,28 @@
+{
+	"data": [
+		{
+			"name": "Chimeric Antigen Receptor T-Cell Therapy",
+			"codes": [
+				"C137999",
+				"C126102"
+			],
+			"synonyms": [
+				"Chimeric Antigen Receptor T-cells",
+				"CAR T Cell",
+				"CAR T Cells",
+				"CAR T-cells",
+				"CAR-T Cell",
+				"CAR-T Cells",
+				"CAR-modified T-cells",
+				"Chimeric-antigen Receptor T-lymphocytes",
+				"CAR T Infusion",
+				"CAR T Therapy",
+				"CAR T-cell Therapy",
+				"CAR T-cell therapy",
+				"Chimeric Antigen Receptor T-cell Infusion"
+			],
+			"category": "agent category",
+			"count": 151
+		}
+	]
+}

@@ -1,0 +1,214 @@
+{
+	"data":[
+		{
+			"name":"Ascension Medical Group Southeast Wisconsin - Mayfair Road",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"414-635-6420",
+			"contact_email":"AWRI.Inquiry@Ascension.org",
+			"org_address_line_1":"201 North Mayfair Road",
+			"org_address_line_2":null,
+			"org_city":"Wauwatosa",
+			"org_country":"United States",
+			"org_email":"AWRI.Inquiry@Ascension.org",
+			"org_fax":null,
+			"org_state_or_province":"WI",
+			"org_va":false,
+			"org_postal_code":"53226",
+			"org_family":null,
+			"org_coordinates":{
+				"lat":43.05029996205121,
+				"lon":-88.04230006411672
+			},
+			"count":29
+		},
+		{
+			"name":"AtlantiCare Health Park-Cape May Court House",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"609-677-7735",
+			"contact_email":null,
+			"org_address_line_1":"106 Court House South Dennis Road",
+			"org_address_line_2":null,
+			"org_city":"Cape May Court House",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"NJ",
+			"org_va":false,
+			"org_postal_code":"08210",
+			"org_family":null,
+			"org_coordinates":{
+				"lat":39.11079998128116,
+				"lon":-74.82410003431141
+			},
+			"count":9
+		},
+		{
+			"name":"Mayo Clinic",
+			"contact_name":"Horiana Grosu",
+			"contact_phone":"507-284-2511",
+			"contact_email":null,
+			"org_address_line_1":"200 First Street SW",
+			"org_address_line_2":null,
+			"org_city":"Rochester",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"MN",
+			"org_va":false,
+			"org_postal_code":"55905",
+			"org_family":null,
+			"org_coordinates":{
+				"lat":44.03679996728897,
+				"lon":-92.49120002612472
+			},
+			"count":2
+		},
+		{
+			"name":"Mayo Clinic Health System Eau Claire Hospital-Luther Campus",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"855-776-0015",
+			"contact_email":null,
+			"org_address_line_1":"1221 Whipple Street",
+			"org_address_line_2":null,
+			"org_city":"Eau Claire",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"WI",
+			"org_va":false,
+			"org_postal_code":"54703",
+			"org_family":"Mayo Clinic Cancer Center",
+			"org_coordinates":{
+				"lat":44.8178999684751,
+				"lon":-91.5831000264734
+			},
+			"count":6
+		},
+		{
+			"name":"Mayo Clinic Health System in Albert Lea",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"855-776-0015",
+			"contact_email":null,
+			"org_address_line_1":"404 West Fountain Street",
+			"org_address_line_2":null,
+			"org_city":"Albert Lea",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"MN",
+			"org_va":false,
+			"org_postal_code":"56007",
+			"org_family":"Mayo Clinic Cancer Center",
+			"org_coordinates":{
+				"lat":43.69299998972565,
+				"lon":-93.3789000660181
+			},
+			"count":13
+		},
+		{
+			"name":"Mayo Clinic Health System in Austin",
+			"contact_name":"Eduardo Antpack",
+			"contact_phone":"507-434-1984",
+			"contact_email":null,
+			"org_address_line_1":"1000 First Drive Northwest",
+			"org_address_line_2":null,
+			"org_city":"Austin",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"MN",
+			"org_va":false,
+			"org_postal_code":"55912",
+			"org_family":"Mayo Clinic Cancer Center",
+			"org_coordinates":{
+				"lat":43.71729996521026,
+				"lon":-92.98890000209212
+			},
+			"count":1
+		},
+		{
+			"name":"Mayo Clinic Health System-Eau Claire Clinic",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"855-776-0015",
+			"contact_email":null,
+			"org_address_line_1":"733 West Clairemont Avenue",
+			"org_address_line_2":null,
+			"org_city":"Eau Claire",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"WI",
+			"org_va":false,
+			"org_postal_code":"54701",
+			"org_family":"Mayo Clinic Cancer Center",
+			"org_coordinates":{
+				"lat":44.73809997551143,
+				"lon":-91.50380001403391
+			},
+			"count":26
+		},
+		{
+			"name":"Mayo Clinic Health System-Franciscan Healthcare",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"855-776-0015",
+			"contact_email":"Heaney.Traci@mayo.edu",
+			"org_address_line_1":"700 West Avenue South",
+			"org_address_line_2":null,
+			"org_city":"La Crosse",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"WI",
+			"org_va":false,
+			"org_postal_code":"54601",
+			"org_family":"Mayo Clinic Cancer Center",
+			"org_coordinates":{
+				"lat":43.799999970942736,
+				"lon":-91.14500007592142
+			},
+			"count":23
+		},
+		{
+			"name":"Mayo Clinic Health Systems-Mankato",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"855-776-0015",
+			"contact_email":null,
+			"org_address_line_1":"1025 Marsh Street",
+			"org_address_line_2":null,
+			"org_city":"Mankato",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"MN",
+			"org_va":false,
+			"org_postal_code":"56001",
+			"org_family":"Mayo Clinic Cancer Center",
+			"org_coordinates":{
+				"lat":44.11559999920428,
+				"lon":-93.99840007536113
+			},
+			"count":14
+		},
+		{
+			"name":"Mayo Clinic Hospital in Arizona",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"855-776-0015",
+			"contact_email":"Bekaii-Saab.Tanios@mayo.edu",
+			"org_address_line_1":"5777 East Mayo Boulevard",
+			"org_address_line_2":null,
+			"org_city":"Phoenix",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"AZ",
+			"org_va":false,
+			"org_postal_code":"85054",
+			"org_family":"Mayo Clinic Cancer Center",
+			"org_coordinates":{
+				"lat":33.67869996931404,
+				"lon":-111.96470006369054
+			},
+			"count":67
+		}
+	]
+}

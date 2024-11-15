@@ -1,0 +1,38 @@
+{
+	"data": [
+		{
+			"name": "Ibuprofen",
+			"codes": [
+				"C561"
+			],
+			"category": [
+				"agent"
+			],
+			"type": [
+				"drug"
+			],
+			"synonyms": [
+				"Ibuprofen",
+				"Motrin"
+			],
+			"count": 2
+		},
+		{
+			"name": "Ibudilast",
+			"codes": [
+				"C65876"
+			],
+			"category": [
+				"agent"
+			],
+			"type": [
+				"drug"
+			],
+			"synonyms": [
+				"Ibudilast"
+			],
+			"count": 1
+		}
+	],
+	"total": 2
+}

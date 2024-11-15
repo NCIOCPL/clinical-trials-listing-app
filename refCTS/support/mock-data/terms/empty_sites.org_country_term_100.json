@@ -1,0 +1,560 @@
+{
+    "total": 41,
+    "terms": [
+        {
+            "term_key": "argentina",
+            "term": "Argentina",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "CLOSED TO ACCRUAL",
+                "ACTIVE"
+            ],
+            "count": 5,
+            "count_normalized": 0.00043156990985300075,
+            "score": null
+        },
+        {
+            "term_key": "australia",
+            "term": "Australia",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "COMPLETE",
+                "CLOSED TO ACCRUAL",
+                "ACTIVE",
+                "TEMPORARILY CLOSED TO ACCRUAL"
+            ],
+            "count": 61,
+            "count_normalized": 0.005256353283309918,
+            "score": null
+        },
+        {
+            "term_key": "austria",
+            "term": "Austria",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "ACTIVE",
+                "ADMINISTRATIVELY COMPLETE",
+                "CLOSED TO ACCRUAL"
+            ],
+            "count": 3,
+            "count_normalized": 0.00025895743765746884,
+            "score": null
+        },
+        {
+            "term_key": "belgium",
+            "term": "Belgium",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "ACTIVE",
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "COMPLETE"
+            ],
+            "count": 6,
+            "count_normalized": 0.0005178684019313261,
+            "score": null
+        },
+        {
+            "term_key": "brazil",
+            "term": "Brazil",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "CLOSED TO ACCRUAL",
+                "ACTIVE"
+            ],
+            "count": 8,
+            "count_normalized": 0.0006904499011369769,
+            "score": null
+        },
+        {
+            "term_key": "canada",
+            "term": "Canada",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "COMPLETE",
+                "ACTIVE",
+                "CLOSED TO ACCRUAL",
+                "TEMPORARILY CLOSED TO ACCRUAL",
+                "APPROVED",
+                "ADMINISTRATIVELY COMPLETE",
+                "WITHDRAWN"
+            ],
+            "count": 273,
+            "count_normalized": 0.02337682069945507,
+            "score": null
+        },
+        {
+            "term_key": "chile",
+            "term": "Chile",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 1,
+            "count_normalized": 0.00008632431062496112,
+            "score": null
+        },
+        {
+            "term_key": "china",
+            "term": "China",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL",
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "ACTIVE",
+                "TEMPORARILY CLOSED TO ACCRUAL",
+                "COMPLETE"
+            ],
+            "count": 13,
+            "count_normalized": 0.0011218133490772473,
+            "score": null
+        },
+        {
+            "term_key": "colombia",
+            "term": "Colombia",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL",
+                "ACTIVE"
+            ],
+            "count": 8,
+            "count_normalized": 0.0006904499011369769,
+            "score": null
+        },
+        {
+            "term_key": "cyprus",
+            "term": "Cyprus",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 1,
+            "count_normalized": 0.00008632431062496112,
+            "score": null
+        },
+        {
+            "term_key": "denmark",
+            "term": "Denmark",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "COMPLETE",
+                "CLOSED TO ACCRUAL",
+                "ADMINISTRATIVELY COMPLETE",
+                "ACTIVE"
+            ],
+            "count": 5,
+            "count_normalized": 0.00043156990985300075,
+            "score": null
+        },
+        {
+            "term_key": "egypt",
+            "term": "Egypt",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "ACTIVE"
+            ],
+            "count": 2,
+            "count_normalized": 0.0001726434563047775,
+            "score": null
+        },
+        {
+            "term_key": "france",
+            "term": "France",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "ACTIVE",
+                "CLOSED TO ACCRUAL",
+                "COMPLETE",
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "ADMINISTRATIVELY COMPLETE"
+            ],
+            "count": 12,
+            "count_normalized": 0.0010355509770291116,
+            "score": null
+        },
+        {
+            "term_key": "germany",
+            "term": "Germany",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL",
+                "ACTIVE",
+                "ADMINISTRATIVELY COMPLETE",
+                "COMPLETE"
+            ],
+            "count": 9,
+            "count_normalized": 0.0007767329094991222,
+            "score": null
+        },
+        {
+            "term_key": "honduras",
+            "term": "Honduras",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "ACTIVE",
+                "CLOSED TO ACCRUAL AND INTERVENTION"
+            ],
+            "count": 2,
+            "count_normalized": 0.0001726434563047775,
+            "score": null
+        },
+        {
+            "term_key": "hong_kong",
+            "term": "Hong Kong",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "ACTIVE",
+                "CLOSED TO ACCRUAL",
+                "CLOSED TO ACCRUAL AND INTERVENTION"
+            ],
+            "count": 6,
+            "count_normalized": 0.0005178684019313261,
+            "score": null
+        },
+        {
+            "term_key": "india",
+            "term": "India",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "ADMINISTRATIVELY COMPLETE",
+                "ACTIVE",
+                "CLOSED TO ACCRUAL"
+            ],
+            "count": 6,
+            "count_normalized": 0.0005178684019313261,
+            "score": null
+        },
+        {
+            "term_key": "ireland",
+            "term": "Ireland",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL",
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "ACTIVE"
+            ],
+            "count": 10,
+            "count_normalized": 0.0008630107578571762,
+            "score": null
+        },
+        {
+            "term_key": "israel",
+            "term": "Israel",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "COMPLETE",
+                "CLOSED TO ACCRUAL",
+                "ACTIVE",
+                "ADMINISTRATIVELY COMPLETE",
+                "TEMPORARILY CLOSED TO ACCRUAL AND INTERVENTION"
+            ],
+            "count": 29,
+            "count_normalized": 0.0025013102960075016,
+            "score": null
+        },
+        {
+            "term_key": "italy",
+            "term": "Italy",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "COMPLETE",
+                "CLOSED TO ACCRUAL",
+                "ADMINISTRATIVELY COMPLETE",
+                "ACTIVE",
+                "WITHDRAWN",
+                "CLOSED TO ACCRUAL AND INTERVENTION"
+            ],
+            "count": 16,
+            "count_normalized": 0.0013805695224709668,
+            "score": null
+        },
+        {
+            "term_key": "japan",
+            "term": "Japan",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL",
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "ACTIVE",
+                "COMPLETE"
+            ],
+            "count": 15,
+            "count_normalized": 0.00129432262118154,
+            "score": null
+        },
+        {
+            "term_key": "kenya",
+            "term": "Kenya",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL",
+                "ACTIVE"
+            ],
+            "count": 2,
+            "count_normalized": 0.0001726434563047775,
+            "score": null
+        },
+        {
+            "term_key": "korea_republic_of",
+            "term": "Korea, Republic of",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "CLOSED TO ACCRUAL",
+                "COMPLETE",
+                "ACTIVE",
+                "ADMINISTRATIVELY COMPLETE",
+                "TEMPORARILY CLOSED TO ACCRUAL"
+            ],
+            "count": 23,
+            "count_normalized": 0.001984153506783768,
+            "score": null
+        },
+        {
+            "term_key": "malawi",
+            "term": "Malawi",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL",
+                "ACTIVE"
+            ],
+            "count": 2,
+            "count_normalized": 0.0001726434563047775,
+            "score": null
+        },
+        {
+            "term_key": "mexico",
+            "term": "Mexico",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL",
+                "ACTIVE"
+            ],
+            "count": 5,
+            "count_normalized": 0.00043156990985300075,
+            "score": null
+        },
+        {
+            "term_key": "netherlands",
+            "term": "Netherlands",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "ACTIVE",
+                "COMPLETE",
+                "ADMINISTRATIVELY COMPLETE"
+            ],
+            "count": 12,
+            "count_normalized": 0.0010355509770291116,
+            "score": null
+        },
+        {
+            "term_key": "new_zealand",
+            "term": "New Zealand",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "COMPLETE",
+                "CLOSED TO ACCRUAL",
+                "ACTIVE",
+                "TEMPORARILY CLOSED TO ACCRUAL"
+            ],
+            "count": 36,
+            "count_normalized": 0.0031044256731937803,
+            "score": null
+        },
+        {
+            "term_key": "nigeria",
+            "term": "Nigeria",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "ACTIVE",
+                "CLOSED TO ACCRUAL"
+            ],
+            "count": 3,
+            "count_normalized": 0.00025895743765746884,
+            "score": null
+        },
+        {
+            "term_key": "peru",
+            "term": "Peru",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "CLOSED TO ACCRUAL",
+                "ACTIVE"
+            ],
+            "count": 7,
+            "count_normalized": 0.0006041617321534964,
+            "score": null
+        },
+        {
+            "term_key": "poland",
+            "term": "Poland",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "ACTIVE",
+                "CLOSED TO ACCRUAL",
+                "TEMPORARILY CLOSED TO ACCRUAL"
+            ],
+            "count": 4,
+            "count_normalized": 0.00034526625530094396,
+            "score": null
+        },
+        {
+            "term_key": "saudi_arabia",
+            "term": "Saudi Arabia",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "CLOSED TO ACCRUAL",
+                "ACTIVE",
+                "TEMPORARILY CLOSED TO ACCRUAL"
+            ],
+            "count": 23,
+            "count_normalized": 0.001984153506783768,
+            "score": null
+        },
+        {
+            "term_key": "singapore",
+            "term": "Singapore",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "ACTIVE",
+                "CLOSED TO ACCRUAL",
+                "COMPLETE",
+                "TEMPORARILY CLOSED TO ACCRUAL",
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "ADMINISTRATIVELY COMPLETE"
+            ],
+            "count": 35,
+            "count_normalized": 0.0030182817686517376,
+            "score": null
+        },
+        {
+            "term_key": "spain",
+            "term": "Spain",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "COMPLETE",
+                "CLOSED TO ACCRUAL",
+                "ACTIVE"
+            ],
+            "count": 7,
+            "count_normalized": 0.0006041617321534964,
+            "score": null
+        },
+        {
+            "term_key": "switzerland",
+            "term": "Switzerland",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "CLOSED TO ACCRUAL",
+                "ACTIVE"
+            ],
+            "count": 14,
+            "count_normalized": 0.00120807056358916,
+            "score": null
+        },
+        {
+            "term_key": "taiwan",
+            "term": "Taiwan",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "ACTIVE",
+                "WITHDRAWN"
+            ],
+            "count": 2,
+            "count_normalized": 0.0001726434563047775,
+            "score": null
+        },
+        {
+            "term_key": "tanzania",
+            "term": "Tanzania",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 1,
+            "count_normalized": 0.00008632431062496112,
+            "score": null
+        },
+        {
+            "term_key": "uganda",
+            "term": "Uganda",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL",
+                "ACTIVE"
+            ],
+            "count": 4,
+            "count_normalized": 0.00034526625530094396,
+            "score": null
+        },
+        {
+            "term_key": "united_kingdom",
+            "term": "United Kingdom",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "COMPLETE",
+                "ACTIVE",
+                "CLOSED TO ACCRUAL",
+                "ADMINISTRATIVELY COMPLETE"
+            ],
+            "count": 13,
+            "count_normalized": 0.0011218133490772473,
+            "score": null
+        },
+        {
+            "term_key": "united_states",
+            "term": "United States",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL",
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "COMPLETE",
+                "ACTIVE",
+                "ADMINISTRATIVELY COMPLETE",
+                "WITHDRAWN",
+                "TEMPORARILY CLOSED TO ACCRUAL",
+                "TEMPORARILY CLOSED TO ACCRUAL AND INTERVENTION",
+                "APPROVED",
+                "ENROLLING BY INVITATION",
+                "IN REVIEW"
+            ],
+            "count": 16712,
+            "count_normalized": 1,
+            "score": null
+        },
+        {
+            "term_key": "zambia",
+            "term": "Zambia",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 1,
+            "count_normalized": 0.00008632431062496112,
+            "score": null
+        },
+        {
+            "term_key": "zimbabwe",
+            "term": "Zimbabwe",
+            "term_type": "sites.org_country",
+            "current_trial_statuses": [
+                "APPROVED",
+                "CLOSED TO ACCRUAL",
+                "COMPLETE"
+            ],
+            "count": 3,
+            "count_normalized": 0.00025895743765746884,
+            "score": null
+        }
+    ]
+}

@@ -1,0 +1,214 @@
+{
+	"data": [
+		{
+			"name": "AMITA Health Cancer Institute and Outpatient Center",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "630-286-5500",
+			"contact_email": null,
+			"org_address_line_1": "One Salt Creek Lane",
+			"org_address_line_2": null,
+			"org_city": "Hinsdale",
+			"org_country": "United States",
+			"org_email": null,
+			"org_fax": null,
+			"org_state_or_province": "IL",
+			"org_va": false,
+			"org_postal_code": "60521",
+			"org_family": null,
+			"org_coordinates": {
+				"lat": 41.801799978129566,
+				"lon": -87.92820006608963
+			},
+			"count": 5
+		},
+		{
+			"name": "Alaska Breast Care and Surgery LLC",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "907-212-6871",
+			"contact_email": "AKPAMC.OncologyResearchSupport@providence.org",
+			"org_address_line_1": "3851 Piper Street",
+			"org_address_line_2": "Suite U-462",
+			"org_city": "Anchorage",
+			"org_country": "United States",
+			"org_email": "AKPAMC.OncologyResearchSupport@providence.org",
+			"org_fax": null,
+			"org_state_or_province": "AK",
+			"org_va": false,
+			"org_postal_code": "99508",
+			"org_family": null,
+			"org_coordinates": {
+				"lat": 61.19799996726215,
+				"lon": -149.81150007806718
+			},
+			"count": 88
+		},
+		{
+			"name": "Alaska Oncology and Hematology LLC",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "907-212-6871",
+			"contact_email": "AKPAMC.OncologyResearchSupport@providence.org",
+			"org_address_line_1": "2925 DeBarr Road",
+			"org_address_line_2": "Suite 300",
+			"org_city": "Anchorage",
+			"org_country": "United States",
+			"org_email": "AKPAMC.OncologyResearchSupport@providence.org",
+			"org_fax": null,
+			"org_state_or_province": "AK",
+			"org_va": false,
+			"org_postal_code": "99508",
+			"org_family": null,
+			"org_coordinates": {
+				"lat": 61.19799996726215,
+				"lon": -149.81150007806718
+			},
+			"count": 92
+		},
+		{
+			"name": "Armstrong Center for Medicine and Health",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "724-543-8682",
+			"contact_email": null,
+			"org_address_line_1": "One Nolte Drive",
+			"org_address_line_2": null,
+			"org_city": "Kittanning",
+			"org_country": "United States",
+			"org_email": null,
+			"org_fax": null,
+			"org_state_or_province": "PA",
+			"org_va": false,
+			"org_postal_code": "16201",
+			"org_family": null,
+			"org_coordinates": {
+				"lat": 40.81959997303784,
+				"lon": -79.42880004644394
+			},
+			"count": 5
+		},
+		{
+			"name": "Augusta Health Center for Cancer and Blood Disorders",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "540-332-5960",
+			"contact_email": null,
+			"org_address_line_1": "78 Medical Center Drive",
+			"org_address_line_2": null,
+			"org_city": "Fishersville",
+			"org_country": "United States",
+			"org_email": null,
+			"org_fax": null,
+			"org_state_or_province": "VA",
+			"org_va": false,
+			"org_postal_code": "22939",
+			"org_family": "Duke Cancer Institute",
+			"org_coordinates": {
+				"lat": 38.098799963481724,
+				"lon": -78.96900001913309
+			},
+			"count": 20
+		},
+		{
+			"name": "Banner MD Anderson Cancer Center",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "602-747-9738",
+			"contact_email": "Alaeddin.Sagar@bannerhealth.com",
+			"org_address_line_1": "2946 East Banner Gateway Drive",
+			"org_address_line_2": null,
+			"org_city": "Gilbert",
+			"org_country": "United States",
+			"org_email": null,
+			"org_fax": null,
+			"org_state_or_province": "AZ",
+			"org_va": false,
+			"org_postal_code": "85234",
+			"org_family": null,
+			"org_coordinates": {
+				"lat": 33.36349996738136,
+				"lon": -111.75290001556277
+			},
+			"count": 21
+		},
+		{
+			"name": "Baptist MD Anderson Cancer Center",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "904-202-7468",
+			"contact_email": "beth.lesnikoski@hcahealthcare.com",
+			"org_address_line_1": "1301 Palm Avenue",
+			"org_address_line_2": null,
+			"org_city": "Jacksonville",
+			"org_country": "United States",
+			"org_email": null,
+			"org_fax": null,
+			"org_state_or_province": "FL",
+			"org_va": false,
+			"org_postal_code": "32207",
+			"org_family": null,
+			"org_coordinates": {
+				"lat": 30.29099999461323,
+				"lon": -81.63180006667972
+			},
+			"count": 21
+		},
+		{
+			"name": "Baptist Memorial Hospital and Cancer Center-Collierville",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "901-226-1366",
+			"contact_email": "BCCclintrials@bmhcc.org",
+			"org_address_line_1": "1500 West Popular Avenue",
+			"org_address_line_2": null,
+			"org_city": "Collierville",
+			"org_country": "United States",
+			"org_email": "BCCclintrials@bmhcc.org",
+			"org_fax": null,
+			"org_state_or_province": "TN",
+			"org_va": false,
+			"org_postal_code": "38017",
+			"org_family": null,
+			"org_coordinates": {
+				"lat": 35.05959999281913,
+				"lon": -89.67890001833439
+			},
+			"count": 33
+		},
+		{
+			"name": "Baptist Memorial Hospital and Cancer Center-Desoto",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "901-226-1366",
+			"contact_email": "BCCclintrials@bmhcc.org",
+			"org_address_line_1": "7601 Southcrest Parkway",
+			"org_address_line_2": null,
+			"org_city": "Southhaven",
+			"org_country": "United States",
+			"org_email": "BCCclintrials@bmhcc.org",
+			"org_fax": null,
+			"org_state_or_province": "MS",
+			"org_va": false,
+			"org_postal_code": "38671",
+			"org_family": null,
+			"org_coordinates": {
+				"lat": 34.95969998650253,
+				"lon": -89.98170004226267
+			},
+			"count": 43
+		},
+		{
+			"name": "Baptist Memorial Hospital and Cancer Center-Golden Triangle",
+			"contact_name": "Site Public Contact",
+			"contact_phone": "901-226-1366",
+			"contact_email": "BCCclintrials@bmhcc.org",
+			"org_address_line_1": "2520 North Fifth Street",
+			"org_address_line_2": null,
+			"org_city": "Columbus",
+			"org_country": "United States",
+			"org_email": "BCCclintrials@bmhcc.org",
+			"org_fax": null,
+			"org_state_or_province": "MS",
+			"org_va": false,
+			"org_postal_code": "39705",
+			"org_family": null,
+			"org_coordinates": {
+				"lat": 33.58349998947233,
+				"lon": -88.4379000775516
+			},
+			"count": 26
+		}
+	]
+}

@@ -1,0 +1,1911 @@
+{
+    "total": 2,
+    "data": [
+        {
+            "current_trial_status": "Active",
+            "nct_id": "NCT03854903",
+            "brief_title": "Palbociclib, Bosutinib, and Fulvestrant for the Treatment of Metastatic Hormone Receptor Positive and HER2 Negative Breast Cancer Refractory to Aromatase Inhibitors",
+            "eligibility": {
+                "structured": {
+                    "max_age": "999 Years",
+                    "max_age_number": 999.0,
+                    "min_age_unit": "Years",
+                    "max_age_unit": "Years",
+                    "max_age_in_years": 999.0,
+                    "gender": "FEMALE",
+                    "accepts_healthy_volunteers": false,
+                    "min_age": "18 Years",
+                    "min_age_number": 18.0,
+                    "min_age_in_years": 18.0
+                }
+            },
+            "diseases": [
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Anatomic Stage III Breast Carcinoma AJCC v8",
+                        "Anatomic Stage III Breast Cancer AJCC v8"
+                    ],
+                    "nci_thesaurus_concept_id": "C139541",
+                    "name": "Stage III Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C139533"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Anatomic Stage IIIA Breast Cancer AJCC v8",
+                        "Anatomic Stage IIIA Breast Carcinoma AJCC v8"
+                    ],
+                    "nci_thesaurus_concept_id": "C139542",
+                    "name": "Stage IIIA Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C139541"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Anatomic Stage IIIB Breast Carcinoma AJCC v8",
+                        "Anatomic Stage IIIB Breast Cancer AJCC v8"
+                    ],
+                    "nci_thesaurus_concept_id": "C139543",
+                    "name": "Stage IIIB Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C139541"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Anatomic Stage IIIC Breast Cancer AJCC v8",
+                        "Anatomic Stage IIIC Breast Carcinoma AJCC v8"
+                    ],
+                    "nci_thesaurus_concept_id": "C139544",
+                    "name": "Stage IIIC Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C139541"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Anatomic Stage IV Breast Carcinoma AJCC v8",
+                        "Anatomic Stage IV Breast Cancer AJCC v8"
+                    ],
+                    "nci_thesaurus_concept_id": "C139545",
+                    "name": "Stage IV Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C139533"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Prognostic Stage III Breast Cancer AJCC v8",
+                        "Prognostic Stage III Breast Carcinoma AJCC v8"
+                    ],
+                    "nci_thesaurus_concept_id": "C139582",
+                    "name": "Stage III Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C139554"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Prognostic Stage IIIA Breast Carcinoma AJCC v8",
+                        "Prognostic Stage IIIA Breast Cancer AJCC v8"
+                    ],
+                    "nci_thesaurus_concept_id": "C139583",
+                    "name": "Stage IIIA Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C139582"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Prognostic Stage IIIB Breast Carcinoma AJCC v8",
+                        "Prognostic Stage IIIB Breast Cancer AJCC v8"
+                    ],
+                    "nci_thesaurus_concept_id": "C139584",
+                    "name": "Stage IIIB Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C139582"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Prognostic Stage IIIC Breast Cancer AJCC v8",
+                        "Prognostic Stage IIIC Breast Carcinoma AJCC v8"
+                    ],
+                    "nci_thesaurus_concept_id": "C139585",
+                    "name": "Stage IIIC Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C139582"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Prognostic Stage IV Breast Cancer AJCC v8",
+                        "Prognostic Stage IV Breast Carcinoma AJCC v8"
+                    ],
+                    "nci_thesaurus_concept_id": "C139587",
+                    "name": "Stage IV Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C139554"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Refractory Breast Carcinoma"
+                    ],
+                    "nci_thesaurus_concept_id": "C147965",
+                    "name": "Refractory Breast Cancer",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C8511",
+                        "C4872"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C153238",
+                    "name": "Metastatic Breast Carcinoma",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C4872",
+                        "C3482",
+                        "C170728"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "ESR1 Positive",
+                        "Estrogen Receptor 1 Positive",
+                        "Positive",
+                        "Positive Estrogen Receptor",
+                        "ER Alpha Positive",
+                        "ER Positive",
+                        "Nuclear Receptor Subfamily 3 Group A Member 1 Positive",
+                        "ERA Positive",
+                        "ESRA Positive",
+                        "Estrogen Receptor Alpha Positive",
+                        "NR3A1 Positive",
+                        "ESR Positive",
+                        "ESTRR Positive",
+                        "ER+",
+                        "ER-Alpha Positive"
+                    ],
+                    "nci_thesaurus_concept_id": "C15492",
+                    "name": "Estrogen Receptor Positive",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C16150",
+                        "C101267"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "PGR Positive",
+                        "PR Positive",
+                        "Positive",
+                        "PR+"
+                    ],
+                    "nci_thesaurus_concept_id": "C15496",
+                    "name": "Progesterone Receptor Positive",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C101267",
+                        "C16149"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Hormone Receptor-Positive Breast Carcinoma",
+                        "Hormone Receptor Positive Breast Adenocarcinoma"
+                    ],
+                    "nci_thesaurus_concept_id": "C157056",
+                    "name": "Hormone Receptor Positive Breast Carcinoma",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C5214"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C162648",
+                    "name": "Advanced Breast Carcinoma",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C153171",
+                        "C153238"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "HER2 Negative",
+                        "ERBB2 Negative",
+                        "HER-2 Negative"
+                    ],
+                    "nci_thesaurus_concept_id": "C68749",
+                    "name": "HER2/Neu Negative",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C16152",
+                        "C165233"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Recurrent Breast Carcinoma",
+                        "Breast Cancer, Recurrent"
+                    ],
+                    "nci_thesaurus_concept_id": "C7771",
+                    "name": "Recurrent Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C4872",
+                        "C7619",
+                        "C170726"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "ADENOCARCINOMA, MALIGNANT",
+                        "Adenocarcinoma, NOS"
+                    ],
+                    "nci_thesaurus_concept_id": "C2852",
+                    "name": "Adenocarcinoma",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C2916",
+                        "C7132"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Cancer of Breast",
+                        "Carcinoma of Breast",
+                        "Carcinoma of the Breast",
+                        "Breast cancer, NOS",
+                        "Breast Carcinoma",
+                        "Mammary Carcinoma",
+                        "Cancer of the Breast"
+                    ],
+                    "nci_thesaurus_concept_id": "C4872",
+                    "name": "Breast Cancer",
+                    "type": [
+                        "maintype"
+                    ],
+                    "parents": [
+                        "C9335",
+                        "C2916"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Disease by Site"
+                    ],
+                    "nci_thesaurus_concept_id": "C27551",
+                    "name": "Disorder by Site",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C2991"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C7062",
+                    "name": "Neoplasm by Special Category",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C3262"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Neoplastic Disease",
+                        "Neoplastic Growth",
+                        "Neoplasms, NOS",
+                        "Neoplasm",
+                        "Neoplasm, NOS",
+                        "tumor",
+                        "Neoplasia",
+                        "Tumor, NOS"
+                    ],
+                    "nci_thesaurus_concept_id": "C3262",
+                    "name": "Other Neoplasm",
+                    "type": [
+                        "maintype"
+                    ],
+                    "parents": [
+                        "C2991"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Breast Tumor",
+                        "Tumor of Breast",
+                        "Neoplasm of the Breast",
+                        "Neoplasm of Breast",
+                        "Tumor of the Breast"
+                    ],
+                    "nci_thesaurus_concept_id": "C2910",
+                    "name": "Breast Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C3263",
+                        "C26709"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Glandular Cell Epithelium Neoplasm",
+                        "Glandular Cell Epithelial Neoplasm"
+                    ],
+                    "nci_thesaurus_concept_id": "C7132",
+                    "name": "Glandular Cell Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C3709"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Breast Disease",
+                        "Breast Diseases"
+                    ],
+                    "nci_thesaurus_concept_id": "C26709",
+                    "name": "Breast Disorder",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C27551"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Epithelioma",
+                        "Epithelioma, malignant",
+                        "Epithelial Neoplasms, NOS"
+                    ],
+                    "nci_thesaurus_concept_id": "C3709",
+                    "name": "Epithelial Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C4741"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Tumor Morphology",
+                        "Tumor_Morphology"
+                    ],
+                    "nci_thesaurus_concept_id": "C4741",
+                    "name": "Neoplasm by Morphology",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C3262"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C3263",
+                    "name": "Neoplasm by Site",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C3262"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Adenocarcinoma of Breast",
+                        "Adenocarcinoma of the Breast",
+                        "Mammary adenocarcinoma"
+                    ],
+                    "nci_thesaurus_concept_id": "C5214",
+                    "name": "Breast Adenocarcinoma",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C2852",
+                        "C4872"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "disease term",
+                        "disease_term",
+                        "Disorder",
+                        "Disease or Disorder, Non-Neoplastic",
+                        "Disorders",
+                        "Diseases and Disorders",
+                        "Disease",
+                        "Disease or Disorder",
+                        "disease type",
+                        "condition",
+                        "Diseases",
+                        "Diagnosis",
+                        "disease_type"
+                    ],
+                    "nci_thesaurus_concept_id": "C2991",
+                    "name": "Other Disease",
+                    "type": [
+                        "maintype"
+                    ],
+                    "parents": []
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Cancer",
+                        "Neoplasm, malignant",
+                        "CA",
+                        "Unclassified tumor, malignant",
+                        "Malignant Neoplastic Disease",
+                        "Malignancy",
+                        "Malignant Growth",
+                        "Malignant Tumor",
+                        "Tumor, malignant, NOS"
+                    ],
+                    "nci_thesaurus_concept_id": "C9305",
+                    "name": "Malignant Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C7062"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Carcinoma",
+                        "Epithelial Carcinoma",
+                        "Malignant Epithelial Tumor",
+                        "Epithelial tumor, malignant",
+                        "Malignant Epithelioma",
+                        "CARCINOMA, MALIGNANT",
+                        "Epithelioma Malignant",
+                        "Malignant Epithelial Neoplasm",
+                        "Carcinoma, NOS"
+                    ],
+                    "nci_thesaurus_concept_id": "C2916",
+                    "name": "Other Carcinoma",
+                    "type": [
+                        "maintype"
+                    ],
+                    "parents": [
+                        "C3709",
+                        "C9305"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Malignant Breast Tumor",
+                        "Malignant Neoplasm of the Breast",
+                        "Malignant Neoplasm of Breast",
+                        "Malignant Tumor of the Breast",
+                        "Malignant Tumor of Breast"
+                    ],
+                    "nci_thesaurus_concept_id": "C9335",
+                    "name": "Malignant Breast Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C2910",
+                        "C9305"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Recurrent Cancer",
+                        "Recurrent Malignant Tumor",
+                        "Recurrence"
+                    ],
+                    "nci_thesaurus_concept_id": "C4813",
+                    "name": "Recurrent Malignant Neoplasm",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C4798",
+                        "C9305"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C94299",
+                    "name": "Receptor Status",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C36292"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Metastatic Cancer"
+                    ],
+                    "nci_thesaurus_concept_id": "C36263",
+                    "name": "Metastatic Malignant Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C3261",
+                        "C4968"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C153171",
+                    "name": "Advanced Carcinoma",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C3482",
+                        "C9270"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Relapsed Cancer",
+                        "Recurrent Cancer",
+                        "Relapsed Carcinoma"
+                    ],
+                    "nci_thesaurus_concept_id": "C7619",
+                    "name": "Recurrent Carcinoma",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C4813",
+                        "C2916"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Diagnostic Test Result",
+                        "Test Result"
+                    ],
+                    "nci_thesaurus_concept_id": "C77140",
+                    "name": "Clinical Test Result",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C3367"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Secondary Cancer",
+                        "Secondary Malignancy"
+                    ],
+                    "nci_thesaurus_concept_id": "C4968",
+                    "name": "Secondary Malignant Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C9305",
+                        "C36255"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "ERA Status",
+                        "ESRA Status",
+                        "ER Alpha Status",
+                        "ESTRR Status",
+                        "Estrogen Receptor Alpha Status",
+                        "Estrogen Receptor",
+                        "ER Status",
+                        "ER-Alpha Status",
+                        "ESR1 Status",
+                        "Nuclear Receptor Subfamily 3 Group A Member 1 Status",
+                        "NR3A1 Status",
+                        "ESR Status",
+                        "Estrogen Receptor 1 Status"
+                    ],
+                    "nci_thesaurus_concept_id": "C16150",
+                    "name": "Estrogen Receptor Status",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C94299"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "resistant cancer",
+                        "Refractory Cancer",
+                        "clinical resistance"
+                    ],
+                    "nci_thesaurus_concept_id": "C120186",
+                    "name": "Refractory Malignant Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C9305",
+                        "C7628"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Observable Entity"
+                    ],
+                    "nci_thesaurus_concept_id": "C3367",
+                    "name": "Finding",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": []
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Positive",
+                        "positive test result"
+                    ],
+                    "nci_thesaurus_concept_id": "C35682",
+                    "name": "Positive Laboratory Test Result",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C36292"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Advanced Cancer"
+                    ],
+                    "nci_thesaurus_concept_id": "C9270",
+                    "name": "Advanced Malignant Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C36263"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Estrogen Receptor and/or Progesterone Receptor Positive",
+                        "ER and/or PR Positive",
+                        "ER and/or PR +"
+                    ],
+                    "nci_thesaurus_concept_id": "C101267",
+                    "name": "Hormone Receptor Positive",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C177692",
+                        "C94299"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Expression Detected",
+                        "Expressed"
+                    ],
+                    "nci_thesaurus_concept_id": "C177692",
+                    "name": "Expression Positive",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C35682"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Laboratory Finding",
+                        "Test Result",
+                        "Laboratory Report",
+                        "test_result",
+                        "LAB_RESULT",
+                        "Lab Findings",
+                        "Labs"
+                    ],
+                    "nci_thesaurus_concept_id": "C36292",
+                    "name": "Laboratory Test Result",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C77140"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Breast Carcinoma by AJCC v8 Stage"
+                    ],
+                    "nci_thesaurus_concept_id": "C139532",
+                    "name": "Breast Cancer by AJCC v8 Stage",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C4872"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "PgR Status",
+                        "Progesterone Receptor"
+                    ],
+                    "nci_thesaurus_concept_id": "C16149",
+                    "name": "Progesterone Receptor Status",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C94299"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Tumor, secondary",
+                        "Neoplasm, secondary",
+                        "Secondary Tumor"
+                    ],
+                    "nci_thesaurus_concept_id": "C36255",
+                    "name": "Secondary Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C7062"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Breast Cancer by AJCC v8 Prognostic Stage Group",
+                        "Breast Carcinoma by AJCC v8 Prognostic Stage"
+                    ],
+                    "nci_thesaurus_concept_id": "C139554",
+                    "name": "Breast Cancer by AJCC v8 Prognostic Stage",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C139532"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Refractory Tumor"
+                    ],
+                    "nci_thesaurus_concept_id": "C7628",
+                    "name": "Refractory Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C7062"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Metastatic",
+                        "Neoplasm, metastatic",
+                        "Tumor, metastatic",
+                        "Metastatic Tumor"
+                    ],
+                    "nci_thesaurus_concept_id": "C3261",
+                    "name": "Metastatic Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C7062"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Negative"
+                    ],
+                    "nci_thesaurus_concept_id": "C35681",
+                    "name": "Negative Test Result",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C77140"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C170728",
+                    "name": "Metastatic Malignant Breast Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C36263",
+                        "C9335"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Absent",
+                        "LOST",
+                        "Negative",
+                        "Loss of Expression",
+                        "Not Expressed"
+                    ],
+                    "nci_thesaurus_concept_id": "C165233",
+                    "name": "Expression Negative",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C35681"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Recurrent",
+                        "Recurrent Tumor",
+                        "Recurrence",
+                        "Neoplasm Recurrence"
+                    ],
+                    "nci_thesaurus_concept_id": "C4798",
+                    "name": "Recurrent Neoplasm",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C7062"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C8511",
+                    "name": "Refractory Carcinoma",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C2916",
+                        "C120186"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Carcinoma, metastatic, NOS"
+                    ],
+                    "nci_thesaurus_concept_id": "C3482",
+                    "name": "Metastatic Carcinoma",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C36310",
+                        "C36263"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Breast Carcinoma by AJCC v8 Anatomic Stage"
+                    ],
+                    "nci_thesaurus_concept_id": "C139533",
+                    "name": "Breast Cancer by AJCC v8 Anatomic Stage",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C139532"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Her2/Neu Value",
+                        "ERBB2 Status"
+                    ],
+                    "nci_thesaurus_concept_id": "C16152",
+                    "name": "HER2/Neu Status",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C94299"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C170726",
+                    "name": "Recurrent Malignant Breast Neoplasm",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C4813",
+                        "C9335"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C36310",
+                    "name": "Secondary Carcinoma",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C2916",
+                        "C4968"
+                    ]
+                }
+            ],
+            "sites": [
+                {
+                    "org_state_or_province": "DC",
+                    "org_city": "Washington",
+                    "org_va": false,
+                    "org_country": "United States",
+                    "org_name": "MedStar Georgetown University Hospital",
+                    "org_postal_code": "20007",
+                    "org_coordinates": {
+                        "lon": -77.0771,
+                        "lat": 38.9147
+                    },
+                    "recruitment_status": "ACTIVE"
+                }
+            ],
+            "nci_id": "NCI-2019-06239"
+        },
+        {
+            "current_trial_status": "Active",
+            "nct_id": "NCT01992250",
+            "brief_title": "Cryoablation of Small Breast Tumors in Early Stage Breast Cancer",
+            "eligibility": {
+                "structured": {
+                    "max_age": "999 Years",
+                    "max_age_number": 999.0,
+                    "min_age_unit": "Years",
+                    "max_age_unit": "Years",
+                    "max_age_in_years": 999.0,
+                    "gender": "FEMALE",
+                    "accepts_healthy_volunteers": false,
+                    "min_age": "50 Years",
+                    "min_age_number": 50.0,
+                    "min_age_in_years": 50.0
+                }
+            },
+            "diseases": [
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "ESR1 Positive",
+                        "Estrogen Receptor 1 Positive",
+                        "Positive",
+                        "Positive Estrogen Receptor",
+                        "ER Alpha Positive",
+                        "ER Positive",
+                        "Nuclear Receptor Subfamily 3 Group A Member 1 Positive",
+                        "ERA Positive",
+                        "ESRA Positive",
+                        "Estrogen Receptor Alpha Positive",
+                        "NR3A1 Positive",
+                        "ESR Positive",
+                        "ESTRR Positive",
+                        "ER+",
+                        "ER-Alpha Positive"
+                    ],
+                    "nci_thesaurus_concept_id": "C15492",
+                    "name": "Estrogen Receptor Positive",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C16150",
+                        "C101267"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "PGR Positive",
+                        "PR Positive",
+                        "Positive",
+                        "PR+"
+                    ],
+                    "nci_thesaurus_concept_id": "C15496",
+                    "name": "Progesterone Receptor Positive",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C101267",
+                        "C16149"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Unilateral Breast Carcinoma"
+                    ],
+                    "nci_thesaurus_concept_id": "C46073",
+                    "name": "Unilateral Breast Cancer",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C4872"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Stage IIA Breast Cancer AJCC v6 and v7",
+                        "Stage IIA Breast Cancer AJCC v7",
+                        "Stage IIA Breast Carcinoma",
+                        "Breast Carcinoma Stage IIA",
+                        "Stage IIA Breast Cancer AJCC v6",
+                        "Breast Cancer Stage IIA"
+                    ],
+                    "nci_thesaurus_concept_id": "C5454",
+                    "name": "Stage IIA Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C7768"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Breast Carcinoma Stage IIB",
+                        "Stage IIB Breast Cancer AJCC v7",
+                        "Stage IIB Breast Carcinoma",
+                        "Stage IIB Breast Cancer AJCC v6",
+                        "Stage IIB Breast Cancer AJCC v6 and v7",
+                        "Breast Cancer Stage IIB"
+                    ],
+                    "nci_thesaurus_concept_id": "C5455",
+                    "name": "Stage IIB Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C7768"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Stage II Breast Cancer AJCC v7",
+                        "Stage II Breast Carcinoma",
+                        "Carcinoma of Breast Stage II",
+                        "Carcinoma of the Breast Stage II",
+                        "Breast Cancer Stage II",
+                        "Stage II Breast Cancer AJCC v6 and v7",
+                        "Stage II Breast Cancer AJCC v6"
+                    ],
+                    "nci_thesaurus_concept_id": "C7768",
+                    "name": "Stage II Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C90513",
+                        "C91230"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Bilateral Breast Carcinoma"
+                    ],
+                    "nci_thesaurus_concept_id": "C8287",
+                    "name": "Bilateral Breast Cancer",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C8500",
+                        "C4872"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Stage IA Breast Cancer AJCC v7"
+                    ],
+                    "nci_thesaurus_concept_id": "C85835",
+                    "name": "Stage IA Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C88375"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Stage IB Breast Cancer AJCC v7"
+                    ],
+                    "nci_thesaurus_concept_id": "C85836",
+                    "name": "Stage IB Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C88375"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Stage I Breast Cancer AJCC v7"
+                    ],
+                    "nci_thesaurus_concept_id": "C88375",
+                    "name": "Stage I Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C91230"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Infiltrating Carcinoma of the Breast",
+                        "Infiltrating Carcinoma of Breast",
+                        "Invasive Breast Carcinoma",
+                        "Invasive Carcinoma of Breast",
+                        "Infiltrating Breast Carcinoma",
+                        "Invasive Carcinoma of the Breast",
+                        "infiltrating breast cancer",
+                        "Invasive Mammary Carcinoma"
+                    ],
+                    "nci_thesaurus_concept_id": "C9245",
+                    "name": "Invasive Breast Cancer",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C4872",
+                        "C9480"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Early-Stage Breast Carcinoma",
+                        "Early Stage Breast Carcinoma"
+                    ],
+                    "nci_thesaurus_concept_id": "C94774",
+                    "name": "Early-Stage Breast Cancer",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C4872"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C3263",
+                    "name": "Neoplasm by Site",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C3262"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Tumor Morphology",
+                        "Tumor_Morphology"
+                    ],
+                    "nci_thesaurus_concept_id": "C4741",
+                    "name": "Neoplasm by Morphology",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C3262"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Neoplastic Disease",
+                        "Neoplastic Growth",
+                        "Neoplasms, NOS",
+                        "Neoplasm",
+                        "Neoplasm, NOS",
+                        "tumor",
+                        "Neoplasia",
+                        "Tumor, NOS"
+                    ],
+                    "nci_thesaurus_concept_id": "C3262",
+                    "name": "Other Neoplasm",
+                    "type": [
+                        "maintype"
+                    ],
+                    "parents": [
+                        "C2991"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Breast Tumor",
+                        "Tumor of Breast",
+                        "Neoplasm of the Breast",
+                        "Neoplasm of Breast",
+                        "Tumor of the Breast"
+                    ],
+                    "nci_thesaurus_concept_id": "C2910",
+                    "name": "Breast Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C3263",
+                        "C26709"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Breast Carcinoma by AJCC v7 Stage"
+                    ],
+                    "nci_thesaurus_concept_id": "C91230",
+                    "name": "Breast Cancer by AJCC v7 Stage",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C4872"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Epithelioma",
+                        "Epithelioma, malignant",
+                        "Epithelial Neoplasms, NOS"
+                    ],
+                    "nci_thesaurus_concept_id": "C3709",
+                    "name": "Epithelial Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C4741"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Cancer",
+                        "Neoplasm, malignant",
+                        "CA",
+                        "Unclassified tumor, malignant",
+                        "Malignant Neoplastic Disease",
+                        "Malignancy",
+                        "Malignant Growth",
+                        "Malignant Tumor",
+                        "Tumor, malignant, NOS"
+                    ],
+                    "nci_thesaurus_concept_id": "C9305",
+                    "name": "Malignant Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C7062"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Malignant Breast Tumor",
+                        "Malignant Neoplasm of the Breast",
+                        "Malignant Neoplasm of Breast",
+                        "Malignant Tumor of the Breast",
+                        "Malignant Tumor of Breast"
+                    ],
+                    "nci_thesaurus_concept_id": "C9335",
+                    "name": "Malignant Breast Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C2910",
+                        "C9305"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Disease by Site"
+                    ],
+                    "nci_thesaurus_concept_id": "C27551",
+                    "name": "Disorder by Site",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C2991"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Breast Disease",
+                        "Breast Diseases"
+                    ],
+                    "nci_thesaurus_concept_id": "C26709",
+                    "name": "Breast Disorder",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C27551"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C7062",
+                    "name": "Neoplasm by Special Category",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C3262"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Cancer of Breast",
+                        "Carcinoma of Breast",
+                        "Carcinoma of the Breast",
+                        "Breast cancer, NOS",
+                        "Breast Carcinoma",
+                        "Mammary Carcinoma",
+                        "Cancer of the Breast"
+                    ],
+                    "nci_thesaurus_concept_id": "C4872",
+                    "name": "Breast Cancer",
+                    "type": [
+                        "maintype"
+                    ],
+                    "parents": [
+                        "C9335",
+                        "C2916"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "Carcinoma",
+                        "Epithelial Carcinoma",
+                        "Malignant Epithelial Tumor",
+                        "Epithelial tumor, malignant",
+                        "Malignant Epithelioma",
+                        "CARCINOMA, MALIGNANT",
+                        "Epithelioma Malignant",
+                        "Malignant Epithelial Neoplasm",
+                        "Carcinoma, NOS"
+                    ],
+                    "nci_thesaurus_concept_id": "C2916",
+                    "name": "Other Carcinoma",
+                    "type": [
+                        "maintype"
+                    ],
+                    "parents": [
+                        "C3709",
+                        "C9305"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": true,
+                    "synonyms": [
+                        "disease term",
+                        "disease_term",
+                        "Disorder",
+                        "Disease or Disorder, Non-Neoplastic",
+                        "Disorders",
+                        "Diseases and Disorders",
+                        "Disease",
+                        "Disease or Disorder",
+                        "disease type",
+                        "condition",
+                        "Diseases",
+                        "Diagnosis",
+                        "disease_type"
+                    ],
+                    "nci_thesaurus_concept_id": "C2991",
+                    "name": "Other Disease",
+                    "type": [
+                        "maintype"
+                    ],
+                    "parents": []
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C94299",
+                    "name": "Receptor Status",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C36292"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Observable Entity"
+                    ],
+                    "nci_thesaurus_concept_id": "C3367",
+                    "name": "Finding",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": []
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Diagnostic Test Result",
+                        "Test Result"
+                    ],
+                    "nci_thesaurus_concept_id": "C77140",
+                    "name": "Clinical Test Result",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C3367"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Bilateral Cancer"
+                    ],
+                    "nci_thesaurus_concept_id": "C8500",
+                    "name": "Bilateral Carcinoma",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C2916",
+                        "C7627"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Breast Carcinoma by AJCC v6 Stage"
+                    ],
+                    "nci_thesaurus_concept_id": "C90513",
+                    "name": "Breast Cancer by AJCC v6 Stage",
+                    "type": [
+                        "stage"
+                    ],
+                    "parents": [
+                        "C4872"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Estrogen Receptor and/or Progesterone Receptor Positive",
+                        "ER and/or PR Positive",
+                        "ER and/or PR +"
+                    ],
+                    "nci_thesaurus_concept_id": "C101267",
+                    "name": "Hormone Receptor Positive",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C177692",
+                        "C94299"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Expression Detected",
+                        "Expressed"
+                    ],
+                    "nci_thesaurus_concept_id": "C177692",
+                    "name": "Expression Positive",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C35682"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Laboratory Finding",
+                        "Test Result",
+                        "Laboratory Report",
+                        "test_result",
+                        "LAB_RESULT",
+                        "Lab Findings",
+                        "Labs"
+                    ],
+                    "nci_thesaurus_concept_id": "C36292",
+                    "name": "Laboratory Test Result",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C77140"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "PgR Status",
+                        "Progesterone Receptor"
+                    ],
+                    "nci_thesaurus_concept_id": "C16149",
+                    "name": "Progesterone Receptor Status",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C94299"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C9480",
+                    "name": "Invasive Carcinoma",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C8505",
+                        "C2916"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "ERA Status",
+                        "ESRA Status",
+                        "ER Alpha Status",
+                        "ESTRR Status",
+                        "Estrogen Receptor Alpha Status",
+                        "Estrogen Receptor",
+                        "ER Status",
+                        "ER-Alpha Status",
+                        "ESR1 Status",
+                        "Nuclear Receptor Subfamily 3 Group A Member 1 Status",
+                        "NR3A1 Status",
+                        "ESR Status",
+                        "Estrogen Receptor 1 Status"
+                    ],
+                    "nci_thesaurus_concept_id": "C16150",
+                    "name": "Estrogen Receptor Status",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C94299"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Positive",
+                        "positive test result"
+                    ],
+                    "nci_thesaurus_concept_id": "C35682",
+                    "name": "Positive Laboratory Test Result",
+                    "type": [
+                        "finding"
+                    ],
+                    "parents": [
+                        "C36292"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Bilateral Malignant Tumor",
+                        "Bilateral Cancer"
+                    ],
+                    "nci_thesaurus_concept_id": "C7627",
+                    "name": "Bilateral Malignant Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C9305"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "is_lead_disease": false,
+                    "synonyms": [
+                        "Infiltrating Malignant Neoplasm",
+                        "infiltrating cancer",
+                        "invasive cancer"
+                    ],
+                    "nci_thesaurus_concept_id": "C8505",
+                    "name": "Invasive Malignant Neoplasm",
+                    "type": [
+                        "subtype"
+                    ],
+                    "parents": [
+                        "C9305"
+                    ]
+                }
+            ],
+            "sites": [
+                {
+                    "org_state_or_province": "CA",
+                    "org_city": "Duarte",
+                    "org_va": false,
+                    "org_country": "United States",
+                    "org_name": "City of Hope Comprehensive Cancer Center",
+                    "org_postal_code": "91010",
+                    "org_coordinates": {
+                        "lon": -117.9655,
+                        "lat": 34.1357
+                    },
+                    "recruitment_status": "CLOSED_TO_ACCRUAL"
+                }
+            ],
+            "nci_id": "NCI-2017-00241"
+        }
+    ]
+}

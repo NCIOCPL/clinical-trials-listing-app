@@ -1,0 +1,15 @@
+{
+	"data": [
+		{
+			"name": "Polymorphism Analysis",
+			"codes": [
+				"C18309"
+			],
+			"synonyms": [
+				"Polymorphism Detection"
+			],
+			"category": "other",
+			"count": 1
+		}
+	]
+}

@@ -1,0 +1,2763 @@
+{
+    "other_ids": null,
+    "amendment_date": "2019-07-22T00:00:00",
+    "keywords": null,
+    "dcp_id": null,
+    "interventional_model": "Parallel",
+    "lead_org": "AIDS Malignancy Consortium",
+    "eligibility": {
+        "unstructured": [
+            {
+                "inclusion_indicator": true,
+                "display_order": 1,
+                "description": "ELIGIBILITY FOR SCREENING"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 2,
+                "description": "Ability to understand and the willingness to provide informed consent"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 3,
+                "description": "Participant has clinically diagnosed LACC and self-reports as HIV-positive"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 4,
+                "description": "Eastern Cooperative Oncology Group (ECOG) performance status =< 2 (Karnofsky >= 50%)"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 5,
+                "description": "CHEMORADIATION TREATMENT ENROLLMENT"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 6,
+                "description": "Participants with locally advanced primary, untreated, histologically-confirmed, documented invasive squamous cell carcinoma, adenocarcinoma, or adenosquamous carcinoma of the uterine cervix. Staging will be conducted with the FIGO 2018 criteria; stages IIB, III, or IVA are eligible"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 7,
+                "description": "HIV positive. Documentation of HIV-1 infection by means of any one of the following:\r\n* Documentation of receipt of ART by a licensed health care provider (documentation may be a record of an ART prescription in the participant’s medical record, a written prescription in the name of the participant for ART, or pill bottles for ART with a label showing the participant’s name)\r\n* HIV-1 ribonucleic acid (RNA) detection by a licensed HIV-1 RNA assay demonstrating >1000 RNA copies/mL confirmed by a licensed screening antibody and/or HIV antibody antigen combination assay\r\n* Any licensed HIV screening antibody and/or HIV antibody/antigen combination assay confirmed by a second licensed HIV assay such as a HIV-1 Western blot confirmation or HIV rapid multispot antibody differentiation assay.\r\n** Note: The term “licensed” refers to a kit that has been certified or licensed by an oversight body within the participating country and validated internally. WHO (World Health Organization) and CDC (Centers for Disease Control and Prevention) guidelines mandate that confirmation of the initial test result must use a test that is different from the one used for the initial assessment. A reactive initial rapid test should be confirmed by either another type of rapid assay or an E/CIA that is based on a different antigen preparation and/or different test principle (e.g., indirect versus competitive), or a Western blot or a plasma HIV-1 RNA viral load."
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 8,
+                "description": "Hemoglobin >= 10 g/dL (6.2 mmol/L) (participants receiving transfusion are permitted) (within 4 weeks prior to chemoradiation treatment enrollment)"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 9,
+                "description": "Leukocytes: >= 3,000/mm^3 (3.0 x 10^9/L) (within 4 weeks prior to chemoradiation treatment enrollment)"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 10,
+                "description": "Absolute neutrophil count: >= 1,500/mm^3 (1.5 x 10^9/L) (within 4 weeks prior to chemoradiation treatment enrollment)"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 11,
+                "description": "Platelets: >= 100,000/mm^3 (100 x 10^9/L) (within 4 weeks prior to chemoradiation treatment enrollment)"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 12,
+                "description": "CD4 T-cell count a minimum of 200 cells/uL (within 4 weeks prior to chemoradiation treatment enrollment)"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 13,
+                "description": "Total bilirubin =< 2 x institutional upper limit of normal (ULN) unless related to antiretroviral use (e.g., atazanavir or indinavir), then the direct bilirubin must be =< 2 x ULN (within 4 weeks prior to chemoradiation treatment enrollment)"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 14,
+                "description": "Aspartate aminotransferase (AST) (serum glutamic-oxaloacetic transaminase [SGOT])/alanine aminotransferase (ALT) (serum glutamate pyruvate transaminase [SGPT]): =< 3 x ULN (within 4 weeks prior to chemoradiation treatment enrollment)"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 15,
+                "description": "Creatinine levels within normal institutional limits or, creatinine clearance >= 60 mL/min/1.73 m^2 (1.00 mL/s) calculated by the Cockcroft-Gault equation for women with creatinine levels above institutional normal (within 4 weeks prior to chemoradiation treatment enrollment)"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 16,
+                "description": "Participants must be prescribed combination antiretroviral therapy with the goal of virological suppression using an acceptable regimen that adheres to national guidelines for treatment of HIV infection. If on a ritonavir- or cobicistat-based regimen, the participant must be switched to a non-ritonavir/ cobicistat-based regimen at least 7 days before treatment enrollment. Participants not on ART must start an acceptable regimen at least 7 days before treatment enrollment"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 17,
+                "description": "In the investigator’s opinion the participant is suitable for treatment with radical intent using concurrent chemotherapy and pelvic radiation followed by adjuvant chemotherapy"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 18,
+                "description": "Participants of childbearing potential, defined as a sexually mature woman who: 1) has not undergone a hysterectomy or bilateral oophorectomy; or 2) has not been naturally postmenopausal for at least 24 consecutive months (i.e., has had menses at any time in the preceding 24 consecutive months), must have a negative urine or serum pregnancy test within 3 weeks prior to treatment enrollment and agree to use an effective form of contraception (e.g., barrier contraception, highly effective hormonal contraception) for the duration of all protocol treatment and for 6 weeks after stopping treatment"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 19,
+                "description": "Life expectancy of greater than 6 months"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 20,
+                "description": "ELIGIBILITY FOR RANDOMIZATION"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 21,
+                "description": "Absolute neutrophil count: >= 1,500/mm^3 (1.5 x 10^9/L) (within 4-8 weeks post CDDP/RT)"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 22,
+                "description": "Platelets: >= 100,000/mm^3 (100 x 10^9/L) (within 4-8 weeks post CDDP/RT)"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 23,
+                "description": "CD4 T-cell > 100 cells/uL (within 4-8 weeks post CDDP/RT)"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 24,
+                "description": "HIV viral load < 400 copies/mL (within 4-8 weeks post CDDP/RT)"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 25,
+                "description": "ECOG performance status =< 2 (Karnofsky >= 50%)"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 26,
+                "description": "Successful completion of CDDP/RT, defined as receiving 4-6 cycles of cisplatin and completion of the equivalent dose per fraction of >78 Gy to Point A"
+            },
+            {
+                "inclusion_indicator": false,
+                "display_order": 27,
+                "description": "Participants who have had chemotherapy for cervical cancer within 4 weeks (6 weeks for nitrosoureas or mitomycin C) prior to entering the study"
+            },
+            {
+                "inclusion_indicator": false,
+                "display_order": 28,
+                "description": "Participants who are receiving any other investigational agents"
+            },
+            {
+                "inclusion_indicator": false,
+                "display_order": 29,
+                "description": "Participants who have not recovered from adverse events due to prior anti-cancer therapy (i.e., have residual toxicity > grade 1)."
+            },
+            {
+                "inclusion_indicator": false,
+                "display_order": 30,
+                "description": "Participants who have undergone hysterectomy including supracervical hysterectomy"
+            },
+            {
+                "inclusion_indicator": false,
+                "display_order": 31,
+                "description": "Acute active (such as tuberculosis or malaria), serious, uncontrolled infection"
+            },
+            {
+                "inclusion_indicator": false,
+                "display_order": 32,
+                "description": "Prior invasive malignancy requiring systemic chemotherapy diagnosed within the past 24 months (other than LACC)"
+            },
+            {
+                "inclusion_indicator": false,
+                "display_order": 33,
+                "description": "A medical or psychiatric illness that precludes ability to give informed consent or is likely to interfere with the ability to comply with the protocol stipulations"
+            },
+            {
+                "inclusion_indicator": false,
+                "display_order": 34,
+                "description": "Participants with circumstances that will not permit completion of the study or required follow-up. For instance, if travel to and from treatment site is an issue"
+            },
+            {
+                "inclusion_indicator": false,
+                "display_order": 35,
+                "description": "Participants with carcinoma of the cervical stump"
+            },
+            {
+                "inclusion_indicator": false,
+                "display_order": 36,
+                "description": "Participants with history of cardiovascular disease manifested as:\r\n* History of myocardial infarction\r\n* Unstable angina\r\n* Currently taking medication for treatment of angina\r\n* History of coronary artery bypass surgery\r\n* New York Heart Association class 3 or 4 heart failure"
+            },
+            {
+                "inclusion_indicator": false,
+                "display_order": 37,
+                "description": "History of allergic reactions attributed to compounds of similar chemical or biological composition to study drugs (cisplatin, carboplatin, and paclitaxel)"
+            },
+            {
+                "inclusion_indicator": false,
+                "display_order": 38,
+                "description": "Participants who are breastfeeding a child. Cisplatin is known to be excreted in human milk"
+            }
+        ],
+        "structured": {
+            "max_age": "999 Years",
+            "max_age_number": 999,
+            "min_age_unit": "Years",
+            "max_age_unit": "Years",
+            "max_age_in_years": 999,
+            "gender": "FEMALE",
+            "min_age": "18 Years",
+            "accepts_healthy_volunteers": false,
+            "min_age_number": 18,
+            "min_age_in_years": 18
+        }
+    },
+    "sites": [
+        {
+            "org_state_or_province": null,
+            "contact_name": "Margaret Ziona Borok",
+            "contact_phone": null,
+            "recruitment_status_date": "2019-08-01",
+            "org_address_line_2": "PO Box MP167 Mount Pleasant",
+            "org_va": false,
+            "org_address_line_1": "630 Churchill Avenue",
+            "org_tty": null,
+            "org_family": null,
+            "org_postal_code": null,
+            "contact_email": "mborok@mweb.co.zw",
+            "recruitment_status": "IN_REVIEW",
+            "org_city": "Harare",
+            "org_email": null,
+            "org_country": "Zimbabwe",
+            "org_fax": null,
+            "org_phone": null,
+            "org_name": "University of Zimbabwe College of Health Sciences"
+        }
+    ],
+    "completion_date_type_code": null,
+    "detail_description": "PRIMARY OBJECTIVES:\r\nI. To evaluate the efficacy, as defined as 2-year progression-free survival (PFS), of concomitant chemoradiotherapy (CDDP/RT) and antiretroviral therapy (ART) with or without adjuvant therapy in HIV-positive women with locally advanced cervical cancer (LACC) Federation of Gynecology and Obstetrics (FIGO) 2018 Stage IIB, III, and IVA.\r\n\r\nSECONDARY OBJECTIVES:\r\nI. To evaluate the safety and tolerability of concomitant chemoradiotherapy (CDDP/RT) with or without adjuvant chemotherapy in HIV-positive women (on ART) with LACC.\r\nII. To estimate the 2-year PFS of HIV-positive women with LACC treated on study, stratified by FIGO 2018 stage.\r\nIII. To estimate the effects of treatment on the participant’s HIV disease status by assessing HIV viral load, CD4 counts, and concurrent acquired immunodeficiency syndrome (AIDS)-defining conditions post completion of cancer therapy.\r\nIV. To describe the cervical cancer recurrence patterns in HIV-positive participants with LACC defined as loco-regional and/or distant recurrences.\r\nV. Determine 2-year overall survival and causes of death (i.e., cancer-related, HIV-related, or other).\r\nVI. To estimate the 2-year PFS of HIV-positive women with LACC treated on study but who did not meet eligibility criteria for randomization, stratified by FIGO 2018 stage.\r\n\r\nEXPLORATORY OBJECTIVES:\r\nI. Evaluate the cervical human papilloma virus (HPV) types present in HIV-positive women with cervical cancer.\r\nII. Assess persistence of cervical HPV pre- and post-treatment.\r\nIII. Assess the presence of HPV in the anus pre- and post-treatment.\r\n\r\nOUTLINE:\r\n\r\nSTANDARD CARE: Patients receive cisplatin intravenously (IV) over 30-60 minutes on days 1, 8, 15, 22, 29, and 36. Patients also undergo radiation therapy over 2-5 fractions 5 days a week for up to 8 weeks in the absence if disease progression or unacceptable toxicity. 4-8 weeks following standard of care, patients are randomized to 1 of 2 arms.\r\n\r\nArm I: Patients receive carboplatin IV over 1 hour and paclitaxel IV over 3 hours on day 1. Treatment repeat every 21 days for up to 4 cycles in the absence of disease progression or unacceptable toxicity.\r\n\r\nArm II: Patients undergo active monitoring for 2 years after initiation of chemoradiation treatment.\r\n\r\nAfter completion of study treatment, patients are followed up at 3, 6, 9, 12, 18 and 24 months.",
+    "official_title": "A Randomized Phase II Trial of Concurrent Chemotherapy and Pelvic Radiation Therapy with or without Paclitaxel and Carboplatin in HIV-Positive Women with Locally Advanced Cervical Cancer (LACC)",
+    "_phase_sort_order": 2,
+    "collaborators": [
+        {
+            "name": "National Cancer Institute",
+            "functional_role": "FUNDING_SOURCE"
+        }
+    ],
+    "associated_studies": null,
+    "outcome_measures": [
+        {
+            "time_frame": "Up to 2 years",
+            "name": "Cervical cancer recurrence patterns",
+            "description": "Binomial proportions and their corresponding 95% confidence intervals will be used to describe cervical cancer recurrence patterns in HIV-infected participants with LACC defined as loco-regional and/or distant recurrences.",
+            "type_code": "SECONDARY"
+        },
+        {
+            "time_frame": "Up to 2 years",
+            "name": "Evaluation of cervical human papilloma virus (HPV) types",
+            "description": "Counts and binomial proportions will be used to evaluate the cervical HPV types present in the HIV-positive women with cervical cancer.",
+            "type_code": "OTHER_PRE_SPECIFIED"
+        },
+        {
+            "time_frame": "Up to 2 years",
+            "name": "Incidence of adverse events",
+            "description": "Graded according to Common Terminology Criteria for Adverse Events (CTCAE) version 5.0. The frequency of adverse events (AEs) and their severity will be tabulated to evaluate the safety and tolerability. Safety and tolerability will be evaluated through tracking the number of dose delays, dose reductions, missing doses, and number of doses received and compliance.",
+            "type_code": "SECONDARY"
+        },
+        {
+            "time_frame": "From entry to protocol to death; or for living participants, the date of last contact, assessed up to 2 years",
+            "name": "Overall survival (OS)",
+            "description": "The Kaplan Meier method and corresponding 95% confidence interval will be used to estimate the overall survival. The causes of death will be listed.",
+            "type_code": "SECONDARY"
+        },
+        {
+            "time_frame": "Up to 2 years",
+            "name": "Persistence of cervical HPV pre- and post-treatment",
+            "description": "McNemar’s test will be used to assess persistence of cervical HPV pre- and post-treatment.",
+            "type_code": "OTHER_PRE_SPECIFIED"
+        },
+        {
+            "time_frame": "Up to 2 years",
+            "name": "PFS",
+            "description": "The Kaplan Meier method will be used to estimate the 2-year PFS and corresponding 95% confidence intervals of human immunodeficiency virus (HIV)-infected women with locally advanced cervical cancer (LACC) treated on study, stratified by stage and nodal status.",
+            "type_code": "SECONDARY"
+        },
+        {
+            "time_frame": "Up to 2 years",
+            "name": "PFS in women not meeting criteria for randomization",
+            "description": "The Kaplan Meier method will be used to estimate the 2-year PFS and corresponding 95% confidence intervals of HIV-infected women with LACC treated on study but who did not meet the eligibility criteria for randomization, stratified by stage and nodal status.",
+            "type_code": "SECONDARY"
+        },
+        {
+            "time_frame": "Up to 2 years",
+            "name": "Presence of HPV in the anus pre- and post-treatment",
+            "description": "McNemar’s test will be used to assess the presence of HPV in the anus pre- and post-treatment.",
+            "type_code": "OTHER_PRE_SPECIFIED"
+        },
+        {
+            "time_frame": "The time from registration enrollment to disease recurrence, disease progression, or death for any reason, assessed up to 2 years",
+            "name": "Progression-free survival (PFS)",
+            "description": "Evaluated using Response Evaluation Criteria in Solid Tumors 1.1. The intervention arm will be compared to the control arm for improvement in PFS via one-sided log-rank test. This test will be conducted once for the interim analysis and once for the final analysis.",
+            "type_code": "PRIMARY"
+        },
+        {
+            "time_frame": "Up to 2 years",
+            "name": "Treatment effect on CD4 counts and HIV viral load",
+            "description": "Descriptive statistics will be used to describe the effects of treatment on participants’ CD4 counts and HIV viral load.",
+            "type_code": "SECONDARY"
+        }
+    ],
+    "phase": "II",
+    "central_contact": {
+        "phone": null,
+        "name": null,
+        "type": null,
+        "email": null
+    },
+    "primary_purpose": "TREATMENT",
+    "number_of_arms": 2,
+    "_study_protocol_type_sort_order": 0,
+    "nct_id": "NCT03834571",
+    "biomarkers": [
+        {
+            "eligibility_criterion": "inclusion",
+            "inclusion_indicator": "TRIAL",
+            "synonyms": [
+                "HIV-1 Positive",
+                "HIV-1+",
+                "HIV1 Positive",
+                "HIV1+"
+            ],
+            "nci_thesaurus_concept_id": "C129253",
+            "name": "Human Immunodeficiency Virus 1 Positive",
+            "semantic_types": [
+                "Laboratory or Test Result"
+            ],
+            "type": [],
+            "ancestors": [
+                "C15175",
+                "C26683",
+                "C3367",
+                "C35553",
+                "C35682",
+                "C36292",
+                "C7057",
+                "C77140"
+            ],
+            "assay_purpose": "Eligibility Criterion - Inclusion",
+            "parents": [
+                "C15175"
+            ]
+        },
+        {
+            "eligibility_criterion": "inclusion",
+            "inclusion_indicator": "TREE",
+            "synonyms": [
+                "Observable Entity",
+                "finding"
+            ],
+            "nci_thesaurus_concept_id": "C3367",
+            "name": "Finding",
+            "semantic_types": [
+                "Finding"
+            ],
+            "type": [],
+            "ancestors": [
+                "C7057"
+            ],
+            "parents": [
+                "C7057"
+            ],
+            "assay_purpose": "Eligibility Criterion - Inclusion"
+        },
+        {
+            "eligibility_criterion": "inclusion",
+            "inclusion_indicator": "TREE",
+            "synonyms": [
+                "HIV Positive",
+                "HIV Positivity",
+                "HIV positive",
+                "HIV test positive",
+                "Positive"
+            ],
+            "nci_thesaurus_concept_id": "C15175",
+            "name": "Human Immunodeficiency Virus Positive",
+            "semantic_types": [
+                "Laboratory or Test Result"
+            ],
+            "type": [],
+            "ancestors": [
+                "C26683",
+                "C3367",
+                "C35553",
+                "C35682",
+                "C36292",
+                "C7057",
+                "C77140"
+            ],
+            "parents": [
+                "C35553",
+                "C35682"
+            ],
+            "assay_purpose": "Eligibility Criterion - Inclusion"
+        },
+        {
+            "eligibility_criterion": "inclusion",
+            "inclusion_indicator": "TREE",
+            "synonyms": [
+                "Diagnostic Test Result",
+                "Test Result"
+            ],
+            "nci_thesaurus_concept_id": "C77140",
+            "name": "Clinical Test Result",
+            "semantic_types": [
+                "Finding"
+            ],
+            "type": [],
+            "ancestors": [
+                "C3367",
+                "C7057"
+            ],
+            "parents": [
+                "C3367"
+            ],
+            "assay_purpose": "Eligibility Criterion - Inclusion"
+        },
+        {
+            "eligibility_criterion": "inclusion",
+            "inclusion_indicator": "TREE",
+            "synonyms": [
+                "Abnormal Lab Test Result",
+                "Abnormal Laboratory Test",
+                "Abnormal, NOS"
+            ],
+            "nci_thesaurus_concept_id": "C26683",
+            "name": "Abnormal Laboratory Test Result",
+            "semantic_types": [
+                "Laboratory or Test Result"
+            ],
+            "type": [],
+            "ancestors": [
+                "C3367",
+                "C36292",
+                "C7057",
+                "C77140"
+            ],
+            "parents": [
+                "C36292"
+            ],
+            "assay_purpose": "Eligibility Criterion - Inclusion"
+        },
+        {
+            "eligibility_criterion": "inclusion",
+            "inclusion_indicator": "TREE",
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C7057",
+            "name": "Disease, Disorder or Finding",
+            "semantic_types": [
+                "Conceptual Entity"
+            ],
+            "type": [
+                "branch"
+            ],
+            "ancestors": [],
+            "parents": [],
+            "assay_purpose": "Eligibility Criterion - Inclusion"
+        },
+        {
+            "eligibility_criterion": "inclusion",
+            "inclusion_indicator": "TREE",
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C35553",
+            "name": "Abnormal Blood Chemistry and Hematology Test Result",
+            "semantic_types": [
+                "Laboratory or Test Result"
+            ],
+            "type": [],
+            "ancestors": [
+                "C26683",
+                "C3367",
+                "C36292",
+                "C7057",
+                "C77140"
+            ],
+            "parents": [
+                "C26683"
+            ],
+            "assay_purpose": "Eligibility Criterion - Inclusion"
+        },
+        {
+            "eligibility_criterion": "inclusion",
+            "inclusion_indicator": "TREE",
+            "synonyms": [
+                "Positive",
+                "positive test result"
+            ],
+            "nci_thesaurus_concept_id": "C35682",
+            "name": "Positive Laboratory Test Result",
+            "semantic_types": [
+                "Laboratory or Test Result"
+            ],
+            "type": [],
+            "ancestors": [
+                "C3367",
+                "C36292",
+                "C7057",
+                "C77140"
+            ],
+            "parents": [
+                "C36292"
+            ],
+            "assay_purpose": "Eligibility Criterion - Inclusion"
+        },
+        {
+            "eligibility_criterion": "inclusion",
+            "inclusion_indicator": "TREE",
+            "synonyms": [
+                "LAB_RESULT",
+                "Lab Findings",
+                "Laboratory Finding",
+                "Laboratory Report",
+                "Labs",
+                "TEST RESULT",
+                "Test Result",
+                "test result",
+                "test_result"
+            ],
+            "nci_thesaurus_concept_id": "C36292",
+            "name": "Laboratory Test Result",
+            "semantic_types": [
+                "Laboratory or Test Result"
+            ],
+            "type": [],
+            "ancestors": [
+                "C3367",
+                "C7057",
+                "C77140"
+            ],
+            "parents": [
+                "C77140"
+            ],
+            "assay_purpose": "Eligibility Criterion - Inclusion"
+        }
+    ],
+    "classification_code": null,
+    "current_trial_status_date": "2018-08-28",
+    "diseases": [
+        {
+            "inclusion_indicator": "TRIAL",
+            "is_lead_disease": true,
+            "synonyms": [
+                "HIV",
+                "Human Immunodeficiency Virus Infection"
+            ],
+            "nci_thesaurus_concept_id": "C3108",
+            "name": "HIV Infection",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3439"
+            ]
+        },
+        {
+            "inclusion_indicator": "TRIAL",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Cervical Squamous Cell Carcinoma",
+                "Cervix Squamous Cell Carcinoma",
+                "Cervix Uteri Squamous Cell Carcinoma",
+                "Squamous Cell Carcinoma of Cervix",
+                "Squamous Cell Carcinoma of Cervix Uteri",
+                "Squamous Cell Carcinoma of Uterine Cervix",
+                "Squamous Cell Carcinoma of the Cervix",
+                "Squamous Cell Carcinoma of the Cervix Uteri",
+                "Squamous Cell Carcinoma of the Uterine Cervix",
+                "Squamous cervical cancer",
+                "Uterine Cervix Squamous Cell Carcinoma"
+            ],
+            "nci_thesaurus_concept_id": "C4028",
+            "name": "Cervical Squamous Cell Cancer",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C9039",
+                "C40195",
+                "C2929"
+            ]
+        },
+        {
+            "inclusion_indicator": "TRIAL",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Adenocarcinoma",
+                "Adenocarcinoma - cervix",
+                "Adenocarcinoma of Cervix",
+                "Adenocarcinoma of Cervix Uteri",
+                "Adenocarcinoma of Uterine Cervix",
+                "Adenocarcinoma of the Cervix",
+                "Adenocarcinoma of the Cervix Uteri",
+                "Adenocarcinoma of the Uterine Cervix",
+                "Adenocarcinoma of the cervix",
+                "Carcinoma of Endocervix",
+                "Carcinoma of the Endocervix",
+                "Cervical Adenocarcinoma",
+                "Cervix Adenocarcinoma",
+                "Cervix Uteri Adenocarcinoma",
+                "Endocervical Adenocarcinoma",
+                "Endocervical Carcinoma",
+                "Uterine Cervix Adenocarcinoma"
+            ],
+            "nci_thesaurus_concept_id": "C4029",
+            "name": "Endocervical Cancer",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2852",
+                "C9039",
+                "C40210"
+            ]
+        },
+        {
+            "inclusion_indicator": "TRIAL",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Adenosquamous Carcinoma",
+                "Adenosquamous Cell Carcinoma of Cervix",
+                "Adenosquamous Cell Carcinoma of Cervix Uteri",
+                "Adenosquamous Cell Carcinoma of Uterine Cervix",
+                "Adenosquamous Cell Carcinoma of the Cervix",
+                "Adenosquamous Cell Carcinoma of the Cervix Uteri",
+                "Adenosquamous Cell Carcinoma of the Uterine Cervix",
+                "Cervical Adenosquamous Carcinoma",
+                "Cervical Adenosquamous Cell Carcinoma",
+                "Cervix Adenosquamous Cell Carcinoma",
+                "Cervix Uteri Adenosquamous Cell Carcinoma",
+                "Uterine Cervix Adenosquamous Cell Carcinoma"
+            ],
+            "nci_thesaurus_concept_id": "C4519",
+            "name": "Cervical Adenosquamous Cancer",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3727",
+                "C9039"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C3263",
+            "name": "Neoplasm by Site",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3262"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C3263",
+            "name": "Neoplasm by Site",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3262"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C156482",
+            "name": "Genitourinary System Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C156660",
+                "C3263"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C156482",
+            "name": "Genitourinary System Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C156660",
+                "C3263"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Glandular Cell Epithelial Neoplasm",
+                "Glandular Cell Epithelium Neoplasm"
+            ],
+            "nci_thesaurus_concept_id": "C7132",
+            "name": "Glandular Cell Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3709"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Cancer of Uterus",
+                "Cancer of the Uterus",
+                "Malignant Neoplasm of Uterus",
+                "Malignant Neoplasm of the Uterus",
+                "Malignant Tumor of Uterus",
+                "Malignant Tumor of the Uterus",
+                "Malignant Uterine Tumor",
+                "Uterine Cancer",
+                "Uterine cancer, NOS",
+                "uterine cancer"
+            ],
+            "nci_thesaurus_concept_id": "C3552",
+            "name": "Malignant Uterine Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C4913",
+                "C3435"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Cancer of Uterus",
+                "Cancer of the Uterus",
+                "Malignant Neoplasm of Uterus",
+                "Malignant Neoplasm of the Uterus",
+                "Malignant Tumor of Uterus",
+                "Malignant Tumor of the Uterus",
+                "Malignant Uterine Tumor",
+                "Uterine Cancer",
+                "Uterine cancer, NOS",
+                "uterine cancer"
+            ],
+            "nci_thesaurus_concept_id": "C3552",
+            "name": "Malignant Uterine Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C4913",
+                "C3435"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "ADENOCARCINOMA, MALIGNANT",
+                "Adenocarcinoma, NOS",
+                "adenocarcinoma"
+            ],
+            "nci_thesaurus_concept_id": "C2852",
+            "name": "Adenocarcinoma",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2916",
+                "C7132"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Disease by Site"
+            ],
+            "nci_thesaurus_concept_id": "C27551",
+            "name": "Disorder by Site",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2991"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Malignant Cervical Tumor",
+                "Malignant Cervix Neoplasm",
+                "Malignant Cervix Tumor",
+                "Malignant Cervix Uteri Neoplasm",
+                "Malignant Cervix Uteri Tumor",
+                "Malignant Neoplasm of Cervix",
+                "Malignant Neoplasm of Cervix Uteri",
+                "Malignant Neoplasm of Uterine Cervix",
+                "Malignant Neoplasm of the Cervix",
+                "Malignant Neoplasm of the Cervix Uteri",
+                "Malignant Neoplasm of the Uterine Cervix",
+                "Malignant Tumor of Cervix",
+                "Malignant Tumor of Cervix Uteri",
+                "Malignant Tumor of Uterine Cervix",
+                "Malignant Tumor of the Cervix",
+                "Malignant Tumor of the Cervix Uteri",
+                "Malignant Tumor of the Uterine Cervix",
+                "Malignant Uterine Cervix Neoplasm",
+                "Malignant Uterine Cervix Tumor"
+            ],
+            "nci_thesaurus_concept_id": "C9311",
+            "name": "Malignant Cervical Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2940",
+                "C3552"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Disease by Site"
+            ],
+            "nci_thesaurus_concept_id": "C27551",
+            "name": "Disorder by Site",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2991"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Malignant Cervical Tumor",
+                "Malignant Cervix Neoplasm",
+                "Malignant Cervix Tumor",
+                "Malignant Cervix Uteri Neoplasm",
+                "Malignant Cervix Uteri Tumor",
+                "Malignant Neoplasm of Cervix",
+                "Malignant Neoplasm of Cervix Uteri",
+                "Malignant Neoplasm of Uterine Cervix",
+                "Malignant Neoplasm of the Cervix",
+                "Malignant Neoplasm of the Cervix Uteri",
+                "Malignant Neoplasm of the Uterine Cervix",
+                "Malignant Tumor of Cervix",
+                "Malignant Tumor of Cervix Uteri",
+                "Malignant Tumor of Uterine Cervix",
+                "Malignant Tumor of the Cervix",
+                "Malignant Tumor of the Cervix Uteri",
+                "Malignant Tumor of the Uterine Cervix",
+                "Malignant Uterine Cervix Neoplasm",
+                "Malignant Uterine Cervix Tumor"
+            ],
+            "nci_thesaurus_concept_id": "C9311",
+            "name": "Malignant Cervical Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2940",
+                "C3552"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Malignant Mixed Tumor",
+                "Mixed tumor, malignant, NOS",
+                "TUMOR, MIXED, MALIGNANT"
+            ],
+            "nci_thesaurus_concept_id": "C3729",
+            "name": "Malignant Mixed Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C9305",
+                "C6930"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Urogenital Disease"
+            ],
+            "nci_thesaurus_concept_id": "C156660",
+            "name": "Genitourinary System Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C27551"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Mixed Tumor"
+            ],
+            "nci_thesaurus_concept_id": "C6930",
+            "name": "Mixed Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C7062"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Urogenital Disease"
+            ],
+            "nci_thesaurus_concept_id": "C156660",
+            "name": "Genitourinary System Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C27551"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Disorder of Reproductive System",
+                "Genital Disorders",
+                "Reproductive System Disease"
+            ],
+            "nci_thesaurus_concept_id": "C4875",
+            "name": "Reproductive System Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C156660"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Disorder of Reproductive System",
+                "Genital Disorders",
+                "Reproductive System Disease"
+            ],
+            "nci_thesaurus_concept_id": "C4875",
+            "name": "Reproductive System Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C156660"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "CA",
+                "Cancer",
+                "Malignancy",
+                "Malignant Growth",
+                "Malignant Neoplastic Disease",
+                "Malignant Tumor",
+                "NEOPLASM, MALIGNANT",
+                "Neoplasm, malignant",
+                "Tumor, malignant, NOS",
+                "Unclassified tumor, malignant",
+                "cancer",
+                "malignancy"
+            ],
+            "nci_thesaurus_concept_id": "C9305",
+            "name": "Malignant Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C7062"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "CA",
+                "Cancer",
+                "Malignancy",
+                "Malignant Growth",
+                "Malignant Neoplastic Disease",
+                "Malignant Tumor",
+                "NEOPLASM, MALIGNANT",
+                "Neoplasm, malignant",
+                "Tumor, malignant, NOS",
+                "Unclassified tumor, malignant",
+                "cancer",
+                "malignancy"
+            ],
+            "nci_thesaurus_concept_id": "C9305",
+            "name": "Malignant Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C7062"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C7062",
+            "name": "Neoplasm by Special Category",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3262"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Non-Neoplastic Disease by Special Category"
+            ],
+            "nci_thesaurus_concept_id": "C53547",
+            "name": "Non-Neoplastic Disorder by Special Category",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C53529"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C7062",
+            "name": "Neoplasm by Special Category",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3262"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Cervical Tumor",
+                "Cervix Neoplasm",
+                "Cervix Tumor",
+                "Cervix Uteri Neoplasm",
+                "Cervix Uteri Tumor",
+                "Neoplasm of Cervix",
+                "Neoplasm of Cervix Uteri",
+                "Neoplasm of Uterine Cervix",
+                "Neoplasm of the Cervix",
+                "Neoplasm of the Cervix Uteri",
+                "Neoplasm of the Uterine Cervix",
+                "Tumor of Cervix",
+                "Tumor of Cervix Uteri",
+                "Tumor of Uterine Cervix",
+                "Tumor of the Cervix",
+                "Tumor of the Cervix Uteri",
+                "Tumor of the Uterine Cervix",
+                "Uterine Cervix Neoplasm",
+                "Uterine Cervix Tumor"
+            ],
+            "nci_thesaurus_concept_id": "C2940",
+            "name": "Cervical Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C40241",
+                "C3435"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Cervical Tumor",
+                "Cervix Neoplasm",
+                "Cervix Tumor",
+                "Cervix Uteri Neoplasm",
+                "Cervix Uteri Tumor",
+                "Neoplasm of Cervix",
+                "Neoplasm of Cervix Uteri",
+                "Neoplasm of Uterine Cervix",
+                "Neoplasm of the Cervix",
+                "Neoplasm of the Cervix Uteri",
+                "Neoplasm of the Uterine Cervix",
+                "Tumor of Cervix",
+                "Tumor of Cervix Uteri",
+                "Tumor of Uterine Cervix",
+                "Tumor of the Cervix",
+                "Tumor of the Cervix Uteri",
+                "Tumor of the Uterine Cervix",
+                "Uterine Cervix Neoplasm",
+                "Uterine Cervix Tumor"
+            ],
+            "nci_thesaurus_concept_id": "C2940",
+            "name": "Cervical Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C40241",
+                "C3435"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Female Reproductive System Tumor",
+                "Gynecologic Neoplasm",
+                "Gynecologic Tumor",
+                "Neoplasm of Female Reproductive System",
+                "Neoplasm of the Female Reproductive System",
+                "Tumor of Female Reproductive System",
+                "Tumor of the Female Reproductive System"
+            ],
+            "nci_thesaurus_concept_id": "C3053",
+            "name": "Female Reproductive System Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C27020",
+                "C3674"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Epithelial Neoplasms, NOS",
+                "Epithelioma",
+                "Epithelioma, malignant"
+            ],
+            "nci_thesaurus_concept_id": "C3709",
+            "name": "Epithelial Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C4741"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Cervical Squamous Tumor"
+            ],
+            "nci_thesaurus_concept_id": "C40195",
+            "name": "Cervical Squamous Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2940",
+                "C3792"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Tumor Morphology",
+                "Tumor_Morphology"
+            ],
+            "nci_thesaurus_concept_id": "C4741",
+            "name": "Neoplasm by Morphology",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3262"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Epithelial Neoplasms, NOS",
+                "Epithelioma",
+                "Epithelioma, malignant"
+            ],
+            "nci_thesaurus_concept_id": "C3709",
+            "name": "Epithelial Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C4741"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Tumor Morphology",
+                "Tumor_Morphology"
+            ],
+            "nci_thesaurus_concept_id": "C4741",
+            "name": "Neoplasm by Morphology",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3262"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C164141",
+            "name": "Genitourinary System Carcinoma",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2916",
+                "C156484"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Cervical Glandular Tumor"
+            ],
+            "nci_thesaurus_concept_id": "C40210",
+            "name": "Cervical Glandular Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2940",
+                "C7132"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Neoplasia",
+                "Neoplasm",
+                "Neoplasm, NOS",
+                "Neoplasms, NOS",
+                "Neoplastic Disease",
+                "Neoplastic Growth",
+                "Tumor, NOS",
+                "neoplasia",
+                "neoplasm",
+                "tumor"
+            ],
+            "nci_thesaurus_concept_id": "C3262",
+            "name": "Other Neoplasm",
+            "type": [
+                "maintype"
+            ],
+            "parents": [
+                "C2991"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C164141",
+            "name": "Genitourinary System Carcinoma",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2916",
+                "C156484"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Uterine Disease"
+            ],
+            "nci_thesaurus_concept_id": "C26907",
+            "name": "Uterine Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C27020"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Neoplasia",
+                "Neoplasm",
+                "Neoplasm, NOS",
+                "Neoplasms, NOS",
+                "Neoplastic Disease",
+                "Neoplastic Growth",
+                "Tumor, NOS",
+                "neoplasia",
+                "neoplasm",
+                "tumor"
+            ],
+            "nci_thesaurus_concept_id": "C3262",
+            "name": "Other Neoplasm",
+            "type": [
+                "maintype"
+            ],
+            "parents": [
+                "C2991"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Uterine Disease"
+            ],
+            "nci_thesaurus_concept_id": "C26907",
+            "name": "Uterine Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C27020"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "NON-NEOPLASTIC",
+                "Non-Neoplastic Disease",
+                "Non-neoplastic Disorder",
+                "Non-neoplastic condition, NOS",
+                "Non-neoplastic disorder, NOS"
+            ],
+            "nci_thesaurus_concept_id": "C53529",
+            "name": "Non-Neoplastic Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2991"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C181162",
+            "name": "Female Reproductive System Carcinoma",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C164141",
+                "C4913"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Epidermoid Cell Neoplasm",
+                "Epidermoid Cell Tumor",
+                "Squamous Cell Neoplasms",
+                "Squamous Cell Tumor"
+            ],
+            "nci_thesaurus_concept_id": "C3792",
+            "name": "Squamous Cell Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3709"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C181162",
+            "name": "Female Reproductive System Carcinoma",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C164141",
+                "C4913"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Clinical Infection",
+                "ID",
+                "INFECTION",
+                "Infection",
+                "Infectious",
+                "Infectious Disease",
+                "Infectious Diseases and Manifestations",
+                "Unspecified Infection",
+                "infection"
+            ],
+            "nci_thesaurus_concept_id": "C26726",
+            "name": "Infectious Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C93210"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C7057",
+            "name": "Disease, Disorder or Finding",
+            "type": [],
+            "parents": []
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "CARCINOMA, SQUAMOUS CELL, MALIGNANT",
+                "Epidermoid Carcinoma",
+                "Epidermoid Cell Cancer",
+                "Epidermoid carcinoma, NOS",
+                "Malignant Epidermoid Cell Neoplasm",
+                "Malignant Epidermoid Cell Tumor",
+                "Malignant Squamous Cell Neoplasm",
+                "Malignant Squamous Cell Tumor",
+                "Squamous Carcinoma",
+                "Squamous Cell Cancer",
+                "Squamous Cell Carcinoma, NOS",
+                "Squamous Cell Carcinoma, Not Otherwise Specified",
+                "Squamous Cell Carcinoma, conventional",
+                "Squamous Cell Epithelioma",
+                "Squamous carcinoma",
+                "Squamous cell carcinoma, NOS",
+                "Squamous cell epithelioma",
+                "epidermoid carcinoma",
+                "squamous cell carcinoma"
+            ],
+            "nci_thesaurus_concept_id": "C2929",
+            "name": "Squamous Cell Carcinoma",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2916",
+                "C3792"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C7057",
+            "name": "Disease, Disorder or Finding",
+            "type": [],
+            "parents": []
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C165723",
+            "name": "Mixed Carcinoma",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2916",
+                "C3729"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C40241",
+            "name": "Cervical Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C26907"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Diagnosis",
+                "Disease",
+                "Disease or Disorder",
+                "Disease or Disorder, Non-Neoplastic",
+                "Diseases",
+                "Diseases and Disorders",
+                "Disorder",
+                "Disorders",
+                "condition",
+                "disease",
+                "disease term",
+                "disease type",
+                "disease_term",
+                "disease_type",
+                "disorder"
+            ],
+            "nci_thesaurus_concept_id": "C2991",
+            "name": "Other Disease",
+            "type": [
+                "maintype"
+            ],
+            "parents": [
+                "C7057"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C40241",
+            "name": "Cervical Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C26907"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Neoplasm of Uterus",
+                "Neoplasm of the Uterus",
+                "Tumor of Uterus",
+                "Tumor of the Uterus",
+                "Uterine Neoplasms",
+                "Uterine Tumor"
+            ],
+            "nci_thesaurus_concept_id": "C3435",
+            "name": "Uterine Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3053",
+                "C26907"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Diagnosis",
+                "Disease",
+                "Disease or Disorder",
+                "Disease or Disorder, Non-Neoplastic",
+                "Diseases",
+                "Diseases and Disorders",
+                "Disorder",
+                "Disorders",
+                "condition",
+                "disease",
+                "disease term",
+                "disease type",
+                "disease_term",
+                "disease_type",
+                "disorder"
+            ],
+            "nci_thesaurus_concept_id": "C2991",
+            "name": "Other Disease",
+            "type": [
+                "maintype"
+            ],
+            "parents": [
+                "C7057"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Cancer of Cervix",
+                "Cancer of Uterine Cervix",
+                "Cancer of the Cervix",
+                "Cancer of the Uterine Cervix",
+                "Carcinoma of Cervix",
+                "Carcinoma of Cervix Uteri",
+                "Carcinoma of Uterine Cervix",
+                "Carcinoma of the Cervix",
+                "Carcinoma of the Cervix Uteri",
+                "Carcinoma of the Uterine Cervix",
+                "Cervical Cancer (all types)",
+                "Cervical Carcinoma",
+                "Cervical cancer, NOS",
+                "Cervix Cancer",
+                "Cervix Carcinoma",
+                "Cervix Uteri Carcinoma",
+                "Uterine Cervix Cancer",
+                "Uterine Cervix Carcinoma",
+                "cervical cancer"
+            ],
+            "nci_thesaurus_concept_id": "C9039",
+            "name": "Cervical Cancer",
+            "type": [
+                "maintype"
+            ],
+            "parents": [
+                "C181162",
+                "C9311"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Female Reproductive System Tumor",
+                "Gynecologic Neoplasm",
+                "Gynecologic Tumor",
+                "Neoplasm of Female Reproductive System",
+                "Neoplasm of the Female Reproductive System",
+                "Tumor of Female Reproductive System",
+                "Tumor of the Female Reproductive System"
+            ],
+            "nci_thesaurus_concept_id": "C3053",
+            "name": "Female Reproductive System Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C27020",
+                "C3674"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "CARCINOMA, MALIGNANT",
+                "Carcinoma",
+                "Carcinoma, NOS",
+                "Epithelial Carcinoma",
+                "Epithelial tumor, malignant",
+                "Epithelioma Malignant",
+                "Malignant Epithelial Neoplasm",
+                "Malignant Epithelial Tumor",
+                "Malignant Epithelioma",
+                "carcinoma",
+                "epithelial carcinoma"
+            ],
+            "nci_thesaurus_concept_id": "C2916",
+            "name": "Other Carcinoma",
+            "type": [
+                "maintype"
+            ],
+            "parents": [
+                "C3709",
+                "C9305"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Inflammatory Disease",
+                "Inflammatory_Disease"
+            ],
+            "nci_thesaurus_concept_id": "C93210",
+            "name": "Inflammatory Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C53547"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Female Reproductive System Disease",
+                "Gynecological Disorder"
+            ],
+            "nci_thesaurus_concept_id": "C27020",
+            "name": "Female Reproductive System Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C4875"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "CARCINOMA, MALIGNANT",
+                "Carcinoma",
+                "Carcinoma, NOS",
+                "Epithelial Carcinoma",
+                "Epithelial tumor, malignant",
+                "Epithelioma Malignant",
+                "Malignant Epithelial Neoplasm",
+                "Malignant Epithelial Tumor",
+                "Malignant Epithelioma",
+                "carcinoma",
+                "epithelial carcinoma"
+            ],
+            "nci_thesaurus_concept_id": "C2916",
+            "name": "Other Carcinoma",
+            "type": [
+                "maintype"
+            ],
+            "parents": [
+                "C3709",
+                "C9305"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Cancer of Cervix",
+                "Cancer of Uterine Cervix",
+                "Cancer of the Cervix",
+                "Cancer of the Uterine Cervix",
+                "Carcinoma of Cervix",
+                "Carcinoma of Cervix Uteri",
+                "Carcinoma of Uterine Cervix",
+                "Carcinoma of the Cervix",
+                "Carcinoma of the Cervix Uteri",
+                "Carcinoma of the Uterine Cervix",
+                "Cervical Cancer (all types)",
+                "Cervical Carcinoma",
+                "Cervical cancer, NOS",
+                "Cervix Cancer",
+                "Cervix Carcinoma",
+                "Cervix Uteri Carcinoma",
+                "Uterine Cervix Cancer",
+                "Uterine Cervix Carcinoma",
+                "cervical cancer"
+            ],
+            "nci_thesaurus_concept_id": "C9039",
+            "name": "Cervical Cancer",
+            "type": [
+                "maintype"
+            ],
+            "parents": [
+                "C181162",
+                "C9311"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Female Reproductive Cancer",
+                "Female reprod. system cancer, NOS",
+                "Female reproductive system cancer, NOS",
+                "Gynecologic Cancer",
+                "Malignant Female Reproductive System Tumor",
+                "Malignant Gynecologic Neoplasm",
+                "Malignant Gynecologic Tumor",
+                "Malignant Neoplasm of Female Reproductive System",
+                "Malignant Neoplasm of the Female Reproductive System",
+                "Malignant Tumor of Female Reproductive System",
+                "Malignant Tumor of the Female Reproductive System",
+                "gynecologic cancer"
+            ],
+            "nci_thesaurus_concept_id": "C4913",
+            "name": "Malignant Female Reproductive System Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3053",
+                "C36076"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Female Reproductive Cancer",
+                "Female reprod. system cancer, NOS",
+                "Female reproductive system cancer, NOS",
+                "Gynecologic Cancer",
+                "Malignant Female Reproductive System Tumor",
+                "Malignant Gynecologic Neoplasm",
+                "Malignant Gynecologic Tumor",
+                "Malignant Neoplasm of Female Reproductive System",
+                "Malignant Neoplasm of the Female Reproductive System",
+                "Malignant Tumor of Female Reproductive System",
+                "Malignant Tumor of the Female Reproductive System",
+                "gynecologic cancer"
+            ],
+            "nci_thesaurus_concept_id": "C4913",
+            "name": "Malignant Female Reproductive System Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3053",
+                "C36076"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Female Reproductive System Disease",
+                "Gynecological Disorder"
+            ],
+            "nci_thesaurus_concept_id": "C27020",
+            "name": "Female Reproductive System Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C4875"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Neoplasm of Uterus",
+                "Neoplasm of the Uterus",
+                "Tumor of Uterus",
+                "Tumor of the Uterus",
+                "Uterine Neoplasms",
+                "Uterine Tumor"
+            ],
+            "nci_thesaurus_concept_id": "C3435",
+            "name": "Uterine Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3053",
+                "C26907"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Viral Disease",
+                "Viral Disorder"
+            ],
+            "nci_thesaurus_concept_id": "C3439",
+            "name": "Viral Infection",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C26726"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Adenosquamous carcinoma",
+                "CARCINOMA, ADENOSQUAMOUS, MALIGNANT",
+                "Mixed Adenocarcinoma and Epidermoid Carcinoma",
+                "Mixed Adenocarcinoma and Epidermoid Cell Carcinoma",
+                "Mixed Adenocarcinoma and Squamous Carcinoma",
+                "Mixed Adenocarcinoma and Squamous Cell Carcinoma",
+                "Mixed adenocarcinoma and epidermoid carcinoma",
+                "Mixed adenocarcinoma and squamous cell carcinoma",
+                "adenosquamous carcinoma"
+            ],
+            "nci_thesaurus_concept_id": "C3727",
+            "name": "Adenosquamous Carcinoma",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C165723"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C36076",
+            "name": "Malignant Reproductive System Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C156484",
+                "C3674"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Neoplasm of Reproductive System",
+                "Neoplasm of the Reproductive System",
+                "Reproductive Neoplasm",
+                "Reproductive System Tumor",
+                "Reproductive Tumor",
+                "Tumor of Reproductive System",
+                "Tumor of the Reproductive System"
+            ],
+            "nci_thesaurus_concept_id": "C3674",
+            "name": "Reproductive System Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C156482",
+                "C4875"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C36076",
+            "name": "Malignant Reproductive System Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C156484",
+                "C3674"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Neoplasm of Reproductive System",
+                "Neoplasm of the Reproductive System",
+                "Reproductive Neoplasm",
+                "Reproductive System Tumor",
+                "Reproductive Tumor",
+                "Tumor of Reproductive System",
+                "Tumor of the Reproductive System"
+            ],
+            "nci_thesaurus_concept_id": "C3674",
+            "name": "Reproductive System Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C156482",
+                "C4875"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Genitourinary Cancer",
+                "Genitourinary System Cancer",
+                "Malignant Genitourinary Neoplasm"
+            ],
+            "nci_thesaurus_concept_id": "C156484",
+            "name": "Malignant Genitourinary System Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C156482",
+                "C9305"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Genitourinary Cancer",
+                "Genitourinary System Cancer",
+                "Malignant Genitourinary Neoplasm"
+            ],
+            "nci_thesaurus_concept_id": "C156484",
+            "name": "Malignant Genitourinary System Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C156482",
+                "C9305"
+            ]
+        }
+    ],
+    "_primary_purpose_sort_order": 0,
+    "protocol_id": "AMC-102",
+    "active_sites_count": 0,
+    "arms": [
+        {
+            "interventions": [
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "synonyms": [
+                        "Cancer Radiotherapy",
+                        "Irradiate",
+                        "Irradiated",
+                        "Irradiation",
+                        "RT",
+                        "Radiation",
+                        "Radiotherapeutics",
+                        "Radiotherapy",
+                        "Therapy, Radiation",
+                        "Radiation Therapy"
+                    ],
+                    "nci_thesaurus_concept_id": "C15313",
+                    "name": "Radiation Therapy",
+                    "description": null,
+                    "category": "other",
+                    "type": "Radiation",
+                    "parents": [
+                        "C49236"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "synonyms": [
+                        "Patient Monitoring"
+                    ],
+                    "nci_thesaurus_concept_id": "C53607",
+                    "name": "Patient Monitoring",
+                    "description": null,
+                    "category": "other",
+                    "type": "Procedure/Surgery",
+                    "parents": [
+                        "C61256"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "synonyms": [
+                        "Abiplatin",
+                        "Blastolem",
+                        "Briplatin",
+                        "Cisplatyl",
+                        "Citoplatino",
+                        "Citosin",
+                        "Lederplatin",
+                        "Metaplatin",
+                        "Neoplatin",
+                        "Placis",
+                        "Plastistil",
+                        "Platamine",
+                        "Platiblastin",
+                        "Platiblastin-S",
+                        "Platinex",
+                        "Platinol",
+                        "Platinol- AQ",
+                        "Platinol-AQ",
+                        "Platinol-AQ VHA Plus",
+                        "Platiran",
+                        "Platistin",
+                        "Platosin",
+                        "Cisplatin"
+                    ],
+                    "nci_thesaurus_concept_id": "C376",
+                    "name": "Cisplatin",
+                    "description": "An inorganic platinum agent (cis-diamminedichloroplatinum) with antineoplastic activity.  Cisplatin forms highly reactive, charged, platinum complexes which bind to nucleophilic groups such as GC-rich sites in DNA, inducing intrastrand and interstrand DNA cross-links, as well as DNA-protein cross-links. These cross-links result in apoptosis and cell growth inhibition. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+                    "category": "agent",
+                    "type": "Drug",
+                    "parents": [
+                        "C1450"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C49236",
+                    "name": "Therapeutic Procedure",
+                    "description": "",
+                    "category": "none",
+                    "type": "Radiation",
+                    "parents": [
+                        "C25218"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C25218",
+                    "name": "Intervention or Procedure",
+                    "description": "",
+                    "category": "none",
+                    "type": "Radiation",
+                    "parents": [
+                        "C16203"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C16203",
+                    "name": "Clinical or Research Activity",
+                    "description": "",
+                    "category": "none",
+                    "type": "Radiation",
+                    "parents": [
+                        "C43431"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C43431",
+                    "name": "Activity",
+                    "description": "",
+                    "category": "none",
+                    "type": "Radiation",
+                    "parents": []
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Monitoring"
+                    ],
+                    "nci_thesaurus_concept_id": "C61256",
+                    "name": "Monitoring",
+                    "description": "",
+                    "category": "none",
+                    "type": "Procedure/Surgery",
+                    "parents": [
+                        "C25404"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Generic Action"
+                    ],
+                    "nci_thesaurus_concept_id": "C25404",
+                    "name": "Action",
+                    "description": "",
+                    "category": "none",
+                    "type": "Procedure/Surgery",
+                    "parents": [
+                        "C43431"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Platinum Agents",
+                        "Platinum-Based Chemotherapy",
+                        "Platinum Compound"
+                    ],
+                    "nci_thesaurus_concept_id": "C1450",
+                    "name": "Platinum Compound",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C1590",
+                        "C2163",
+                        "C798"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Chemotherapy Alkylating Agents",
+                        "Chemotherapy Alkylators"
+                    ],
+                    "nci_thesaurus_concept_id": "C1590",
+                    "name": "Antineoplastic Alkylating Agent",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C2842"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C2842",
+                    "name": "DNA Binding Agent",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C274"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Anti-Cancer Agents",
+                        "Anti-Tumor Agents",
+                        "Anti-Tumor Drugs",
+                        "Antineoplastic Drugs",
+                        "Antineoplastics",
+                        "Antiproliferative Agents",
+                        "Antiproliferative Drugs",
+                        "Cancer Drug",
+                        "Chemotherapeutic Agents, Neoplastic Disease",
+                        "Tumor-Specific Treatment Agents"
+                    ],
+                    "nci_thesaurus_concept_id": "C274",
+                    "name": "Antineoplastic Agent",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C1909"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C1909",
+                    "name": "Pharmacologic Substance",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C1908"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C1908",
+                    "name": "Drug, Food, Chemical or Biomedical Material",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": []
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C2163",
+                    "name": "DNA Adduct Forming Agent",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C2842"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Radiation Sensitizers",
+                        "Radiation-Sensitizing Agents",
+                        "Radiation-Sensitizing Drugs",
+                        "Radiosensitizers",
+                        "Radiosensitizing Drugs"
+                    ],
+                    "nci_thesaurus_concept_id": "C798",
+                    "name": "Radiosensitizing Agent",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C274"
+                    ]
+                }
+            ],
+            "name": "Arm II (standard care, active monitoring)",
+            "description": "STANDARD CARE: Patients receive cisplatin IV over 30-60 minutes on days 1, 8, 15, 22, 29, and 36. Patients also undergo radiation therapy over 2-5 fractions 5 days a week for up to 8 weeks in the absence if disease progression or unacceptable toxicity. 4-8 weeks following standard of care.\r\n\r\n4-8 weeks following standard care, patients undergo active monitoring for 2 years after initiation of chemoradiation treatment.",
+            "type": "ACTIVE_COMPARATOR"
+        },
+        {
+            "interventions": [
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "synonyms": [
+                        "Blastocarb",
+                        "Carboplat",
+                        "Carbosin",
+                        "Carbosol",
+                        "Carbotec",
+                        "Displata",
+                        "Ercar",
+                        "Nealorin",
+                        "Novoplatinum",
+                        "Paraplatin AQ",
+                        "Paraplatine",
+                        "Platinwas",
+                        "Ribocarbo",
+                        "Carboplatin"
+                    ],
+                    "nci_thesaurus_concept_id": "C1282",
+                    "name": "Carboplatin",
+                    "description": "A second-generation platinum compound with a broad spectrum of antineoplastic properties.  Carboplatin contains a platinum atom complexed with two ammonia groups and a cyclobutane-dicarboxyl residue.  This agent is activated intracellularly to form reactive platinum complexes that bind to nucleophilic groups such as GC-rich sites in DNA, thereby inducing intrastrand and interstrand DNA cross-links, as well as DNA-protein cross-links.  These carboplatin-induced DNA and protein effects result in apoptosis and cell growth inhibition.  This agent possesses tumoricidal activity similar to that of its parent compound, cisplatin, but is more stable and less toxic. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+                    "category": "agent",
+                    "type": "Drug",
+                    "parents": [
+                        "C1450"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "synonyms": [
+                        "Anzatax",
+                        "Asotax",
+                        "Bristaxol",
+                        "Praxel",
+                        "Taxol Konzentrat",
+                        "Paclitaxel"
+                    ],
+                    "nci_thesaurus_concept_id": "C1411",
+                    "name": "Paclitaxel",
+                    "description": "A compound extracted from the Pacific yew tree Taxus brevifolia with antineoplastic activity.  Paclitaxel binds to tubulin and inhibits the disassembly of microtubules, thereby resulting in the inhibition of cell division.  This agent also induces apoptosis by binding to and blocking the function of the apoptosis inhibitor protein Bcl-2 (B-cell Leukemia 2). Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+                    "category": "agent",
+                    "type": "Drug",
+                    "parents": [
+                        "C1490",
+                        "C67437"
+                    ]
+                },
+                {
+                    "intervention_type": "Radiation",
+                    "inclusion_indicator": "TRIAL",
+                    "synonyms": [
+                        "Cancer Radiotherapy",
+                        "Irradiate",
+                        "Irradiated",
+                        "Irradiation",
+                        "RT",
+                        "Radiation",
+                        "Radiotherapeutics",
+                        "Radiotherapy",
+                        "Therapy, Radiation",
+                        "Radiation Therapy"
+                    ],
+                    "intervention_name": "Radiation Therapy",
+                    "category": "other",
+                    "intervention_code": "C15313",
+                    "intervention_description": null,
+                    "parents": [
+                        "C49236"
+                    ]
+                },
+                {
+                    "intervention_type": "Drug",
+                    "inclusion_indicator": "TRIAL",
+                    "synonyms": [
+                        "Abiplatin",
+                        "Blastolem",
+                        "Briplatin",
+                        "Cisplatyl",
+                        "Citoplatino",
+                        "Citosin",
+                        "Lederplatin",
+                        "Metaplatin",
+                        "Neoplatin",
+                        "Placis",
+                        "Plastistil",
+                        "Platamine",
+                        "Platiblastin",
+                        "Platiblastin-S",
+                        "Platinex",
+                        "Platinol",
+                        "Platinol- AQ",
+                        "Platinol-AQ",
+                        "Platinol-AQ VHA Plus",
+                        "Platiran",
+                        "Platistin",
+                        "Platosin",
+                        "Cisplatin"
+                    ],
+                    "intervention_name": "Cisplatin",
+                    "category": "agent",
+                    "intervention_code": "C376",
+                    "intervention_description": "An inorganic platinum agent (cis-diamminedichloroplatinum) with antineoplastic activity.  Cisplatin forms highly reactive, charged, platinum complexes which bind to nucleophilic groups such as GC-rich sites in DNA, inducing intrastrand and interstrand DNA cross-links, as well as DNA-protein cross-links. These cross-links result in apoptosis and cell growth inhibition. Check for active clinical trials or closed clinical trials using this agent. (NCI Thesaurus)Health professional",
+                    "parents": [
+                        "C1450"
+                    ]
+                },
+                {
+                    "intervention_type": "Drug",
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Platinum Agents",
+                        "Platinum-Based Chemotherapy",
+                        "Platinum Compound"
+                    ],
+                    "intervention_name": "Platinum Compound",
+                    "category": "agent category",
+                    "intervention_code": "C1450",
+                    "intervention_description": "",
+                    "parents": [
+                        "C1590",
+                        "C2163",
+                        "C798"
+                    ]
+                },
+                {
+                    "intervention_type": "Drug",
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Chemotherapy Alkylating Agents",
+                        "Chemotherapy Alkylators"
+                    ],
+                    "intervention_name": "Antineoplastic Alkylating Agent",
+                    "category": "agent category",
+                    "intervention_code": "C1590",
+                    "intervention_description": "",
+                    "parents": [
+                        "C2842"
+                    ]
+                },
+                {
+                    "intervention_type": "Drug",
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "intervention_name": "DNA Binding Agent",
+                    "category": "agent category",
+                    "intervention_code": "C2842",
+                    "intervention_description": "",
+                    "parents": [
+                        "C274"
+                    ]
+                },
+                {
+                    "intervention_type": "Drug",
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Anti-Cancer Agents",
+                        "Anti-Tumor Agents",
+                        "Anti-Tumor Drugs",
+                        "Antineoplastic Drugs",
+                        "Antineoplastics",
+                        "Antiproliferative Agents",
+                        "Antiproliferative Drugs",
+                        "Cancer Drug",
+                        "Chemotherapeutic Agents, Neoplastic Disease",
+                        "Tumor-Specific Treatment Agents"
+                    ],
+                    "intervention_name": "Antineoplastic Agent",
+                    "category": "agent category",
+                    "intervention_code": "C274",
+                    "intervention_description": "",
+                    "parents": [
+                        "C1909"
+                    ]
+                },
+                {
+                    "intervention_type": "Drug",
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "intervention_name": "Pharmacologic Substance",
+                    "category": "agent category",
+                    "intervention_code": "C1909",
+                    "intervention_description": "",
+                    "parents": [
+                        "C1908"
+                    ]
+                },
+                {
+                    "intervention_type": "Drug",
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "intervention_name": "Drug, Food, Chemical or Biomedical Material",
+                    "category": "agent category",
+                    "intervention_code": "C1908",
+                    "intervention_description": "",
+                    "parents": []
+                },
+                {
+                    "intervention_type": "Drug",
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "intervention_name": "DNA Adduct Forming Agent",
+                    "category": "agent category",
+                    "intervention_code": "C2163",
+                    "intervention_description": "",
+                    "parents": [
+                        "C2842"
+                    ]
+                },
+                {
+                    "intervention_type": "Drug",
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Radiation Sensitizers",
+                        "Radiation-Sensitizing Agents",
+                        "Radiation-Sensitizing Drugs",
+                        "Radiosensitizers",
+                        "Radiosensitizing Drugs"
+                    ],
+                    "intervention_name": "Radiosensitizing Agent",
+                    "category": "agent category",
+                    "intervention_code": "C798",
+                    "intervention_description": "",
+                    "parents": [
+                        "C274"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Taxanes"
+                    ],
+                    "nci_thesaurus_concept_id": "C1490",
+                    "name": "Taxane Compound",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C860"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Terpenes"
+                    ],
+                    "nci_thesaurus_concept_id": "C860",
+                    "name": "Terpene Compound",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C552",
+                        "C616"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Hydrocarbons"
+                    ],
+                    "nci_thesaurus_concept_id": "C552",
+                    "name": "Hydrocarbon",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C718"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C718",
+                    "name": "Organic Chemical",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C1913"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C1913",
+                    "name": "Drug or Chemical by Structure",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C1908"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Lipids"
+                    ],
+                    "nci_thesaurus_concept_id": "C616",
+                    "name": "Lipid",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C718"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Taxane-Site Binding Agent"
+                    ],
+                    "nci_thesaurus_concept_id": "C67437",
+                    "name": "Taxane-Pocket Binding Agent",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C25974"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Tubulin Binding Agents"
+                    ],
+                    "nci_thesaurus_concept_id": "C25974",
+                    "name": "Tubulin Binding Agent",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C273"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Antimitotic Drugs",
+                        "Antimitotics",
+                        "Microtubular Function Inhibitors",
+                        "Mitosis Inhibitor Agents",
+                        "Mitosis Inhibitor Drugs",
+                        "Mitosis Inhibitors",
+                        "Mitotic Inhibitor Agents",
+                        "Mitotic Inhibitor Drugs",
+                        "Mitotic Inhibitors"
+                    ],
+                    "nci_thesaurus_concept_id": "C273",
+                    "name": "Antimitotic Agent",
+                    "description": "",
+                    "category": "agent category",
+                    "type": "Drug",
+                    "parents": [
+                        "C274"
+                    ]
+                },
+                {
+                    "intervention_type": "Radiation",
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "intervention_name": "Therapeutic Procedure",
+                    "category": "none",
+                    "intervention_code": "C49236",
+                    "intervention_description": "",
+                    "parents": [
+                        "C25218"
+                    ]
+                },
+                {
+                    "intervention_type": "Radiation",
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "intervention_name": "Intervention or Procedure",
+                    "category": "none",
+                    "intervention_code": "C25218",
+                    "intervention_description": "",
+                    "parents": [
+                        "C16203"
+                    ]
+                },
+                {
+                    "intervention_type": "Radiation",
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "intervention_name": "Clinical or Research Activity",
+                    "category": "none",
+                    "intervention_code": "C16203",
+                    "intervention_description": "",
+                    "parents": [
+                        "C43431"
+                    ]
+                },
+                {
+                    "intervention_type": "Radiation",
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "intervention_name": "Activity",
+                    "category": "none",
+                    "intervention_code": "C43431",
+                    "intervention_description": "",
+                    "parents": []
+                }
+            ],
+            "name": "Arm I (standard care, carboplatin, paclitaxel)",
+            "description": "STANDARD CARE: Patients receive cisplatin IV over 30-60 minutes on days 1, 8, 15, 22, 29, and 36. Patients also undergo radiation therapy over 2-5 fractions 5 days a week for up to 8 weeks in the absence if disease progression or unacceptable toxicity. 4-8 weeks following standard of care.\r\n\r\n4-8 weeks following standard care, patients receive carboplatin IV over 1 hour and paclitaxel IV over 3 hours on day 1. Treatment repeat every 21 days for up to 4 cycles in the absence of disease progression or unacceptable toxicity.",
+            "type": "EXPERIMENTAL"
+        }
+    ],
+    "study_model_code": null,
+    "nci_id": "NCI-2018-01903",
+    "why_study_stopped": null,
+    "brief_summary": "This phase II trial studies how well standard chemotherapy and radiation therapy given with or without paclitaxel and carboplatin work in treating human immunodeficiency virus (HIV)-positive women with cervical cancer that has spread to nearby tissue or lymph nodes. Drugs used in chemotherapy, such as cisplatin, paclitaxel and carboplatin, work in different ways to stop the growth of tumor cells, either by killing the cells, by stopping them from dividing, or by stopping them from spreading. Radiation therapy to the pelvis destroys potential cancer cells in the pelvic area and significantly reduces the risk of tumor recurrence in the pelvic area. It is not yet known if giving chemotherapy and radiation therapy with or without paclitaxel and carboplatin, may work better in treating HIV-positive patients with advanced cervical cancer.",
+    "brief_title": "Standard Chemotherapy and Radiation Therapy with or without Paclitaxel and Carboplatin in Treating HIV-Positive Women with Locally Advanced Cervical Cancer",
+    "study_population_description": null,
+    "sampling_method_code": null,
+    "minimum_target_accrual_number": 144,
+    "_current_trial_status_sort_order": 3,
+    "start_date": "2020-08-01",
+    "record_verification_date": "2020-01-09",
+    "ctep_id": "AMC-102",
+    "current_trial_status": "Approved",
+    "study_model_other_text": null,
+    "masking": {
+        "role_caregiver": null,
+        "masking": null,
+        "role_investigator": null,
+        "role_outcome_assessor": null,
+        "role_subject": null,
+        "allocation_code": "Randomized Controlled Trial"
+    },
+    "acronym": null,
+    "anatomic_sites": [
+        "Cervix"
+    ],
+    "ccr_id": null,
+    "start_date_type_code": "ANTICIPATED",
+    "principal_investigator": "Ntokozo Ndlovu",
+    "study_source": "National",
+    "completion_date": null,
+    "study_subtype_code": null,
+    "study_protocol_type": "Interventional"
+}

@@ -1,0 +1,28 @@
+{
+    "current_trial_status": [
+        "Active",
+        "Approved",
+        "Enrolling by Invitation",
+        "In Review",
+        "Temporarily Closed to Accrual",
+        "Temporarily Closed to Accrual and Intervention"
+    ],
+    "include": [
+        "nci_id",
+        "nct_id",
+        "brief_title",
+        "sites.org_name",
+        "sites.org_postal_code",
+        "eligibility.structured",
+        "current_trial_status",
+        "sites.org_va",
+        "sites.org_country",
+        "sites.org_state_or_province",
+        "sites.org_city",
+        "sites.org_coordinates",
+        "sites.recruitment_status",
+        "diseases"
+    ],
+	"eligibility.structured.accepts_healthy_volunteers": true,	"from":0,
+	"size":10
+}

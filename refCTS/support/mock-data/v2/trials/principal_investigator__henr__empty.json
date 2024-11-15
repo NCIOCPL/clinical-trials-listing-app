@@ -1,0 +1,14 @@
+{
+	"total": 7301,
+	"aggregations": {
+		"doc_count": 6,
+		"principal_investigator": [
+			{ "key": "Henry Kranzler", "doc_count": 1 },
+			{ "key": "Henry Mark Kuerer", "doc_count": 1 },
+			{ "key": "Henry S. Park", "doc_count": 1 },
+			{ "key": "N. Lynn Henry", "doc_count": 1 },
+			{ "key": "Norah Lynn Henry", "doc_count": 1 },
+			{ "key": "Scott Henry Maurer", "doc_count": 1 }
+		]
+	}
+}

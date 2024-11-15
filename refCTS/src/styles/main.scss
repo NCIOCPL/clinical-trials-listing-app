@@ -1,0 +1,84 @@
+#NCI-CTS-root {
+  min-height: 100vh;
+}
+.show-for-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.inline-form {
+  display: inline;
+}
+
+.btnAsLink {
+  appearance: none;
+  border: 0 none;
+  padding: 0;
+  font-size: 1em;
+  color: #2b7bba;
+  background: transparent;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.chat-link{
+    background: none;
+    color: #2b7bba;
+    box-shadow: none;
+    margin: 0;
+    min-width: auto;
+    &:focus,
+  &:hover {
+    background: none;
+    color: #2b7bba;
+    text-decoration: underline;
+  }
+  }
+}
+
+
+
+// atomic
+@import '../components/atomic/Accordion/Accordion',
+  '../components/atomic/Autocomplete/Autocomplete',
+  '../components/atomic/Checkbox/Checkbox.scss',
+  '../components/atomic/Delighter/Delighter',
+  '../components/atomic/Dropdown/Dropdown.scss',
+  '../components/atomic/Fieldset/Fieldset',
+  '../components/atomic/InputLabel/InputLabel',
+  '../components/atomic/Modal/Modal',
+  '../components/atomic/Pager/Pager',
+  '../components/atomic/Radio/Radio',
+  '../components/atomic/RemovableTag/RemovableTag',
+  '../components/atomic/SearchCriteriaTable/SearchCriteriaTable',
+  '../components/atomic/StickySubmitBlock/StickySubmitBlock',
+  '../components/atomic/Table/Table',
+  '../components/atomic/TagContainer/TagContainer',
+  '../components/atomic/TextInput/TextInput',
+  '../components/atomic/Toggle/Toggle';
+
+// search modules
+@import '../components/search-modules/Age/Age',
+  '../components/search-modules/CancerTypeCondition/CancerTypeCondition',
+  '../components/search-modules/DrugTreatment/DrugTreatment',
+  '../components/search-modules/Location/Location',
+  '../components/search-modules/TrialPhase/TrialPhase',
+  '../components/search-modules/TrialType/TrialType';
+
+// Views
+@import '../views/InvalidCriteriaPage/InvalidCriteriaPage',
+  '../views/ResultsPage/ResultsPage',
+  '../views/SearchPage/SearchPage',
+	'../views/TrialDescriptionPage/TrialDescriptionPage',
+'../views/ErrorBoundary/PageNotFound/PageNotFound',
+'../views/ErrorBoundary/GenericErrorPage/GenericErrorPage';
+

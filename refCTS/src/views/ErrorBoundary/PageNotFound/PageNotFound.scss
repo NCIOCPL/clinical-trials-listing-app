@@ -1,0 +1,41 @@
+.error-container {
+	.error-searchbar {
+		display: block;
+		.cts-input-group {
+			display: block;
+			margin: 5px 0 0;
+			width: 100%;
+			@media screen and (min-width: 641px) {
+				display: inline-block;
+				width: 270px;
+			}
+
+			.cts-input {
+				display: block;
+				margin: 5px 0 0;
+				width: 100%;
+
+				@media screen and (min-width: 641px) {
+					display: inline-block;
+					margin: 0;
+					padding: 0 0 0 8px;
+					width: 270px;
+				}
+			}
+		}
+
+		.button {
+			display: block;
+			margin: 10px 0 0;
+			width: 100%;
+
+			@media screen and (min-width: 641px) {
+				display: inline-block;
+				width: 20%;
+				margin-right: 1em;
+				margin-left: 1em;
+				top: -2px;
+			}
+		}
+	}
+}

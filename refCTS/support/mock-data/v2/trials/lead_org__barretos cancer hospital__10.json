@@ -1,0 +1,12 @@
+{
+	"total":7363,
+	"aggregations":{
+		"doc_count":1,
+		"lead_org":[
+			{
+				"key":"Barretos Cancer Hospital",
+				"doc_count":1
+			}
+		]
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"total": 7361,
+	"aggregations": {
+		"doc_count": 16,
+		"lead_org": [
+			{
+				"key": "Academic and Community Cancer Research United",
+				"doc_count": 16
+			}
+		]
+	}
+}

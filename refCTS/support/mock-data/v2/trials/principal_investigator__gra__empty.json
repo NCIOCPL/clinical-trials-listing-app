@@ -1,0 +1,24 @@
+{
+	"total": 7301,
+	"aggregations": {
+		"doc_count": 24,
+		"principal_investigator": [
+			{ "key": "Clarisa Gracia", "doc_count": 1 },
+			{ "key": "Conan Grant Kinsey", "doc_count": 2 },
+			{ "key": "Dolly Graciela Aguilera", "doc_count": 1 },
+			{ "key": "Evan M. Graboyes", "doc_count": 2 },
+			{ "key": "Frederick Daniel Grant", "doc_count": 1 },
+			{ "key": "Grace Aldrovandi", "doc_count": 2 },
+			{ "key": "Grace K. Dy", "doc_count": 3 },
+			{ "key": "Grace Lu-Yao", "doc_count": 1 },
+			{ "key": "Grace Smith", "doc_count": 1 },
+			{ "key": "Grant R. Williams", "doc_count": 1 },
+			{ "key": "Ilana Graetz", "doc_count": 1 },
+			{ "key": "Jhanelle E. Gray", "doc_count": 2 },
+			{ "key": "Julie Nicole Graff", "doc_count": 1 },
+			{ "key": "Richard J. Gralla", "doc_count": 1 },
+			{ "key": "Shernan Grace Holtan", "doc_count": 2 },
+			{ "key": "Stefan Charles Grant", "doc_count": 2 }
+		]
+	}
+}

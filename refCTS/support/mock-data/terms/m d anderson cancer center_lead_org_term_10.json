@@ -1,0 +1,38 @@
+{
+    "total": 2,
+    "terms": [
+        {
+            "term_key": "m_d_anderson_cancer_center",
+            "term": "M D Anderson Cancer Center",
+            "term_type": "lead_org",
+            "current_trial_statuses": [
+                "ADMINISTRATIVELY COMPLETE",
+                "COMPLETE",
+                "CLOSED TO ACCRUAL",
+                "ACTIVE",
+                "TEMPORARILY CLOSED TO ACCRUAL",
+                "WITHDRAWN",
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "APPROVED",
+                "TEMPORARILY CLOSED TO ACCRUAL AND INTERVENTION"
+            ],
+            "count": 1128,
+            "count_normalized": 1,
+            "score": null
+        },
+        {
+            "term_key": "university_texas_md_anderson_cancer_center_lao",
+            "term": "University of Texas MD Anderson Cancer Center LAO",
+            "term_type": "lead_org",
+            "current_trial_statuses": [
+                "ACTIVE",
+                "CLOSED TO ACCRUAL AND INTERVENTION",
+                "COMPLETE",
+                "TEMPORARILY CLOSED TO ACCRUAL"
+            ],
+            "count": 12,
+            "count_normalized": 0.015266756653310572,
+            "score": null
+        }
+    ]
+}

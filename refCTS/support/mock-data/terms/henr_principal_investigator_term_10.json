@@ -1,0 +1,75 @@
+{
+    "total": 6,
+    "terms": [
+        {
+            "term_key": "henry_kranzler",
+            "term": "Henry Kranzler",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 1,
+            "count_normalized": 0.05889368905356862,
+            "score": null
+        },
+        {
+            "term_key": "henry_mark_kuerer",
+            "term": "Henry Mark Kuerer",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL",
+                "ACTIVE"
+            ],
+            "count": 2,
+            "count_normalized": 0.11547721741993588,
+            "score": null
+        },
+        {
+            "term_key": "henry_s_park",
+            "term": "Henry S. Park",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 1,
+            "count_normalized": 0.05889368905356862,
+            "score": null
+        },
+        {
+            "term_key": "n_lynn_henry",
+            "term": "N. Lynn Henry",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "ACTIVE",
+                "COMPLETE",
+                "ADMINISTRATIVELY COMPLETE"
+            ],
+            "count": 5,
+            "count_normalized": 0.27301849440641585,
+            "score": null
+        },
+        {
+            "term_key": "norah_lynn_henry",
+            "term": "Norah Lynn Henry",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "ACTIVE",
+                "COMPLETE"
+            ],
+            "count": 2,
+            "count_normalized": 0.11547721741993588,
+            "score": null
+        },
+        {
+            "term_key": "scott_henry_maurer",
+            "term": "Scott Henry Maurer",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 1,
+            "count_normalized": 0.05889368905356862,
+            "score": null
+        }
+    ]
+}

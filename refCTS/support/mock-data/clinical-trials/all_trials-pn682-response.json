@@ -1,0 +1,5477 @@
+{
+	"total":6821,
+	"data":[
+		{
+			"current_trial_status":"Active",
+			"nct_id":"NCT02830451",
+			"brief_title":"Metastatic Tumor Research and Outcomes Network",
+			"eligibility":{
+				"structured":{
+					"max_age":"999 Years",
+					"max_age_number":999,
+					"min_age_unit":"Years",
+					"max_age_unit":"Years",
+					"max_age_in_years":999,
+					"gender":"BOTH",
+					"min_age":"18 Years",
+					"min_age_number":18,
+					"min_age_in_years":18
+				}
+			},
+			"diseases":[
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C4016",
+											"label":"Malignant Bone Neoplasm",
+											"idx":0
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+						"Metastases to Spine",
+						"Metastases to the Spine",
+						"Metastasis to Spine",
+						"Metastasis to the Spine",
+						"Metastatic Cancer to the Spine",
+						"Metastatic Cancer to the Vertebral Column",
+						"Metastatic Malignant Neoplasm in the Spine",
+						"Metastatic Neoplasm to the Spine",
+						"Metastatic Neoplasm to the Vertebral Column",
+						"Metastatic Tumor to the Spine",
+						"Metastatic Tumor to the Vertebral Column"
+					],
+					"nci_thesaurus_concept_id":"C4881",
+					"display_name":"Metastatic Malignant Neoplasm to the Spine",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Metastatic Malignant Neoplasm in the Spine",
+					"parents":[
+						"C3580"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7057",
+					"display_name":"Disease, Disorder or Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease, Disorder or Finding",
+					"parents":[
+
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Disease by Site"
+					],
+					"nci_thesaurus_concept_id":"C27551",
+					"display_name":"Disorder by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disorder by Site",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Secondary Cancer",
+						"Secondary Malignancy",
+						"secondary cancer"
+					],
+					"nci_thesaurus_concept_id":"C4968",
+					"display_name":"Secondary Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Secondary Malignant Neoplasm",
+					"parents":[
+						"C9305",
+						"C36255"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Connective and Soft Tissue Tumor",
+						"Musculoskeletal and Soft Tissue Neoplasm",
+						"Musculoskeletal and Soft Tissue Tumor",
+						"Neoplasm of Skeletal and Soft Tissue",
+						"Neoplasm of Soft Tissue and Bone",
+						"Neoplasm of Soft Tissue and Skeleton",
+						"Skeletal and Soft Tissue Neoplasm",
+						"Skeletal and Soft Tissue Tumor",
+						"Soft Tissue and Bone Neoplasm",
+						"Soft Tissue and Bone Tumor",
+						"Tumor of Skeletal and Soft Tissue",
+						"Tumor of Soft Tissue and Bone",
+						"Tumor of Soft Tissue and Skeleton"
+					],
+					"nci_thesaurus_concept_id":"C3810",
+					"display_name":"Connective and Soft Tissue Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Connective and Soft Tissue Neoplasm",
+					"parents":[
+						"C27574",
+						"C3263"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CA",
+						"Cancer",
+						"Malignancy",
+						"Malignant Growth",
+						"Malignant Neoplastic Disease",
+						"Malignant Tumor",
+						"NEOPLASM, MALIGNANT",
+						"Neoplasm, malignant",
+						"Tumor, malignant, NOS",
+						"Unclassified tumor, malignant",
+						"cancer",
+						"malignancy"
+					],
+					"nci_thesaurus_concept_id":"C9305",
+					"display_name":"Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Neoplasm",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Connective Tissue Disease",
+						"Connective Tissue Diseases",
+						"Connective Tissue Disorders",
+						"Disorder of Connective Tissue",
+						"Primary Disorder of Connective Tissue"
+					],
+					"nci_thesaurus_concept_id":"C26729",
+					"display_name":"Connective Tissue Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Connective Tissue Disorder",
+					"parents":[
+						"C27574"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Metastatic Cancer"
+					],
+					"nci_thesaurus_concept_id":"C36263",
+					"display_name":"Metastatic Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Metastatic Malignant Neoplasm",
+					"parents":[
+						"C3261",
+						"C4968"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7062",
+					"display_name":"Neoplasm by Special Category",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Special Category",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasia",
+						"Neoplasm",
+						"Neoplasm, NOS",
+						"Neoplasms, NOS",
+						"Neoplastic Disease",
+						"Neoplastic Growth",
+						"Tumor, NOS",
+						"neoplasia",
+						"neoplasm",
+						"tumor"
+					],
+					"nci_thesaurus_concept_id":"C3262",
+					"display_name":"Other Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Diagnosis",
+						"Disease",
+						"Disease or Disorder",
+						"Disease or Disorder, Non-Neoplastic",
+						"Diseases",
+						"Diseases and Disorders",
+						"Disorder",
+						"Disorders",
+						"condition",
+						"disease",
+						"disease term",
+						"disease type",
+						"disease_term",
+						"disease_type",
+						"disorder"
+					],
+					"nci_thesaurus_concept_id":"C2991",
+					"display_name":"Other Disease",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease or Disorder",
+					"parents":[
+						"C7057"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Connective and Soft Tissue Disease",
+						"Connective and Soft Tissue Diseases"
+					],
+					"nci_thesaurus_concept_id":"C27574",
+					"display_name":"Connective and Soft Tissue Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Connective and Soft Tissue Disorder",
+					"parents":[
+						"C27551"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Bone Metastases",
+						"Bone Metastasis",
+						"Metastases to bone, NOS",
+						"Metastatic Cancer to the Bone",
+						"Metastatic Malignant Neoplasm in the Bone",
+						"Metastatic Neoplasm to the Bone",
+						"Metastatic Tumor to the Bone",
+						"bone metastasis"
+					],
+					"nci_thesaurus_concept_id":"C3580",
+					"display_name":"Metastatic Malignant Neoplasm to the Bone",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Metastatic Malignant Neoplasm in the Bone",
+					"parents":[
+						"C4016",
+						"C36263"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Metastasis",
+						"Metastatic",
+						"Metastatic Disease",
+						"Metastatic Tumor",
+						"Neoplasm, metastatic",
+						"Tumor, metastatic",
+						"metastasis"
+					],
+					"nci_thesaurus_concept_id":"C3261",
+					"display_name":"Metastatic Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Metastatic Neoplasm",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Musculoskeletal System Neoplasm"
+					],
+					"nci_thesaurus_concept_id":"C166354",
+					"display_name":"Musculoskeletal Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Musculoskeletal Neoplasm",
+					"parents":[
+						"C3810",
+						"C107377"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Bone Neoplasms",
+						"Bone Tumor",
+						"Bone Tumors",
+						"Neoplasm of Bone",
+						"Neoplasm of the Bone",
+						"Osseous Neoplasm",
+						"Osseous Tumor",
+						"Tumor of Bone",
+						"Tumor of the Bone"
+					],
+					"nci_thesaurus_concept_id":"C9343",
+					"display_name":"Bone Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Bone Neoplasm",
+					"parents":[
+						"C26729",
+						"C166354"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasm, secondary",
+						"Secondary Tumor",
+						"Tumor, secondary",
+						"secondary tumor"
+					],
+					"nci_thesaurus_concept_id":"C36255",
+					"display_name":"Secondary Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Secondary Neoplasm",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Bone cancer, NOS",
+						"Cancer of Bone",
+						"Cancer of the Bone",
+						"Malignant Bone Neoplasm",
+						"Malignant Bone Tumor",
+						"Malignant Neoplasm of Bone",
+						"Malignant Neoplasm of the Bone",
+						"Malignant Osseous Neoplasm",
+						"Malignant Osseous Tumor",
+						"Malignant Tumor of Bone",
+						"Malignant Tumor of the Bone",
+						"Osseous Cancer",
+						"bone cancer"
+					],
+					"nci_thesaurus_concept_id":"C4016",
+					"display_name":"Bone Cancer",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Bone Neoplasm",
+					"parents":[
+						"C9343",
+						"C166357"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Disorder of Musculoskeletal System",
+						"Musculoskeletal System Disorder"
+					],
+					"nci_thesaurus_concept_id":"C107377",
+					"display_name":"Musculoskeletal Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Musculoskeletal Disorder",
+					"parents":[
+						"C27574"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C166357",
+					"display_name":"Malignant Musculoskeletal Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Musculoskeletal Neoplasm",
+					"parents":[
+						"C9305",
+						"C166354"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C3263",
+					"display_name":"Neoplasm by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Site",
+					"parents":[
+						"C3262"
+					]
+				}
+			],
+			"sites":[
+				{
+					"org_state_or_province":"NC",
+					"org_city":"Durham",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Duke University Medical Center",
+					"org_postal_code":"27710",
+					"org_coordinates":{
+						"lon":-78.94,
+						"lat":35.9995
+					},
+					"recruitment_status":"ACTIVE"
+				},
+				{
+					"org_state_or_province":"NY",
+					"org_city":"New York",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Memorial Sloan Kettering Cancer Center",
+					"org_postal_code":"10065",
+					"org_coordinates":{
+						"lon":-73.9624,
+						"lat":40.7656
+					},
+					"recruitment_status":"ACTIVE"
+				},
+				{
+					"org_state_or_province":"PA",
+					"org_city":"Philadelphia",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"University of Pennsylvania / Abramson Cancer Center",
+					"org_postal_code":"19104",
+					"org_coordinates":{
+						"lon":-75.1995,
+						"lat":39.9616
+					},
+					"recruitment_status":"ACTIVE"
+				}
+			],
+			"nci_id":"NCI-2019-05580"
+		},
+		{
+			"current_trial_status":"Active",
+			"nct_id":"NCT02775461",
+			"brief_title":"Pancreas Disease and High-Risk Registry",
+			"eligibility":{
+				"structured":{
+					"max_age":"999 Years",
+					"max_age_number":999,
+					"min_age_unit":"Years",
+					"max_age_unit":"Years",
+					"max_age_in_years":999,
+					"gender":"BOTH",
+					"min_age":"18 Years",
+					"min_age_number":18,
+					"min_age_in_years":18
+				}
+			},
+			"diseases":[
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C54705",
+											"label":"Neoplastic Syndrome",
+											"idx":0
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+						"Familial Nonpolyposis Colorectal Cancer Syndrome",
+						"HNPCC",
+						"Hereditary Non-polyposis Colon Cancer",
+						"Hereditary Nonpolyposis Colorectal Cancer",
+						"Hereditary Nonpolyposis Colorectal Cancer Syndrome",
+						"hereditary nonpolyposis colon cancer"
+					],
+					"nci_thesaurus_concept_id":"C120083",
+					"display_name":"Hereditary Nonpolyposis Colorectal Cancer (HNPCC)",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Hereditary Nonpolyposis Colorectal Cancer Syndrome",
+					"parents":[
+						"C165470"
+					]
+				},
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C54705",
+											"label":"Neoplastic Syndrome",
+											"idx":0
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+						"FAMM Syndrome",
+						"FAMMM syndrome",
+						"Familial atypical multiple mole melanoma (FAMMM)",
+						"familial atypical multiple mole melanoma syndrome"
+					],
+					"nci_thesaurus_concept_id":"C27264",
+					"display_name":"Familial Atypical Mole Melanoma Syndrome",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Familial Atypical Mole Melanoma Syndrome",
+					"parents":[
+						"C3266"
+					]
+				},
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":null,
+					"synonyms":[
+						"Cyst of Pancreas",
+						"Cyst of the Pancreas",
+						"Pancreas Cyst"
+					],
+					"nci_thesaurus_concept_id":"C3304",
+					"display_name":"Pancreatic Cyst",
+					"type":[
+						"finding"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Pancreatic Cyst",
+					"parents":[
+						"C2978",
+						"C36279"
+					]
+				},
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C54705",
+											"label":"Neoplastic Syndrome",
+											"idx":0
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+						"Jeghers-Peutz Syndrome",
+						"PJS",
+						"Peutz's Syndrome",
+						"Peutz-Jeghers Disease",
+						"Peutz-Jeghers syndrome"
+					],
+					"nci_thesaurus_concept_id":"C3324",
+					"display_name":"Peutz-Jeghers Syndrome",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Peutz-Jeghers Syndrome",
+					"parents":[
+						"C3266"
+					]
+				},
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C54705",
+											"label":"Neoplastic Syndrome",
+											"idx":0
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+						"APC - Adenomatous Polyposis Coli",
+						"Adenomatous Polyposis Coli",
+						"Adenomatous polyposis coli",
+						"FAP",
+						"Familial Adenomatous Polyposis 1",
+						"Familial Adenomatous Polyposis Coli",
+						"Familial Adenomatous Polyposis Syndrome",
+						"Familial polyposis coli",
+						"Hereditary Adenomatous Polyposis Coli",
+						"Polyposis Coli",
+						"familial adenomatous polyposis",
+						"familial polyposis"
+					],
+					"nci_thesaurus_concept_id":"C3339",
+					"display_name":"Familial Adenomatous Polyposis",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Familial Adenomatous Polyposis",
+					"parents":[
+						"C165470"
+					]
+				},
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":null,
+					"synonyms":[
+						"Cancer of Pancreas",
+						"Cancer of the Pancreas",
+						"Carcinoma of Pancreas",
+						"Carcinoma of the Pancreas",
+						"Exocrine Pancreas Carcinoma",
+						"Pancreas Cancer",
+						"Pancreas Carcinoma",
+						"Pancreatic Carcinoma",
+						"Pancreatic cancer (excluding Islets), NOS",
+						"Pancreatic cancer (not Islets)",
+						"exocrine cancer",
+						"pancreatic cancer"
+					],
+					"nci_thesaurus_concept_id":"C3850",
+					"display_name":"Pancreatic Cancer",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Pancreatic Carcinoma",
+					"parents":[
+						"C7430",
+						"C166418"
+					]
+				},
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C3850",
+											"label":"Pancreatic Carcinoma",
+											"idx":0
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+						"Familial Pancreatic Cancer",
+						"Familial Pancreatic Carcinoma",
+						"Familial pancreatic cancer syndrome",
+						"Hereditary Pancreatic Carcinoma"
+					],
+					"nci_thesaurus_concept_id":"C43298",
+					"display_name":"Hereditary Pancreatic Cancer",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hereditary Pancreatic Carcinoma",
+					"parents":[
+						"C9479",
+						"C3850"
+					]
+				},
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C3262",
+											"label":"Neoplasm",
+											"idx":0
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+						"PanIN",
+						"Pancreatic Dysplasia"
+					],
+					"nci_thesaurus_concept_id":"C4845",
+					"display_name":"Pancreatic Intraepithelial Neoplasia",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Pancreatic Intraepithelial Neoplasia",
+					"parents":[
+						"C5716",
+						"C8962",
+						"C27269"
+					]
+				},
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C54705",
+											"label":"Neoplastic Syndrome",
+											"idx":0
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+						"Familial Non-Polyposis Colon Cancer (hMSH2, hMLH1, hPMS1, hPMS2)",
+						"Hereditary Colorectal Endometrial Cancer Syndrome",
+						"Hereditary Defective Mismatch Repair Syndrome",
+						"Hereditary Non-Polyposis Colon Cancer (hMSH2, hMLH1, hPMS1, hPMS2)",
+						"Hereditary Nonpolyposis Colon Cancer (hMSH2, hMLH1, hPMS1, hPMS2)",
+						"Lynch syndrome"
+					],
+					"nci_thesaurus_concept_id":"C8494",
+					"display_name":"Lynch Syndrome",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Lynch Syndrome",
+					"parents":[
+						"C7757",
+						"C120083"
+					]
+				},
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C2991",
+											"label":"Disease or Disorder",
+											"idx":0
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+						"Hereditary pancreatitis"
+					],
+					"nci_thesaurus_concept_id":"C95436",
+					"display_name":"Hereditary Pancreatitis",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Hereditary Pancreatitis",
+					"parents":[
+						"C3306"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Precancerous State",
+						"Premalignant Condition",
+						"Premalignant State"
+					],
+					"nci_thesaurus_concept_id":"C3341",
+					"display_name":"Precancerous Condition",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Precancerous Condition",
+					"parents":[
+						"C8278"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Cancer Related Condition",
+						"Cancer-Related Problem or Condition",
+						"Oncologic Complications",
+						"cancer related problem/condition",
+						"problem/condition, cancer related",
+						"problem/condition, cancer-related"
+					],
+					"nci_thesaurus_concept_id":"C8278",
+					"display_name":"Cancer-Related Condition",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Cancer-Related Condition",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Premalignant Condition by Site"
+					],
+					"nci_thesaurus_concept_id":"C7422",
+					"display_name":"Precancerous Condition by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Precancerous Condition by Site",
+					"parents":[
+						"C3341"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C36278",
+					"display_name":"Finding by Site or System",
+					"type":[
+
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Finding by Site or System",
+					"parents":[
+						"C3367"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Digestive Neoplasm",
+						"Digestive System Tumor",
+						"Digestive Tumor",
+						"GI Neoplasm",
+						"GI System Neoplasm",
+						"GI System Tumor",
+						"GI Tumor",
+						"Gastrointestinal Neoplasm",
+						"Gastrointestinal System Neoplasm",
+						"Gastrointestinal System Tumor",
+						"Gastrointestinal Tumor",
+						"Neoplasm of Digestive System",
+						"Neoplasm of GI System",
+						"Neoplasm of Gastrointestinal System",
+						"Neoplasm of the Digestive System",
+						"Neoplasm of the GI System",
+						"Neoplasm of the Gastrointestinal System",
+						"Tumor of Digestive System",
+						"Tumor of GI System",
+						"Tumor of Gastrointestinal System",
+						"Tumor of the Digestive System",
+						"Tumor of the GI System",
+						"Tumor of the Gastrointestinal System"
+					],
+					"nci_thesaurus_concept_id":"C3052",
+					"display_name":"Digestive System Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Digestive System Neoplasm",
+					"parents":[
+						"C2990",
+						"C3263"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7062",
+					"display_name":"Neoplasm by Special Category",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Neoplasm by Special Category",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7057",
+					"display_name":"Disease, Disorder or Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease, Disorder or Finding",
+					"parents":[
+
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Carcinoma of the Gastrointestinal System",
+						"Gastrointestinal System Carcinoma"
+					],
+					"nci_thesaurus_concept_id":"C96963",
+					"display_name":"Digestive System Carcinoma",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Digestive System Carcinoma",
+					"parents":[
+						"C2916",
+						"C4890"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Malignant Neoplasm of Pancreas",
+						"Malignant Neoplasm of the Pancreas"
+					],
+					"nci_thesaurus_concept_id":"C9005",
+					"display_name":"Malignant Pancreatic Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Pancreatic Neoplasm",
+					"parents":[
+						"C4890",
+						"C3305"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Pancreatitis",
+						"pancreatitis"
+					],
+					"nci_thesaurus_concept_id":"C3306",
+					"display_name":"Inflammatory Pancreatic Disease",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Pancreatitis",
+					"parents":[
+						"C53505"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasia",
+						"Neoplasm",
+						"Neoplasm, NOS",
+						"Neoplasms, NOS",
+						"Neoplastic Disease",
+						"Neoplastic Growth",
+						"Tumor, NOS",
+						"neoplasia",
+						"neoplasm",
+						"tumor"
+					],
+					"nci_thesaurus_concept_id":"C3262",
+					"display_name":"Other Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Neoplasm",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Disease by Site"
+					],
+					"nci_thesaurus_concept_id":"C27551",
+					"display_name":"Disorder by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disorder by Site",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasm of Pancreas",
+						"Neoplasm of the Pancreas",
+						"Pancreas Neoplasm",
+						"Pancreas Tumor",
+						"Pancreatic Tumor",
+						"Tumor of Pancreas",
+						"Tumor of the Pancreas"
+					],
+					"nci_thesaurus_concept_id":"C3305",
+					"display_name":"Pancreatic Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Pancreatic Neoplasm",
+					"parents":[
+						"C3052",
+						"C26842"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C27269",
+					"display_name":"Glandular Cell Intraepithelial Neoplasia",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Glandular Cell Intraepithelial Neoplasia",
+					"parents":[
+						"C7132",
+						"C8366"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Epithelial Neoplasms, NOS",
+						"Epithelioma",
+						"Epithelioma, malignant"
+					],
+					"nci_thesaurus_concept_id":"C3709",
+					"display_name":"Epithelial Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Epithelial Neoplasm",
+					"parents":[
+						"C4741"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Tumor Morphology",
+						"Tumor_Morphology"
+					],
+					"nci_thesaurus_concept_id":"C4741",
+					"display_name":"Neoplasm by Morphology",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Neoplasm by Morphology",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CA",
+						"Cancer",
+						"Malignancy",
+						"Malignant Growth",
+						"Malignant Neoplastic Disease",
+						"Malignant Tumor",
+						"NEOPLASM, MALIGNANT",
+						"Neoplasm, malignant",
+						"Tumor, malignant, NOS",
+						"Unclassified tumor, malignant",
+						"cancer",
+						"malignancy"
+					],
+					"nci_thesaurus_concept_id":"C9305",
+					"display_name":"Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Neoplasm",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Exocrine Pancreas Neoplasm",
+						"Exocrine Pancreas Tumor",
+						"Neoplasm of Exocrine Pancreas",
+						"Neoplasm of the Exocrine Pancreas",
+						"Pancreatic Exocrine Tumor",
+						"Tumor of Exocrine Pancreas",
+						"Tumor of the Exocrine Pancreas"
+					],
+					"nci_thesaurus_concept_id":"C4445",
+					"display_name":"Pancreatic Exocrine Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Pancreatic Exocrine Neoplasm",
+					"parents":[
+						"C3305"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"NON-NEOPLASTIC",
+						"Non-Neoplastic Disease",
+						"Non-neoplastic Disorder",
+						"Non-neoplastic condition, NOS",
+						"Non-neoplastic disorder, NOS"
+					],
+					"nci_thesaurus_concept_id":"C53529",
+					"display_name":"Non-Neoplastic Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Non-Neoplastic Disorder",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"DNA Repair Deficiency"
+					],
+					"nci_thesaurus_concept_id":"C7757",
+					"display_name":"DNA Repair Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"DNA Repair Disorder",
+					"parents":[
+						"C3101"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Genetic Condition",
+						"Hereditary Disease",
+						"Hereditary Diseases",
+						"Inherited Disease",
+						"Molecular Disease"
+					],
+					"nci_thesaurus_concept_id":"C3101",
+					"display_name":"Genetic Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Genetic Disorder",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Digestive Neoplasm",
+						"Digestive System Tumor",
+						"Digestive Tumor",
+						"GI Neoplasm",
+						"GI System Neoplasm",
+						"GI System Tumor",
+						"GI Tumor",
+						"Gastrointestinal Neoplasm",
+						"Gastrointestinal System Neoplasm",
+						"Gastrointestinal System Tumor",
+						"Gastrointestinal Tumor",
+						"Neoplasm of Digestive System",
+						"Neoplasm of GI System",
+						"Neoplasm of Gastrointestinal System",
+						"Neoplasm of the Digestive System",
+						"Neoplasm of the GI System",
+						"Neoplasm of the Gastrointestinal System",
+						"Tumor of Digestive System",
+						"Tumor of GI System",
+						"Tumor of Gastrointestinal System",
+						"Tumor of the Digestive System",
+						"Tumor of the GI System",
+						"Tumor of the Gastrointestinal System"
+					],
+					"nci_thesaurus_concept_id":"C3052",
+					"display_name":"Digestive System Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Digestive System Neoplasm",
+					"parents":[
+						"C2990",
+						"C3263"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7062",
+					"display_name":"Neoplasm by Special Category",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Special Category",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Malignant Neoplasm of Pancreas",
+						"Malignant Neoplasm of the Pancreas"
+					],
+					"nci_thesaurus_concept_id":"C9005",
+					"display_name":"Malignant Pancreatic Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Malignant Pancreatic Neoplasm",
+					"parents":[
+						"C4890",
+						"C3305"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Carcinoma of the Gastrointestinal System",
+						"Gastrointestinal System Carcinoma"
+					],
+					"nci_thesaurus_concept_id":"C96963",
+					"display_name":"Digestive System Carcinoma",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Digestive System Carcinoma",
+					"parents":[
+						"C2916",
+						"C4890"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasia",
+						"Neoplasm",
+						"Neoplasm, NOS",
+						"Neoplasms, NOS",
+						"Neoplastic Disease",
+						"Neoplastic Growth",
+						"Tumor, NOS",
+						"neoplasia",
+						"neoplasm",
+						"tumor"
+					],
+					"nci_thesaurus_concept_id":"C3262",
+					"display_name":"Other Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CYST",
+						"Cyst(s)",
+						"cyst"
+					],
+					"nci_thesaurus_concept_id":"C2978",
+					"display_name":"Cyst",
+					"type":[
+
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Cyst",
+					"parents":[
+						"C3824"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Diagnosis",
+						"Disease",
+						"Disease or Disorder",
+						"Disease or Disorder, Non-Neoplastic",
+						"Diseases",
+						"Diseases and Disorders",
+						"Disorder",
+						"Disorders",
+						"condition",
+						"disease",
+						"disease term",
+						"disease type",
+						"disease_term",
+						"disease_type",
+						"disorder"
+					],
+					"nci_thesaurus_concept_id":"C2991",
+					"display_name":"Other Disease",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease or Disorder",
+					"parents":[
+						"C7057"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Disease by Site"
+					],
+					"nci_thesaurus_concept_id":"C27551",
+					"display_name":"Disorder by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Disorder by Site",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Pancreatic Premalignant Condition"
+					],
+					"nci_thesaurus_concept_id":"C7412",
+					"display_name":"Pancreatic Precancerous Condition",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Pancreatic Precancerous Condition",
+					"parents":[
+						"C7659",
+						"C4445"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplastic Syndrome",
+						"Tumor Syndrome"
+					],
+					"nci_thesaurus_concept_id":"C54705",
+					"display_name":"Cancer-Related Syndrome",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Neoplastic Syndrome",
+					"parents":[
+						"C28193"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CARCINOMA, MALIGNANT",
+						"Carcinoma",
+						"Carcinoma, NOS",
+						"Epithelial Carcinoma",
+						"Epithelial tumor, malignant",
+						"Epithelioma Malignant",
+						"Malignant Epithelial Neoplasm",
+						"Malignant Epithelial Tumor",
+						"Malignant Epithelioma",
+						"carcinoma",
+						"epithelial carcinoma"
+					],
+					"nci_thesaurus_concept_id":"C2916",
+					"display_name":"Other Carcinoma",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Carcinoma",
+					"parents":[
+						"C3709",
+						"C9305"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Gastrointestinal Intraepithelial Neoplasia",
+						"Gastrointestinal Noninvasive Neoplasia",
+						"Gastrointestinal System Intraepithelial Neoplasia"
+					],
+					"nci_thesaurus_concept_id":"C8962",
+					"display_name":"Digestive System Intraepithelial Neoplasia",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Digestive System Intraepithelial Neoplasia",
+					"parents":[
+						"C3052",
+						"C7659",
+						"C8366"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Non-Neoplastic Gastrointestinal Disorder",
+						"Non-Neoplastic Gastrointestinal System Disorder"
+					],
+					"nci_thesaurus_concept_id":"C27550",
+					"display_name":"Non-Neoplastic Digestive System Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Non-Neoplastic Digestive System Disorder",
+					"parents":[
+						"C2990",
+						"C53531"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"GASTROINTESTINAL SYSTEM",
+						"Gastrointestinal",
+						"Gastrointestinal System Finding"
+					],
+					"nci_thesaurus_concept_id":"C36279",
+					"display_name":"Digestive System Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Digestive System Finding",
+					"parents":[
+						"C36278"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Observable Entity",
+						"finding"
+					],
+					"nci_thesaurus_concept_id":"C3367",
+					"display_name":"Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Finding",
+					"parents":[
+						"C7057"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CA",
+						"Cancer",
+						"Malignancy",
+						"Malignant Growth",
+						"Malignant Neoplastic Disease",
+						"Malignant Tumor",
+						"NEOPLASM, MALIGNANT",
+						"Neoplasm, malignant",
+						"Tumor, malignant, NOS",
+						"Unclassified tumor, malignant",
+						"cancer",
+						"malignancy"
+					],
+					"nci_thesaurus_concept_id":"C9305",
+					"display_name":"Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Malignant Neoplasm",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C165470",
+					"display_name":"Hereditary Colorectal Cancer Syndrome",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Hereditary Colorectal Cancer Syndrome",
+					"parents":[
+						"C3266"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Gastrointestinal Precancerous Condition",
+						"Gastrointestinal Premalignant Condition"
+					],
+					"nci_thesaurus_concept_id":"C7659",
+					"display_name":"Digestive System Precancerous Condition",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Digestive System Precancerous Condition",
+					"parents":[
+						"C2990",
+						"C7422"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C26842",
+					"display_name":"Pancreatic Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Pancreatic Disorder",
+					"parents":[
+						"C2990"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Familial Nonpolyposis Colorectal Cancer Syndrome",
+						"HNPCC",
+						"Hereditary Non-polyposis Colon Cancer",
+						"Hereditary Nonpolyposis Colorectal Cancer",
+						"Hereditary Nonpolyposis Colorectal Cancer Syndrome",
+						"hereditary nonpolyposis colon cancer"
+					],
+					"nci_thesaurus_concept_id":"C120083",
+					"display_name":"Hereditary Nonpolyposis Colorectal Cancer (HNPCC)",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Hereditary Nonpolyposis Colorectal Cancer Syndrome",
+					"parents":[
+						"C165470"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Malignant Exocrine Pancreas Tumor",
+						"Malignant Neoplasm of Exocrine Pancreas",
+						"Malignant Neoplasm of the Exocrine Pancreas",
+						"Malignant Tumor of Exocrine Pancreas",
+						"Malignant Tumor of the Exocrine Pancreas"
+					],
+					"nci_thesaurus_concept_id":"C7430",
+					"display_name":"Malignant Exocrine Pancreas Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Malignant Exocrine Pancreas Neoplasm",
+					"parents":[
+						"C9005",
+						"C4445"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Borderline Neoplasm",
+						"Neoplasm of Borderline Malignancy",
+						"Neoplasm of Low Malignant Potential"
+					],
+					"nci_thesaurus_concept_id":"C3646",
+					"display_name":"Neoplasm of Uncertain Malignant Potential",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Neoplasm of Uncertain Malignant Potential",
+					"parents":[
+						"C7062",
+						"C3341"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Diagnosis",
+						"Disease",
+						"Disease or Disorder",
+						"Disease or Disorder, Non-Neoplastic",
+						"Diseases",
+						"Diseases and Disorders",
+						"Disorder",
+						"Disorders",
+						"condition",
+						"disease",
+						"disease term",
+						"disease type",
+						"disease_term",
+						"disease_type",
+						"disorder"
+					],
+					"nci_thesaurus_concept_id":"C2991",
+					"display_name":"Other Disease",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Disease or Disorder",
+					"parents":[
+						"C7057"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Digestive Disease",
+						"Digestive System Disease",
+						"Disorder of Digestive System",
+						"Gastrointestinal Disorder",
+						"Gastrointestinal System Disease",
+						"Gastrointestinal System Disorder",
+						"Unspecified Gastrointestinal Problem",
+						"stomach or intestinal disorder"
+					],
+					"nci_thesaurus_concept_id":"C2990",
+					"display_name":"Digestive System Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Digestive System Disorder",
+					"parents":[
+						"C27551"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Tumor Morphology",
+						"Tumor_Morphology"
+					],
+					"nci_thesaurus_concept_id":"C4741",
+					"display_name":"Neoplasm by Morphology",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Morphology",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Epithelial Dysplasia",
+						"Intraepithelial Neoplasm"
+					],
+					"nci_thesaurus_concept_id":"C8366",
+					"display_name":"Intraepithelial Neoplasia",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Intraepithelial Neoplasia",
+					"parents":[
+						"C3709",
+						"C3341"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Cancer of Pancreas",
+						"Cancer of the Pancreas",
+						"Carcinoma of Pancreas",
+						"Carcinoma of the Pancreas",
+						"Exocrine Pancreas Carcinoma",
+						"Pancreas Cancer",
+						"Pancreas Carcinoma",
+						"Pancreatic Carcinoma",
+						"Pancreatic cancer (excluding Islets), NOS",
+						"Pancreatic cancer (not Islets)",
+						"exocrine cancer",
+						"pancreatic cancer"
+					],
+					"nci_thesaurus_concept_id":"C3850",
+					"display_name":"Pancreatic Cancer",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Pancreatic Carcinoma",
+					"parents":[
+						"C7430",
+						"C166418"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Gastrointestinal System Cancer",
+						"Gastrointestinal cancer, NOS",
+						"Malignant Digestive System Neoplasm",
+						"Malignant Gastrointestinal System Neoplasm"
+					],
+					"nci_thesaurus_concept_id":"C4890",
+					"display_name":"Malignant Gastrointestinal Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Digestive System Neoplasm",
+					"parents":[
+						"C3052",
+						"C9305"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C3263",
+					"display_name":"Neoplasm by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Neoplasm by Site",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Pancreaticobiliary Cancer",
+						"Pancreaticobiliary Carcinoma",
+						"Pancreatobiliary Cancer"
+					],
+					"nci_thesaurus_concept_id":"C166418",
+					"display_name":"Pancreatobiliary Carcinoma",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Pancreatobiliary Carcinoma",
+					"parents":[
+						"C96963"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CARCINOMA, MALIGNANT",
+						"Carcinoma",
+						"Carcinoma, NOS",
+						"Epithelial Carcinoma",
+						"Epithelial tumor, malignant",
+						"Epithelioma Malignant",
+						"Malignant Epithelial Neoplasm",
+						"Malignant Epithelial Tumor",
+						"Malignant Epithelioma",
+						"carcinoma",
+						"epithelial carcinoma"
+					],
+					"nci_thesaurus_concept_id":"C2916",
+					"display_name":"Other Carcinoma",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Carcinoma",
+					"parents":[
+						"C3709",
+						"C9305"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Borderline Exocrine Pancreatic Tumor",
+						"Borderline Neoplasm of Exocrine Pancreas",
+						"Borderline Neoplasm of the Exocrine Pancreas",
+						"Borderline Tumor of Exocrine Pancreas",
+						"Borderline Tumor of the Exocrine Pancreas",
+						"Exocrine Pancreatic Neoplasm of Uncertain Malignant Potential",
+						"Exocrine Pancreatic Tumor of Uncertain Malignant Potential",
+						"Neoplasm of Uncertain Malignant Potential of Exocrine Pancreas",
+						"Neoplasm of Uncertain Malignant Potential of the Exocrine Pancreas",
+						"Tumor of Uncertain Malignant Potential of Exocrine Pancreas",
+						"Tumor of Uncertain Malignant Potential of the Exocrine Pancreas"
+					],
+					"nci_thesaurus_concept_id":"C5716",
+					"display_name":"Borderline Exocrine Pancreatic Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Borderline Exocrine Pancreatic Neoplasm",
+					"parents":[
+						"C3646",
+						"C7412"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Non-Neoplastic Disease by Site"
+					],
+					"nci_thesaurus_concept_id":"C53531",
+					"display_name":"Non-Neoplastic Disorder by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Non-Neoplastic Disorder by Site",
+					"parents":[
+						"C53529"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Familial Cancer",
+						"Familial Malignant Neoplasm",
+						"Hereditary Cancer",
+						"familial cancer"
+					],
+					"nci_thesaurus_concept_id":"C9479",
+					"display_name":"Hereditary Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hereditary Malignant Neoplasm",
+					"parents":[
+						"C9305"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"syndrome"
+					],
+					"nci_thesaurus_concept_id":"C28193",
+					"display_name":"Syndrome",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Syndrome",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Familial Neoplastic Syndrome",
+						"Familial Tumor Syndrome",
+						"Hereditary Tumor Syndrome",
+						"inherited cancer syndrome"
+					],
+					"nci_thesaurus_concept_id":"C3266",
+					"display_name":"Hereditary Neoplastic Syndrome",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Hereditary Neoplastic Syndrome",
+					"parents":[
+						"C3101",
+						"C54705"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Glandular Cell Epithelial Neoplasm",
+						"Glandular Cell Epithelium Neoplasm"
+					],
+					"nci_thesaurus_concept_id":"C7132",
+					"display_name":"Glandular Cell Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Glandular Cell Neoplasm",
+					"parents":[
+						"C3709"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C26842",
+					"display_name":"Pancreatic Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Pancreatic Disorder",
+					"parents":[
+						"C2990"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Malignant Exocrine Pancreas Tumor",
+						"Malignant Neoplasm of Exocrine Pancreas",
+						"Malignant Neoplasm of the Exocrine Pancreas",
+						"Malignant Tumor of Exocrine Pancreas",
+						"Malignant Tumor of the Exocrine Pancreas"
+					],
+					"nci_thesaurus_concept_id":"C7430",
+					"display_name":"Malignant Exocrine Pancreas Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Exocrine Pancreas Neoplasm",
+					"parents":[
+						"C9005",
+						"C4445"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7057",
+					"display_name":"Disease, Disorder or Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Disease, Disorder or Finding",
+					"parents":[
+
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Digestive Disease",
+						"Digestive System Disease",
+						"Disorder of Digestive System",
+						"Gastrointestinal Disorder",
+						"Gastrointestinal System Disease",
+						"Gastrointestinal System Disorder",
+						"Unspecified Gastrointestinal Problem",
+						"stomach or intestinal disorder"
+					],
+					"nci_thesaurus_concept_id":"C2990",
+					"display_name":"Digestive System Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Digestive System Disorder",
+					"parents":[
+						"C27551"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Gastrointestinal System Cancer",
+						"Gastrointestinal cancer, NOS",
+						"Malignant Digestive System Neoplasm",
+						"Malignant Gastrointestinal System Neoplasm"
+					],
+					"nci_thesaurus_concept_id":"C4890",
+					"display_name":"Malignant Gastrointestinal Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Malignant Digestive System Neoplasm",
+					"parents":[
+						"C3052",
+						"C9305"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasm of Pancreas",
+						"Neoplasm of the Pancreas",
+						"Pancreas Neoplasm",
+						"Pancreas Tumor",
+						"Pancreatic Tumor",
+						"Tumor of Pancreas",
+						"Tumor of the Pancreas"
+					],
+					"nci_thesaurus_concept_id":"C3305",
+					"display_name":"Pancreatic Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Pancreatic Neoplasm",
+					"parents":[
+						"C3052",
+						"C26842"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Pancreaticobiliary Cancer",
+						"Pancreaticobiliary Carcinoma",
+						"Pancreatobiliary Cancer"
+					],
+					"nci_thesaurus_concept_id":"C166418",
+					"display_name":"Pancreatobiliary Carcinoma",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Pancreatobiliary Carcinoma",
+					"parents":[
+						"C96963"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C3263",
+					"display_name":"Neoplasm by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Site",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Epithelial Neoplasms, NOS",
+						"Epithelioma",
+						"Epithelioma, malignant"
+					],
+					"nci_thesaurus_concept_id":"C3709",
+					"display_name":"Epithelial Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Epithelial Neoplasm",
+					"parents":[
+						"C4741"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C53505",
+					"display_name":"Non-Neoplastic Pancreatic Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Non-Neoplastic Pancreatic Disorder",
+					"parents":[
+						"C27550",
+						"C26842"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"GROSS LESION",
+						"Visible Lesion",
+						"lesion"
+					],
+					"nci_thesaurus_concept_id":"C3824",
+					"display_name":"Lesion",
+					"type":[
+
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Lesion",
+					"parents":[
+						"C3367"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Exocrine Pancreas Neoplasm",
+						"Exocrine Pancreas Tumor",
+						"Neoplasm of Exocrine Pancreas",
+						"Neoplasm of the Exocrine Pancreas",
+						"Pancreatic Exocrine Tumor",
+						"Tumor of Exocrine Pancreas",
+						"Tumor of the Exocrine Pancreas"
+					],
+					"nci_thesaurus_concept_id":"C4445",
+					"display_name":"Pancreatic Exocrine Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Pancreatic Exocrine Neoplasm",
+					"parents":[
+						"C3305"
+					]
+				}
+			],
+			"sites":[
+				{
+					"org_state_or_province":"NY",
+					"org_city":"New York",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Mount Sinai West",
+					"org_postal_code":"10019",
+					"org_coordinates":{
+						"lon":-73.9853,
+						"lat":40.7652
+					},
+					"recruitment_status":"ACTIVE"
+				},
+				{
+					"org_state_or_province":"NY",
+					"org_city":"New York",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Mount Sinai Saint Luke's",
+					"org_postal_code":"10025",
+					"org_coordinates":{
+						"lon":-73.9672,
+						"lat":40.7894
+					},
+					"recruitment_status":"ACTIVE"
+				},
+				{
+					"org_state_or_province":"NY",
+					"org_city":"New York",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Icahn School of Medicine at Mount Sinai",
+					"org_postal_code":"10029",
+					"org_coordinates":{
+						"lon":-73.9439,
+						"lat":40.7917
+					},
+					"recruitment_status":"ACTIVE"
+				}
+			],
+			"nci_id":"NCI-2019-07305"
+		},
+		{
+			"current_trial_status":"Active",
+			"nct_id":"NCT02677064",
+			"brief_title":"Barriers to Donor Stem Cell Transplant in Patients with Newly Diagnosed or Relapsed Acute Leukemia",
+			"eligibility":{
+				"structured":{
+					"max_age":"75 Years",
+					"max_age_number":75,
+					"min_age_unit":"Years",
+					"max_age_unit":"Years",
+					"max_age_in_years":75,
+					"gender":"BOTH",
+					"min_age":"18 Years",
+					"min_age_number":18,
+					"min_age_in_years":18
+				}
+			},
+			"diseases":[
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C3161",
+											"label":"Leukemia",
+											"idx":0
+										},
+										{
+											"code":"C27134",
+											"label":"Hematopoietic and Lymphoid Cell Neoplasm",
+											"idx":1
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C148429",
+					"display_name":"Recurrent Acute Leukemia",
+					"type":[
+						"stage"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Recurrent Acute Leukemia",
+					"parents":[
+						"C9300",
+						"C148425"
+					]
+				},
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C3161",
+											"label":"Leukemia",
+											"idx":0
+										},
+										{
+											"code":"C27134",
+											"label":"Hematopoietic and Lymphoid Cell Neoplasm",
+											"idx":1
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+						"acute leukemia"
+					],
+					"nci_thesaurus_concept_id":"C9300",
+					"display_name":"Acute Leukemia",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Acute Leukemia",
+					"parents":[
+						"C3161"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Blood (Leukemia)",
+						"LEUKEMIA, MALIGNANT",
+						"Leukemia NOS",
+						"Leukemia, Disease",
+						"Leukemia, NOS",
+						"Leukemias",
+						"Leukemias, General",
+						"leukemia"
+					],
+					"nci_thesaurus_concept_id":"C3161",
+					"display_name":"Leukemia",
+					"type":[
+						"maintype",
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Leukemia",
+					"parents":[
+						"C27134",
+						"C9305"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Tumor Morphology",
+						"Tumor_Morphology"
+					],
+					"nci_thesaurus_concept_id":"C4741",
+					"display_name":"Neoplasm by Morphology",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Morphology",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C3263",
+					"display_name":"Neoplasm by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Neoplasm by Site",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"HEMOLYMPHORETICULAR TUMOR, MALIGNANT",
+						"Hematologic Cancer",
+						"Hematologic Malignancy",
+						"Hematologic Neoplasm",
+						"Hematological Neoplasm",
+						"Hematopoietic Cancer",
+						"Hematopoietic Neoplasm",
+						"Hematopoietic Neoplasms Including Lymphomas",
+						"Hematopoietic and Lymphoid Neoplasm",
+						"Hematopoietic malignancy, NOS",
+						"Malignant Hematologic Neoplasm",
+						"Malignant Hematopoietic Neoplasm",
+						"hematologic cancer"
+					],
+					"nci_thesaurus_concept_id":"C27134",
+					"display_name":"Hematopoietic and Lymphoid Cell Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Hematopoietic and Lymphoid Cell Neoplasm",
+					"parents":[
+						"C26323",
+						"C35813",
+						"C4741"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Tumor Morphology",
+						"Tumor_Morphology"
+					],
+					"nci_thesaurus_concept_id":"C4741",
+					"display_name":"Neoplasm by Morphology",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Neoplasm by Morphology",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"HEMOLYMPHORETICULAR TUMOR, MALIGNANT",
+						"Hematologic Cancer",
+						"Hematologic Malignancy",
+						"Hematologic Neoplasm",
+						"Hematological Neoplasm",
+						"Hematopoietic Cancer",
+						"Hematopoietic Neoplasm",
+						"Hematopoietic Neoplasms Including Lymphomas",
+						"Hematopoietic and Lymphoid Neoplasm",
+						"Hematopoietic malignancy, NOS",
+						"Malignant Hematologic Neoplasm",
+						"Malignant Hematopoietic Neoplasm",
+						"hematologic cancer"
+					],
+					"nci_thesaurus_concept_id":"C27134",
+					"display_name":"Hematopoietic and Lymphoid Cell Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematopoietic and Lymphoid Cell Neoplasm",
+					"parents":[
+						"C26323",
+						"C35813",
+						"C4741"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Diagnosis",
+						"Disease",
+						"Disease or Disorder",
+						"Disease or Disorder, Non-Neoplastic",
+						"Diseases",
+						"Diseases and Disorders",
+						"Disorder",
+						"Disorders",
+						"condition",
+						"disease",
+						"disease term",
+						"disease type",
+						"disease_term",
+						"disease_type",
+						"disorder"
+					],
+					"nci_thesaurus_concept_id":"C2991",
+					"display_name":"Other Disease",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease or Disorder",
+					"parents":[
+						"C7057"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Hematopoietic and Lymphoid System Tumor"
+					],
+					"nci_thesaurus_concept_id":"C35813",
+					"display_name":"Hematopoietic and Lymphoid System Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Hematopoietic and Lymphoid System Neoplasm",
+					"parents":[
+						"C35814",
+						"C3263"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Blood (Leukemia)",
+						"LEUKEMIA, MALIGNANT",
+						"Leukemia NOS",
+						"Leukemia, Disease",
+						"Leukemia, NOS",
+						"Leukemias",
+						"Leukemias, General",
+						"leukemia"
+					],
+					"nci_thesaurus_concept_id":"C3161",
+					"display_name":"Leukemia",
+					"type":[
+						"maintype",
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Leukemia",
+					"parents":[
+						"C27134",
+						"C9305"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Blood Disease",
+						"Blood Disorder",
+						"Hematologic Disorder",
+						"Hematological Disorder"
+					],
+					"nci_thesaurus_concept_id":"C26323",
+					"display_name":"Hematologic and Lymphocytic Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematologic and Lymphocytic Disorder",
+					"parents":[
+						"C35814"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CA",
+						"Cancer",
+						"Malignancy",
+						"Malignant Growth",
+						"Malignant Neoplastic Disease",
+						"Malignant Tumor",
+						"NEOPLASM, MALIGNANT",
+						"Neoplasm, malignant",
+						"Tumor, malignant, NOS",
+						"Unclassified tumor, malignant",
+						"cancer",
+						"malignancy"
+					],
+					"nci_thesaurus_concept_id":"C9305",
+					"display_name":"Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Malignant Neoplasm",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Blood Disease",
+						"Blood Disorder",
+						"Hematologic Disorder",
+						"Hematological Disorder"
+					],
+					"nci_thesaurus_concept_id":"C26323",
+					"display_name":"Hematologic and Lymphocytic Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Hematologic and Lymphocytic Disorder",
+					"parents":[
+						"C35814"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7057",
+					"display_name":"Disease, Disorder or Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Disease, Disorder or Finding",
+					"parents":[
+
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Hematopoietic and Lymphoid System Tumor"
+					],
+					"nci_thesaurus_concept_id":"C35813",
+					"display_name":"Hematopoietic and Lymphoid System Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematopoietic and Lymphoid System Neoplasm",
+					"parents":[
+						"C35814",
+						"C3263"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C3263",
+					"display_name":"Neoplasm by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Site",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Diagnosis",
+						"Disease",
+						"Disease or Disorder",
+						"Disease or Disorder, Non-Neoplastic",
+						"Diseases",
+						"Diseases and Disorders",
+						"Disorder",
+						"Disorders",
+						"condition",
+						"disease",
+						"disease term",
+						"disease type",
+						"disease_term",
+						"disease_type",
+						"disorder"
+					],
+					"nci_thesaurus_concept_id":"C2991",
+					"display_name":"Other Disease",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Disease or Disorder",
+					"parents":[
+						"C7057"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Hematopoietic and Lymphoid System Disease"
+					],
+					"nci_thesaurus_concept_id":"C35814",
+					"display_name":"Hematopoietic and Lymphoid System Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Hematopoietic and Lymphoid System Disorder",
+					"parents":[
+						"C27551"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7062",
+					"display_name":"Neoplasm by Special Category",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Special Category",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Disease by Site"
+					],
+					"nci_thesaurus_concept_id":"C27551",
+					"display_name":"Disorder by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Disorder by Site",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Recurrent Hematologic Cancer",
+						"Recurrent Hematologic Malignancy",
+						"Relapsed Hematologic Cancer",
+						"Relapsed Hematologic Malignancy"
+					],
+					"nci_thesaurus_concept_id":"C27358",
+					"display_name":"Recurrent Hematopoietic and Lymphoid Cell Neoplasm",
+					"type":[
+						"stage"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Recurrent Hematologic Malignancy",
+					"parents":[
+						"C27134",
+						"C4813"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasia",
+						"Neoplasm",
+						"Neoplasm, NOS",
+						"Neoplasms, NOS",
+						"Neoplastic Disease",
+						"Neoplastic Growth",
+						"Tumor, NOS",
+						"neoplasia",
+						"neoplasm",
+						"tumor"
+					],
+					"nci_thesaurus_concept_id":"C3262",
+					"display_name":"Other Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Neoplasm",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C148425",
+					"display_name":"Recurrent Leukemia",
+					"type":[
+						"stage"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Recurrent Leukemia",
+					"parents":[
+						"C3161",
+						"C27358"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasm Recurrence",
+						"Recurrence",
+						"Recurrent",
+						"Recurrent Tumor",
+						"recurrence"
+					],
+					"nci_thesaurus_concept_id":"C4798",
+					"display_name":"Recurrent Neoplasm",
+					"type":[
+						"stage"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Recurrent Neoplasm",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7057",
+					"display_name":"Disease, Disorder or Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease, Disorder or Finding",
+					"parents":[
+
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Recurrence",
+						"Recurrent Cancer",
+						"Recurrent Malignant Tumor",
+						"recurrence",
+						"recurrent cancer"
+					],
+					"nci_thesaurus_concept_id":"C4813",
+					"display_name":"Recurrent Malignant Neoplasm",
+					"type":[
+						"stage"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Recurrent Malignant Neoplasm",
+					"parents":[
+						"C9305",
+						"C4798"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Disease by Site"
+					],
+					"nci_thesaurus_concept_id":"C27551",
+					"display_name":"Disorder by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disorder by Site",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"acute leukemia"
+					],
+					"nci_thesaurus_concept_id":"C9300",
+					"display_name":"Acute Leukemia",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Acute Leukemia",
+					"parents":[
+						"C3161"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CA",
+						"Cancer",
+						"Malignancy",
+						"Malignant Growth",
+						"Malignant Neoplastic Disease",
+						"Malignant Tumor",
+						"NEOPLASM, MALIGNANT",
+						"Neoplasm, malignant",
+						"Tumor, malignant, NOS",
+						"Unclassified tumor, malignant",
+						"cancer",
+						"malignancy"
+					],
+					"nci_thesaurus_concept_id":"C9305",
+					"display_name":"Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Neoplasm",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasia",
+						"Neoplasm",
+						"Neoplasm, NOS",
+						"Neoplasms, NOS",
+						"Neoplastic Disease",
+						"Neoplastic Growth",
+						"Tumor, NOS",
+						"neoplasia",
+						"neoplasm",
+						"tumor"
+					],
+					"nci_thesaurus_concept_id":"C3262",
+					"display_name":"Other Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Hematopoietic and Lymphoid System Disease"
+					],
+					"nci_thesaurus_concept_id":"C35814",
+					"display_name":"Hematopoietic and Lymphoid System Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematopoietic and Lymphoid System Disorder",
+					"parents":[
+						"C27551"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7062",
+					"display_name":"Neoplasm by Special Category",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Neoplasm by Special Category",
+					"parents":[
+						"C3262"
+					]
+				}
+			],
+			"sites":[
+				{
+					"org_state_or_province":"PA",
+					"org_city":"Allentown",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Lehigh Valley Hospital-Cedar Crest",
+					"org_postal_code":"18103",
+					"org_coordinates":{
+						"lon":-75.4824,
+						"lat":40.5705
+					},
+					"recruitment_status":"ACTIVE"
+				},
+				{
+					"org_state_or_province":"CT",
+					"org_city":"New Britain",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Hartford HealthCare Cancer Institute at HOCC",
+					"org_postal_code":"06050",
+					"org_coordinates":{
+						"lon":-72.7801,
+						"lat":41.6612
+					},
+					"recruitment_status":"ACTIVE"
+				},
+				{
+					"org_state_or_province":"NY",
+					"org_city":"New York",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Memorial Sloan Kettering Cancer Center",
+					"org_postal_code":"10065",
+					"org_coordinates":{
+						"lon":-73.9624,
+						"lat":40.7656
+					},
+					"recruitment_status":"ACTIVE"
+				}
+			],
+			"nci_id":"NCI-2016-01627"
+		},
+		{
+			"current_trial_status":"Active",
+			"nct_id":"NCT00495300",
+			"brief_title":"Collection of Samples and Data for the National Marrow Donor Program Repository",
+			"eligibility":{
+				"structured":{
+					"max_age":"999 Years",
+					"max_age_number":999,
+					"min_age_unit":"Years",
+					"max_age_unit":"Years",
+					"max_age_in_years":999,
+					"gender":"BOTH",
+					"min_age":"3 Years",
+					"min_age_number":3,
+					"min_age_in_years":3
+				}
+			},
+			"diseases":[
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":null,
+					"synonyms":[
+						"HEMOLYMPHORETICULAR TUMOR, MALIGNANT",
+						"Hematologic Cancer",
+						"Hematologic Malignancy",
+						"Hematologic Neoplasm",
+						"Hematological Neoplasm",
+						"Hematopoietic Cancer",
+						"Hematopoietic Neoplasm",
+						"Hematopoietic Neoplasms Including Lymphomas",
+						"Hematopoietic and Lymphoid Neoplasm",
+						"Hematopoietic malignancy, NOS",
+						"Malignant Hematologic Neoplasm",
+						"Malignant Hematopoietic Neoplasm",
+						"hematologic cancer"
+					],
+					"nci_thesaurus_concept_id":"C27134",
+					"display_name":"Hematopoietic and Lymphoid Cell Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematopoietic and Lymphoid Cell Neoplasm",
+					"parents":[
+						"C26323",
+						"C35813",
+						"C4741"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7057",
+					"display_name":"Disease, Disorder or Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease, Disorder or Finding",
+					"parents":[
+
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Tumor Morphology",
+						"Tumor_Morphology"
+					],
+					"nci_thesaurus_concept_id":"C4741",
+					"display_name":"Neoplasm by Morphology",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Morphology",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Diagnosis",
+						"Disease",
+						"Disease or Disorder",
+						"Disease or Disorder, Non-Neoplastic",
+						"Diseases",
+						"Diseases and Disorders",
+						"Disorder",
+						"Disorders",
+						"condition",
+						"disease",
+						"disease term",
+						"disease type",
+						"disease_term",
+						"disease_type",
+						"disorder"
+					],
+					"nci_thesaurus_concept_id":"C2991",
+					"display_name":"Other Disease",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease or Disorder",
+					"parents":[
+						"C7057"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Blood Disease",
+						"Blood Disorder",
+						"Hematologic Disorder",
+						"Hematological Disorder"
+					],
+					"nci_thesaurus_concept_id":"C26323",
+					"display_name":"Hematologic and Lymphocytic Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematologic and Lymphocytic Disorder",
+					"parents":[
+						"C35814"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasia",
+						"Neoplasm",
+						"Neoplasm, NOS",
+						"Neoplasms, NOS",
+						"Neoplastic Disease",
+						"Neoplastic Growth",
+						"Tumor, NOS",
+						"neoplasia",
+						"neoplasm",
+						"tumor"
+					],
+					"nci_thesaurus_concept_id":"C3262",
+					"display_name":"Other Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C3263",
+					"display_name":"Neoplasm by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Site",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Hematopoietic and Lymphoid System Tumor"
+					],
+					"nci_thesaurus_concept_id":"C35813",
+					"display_name":"Hematopoietic and Lymphoid System Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematopoietic and Lymphoid System Neoplasm",
+					"parents":[
+						"C35814",
+						"C3263"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Hematopoietic and Lymphoid System Disease"
+					],
+					"nci_thesaurus_concept_id":"C35814",
+					"display_name":"Hematopoietic and Lymphoid System Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematopoietic and Lymphoid System Disorder",
+					"parents":[
+						"C27551"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Disease by Site"
+					],
+					"nci_thesaurus_concept_id":"C27551",
+					"display_name":"Disorder by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disorder by Site",
+					"parents":[
+						"C2991"
+					]
+				}
+			],
+			"sites":[
+				{
+					"org_state_or_province":"AL",
+					"org_city":"Birmingham",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"University of Alabama at Birmingham Cancer Center",
+					"org_postal_code":"35233",
+					"org_coordinates":{
+						"lon":-86.8014,
+						"lat":33.5089
+					},
+					"recruitment_status":"ACTIVE"
+				},
+				{
+					"org_state_or_province":"CA",
+					"org_city":"Los Angeles",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Children's Hospital Los Angeles",
+					"org_postal_code":"90027",
+					"org_coordinates":{
+						"lon":-118.292,
+						"lat":34.1252
+					},
+					"recruitment_status":"ACTIVE"
+				},
+				{
+					"org_state_or_province":"NC",
+					"org_city":"Winston-Salem",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Wake Forest University Health Sciences",
+					"org_postal_code":"27157",
+					"org_coordinates":{
+						"lon":-80.2096,
+						"lat":36.0964
+					},
+					"recruitment_status":"ACTIVE"
+				}
+			],
+			"nci_id":"NCI-2019-08352"
+		},
+		{
+			"current_trial_status":"Active",
+			"nct_id":"NCT04974619",
+			"brief_title":"HPV Vaccination Awareness in Latino Young Men Who Have Sex with Men In Puerto Rico and Florida",
+			"eligibility":{
+				"structured":{
+					"max_age":"999 Years",
+					"max_age_number":999,
+					"min_age_unit":"Years",
+					"max_age_unit":"Years",
+					"max_age_in_years":999,
+					"gender":"BOTH",
+					"min_age":"18 Years",
+					"min_age_number":18,
+					"min_age_in_years":18
+				}
+			},
+			"diseases":[
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C3262",
+											"label":"Neoplasm",
+											"idx":0
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+						"HPV-Related Malignancy",
+						"Human Papilloma Virus-Related Malignancy",
+						"Human Papilloma Virus-Related Malignant Neoplasm"
+					],
+					"nci_thesaurus_concept_id":"C27718",
+					"display_name":"Human Papillomavirus-Related Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Human Papillomavirus-Related Malignant Neoplasm",
+					"parents":[
+						"C27673"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasm by Etiology"
+					],
+					"nci_thesaurus_concept_id":"C27933",
+					"display_name":"Neoplasm by Cause",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Cause",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C27224",
+					"display_name":"Infection-Related Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Infection-Related Neoplasm",
+					"parents":[
+						"C27933"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Diagnosis",
+						"Disease",
+						"Disease or Disorder",
+						"Disease or Disorder, Non-Neoplastic",
+						"Diseases",
+						"Diseases and Disorders",
+						"Disorder",
+						"Disorders",
+						"condition",
+						"disease",
+						"disease term",
+						"disease type",
+						"disease_term",
+						"disease_type",
+						"disorder"
+					],
+					"nci_thesaurus_concept_id":"C2991",
+					"display_name":"Other Disease",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease or Disorder",
+					"parents":[
+						"C7057"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Infection Related Cancer",
+						"Infection Related Malignancy",
+						"Infection-Related Cancer",
+						"Infection-Related Malignancy"
+					],
+					"nci_thesaurus_concept_id":"C27223",
+					"display_name":"Infection-Related Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Infection-Related Malignant Neoplasm",
+					"parents":[
+						"C27224",
+						"C9305"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7062",
+					"display_name":"Neoplasm by Special Category",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Special Category",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CA",
+						"Cancer",
+						"Malignancy",
+						"Malignant Growth",
+						"Malignant Neoplastic Disease",
+						"Malignant Tumor",
+						"NEOPLASM, MALIGNANT",
+						"Neoplasm, malignant",
+						"Tumor, malignant, NOS",
+						"Unclassified tumor, malignant",
+						"cancer",
+						"malignancy"
+					],
+					"nci_thesaurus_concept_id":"C9305",
+					"display_name":"Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Neoplasm",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7057",
+					"display_name":"Disease, Disorder or Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease, Disorder or Finding",
+					"parents":[
+
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasia",
+						"Neoplasm",
+						"Neoplasm, NOS",
+						"Neoplasms, NOS",
+						"Neoplastic Disease",
+						"Neoplastic Growth",
+						"Tumor, NOS",
+						"neoplasia",
+						"neoplasm",
+						"tumor"
+					],
+					"nci_thesaurus_concept_id":"C3262",
+					"display_name":"Other Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Virus Related Cancer",
+						"Virus Related Malignancy",
+						"Virus-Related Cancer",
+						"Virus-Related Malignancy"
+					],
+					"nci_thesaurus_concept_id":"C27673",
+					"display_name":"Virus-Related Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Virus-Related Malignant Neoplasm",
+					"parents":[
+						"C27223"
+					]
+				}
+			],
+			"sites":[
+				{
+					"org_state_or_province":"PR",
+					"org_city":"Ponce",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Ponce School of Medicine and Health Sciences",
+					"org_postal_code":"00732-7004",
+					"recruitment_status":"ACTIVE"
+				},
+				{
+					"org_state_or_province":"FL",
+					"org_city":"Tampa",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Moffitt Cancer Center",
+					"org_postal_code":"33612",
+					"org_coordinates":{
+						"lon":-82.45,
+						"lat":28.0508
+					},
+					"recruitment_status":"ACTIVE"
+				}
+			],
+			"nci_id":"NCI-2021-08391"
+		},
+		{
+			"current_trial_status":"Active",
+			"nct_id":"NCT04875286",
+			"brief_title":"Patient Reported Symptom Control with THC or CBD Use",
+			"eligibility":{
+				"structured":{
+					"max_age":"999 Years",
+					"max_age_number":999,
+					"min_age_unit":"Years",
+					"max_age_unit":"Years",
+					"max_age_in_years":999,
+					"gender":"BOTH",
+					"min_age":"18 Years",
+					"min_age_number":18,
+					"min_age_in_years":18
+				}
+			},
+			"diseases":[
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C9292",
+											"label":"Solid Neoplasm",
+											"idx":0
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+						"Malignant Solid Neoplasm"
+					],
+					"nci_thesaurus_concept_id":"C132146",
+					"display_name":"Malignant Solid Tumor",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Solid Neoplasm",
+					"parents":[
+						"C9305",
+						"C9292"
+					]
+				},
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":null,
+					"synonyms":[
+						"Cancer Pain"
+					],
+					"nci_thesaurus_concept_id":"C178565",
+					"display_name":"Cancer-Associated Pain",
+					"type":[
+						"finding"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Cancer-Associated Pain",
+					"parents":[
+						"C3303"
+					]
+				},
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":null,
+					"synonyms":[
+						"HEMOLYMPHORETICULAR TUMOR, MALIGNANT",
+						"Hematologic Cancer",
+						"Hematologic Malignancy",
+						"Hematologic Neoplasm",
+						"Hematological Neoplasm",
+						"Hematopoietic Cancer",
+						"Hematopoietic Neoplasm",
+						"Hematopoietic Neoplasms Including Lymphomas",
+						"Hematopoietic and Lymphoid Neoplasm",
+						"Hematopoietic malignancy, NOS",
+						"Malignant Hematologic Neoplasm",
+						"Malignant Hematopoietic Neoplasm",
+						"hematologic cancer"
+					],
+					"nci_thesaurus_concept_id":"C27134",
+					"display_name":"Hematopoietic and Lymphoid Cell Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematopoietic and Lymphoid Cell Neoplasm",
+					"parents":[
+						"C26323",
+						"C35813",
+						"C4741"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Solid Neoplasm",
+						"Solid Tumour",
+						"Solid tumor, NOS",
+						"solid tumor"
+					],
+					"nci_thesaurus_concept_id":"C9292",
+					"display_name":"Solid Tumor",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Solid Neoplasm",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"SYMPTOM",
+						"symptom"
+					],
+					"nci_thesaurus_concept_id":"C4876",
+					"display_name":"Symptom",
+					"type":[
+
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Symptom",
+					"parents":[
+						"C100104"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Observable Entity",
+						"finding"
+					],
+					"nci_thesaurus_concept_id":"C3367",
+					"display_name":"Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Finding",
+					"parents":[
+						"C7057"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Hematopoietic and Lymphoid System Tumor"
+					],
+					"nci_thesaurus_concept_id":"C35813",
+					"display_name":"Hematopoietic and Lymphoid System Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematopoietic and Lymphoid System Neoplasm",
+					"parents":[
+						"C35814",
+						"C3263"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Hematopoietic and Lymphoid System Disease"
+					],
+					"nci_thesaurus_concept_id":"C35814",
+					"display_name":"Hematopoietic and Lymphoid System Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematopoietic and Lymphoid System Disorder",
+					"parents":[
+						"C27551"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Diagnosis",
+						"Disease",
+						"Disease or Disorder",
+						"Disease or Disorder, Non-Neoplastic",
+						"Diseases",
+						"Diseases and Disorders",
+						"Disorder",
+						"Disorders",
+						"condition",
+						"disease",
+						"disease term",
+						"disease type",
+						"disease_term",
+						"disease_type",
+						"disorder"
+					],
+					"nci_thesaurus_concept_id":"C2991",
+					"display_name":"Other Disease",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease or Disorder",
+					"parents":[
+						"C7057"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CLINICAL FINDING",
+						"CLINICAL SIGNS",
+						"Clinical Finding",
+						"Clinical Signs",
+						"Clinical Signs or Symptoms",
+						"DESC",
+						"Signs or Symptoms"
+					],
+					"nci_thesaurus_concept_id":"C100104",
+					"display_name":"Sign or Symptom",
+					"type":[
+
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Sign or Symptom",
+					"parents":[
+						"C3367"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7062",
+					"display_name":"Neoplasm by Special Category",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Special Category",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Pain (Various)"
+					],
+					"nci_thesaurus_concept_id":"C3303",
+					"display_name":"Pain",
+					"type":[
+
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Pain",
+					"parents":[
+						"C4876"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7057",
+					"display_name":"Disease, Disorder or Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Disease, Disorder or Finding",
+					"parents":[
+
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CA",
+						"Cancer",
+						"Malignancy",
+						"Malignant Growth",
+						"Malignant Neoplastic Disease",
+						"Malignant Tumor",
+						"NEOPLASM, MALIGNANT",
+						"Neoplasm, malignant",
+						"Tumor, malignant, NOS",
+						"Unclassified tumor, malignant",
+						"cancer",
+						"malignancy"
+					],
+					"nci_thesaurus_concept_id":"C9305",
+					"display_name":"Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Neoplasm",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Blood Disease",
+						"Blood Disorder",
+						"Hematologic Disorder",
+						"Hematological Disorder"
+					],
+					"nci_thesaurus_concept_id":"C26323",
+					"display_name":"Hematologic and Lymphocytic Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematologic and Lymphocytic Disorder",
+					"parents":[
+						"C35814"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Disease by Site"
+					],
+					"nci_thesaurus_concept_id":"C27551",
+					"display_name":"Disorder by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disorder by Site",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7057",
+					"display_name":"Disease, Disorder or Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease, Disorder or Finding",
+					"parents":[
+
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasia",
+						"Neoplasm",
+						"Neoplasm, NOS",
+						"Neoplasms, NOS",
+						"Neoplastic Disease",
+						"Neoplastic Growth",
+						"Tumor, NOS",
+						"neoplasia",
+						"neoplasm",
+						"tumor"
+					],
+					"nci_thesaurus_concept_id":"C3262",
+					"display_name":"Other Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Tumor Morphology",
+						"Tumor_Morphology"
+					],
+					"nci_thesaurus_concept_id":"C4741",
+					"display_name":"Neoplasm by Morphology",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Morphology",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C3263",
+					"display_name":"Neoplasm by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Site",
+					"parents":[
+						"C3262"
+					]
+				}
+			],
+			"sites":[
+				{
+					"org_state_or_province":"AZ",
+					"org_city":"Gilbert",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Banner MD Anderson Cancer Center",
+					"org_postal_code":"85234",
+					"org_coordinates":{
+						"lon":-111.7529,
+						"lat":33.3635
+					},
+					"recruitment_status":"ACTIVE"
+				},
+				{
+					"org_state_or_province":"TX",
+					"org_city":"Houston",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"M D Anderson Cancer Center",
+					"org_postal_code":"77030",
+					"org_coordinates":{
+						"lon":-95.4026,
+						"lat":29.7059
+					},
+					"recruitment_status":"ACTIVE"
+				}
+			],
+			"nci_id":"NCI-2021-02853"
+		},
+		{
+			"current_trial_status":"Active",
+			"nct_id":"NCT04688476",
+			"brief_title":"An Extended Follow-up Study of the HPV Vaccine Delayed Booster Trial",
+			"eligibility":{
+				"structured":{
+					"max_age":"999 Years",
+					"max_age_number":999,
+					"min_age_unit":"Years",
+					"max_age_unit":"Years",
+					"max_age_in_years":999,
+					"gender":"BOTH",
+					"min_age":"0 Years",
+					"min_age_number":0,
+					"min_age_in_years":0
+				}
+			},
+			"diseases":[
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C2916",
+											"label":"Carcinoma",
+											"idx":0
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+						"HPV-Related Carcinoma",
+						"Human Papilloma Virus Related Carcinoma",
+						"Human Papilloma Virus-Related Carcinoma"
+					],
+					"nci_thesaurus_concept_id":"C27674",
+					"display_name":"Human Papillomavirus-Related Carcinoma",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Human Papillomavirus-Related Carcinoma",
+					"parents":[
+						"C27718",
+						"C27698"
+					]
+				},
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C2991",
+											"label":"Disease or Disorder",
+											"idx":0
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+						"HPV",
+						"HPV Infection",
+						"Human Papilloma Virus Infection"
+					],
+					"nci_thesaurus_concept_id":"C27851",
+					"display_name":"Human Papillomavirus Infection",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Human Papillomavirus Infection",
+					"parents":[
+						"C3439"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasm by Etiology"
+					],
+					"nci_thesaurus_concept_id":"C27933",
+					"display_name":"Neoplasm by Cause",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Cause",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Diagnosis",
+						"Disease",
+						"Disease or Disorder",
+						"Disease or Disorder, Non-Neoplastic",
+						"Diseases",
+						"Diseases and Disorders",
+						"Disorder",
+						"Disorders",
+						"condition",
+						"disease",
+						"disease term",
+						"disease type",
+						"disease_term",
+						"disease_type",
+						"disorder"
+					],
+					"nci_thesaurus_concept_id":"C2991",
+					"display_name":"Other Disease",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Disease or Disorder",
+					"parents":[
+						"C7057"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Diagnosis",
+						"Disease",
+						"Disease or Disorder",
+						"Disease or Disorder, Non-Neoplastic",
+						"Diseases",
+						"Diseases and Disorders",
+						"Disorder",
+						"Disorders",
+						"condition",
+						"disease",
+						"disease term",
+						"disease type",
+						"disease_term",
+						"disease_type",
+						"disorder"
+					],
+					"nci_thesaurus_concept_id":"C2991",
+					"display_name":"Other Disease",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease or Disorder",
+					"parents":[
+						"C7057"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Virus Related Carcinoma"
+					],
+					"nci_thesaurus_concept_id":"C27698",
+					"display_name":"Virus-Related Carcinoma",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Virus-Related Carcinoma",
+					"parents":[
+						"C2916",
+						"C27673"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Inflammatory Disease",
+						"Inflammatory_Disease"
+					],
+					"nci_thesaurus_concept_id":"C93210",
+					"display_name":"Inflammatory Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Inflammatory Disorder",
+					"parents":[
+						"C53547"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7062",
+					"display_name":"Neoplasm by Special Category",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Special Category",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Virus Related Cancer",
+						"Virus Related Malignancy",
+						"Virus-Related Cancer",
+						"Virus-Related Malignancy"
+					],
+					"nci_thesaurus_concept_id":"C27673",
+					"display_name":"Virus-Related Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Virus-Related Malignant Neoplasm",
+					"parents":[
+						"C27223"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CARCINOMA, MALIGNANT",
+						"Carcinoma",
+						"Carcinoma, NOS",
+						"Epithelial Carcinoma",
+						"Epithelial tumor, malignant",
+						"Epithelioma Malignant",
+						"Malignant Epithelial Neoplasm",
+						"Malignant Epithelial Tumor",
+						"Malignant Epithelioma",
+						"carcinoma",
+						"epithelial carcinoma"
+					],
+					"nci_thesaurus_concept_id":"C2916",
+					"display_name":"Other Carcinoma",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Carcinoma",
+					"parents":[
+						"C3709",
+						"C9305"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7057",
+					"display_name":"Disease, Disorder or Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease, Disorder or Finding",
+					"parents":[
+
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Viral Disease",
+						"Viral Disorder"
+					],
+					"nci_thesaurus_concept_id":"C3439",
+					"display_name":"Viral Infection",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Viral Infection",
+					"parents":[
+						"C26726"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Non-Neoplastic Disease by Special Category"
+					],
+					"nci_thesaurus_concept_id":"C53547",
+					"display_name":"Non-Neoplastic Disorder by Special Category",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Non-Neoplastic Disorder by Special Category",
+					"parents":[
+						"C53529"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7057",
+					"display_name":"Disease, Disorder or Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Disease, Disorder or Finding",
+					"parents":[
+
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasia",
+						"Neoplasm",
+						"Neoplasm, NOS",
+						"Neoplasms, NOS",
+						"Neoplastic Disease",
+						"Neoplastic Growth",
+						"Tumor, NOS",
+						"neoplasia",
+						"neoplasm",
+						"tumor"
+					],
+					"nci_thesaurus_concept_id":"C3262",
+					"display_name":"Other Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Epithelial Neoplasms, NOS",
+						"Epithelioma",
+						"Epithelioma, malignant"
+					],
+					"nci_thesaurus_concept_id":"C3709",
+					"display_name":"Epithelial Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Epithelial Neoplasm",
+					"parents":[
+						"C4741"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CA",
+						"Cancer",
+						"Malignancy",
+						"Malignant Growth",
+						"Malignant Neoplastic Disease",
+						"Malignant Tumor",
+						"NEOPLASM, MALIGNANT",
+						"Neoplasm, malignant",
+						"Tumor, malignant, NOS",
+						"Unclassified tumor, malignant",
+						"cancer",
+						"malignancy"
+					],
+					"nci_thesaurus_concept_id":"C9305",
+					"display_name":"Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Neoplasm",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"HPV-Related Malignancy",
+						"Human Papilloma Virus-Related Malignancy",
+						"Human Papilloma Virus-Related Malignant Neoplasm"
+					],
+					"nci_thesaurus_concept_id":"C27718",
+					"display_name":"Human Papillomavirus-Related Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Human Papillomavirus-Related Malignant Neoplasm",
+					"parents":[
+						"C27673"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C27224",
+					"display_name":"Infection-Related Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Infection-Related Neoplasm",
+					"parents":[
+						"C27933"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"NON-NEOPLASTIC",
+						"Non-Neoplastic Disease",
+						"Non-neoplastic Disorder",
+						"Non-neoplastic condition, NOS",
+						"Non-neoplastic disorder, NOS"
+					],
+					"nci_thesaurus_concept_id":"C53529",
+					"display_name":"Non-Neoplastic Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Non-Neoplastic Disorder",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Infection Related Cancer",
+						"Infection Related Malignancy",
+						"Infection-Related Cancer",
+						"Infection-Related Malignancy"
+					],
+					"nci_thesaurus_concept_id":"C27223",
+					"display_name":"Infection-Related Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Infection-Related Malignant Neoplasm",
+					"parents":[
+						"C27224",
+						"C9305"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Tumor Morphology",
+						"Tumor_Morphology"
+					],
+					"nci_thesaurus_concept_id":"C4741",
+					"display_name":"Neoplasm by Morphology",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Morphology",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Clinical Infection",
+						"ID",
+						"INFECTION",
+						"Infection",
+						"Infectious",
+						"Infectious Disease",
+						"Infectious Diseases and Manifestations",
+						"Unspecified Infection",
+						"infection"
+					],
+					"nci_thesaurus_concept_id":"C26726",
+					"display_name":"Infectious Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"NO",
+					"preferred_name":"Infectious Disorder",
+					"parents":[
+						"C93210"
+					]
+				}
+			],
+			"sites":[
+				{
+					"org_state_or_province":"AZ",
+					"org_city":"Tucson",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Banner University Medical Center - Tucson",
+					"org_postal_code":"85719",
+					"org_coordinates":{
+						"lon":-110.9484,
+						"lat":32.2456
+					},
+					"recruitment_status":"ACTIVE"
+				},
+				{
+					"org_state_or_province":"CA",
+					"org_city":"Los Angeles",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"UCLA / Jonsson Comprehensive Cancer Center",
+					"org_postal_code":"90095",
+					"org_coordinates":{
+						"lon":-118.4432,
+						"lat":34.071
+					},
+					"recruitment_status":"ACTIVE"
+				}
+			],
+			"nci_id":"NCI-2020-06317"
+		},
+		{
+			"current_trial_status":"Active",
+			"nct_id":"NCT04671498",
+			"brief_title":"Droplet-BC Screening Test for the Detection of Breast Cancer, the DROPLET-BC Study",
+			"eligibility":{
+				"structured":{
+					"max_age":"999 Years",
+					"max_age_number":999,
+					"min_age_unit":"Years",
+					"max_age_unit":"Years",
+					"max_age_in_years":999,
+					"gender":"BOTH",
+					"min_age":"18 Years",
+					"min_age_number":18,
+					"min_age_in_years":18
+				}
+			},
+			"diseases":[
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":null,
+					"synonyms":[
+						"Breast Carcinoma",
+						"Breast cancer, NOS",
+						"Cancer of Breast",
+						"Cancer of the Breast",
+						"Carcinoma of Breast",
+						"Carcinoma of the Breast",
+						"Mammary Carcinoma",
+						"breast cancer"
+					],
+					"nci_thesaurus_concept_id":"C4872",
+					"display_name":"Breast Cancer",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Breast Carcinoma",
+					"parents":[
+						"C2916",
+						"C9335"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Breast Tumor",
+						"Neoplasm of Breast",
+						"Neoplasm of the Breast",
+						"Tumor of Breast",
+						"Tumor of the Breast"
+					],
+					"nci_thesaurus_concept_id":"C2910",
+					"display_name":"Breast Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Breast Neoplasm",
+					"parents":[
+						"C26709",
+						"C3263"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Epithelial Neoplasms, NOS",
+						"Epithelioma",
+						"Epithelioma, malignant"
+					],
+					"nci_thesaurus_concept_id":"C3709",
+					"display_name":"Epithelial Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Epithelial Neoplasm",
+					"parents":[
+						"C4741"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CARCINOMA, MALIGNANT",
+						"Carcinoma",
+						"Carcinoma, NOS",
+						"Epithelial Carcinoma",
+						"Epithelial tumor, malignant",
+						"Epithelioma Malignant",
+						"Malignant Epithelial Neoplasm",
+						"Malignant Epithelial Tumor",
+						"Malignant Epithelioma",
+						"carcinoma",
+						"epithelial carcinoma"
+					],
+					"nci_thesaurus_concept_id":"C2916",
+					"display_name":"Other Carcinoma",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Carcinoma",
+					"parents":[
+						"C3709",
+						"C9305"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Diagnosis",
+						"Disease",
+						"Disease or Disorder",
+						"Disease or Disorder, Non-Neoplastic",
+						"Diseases",
+						"Diseases and Disorders",
+						"Disorder",
+						"Disorders",
+						"condition",
+						"disease",
+						"disease term",
+						"disease type",
+						"disease_term",
+						"disease_type",
+						"disorder"
+					],
+					"nci_thesaurus_concept_id":"C2991",
+					"display_name":"Other Disease",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease or Disorder",
+					"parents":[
+						"C7057"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7062",
+					"display_name":"Neoplasm by Special Category",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Special Category",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CA",
+						"Cancer",
+						"Malignancy",
+						"Malignant Growth",
+						"Malignant Neoplastic Disease",
+						"Malignant Tumor",
+						"NEOPLASM, MALIGNANT",
+						"Neoplasm, malignant",
+						"Tumor, malignant, NOS",
+						"Unclassified tumor, malignant",
+						"cancer",
+						"malignancy"
+					],
+					"nci_thesaurus_concept_id":"C9305",
+					"display_name":"Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Neoplasm",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Disease by Site"
+					],
+					"nci_thesaurus_concept_id":"C27551",
+					"display_name":"Disorder by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disorder by Site",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7057",
+					"display_name":"Disease, Disorder or Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease, Disorder or Finding",
+					"parents":[
+
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Breast Disease",
+						"Breast Diseases"
+					],
+					"nci_thesaurus_concept_id":"C26709",
+					"display_name":"Breast Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Breast Disorder",
+					"parents":[
+						"C27551"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Tumor Morphology",
+						"Tumor_Morphology"
+					],
+					"nci_thesaurus_concept_id":"C4741",
+					"display_name":"Neoplasm by Morphology",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Morphology",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C3263",
+					"display_name":"Neoplasm by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Site",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Malignant Breast Tumor",
+						"Malignant Neoplasm of Breast",
+						"Malignant Neoplasm of the Breast",
+						"Malignant Tumor of Breast",
+						"Malignant Tumor of the Breast"
+					],
+					"nci_thesaurus_concept_id":"C9335",
+					"display_name":"Malignant Breast Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Breast Neoplasm",
+					"parents":[
+						"C2910",
+						"C9305"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasia",
+						"Neoplasm",
+						"Neoplasm, NOS",
+						"Neoplasms, NOS",
+						"Neoplastic Disease",
+						"Neoplastic Growth",
+						"Tumor, NOS",
+						"neoplasia",
+						"neoplasm",
+						"tumor"
+					],
+					"nci_thesaurus_concept_id":"C3262",
+					"display_name":"Other Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm",
+					"parents":[
+						"C2991"
+					]
+				}
+			],
+			"sites":[
+				{
+					"org_state_or_province":"IL",
+					"org_city":"Chicago",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Northwestern University",
+					"org_postal_code":"60611",
+					"org_coordinates":{
+						"lon":-87.6187,
+						"lat":41.8946
+					},
+					"recruitment_status":"IN_REVIEW"
+				},
+				{
+					"org_state_or_province":"NY",
+					"org_city":"Buffalo",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Roswell Park Cancer Institute",
+					"org_postal_code":"14263",
+					"org_coordinates":{
+						"lon":-78.8765,
+						"lat":42.8868
+					},
+					"recruitment_status":"ACTIVE"
+				},
+				{
+					"org_state_or_province":"TX",
+					"org_city":"Houston",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"M D Anderson Cancer Center",
+					"org_postal_code":"77030",
+					"org_coordinates":{
+						"lon":-95.4026,
+						"lat":29.7059
+					},
+					"recruitment_status":"ACTIVE"
+				}
+			],
+			"nci_id":"NCI-2021-03585"
+		},
+		{
+			"current_trial_status":"Active",
+			"nct_id":"NCT04571398",
+			"brief_title":"A Study of ApricityRx™ for Management of IR-AEs in Patients on Immuno-Oncology Therapy",
+			"eligibility":{
+				"structured":{
+					"max_age":"999 Years",
+					"max_age_number":999,
+					"min_age_unit":"Years",
+					"max_age_unit":"Years",
+					"max_age_in_years":999,
+					"gender":"BOTH",
+					"min_age":"18 Years",
+					"min_age_number":18,
+					"min_age_in_years":18
+				}
+			},
+			"diseases":[
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C9292",
+											"label":"Solid Neoplasm",
+											"idx":0
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+						"Malignant Solid Neoplasm"
+					],
+					"nci_thesaurus_concept_id":"C132146",
+					"display_name":"Malignant Solid Tumor",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Solid Neoplasm",
+					"parents":[
+						"C9305",
+						"C9292"
+					]
+				},
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":null,
+					"synonyms":[
+						"HEMOLYMPHORETICULAR TUMOR, MALIGNANT",
+						"Hematologic Cancer",
+						"Hematologic Malignancy",
+						"Hematologic Neoplasm",
+						"Hematological Neoplasm",
+						"Hematopoietic Cancer",
+						"Hematopoietic Neoplasm",
+						"Hematopoietic Neoplasms Including Lymphomas",
+						"Hematopoietic and Lymphoid Neoplasm",
+						"Hematopoietic malignancy, NOS",
+						"Malignant Hematologic Neoplasm",
+						"Malignant Hematopoietic Neoplasm",
+						"hematologic cancer"
+					],
+					"nci_thesaurus_concept_id":"C27134",
+					"display_name":"Hematopoietic and Lymphoid Cell Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematopoietic and Lymphoid Cell Neoplasm",
+					"parents":[
+						"C26323",
+						"C35813",
+						"C4741"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Disease by Site"
+					],
+					"nci_thesaurus_concept_id":"C27551",
+					"display_name":"Disorder by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disorder by Site",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Neoplasia",
+						"Neoplasm",
+						"Neoplasm, NOS",
+						"Neoplasms, NOS",
+						"Neoplastic Disease",
+						"Neoplastic Growth",
+						"Tumor, NOS",
+						"neoplasia",
+						"neoplasm",
+						"tumor"
+					],
+					"nci_thesaurus_concept_id":"C3262",
+					"display_name":"Other Neoplasm",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Hematopoietic and Lymphoid System Tumor"
+					],
+					"nci_thesaurus_concept_id":"C35813",
+					"display_name":"Hematopoietic and Lymphoid System Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematopoietic and Lymphoid System Neoplasm",
+					"parents":[
+						"C35814",
+						"C3263"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C3263",
+					"display_name":"Neoplasm by Site",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Site",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Hematopoietic and Lymphoid System Disease"
+					],
+					"nci_thesaurus_concept_id":"C35814",
+					"display_name":"Hematopoietic and Lymphoid System Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematopoietic and Lymphoid System Disorder",
+					"parents":[
+						"C27551"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Diagnosis",
+						"Disease",
+						"Disease or Disorder",
+						"Disease or Disorder, Non-Neoplastic",
+						"Diseases",
+						"Diseases and Disorders",
+						"Disorder",
+						"Disorders",
+						"condition",
+						"disease",
+						"disease term",
+						"disease type",
+						"disease_term",
+						"disease_type",
+						"disorder"
+					],
+					"nci_thesaurus_concept_id":"C2991",
+					"display_name":"Other Disease",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease or Disorder",
+					"parents":[
+						"C7057"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Blood Disease",
+						"Blood Disorder",
+						"Hematologic Disorder",
+						"Hematological Disorder"
+					],
+					"nci_thesaurus_concept_id":"C26323",
+					"display_name":"Hematologic and Lymphocytic Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Hematologic and Lymphocytic Disorder",
+					"parents":[
+						"C35814"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"CA",
+						"Cancer",
+						"Malignancy",
+						"Malignant Growth",
+						"Malignant Neoplastic Disease",
+						"Malignant Tumor",
+						"NEOPLASM, MALIGNANT",
+						"Neoplasm, malignant",
+						"Tumor, malignant, NOS",
+						"Unclassified tumor, malignant",
+						"cancer",
+						"malignancy"
+					],
+					"nci_thesaurus_concept_id":"C9305",
+					"display_name":"Malignant Neoplasm",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Malignant Neoplasm",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7062",
+					"display_name":"Neoplasm by Special Category",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Special Category",
+					"parents":[
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Solid Neoplasm",
+						"Solid Tumour",
+						"Solid tumor, NOS",
+						"solid tumor"
+					],
+					"nci_thesaurus_concept_id":"C9292",
+					"display_name":"Solid Tumor",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Solid Neoplasm",
+					"parents":[
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7057",
+					"display_name":"Disease, Disorder or Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease, Disorder or Finding",
+					"parents":[
+
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Tumor Morphology",
+						"Tumor_Morphology"
+					],
+					"nci_thesaurus_concept_id":"C4741",
+					"display_name":"Neoplasm by Morphology",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Neoplasm by Morphology",
+					"parents":[
+						"C3262"
+					]
+				}
+			],
+			"sites":[
+				{
+					"org_state_or_province":"NY",
+					"org_city":"New York",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"NYP / Columbia University Medical Center / Herbert Irving Comprehensive Cancer Center",
+					"org_postal_code":"10032",
+					"org_coordinates":{
+						"lon":-73.9425,
+						"lat":40.839
+					},
+					"recruitment_status":"ACTIVE"
+				},
+				{
+					"org_state_or_province":"TX",
+					"org_city":"Houston",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"M D Anderson Cancer Center",
+					"org_postal_code":"77030",
+					"org_coordinates":{
+						"lon":-95.4026,
+						"lat":29.7059
+					},
+					"recruitment_status":"ACTIVE"
+				}
+			],
+			"nci_id":"NCI-2020-11396"
+		},
+		{
+			"current_trial_status":"Active",
+			"nct_id":"NCT04533542",
+			"brief_title":"Nicotine Vapor Specific Sensory Measurement",
+			"eligibility":{
+				"structured":{
+					"max_age":"55 Years",
+					"max_age_number":55,
+					"min_age_unit":"Years",
+					"max_age_unit":"Years",
+					"max_age_in_years":55,
+					"gender":"BOTH",
+					"min_age":"21 Years",
+					"min_age_number":21,
+					"min_age_in_years":21
+				}
+			},
+			"diseases":[
+				{
+					"inclusion_indicator":"TRIAL",
+					"paths":[
+						{
+							"paths":[
+								{
+									"concepts":[
+										{
+											"code":"C2991",
+											"label":"Disease or Disorder",
+											"idx":0
+										}
+									],
+									"direction":1
+								}
+							]
+						}
+					],
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C92203",
+					"display_name":"Substance-Related Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Substance-Related Disorder",
+					"parents":[
+						"C2893"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Mental Disorder",
+						"Mental Dysfunction",
+						"Mental Illness",
+						"Psychiatric Disease"
+					],
+					"nci_thesaurus_concept_id":"C2893",
+					"display_name":"Psychiatric Disorder",
+					"type":[
+						"subtype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Psychiatric Disorder",
+					"parents":[
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+
+					],
+					"nci_thesaurus_concept_id":"C7057",
+					"display_name":"Disease, Disorder or Finding",
+					"type":[
+
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease, Disorder or Finding",
+					"parents":[
+
+					]
+				},
+				{
+					"inclusion_indicator":"TREE",
+					"synonyms":[
+						"Diagnosis",
+						"Disease",
+						"Disease or Disorder",
+						"Disease or Disorder, Non-Neoplastic",
+						"Diseases",
+						"Diseases and Disorders",
+						"Disorder",
+						"Disorders",
+						"condition",
+						"disease",
+						"disease term",
+						"disease type",
+						"disease_term",
+						"disease_type",
+						"disorder"
+					],
+					"nci_thesaurus_concept_id":"C2991",
+					"display_name":"Other Disease",
+					"type":[
+						"maintype"
+					],
+					"lead_disease_indicator":"YES",
+					"preferred_name":"Disease or Disorder",
+					"parents":[
+						"C7057"
+					]
+				}
+			],
+			"sites":[
+				{
+					"org_state_or_province":"NY",
+					"org_city":"Rochester",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"University of Rochester",
+					"org_postal_code":"14642",
+					"org_coordinates":{
+						"lon":-77.6251,
+						"lat":43.1218
+					},
+					"recruitment_status":"ACTIVE"
+				},
+				{
+					"org_state_or_province":"NY",
+					"org_city":"Buffalo",
+					"org_va":false,
+					"org_country":"United States",
+					"org_name":"Roswell Park Cancer Institute",
+					"org_postal_code":"14263",
+					"org_coordinates":{
+						"lon":-78.8765,
+						"lat":42.8868
+					},
+					"recruitment_status":"ACTIVE"
+				}
+			],
+			"nci_id":"NCI-2019-06972"
+		}
+	]
+}

@@ -1,0 +1,56 @@
+.cts-fieldset {
+  display: block;
+  position: relative;
+  border-radius: 4px;
+  
+
+  &__legend {
+    display: block;
+    padding: 8px 43px 8px 17px;
+    border-radius: 4px 4px 0 0;
+    background-color: #2a72a5;
+    font-size: 1em;
+    color: #fff;
+    word-wrap: break-word;
+    width: 100%;
+    position: relative;
+    float: none;
+  }
+
+  .text-icon-help {
+    position: absolute;
+    top: 7px;
+    right: 16px;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+  &__body {
+    position: relative;
+    padding: 16px;
+    border-width: 0 1px 1px;
+    border-style: solid;
+    border-color: #bdbdc2;
+
+    p {
+      margin: 0 0 1em;
+    }
+
+    .data-toggle-block {
+      display: flex;
+      align-items: center;
+      padding: 0.6em 1em;
+      margin: 1em 0;
+      border: 1px solid #bdbdc2;
+      background: #f2f2f2;
+      color: #606060;
+      
+      .cts-toggle {
+        margin-right: 1em;
+      }
+    }
+  }
+}

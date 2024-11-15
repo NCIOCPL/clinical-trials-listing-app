@@ -1,0 +1,21 @@
+{
+	"total": 7301,
+	"aggregations": {
+		"doc_count": 15,
+		"principal_investigator": [
+			{ "key": "Andrew E. Hendifar", "doc_count": 1 },
+			{ "key": "Brian S Henick", "doc_count": 1 },
+			{ "key": "Charles Hennemeyer", "doc_count": 1 },
+			{ "key": "Christina Henson", "doc_count": 1 },
+			{ "key": "Eric R. Henderson", "doc_count": 1 },
+			{ "key": "Henry Kranzler", "doc_count": 1 },
+			{ "key": "Henry Mark Kuerer", "doc_count": 1 },
+			{ "key": "Henry S. Park", "doc_count": 1 },
+			{ "key": "Lauren Elizabeth Henke", "doc_count": 2 },
+			{ "key": "Lauren Henke", "doc_count": 2 },
+			{ "key": "N. Lynn Henry", "doc_count": 1 },
+			{ "key": "Norah Lynn Henry", "doc_count": 1 },
+			{ "key": "Scott Henry Maurer", "doc_count": 1 }
+		]
+	}
+}

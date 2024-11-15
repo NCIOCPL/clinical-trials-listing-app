@@ -1,0 +1,120 @@
+{
+    "total": 13,
+    "terms": [
+        {
+            "term_key": "andrew_e_hendifar",
+            "term": "Andrew E. Hendifar",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 1,
+            "count_normalized": 0.05889368905356862,
+            "score": null
+        },
+        {
+            "term_key": "brian_s_henick",
+            "term": "Brian S Henick",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 1,
+            "count_normalized": 0.05889368905356862,
+            "score": null
+        },
+        {
+            "term_key": "christina_henson",
+            "term": "Christina Henson",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 1,
+            "count_normalized": 0.05889368905356862,
+            "score": null
+        },
+        {
+            "term_key": "eric_r_henderson",
+            "term": "Eric R. Henderson",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 1,
+            "count_normalized": 0.05889368905356862,
+            "score": null
+        },
+        {
+            "term_key": "henning_willers",
+            "term": "Henning Willers",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "COMPLETE",
+                "ACTIVE",
+                "CLOSED TO ACCRUAL"
+            ],
+            "count": 3,
+            "count_normalized": 0.16992500144231237,
+            "score": null
+        },
+        {
+            "term_key": "henry_kranzler",
+            "term": "Henry Kranzler",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 1,
+            "count_normalized": 0.05889368905356862,
+            "score": null
+        },
+        {
+            "term_key": "henry_mark_kuerer",
+            "term": "Henry Mark Kuerer",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL",
+                "ACTIVE"
+            ],
+            "count": 2,
+            "count_normalized": 0.11547721741993588,
+            "score": null
+        },
+        {
+            "term_key": "henry_s_park",
+            "term": "Henry S. Park",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 1,
+            "count_normalized": 0.05889368905356862,
+            "score": null
+        },
+        {
+            "term_key": "lauren_henke",
+            "term": "Lauren Henke",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 2,
+            "count_normalized": 0.11547721741993588,
+            "score": null
+        },
+        {
+            "term_key": "n_lynn_henry",
+            "term": "N. Lynn Henry",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "ACTIVE",
+                "COMPLETE",
+                "ADMINISTRATIVELY COMPLETE"
+            ],
+            "count": 5,
+            "count_normalized": 0.27301849440641585,
+            "score": null
+        }
+    ]
+}

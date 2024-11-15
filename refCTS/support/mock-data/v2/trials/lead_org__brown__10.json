@@ -1,0 +1,16 @@
+{
+	"total":7357,
+	"aggregations":{
+		"doc_count":3,
+		"lead_org":[
+			{
+				"key":"Brown University",
+				"doc_count":2
+			},
+			{
+				"key":"The James Graham Brown Cancer Center at University of Louisville",
+				"doc_count":1
+			}
+		]
+	}
+}

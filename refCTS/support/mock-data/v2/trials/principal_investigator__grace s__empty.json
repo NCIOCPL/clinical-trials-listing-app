@@ -1,0 +1,7 @@
+{
+	"total": 7301,
+	"aggregations": {
+		"doc_count": 1,
+		"principal_investigator": [{ "key": "Grace Smith", "doc_count": 1 }]
+	}
+}

@@ -1,0 +1,19 @@
+{
+    "total": 1,
+    "terms": [
+        {
+            "term_key": "brown_university",
+            "term": "Brown University",
+            "term_type": "lead_org",
+            "current_trial_statuses": [
+                "CLOSED TO ACCRUAL",
+                "COMPLETE",
+                "ACTIVE",
+                "ADMINISTRATIVELY COMPLETE"
+            ],
+            "count": 10,
+            "count_normalized": 0.012733489907788503,
+            "score": null
+        }
+    ]
+}

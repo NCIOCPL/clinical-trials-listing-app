@@ -1,0 +1,16 @@
+{
+    "total": 1,
+    "terms": [
+        {
+            "term_key": "benjamin_david_smith",
+            "term": "Benjamin David Smith",
+            "term_type": "principal_investigator",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 1,
+            "count_normalized": 0.05889368905356862,
+            "score": null
+        }
+    ]
+}

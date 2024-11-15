@@ -1,0 +1,249 @@
+{
+	"data": [
+			{
+					"name": "22q11.2 Deletion Syndrome",
+					"codes": [
+							"C2989"
+					],
+					"ancestor_ids": [
+							"C2991"
+					],
+					"type": [
+							"subtype"
+					],
+					"parent_ids": [
+							"C2991"
+					],
+					"synonyms": [
+							"22q Deletion Syndrome(s)",
+							"22q11 deletion",
+							"CATCH-22",
+							"DGS1",
+							"DiGeorge Anomaly",
+							"DiGeorge Sequence",
+							"DiGeorge Syndrome",
+							"DiGeorge Syndrome Type 1",
+							"DiGeorge's Syndrome",
+							"FACES",
+							"Shprintzen Syndrome"
+					],
+					"count": 2
+			},
+			{
+					"name": "AIDS Related Immunoblastic Lymphoma",
+					"codes": [
+							"C8285"
+					],
+					"ancestor_ids": [
+							"C27134",
+							"C3208",
+							"C3211"
+					],
+					"type": [
+							"subtype"
+					],
+					"parent_ids": [
+							"C3211"
+					],
+					"synonyms": [
+							"AIDS Associated Immunoblastic Lymphoma",
+							"AIDS Related Immunoblastic Large Cell Lymphoma",
+							"AIDS-Associated Immunoblastic Large Cell Lymphoma",
+							"AIDS-Related Immunoblastic Lymphoma"
+					],
+					"count": 1
+			},
+			{
+					"name": "AIDS-Related Anal Carcinoma",
+					"codes": [
+							"C9278"
+					],
+					"ancestor_ids": [
+							"C9291"
+					],
+					"type": [
+							"subtype"
+					],
+					"parent_ids": [
+							"C9291"
+					],
+					"synonyms": [
+							"AIDS-Related Anal Cancer"
+					],
+					"count": 2
+			},
+			{
+					"name": "AIDS-Related Burkitt Lymphoma",
+					"codes": [
+							"C8286"
+					],
+					"ancestor_ids": [
+							"C27134",
+							"C3208",
+							"C3211"
+					],
+					"type": [
+							"subtype"
+					],
+					"parent_ids": [
+							"C3211"
+					],
+					"synonyms": [
+							"AIDS Related Burkitt's Lymphoma",
+							"AIDS Related Small Non Cleaved Cell Lymphoma",
+							"AIDS-Associated Burkitt's Lymphoma",
+							"AIDS-Associated Small Non Cleaved Cell Lymphoma",
+							"AIDS-Related Burkitt's Lymphoma",
+							"AIDS-Related Small Non-Cleaved Cell Lymphoma"
+					],
+					"count": 1
+			},
+			{
+					"name": "AIDS-Related Cervical Cancer",
+					"codes": [
+							"C7432"
+					],
+					"ancestor_ids": [
+							"C9039"
+					],
+					"type": [
+							"subtype"
+					],
+					"parent_ids": [
+							"C9039"
+					],
+					"synonyms": [
+							"AIDS Related Carcinoma of Uterine Cervix",
+							"AIDS Related Carcinoma of the Uterine Cervix",
+							"AIDS Related Cervical Cancer",
+							"AIDS-Related Cancer of Uterine Cervix",
+							"AIDS-Related Cancer of the Uterine Cervix",
+							"AIDS-Related Cervical Carcinoma",
+							"AIDS-Related Cervix Carcinoma",
+							"AIDS-Related Uterine Cervix Cancer",
+							"AIDS-Related Uterine Cervix Carcinoma"
+					],
+					"count": 1
+			},
+			{
+					"name": "AIDS-Related Diffuse Large B-cell Lymphoma",
+					"codes": [
+							"C7212"
+					],
+					"ancestor_ids": [
+							"C27134",
+							"C3208",
+							"C3211"
+					],
+					"type": [
+							"subtype"
+					],
+					"parent_ids": [
+							"C3211"
+					],
+					"synonyms": [],
+					"count": 2
+			},
+			{
+					"name": "AIDS-Related Hodgkin Lymphoma",
+					"codes": [
+							"C9279"
+					],
+					"ancestor_ids": [
+							"C27134",
+							"C3208",
+							"C9357"
+					],
+					"type": [
+							"subtype"
+					],
+					"parent_ids": [
+							"C9357"
+					],
+					"synonyms": [
+							"AIDS-Associated Hodgkin's Disease",
+							"AIDS-Associated Hodgkin's Lymphoma",
+							"AIDS-Related Hodgkin's Disease",
+							"AIDS-Related Hodgkin's Lymphoma",
+							"HIV-Associated Hodgkin's Disease",
+							"HIV-Associated Hodgkin's Lymphoma",
+							"HIV-Related Hodgkin's Disease",
+							"HIV-Related Hodgkin's Lymphoma"
+					],
+					"count": 1
+			},
+			{
+					"name": "AIDS-Related Kaposi Sarcoma",
+					"codes": [
+							"C3992"
+					],
+					"ancestor_ids": [
+							"C9087",
+							"C9118",
+							"C9306"
+					],
+					"type": [
+							"subtype"
+					],
+					"parent_ids": [
+							"C9087"
+					],
+					"synonyms": [
+							"AIDS Related Kaposi's Sarcoma",
+							"AIDS, Kaposi's Sarcoma",
+							"AIDS-Related Kaposi's Sarcoma",
+							"Autoimmune Deficiency Syndrome-Related Kaposi Sarcoma",
+							"Epidemic Kaposi's Sarcoma",
+							"Kaposi's Sarcoma AIDS Related",
+							"Kaposi's Sarcoma Epidemic Type"
+					],
+					"count": 1
+			},
+			{
+					"name": "AIDS-Related Lymphoma",
+					"codes": [
+							"C3471"
+					],
+					"ancestor_ids": [
+							"C27134",
+							"C3208"
+					],
+					"type": [
+							"subtype"
+					],
+					"parent_ids": [
+							"C3208"
+					],
+					"synonyms": [
+							"AIDS Lymphoma",
+							"AIDS Related Lymphoma",
+							"HIV Associated Lymphoma",
+							"Lymphoma AIDS Related",
+							"Lymphoma, AIDS-Related"
+					],
+					"count": 2
+			},
+			{
+					"name": "AIDS-Related Non-Hodgkin Lymphoma",
+					"codes": [
+							"C5051"
+					],
+					"ancestor_ids": [
+							"C27134",
+							"C3208",
+							"C3211"
+					],
+					"type": [
+							"subtype"
+					],
+					"parent_ids": [
+							"C3211"
+					],
+					"synonyms": [
+							"AIDS-Related Non-Hodgkin's Lymphoma",
+							"AIDS-related NHL"
+					],
+					"count": 3
+			}
+	]
+}

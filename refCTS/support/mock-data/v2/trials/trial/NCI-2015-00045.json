@@ -1,0 +1,627 @@
+{
+    "other_ids": null,
+    "amendment_date": null,
+    "keywords": [
+        "Myelodysplastic Syndrome (MDS)",
+        "Acute myelogenous Leukemia (AML)",
+        "Acute Lymphocytic Leukemia (ALL)",
+        "Sickle Cell Disease (SCD)",
+        "Beta Thalassemia",
+        "Inborn Errors of Metabolism",
+        "Severe Combined Immunodeficiency Disease (SCID)"
+    ],
+    "dcp_id": null,
+    "interventional_model": null,
+    "lead_org": "Celgene Corporation",
+    "eligibility": {
+        "unstructured": [
+            {
+                "inclusion_indicator": true,
+                "display_order": 0,
+                "description": "suitable UCB collected from partially or fully HLA matched related donor"
+            },
+            {
+                "inclusion_indicator": true,
+                "display_order": 1,
+                "description": "subject requires umbilical cord transplantation"
+            },
+            {
+                "inclusion_indicator": false,
+                "display_order": 2,
+                "description": "any condition, including the presence of laboratory abnormalities, which places the subject at unacceptable risk if he/she were to participate in the study or confounds the ability to interpret data from the study"
+            },
+            {
+                "inclusion_indicator": false,
+                "display_order": 3,
+                "description": "major anticipated illness or organ failure incompatible with survival from stem cell transplant"
+            }
+        ],
+        "structured": {
+            "max_age": "55 Years",
+            "max_age_number": 55,
+            "min_age_unit": "Years",
+            "max_age_unit": "Years",
+            "max_age_in_years": 55,
+            "gender": "BOTH",
+            "min_age": "0 Years",
+            "accepts_healthy_volunteers": false,
+            "min_age_number": 0,
+            "min_age_in_years": 0
+        }
+    },
+    "sites": [
+        {
+            "org_state_or_province": "NY",
+            "contact_name": null,
+            "contact_phone": null,
+            "recruitment_status_date": "2011-01-25",
+            "org_address_line_2": null,
+            "org_va": false,
+            "org_address_line_1": "630 West 168th Street",
+            "org_tty": null,
+            "org_family": "Herbert Irving Comprehensive Cancer Center",
+            "org_postal_code": "10032",
+            "contact_email": null,
+            "recruitment_status": "ADMINISTRATIVELY_COMPLETE",
+            "org_city": "New York",
+            "org_email": "nr2616@cumc.columbia.edu",
+            "org_country": "United States",
+            "org_fax": null,
+            "org_phone": "212-305-8615",
+            "org_name": "NYP/Columbia University Medical Center/Herbert Irving Comprehensive Cancer Center",
+            "org_coordinates": {
+                "lon": -73.9425,
+                "lat": 40.839
+            }
+        }
+    ],
+    "completion_date_type_code": "ANTICIPATED",
+    "detail_description": null,
+    "official_title": "A Single-Arm Study to Assess the Safety of Transplantation With Umbilical Cord Blood Augmented With Human Placental-Derived Stem Cells From Partially Matched Related Donors in Subjects With Certain Malignant Hematologic Diseases and Non-Malignant Disorders",
+    "_phase_sort_order": 7,
+    "collaborators": null,
+    "associated_studies": null,
+    "outcome_measures": [
+        {
+            "time_frame": "2 years",
+            "name": "Incidence of GVHD, time to engraftment and survival",
+            "description": null,
+            "type_code": "PRIMARY"
+        }
+    ],
+    "phase": "NA",
+    "central_contact": {
+        "phone": null,
+        "name": null,
+        "type": null,
+        "email": null
+    },
+    "primary_purpose": "OTHER",
+    "number_of_arms": null,
+    "_study_protocol_type_sort_order": 1,
+    "nct_id": "NCT00596999",
+    "biomarkers": null,
+    "classification_code": null,
+    "current_trial_status_date": "2007-05-01",
+    "diseases": [
+        {
+            "inclusion_indicator": "TRIAL",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Non-Malignant Hematologic and Lymphocytic Disorder",
+                "nonmalignant hematologic disorder"
+            ],
+            "nci_thesaurus_concept_id": "C26324",
+            "name": "Non-Neoplastic Hematologic and Lymphocytic Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C26323",
+                "C53531"
+            ]
+        },
+        {
+            "inclusion_indicator": "TRIAL",
+            "is_lead_disease": true,
+            "synonyms": [
+                "HEMOLYMPHORETICULAR TUMOR, MALIGNANT",
+                "Hematologic Cancer",
+                "Hematologic Malignancy",
+                "Hematologic Neoplasm",
+                "Hematological Neoplasm",
+                "Hematopoietic Cancer",
+                "Hematopoietic Neoplasm",
+                "Hematopoietic Neoplasms Including Lymphomas",
+                "Hematopoietic and Lymphoid Neoplasm",
+                "Hematopoietic malignancy, NOS",
+                "Malignant Hematologic Neoplasm",
+                "Malignant Hematopoietic Neoplasm",
+                "hematologic cancer"
+            ],
+            "nci_thesaurus_concept_id": "C27134",
+            "name": "Hematopoietic and Lymphoid Cell Neoplasm",
+            "type": [
+                "maintype"
+            ],
+            "parents": [
+                "C26323",
+                "C35813",
+                "C4741"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "NON-NEOPLASTIC",
+                "Non-Neoplastic Disease",
+                "Non-neoplastic Disorder",
+                "Non-neoplastic condition, NOS",
+                "Non-neoplastic disorder, NOS"
+            ],
+            "nci_thesaurus_concept_id": "C53529",
+            "name": "Non-Neoplastic Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2991"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Diagnosis",
+                "Disease",
+                "Disease or Disorder",
+                "Disease or Disorder, Non-Neoplastic",
+                "Diseases",
+                "Diseases and Disorders",
+                "Disorder",
+                "Disorders",
+                "condition",
+                "disease",
+                "disease term",
+                "disease type",
+                "disease_term",
+                "disease_type",
+                "disorder"
+            ],
+            "nci_thesaurus_concept_id": "C2991",
+            "name": "Other Disease",
+            "type": [
+                "maintype"
+            ],
+            "parents": [
+                "C7057"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C7057",
+            "name": "Disease, Disorder or Finding",
+            "type": [],
+            "parents": []
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Diagnosis",
+                "Disease",
+                "Disease or Disorder",
+                "Disease or Disorder, Non-Neoplastic",
+                "Diseases",
+                "Diseases and Disorders",
+                "Disorder",
+                "Disorders",
+                "condition",
+                "disease",
+                "disease term",
+                "disease type",
+                "disease_term",
+                "disease_type",
+                "disorder"
+            ],
+            "nci_thesaurus_concept_id": "C2991",
+            "name": "Other Disease",
+            "type": [
+                "maintype"
+            ],
+            "parents": [
+                "C7057"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Blood Disease",
+                "Blood Disorder",
+                "Hematologic Disorder",
+                "Hematological Disorder"
+            ],
+            "nci_thesaurus_concept_id": "C26323",
+            "name": "Hematologic and Lymphocytic Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C35814"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C7057",
+            "name": "Disease, Disorder or Finding",
+            "type": [],
+            "parents": []
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Non-Neoplastic Disease by Site"
+            ],
+            "nci_thesaurus_concept_id": "C53531",
+            "name": "Non-Neoplastic Disorder by Site",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C53529"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Blood Disease",
+                "Blood Disorder",
+                "Hematologic Disorder",
+                "Hematological Disorder"
+            ],
+            "nci_thesaurus_concept_id": "C26323",
+            "name": "Hematologic and Lymphocytic Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C35814"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Neoplasia",
+                "Neoplasm",
+                "Neoplasm, NOS",
+                "Neoplasms, NOS",
+                "Neoplastic Disease",
+                "Neoplastic Growth",
+                "Tumor, NOS",
+                "neoplasia",
+                "neoplasm",
+                "tumor"
+            ],
+            "nci_thesaurus_concept_id": "C3262",
+            "name": "Other Neoplasm",
+            "type": [
+                "maintype"
+            ],
+            "parents": [
+                "C2991"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Tumor Morphology",
+                "Tumor_Morphology"
+            ],
+            "nci_thesaurus_concept_id": "C4741",
+            "name": "Neoplasm by Morphology",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3262"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Hematopoietic and Lymphoid System Tumor"
+            ],
+            "nci_thesaurus_concept_id": "C35813",
+            "name": "Hematopoietic and Lymphoid System Neoplasm",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C35814",
+                "C3263"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Disease by Site"
+            ],
+            "nci_thesaurus_concept_id": "C27551",
+            "name": "Disorder by Site",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2991"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Disease by Site"
+            ],
+            "nci_thesaurus_concept_id": "C27551",
+            "name": "Disorder by Site",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C2991"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [
+                "Hematopoietic and Lymphoid System Disease"
+            ],
+            "nci_thesaurus_concept_id": "C35814",
+            "name": "Hematopoietic and Lymphoid System Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C27551"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": true,
+            "synonyms": [],
+            "nci_thesaurus_concept_id": "C3263",
+            "name": "Neoplasm by Site",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C3262"
+            ]
+        },
+        {
+            "inclusion_indicator": "TREE",
+            "is_lead_disease": false,
+            "synonyms": [
+                "Hematopoietic and Lymphoid System Disease"
+            ],
+            "nci_thesaurus_concept_id": "C35814",
+            "name": "Hematopoietic and Lymphoid System Disorder",
+            "type": [
+                "subtype"
+            ],
+            "parents": [
+                "C27551"
+            ]
+        }
+    ],
+    "_primary_purpose_sort_order": 8,
+    "protocol_id": "CCT-HPDSC-001",
+    "active_sites_count": 0,
+    "arms": [
+        {
+            "interventions": [],
+            "name": "1",
+            "description": "all subjects will be treated with UCB and HPDSC",
+            "type": null
+        },
+        {
+            "interventions": [
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "synonyms": [
+                        "Allogeneic Hematopoietic Cell Transplantation",
+                        "Allogeneic Stem Cell Transplantation",
+                        "HSC",
+                        "HSCT",
+                        "Allogeneic Hematopoietic Stem Cell Transplantation"
+                    ],
+                    "nci_thesaurus_concept_id": "C46089",
+                    "name": "Allogeneic Hematopoietic Stem Cell Transplantation",
+                    "description": null,
+                    "category": "other",
+                    "type": "Procedure/Surgery",
+                    "parents": [
+                        "C15431"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TRIAL",
+                    "synonyms": [
+                        "Cord Blood Transplantation",
+                        "UCB transplantation",
+                        "Umbilical Cord Blood Transplantation"
+                    ],
+                    "nci_thesaurus_concept_id": "C15640",
+                    "name": "Umbilical Cord Blood Transplantation",
+                    "description": null,
+                    "category": "other",
+                    "type": "Procedure/Surgery",
+                    "parents": [
+                        "C15431"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "HCT",
+                        "HSCT",
+                        "Hematopoietic Stem Cell Infusion",
+                        "Hematopoietic Stem Cell Transplantation",
+                        "Hematopoietic Cell Transplantation"
+                    ],
+                    "nci_thesaurus_concept_id": "C15431",
+                    "name": "Hematopoietic Cell Transplantation",
+                    "description": "",
+                    "category": "none",
+                    "type": "Procedure/Surgery",
+                    "parents": [
+                        "C15388",
+                        "C165194",
+                        "C15342"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Infusion",
+                        "Infusion Procedure"
+                    ],
+                    "nci_thesaurus_concept_id": "C15388",
+                    "name": "Infusion Procedure",
+                    "description": "",
+                    "category": "none",
+                    "type": "Procedure/Surgery",
+                    "parents": [
+                        "C49236"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C49236",
+                    "name": "Therapeutic Procedure",
+                    "description": "",
+                    "category": "none",
+                    "type": "Procedure/Surgery",
+                    "parents": [
+                        "C25218"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C25218",
+                    "name": "Intervention or Procedure",
+                    "description": "",
+                    "category": "none",
+                    "type": "Procedure/Surgery",
+                    "parents": [
+                        "C16203"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C16203",
+                    "name": "Clinical or Research Activity",
+                    "description": "",
+                    "category": "none",
+                    "type": "Procedure/Surgery",
+                    "parents": [
+                        "C43431"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [],
+                    "nci_thesaurus_concept_id": "C43431",
+                    "name": "Activity",
+                    "description": "",
+                    "category": "none",
+                    "type": "Procedure/Surgery",
+                    "parents": []
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Stem Cell Treatment"
+                    ],
+                    "nci_thesaurus_concept_id": "C165194",
+                    "name": "Stem Cell Therapy",
+                    "description": "",
+                    "category": "none",
+                    "type": "Procedure/Surgery",
+                    "parents": [
+                        "C49236"
+                    ]
+                },
+                {
+                    "inclusion_indicator": "TREE",
+                    "synonyms": [
+                        "Grafting Procedure",
+                        "Surgery, Transplantation",
+                        "Transplant Procedure",
+                        "Transplantation Surgery",
+                        "Transplantation"
+                    ],
+                    "nci_thesaurus_concept_id": "C15342",
+                    "name": "Transplantation",
+                    "description": "",
+                    "category": "none",
+                    "type": "Procedure/Surgery",
+                    "parents": [
+                        "C49236"
+                    ]
+                }
+            ],
+            "name": "Arm not specified",
+            "description": null,
+            "type": null
+        }
+    ],
+    "study_model_code": "CASE_ONLY",
+    "nci_id": "NCI-2015-00045",
+    "why_study_stopped": null,
+    "brief_summary": "To investigate the safety of partially matched related human placental-derived stem cells\n      (HPDSC) administered in conjunction with umbilical cord blood (UCB) stem cells from the same\n      donor in subjects with various malignant or nonmalignant disorders potentially curable with\n      stem cell transplantation and to assess potential restoration of normal hematopoiesis and\n      immune function in subjects with these disorders",
+    "brief_title": "A Single-arm Safety Study of Transplantation Using Umbilical Cord Blood and Human Placental-derived Stem Cells From Partially Matched Related Donors in Persons With Certain Malignant Blood Diseases and Non-malignant Disorders",
+    "study_population_description": "subjects requiring cord blood transplantation",
+    "sampling_method_code": "NON_PROBABILITY_SAMPLE",
+    "minimum_target_accrual_number": 6,
+    "_current_trial_status_sort_order": 1,
+    "start_date": "2007-05-01",
+    "record_verification_date": "2007-11-01",
+    "ctep_id": null,
+    "current_trial_status": "Enrolling by Invitation",
+    "study_model_other_text": null,
+    "masking": {
+        "role_caregiver": null,
+        "masking": null,
+        "role_investigator": null,
+        "role_outcome_assessor": null,
+        "role_subject": null,
+        "allocation_code": null
+    },
+    "acronym": "HPDSC",
+    "anatomic_sites": [
+        "Multiple"
+    ],
+    "ccr_id": null,
+    "start_date_type_code": "ACTUAL",
+    "principal_investigator": null,
+    "study_source": "Industrial",
+    "completion_date": "2013-12-01",
+    "study_subtype_code": "OBSERVATIONAL",
+    "study_protocol_type": "Non-interventional"
+}

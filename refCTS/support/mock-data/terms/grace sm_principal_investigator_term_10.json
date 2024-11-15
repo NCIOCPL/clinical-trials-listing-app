@@ -1,0 +1,16 @@
+{
+	"total": 1,
+	"terms": [
+		{
+			"term_key": "grace_smith",
+			"term": "Grace Smith",
+			"term_type": "principal_investigator",
+			"current_trial_statuses": [
+				"ACTIVE"
+			],
+			"count": 1,
+			"count_normalized": 0.05889368905356862,
+			"score": null
+		}
+	]
+}

@@ -1,0 +1,214 @@
+{
+	"data":[
+		{
+			"name":"UM Baltimore Washington Medical Center/Tate Cancer Center",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"410-553-8100",
+			"contact_email":"mmishra@umm.edu",
+			"org_address_line_1":"301 Hospital Drive",
+			"org_address_line_2":null,
+			"org_city":"Glen Burnie",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"MD",
+			"org_va":false,
+			"org_postal_code":"21061",
+			"org_family":null,
+			"org_coordinates":{
+				"lat":39.164799973368645,
+				"lon":-76.64180005900562
+			},
+			"count":36
+		},
+		{
+			"name":"UM Saint Joseph Medical Center",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"410-337-4569",
+			"contact_email":"Jeanmarie.downing@umm.edu",
+			"org_address_line_1":"7601 Osler Drive",
+			"org_address_line_2":null,
+			"org_city":"Towson",
+			"org_country":"United States",
+			"org_email":"Jeanmarie.downing@umm.edu",
+			"org_fax":null,
+			"org_state_or_province":"MD",
+			"org_va":false,
+			"org_postal_code":"21204",
+			"org_family":null,
+			"org_coordinates":{
+				"lat":39.402499976567924,
+				"lon":-76.6344000119716
+			},
+			"count":5
+		},
+		{
+			"name":"UM Sylvester Comprehensive Cancer Center at Aventura",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"954-461-2180",
+			"contact_email":null,
+			"org_address_line_1":"2801 Northeast 213th Street",
+			"org_address_line_2":"Suite 1101",
+			"org_city":"Aventura",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"FL",
+			"org_va":false,
+			"org_postal_code":"33180",
+			"org_family":null,
+			"org_coordinates":{
+				"lat":25.960699981078506,
+				"lon":-80.14260007068515
+			},
+			"count":11
+		},
+		{
+			"name":"UM Sylvester Comprehensive Cancer Center at Coral Gables",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"305-243-2647",
+			"contact_email":"Rmahtani@miami.edu",
+			"org_address_line_1":"5555 Ponce De Leon Boulevard",
+			"org_address_line_2":null,
+			"org_city":"Coral Gables",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"FL",
+			"org_va":false,
+			"org_postal_code":"33146",
+			"org_family":"Sylvester Comprehensive Cancer Center",
+			"org_coordinates":{
+				"lat":25.720699983648956,
+				"lon":-80.27320001274347
+			},
+			"count":58
+		},
+		{
+			"name":"UM Sylvester Comprehensive Cancer Center at Coral Springs",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"305-243-2647",
+			"contact_email":null,
+			"org_address_line_1":"8170 Royal Palm Boulevard",
+			"org_address_line_2":null,
+			"org_city":"Coral Springs",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"FL",
+			"org_va":false,
+			"org_postal_code":"33065",
+			"org_family":"Sylvester Comprehensive Cancer Center",
+			"org_coordinates":{
+				"lat":26.27379998099059,
+				"lon":-80.25690006092191
+			},
+			"count":2
+		},
+		{
+			"name":"UM Sylvester Comprehensive Cancer Center at Deerfield Beach",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"305-243-2647",
+			"contact_email":"Rmahtani@miami.edu",
+			"org_address_line_1":"1192 East Newport Center Drive",
+			"org_address_line_2":"Suite 100",
+			"org_city":"Deerfield Beach",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"FL",
+			"org_va":false,
+			"org_postal_code":"33442",
+			"org_family":"Sylvester Comprehensive Cancer Center",
+			"org_coordinates":{
+				"lat":26.31409996189177,
+				"lon":-80.13940002769232
+			},
+			"count":63
+		},
+		{
+			"name":"UM Sylvester Comprehensive Cancer Center at Hollywood",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"305-243-2647",
+			"contact_email":null,
+			"org_address_line_1":"3850 Hollywood Boulevard",
+			"org_address_line_2":"Presidential Circle Suite 1B",
+			"org_city":"Hollywood",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"FL",
+			"org_va":false,
+			"org_postal_code":"33021",
+			"org_family":"Sylvester Comprehensive Cancer Center",
+			"org_coordinates":{
+				"lat":26.02279999293387,
+				"lon":-80.18690002150834
+			},
+			"count":6
+		},
+		{
+			"name":"UM Sylvester Comprehensive Cancer Center at Kendall",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"305-243-2647",
+			"contact_email":"Rmahtani@miami.edu",
+			"org_address_line_1":"8932 Southwest 97th Avenue",
+			"org_address_line_2":null,
+			"org_city":"Miami",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"FL",
+			"org_va":false,
+			"org_postal_code":"33176",
+			"org_family":"Sylvester Comprehensive Cancer Center",
+			"org_coordinates":{
+				"lat":25.65739997662604,
+				"lon":-80.35900002345443
+			},
+			"count":29
+		},
+		{
+			"name":"UM Sylvester Comprehensive Cancer Center at Plantation",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"305-243-2647",
+			"contact_email":"Rmahtani@miami.edu",
+			"org_address_line_1":"8100 Southwest Tenth Street",
+			"org_address_line_2":null,
+			"org_city":"Plantation",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"FL",
+			"org_va":false,
+			"org_postal_code":"33324",
+			"org_family":"Sylvester Comprehensive Cancer Center",
+			"org_coordinates":{
+				"lat":26.11259997356683,
+				"lon":-80.27450004592538
+			},
+			"count":42
+		},
+		{
+			"name":"UM Upper Chesapeake Medical Center",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"443-643-3010",
+			"contact_email":"lromar@umm.edu",
+			"org_address_line_1":"500 Upper Chesapeake Drive",
+			"org_address_line_2":"Patricia D and M Scot Kaufman Cancer Center",
+			"org_city":"Bel Air",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"MD",
+			"org_va":false,
+			"org_postal_code":"21014",
+			"org_family":null,
+			"org_coordinates":{
+				"lat":39.53719996847212,
+				"lon":-76.35140005499125
+			},
+			"count":42
+		}
+	]
+}

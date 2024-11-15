@@ -1,0 +1,68 @@
+{
+    "current_trial_status": [
+        "Active",
+        "Approved",
+        "Enrolling by Invitation",
+        "In Review",
+        "Temporarily Closed to Accrual",
+        "Temporarily Closed to Accrual and Intervention"
+    ],
+    "include": [
+        "nci_id",
+        "nct_id",
+        "brief_title",
+        "sites.org_name",
+        "sites.org_postal_code",
+        "eligibility.structured",
+        "current_trial_status",
+        "sites.org_va",
+        "sites.org_country",
+        "sites.org_state_or_province",
+        "sites.org_city",
+        "sites.org_coordinates",
+        "sites.recruitment_status",
+        "diseases"
+    ],
+	"maintype": [
+		"C4872"
+	],
+	"subtype": [
+		"C2924"
+	],
+	"stage": [
+		"C94774"
+	],
+	"arms.interventions.nci_thesaurus_concept_id": [
+		"C798",
+		"C15313"
+	],
+	"eligibility.structured.max_age_in_years_gte": 50,
+	"eligibility.structured.min_age_in_years_lte": 50,
+	"keyword": "Breast",
+	"primary_purpose": [
+		"treatment"
+	],
+	"phase": [
+		"iii",
+		"ii_iii"
+	],
+	"principal_investigator._fulltext": "Benjamin David Smith",
+	"lead_org._fulltext": "M D Anderson Cancer Center",
+	"trial_ids": [
+		"NCI-2017-00476"
+	],
+	"sites.org_country": "United States",
+	"sites.org_city": "Atlanta",
+	"sites.org_state_or_province": [
+		"GA"
+	],
+	"sites.recruitment_status": [
+		"active",
+		"approved",
+		"enrolling_by_invitation",
+		"in_review",
+		"temporarily_closed_to_accrual"
+	],
+	"from":0,
+	"size":10
+}

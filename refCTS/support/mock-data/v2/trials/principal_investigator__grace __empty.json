@@ -1,0 +1,13 @@
+{
+	"total": 7301,
+	"aggregations": {
+		"doc_count": 9,
+		"principal_investigator": [
+			{ "key": "Grace Aldrovandi", "doc_count": 2 },
+			{ "key": "Grace K. Dy", "doc_count": 3 },
+			{ "key": "Grace Lu-Yao", "doc_count": 1 },
+			{ "key": "Grace Smith", "doc_count": 1 },
+			{ "key": "Shernan Grace Holtan", "doc_count": 2 }
+		]
+	}
+}

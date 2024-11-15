@@ -1,0 +1,391 @@
+{
+	"total": 1,
+	"data": [
+		{
+			"current_trial_status": "Active",
+			"nct_id": "NCT00897455",
+			"brief_title": "Studying Breast Cancer Risk in Women Who Are BRCA1 / BRCA2 Mutation Carriers",
+			"eligibility": {
+				"structured": {
+					"max_age": "80 Years",
+					"max_age_number": 80,
+					"min_age_unit": "Years",
+					"max_age_unit": "Years",
+					"max_age_in_years": 80,
+					"gender": "FEMALE",
+					"min_age": "18 Years",
+					"min_age_number": 18,
+					"min_age_in_years": 18
+				}
+			},
+			"diseases": [
+				{
+					"inclusion_indicator": "TRIAL",
+					"paths": null,
+					"synonyms": [],
+					"nci_thesaurus_concept_id": "C115197",
+					"display_name": "BRCA1 Mutation Carrier",
+					"type": [
+						"finding"
+					],
+					"lead_disease_indicator": "NO",
+					"preferred_name": "BRCA1 Mutation Carrier",
+					"parents": [
+						"C93175"
+					]
+				},
+				{
+					"inclusion_indicator": "TRIAL",
+					"paths": null,
+					"synonyms": [],
+					"nci_thesaurus_concept_id": "C115198",
+					"display_name": "BRCA2 Mutation Carrier",
+					"type": [
+						"finding"
+					],
+					"lead_disease_indicator": "NO",
+					"preferred_name": "BRCA2 Mutation Carrier",
+					"parents": [
+						"C93175"
+					]
+				},
+				{
+					"inclusion_indicator": "TRIAL",
+					"paths": null,
+					"synonyms": [
+						"Breast Carcinoma",
+						"Breast cancer, NOS",
+						"Cancer of Breast",
+						"Cancer of the Breast",
+						"Carcinoma of Breast",
+						"Carcinoma of the Breast",
+						"Mammary Carcinoma",
+						"breast cancer"
+					],
+					"nci_thesaurus_concept_id": "C4872",
+					"display_name": "Breast Cancer",
+					"type": [
+						"maintype"
+					],
+					"lead_disease_indicator": "YES",
+					"preferred_name": "Breast Carcinoma",
+					"parents": [
+						"C2916",
+						"C9335"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"Tumor Morphology",
+						"Tumor_Morphology"
+					],
+					"nci_thesaurus_concept_id": "C4741",
+					"display_name": "Neoplasm by Morphology",
+					"type": [
+						"subtype"
+					],
+					"lead_disease_indicator": "YES",
+					"preferred_name": "Neoplasm by Morphology",
+					"parents": [
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"mutation carrier"
+					],
+					"nci_thesaurus_concept_id": "C93175",
+					"display_name": "Mutation Carrier",
+					"type": [],
+					"lead_disease_indicator": "NO",
+					"preferred_name": "Mutation Carrier",
+					"parents": [
+						"C25190"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"Neoplasia",
+						"Neoplasm",
+						"Neoplasm, NOS",
+						"Neoplasms, NOS",
+						"Neoplastic Disease",
+						"Neoplastic Growth",
+						"Tumor, NOS",
+						"neoplasia",
+						"neoplasm",
+						"tumor"
+					],
+					"nci_thesaurus_concept_id": "C3262",
+					"display_name": "Other Neoplasm",
+					"type": [
+						"maintype"
+					],
+					"lead_disease_indicator": "YES",
+					"preferred_name": "Neoplasm",
+					"parents": [
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [],
+					"nci_thesaurus_concept_id": "C20181",
+					"display_name": "Conceptual Entity",
+					"type": [],
+					"lead_disease_indicator": "NO",
+					"preferred_name": "Conceptual Entity",
+					"parents": []
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"CARCINOMA, MALIGNANT",
+						"Carcinoma",
+						"Carcinoma, NOS",
+						"Epithelial Carcinoma",
+						"Epithelial tumor, malignant",
+						"Epithelioma Malignant",
+						"Malignant Epithelial Neoplasm",
+						"Malignant Epithelial Tumor",
+						"Malignant Epithelioma",
+						"carcinoma",
+						"epithelial carcinoma"
+					],
+					"nci_thesaurus_concept_id": "C2916",
+					"display_name": "Other Carcinoma",
+					"type": [
+						"maintype"
+					],
+					"lead_disease_indicator": "YES",
+					"preferred_name": "Carcinoma",
+					"parents": [
+						"C3709",
+						"C9305"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"CA",
+						"Cancer",
+						"Malignancy",
+						"Malignant Growth",
+						"Malignant Neoplastic Disease",
+						"Malignant Tumor",
+						"NEOPLASM, MALIGNANT",
+						"Neoplasm, malignant",
+						"Tumor, malignant, NOS",
+						"Unclassified tumor, malignant",
+						"cancer",
+						"malignancy"
+					],
+					"nci_thesaurus_concept_id": "C9305",
+					"display_name": "Malignant Neoplasm",
+					"type": [
+						"subtype"
+					],
+					"lead_disease_indicator": "YES",
+					"preferred_name": "Malignant Neoplasm",
+					"parents": [
+						"C7062"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"Diagnosis",
+						"Disease",
+						"Disease or Disorder",
+						"Disease or Disorder, Non-Neoplastic",
+						"Diseases",
+						"Diseases and Disorders",
+						"Disorder",
+						"Disorders",
+						"condition",
+						"disease",
+						"disease term",
+						"disease type",
+						"disease_term",
+						"disease_type",
+						"disorder"
+					],
+					"nci_thesaurus_concept_id": "C2991",
+					"display_name": "Other Disease",
+					"type": [
+						"maintype"
+					],
+					"lead_disease_indicator": "YES",
+					"preferred_name": "Disease or Disorder",
+					"parents": [
+						"C7057"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [],
+					"nci_thesaurus_concept_id": "C7062",
+					"display_name": "Neoplasm by Special Category",
+					"type": [
+						"subtype"
+					],
+					"lead_disease_indicator": "YES",
+					"preferred_name": "Neoplasm by Special Category",
+					"parents": [
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"Breast Disease",
+						"Breast Diseases"
+					],
+					"nci_thesaurus_concept_id": "C26709",
+					"display_name": "Breast Disorder",
+					"type": [
+						"subtype"
+					],
+					"lead_disease_indicator": "YES",
+					"preferred_name": "Breast Disorder",
+					"parents": [
+						"C27551"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"Disease by Site"
+					],
+					"nci_thesaurus_concept_id": "C27551",
+					"display_name": "Disorder by Site",
+					"type": [
+						"subtype"
+					],
+					"lead_disease_indicator": "YES",
+					"preferred_name": "Disorder by Site",
+					"parents": [
+						"C2991"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [],
+					"nci_thesaurus_concept_id": "C3263",
+					"display_name": "Neoplasm by Site",
+					"type": [
+						"subtype"
+					],
+					"lead_disease_indicator": "YES",
+					"preferred_name": "Neoplasm by Site",
+					"parents": [
+						"C3262"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"Breast Tumor",
+						"Neoplasm of Breast",
+						"Neoplasm of the Breast",
+						"Tumor of Breast",
+						"Tumor of the Breast"
+					],
+					"nci_thesaurus_concept_id": "C2910",
+					"display_name": "Breast Neoplasm",
+					"type": [
+						"subtype"
+					],
+					"lead_disease_indicator": "YES",
+					"preferred_name": "Breast Neoplasm",
+					"parents": [
+						"C26709",
+						"C3263"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [],
+					"nci_thesaurus_concept_id": "C7057",
+					"display_name": "Disease, Disorder or Finding",
+					"type": [],
+					"lead_disease_indicator": "YES",
+					"preferred_name": "Disease, Disorder or Finding",
+					"parents": []
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"Epithelial Neoplasms, NOS",
+						"Epithelioma",
+						"Epithelioma, malignant"
+					],
+					"nci_thesaurus_concept_id": "C3709",
+					"display_name": "Epithelial Neoplasm",
+					"type": [
+						"subtype"
+					],
+					"lead_disease_indicator": "YES",
+					"preferred_name": "Epithelial Neoplasm",
+					"parents": [
+						"C4741"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"Malignant Breast Tumor",
+						"Malignant Neoplasm of Breast",
+						"Malignant Neoplasm of the Breast",
+						"Malignant Tumor of Breast",
+						"Malignant Tumor of the Breast"
+					],
+					"nci_thesaurus_concept_id": "C9335",
+					"display_name": "Malignant Breast Neoplasm",
+					"type": [
+						"subtype"
+					],
+					"lead_disease_indicator": "YES",
+					"preferred_name": "Malignant Breast Neoplasm",
+					"parents": [
+						"C2910",
+						"C9305"
+					]
+				},
+				{
+					"inclusion_indicator": "TREE",
+					"synonyms": [
+						"Individual"
+					],
+					"nci_thesaurus_concept_id": "C25190",
+					"display_name": "Person",
+					"type": [],
+					"lead_disease_indicator": "NO",
+					"preferred_name": "Person",
+					"parents": [
+						"C20181"
+					]
+				}
+			],
+			"sites": [
+				{
+					"org_state_or_province": "PA",
+					"org_city": "Philadelphia",
+					"org_va": false,
+					"org_country": "United States",
+					"org_name": "Gynecologic Oncology Group",
+					"org_postal_code": "19103",
+					"org_coordinates": {
+						"lon": -75.1738,
+						"lat": 39.9534
+					},
+					"recruitment_status": "ACTIVE"
+				}
+			],
+			"nci_id": "NCI-2009-00615"
+		}
+	]
+}

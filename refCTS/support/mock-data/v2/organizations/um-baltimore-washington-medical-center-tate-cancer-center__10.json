@@ -1,0 +1,25 @@
+{
+	"data":[
+		{
+			"name":"UM Baltimore Washington Medical Center/Tate Cancer Center",
+			"contact_name":"Site Public Contact",
+			"contact_phone":"410-553-8100",
+			"contact_email":"mmishra@umm.edu",
+			"org_address_line_1":"301 Hospital Drive",
+			"org_address_line_2":null,
+			"org_city":"Glen Burnie",
+			"org_country":"United States",
+			"org_email":null,
+			"org_fax":null,
+			"org_state_or_province":"MD",
+			"org_va":false,
+			"org_postal_code":"21061",
+			"org_family":null,
+			"org_coordinates":{
+				"lat":39.164799973368645,
+				"lon":-76.64180005900562
+			},
+			"count":36
+		}
+	]
+}

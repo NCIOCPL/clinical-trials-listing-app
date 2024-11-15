@@ -301,11 +301,7 @@ DiseaseContent.propTypes = {
 const Disease = ({ routeParamMap, routePath, data }) => {
 	const [state] = useStateValue();
 
-	return (
-		<FilterProvider>
-			<DiseaseContent routeParamMap={routeParamMap} routePath={routePath} data={data} baseHost={state.baseHost} canonicalHost={state.canonicalHost} detailedViewPagePrettyUrlFormatter={state.detailedViewPagePrettyUrlFormatter} dynamicListingPatterns={state.dynamicListingPatterns} itemsPerPage={state.itemsPerPage} language={state.language} siteName={state.siteName} trialListingPageType={state.trialListingPageType} />
-		</FilterProvider>
-	);
+	return <DiseaseContent routeParamMap={routeParamMap} routePath={routePath} data={data} baseHost={state.baseHost} canonicalHost={state.canonicalHost} detailedViewPagePrettyUrlFormatter={state.detailedViewPagePrettyUrlFormatter} dynamicListingPatterns={state.dynamicListingPatterns} itemsPerPage={state.itemsPerPage} language={state.language} siteName={state.siteName} trialListingPageType={state.trialListingPageType} />;
 };
 
 Disease.propTypes = {

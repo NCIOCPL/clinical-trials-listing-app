@@ -1,0 +1,1059 @@
+{
+   "total":2,
+   "data":[
+      {
+         "current_trial_status":"Active",
+         "nct_id":"NCT01489813",
+         "brief_title":"Genistein in Reducing the Toxicity and Improving the Efficacy of Bacillus Calmette Guerin Intravesical Therapy in Patients with Bladder Cancer",
+         "eligibility":{
+            "structured":{
+               "max_age":"999 Years",
+               "max_age_number":999,
+               "min_age_unit":"Years",
+               "max_age_unit":"Years",
+               "max_age_in_years":999,
+               "gender":"BOTH",
+               "min_age":"18 Years",
+               "min_age_number":18,
+               "min_age_in_years":18
+            }
+         },
+         "diseases":[
+            {
+               "inclusion_indicator":"TRIAL",
+               "paths":[
+                  {
+                     "concepts":[
+                        {
+                           "code":"C4912",
+                           "label":"Bladder Carcinoma",
+                           "idx":0
+                        }
+                     ],
+                     "direction":1
+                  }
+               ],
+               "synonyms":[
+                  "Superficial Bladder Carcinoma",
+                  "Superficial Urinary Bladder Cancer",
+                  "Superficial Urinary Bladder Carcinoma"
+               ],
+               "nci_thesaurus_concept_id":"C27474",
+               "display_name":"Superficial Bladder Cancer",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Superficial Bladder Carcinoma",
+               "parents":[
+                  "C4912"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Diagnosis",
+                  "Disease",
+                  "Disease or Disorder",
+                  "Disease or Disorder, Non-Neoplastic",
+                  "Diseases",
+                  "Diseases and Disorders",
+                  "Disorder",
+                  "Disorders",
+                  "condition",
+                  "disease",
+                  "disease term",
+                  "disease_term",
+                  "disorder"
+               ],
+               "nci_thesaurus_concept_id":"C2991",
+               "display_name":"Other Disease",
+               "type":[
+                  "maintype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Disease or Disorder",
+               "parents":[
+                  "C7057"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "CARCINOMA, MALIGNANT",
+                  "Carcinoma",
+                  "Carcinoma, NOS",
+                  "Epithelial Carcinoma",
+                  "Epithelial tumor, malignant",
+                  "Epithelioma Malignant",
+                  "Malignant Epithelial Neoplasm",
+                  "Malignant Epithelial Tumor",
+                  "Malignant Epithelioma",
+                  "carcinoma",
+                  "epithelial carcinoma"
+               ],
+               "nci_thesaurus_concept_id":"C2916",
+               "display_name":"Other Carcinoma",
+               "type":[
+                  "maintype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Carcinoma",
+               "parents":[
+                  "C3709",
+                  "C9305"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+
+               ],
+               "nci_thesaurus_concept_id":"C156482",
+               "display_name":"Genitourinary System Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Genitourinary System Neoplasm",
+               "parents":[
+                  "C156660",
+                  "C3263"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Disease by Site"
+               ],
+               "nci_thesaurus_concept_id":"C27551",
+               "display_name":"Disorder by Site",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Disorder by Site",
+               "parents":[
+                  "C2991"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Disorder of Urinary System",
+                  "Urinary Tract Disease",
+                  "Urinary Tract Disorder",
+                  "Urologic Disorder",
+                  "Urological Disorders",
+                  "urinary tract disorder"
+               ],
+               "nci_thesaurus_concept_id":"C3430",
+               "display_name":"Urinary System Disorder",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Urinary System Disorder",
+               "parents":[
+                  "C156660"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+
+               ],
+               "nci_thesaurus_concept_id":"C164141",
+               "display_name":"Genitourinary System Carcinoma",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Genitourinary System Carcinoma",
+               "parents":[
+                  "C2916",
+                  "C156484"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Bladder Carcinoma",
+                  "Cancer of Bladder",
+                  "Cancer of Urinary Bladder",
+                  "Cancer of the Bladder",
+                  "Cancer of the Urinary Bladder",
+                  "Carcinoma of Bladder",
+                  "Carcinoma of Urinary Bladder",
+                  "Carcinoma of the Bladder",
+                  "Carcinoma of the Urinary Bladder",
+                  "Urinary Bladder Cancer",
+                  "Urinary Bladder Carcinoma",
+                  "bladder cancer"
+               ],
+               "nci_thesaurus_concept_id":"C4912",
+               "display_name":"Bladder Cancer",
+               "type":[
+                  "maintype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Bladder Carcinoma",
+               "parents":[
+                  "C164141",
+                  "C9334"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Malignant Urinary Tract Neoplasm",
+                  "Urinary Tract Cancer",
+                  "Urothelial tract/bladder cancer, NOS",
+                  "Urothelial/bladder cancer, NOS"
+               ],
+               "nci_thesaurus_concept_id":"C9297",
+               "display_name":"Malignant Urinary System Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Malignant Urinary System Neoplasm",
+               "parents":[
+                  "C156484",
+                  "C3431"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Bladder Tumor",
+                  "Bladder Tumors",
+                  "Neoplasm of Bladder",
+                  "Neoplasm of Urinary Bladder",
+                  "Neoplasm of the Bladder",
+                  "Neoplasm of the Urinary Bladder",
+                  "Tumor of Bladder",
+                  "Tumor of Urinary Bladder",
+                  "Tumor of the Bladder",
+                  "Tumor of the Urinary Bladder",
+                  "Urinary Bladder Neoplasm",
+                  "Urinary Bladder Neoplasms",
+                  "Urinary Bladder Tumor",
+                  "Urinary Bladder Tumors"
+               ],
+               "nci_thesaurus_concept_id":"C2901",
+               "display_name":"Bladder Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Bladder Neoplasm",
+               "parents":[
+                  "C2900",
+                  "C3431"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Bladder Disease",
+                  "Urinary Bladder Disorder"
+               ],
+               "nci_thesaurus_concept_id":"C2900",
+               "display_name":"Bladder Disorder",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Bladder Disorder",
+               "parents":[
+                  "C3430"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Neoplasia",
+                  "Neoplasm",
+                  "Neoplasm, NOS",
+                  "Neoplasms, NOS",
+                  "Neoplastic Disease",
+                  "Neoplastic Growth",
+                  "Tumor, NOS",
+                  "neoplasia",
+                  "neoplasm",
+                  "tumor"
+               ],
+               "nci_thesaurus_concept_id":"C3262",
+               "display_name":"Other Neoplasm",
+               "type":[
+                  "maintype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Neoplasm",
+               "parents":[
+                  "C2991"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Genitourinary Cancer",
+                  "Genitourinary System Cancer",
+                  "Malignant Genitourinary Neoplasm"
+               ],
+               "nci_thesaurus_concept_id":"C156484",
+               "display_name":"Malignant Genitourinary System Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Malignant Genitourinary System Neoplasm",
+               "parents":[
+                  "C156482",
+                  "C9305"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Malignant Bladder Tumor",
+                  "Malignant Neoplasm of Bladder",
+                  "Malignant Neoplasm of Urinary Bladder",
+                  "Malignant Neoplasm of the Bladder",
+                  "Malignant Neoplasm of the Urinary Bladder",
+                  "Malignant Neoplasm, Bladder",
+                  "Malignant Neoplasm, Urinary Bladder",
+                  "Malignant Tumor of Bladder",
+                  "Malignant Tumor of Urinary Bladder",
+                  "Malignant Tumor of the Bladder",
+                  "Malignant Tumor of the Urinary Bladder",
+                  "Malignant Tumor, Urinary Bladder",
+                  "Malignant Urinary Bladder Neoplasm",
+                  "Malignant Urinary Bladder Tumor",
+                  "Urinary Bladder Malignant Neoplasm",
+                  "Urinary Bladder Malignant Tumor"
+               ],
+               "nci_thesaurus_concept_id":"C9334",
+               "display_name":"Malignant Bladder Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Malignant Bladder Neoplasm",
+               "parents":[
+                  "C2901",
+                  "C9297"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+
+               ],
+               "nci_thesaurus_concept_id":"C7062",
+               "display_name":"Neoplasm by Special Category",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Neoplasm by Special Category",
+               "parents":[
+                  "C3262"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Urogenital Disease"
+               ],
+               "nci_thesaurus_concept_id":"C156660",
+               "display_name":"Genitourinary System Disorder",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Genitourinary System Disorder",
+               "parents":[
+                  "C27551"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+
+               ],
+               "nci_thesaurus_concept_id":"C7057",
+               "display_name":"Disease, Disorder or Finding",
+               "type":[
+
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Disease, Disorder or Finding",
+               "parents":[
+
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "CA",
+                  "Cancer",
+                  "Malignancy",
+                  "Malignant Growth",
+                  "Malignant Neoplastic Disease",
+                  "Malignant Tumor",
+                  "NEOPLASM, MALIGNANT",
+                  "Neoplasm, malignant",
+                  "Tumor, malignant, NOS",
+                  "Unclassified tumor, malignant",
+                  "cancer",
+                  "malignancy"
+               ],
+               "nci_thesaurus_concept_id":"C9305",
+               "display_name":"Malignant Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Malignant Neoplasm",
+               "parents":[
+                  "C7062"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Neoplasm of Urinary System",
+                  "Neoplasm of Urinary Tract",
+                  "Neoplasm of the Urinary System",
+                  "Neoplasm of the Urinary Tract",
+                  "Tumor of Urinary System",
+                  "Tumor of Urinary Tract",
+                  "Tumor of the Urinary System",
+                  "Tumor of the Urinary Tract",
+                  "Urinary System Tumor",
+                  "Urinary Tract Neoplasm",
+                  "Urinary Tract Tumor"
+               ],
+               "nci_thesaurus_concept_id":"C3431",
+               "display_name":"Urinary System Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Urinary System Neoplasm",
+               "parents":[
+                  "C156482",
+                  "C3430"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Epithelial Neoplasms, NOS",
+                  "Epithelioma",
+                  "Epithelioma, malignant"
+               ],
+               "nci_thesaurus_concept_id":"C3709",
+               "display_name":"Epithelial Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Epithelial Neoplasm",
+               "parents":[
+                  "C4741"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+
+               ],
+               "nci_thesaurus_concept_id":"C3263",
+               "display_name":"Neoplasm by Site",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Neoplasm by Site",
+               "parents":[
+                  "C3262"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Tumor Morphology",
+                  "Tumor_Morphology"
+               ],
+               "nci_thesaurus_concept_id":"C4741",
+               "display_name":"Neoplasm by Morphology",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Neoplasm by Morphology",
+               "parents":[
+                  "C3262"
+               ]
+            }
+         ],
+         "sites":[
+            {
+               "org_state_or_province":"GA",
+               "org_city":"Atlanta",
+               "org_va":false,
+               "org_country":"United States",
+               "org_name":"Emory University Hospital / Winship Cancer Institute",
+               "org_postal_code":"30322",
+               "org_coordinates":{
+                  "lon":-84.3239,
+                  "lat":33.792
+               },
+               "recruitment_status":"ACTIVE"
+            },
+            {
+               "org_state_or_province":"GA",
+               "org_city":"Atlanta",
+               "org_va":false,
+               "org_country":"United States",
+               "org_name":"Emory Saint Joseph's Hospital",
+               "org_postal_code":"30342",
+               "org_coordinates":{
+                  "lon":-84.3745,
+                  "lat":33.8817
+               },
+               "recruitment_status":"ACTIVE"
+            },
+            {
+               "org_state_or_province":"GA",
+               "org_city":"Atlanta",
+               "org_va":false,
+               "org_country":"United States",
+               "org_name":"Emory University Hospital Midtown",
+               "org_postal_code":"30308",
+               "org_coordinates":{
+                  "lon":-84.3774,
+                  "lat":33.7714
+               },
+               "recruitment_status":"APPROVED"
+            }
+         ],
+         "nci_id":"NCI-2014-02088"
+      },
+      {
+         "current_trial_status":"Active",
+         "nct_id":"NCT02766478",
+         "brief_title":"Genistein in Preventing Cardiometabolic Dysfunction in Patients with Prostate Cancer Undergoing Androgen Deprivation Therapy",
+         "eligibility":{
+            "structured":{
+               "max_age":"999 Years",
+               "max_age_number":999,
+               "min_age_unit":"Years",
+               "max_age_unit":"Years",
+               "max_age_in_years":999,
+               "gender":"MALE",
+               "min_age":"18 Years",
+               "min_age_number":18,
+               "min_age_in_years":18
+            }
+         },
+         "diseases":[
+            {
+               "inclusion_indicator":"TRIAL",
+               "paths":null,
+               "synonyms":[
+                  "Cancer of Prostate",
+                  "Cancer of the Prostate",
+                  "Carcinoma of Prostate",
+                  "Carcinoma of the Prostate",
+                  "Prostate Carcinoma",
+                  "Prostate cancer, NOS",
+                  "prostate cancer"
+               ],
+               "nci_thesaurus_concept_id":"C4863",
+               "display_name":"Prostate Cancer",
+               "type":[
+                  "maintype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Prostate Carcinoma",
+               "parents":[
+                  "C164141",
+                  "C7378"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "CARCINOMA, MALIGNANT",
+                  "Carcinoma",
+                  "Carcinoma, NOS",
+                  "Epithelial Carcinoma",
+                  "Epithelial tumor, malignant",
+                  "Epithelioma Malignant",
+                  "Malignant Epithelial Neoplasm",
+                  "Malignant Epithelial Tumor",
+                  "Malignant Epithelioma",
+                  "carcinoma",
+                  "epithelial carcinoma"
+               ],
+               "nci_thesaurus_concept_id":"C2916",
+               "display_name":"Other Carcinoma",
+               "type":[
+                  "maintype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Carcinoma",
+               "parents":[
+                  "C3709",
+                  "C9305"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+
+               ],
+               "nci_thesaurus_concept_id":"C3263",
+               "display_name":"Neoplasm by Site",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Neoplasm by Site",
+               "parents":[
+                  "C3262"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+
+               ],
+               "nci_thesaurus_concept_id":"C156482",
+               "display_name":"Genitourinary System Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Genitourinary System Neoplasm",
+               "parents":[
+                  "C156660",
+                  "C3263"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Neoplasia",
+                  "Neoplasm",
+                  "Neoplasm, NOS",
+                  "Neoplasms, NOS",
+                  "Neoplastic Disease",
+                  "Neoplastic Growth",
+                  "Tumor, NOS",
+                  "neoplasia",
+                  "neoplasm",
+                  "tumor"
+               ],
+               "nci_thesaurus_concept_id":"C3262",
+               "display_name":"Other Neoplasm",
+               "type":[
+                  "maintype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Neoplasm",
+               "parents":[
+                  "C2991"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Disorder of Male Reproductive System",
+                  "Male Reproductive System Disease"
+               ],
+               "nci_thesaurus_concept_id":"C27019",
+               "display_name":"Male Reproductive System Disorder",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Male Reproductive System Disorder",
+               "parents":[
+                  "C4875"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Prostate Disease"
+               ],
+               "nci_thesaurus_concept_id":"C26865",
+               "display_name":"Prostate Disorder",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Prostate Disorder",
+               "parents":[
+                  "C27019"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Genitourinary Cancer",
+                  "Genitourinary System Cancer",
+                  "Malignant Genitourinary Neoplasm"
+               ],
+               "nci_thesaurus_concept_id":"C156484",
+               "display_name":"Malignant Genitourinary System Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Malignant Genitourinary System Neoplasm",
+               "parents":[
+                  "C156482",
+                  "C9305"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "CA",
+                  "Cancer",
+                  "Malignancy",
+                  "Malignant Growth",
+                  "Malignant Neoplastic Disease",
+                  "Malignant Tumor",
+                  "NEOPLASM, MALIGNANT",
+                  "Neoplasm, malignant",
+                  "Tumor, malignant, NOS",
+                  "Unclassified tumor, malignant",
+                  "cancer",
+                  "malignancy"
+               ],
+               "nci_thesaurus_concept_id":"C9305",
+               "display_name":"Malignant Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Malignant Neoplasm",
+               "parents":[
+                  "C7062"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Neoplasm of Prostate",
+                  "Neoplasm of the Prostate",
+                  "Prostate Tumor",
+                  "Tumor of Prostate",
+                  "Tumor of the Prostate"
+               ],
+               "nci_thesaurus_concept_id":"C3343",
+               "display_name":"Prostate Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Prostate Neoplasm",
+               "parents":[
+                  "C3054",
+                  "C26865"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Epithelial Neoplasms, NOS",
+                  "Epithelioma",
+                  "Epithelioma, malignant"
+               ],
+               "nci_thesaurus_concept_id":"C3709",
+               "display_name":"Epithelial Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Epithelial Neoplasm",
+               "parents":[
+                  "C4741"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Disorder of Reproductive System",
+                  "Genital Disorders",
+                  "Reproductive System Disease"
+               ],
+               "nci_thesaurus_concept_id":"C4875",
+               "display_name":"Reproductive System Disorder",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Reproductive System Disorder",
+               "parents":[
+                  "C156660"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+
+               ],
+               "nci_thesaurus_concept_id":"C7057",
+               "display_name":"Disease, Disorder or Finding",
+               "type":[
+
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Disease, Disorder or Finding",
+               "parents":[
+
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Diagnosis",
+                  "Disease",
+                  "Disease or Disorder",
+                  "Disease or Disorder, Non-Neoplastic",
+                  "Diseases",
+                  "Diseases and Disorders",
+                  "Disorder",
+                  "Disorders",
+                  "condition",
+                  "disease",
+                  "disease term",
+                  "disease_term",
+                  "disorder"
+               ],
+               "nci_thesaurus_concept_id":"C2991",
+               "display_name":"Other Disease",
+               "type":[
+                  "maintype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Disease or Disorder",
+               "parents":[
+                  "C7057"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Male Reproductive System Tumor",
+                  "Neoplasm of Male Reproductive System",
+                  "Neoplasm of the Male Reproductive System",
+                  "Tumor of Male Reproductive System",
+                  "Tumor of the Male Reproductive System"
+               ],
+               "nci_thesaurus_concept_id":"C3054",
+               "display_name":"Male Reproductive System Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Male Reproductive System Neoplasm",
+               "parents":[
+                  "C27019",
+                  "C3674"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+
+               ],
+               "nci_thesaurus_concept_id":"C36076",
+               "display_name":"Malignant Reproductive System Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Malignant Reproductive System Neoplasm",
+               "parents":[
+                  "C156484",
+                  "C3674"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+
+               ],
+               "nci_thesaurus_concept_id":"C7062",
+               "display_name":"Neoplasm by Special Category",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Neoplasm by Special Category",
+               "parents":[
+                  "C3262"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Disease by Site"
+               ],
+               "nci_thesaurus_concept_id":"C27551",
+               "display_name":"Disorder by Site",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Disorder by Site",
+               "parents":[
+                  "C2991"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Malignant Neoplasm of Prostate",
+                  "Malignant Neoplasm of the Prostate",
+                  "Malignant Prostate Tumor",
+                  "Malignant Tumor of Prostate",
+                  "Malignant Tumor of the Prostate"
+               ],
+               "nci_thesaurus_concept_id":"C7378",
+               "display_name":"Malignant Prostate Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Malignant Prostate Neoplasm",
+               "parents":[
+                  "C8561",
+                  "C3343"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Neoplasm of Reproductive System",
+                  "Neoplasm of the Reproductive System",
+                  "Reproductive Neoplasm",
+                  "Reproductive System Tumor",
+                  "Reproductive Tumor",
+                  "Tumor of Reproductive System",
+                  "Tumor of the Reproductive System"
+               ],
+               "nci_thesaurus_concept_id":"C3674",
+               "display_name":"Reproductive System Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Reproductive System Neoplasm",
+               "parents":[
+                  "C156482",
+                  "C4875"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Urogenital Disease"
+               ],
+               "nci_thesaurus_concept_id":"C156660",
+               "display_name":"Genitourinary System Disorder",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Genitourinary System Disorder",
+               "parents":[
+                  "C27551"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Tumor Morphology",
+                  "Tumor_Morphology"
+               ],
+               "nci_thesaurus_concept_id":"C4741",
+               "display_name":"Neoplasm by Morphology",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Neoplasm by Morphology",
+               "parents":[
+                  "C3262"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+                  "Male reprod. system cancer, NOS",
+                  "Male reproductive system cancer, NOS",
+                  "Malignant Male Reproductive System Tumor",
+                  "Malignant Neoplasm of Male Reproductive System",
+                  "Malignant Neoplasm of the Male Reproductive System",
+                  "Malignant Tumor of Male Reproductive System",
+                  "Malignant Tumor of the Male Reproductive System"
+               ],
+               "nci_thesaurus_concept_id":"C8561",
+               "display_name":"Malignant Male Reproductive System Neoplasm",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Malignant Male Reproductive System Neoplasm",
+               "parents":[
+                  "C3054",
+                  "C36076"
+               ]
+            },
+            {
+               "inclusion_indicator":"TREE",
+               "synonyms":[
+
+               ],
+               "nci_thesaurus_concept_id":"C164141",
+               "display_name":"Genitourinary System Carcinoma",
+               "type":[
+                  "subtype"
+               ],
+               "lead_disease_indicator":"YES",
+               "preferred_name":"Genitourinary System Carcinoma",
+               "parents":[
+                  "C2916",
+                  "C156484"
+               ]
+            }
+         ],
+         "sites":[
+            {
+               "org_state_or_province":"GA",
+               "org_city":"Atlanta",
+               "org_va":false,
+               "org_country":"United States",
+               "org_name":"Emory University Hospital / Winship Cancer Institute",
+               "org_postal_code":"30322",
+               "org_coordinates":{
+                  "lon":-84.3239,
+                  "lat":33.792
+               },
+               "recruitment_status":"ACTIVE"
+            }
+         ],
+         "nci_id":"NCI-2016-00400"
+      }
+   ]
+}

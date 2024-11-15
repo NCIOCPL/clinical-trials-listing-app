@@ -1,0 +1,209 @@
+{
+	"data": [
+		{
+			"name": "Advanced Breast Carcinoma",
+			"codes": [
+				"C162648"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [],
+			"count": 87
+		},
+		{
+			"name": "Advanced HER2 Negative Breast Carcinoma",
+			"codes": [
+				"C168782"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Advanced HER2 Negative Breast Adenocarcinoma",
+				"Advanced HER2-Negative Breast Carcinoma"
+			],
+			"count": 6
+		},
+		{
+			"name": "Advanced HER2 Positive Breast Carcinoma",
+			"codes": [
+				"C180925"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Advanced HER2-Positive Breast Carcinoma"
+			],
+			"count": 1
+		},
+		{
+			"name": "Advanced Triple-Negative Breast Carcinoma",
+			"codes": [
+				"C175236"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [],
+			"count": 26
+		},
+		{
+			"name": "BRCA-Associated Breast Carcinoma",
+			"codes": [
+				"C167189"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"BRCA-Mutated Breast Carcinoma"
+			],
+			"count": 1
+		},
+		{
+			"name": "BRCA-Mutated Metastatic Breast Carcinoma",
+			"codes": [
+				"C161830"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Metastatic BRCA-Associated Breast Carcinoma",
+				"Metastatic BRCA-Mutated Breast Carcinoma"
+			],
+			"count": 2
+		},
+		{
+			"name": "Bilateral Breast Cancer",
+			"codes": [
+				"C8287"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Bilateral Breast Carcinoma"
+			],
+			"count": 9
+		},
+		{
+			"name": "Breast Cancer",
+			"codes": [
+				"C4872"
+			],
+			"ancestor_ids": [],
+			"type": [
+				"maintype"
+			],
+			"parent_ids": [],
+			"synonyms": [
+				"Breast Carcinoma",
+				"Breast cancer, NOS",
+				"Cancer of Breast",
+				"Cancer of the Breast",
+				"Carcinoma of Breast",
+				"Carcinoma of the Breast",
+				"Mammary Carcinoma",
+				"breast cancer"
+			],
+			"count": 979
+		},
+		{
+			"name": "Breast Ductal Carcinoma In Situ, Intermediate Grade",
+			"codes": [
+				"C9456"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"grade",
+				"stage",
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"DCIS Grade 2",
+				"DIN 2",
+				"Ductal Intraepithelial Neoplasia, Grade 2",
+				"Intermediate Grade Ductal Breast Carcinoma In Situ",
+				"Intermediate-Grade DCIS",
+				"Intermediate-Grade Ductal Carcinoma In Situ of Breast"
+			],
+			"count": 1
+		},
+		{
+			"name": "Breast Ductal Carcinoma In Situ, Low Grade",
+			"codes": [
+				"C9457"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"grade",
+				"stage",
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"DCIS Grade 1",
+				"DIN 1C",
+				"Ductal Intraepithelial Neoplasia, Grade 1C",
+				"Low Grade Ductal Breast Carcinoma In Situ",
+				"Low-Grade DCIS",
+				"Low-Grade Ductal Carcinoma In Situ of Breast"
+			],
+			"count": 1
+		}
+	]
+}

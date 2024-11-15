@@ -1,0 +1,16 @@
+{
+    "total": 1,
+    "terms": [
+        {
+            "term_key": "barretos_cancer_hospital",
+            "term": "Barretos Cancer Hospital",
+            "term_type": "lead_org",
+            "current_trial_statuses": [
+                "ACTIVE"
+            ],
+            "count": 1,
+            "count_normalized": 0.0012420965389623117,
+            "score": null
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+.cts-autocomplete__menu {
+    &.--drugs,
+    &.--trtmt {
+
+        .cts-autocomplete__menu-item{
+            padding: 10px 1em;
+            font-size: .875em;
+            color: #666;
+            line-height: 1.4;
+            &:not(:last-child){
+                border-bottom: 1px dashed #bdbdc2; 
+            }
+            &.highlighted {
+                color: white;
+            }
+        }
+        .preferredName{
+            font-weight: bold;
+        }
+        .synonyms {
+            &.highlight{
+                font-weight: bold;
+            }
+            ol, li {
+                display: inline;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            ol li:not(:last-child)::after {
+                content: ", ";
+                white-space: pre;
+            }
+
+        }
+    }
+} 
