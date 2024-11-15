@@ -8,7 +8,7 @@ import { useAppPaths, useListingSupport } from '../hooks';
 import { getTrialType } from '../services/api/actions';
 import { appendOrUpdateToQueryString, getIdOrNameAction, getKeyValueFromQueryString, convertObjectToBase64 } from '../utils';
 import { hocReducer, hocStates, setLoading, setSuccessfulFetch, setFailedFetch, setNotFound, setRedirecting } from './hocReducer';
-
+import Sidebar from '../features/filters/components/Sidebar';
 /**
  * Higher order component for fetching disease information from the trial listing support API.
  *
@@ -161,6 +161,24 @@ const CTLViewsHoC = (WrappedView) => {
 			<div>
 				<div className="page-options-container" />
 				{(() => {
+					// Don't show spinner for Sidebar component
+					// if (WrappedView.name === 'Sidebar') {
+					// 	return <WrappedView {...props} />;
+					// }
+
+					// if (WrappedView.name === 'Disease' && (getListingInfo.loading || state.status === hocStates.REDIR_STATE || state.status === hocStates.LOADING_STATE || (state.status === hocStates.LOADED_STATE && state.actionsHash !== currentActionsHash))) {
+					// 	return (
+					// 		<div className="disease-view">
+					// 			<div className="disease-view__container">
+					// 				<Sidebar />
+					// 				<main className="disease-view__main">
+					// 					<Spinner />
+					// 				</main>
+					// 			</div>
+					// 		</div>
+					// 	);
+					// }
+
 					// Show loading.
 					if (getListingInfo.loading || state.status === hocStates.REDIR_STATE || state.status === hocStates.LOADING_STATE || (state.status === hocStates.LOADED_STATE && state.actionsHash !== currentActionsHash)) {
 						return <Spinner />;

@@ -116,7 +116,8 @@ const ComboBox = ({ label, placeholder, options, multiSelect, value, onChange, h
 					aria-activedescendant={highlightedIndex >= 0 ? `${name}-option-${highlightedIndex}` : undefined}
 				/>
 
-				{loading && <span className="combobox__spinner" aria-hidden="true" />}
+				{/*  How do we want to handl loading states for the options*/}
+				{/*{loading && <span className="combobox__spinner" aria-hidden="true" />}*/}
 
 				<button type="button" className="combobox__toggle" onClick={() => setIsOpen(!isOpen)} aria-label={isOpen ? 'Close options' : 'Open options'} disabled={disabled}>
 					<svg

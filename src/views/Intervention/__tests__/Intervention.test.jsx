@@ -7,7 +7,7 @@ import { useStateValue } from '../../../store/store';
 import { MockAnalyticsProvider } from '../../../tracking';
 import { useAppPaths } from '../../../hooks/routing';
 import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
-
+import { CTLViewsTestWrapper } from '../../../test-utils/TestWrappers';
 jest.mock('../../../store/store');
 jest.mock('../../../hooks/routing');
 jest.mock('../../../hooks/ctsApiSupport/useCtsApi');
@@ -95,11 +95,9 @@ describe('<Intervention />', () => {
 		];
 
 		render(
-			<MockAnalyticsProvider>
-				<MemoryRouter initialEntries={['/']}>
-					<Intervention routeParamMap={routeParamMap} routePath={redirectPath} data={data} />
-				</MemoryRouter>
-			</MockAnalyticsProvider>
+			<CTLViewsTestWrapper initialEntries={['/']}>
+				<Intervention routeParamMap={routeParamMap} routePath={redirectPath} data={data} />
+			</CTLViewsTestWrapper>
 		);
 
 		expect(useCtsApi).toHaveBeenCalled();

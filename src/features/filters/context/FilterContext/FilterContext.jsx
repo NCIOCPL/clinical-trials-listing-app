@@ -3,6 +3,28 @@ import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+export const FilterActionTypes = {
+	SET_FILTER: 'SET_FILTER',
+	APPLY_FILTERS: 'APPLY_FILTERS',
+	CLEAR_FILTERS: 'CLEAR_FILTERS',
+	REMOVE_FILTER: 'REMOVE_FILTER',
+	SET_BASE_FILTERS: 'SET_BASE_FILTERS',
+};
+
+const initialState = {
+	filters: {
+		age: [],
+		location: {
+			zipCode: '',
+			radius: null,
+		},
+	},
+	appliedFilters: [],
+	baseFilters: {},
+	isDirty: false,
+	shouldSearch: false,
+};
+
 const getAgeRangeFilters = (ageFilters) => {
 	if (!ageFilters?.length) return {};
 
@@ -19,36 +41,15 @@ const getAgeRangeFilters = (ageFilters) => {
 	const minAge = Math.min(...selectedRanges.map((r) => r.min));
 	const maxAge = Math.max(...selectedRanges.map((r) => r.max || 999));
 
-	// Only add parameters if they create meaningful restrictions
 	const filters = {};
 
-	// If not starting from 0, add minimum age
 	if (minAge > 0) {
 		filters['eligibility.structured.min_age_in_years_gte'] = minAge;
 	}
 
-	// If not extending to infinity, add maximum age
 	if (maxAge < 999) {
 		filters['eligibility.structured.max_age_in_years_lte'] = maxAge;
 	}
-	//
-	// console.log(getAgeRangeFilters(['child']));
-	// // Output: { max_age_islte: 17 }
-	//
-	// console.log(getAgeRangeFilters(['adult']));
-	// // Output: { minage_is_gte: 18, max_age_islte: 64 }
-	//
-	// console.log(getAgeRangeFilters(['older_adult']));
-	// // Output: { minage_is_gte: 65 }
-	//
-	// console.log(getAgeRangeFilters(['child', 'adult']));
-	// // Output: { max_age_islte: 64 }
-	//
-	// console.log(getAgeRangeFilters(['adult', 'older_adult']));
-	// // Output: { minage_is_gte: 18 }
-	//
-	// console.log(getAgeRangeFilters(['child', 'adult', 'older_adult']));
-	// Output: {} (no restrictions)
 
 	return filters;
 };
@@ -71,9 +72,7 @@ const transformFiltersToApi = (filters) => {
 	};
 };
 
-// URL handling utilities
-const getFiltersFromURL = (search) => {
-	const params = new URLSearchParams(search);
+const getFiltersFromURL = (params) => {
 	const filters = {};
 
 	// Handle age filter params
@@ -95,71 +94,25 @@ const getFiltersFromURL = (search) => {
 	return filters;
 };
 
-// const updateURLWithFilters = (filters) => {
-// 	const params = new URLSearchParams();
-//
-// 	// Add age params
-// 	if (filters.age?.length) {
-// 		filters.age.forEach((age) => params.append('age', age));
-// 	}
-//
-// 	// Add location params
-// 	if (filters.location?.zipCode) {
-// 		params.set('zip', filters.location.zipCode);
-// 	}
-// 	if (filters.location?.radius) {
-// 		params.set('radius', filters.location.radius.toString());
-// 	}
-//
-// 	return params.toString();
-// };
-
-// src/utils/url.js
-export const updateURLWithFilters = (filters, existingSearch) => {
-	// Start with existing params
+const updateURLWithFilters = (filters, existingSearch) => {
 	const params = new URLSearchParams(existingSearch);
 
-	// Clear any existing filter params
-	params.delete('age');
-	// Add other filter param deletions here as needed
+	// Clear existing filter params
+	['age', 'zip', 'radius'].forEach((param) => params.delete(param));
 
 	// Add new filter params
 	if (filters.age?.length) {
 		filters.age.forEach((age) => params.append('age', age));
 	}
 
-	// Add location params if they exist
 	if (filters.location?.zipCode) {
 		params.set('zip', filters.location.zipCode);
-	}
-	if (filters.location?.radius) {
-		params.set('radius', filters.location.radius.toString());
+		if (filters.location.radius) {
+			params.set('radius', filters.location.radius.toString());
+		}
 	}
 
-	// Return the full query string
 	return params.toString();
-};
-
-export const FilterActionTypes = {
-	SET_FILTER: 'SET_FILTER',
-	APPLY_FILTERS: 'APPLY_FILTERS',
-	CLEAR_FILTERS: 'CLEAR_FILTERS',
-	REMOVE_FILTER: 'REMOVE_FILTER',
-	SET_BASE_FILTERS: 'SET_BASE_FILTERS',
-};
-
-const initialState = {
-	filters: {
-		age: [],
-		location: {
-			zipCode: '',
-			radius: null,
-		},
-	},
-	appliedFilters: [],
-	baseFilters: {},
-	isDirty: false,
-	shouldSearch: false,
 };
 
 function filterReducer(state, action) {
@@ -238,9 +191,41 @@ export function FilterProvider({ children, baseFilters = {} }) {
 	const location = useLocation();
 	const navigate = useNavigate();
 
-	// Sync with URL on mount
+	// Effect for URL synchronization
 	useEffect(() => {
-		const filtersFromUrl = getFiltersFromURL(location.search);
+		if (!state.isDirty) {
+			// Only update URL when filters are actually applied
+			const params = new URLSearchParams(location.search);
+
+			if (Object.keys(state.appliedFilters).length === 0) {
+				// Clear filter params but preserve other URL params
+				['age', 'zip', 'radius'].forEach((param) => params.delete(param));
+			} else {
+				// Update URL with current filters
+				const queryString = updateURLWithFilters(state.appliedFilters, params.toString());
+				// Create new URLSearchParams from the updated query string
+				const updatedParams = new URLSearchParams(queryString);
+				// Copy over the updated parameters
+				for (const [key, value] of updatedParams.entries()) {
+					params.set(key, value);
+				}
+			}
+
+			navigate(
+				{
+					pathname: location.pathname,
+					search: params.toString() ? `?${params.toString()}` : '',
+				},
+				{ replace: true }
+			);
+		}
+	}, [state.appliedFilters, state.isDirty, location.pathname, navigate]);
+
+	// Effect to sync URL params to filter state on mount
+	useEffect(() => {
+		const params = new URLSearchParams(location.search);
+		const filtersFromUrl = getFiltersFromURL(params);
+
 		if (Object.keys(filtersFromUrl).length > 0) {
 			Object.entries(filtersFromUrl).forEach(([filterType, value]) => {
 				dispatch({
@@ -252,26 +237,6 @@ export function FilterProvider({ children, baseFilters = {} }) {
 		}
 	}, []);
 
-	// Update URL when filters change
-	useEffect(() => {
-		if (state.appliedFilters && Object.keys(state.appliedFilters).length > 0) {
-			// Get current URL params
-			const currentParams = new URLSearchParams(location.search);
-			// Add or update filter params
-			const queryString = updateURLWithFilters(state.appliedFilters, currentParams.toString());
-
-			navigate(
-				{
-					// Preserve existing path and add/update search params
-					pathname: location.pathname,
-					search: queryString ? `?${queryString}` : '',
-				},
-				{ replace: true }
-			);
-		}
-	}, [state.appliedFilters]);
-
-	// Get current API filters including base filters
 	const getCurrentFilters = () => ({
 		...state.baseFilters,
 		...transformFiltersToApi(state.appliedFilters),
@@ -299,14 +264,21 @@ export function useFilters() {
 
 	const { state, dispatch, getCurrentFilters } = context;
 
-	// Convenience methods
-	const setFilter = (filterType, value) => dispatch({ type: FilterActionTypes.SET_FILTER, payload: { filterType, value } });
+	const setFilter = (filterType, value) =>
+		dispatch({
+			type: FilterActionTypes.SET_FILTER,
+			payload: { filterType, value },
+		});
 
 	const applyFilters = () => dispatch({ type: FilterActionTypes.APPLY_FILTERS });
 
 	const clearFilters = () => dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
 
-	const removeFilter = (filterType, value) => dispatch({ type: FilterActionTypes.REMOVE_FILTER, payload: { filterType, value } });
+	const removeFilter = (filterType, value) =>
+		dispatch({
+			type: FilterActionTypes.REMOVE_FILTER,
+			payload: { filterType, value },
+		});
 
 	return {
 		state,

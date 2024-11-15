@@ -1,10 +1,10 @@
-// src/features/filters/components/Sidebar/Sidebar.jsx
 import React from 'react';
 import { useFilters } from '../../context/FilterContext/FilterContext';
 import FilterGroup from '../FilterGroup';
 import CheckboxGroup from '../CheckboxGroup';
 import './Sidebar.scss';
 import { FILTER_CONFIG } from '../../config/filterConfig';
+import { FilterActionTypes } from '../../context/FilterContext/FilterContext';
 
 const Sidebar = () => {
 	const { state, dispatch } = useFilters();
@@ -47,30 +47,29 @@ const Sidebar = () => {
 	};
 
 	const handleClearFilters = () => {
-		dispatch({ type: 'CLEAR_FILTERS' });
+		dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
+		dispatch({ type: FilterActionTypes.APPLY_FILTERS });
 	};
 
 	const handleApplyFilters = () => {
-		dispatch({ type: 'APPLY_FILTERS' });
+		dispatch({ type: FilterActionTypes.APPLY_FILTERS });
 	};
 
 	const accordionOnClick = () => {
-		var content = document.getElementById("accordionContent");
+		var content = document.getElementById('accordionContent');
 
 		if (content.hidden == true) {
 			content.hidden = false;
-
-			} else {
-
+		} else {
 			content.hidden = true;
-  		}
+		}
 	};
 
 	return (
 		<aside className="ctla-sidebar">
 			<div className="usa-accordion ctla-sidebar__header">
 				<h2 className="usa-accordion__heading ctla-sidebar__title">
-					<button type="button" class="usa-accordion__button" aria-expanded="true" aria-controls="accordionContent" onClick={accordionOnClick}>
+					<button type="button" className="usa-accordion__button" aria-expanded="true" aria-controls="accordionContent" onClick={accordionOnClick}>
 						Filter Your Search
 					</button>
 				</h2>

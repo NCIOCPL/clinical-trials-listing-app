@@ -50,6 +50,12 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 	};
 	const [pager, setPager] = useState(pagerDefaults);
 
+	useEffect(() => {
+		if (filterState.shouldSearch) {
+			setShouldFetchTrials(true);
+		}
+	}, [filterState.shouldSearch]);
+
 	// Watch for filter changes
 	useEffect(() => {
 		if (filterState.isDirty) {
@@ -235,7 +241,7 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 					<h1>{replacedText.pageTitle}</h1>
 					{(() => {
 						if (fetchState.loading) {
-							return <Spinner />;
+							// return <Spinner />;
 						} else if (!fetchState.loading && fetchState.payload) {
 							if (fetchState.payload.total > 0) {
 								return (
