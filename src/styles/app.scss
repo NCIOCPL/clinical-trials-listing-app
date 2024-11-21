@@ -102,3 +102,26 @@ h1 {
 		width:100%
 	}
 }
+
+
+.disease-view {
+	&__main {
+		// Add relative positioning to contain the spinner
+		position: relative;
+		min-height: 400px; // Add minimum height to prevent layout shifts
+	}
+}
+
+// Update Spinner.scss to work with relative container
+.nci-spinner {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	min-height: unset; // Remove default min-height
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

@@ -179,9 +179,18 @@ const CTLViewsHoC = (WrappedView) => {
 					// 	);
 					// }
 
-					// Show loading.
+					// Add loading check helper
+					const isLoading = getListingInfo.loading || state.status === hocStates.REDIR_STATE || state.status === hocStates.LOADING_STATE || (state.status === hocStates.LOADED_STATE && state.actionsHash !== currentActionsHash);
+
+					// // Show loading.
 					if (getListingInfo.loading || state.status === hocStates.REDIR_STATE || state.status === hocStates.LOADING_STATE || (state.status === hocStates.LOADED_STATE && state.actionsHash !== currentActionsHash)) {
-						return <Spinner />;
+						if (WrappedView.name === 'Disease') {
+							return <WrappedView routeParamMap={filteredRouteParamMap} routePath={redirectPath} {...props} data={state.listingData} isInitialLoading={isLoading} />;
+						}
+
+						if (isLoading) {
+							return <Spinner />;
+						}
 					} else {
 						// We have finished loading and either need to display
 						// 404, error or the results.

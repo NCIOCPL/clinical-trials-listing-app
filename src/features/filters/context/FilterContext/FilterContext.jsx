@@ -93,21 +93,26 @@ const getFiltersFromURL = (params) => {
 	return filters;
 };
 
-const updateURLWithFilters = (filters, existingSearch) => {
-	// Start with existing params
-	const params = new URLSearchParams(existingSearch);
+// Modify updateURLWithFilters to handle pn correctly
+const updateURLWithFilters = (filters, existingSearch, isInitialLoad = false) => {
+	// Start with empty params
+	const params = new URLSearchParams();
 
-	// Clear any existing filter params
-	['age', 'zip', 'radius', 'pn'].forEach((param) => params.delete(param));
+	// First, copy all existing non-filter params
+	const existingParams = new URLSearchParams(existingSearch);
+	for (const [key, value] of existingParams.entries()) {
+		if (!['age', 'zip', 'radius'].includes(key)) {
+			params.set(key, value);
+		}
+	}
 
-	// Always set page to 1 when filters change
-	params.set('pn', '1');
+	// Set pn=1 only for non-initial loads
+	if (!isInitialLoad) {
+		params.set('pn', '1');
+	}
 
-	// Add new filter params - handle multiple age values
+	// Add filter params
 	if (filters.age?.length) {
-		// Clear existing age params first
-		params.delete('age');
-		// Add each age value as a separate parameter
 		filters.age.forEach((age) => params.append('age', age));
 	}
 
@@ -120,6 +125,7 @@ const updateURLWithFilters = (filters, existingSearch) => {
 
 	return params.toString();
 };
+
 function filterReducer(state, action) {
 	switch (action.type) {
 		case FilterActionTypes.SET_FILTER:
@@ -208,42 +214,48 @@ export function FilterProvider({ children, baseFilters = {} }) {
 					payload: { filterType, value },
 				});
 			});
-			dispatch({ type: FilterActionTypes.APPLY_FILTERS });
+			dispatch({
+				type: FilterActionTypes.APPLY_FILTERS,
+				payload: { isInitialLoad: true },
+			});
 		}
 	}, []);
 
-	// Effect for URL synchronization
 	useEffect(() => {
-		if (!state.isDirty) {
-			// Only update URL when filters are actually applied
-			const params = new URLSearchParams(location.search);
+		if (!state.isDirty && state.shouldSearch) {
+			const params = new URLSearchParams(window.location.search);
 
-			if (Object.keys(state.appliedFilters).length === 0) {
-				// Clear filter params but preserve other URL params
-				['age', 'zip', 'radius', 'pn'].forEach((param) => params.delete(param));
-			} else {
-				// Update URL with current filters
-				const queryString = updateURLWithFilters(state.appliedFilters, location.search);
+			// Handle filter updates
+			if (Object.keys(state.appliedFilters).length > 0) {
+				// Reset page to 1 when filters actively change
+				params.set('pn', '1');
+
+				// Clear and re-add filter params
+				['age', 'zip', 'radius'].forEach((param) => params.delete(param));
+
+				// Add age filters
+				if (state.appliedFilters.age?.length) {
+					state.appliedFilters.age.forEach((age) => params.append('age', age));
+				}
+
+				// Add location filters
+				if (state.appliedFilters.location?.zipCode) {
+					params.set('zip', state.appliedFilters.location.zipCode);
+					if (state.appliedFilters.location.radius) {
+						params.set('radius', state.appliedFilters.location.radius.toString());
+					}
+				}
+
 				navigate(
 					{
 						pathname: location.pathname,
-						search: queryString ? `?${queryString}` : '',
+						search: `?${params.toString()}`,
 					},
 					{ replace: true }
 				);
-				return; // Return early to avoid double navigation
 			}
-
-			// Only reach here if clearing filters
-			navigate(
-				{
-					pathname: location.pathname,
-					search: params.toString() ? `?${params.toString()}` : '',
-				},
-				{ replace: true }
-			);
 		}
-	}, [state.appliedFilters, state.isDirty, location.pathname, navigate]);
+	}, [state.appliedFilters, state.isDirty, state.shouldSearch, location.pathname, navigate]);
 
 	const getCurrentFilters = () => ({
 		...state.baseFilters,
@@ -270,8 +282,6 @@ export function useFilters() {
 	}
 
 	const { state, dispatch, getCurrentFilters } = context;
-	const navigate = useNavigate();
-	const location = useLocation();
 
 	const setFilter = (filterType, value) =>
 		dispatch({
@@ -280,20 +290,6 @@ export function useFilters() {
 		});
 
 	const applyFilters = () => {
-		// First update URL to reset page number
-		const params = new URLSearchParams(location.search);
-		params.set('pn', '1'); // Force page number to 1
-
-		// Navigate with updated params
-		navigate(
-			{
-				pathname: location.pathname,
-				search: params.toString(),
-			},
-			{ replace: true }
-		);
-
-		// Then dispatch filter application
 		dispatch({ type: FilterActionTypes.APPLY_FILTERS });
 	};
 

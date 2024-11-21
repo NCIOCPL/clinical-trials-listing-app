@@ -56,11 +56,11 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 			setShouldFetchTrials(true);
 
 			// Explicitly reset pager state
-			setPager({
-				offset: 0,
-				page: 1,
-				pageUnit: itemsPerPage,
-			});
+			// setPager({
+			// 	offset: 0,
+			// 	page: 1,
+			// 	pageUnit: itemsPerPage,
+			// });
 		}
 	}, [filterState.shouldSearch]);
 
@@ -347,8 +347,21 @@ DiseaseContent.propTypes = {
 };
 
 // Main Disease component wrapper
-const Disease = ({ routeParamMap, routePath, data }) => {
+const Disease = ({ routeParamMap, routePath, data, isInitialLoading }) => {
 	const [state] = useStateValue();
+
+	if (isInitialLoading) {
+		return (
+			<div className="disease-view">
+				<div className="disease-view__container">
+					<Sidebar />
+					{/*<main className="disease-view__main">*/}
+					{/*	<Spinner />*/}
+					{/*</main>*/}
+				</div>
+			</div>
+		);
+	}
 
 	return <DiseaseContent routeParamMap={routeParamMap} routePath={routePath} data={data} baseHost={state.baseHost} canonicalHost={state.canonicalHost} detailedViewPagePrettyUrlFormatter={state.detailedViewPagePrettyUrlFormatter} dynamicListingPatterns={state.dynamicListingPatterns} itemsPerPage={state.itemsPerPage} language={state.language} siteName={state.siteName} trialListingPageType={state.trialListingPageType} />;
 };
