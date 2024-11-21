@@ -1,4 +1,3 @@
-// src/features/filters/context/FilterContext/FilterContext.jsx
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -95,13 +94,20 @@ const getFiltersFromURL = (params) => {
 };
 
 const updateURLWithFilters = (filters, existingSearch) => {
+	// Start with existing params
 	const params = new URLSearchParams(existingSearch);
 
-	// Clear existing filter params
-	['age', 'zip', 'radius'].forEach((param) => params.delete(param));
+	// Clear any existing filter params
+	['age', 'zip', 'radius', 'pn'].forEach((param) => params.delete(param));
 
-	// Add new filter params
+	// Always set page to 1 when filters change
+	params.set('pn', '1');
+
+	// Add new filter params - handle multiple age values
 	if (filters.age?.length) {
+		// Clear existing age params first
+		params.delete('age');
+		// Add each age value as a separate parameter
 		filters.age.forEach((age) => params.append('age', age));
 	}
 
@@ -114,7 +120,6 @@ const updateURLWithFilters = (filters, existingSearch) => {
 
 	return params.toString();
 };
-
 function filterReducer(state, action) {
 	switch (action.type) {
 		case FilterActionTypes.SET_FILTER:
@@ -191,36 +196,6 @@ export function FilterProvider({ children, baseFilters = {} }) {
 	const location = useLocation();
 	const navigate = useNavigate();
 
-	// Effect for URL synchronization
-	useEffect(() => {
-		if (!state.isDirty) {
-			// Only update URL when filters are actually applied
-			const params = new URLSearchParams(location.search);
-
-			if (Object.keys(state.appliedFilters).length === 0) {
-				// Clear filter params but preserve other URL params
-				['age', 'zip', 'radius'].forEach((param) => params.delete(param));
-			} else {
-				// Update URL with current filters
-				const queryString = updateURLWithFilters(state.appliedFilters, params.toString());
-				// Create new URLSearchParams from the updated query string
-				const updatedParams = new URLSearchParams(queryString);
-				// Copy over the updated parameters
-				for (const [key, value] of updatedParams.entries()) {
-					params.set(key, value);
-				}
-			}
-
-			navigate(
-				{
-					pathname: location.pathname,
-					search: params.toString() ? `?${params.toString()}` : '',
-				},
-				{ replace: true }
-			);
-		}
-	}, [state.appliedFilters, state.isDirty, location.pathname, navigate]);
-
 	// Effect to sync URL params to filter state on mount
 	useEffect(() => {
 		const params = new URLSearchParams(location.search);
@@ -236,6 +211,39 @@ export function FilterProvider({ children, baseFilters = {} }) {
 			dispatch({ type: FilterActionTypes.APPLY_FILTERS });
 		}
 	}, []);
+
+	// Effect for URL synchronization
+	useEffect(() => {
+		if (!state.isDirty) {
+			// Only update URL when filters are actually applied
+			const params = new URLSearchParams(location.search);
+
+			if (Object.keys(state.appliedFilters).length === 0) {
+				// Clear filter params but preserve other URL params
+				['age', 'zip', 'radius', 'pn'].forEach((param) => params.delete(param));
+			} else {
+				// Update URL with current filters
+				const queryString = updateURLWithFilters(state.appliedFilters, location.search);
+				navigate(
+					{
+						pathname: location.pathname,
+						search: queryString ? `?${queryString}` : '',
+					},
+					{ replace: true }
+				);
+				return; // Return early to avoid double navigation
+			}
+
+			// Only reach here if clearing filters
+			navigate(
+				{
+					pathname: location.pathname,
+					search: params.toString() ? `?${params.toString()}` : '',
+				},
+				{ replace: true }
+			);
+		}
+	}, [state.appliedFilters, state.isDirty, location.pathname, navigate]);
 
 	const getCurrentFilters = () => ({
 		...state.baseFilters,
@@ -255,7 +263,6 @@ FilterProvider.propTypes = {
 	children: PropTypes.node.isRequired,
 	baseFilters: PropTypes.object,
 };
-
 export function useFilters() {
 	const context = useContext(FilterContext);
 	if (!context) {
@@ -263,6 +270,8 @@ export function useFilters() {
 	}
 
 	const { state, dispatch, getCurrentFilters } = context;
+	const navigate = useNavigate();
+	const location = useLocation();
 
 	const setFilter = (filterType, value) =>
 		dispatch({
@@ -270,7 +279,23 @@ export function useFilters() {
 			payload: { filterType, value },
 		});
 
-	const applyFilters = () => dispatch({ type: FilterActionTypes.APPLY_FILTERS });
+	const applyFilters = () => {
+		// First update URL to reset page number
+		const params = new URLSearchParams(location.search);
+		params.set('pn', '1'); // Force page number to 1
+
+		// Navigate with updated params
+		navigate(
+			{
+				pathname: location.pathname,
+				search: params.toString(),
+			},
+			{ replace: true }
+		);
+
+		// Then dispatch filter application
+		dispatch({ type: FilterActionTypes.APPLY_FILTERS });
+	};
 
 	const clearFilters = () => dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
 

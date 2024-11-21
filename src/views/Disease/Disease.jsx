@@ -50,23 +50,19 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 	};
 	const [pager, setPager] = useState(pagerDefaults);
 
+	// Watch for filter changes
 	useEffect(() => {
 		if (filterState.shouldSearch) {
 			setShouldFetchTrials(true);
-		}
-	}, [filterState.shouldSearch]);
 
-	// Watch for filter changes
-	useEffect(() => {
-		if (filterState.isDirty) {
-			setShouldFetchTrials(true);
+			// Explicitly reset pager state
 			setPager({
-				...pager,
-				page: 1,
 				offset: 0,
+				page: 1,
+				pageUnit: itemsPerPage,
 			});
 		}
-	}, [filterState.isDirty]);
+	}, [filterState.shouldSearch]);
 
 	// Combine base filters with applied filters
 	const searchFilters = {
@@ -168,8 +164,8 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 		}
 	}, [pn]);
 
+	// Handle pagination updates
 	const onPageNavigationChangeHandler = (pagination) => {
-		// Update pager state
 		setPager(pagination);
 		const { page } = pagination;
 
@@ -210,19 +206,61 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 	};
 
 	// Render pager section
+	// const renderPagerSection = (placement) => {
+	// 	const page = pn ?? 1;
+	// 	const pagerOffset = getPageOffset(page, itemsPerPage);
+	//
+	// 	return (
+	// 		<div className="ctla-results__summary grid-container">
+	// 			<div className="grid-row">{placement === 'top' && <div className="ctla-results__count grid-col">{`Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.payload.total)} of ${fetchState.payload.total}`}</div>}</div>
+	// 			<div className="grid-row">
+	// 				{fetchState.payload.total > itemsPerPage && (
+	// 					<div className="ctla-results__pager grid-col">
+	// 						<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={fetchState.payload.total} />
+	// 					</div>
+	// 				)}
+	// 			</div>
+	// 		</div>
+	// 	);
+	// };
+	//
+
 	const renderPagerSection = (placement) => {
-		const page = pn ?? 1;
-		const pagerOffset = getPageOffset(page, itemsPerPage);
+		const total = fetchState.payload?.total || 0;
+
+		// Only calculate offsets if we have results
+		if (total === 0) {
+			return (
+				<div className="ctla-results__summary grid-container">
+					<div className="grid-row">{placement === 'top' && <div className="ctla-results__count grid-col">No trials found</div>}</div>
+				</div>
+			);
+		}
+
+		// Calculate correct start and end counts
+		const pagerOffset = getPageOffset(pager.page, itemsPerPage);
+		const startCount = pagerOffset + 1;
+		const endCount = Math.min(pagerOffset + itemsPerPage, total);
+
+		// Validate that our counts make sense
+		if (startCount > total) {
+			// If we somehow got an invalid page, reset to page 1
+			setPager({
+				offset: 0,
+				page: 1,
+				pageUnit: itemsPerPage,
+			});
+			setShouldFetchTrials(true);
+			return null; // Don't render until we've reset
+		}
 
 		return (
 			<div className="ctla-results__summary grid-container">
+				<div className="grid-row">{placement === 'top' && <div className="ctla-results__count grid-col">{`Trials ${startCount}-${endCount} of ${total}`}</div>}</div>
 				<div className="grid-row">
-					{placement === 'top' && <div className="ctla-results__count grid-col">{`Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.payload.total)} of ${fetchState.payload.total}`}</div>}
-				</div>
-				<div className="grid-row">
-					{fetchState.payload.total > itemsPerPage && (
+					{total > itemsPerPage && (
 						<div className="ctla-results__pager grid-col">
-							<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={fetchState.payload.total} />
+							<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={total} />
 						</div>
 					)}
 				</div>
@@ -241,22 +279,25 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 				<Sidebar />
 				<main className="disease-view__main">
 					<h1>{replacedText.pageTitle}</h1>
+
+					{/* Moved intro text outside of the conditional rendering */}
+					{replacedText.introText.length > 0 && (
+						<div className="ctla-results__intro">
+							<div
+								dangerouslySetInnerHTML={{
+									__html: replacedText.introText,
+								}}
+							/>
+						</div>
+					)}
+
 					{(() => {
 						if (fetchState.loading) {
-							// return <Spinner />;
+							return <Spinner />;
 						} else if (!fetchState.loading && fetchState.payload) {
 							if (fetchState.payload.total > 0) {
 								return (
 									<>
-										{replacedText.introText.length > 0 && (
-											<div className="ctla-results__intro">
-												<div
-													dangerouslySetInnerHTML={{
-														__html: replacedText.introText,
-													}}
-												/>
-											</div>
-										)}
 										{renderPagerSection('top')}
 										<ScrollRestoration />
 										<ResultsListWithPage results={fetchState.payload.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
