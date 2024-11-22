@@ -1,3 +1,22 @@
+#name: Workflow
+#on:
+#  push:
+#    branches:
+#      - master
+#      - main
+#      - develop
+#      - 'hotfix/**'
+#      - 'release/**'
+#      - 'feature/**'
+#      - 'prototype/**'
+#    tags:
+#      - '*'
+#  pull_request:
+#jobs:
+#  react-app-workflow:
+#    uses: nciocpl/cgov-react-app-playground/.github/workflows/workflow.yml@workflow/v2
+#    secrets: inherit
+
 name: Workflow
 on:
   push:
@@ -12,7 +31,189 @@ on:
     tags:
       - '*'
   pull_request:
+  workflow_call:
+    inputs:
+      app_path:
+        description: Is there a path prefix for the app
+        required: false
+        type: string
+        default: './'
 jobs:
-  react-app-workflow:
-    uses: nciocpl/cgov-react-app-playground/.github/workflows/workflow.yml@workflow/v2
-    secrets: inherit
+  build:
+    name: Build, Test and Upload Artifacts
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        working-directory: ${{ format('./{0}', inputs.app_path) }}
+    steps:
+      ## Setup variables for build info
+      - name: Set Variables
+        id: set_vars
+        working-directory: './'
+        run: |
+          ## PUSH
+          if [ "${{ github.event_name }}" == "push" ]; then
+            BUILD_NAME=$(sed -E 's/refs\/(heads|tags)\///; s/\//__/g;' <<< $GITHUB_REF)
+            BRANCH_NAME=$(sed -E 's/refs\/(heads|tags)\///;' <<< $GITHUB_REF)
+            COMMIT_HASH=$(echo "${GITHUB_SHA}")
+          ## PULL_REQUEST
+          elif [ "${{ github.event_name }}" == "pull_request" ]; then
+            BUILD_NAME=$(echo "pr-${{ github.event.pull_request.number }}")
+            BRANCH_NAME=$(echo "pr-${{ github.event.pull_request.number }}")
+            COMMIT_HASH=$(echo "${{ github.event.pull_request.head.sha }}")
+          else
+            ## ERROR
+            exit 1
+          fi
+
+          ## For step checks and artifact deployment path.
+          ## Same for push and PR
+          export REPO_FULL=${{ github.repository }}
+          export REPO_RE='([^/]+)/(.*)'
+          [[ "$REPO_FULL" =~ $REPO_RE ]]
+          REPO_OWNER=$(echo "${BASH_REMATCH[1]}")
+          REPO_NAME=$(echo "${BASH_REMATCH[2]}")
+
+          ## Set step outputs for later use
+          echo "build_name=${BUILD_NAME}" >> $GITHUB_OUTPUT
+          echo "branch_name=${BRANCH_NAME}" >> $GITHUB_OUTPUT
+          echo "commit_hash=${COMMIT_HASH}" >> $GITHUB_OUTPUT
+          echo "repo_owner=${REPO_OWNER}" >> $GITHUB_OUTPUT
+          echo "repo_name=${REPO_NAME}" >> $GITHUB_OUTPUT
+      - name: Add Comment on Where to Test
+        uses: actions/github-script@v6
+        if: startsWith(github.repository, 'NCIOCPL') && github.event_name == 'pull_request' && github.event.action == 'opened'
+        env:
+          BUILD_NAME: ${{steps.set_vars.outputs.build_name}}
+          REPO_NAME: ${{steps.set_vars.outputs.repo_name}}
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          ## NOTE: The script below is JavaScript
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `
+              ## Viewing Information
+              * [The testing site](https://react-app-dev.cancer.gov/${ process.env.REPO_NAME }/${ process.env.BUILD_NAME }/)
+              `
+            })
+      ## This clones and checks out.
+      - name: Checkout branch
+        uses: actions/checkout@v3
+      ## Setup node and npm caching.
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '${{ inputs.app_path }}.nvmrc'
+          cache: 'npm'
+          registry-url: https://npm.pkg.github.com
+          scope: '@nciocpl'
+          cache-dependency-path: '**/package-lock.json'
+      ## Install using CI
+      - name: Install Dependencies
+        run: npm ci
+        env:
+          CI: true
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ## Lint Codebase
+#      - name: Lint Codebase
+#        run: npm run lint
+#        env:
+#          CI: true
+#      ## Runs jest unit and cypress e2e testing and merges coverage reports
+#      - name: Run Tests
+#        run: npm test
+#        env:
+#          CI: true
+      ## Build the app in prep for publishing
+      - name: Build App
+        run: npm run build
+        env:
+          CI: true
+          ## This is used by web pack and NEEDs to be the URL that will ultimately
+          ## be in netstorage
+          PUBLIC_URL: ${{ format('/{0}/{1}/', steps.set_vars.outputs.repo_name, steps.set_vars.outputs.build_name) }}
+      ## Generate build-info.json to house information
+      ## about this specific build. Used for product test
+      ## deployment
+      - name: Create Build Information
+        env:
+          BUILD_INFO: ${{ toJson(steps.set_vars.outputs) }}
+        run: |
+          echo $BUILD_INFO
+          echo $BUILD_INFO > ./build/build-info.json
+      ## Upload the test results artifact
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: ${{ inputs.app_path }}coverage
+      ## Upload the test results artifact
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: ${{ inputs.app_path }}build
+  deploy-test:
+    name: Deploy built artifacts to test server
+    ## Only do this if the repo is NCIOCPL
+    if: startsWith(github.repository, 'NCIOCPL')
+    ## This job depends on build completing
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download built app
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+          path: build-artifact
+      ## Setup vars from Build Info from build job
+      - name: Setup Job env
+        run: |
+          ## Set Vars
+          BUILD_NAME=$(jq -r '.build_name' < ./build-artifact/build-info.json)
+          BRANCH_NAME=$(jq -r '.branch_name' < ./build-artifact/build-info.json)
+          COMMIT_HASH=$(jq -r '.commit_hash' < ./build-artifact/build-info.json)
+          REPO_OWNER=$(jq -r '.repo_owner' < ./build-artifact/build-info.json)
+          REPO_NAME=$(jq -r '.repo_name' < ./build-artifact/build-info.json)
+
+          ## Set Action Env
+          echo "BUILD_NAME=${BUILD_NAME}" >> $GITHUB_ENV
+          echo "BRANCH_NAME=${BRANCH_NAME}" >> $GITHUB_ENV
+          echo "COMMIT_HASH=${COMMIT_HASH}" >> $GITHUB_ENV
+          echo "REPO_OWNER=${REPO_OWNER}" >> $GITHUB_ENV
+          echo "REPO_NAME=${REPO_NAME}" >> $GITHUB_ENV
+
+          ######## ERROR IF PR FROM FORK
+          if [ "$REPO_OWNER" != "NCIOCPL" ]; then
+            echo "YOU SHOULD NOT SEND PR FROM FORK!!!"
+            exit 1
+          fi
+      ## We need to create the zip for netstorage
+      - name: Zip Build Artifact
+        run: |
+          pushd build-artifact
+          zip -r ../${BUILD_NAME}.zip *
+          popd
+      - name: Upload artifact to netstorage
+        uses: nciocpl/netstorage-upload-action@v1.0.0
+        with:
+          hostname: ${{ secrets.ns_hostname }}
+          cp-code: ${{ secrets.ns_cpcode }}
+          key-name: ${{ secrets.ns_keyname }}
+          key: ${{ secrets.ns_key }}
+          index-zip: true
+          local-path: ${{ format('{0}.zip', env.BUILD_NAME) }}
+          ## Note this action automatically prepends the cpcode to the path.
+          destination-path: ${{ format('/{0}/{1}.zip', env.REPO_NAME, env.BUILD_NAME) }}
+      - name: Clear Site Cache
+        uses: nciocpl/akamai-purge-action@v1.0.2
+        with:
+          hostname: ${{ secrets.eg_hostname }}
+          client-token: ${{ secrets.eg_client_token }}
+          client-secret: ${{ secrets.eg_client_secret }}
+          access-token: ${{ secrets.eg_access_token }}
+          type: 'cpcodes'
+          ref: ${{ format('{0},{1}', secrets.ns_cpcode, secrets.prop_cpcode) }}
