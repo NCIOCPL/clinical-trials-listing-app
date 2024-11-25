@@ -1,3 +1,7 @@
+.usa-checkbox__input--tile + [class*=__label] {
+	width: 97%;
+}
+
 .checkbox-group {
 	display: flex;
 	flex-direction: column;
@@ -60,7 +64,7 @@
 		&::after {
 			content: '';
 			position: absolute;
-			left: 9px;
+			left: 17px;
 			top: 50%;
 			transform: translateY(-50%) rotate(45deg);
 			width: 5px;
