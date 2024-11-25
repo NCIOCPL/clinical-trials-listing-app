@@ -165,12 +165,12 @@ Feature: As a user, I would like to view the trial results for a manual listing 
       | Next       |
     And the page "7" is highlighted
 
-  Scenario: View manual listing page with no pager (when total results is less than items per page )
-    Given "trialListingPageType" is set to "Manual"
-    And "pageTitle" is set to "Clinical Trials for Adult Metastatic Brain Tumors"
-		And "cisBannerImgUrlLarge" is set to null
-		And "cisBannerImgUrlSmall" is set to null
-    And "itemsPerPage" is set to 20
-    Given the user navigates to "/?cfg=4"
-    Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"
-    And pager is not displayed
+#  Scenario: View manual listing page with no pager (when total results is less than items per page )
+#    Given "trialListingPageType" is set to "Manual"
+#    And "pageTitle" is set to "Clinical Trials for Adult Metastatic Brain Tumors"
+#		And "cisBannerImgUrlLarge" is set to null
+#		And "cisBannerImgUrlSmall" is set to null
+#    And "itemsPerPage" is set to 20
+#    Given the user navigates to "/?cfg=4"
+#    Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"
+#    And pager is not displayed

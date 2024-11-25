@@ -33,12 +33,10 @@ export const FILTER_CONFIG = {
 
 	age: {
 		title: 'Age',
-		type: 'checkbox',
-		options: [
-			{ id: 'child', label: 'Child (birth - 17)', value: 'child' },
-			{ id: 'adult', label: 'Adult (18 - 64)', value: 'adult' },
-			{ id: 'older_adult', label: 'Older adult (65+)', value: 'older_adult' },
-		],
+		type: 'number',
+		placeholder: 'Enter the age of the participant.',
+		min: 0,
+		max: 120,
 	},
 
 	location: {

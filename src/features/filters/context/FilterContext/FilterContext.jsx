@@ -13,7 +13,7 @@ export const FilterActionTypes = {
 
 const initialState = {
 	filters: {
-		age: [],
+		age: null,
 		location: {
 			zipCode: '',
 			radius: null,
@@ -54,6 +54,15 @@ const getAgeRangeFilters = (ageFilters) => {
 
 	return filters;
 };
+
+const getAgeFilters = (age) => {
+	if (!age) return {};
+
+	return {
+		'eligibility.structured.min_age_in_years_lte': parseInt(age),
+		'eligibility.structured.max_age_in_years_gte': parseInt(age)
+	};
+};
 const getLocationFilters = (location) => {
 	if (!location?.zipCode || !location?.radius) return {};
 
@@ -66,19 +75,34 @@ const getLocationFilters = (location) => {
 };
 
 const transformFiltersToApi = (filters) => {
-	return {
-		...getAgeRangeFilters(filters.age),
-		...getLocationFilters(filters.location),
-	};
+
+	let apiFilters = {};
+
+
+		// Age filter handling
+		if (filters.age) {
+		apiFilters['eligibility.structured.min_age_in_years_lte'] = filters.age;
+		apiFilters['eligibility.structured.max_age_in_years_gte'] = filters.age;
+	}
+
+		return {
+			...apiFilters,
+			...getLocationFilters(filters.location)
+		};
+
 };
 
 const getFiltersFromURL = (params) => {
 	const filters = {};
 
 	// Handle age filter params
-	const ageValues = params.getAll('age');
-	if (ageValues.length) {
-		filters.age = ageValues;
+	// const ageValues = params.getAll('age');
+	// if (ageValues.length) {
+	// 	filters.age = ageValues;
+	// }
+	const age = params.get('age');
+	if (age) {
+		filters.age = age;
 	}
 
 	// Handle location params
@@ -113,8 +137,13 @@ const updateURLWithFilters = (filters, existingSearch, isInitialLoad = false) =>
 	}
 
 	// Add filter params
-	if (filters.age?.length) {
-		filters.age.forEach((age) => params.append('age', age));
+	// if (filters.age?.length) {
+	// 	filters.age.forEach((age) => params.append('age', age));
+	// }
+	if (filters.age) {
+		params.set('age', filters.age.toString());
+	} else {
+		params.delete('age');
 	}
 
 	if (filters.location?.zipCode) {
@@ -235,8 +264,8 @@ export function FilterProvider({ children, baseFilters = {} }) {
 				['age', 'zip', 'radius'].forEach((param) => params.delete(param));
 
 				// Add age filters
-				if (state.appliedFilters.age?.length) {
-					state.appliedFilters.age.forEach((age) => params.append('age', age));
+				if (state.appliedFilters.age) {
+					 params.append('age', state.appliedFilters.age);
 				}
 
 				// Add location filters

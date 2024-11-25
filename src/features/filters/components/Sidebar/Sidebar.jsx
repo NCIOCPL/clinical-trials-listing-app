@@ -100,9 +100,27 @@ const Sidebar = () => {
 			</div>
 			<div id="accordionContent" className="usa-accordion__content ctla-sidebar__content">
 				<FilterGroup title="Age">
-					<CheckboxGroup name="age" selectedValues={filters.age} onChange={handleAgeFilterChange} />
+					<input
+						type="number"
+						className="usa-input form-control"
+						placeholder={FILTER_CONFIG.age.placeholder}
+						value={filters.age || ''}
+						onChange={(e) => {
+							const value = e.target.value;
+							if (value >= FILTER_CONFIG.age.min && value <= FILTER_CONFIG.age.max) {
+								dispatch({
+									type: 'SET_FILTER',
+									payload: {
+										filterType: 'age',
+										value: value
+									}
+								});
+							}
+						}}
+						min={FILTER_CONFIG.age.min}
+						max={FILTER_CONFIG.age.max}
+					/>
 				</FilterGroup>
-
 				<FilterGroup title="Location by Zip Code">
 					<input type="text" className="usa-input form-control" placeholder="Enter U.S. Zip Code" value={filters.location.zipCode} onChange={handleZipCodeChange} maxLength={5} />
 				</FilterGroup>
@@ -121,7 +139,7 @@ const Sidebar = () => {
 				</FilterGroup>
 
 				<div className="ctla-sidebar__actions">
-					<button className="usa-button ctla-sidebar__button--clear" onClick={handleClearFilters} disabled={!isDirty && !filters.age.length}>
+					<button className="usa-button ctla-sidebar__button--clear" onClick={handleClearFilters} disabled={!isDirty}>
 						Clear All
 					</button>
 					<button className="usa-button ctla-sidebar__button--apply" onClick={handleApplyFilters} disabled={!isDirty}>
