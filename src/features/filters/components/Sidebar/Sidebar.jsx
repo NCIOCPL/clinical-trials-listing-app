@@ -69,31 +69,31 @@ const Sidebar = () => {
 		}
 	};
 
-	// function setMobileOnClick() {
-	// 	const mobileSize = '(max-width: 768px)';
-	// 	const mediaQueryMobile = window.matchMedia(mobileSize);
-	// 	const filterBtn = document.getElementById('filterButton');
-	// 	var content = document.getElementById("accordionContent");
+	function setMobileOnClick() {
+		const mobileSize = '(max-width: 1028px)';
+		const mediaQueryMobile = window.matchMedia(mobileSize);
+		const filterBtn = document.getElementById('filterButton');
+		var content = document.getElementById("accordionContent");
 
-	// 	function handleMediaQueryChange(event) {
-	// 		if (event.matches) {
-	// 			filterBtn.addEventListener('click', accordionOnClick);
-	// 		} else {
-	// 			filterBtn.removeEventListener('click', accordionOnClick);
-	// 			content.removeAttribute("hidden");
-	// 		}
-	// 	}
+		function handleMediaQueryChange(event) {
+			if (event.matches) {
+				filterBtn.addEventListener('click', accordionOnClick);
+			} else {
+				filterBtn.removeEventListener('click', accordionOnClick);
+				content.removeAttribute("hidden");
+			}
+		}
 
-	// 	handleMediaQueryChange(mediaQueryMobile);
-	// 	mediaQueryMobile.addEventListener('change', handleMediaQueryChange);
+		handleMediaQueryChange(mediaQueryMobile);
+		mediaQueryMobile.addEventListener('change', handleMediaQueryChange);
 
-	// }
+	}
 
 	return (
 		<aside className="ctla-sidebar">
 			<div className="usa-accordion ctla-sidebar__header">
 				<h2 className="usa-accordion__heading ctla-sidebar__title">
-					<button id="filterButton" type="button" className="usa-accordion__button" aria-expanded="true" aria-controls="accordionContent" onClick={accordionOnClick}>
+					<button id="filterButton" type="button" className="usa-accordion__button" aria-expanded="true" aria-controls="accordionContent" onClick={setMobileOnClick}>
 						Filter Your Search
 					</button>
 				</h2>
