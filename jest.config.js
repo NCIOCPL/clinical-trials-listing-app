@@ -13,7 +13,7 @@ module.exports = {
 	setupFiles: ['react-app-polyfill/jsdom', '<rootDir>/jest-test-setup.js'],
 	setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
 	testMatch: [
-		'<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}',
+		'<rootDir>/src/**/__tests__/**/*.{js,ts,tsx}',
 		// '<rootDir>/src/**/*.test.{js,jsx,ts,tsx}',
 	],
 	testEnvironment: 'jest-environment-jsdom-global',

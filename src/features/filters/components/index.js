@@ -4,3 +4,5 @@ export { default as CheckboxGroup } from './CheckboxGroup';
 export { default as DropdownFilter } from './DropdownFilter';
 export { default as AppliedFilters } from './AppliedFilters';
 export { default as Sidebar } from './Sidebar';
+export { default as ZipCodeFilter } from './ZipCodeFilter';
+export { default as AgeFilter } from './AgeFilter';

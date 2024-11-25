@@ -1,9 +1,20 @@
 .usa-select {
-	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59003L12 13.17L7.41 8.59003L6 10L12 16L18 10L16.59 8.59003Z" fill="%231B1B1B"/></svg>') !important;
+	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="16" viewBox="0 0 8 16" fill="none"><path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M4.00005 2.85833L6.64172 5.5L7.81672 4.325L4.00005 0.5L0.175049 4.325L1.35838 5.5L4.00005 2.85833ZM4.00005 13.1417L1.35838 10.5L0.183382 11.675L4.00005 15.5L7.82505 11.675L6.64172 10.5L4.00005 13.1417Z" fill="%231B1B1B"/></svg>') !important;
+	background-size: .5rem !important;
 }
 
 #filterButton {
+	@media (max-width: 1028px) {
+		font-size: 20px;
+		background-size: 1rem;
 	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="2" viewBox="0 0 14 2" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M14 2H0V0H14V2Z" fill="%231B1B1B"/></svg>');
+}
+	@media (min-width: 1029px) {
+		font-size: 24px;
+		background-image: unset !important;
+		background-color: #ffffff;
+		padding-bottom: 5px;
+	}
 }
 
 .usa-input.form-control {
@@ -44,12 +55,12 @@
 		padding: 1.25rem;
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 1028px) {
 		width: 100%;
 	}
 
 	.usa-accordion__button:focus, .usa-accordion__button:hover {
-		@media (min-width: 769px) {
+		@media (min-width: 1029px) {
 			outline: unset;
 			background-color: #f0f0f0;
 		}
@@ -57,7 +68,7 @@
 
 	// Filter Group Styles
 	.filter-group {
-		margin-bottom: 1.75rem;
+		margin-bottom: .75rem;
 
 		&__header {
 			margin-bottom: 0.75rem;
@@ -131,11 +142,19 @@
 			display: flex;
 			gap: 1rem;
 			width: 100%;
+
+			@media (max-width: 640px) {
+				flex-direction: column;
+			}
 		}
 
 		&__button {
 			&--clear {
 				flex: 1;
+
+				@media (max-width: 640px) {
+					width: 50%;
+				}
 				background: white;
 				border: 1px solid #BDBDBD;
 				color: #01679D;
@@ -158,6 +177,10 @@
 
 			&--apply {
 				flex: 1;
+
+				@media (max-width: 1028px) {
+					width: 50%;
+				}
 				padding: 0.75rem;
 				background: #2B7BBA;
 				color: white;

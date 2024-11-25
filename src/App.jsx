@@ -66,9 +66,30 @@ const App = () => {
 					<ListingSupportContextProvider>
 						<Routes>
 							<Route path={NoTrialsPath()} element={<WrappedNoTrials redirectPath={NoTrialsPath} routeParamMap={diseaseRouteParamMap} />} exact />
-							<Route path={CodeOrPurlPath()} element={<WrappedDisease redirectPath={CodeOrPurlPath} routeParamMap={diseaseRouteParamMap} />} />
-							<Route path={CodeOrPurlWithTypePath()} element={<WrappedDisease redirectPath={CodeOrPurlWithTypePath} routeParamMap={diseaseRouteParamMap} />} />
-							<Route path={CodeOrPurlWithTypeAndInterCodeOrPurlPath()} element={<WrappedDisease redirectPath={CodeOrPurlWithTypeAndInterCodeOrPurlPath} routeParamMap={diseaseRouteParamMap} />} />
+							<Route
+								path={CodeOrPurlPath()}
+								element={
+									<FilterProvider pageType={'Disease'}>
+										<WrappedDisease redirectPath={CodeOrPurlPath} routeParamMap={diseaseRouteParamMap} />
+									</FilterProvider>
+								}
+							/>
+							<Route
+								path={CodeOrPurlWithTypePath()}
+								element={
+									<FilterProvider pageType={'Disease'}>
+										<WrappedDisease redirectPath={CodeOrPurlWithTypePath} routeParamMap={diseaseRouteParamMap} />
+									</FilterProvider>
+								}
+							/>
+							<Route
+								path={CodeOrPurlWithTypeAndInterCodeOrPurlPath()}
+								element={
+									<FilterProvider pageType={'Disease'}>
+										<WrappedDisease redirectPath={CodeOrPurlWithTypeAndInterCodeOrPurlPath} routeParamMap={diseaseRouteParamMap} />
+									</FilterProvider>
+								}
+							/>
 							<Route path="/*" element={<PageNotFound />} />
 						</Routes>
 					</ListingSupportContextProvider>
@@ -105,8 +126,22 @@ const App = () => {
 					<ListingSupportContextProvider>
 						<Routes>
 							<Route path={NoTrialsPath()} element={<WrappedNoTrials redirectPath={NoTrialsPath} routeParamMap={interventionRouteParamMap} />} exact />
-							<Route path={CodeOrPurlPath()} element={<WrappedIntervention redirectPath={CodeOrPurlPath} routeParamMap={interventionRouteParamMap} />} />
-							<Route path={CodeOrPurlWithTypePath()} element={<WrappedIntervention redirectPath={CodeOrPurlWithTypePath} routeParamMap={interventionRouteParamMap} />} />
+							<Route
+								path={CodeOrPurlPath()}
+								element={
+									<FilterProvider pageType={'Intervention'}>
+										<WrappedIntervention redirectPath={CodeOrPurlPath} routeParamMap={interventionRouteParamMap} />
+									</FilterProvider>
+								}
+							/>
+							<Route
+								path={CodeOrPurlWithTypePath()}
+								element={
+									<FilterProvider pageType={'Intervention'}>
+										<WrappedIntervention redirectPath={CodeOrPurlWithTypePath} routeParamMap={interventionRouteParamMap} />
+									</FilterProvider>
+								}
+							/>
 							<Route path="/*" element={<PageNotFound />} />
 						</Routes>
 					</ListingSupportContextProvider>
@@ -148,11 +183,9 @@ const App = () => {
 
 	return (
 		<Router>
-			<FilterProvider>
-				<div className="app">
-					<div className="app-content">{dynamicRoutes}</div>
-				</div>
-			</FilterProvider>
+			<div className="app">
+				<div className="app-content">{dynamicRoutes}</div>
+			</div>
 		</Router>
 	);
 };

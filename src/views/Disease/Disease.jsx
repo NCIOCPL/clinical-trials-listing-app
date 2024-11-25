@@ -28,8 +28,7 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 	const { search } = location;
 	const tracking = useTracking();
 
-	// Filter state management
-	const { state: filterState, getCurrentFilters } = useFilters();
+	const { state: filterState, getCurrentFilters, isApplyingFilters } = useFilters();
 	const [shouldFetchTrials, setShouldFetchTrials] = useState(true);
 
 	// Get disease ID for base filters
@@ -56,11 +55,11 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 			setShouldFetchTrials(true);
 
 			// Explicitly reset pager state
-			// setPager({
-			// 	offset: 0,
-			// 	page: 1,
-			// 	pageUnit: itemsPerPage,
-			// });
+		// 	setPager({
+		// 		offset: 0,
+		// 		page: 1,
+		// 		pageUnit: itemsPerPage,
+		// 	});
 		}
 	}, [filterState.shouldSearch]);
 
@@ -164,26 +163,29 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 		}
 	}, [pn]);
 
-	// Handle pagination updates
 	const onPageNavigationChangeHandler = (pagination) => {
 		setPager(pagination);
 		const { page } = pagination;
 
 		// Get current URL params
 		const params = new URLSearchParams(search);
+
 		// Update page number
 		params.set('pn', page.toString());
+
+		// Preserve age filter if it exists
+		if (filterState.appliedFilters.age) {
+			params.set('age', filterState.appliedFilters.age);
+		} else {
+			params.delete('age');
+		}
 
 		// Create the new URL
 		const paramsObject = getParamsForRoute(data, routeParamMap);
 		const newPath = routePath(paramsObject);
 		const newSearch = `?${params.toString()}`;
 
-		setShouldFetchTrials(true);
-
-		navigate(`${newPath}${newSearch}`, {
-			replace: true,
-		});
+		navigate(`${newPath}${newSearch}`);
 	};
 
 	// Helmet for SEO
@@ -276,43 +278,48 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 		<div className="disease-view">
 			{renderHelmet()}
 			<div className="disease-view__container">
-				<Sidebar />
-				<main className="disease-view__main">
-					<h1>{replacedText.pageTitle}</h1>
+				<Sidebar pageType="Disease"/>
 
-					{/* Moved intro text outside of the conditional rendering */}
+				<h1 className="disease-view__heading">
+					{replacedText.pageTitle}
+				</h1>
+
 					{replacedText.introText.length > 0 && (
-						<div className="ctla-results__intro">
-							<div
-								dangerouslySetInnerHTML={{
-									__html: replacedText.introText,
-								}}
-							/>
+					<div className="disease-view__intro">
+						<div dangerouslySetInnerHTML={{ __html: replacedText.introText }} />
 						</div>
 					)}
 
-					{(() => {
-						if (fetchState.loading) {
-							return <Spinner />;
-						} else if (!fetchState.loading && fetchState.payload) {
-							if (fetchState.payload.total > 0) {
-								return (
-									<>
-										{renderPagerSection('top')}
-										<ScrollRestoration />
-										<ResultsListWithPage results={fetchState.payload.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
-										{renderPagerSection('bottom')}
-									</>
-								);
-							} else {
-								return <NoResults />;
-							}
-						} else {
-							return <ErrorPage />;
-						}
-					})()}
+				<div className="disease-view__content">
+					<main className="disease-view__main">
+						<div className="disease-view__results">
+{(() => {
+  if (fetchState.loading || isApplyingFilters) {
+    return <Spinner />;
+  } else if (!fetchState.loading && fetchState.payload) {
+    if (fetchState.payload.total > 0) {
+      return (
+        <>
+          {renderPagerSection('top')}
+          <ScrollRestoration />
+          <ResultsListWithPage
+            results={fetchState.payload.data}
+            resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
+          />
+          {renderPagerSection('bottom')}
+        </>
+      );
+    } else {
+      return <NoResults />;
+    }
+  } else {
+    return <ErrorPage />;
+  }
+})()}
+						</div>
 				</main>
 			</div>
+		</div>
 		</div>
 	);
 };
@@ -323,7 +330,7 @@ DiseaseContent.propTypes = {
 			paramName: PropTypes.string,
 			textReplacementKey: PropTypes.string,
 			type: PropTypes.oneOf(['listing-information', 'trial-type']),
-		})
+		}),
 	).isRequired,
 	routePath: PropTypes.func.isRequired,
 	data: PropTypes.arrayOf(
@@ -334,7 +341,7 @@ DiseaseContent.propTypes = {
 				normalized: PropTypes.string,
 			}),
 			prettyUrlName: PropTypes.string,
-		})
+		}),
 	),
 	baseHost: PropTypes.string.isRequired,
 	canonicalHost: PropTypes.string.isRequired,
@@ -347,10 +354,10 @@ DiseaseContent.propTypes = {
 };
 
 // Main Disease component wrapper
-const Disease = ({ routeParamMap, routePath, data, isInitialLoading }) => {
+const Disease = ({ routeParamMap, routePath, data, isInitialLoading, isLoadingTrials }) => {
 	const [state] = useStateValue();
 
-	if (isInitialLoading) {
+	if (isInitialLoading || isLoadingTrials) {
 		return (
 			<div className="disease-view">
 				<div className="disease-view__container">

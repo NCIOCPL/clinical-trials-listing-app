@@ -95,39 +95,6 @@
 	font-style: italic;
 }
 
-/* .contentzone ul.no-bullets,
-.rawHtml ul.no-bullets,
-ul.no-bullets {
-	padding: 0;
-}
-
-.contentzone ul.no-bullets > li,
-.rawHtml ul.no-bullets > li,
-ul.no-bullets > li {
-	background: none;
-	list-style-type: none;
-	padding: 0;
-}
-
-.contentzone ul.no-bullets > li:before,
-.rawHtml ul.no-bullets > li:before,
-ul.no-bullets > li:before {
-	display: none;
-	content: none;
-}
-
-.contentzone ul.no-bullets ul,
-.rawHtml ul.no-bullets ul,
-ul.no-bullets ul {
-	margin: 5px 0 8px;
-}
-
-.contentzone ul.no-bullets ul > li,
-.rawHtml ul.no-bullets ul > li,
-ul.no-bullets ul > li {
-	padding: 0 0 0 10px;
-	margin: 0 0 5px;
-} */
 
 a.arrow-link-white:focus,
 a.arrow-link-white:hover,

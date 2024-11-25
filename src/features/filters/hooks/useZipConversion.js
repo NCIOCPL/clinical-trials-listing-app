@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useAppSettings } from '../../../store/store.jsx';
+import { useStateValue } from '../../../store/store.jsx';
 
 export const useZipConversion = (updateFunc) => {
 	const [zip, setZip] = useState();
 	const [isError, setIsError] = useState(false);
 
-	const [{ zipConversionEndpoint }] = useAppSettings();
+	const [{ zipConversionEndpoint }] = useStateValue();
 	const zipBase = zipConversionEndpoint;
 
 	useEffect(() => {

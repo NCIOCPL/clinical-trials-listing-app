@@ -14,31 +14,62 @@
 	border-top: 1px solid #ddd;
 }
 
+.cddpl h2{
+	margin-top: 0;
+}
 .disease-view {
-	width: 100%;
-
 	&__container {
-		display: flex;
-		gap: 30px;
+		display: grid;
 		max-width: 1440px;
 		margin: 0 auto;
-		padding: 0;
-		min-height: calc(100vh - 100px);
+		gap: 0 4rem;
+		padding: 0 1rem;
 
-		@media (max-width: 768px) {
-			flex-direction: column;
+		// Desktop grid
+		grid-template-columns: 320px 1fr;
+		grid-template-areas:
+      "sidebar heading"
+      "sidebar intro"
+      "sidebar content";
+
+		@media (max-width: 1028px) {
+			// Mobile grid
+			grid-template-columns: 1fr;
+			grid-template-areas:
+        "heading"
+        "intro"
+        "sidebar"
+        "content";
 			padding: 16px;
 		}
 	}
 
-	&__main {
-		flex: 1;
-		min-width: 0;
-		padding: 20px;
+	&__heading {
+		grid-area: heading;
+		margin:0;
+		padding-top: 35px; // Desktop padding
 
-		h1 {
-			margin-top: 0;
-			margin-bottom: 24px;
+		@media (max-width: 1028px) {
+			padding-top: 8px; // Reduced padding for mobile
 		}
 	}
+
+	&__intro {
+		margin: 0;
+		grid-area: intro;
+	}
+
+	.ctla-sidebar {
+		grid-area: sidebar;
+		margin-bottom: 20px;
+		padding-top: 0;
+	 h2{
+			margin-top: 0;
+		}
+	}
+
+	&__content {
+		grid-area: content;
+	}
 }
+

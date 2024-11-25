@@ -1,4 +1,3 @@
-@skip
 Feature: As the system, I want to be able to redirect users to pretty URLs for the dynamic listing pages, so that the pages are more user and SEO friendly.
 
 	Scenario: Page redirects to pretty URL if codes are given for Disease

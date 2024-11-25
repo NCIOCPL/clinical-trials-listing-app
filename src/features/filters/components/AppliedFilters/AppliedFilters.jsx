@@ -41,13 +41,8 @@ const AppliedFilters = () => {
 					displayType: 'Drug/Intervention',
 				};
 			case 'age':
-				const ageLabels = {
-					child: 'Child (birth - 17)',
-					adult: 'Adult (18 - 64)',
-					older_adult: 'Older Adult (65+)',
-				};
 				return {
-					label: filter.values.map((value) => ageLabels[value] || value),
+					label: [`Age: ${filter.values}`],
 					displayType: 'Age',
 				};
 			case 'location':

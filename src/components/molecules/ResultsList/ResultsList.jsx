@@ -1,14 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useFilters } from '../../../features/filters/context/FilterContext/FilterContext';
 import { getLocationInfoFromSites } from '../../../utils';
 import ResultsListItem from './ResultsListItem';
 import './ResultsList.scss';
 
-const ResultsList = ({ results, resultsItemTitleLink }) => {
-	const { state } = useFilters();
-	const { appliedFilters } = state;
-
+const ResultsList = ({ results, resultsItemTitleLink, appliedFilters = [] }) => {
 	return (
 		<div className="ctla-results__list grid-container">
 			<div className="grid-row">
@@ -50,6 +46,7 @@ ResultsList.propTypes = {
 		})
 	).isRequired,
 	resultsItemTitleLink: PropTypes.string.isRequired,
+	appliedFilters: PropTypes.array,
 };
 
 export default ResultsList;

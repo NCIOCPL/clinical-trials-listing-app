@@ -66,6 +66,7 @@ const initialize = ({
 	siteName = 'National Cancer Institute',
 	title = 'NCI Clinical Trials',
 	viewPageUrlFormatter = '/clinicaltrials/{0}',
+	zipConversionEndpoint = '/cts_api/zip_code_lookup',
 } = {}) => {
 	const appRootDOMNode = document.getElementById(rootId);
 	const isRehydrating = appRootDOMNode.getAttribute('data-isRehydrating');
@@ -108,6 +109,7 @@ const initialize = ({
 		siteName,
 		title,
 		viewPageUrlFormatter,
+		zipConversionEndpoint,
 	};
 
 	// Determine the analytics HoC we are going to use.
@@ -168,6 +170,7 @@ if (process.env.NODE_ENV !== 'production') {
 		...appParams,
 		ctsApiEndpoint: 'http://localhost:3000/cts/proxy-api/v2',
 		...integrationTestOverrides,
+		zipConversionEndpoint: 'http://localhost:3000/mock-api/zip_code_lookup',
 	};
 	initialize(ctlSettings);
 } else if (window?.location?.host === 'react-app-dev.cancer.gov') {

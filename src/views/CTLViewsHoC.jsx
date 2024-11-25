@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useReducer } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router';
-
+import { useFilters } from '../features/filters/context/FilterContext/FilterContext';
 import { Spinner } from '../components';
 import { ErrorPage, PageNotFound } from './ErrorBoundary';
 import { useAppPaths, useListingSupport } from '../hooks';
@@ -186,7 +186,9 @@ const CTLViewsHoC = (WrappedView) => {
 					// // Show loading.
 					if (getListingInfo.loading || state.status === hocStates.REDIR_STATE || state.status === hocStates.LOADING_STATE || (state.status === hocStates.LOADED_STATE && state.actionsHash !== currentActionsHash)) {
 						if (WrappedView.name === 'Disease') {
-							return <WrappedView routeParamMap={filteredRouteParamMap} routePath={redirectPath} {...props} data={state.listingData} isInitialLoading={isLoading} />;
+
+							// const { state: filterState } = useFilters();
+							return <WrappedView routeParamMap={filteredRouteParamMap} routePath={redirectPath} {...props} data={state.listingData}     isInitialLoading={isLoading }  />;
 						}
 
 						if (isLoading) {
