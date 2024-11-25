@@ -33,12 +33,10 @@ export const FILTER_CONFIG = {
 
 	age: {
 		title: 'Age',
-		type: 'checkbox',
-		options: [
-			{ id: 'child', label: 'Child (birth - 17)', value: 'child' },
-			{ id: 'adult', label: 'Adult (18 - 64)', value: 'adult' },
-			{ id: 'older_adult', label: 'Older adult (65+)', value: 'older_adult' },
-		],
+		type: 'number',
+		placeholder: 'Enter the age of the participant.',
+		min: 0,
+		max: 120,
 	},
 
 	location: {
@@ -51,11 +49,11 @@ export const FILTER_CONFIG = {
 		title: 'Radius',
 		type: 'select',
 		options: [
-			{ id: '5', label: '5 miles', value: '5' },
-			{ id: '10', label: '10 miles', value: '10' },
-			{ id: '25', label: '25 miles', value: '25' },
+			{ id: '20', label: '20 miles', value: '20' },
 			{ id: '50', label: '50 miles', value: '50' },
 			{ id: '100', label: '100 miles', value: '100' },
+			{ id: '200', label: '200 miles', value: '200' },
+			{ id: '500', label: '500 miles', value: '500' },
 		],
 	},
 };

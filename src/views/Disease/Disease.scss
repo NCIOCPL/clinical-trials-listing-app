@@ -25,7 +25,7 @@
 		padding: 0;
 		min-height: calc(100vh - 100px);
 
-		@media (max-width: 768px) {
+		@media (max-width: 1028px) {
 			flex-direction: column;
 			padding: 16px;
 		}

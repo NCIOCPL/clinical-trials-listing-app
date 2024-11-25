@@ -1,4 +1,3 @@
-@skip
 Feature: As a user, I should expect a No Trials Found Page to appear when accessing a non-existent page
 
 	Scenario: Navigating to a non-existent page should bring up the No Trials Found banner

@@ -28,8 +28,7 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 	const { search } = location;
 	const tracking = useTracking();
 
-	// Filter state management
-	const { state: filterState, getCurrentFilters } = useFilters();
+	const { state: filterState, getCurrentFilters, isApplyingFilters } = useFilters();
 	const [shouldFetchTrials, setShouldFetchTrials] = useState(true);
 
 	// Get disease ID for base filters
@@ -56,11 +55,11 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 			setShouldFetchTrials(true);
 
 			// Explicitly reset pager state
-			// setPager({
-			// 	offset: 0,
-			// 	page: 1,
-			// 	pageUnit: itemsPerPage,
-			// });
+		// 	setPager({
+		// 		offset: 0,
+		// 		page: 1,
+		// 		pageUnit: itemsPerPage,
+		// 	});
 		}
 	}, [filterState.shouldSearch]);
 
@@ -164,7 +163,6 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 		}
 	}, [pn]);
 
-	// Handle pagination updates
 	const onPageNavigationChangeHandler = (pagination) => {
 		setPager(pagination);
 		const { page } = pagination;
@@ -174,16 +172,22 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 		// Update page number
 		params.set('pn', page.toString());
 
+		if (filters.age) {
+			params.set('age', filters.age.toString());
+		} else {
+			params.delete('age');
+		}
+
 		// Create the new URL
 		const paramsObject = getParamsForRoute(data, routeParamMap);
 		const newPath = routePath(paramsObject);
 		const newSearch = `?${params.toString()}`;
 
 		setShouldFetchTrials(true);
-
 		navigate(`${newPath}${newSearch}`, {
 			replace: true,
 		});
+		// navigate(`${newPath}${newSearch}`);
 	};
 
 	// Helmet for SEO
@@ -291,26 +295,38 @@ const DiseaseContent = ({ routeParamMap, routePath, data, baseHost, canonicalHos
 						</div>
 					)}
 
-					{(() => {
-						if (fetchState.loading) {
-							return <Spinner />;
-						} else if (!fetchState.loading && fetchState.payload) {
-							if (fetchState.payload.total > 0) {
-								return (
-									<>
-										{renderPagerSection('top')}
-										<ScrollRestoration />
-										<ResultsListWithPage results={fetchState.payload.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
-										{renderPagerSection('bottom')}
-									</>
-								);
-							} else {
-								return <NoResults />;
-							}
-						} else {
-							return <ErrorPage />;
-						}
-					})()}
+{(() => {
+	console.log('Render check - loading states:', {
+    isLoadingTrials,
+    isApplyingFilters
+  });
+  if (fetchState.loading || isApplyingFilters) {
+		console.log('Should be showing spinner');
+		console.log('Render check - loading states:', {
+    isLoadingTrials,
+    isApplyingFilters
+  });
+    return <Spinner />;
+  } else if (!fetchState.loading && fetchState.payload) {
+    if (fetchState.payload.total > 0) {
+      return (
+        <>
+          {renderPagerSection('top')}
+          <ScrollRestoration />
+          <ResultsListWithPage
+            results={fetchState.payload.data}
+            resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
+          />
+          {renderPagerSection('bottom')}
+        </>
+      );
+    } else {
+      return <NoResults />;
+    }
+  } else {
+    return <ErrorPage />;
+  }
+})()}
 				</main>
 			</div>
 		</div>
@@ -347,10 +363,10 @@ DiseaseContent.propTypes = {
 };
 
 // Main Disease component wrapper
-const Disease = ({ routeParamMap, routePath, data, isInitialLoading }) => {
+const Disease = ({ routeParamMap, routePath, data, isInitialLoading, isLoadingTrials }) => {
 	const [state] = useStateValue();
 
-	if (isInitialLoading) {
+	if (isInitialLoading || isLoadingTrials) {
 		return (
 			<div className="disease-view">
 				<div className="disease-view__container">

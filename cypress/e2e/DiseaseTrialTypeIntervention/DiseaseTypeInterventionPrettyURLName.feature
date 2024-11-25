@@ -1,4 +1,3 @@
-@skip
 Feature: As a user, I would like to view the trial results for a disease listing page that is given a pretty URL name parameter, along with links to the trial's description page, the brief summary of the trial, and the number of locations of the trial
 
   Scenario: View disease trial type and intervention listing page results with pretty URL name parameter

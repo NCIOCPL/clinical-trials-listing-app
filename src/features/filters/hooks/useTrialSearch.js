@@ -62,6 +62,7 @@ export const useTrialSearch = (requestFilters, isEnabled = true) => {
 				};
 
 				const cleanedFilters = cleanRequestFilters(requestFilters);
+
 				const requestBody = {
 					...baseBody,
 					...cleanedFilters,

@@ -3,12 +3,13 @@ import React from 'react';
 import { useFilters } from '../../context/FilterContext/FilterContext';
 import FilterGroup from '../FilterGroup';
 import CheckboxGroup from '../CheckboxGroup';
+import ZipCodeFilter from '../ZipCodeFilter';
 import './Sidebar.scss';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import { FilterActionTypes } from '../../context/FilterContext/FilterContext';
 
 const Sidebar = () => {
-	const { state, dispatch } = useFilters();
+	const { state, dispatch, applyFilters } = useFilters();
 	const { filters, isDirty } = state;
 
 	const handleAgeFilterChange = (values) => {
@@ -23,29 +24,31 @@ const Sidebar = () => {
 
 	const handleZipCodeChange = (e) => {
 		dispatch({
-			type: 'SET_FILTER',
+			type: FilterActionTypes.SET_FILTER,
 			payload: {
 				filterType: 'location',
 				value: {
 					...filters.location,
 					zipCode: e.target.value,
-				},
-			},
+					radius: e.target.value ? (filters.location.radius || '100') : null
+				}
+			}
 		});
 	};
 
 	const handleRadiusChange = (e) => {
 		dispatch({
-			type: 'SET_FILTER',
+			type: FilterActionTypes.SET_FILTER,
 			payload: {
 				filterType: 'location',
 				value: {
 					...filters.location,
-					radius: e.target.value,
-				},
-			},
+					radius: e.target.value
+				}
+			}
 		});
 	};
+
 
 	const handleClearFilters = () => {
 		dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
@@ -53,6 +56,7 @@ const Sidebar = () => {
 	};
 
 	const handleApplyFilters = () => {
+		applyFilters();
 		dispatch({ type: FilterActionTypes.APPLY_FILTERS });
 	};
 
@@ -69,45 +73,69 @@ const Sidebar = () => {
 		}
 	};
 
-	// function setMobileOnClick() {
-	// 	const mobileSize = '(max-width: 768px)';
-	// 	const mediaQueryMobile = window.matchMedia(mobileSize);
-	// 	const filterBtn = document.getElementById('filterButton');
-	// 	var content = document.getElementById("accordionContent");
+	function setMobileOnClick() {
+		const mobileSize = '(max-width: 1028px)';
+		const mediaQueryMobile = window.matchMedia(mobileSize);
+		const filterBtn = document.getElementById('filterButton');
+		var content = document.getElementById("accordionContent");
 
-	// 	function handleMediaQueryChange(event) {
-	// 		if (event.matches) {
-	// 			filterBtn.addEventListener('click', accordionOnClick);
-	// 		} else {
-	// 			filterBtn.removeEventListener('click', accordionOnClick);
-	// 			content.removeAttribute("hidden");
-	// 		}
-	// 	}
+		function handleMediaQueryChange(event) {
+			if (event.matches) {
+				filterBtn.addEventListener('click', accordionOnClick);
+			} else {
+				filterBtn.removeEventListener('click', accordionOnClick);
+				content.removeAttribute("hidden");
+			}
+		}
 
-	// 	handleMediaQueryChange(mediaQueryMobile);
-	// 	mediaQueryMobile.addEventListener('change', handleMediaQueryChange);
+		handleMediaQueryChange(mediaQueryMobile);
+		mediaQueryMobile.addEventListener('change', handleMediaQueryChange);
 
-	// }
+	}
 
 	return (
 		<aside className="ctla-sidebar">
 			<div className="usa-accordion ctla-sidebar__header">
 				<h2 className="usa-accordion__heading ctla-sidebar__title">
-					<button id="filterButton" type="button" className="usa-accordion__button" aria-expanded="true" aria-controls="accordionContent" onClick={accordionOnClick}>
+					<button id="filterButton" type="button" className="usa-accordion__button" aria-expanded="true" aria-controls="accordionContent" onClick={setMobileOnClick}>
 						Filter Your Search
 					</button>
 				</h2>
 			</div>
 			<div id="accordionContent" className="usa-accordion__content ctla-sidebar__content">
 				<FilterGroup title="Age">
-					<CheckboxGroup name="age" selectedValues={filters.age} onChange={handleAgeFilterChange} />
+					<input
+						type="number"
+						className="usa-input form-control"
+						placeholder={FILTER_CONFIG.age.placeholder}
+						value={filters.age || ''}
+						onChange={(e) => {
+							const value = e.target.value;
+							if (value >= FILTER_CONFIG.age.min && value <= FILTER_CONFIG.age.max) {
+								dispatch({
+									type: 'SET_FILTER',
+									payload: {
+										filterType: 'age',
+										value: value
+									}
+								});
+							}
+						}}
+						min={FILTER_CONFIG.age.min}
+						max={FILTER_CONFIG.age.max}
+					/>
 				</FilterGroup>
 
-				<FilterGroup title="Location by Zip Code">
+				{/* <FilterGroup title="Location by Zip Code">
 					<input type="text" className="usa-input form-control" placeholder="Enter U.S. Zip Code" value={filters.location.zipCode} onChange={handleZipCodeChange} maxLength={5} />
 				</FilterGroup>
 
-				<FilterGroup title={FILTER_CONFIG.radius.title}>
+
+
+				<ZipCodeFilter radius={100}/> */}
+
+
+				{/* <FilterGroup title={FILTER_CONFIG.radius.title}>
 					<div className="usa-combo-box">
 						<select className="usa-select usa-combo-box__select form-control" value={filters.location.radius || ''} onChange={handleRadiusChange} disabled={!filters.location.zipCode}>
 							<option value="">Select</option>
@@ -118,10 +146,16 @@ const Sidebar = () => {
 							))}
 						</select>
 					</div>
-				</FilterGroup>
+				</FilterGroup> */}
 
+<ZipCodeFilter
+  zipCode={filters.location.zipCode}
+  radius={filters.location.radius}
+  onZipCodeChange={handleZipCodeChange}
+  onRadiusChange={handleRadiusChange}
+/>
 				<div className="ctla-sidebar__actions">
-					<button className="usa-button ctla-sidebar__button--clear" onClick={handleClearFilters} disabled={!isDirty && !filters.age.length}>
+					<button className="usa-button ctla-sidebar__button--clear" onClick={handleClearFilters} disabled={!isDirty && !filters.age && !filters.location?.zipCode}>
 						Clear All
 					</button>
 					<button className="usa-button ctla-sidebar__button--apply" onClick={handleApplyFilters} disabled={!isDirty}>

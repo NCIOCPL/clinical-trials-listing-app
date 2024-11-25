@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { FilterProvider } from '../src/features/filters/context/FilterContext/FilterContext';
-// import { withTracking} from './decorators/withTracking';
-
 
 import '../src/styles/app.scss';
 import { track } from 'react-tracking';

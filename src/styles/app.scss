@@ -41,6 +41,7 @@ h1 {
 // Global styles
 h1 {
   margin-bottom: 20px;
+	color: #1b1b1b;
 }
 
 // Utility classes for layout
@@ -79,7 +80,6 @@ h1 {
   position: relative;
   width: 100%;
   padding-right: 15px;
-  padding-left: 15px;
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;

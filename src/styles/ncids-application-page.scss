@@ -118,6 +118,117 @@
 	margin: 2px;
 }
 
+
+//#NCI-trial-listing-app-root {
+//	.cgdpl .contentzone ul.usa-pagination__list > li:before,
+//	.cgdpl .rawHtml ul.usa-pagination__list > li:before {
+//		content: none;
+//		padding: 0;
+//		margin: 0;
+//	}
+//}
+
+
+
+
+
+.cgdpl .contentzone ul.usa-pagination__list li,
+.cgdpl .rawHtml ul.usa-pagination__list li {
+	margin-bottom:0em;
+	margin-left: 0.25rem;
+	margin-right: 0.25rem;
+	margin-top:0em;
+}
+
+
+.cgdpl .usa-pagination{
+	display: flex;
+}
+
+.cgdpl .contentzone ul.usa-pagination__list > li:before,
+.cgdpl .rawHtml ul.usa-pagination__list > li:before {
+	content: none;
+	padding: 0;
+	margin: 0;
+}
+
+/*
+.cgdpl .contentzone ul>li:before,
+.cgdpl .rawHtml ul>li:before {
+  content:"*";
+  display:inline;
+  float:left;
+  font-size:1.1em;
+  left:-.5em;
+  line-height:.9090909091em;
+  margin:0 -.2em;
+  position:relative;
+  top:.25em
+}
+ */
+
+.cgdpl .contentzone ul.usa-pagination__list > li:before,
+.cgdpl .rawHtml ul.usa-pagination__list > li:before {
+	content: none;
+	padding: 0;
+	margin: 0;
+}
+
+
+
+.cgdpl .contentzone ul.usa-pagination__list > li:before,
+.cgdpl .rawHtml ul.usa-pagination__list > li:before {
+
+
+	content: none;
+	margin: 0;
+}
+
+
+
+
+//
+//.cgdpl .contentzone ul.usa-pagination__list > li:before,
+//.cgdpl .rawHtml ul.usa-pagination__list > li:before {
+//	content: none;
+//	padding: 0;
+//	margin: 0;
+//}
+
+
+
+#NCI-trial-listing-app-root {
+	.cgdpl .contentzone ul.usa-pagination__list > li:before,
+	.cgdpl .rawHtml ul.usa-pagination__list > li:before {
+		content: "•";
+		display: inline;
+		float: left;
+		font-size: 1.1em;
+		left: -.5em;
+		line-height: .9090909091em;
+		margin: 0 -.2em;
+		position: relative;
+		top: .25em;
+	}
+}
+
+
+
+.cgdpl .contentzone ul>li:before,
+.cgdpl .rawHtml ul>li:before {
+	content:"•";
+	display:inline;
+	float:left;
+	font-size:1.1em;
+	left:-.5em;
+	line-height:.9090909091em;
+	margin:0 -.2em;
+	position:relative;
+	top:.25em
+}
+
+
+
 // increases spacing between the numbers for page navigation
 #NCI-trial-listing-app-root,
 #NCI-sws-app-root {

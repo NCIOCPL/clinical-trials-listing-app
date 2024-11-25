@@ -1,4 +1,3 @@
-@skip
 Feature: Manual listing page analytics
 
 	Scenario: Page Load Analytics fires when a user views a manual listing page

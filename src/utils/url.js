@@ -47,18 +47,30 @@ export const getKeyValueFromQueryString = (key, queryString) => {
 export const getFiltersFromURL = (search) => {
 	const params = new URLSearchParams(search);
 	const filters = {};
-
-	// Handle age filter params
+	//
+	// // Handle age filter params
+	// const ageValues = params.getAll('age');
+	// if (ageValues.length) {
+	// 	filters.age = ageValues;
+	// }
 	const ageValues = params.getAll('age');
 	if (ageValues.length) {
 		filters.age = ageValues;
 	}
 
-	// TODO other params
+	// Handle zip and radius params
+	const zip = params.get('zip');
+	const radius = params.get('radius');
+	if (zip || radius) {
+		filters.location = {
+			zipCode: zip || '',
+			radius: radius || (zip ? '100' : ''),
+		};
+	}
+
 	return filters;
 };
 
-// src/utils/url.js
 export const updateURLWithFilters = (filters, existingSearch) => {
 	// Start with existing params
 	const params = new URLSearchParams(existingSearch);
