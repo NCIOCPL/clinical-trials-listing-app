@@ -1,6 +1,6 @@
 @use "uswds-core" as *;
 
-$theme-pagination-breakpoint: mobile;
+//$theme-pagination-breakpoint: mobile;
 $pagination-color-current: 'accent-cool-dark';
 
 @forward 'usa-pagination';

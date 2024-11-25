@@ -1,2 +1,8 @@
 @use 'ncids-minimal';
 @use 'ncids-application-page';
+
+@forward "usa-footer";
+@forward "usa-button";
+@forward "usa-form-group";
+@forward "usa-input";
+@forward "usa-error-message";

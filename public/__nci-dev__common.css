@@ -4992,14 +4992,14 @@ form button:hover {
 	color: #fff;
 }
 
-.button.submit,
+/* .button.submit,
 .button[type='submit'],
 form button.submit,
 form button[type='submit'] {
 	background-color: #620788;
 	border-color: #3f0557;
 	color: #fff;
-}
+} */
 
 .button.submit:focus,
 .button.submit:hover,
@@ -5471,7 +5471,7 @@ form .row textarea.columns {
 	padding-left: 0.9375em;
 }
 
-.label,
+/* .label,
 label {
 	font-size: 0.875em;
 	color: #606060;
@@ -5483,7 +5483,7 @@ label {
 	line-height: 1em;
 	font-family: 'Montserrat', 'Avant Garde', Arial, sans-serif;
 	font-size: 16px;
-}
+} */
 
 .label.right,
 label.right {
