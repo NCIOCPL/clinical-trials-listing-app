@@ -56,4 +56,3 @@ Feature: As a user, I would like to view the trial results for an intervention l
       | 1      |
       | 2      |
       | 3      |
-      | Next   |

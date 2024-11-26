@@ -15,6 +15,16 @@ import { AnalyticsProvider, EddlAnalyticsProvider } from './tracking';
 import { getProductTestBase } from './utils';
 import { ErrorBoundary } from './views';
 import clinicalTrialsSearchClientFactory from './services/api/clinical-trials-search-api/clinicalTrialsSearchClientFactory';
+/**
+ * Imports the NCI Extended Header with Mega Menu component auto initializer.
+ * Note: this should output a console warning for mega menu.
+ */
+import '@nciocpl/ncids-js/nci-header/extended-with-mega-menu/auto-init';
+
+/**
+ * Imports the NCI Big Footer component auto initializer.
+ */
+import '@nciocpl/ncids-js/usa-footer/nci-big/auto-init';
 
 /**
  * Initializes the Clinical Trials Listing App.

@@ -1,8 +1,46 @@
-@use 'ncids-minimal';
-@use 'ncids-application-page';
-
+@forward 'ncids-minimal';
+@forward 'ncids-application-page';
 @forward "usa-footer";
+@forward "nci-header";
+@forward "usa-banner";
+
 @forward "usa-button";
 @forward "usa-form-group";
 @forward "usa-input";
 @forward "usa-error-message";
+
+footer .grid-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.usa-footer__primary-content {
+    padding-right: 2rem;
+}
+
+nav.nci-header-nav ul.nci-header-nav__primary li.nci-header-nav__primary-item > button.nci-header-nav__primary-button[aria-expanded=false] span::after {
+    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59003L12 13.17L7.41 8.59003L6 10L12 16L18 10L16.59 8.59003Z" fill="%231B1B1B"/></svg>') no-repeat center / contain;
+}
+
+nav.nci-header-nav ul.nci-header-nav__primary li.nci-header-nav__primary-item > button.nci-header-nav__primary-button[aria-expanded=true] span::after {
+    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m12 8-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/></svg>') no-repeat center / contain;
+}
+// .grid-row.grid-gap-4>* {
+//     padding-left: 1rem;
+//     padding-right: 1rem;
+// }
+
+// @media (min-width: 64em) {
+//     .desktop\:grid-col-4 {
+//         flex: 0 1 auto;
+//         width: 33.3333333333%;
+//     }
+// }
+
+// .usa-footer__primary-section>.grid-container {
+//     margin-left: auto;
+//     margin-right: auto;
+//     max-width: 87.5rem;
+//     padding-left: 1rem;
+//     padding-right: 1rem;
+// }

@@ -60,8 +60,7 @@ Feature: As a user, I would like to view the trial results for a disease listing
       | 2      |
       | ...    |
       | 6      |
-      | Next   |
-    When user clicks on "Next" button
+    When user clicks on "2" button
     Then the user is redirected to "/breast-cancer/supportive-care" with query parameters "cfg=0&pn=2"
     And user is brought to the top of a page
 		And the page contains meta tags with the following properties

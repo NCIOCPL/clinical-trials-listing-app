@@ -56,4 +56,3 @@ Feature: As a user, I would like to view the trial results for a disease listing
       | pages  |
       | 1      |
       | 2      |
-      | Next   |

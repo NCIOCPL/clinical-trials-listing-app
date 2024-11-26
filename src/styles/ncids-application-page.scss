@@ -181,3 +181,23 @@
 		}
 	}
 }
+
+.cgdpl .contentzone ul.usa-pagination__list li,
+.cgdpl .rawHtml ul.usa-pagination__list li {
+  margin-bottom:0em;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  margin-top:0em;
+}
+
+
+.cgdpl .usa-pagination{
+  display: flex;
+}
+
+.cgdpl .contentzone ul.usa-pagination__list > li:before,
+.cgdpl .rawHtml ul.usa-pagination__list > li:before {
+  content: none;
+  padding: 0;
+  margin: 0;
+}

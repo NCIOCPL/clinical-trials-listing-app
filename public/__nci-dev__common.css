@@ -7437,7 +7437,7 @@ header {
 	padding-top: 1.5em;
 }
 
-.nci-logo-pages.columns {
+/* .nci-logo-pages.columns {
 	padding-left: 0;
 	padding-right: 0;
 }
@@ -7493,7 +7493,7 @@ header {
 		padding-left: 13px;
 		padding-right: 13px;
 	}
-}
+} */
 
 a.nav-contact:before,
 a.nav-dictionary:before,
@@ -7533,7 +7533,7 @@ button.nav-search:before {
 	background-position: 6.13497% 86.23831%;
 }
 
-.nci-logo {
+/* .nci-logo {
 	font-weight: 700;
 	font-size: 37.7px;
 	background: url(https://cancer.gov/PublishedContent/images/images/design-elements/logos/NIH-red-logo.png)
@@ -7570,7 +7570,7 @@ button.nav-search:before {
 		padding-left: 95px;
 		padding-top: 9px;
 	}
-}
+} */
 
 @media only screen and (max-width: 1024px) {
 	header {
@@ -7623,7 +7623,7 @@ button.nav-search:before {
 }
 
 @media only screen and (max-width: 640px) {
-	.nci-logo {
+	/* .nci-logo {
 		font-size: 16px;
 		min-height: 28px;
 	}
@@ -7631,7 +7631,7 @@ button.nav-search:before {
 	.nci-logo a {
 		padding-left: 80px;
 		padding-top: 5px;
-	}
+	} */
 
 	.mobile-menu-bar > a,
 	.mobile-menu-bar > button {
@@ -7652,12 +7652,12 @@ button.nav-search:before {
 		margin-left: 4%;
 	}
 }
-
+/* 
 @media only screen and (max-width: 390px) {
 	.nci-logo {
 		font-size: 13px;
 	}
-}
+} */
 
 .slide--up {
 	display: none;
