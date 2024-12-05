@@ -4,7 +4,7 @@ import { useTracking } from 'react-tracking';
 
 import { TokenParser } from '../../../../utils';
 
-const ResultsListItem = ({ locationInfo, nciId, resultsItemTitleLink, summary, title, resultIndex }) => {
+const ResultsListItem = ({ locationInfo, nciId, resultsItemTitleLink, status, title, resultIndex }) => {
 	const context = { nci_id: nciId };
 	const titleLink = TokenParser.replaceTokens(resultsItemTitleLink, context);
 	const tracking = useTracking();
@@ -25,7 +25,8 @@ const ResultsListItem = ({ locationInfo, nciId, resultsItemTitleLink, summary, t
 				</a>
 			</div>
 			<div className="grid-row">
-				<p className="ctla-results__list-item-body grid-col">{summary}</p>
+				<div className="ctla-results__list-item-status grid-col">
+					<strong>Status:</strong> {status}</div>
 			</div>
 			<div className="grid-row">
 				<div className="ctla-results__list-item-location grid-col">{locationInfo}</div>

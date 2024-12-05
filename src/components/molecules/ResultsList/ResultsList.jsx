@@ -29,7 +29,7 @@ const ResultsList = ({ results, resultsItemTitleLink }) => {
 
 							const locationInfo = getLocationInfoFromSites(current_trial_status, nct_id, sites);
 
-							return <ResultsListItem key={nci_id} locationInfo={locationInfo} nciId={nci_id} summary={brief_summary} title={brief_title} resultsItemTitleLink={resultsItemTitleLink} resultIndex={index} />;
+							return <ResultsListItem key={nci_id} locationInfo={locationInfo} nciId={nci_id} status={current_trial_status} title={brief_title} resultsItemTitleLink={resultsItemTitleLink} resultIndex={index} />;
 						})}
 					</ul>
 				</div>
