@@ -1,10 +1,33 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useFilters, FilterProvider } from '../../../features/filters/context/FilterContext/FilterContext';
 import { getLocationInfoFromSites } from '../../../utils';
 import ResultsListItem from './ResultsListItem';
 import './ResultsList.scss';
+import { isWithinRadius } from '../../../utils';
 
-const ResultsList = ({ results, resultsItemTitleLink, appliedFilters = [] }) => {
+const ResultsList = ({ results, resultsItemTitleLink }) => {
+	const { state, zipCoords } = useFilters();
+	const { appliedFilters } = state;
+
+	var zipRadius = appliedFilters.location.radius;
+	var hasZipInput = false;
+	var zipInputReturn = '';
+
+
+	function displayLocation(sitesList, zipCoords, zipRadius) {
+
+		const countNearbySitesByZip = (arr) => {
+			return arr.reduce(
+				(count, itemSite) =>
+					count + isWithinRadius(zipCoords, itemSite.org_coordinates, zipRadius),
+				0
+			);
+		};
+		
+		zipInputReturn = `, including ${countNearbySitesByZip(sitesList)} near you`;
+	}
+
 	return (
 		<div className="ctla-results__list grid-container">
 			<div className="grid-row">
@@ -23,7 +46,14 @@ const ResultsList = ({ results, resultsItemTitleLink, appliedFilters = [] }) => 
 						{results.map((resultItem, index) => {
 							const { brief_summary, brief_title, current_trial_status, nci_id, nct_id, sites } = resultItem;
 
-							const locationInfo = getLocationInfoFromSites(current_trial_status, nct_id, sites);
+							if (zipCoords !== null) {
+								hasZipInput = true;
+								zipRadius = appliedFilters.location.radius;
+
+								displayLocation(sites, zipCoords, zipRadius, hasZipInput);
+							}
+							
+							const locationInfo = getLocationInfoFromSites(current_trial_status, nct_id, sites, hasZipInput, zipInputReturn);
 
 							return <ResultsListItem key={nci_id} locationInfo={locationInfo} nciId={nci_id} summary={brief_summary} title={brief_title} resultsItemTitleLink={resultsItemTitleLink} resultIndex={index} />;
 						})}

@@ -513,8 +513,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		getCurrentFilters,
 		isApplyingFilters,
 		setIsApplyingFilters,
-		enabledFilters: filterConfig.enabledFilters,
-		pageType,
+		zipCoords,
 	};
 
 	return <FilterContext.Provider value={value}>{children}</FilterContext.Provider>;
@@ -532,7 +531,7 @@ export function useFilters() {
 		throw new Error('useFilters must be used within a FilterProvider');
 	}
 
-	const { state, dispatch, getCurrentFilters, isApplyingFilters, setIsApplyingFilters, enabledFilters, pageType } = context;
+	const { state, dispatch, getCurrentFilters, isApplyingFilters, setIsApplyingFilters, zipCoords, enabledFilters, pageType } = context;
 
 	const setFilter = (filterType, value) =>
 		dispatch({
@@ -565,7 +564,6 @@ export function useFilters() {
 		clearFilters,
 		removeFilter,
 		isApplyingFilters,
-		enabledFilters,
-		pageType,
+		zipCoords
 	};
 }

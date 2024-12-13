@@ -56,7 +56,7 @@ export const useTrialSearch = (requestFilters, isEnabled = true) => {
 
 				const baseBody = {
 					current_trial_status: ['Active', 'Approved', 'Enrolling by Invitation', 'In Review', 'Temporarily Closed to Accrual', 'Temporarily Closed to Accrual and Intervention'],
-					include: ['brief_summary', 'brief_title', 'current_trial_status', 'nci_id', 'nct_id', 'sites.org_name', 'sites.org_country', 'sites.org_state_or_province', 'sites.org_city', 'sites.recruitment_status'],
+					include: ['brief_summary', 'brief_title', 'current_trial_status', 'nci_id', 'nct_id', 'sites.org_name', 'sites.org_country', 'sites.org_state_or_province', 'sites.org_city', 'sites.recruitment_status', 'sites.org_coordinates'],
 					from: requestFilters.from || 0,
 					size: requestFilters.size || 25,
 				};
