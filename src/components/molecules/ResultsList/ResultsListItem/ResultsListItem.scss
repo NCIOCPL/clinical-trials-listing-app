@@ -1,16 +1,16 @@
 .ctla-results__list-item {
 	&-title {
 		font-family: Montserrat, Avant Garde, Arial, sans-serif;
-		font-weight: 400;
+		font-weight: 600;
 		font-size: 1.125em;
 		line-height: 1.111em;
-		text-decoration: none;
+		text-decoration: underline;
 	}
 
 	.ctla-results__list-item-title {
 		&:hover {
-			color: #bb0e3d;
-			text-decoration: none;
+			color: #004971;
+			text-decoration: underline;
 		}
 	}
 

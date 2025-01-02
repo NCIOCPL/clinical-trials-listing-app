@@ -24,7 +24,7 @@ const AgeFilter = ({ value, onChange, onFocus }) => {
 
 	return (
 		<FilterGroup title="Age">
-			<input id="age-filter-input" name="age-filter" aria-label="Enter participant age" type="number" className="usa-input form-control" placeholder={FILTER_CONFIG.age.placeholder} value={filters.age || ''} onChange={handleAgeChange} onFocus={onFocus} min={FILTER_CONFIG.age.min} max={FILTER_CONFIG.age.max} />
+			<input id="age-filter-input" name="age-filter" aria-label="Enter participant age" type="number" className="usa-input form-control" value={filters.age || ''} onChange={handleAgeChange} onFocus={onFocus} min={FILTER_CONFIG.age.min} max={FILTER_CONFIG.age.max} />
 		</FilterGroup>
 	);
 };

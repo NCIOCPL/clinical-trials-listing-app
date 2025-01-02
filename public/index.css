@@ -44,7 +44,7 @@ code {
 @media only screen and (min-width: 1025px) {
 	.content-container {
 		float: right;
-		padding-right: 3.125em;
+		padding-right: 1em;
 		width: 100%;
 	}
 }

@@ -29,7 +29,7 @@ import clinicalTrialsSearchClientFactory from './services/api/clinical-trials-se
 // /**
 //  * Imports the NCI Big Footer component auto initializer.
 //  */
-// import '@nciocpl/ncids-js/usa-footer/nci-big/auto-init';
+import '@nciocpl/ncids-js/usa-footer/nci-big/auto-init';
 
 const queryClient = new QueryClient({
 	defaultOptions: {

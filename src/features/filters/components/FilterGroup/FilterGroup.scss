@@ -6,7 +6,7 @@
 	}
 
 	&__header {
-		margin-bottom: 0.75rem;
+		margin-bottom: 0.5rem;
 	}
 
 	&__title-container {
@@ -92,6 +92,7 @@
 	&__content {
 		overflow: hidden;
 		transition: max-height 0.3s ease-out;
+		position: relative;
 
 		&:not(.is-expanded) {
 			max-height: 0;
@@ -167,6 +168,9 @@
 
 }
 
-
+select#radius-filter.usa-select {
+	margin-top: unset;
+	width: 100% !important;
+}
 
 

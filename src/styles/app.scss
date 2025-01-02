@@ -16,6 +16,11 @@ h1 {
 
 // styles/app.scss
 
+p {
+  margin-bottom: 32px;
+  line-height: 24px;
+}
+
 .app {
   display: flex;
   flex-direction: column;
@@ -37,6 +42,98 @@ h1 {
 h1 {
   margin-bottom: 20px;
 	color: #1b1b1b;
+  line-height: 1.1em;
+	font-size: 1.75em;
+}
+
+h2 {
+	line-height: 1.215em;
+	font-size: 1.4375em;
+}
+
+h3 {
+	line-height: 1.25em;
+	font-size: 1.25em;
+}
+
+a {
+	color: #007BBD;
+	//text-decoration: underline;
+	line-height: inherit;
+}
+
+a:focus,
+a:hover {
+	color: #004971;
+}
+
+ul {
+	list-style: none;
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+ul li ol,
+ul li ul {
+	margin-left: 1.25em;
+	margin-bottom: 0;
+	font-size: 1em;
+}
+
+input[type='checkbox'],
+input[type='file'],
+input[type='radio'],
+select {
+	margin: 0 0 1em;
+}
+
+input[type='date'],
+input[type='datetime-local'],
+input[type='datetime'],
+input[type='email'],
+input[type='month'],
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='tel'],
+input[type='text'],
+input[type='time'],
+input[type='url'],
+input[type='week'],
+textarea {
+	border-radius: 0;
+	background-color: #f2f2f3;
+	font-family: inherit;
+	-webkit-box-shadow: 0 2px 4px 0 hsla(240, 4%, 95%, 0.05) inset;
+	box-shadow: inset 0 2px 4px 0 hsla(240, 4%, 95%, 0.05);
+	color: #2e2e2e;
+	display: block;
+	font-size: 1em;
+	margin: 0 0 1em;
+	padding: 0.5em;
+	height: 2.4375em;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: -webkit-box-shadow 0.45s, border-color 0.45s ease-in-out;
+	-webkit-transition: border-color 0.45s ease-in-out, -webkit-box-shadow 0.45s;
+	transition: border-color 0.45s ease-in-out, -webkit-box-shadow 0.45s;
+	transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
+	transition: box-shadow 0.45s, border-color 0.45s ease-in-out,
+		-webkit-box-shadow 0.45s;
+}
+
+select {
+	width: auto;
+	font-size: inherit;
+	font-family: Noto Sans, Century Gothic, Arial, sans-serif;
+	color: #2e2e2e;
+	line-height: 1;
+	padding: 0.5em 1em 0.5em 0.75em;
 }
 
 // Utility classes for layout
@@ -47,21 +144,21 @@ h1 {
   margin-right: auto;
   margin-left: auto;
 
-  @media (min-width: 576px) {
-    max-width: 540px;
-  }
+//   @media (min-width: 576px) {
+//     max-width: 540px;
+//   }
 
-  @media (min-width: 768px) {
-    max-width: 720px;
-  }
+//   @media (min-width: 768px) {
+//     max-width: 720px;
+//   }
 
-  @media (min-width: 992px) {
-    max-width: 960px;
-  }
+//   @media (min-width: 992px) {
+//     max-width: 960px;
+//   }
 
-  @media (min-width: 1200px) {
-    max-width: 1140px;
-  }
+//   @media (min-width: 1200px) {
+//     max-width: 1140px;
+//   }
 }
 
 .grid-row {

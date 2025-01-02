@@ -44,7 +44,7 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onFoc
 
 	return (
 		<>
-			<FilterGroup title="Location by Zip Code">
+			<FilterGroup title="Location by ZIP Code">
 				<input id="zip-code-filter" name="zip-code" aria-label="Enter ZIP code" type="text" className="usa-input form-control" placeholder="Enter U.S. Zip Code" value={zipCode} onChange={onZipCodeChange} onFocus={onFocus} maxLength={5} />
 				{error && (
 					<div id="zip-error" className="zip-code-filter__error">

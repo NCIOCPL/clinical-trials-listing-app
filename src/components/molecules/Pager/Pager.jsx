@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import img from '@nciocpl/ncids-css/uswds-img/sprite.svg';
+//import img from '@nciocpl/ncids-css/uswds-img/sprite.svg';
 
 const Pager = ({ current = 1, currentPageNeighbours = 2, nextLabel = 'Next', onPageNavigationChange, previousLabel = 'Previous', resultsPerPage = 25, totalResults }) => {
 	// Max number of neighbours is set to 3
@@ -106,9 +106,7 @@ const Pager = ({ current = 1, currentPageNeighbours = 2, nextLabel = 'Next', onP
 					role="button"
 					aria-hidden={currentPage === 1}
 					aria-label="Previous page">
-					<svg className="usa-icon" aria-hidden="true" focusable="false" role="img">
-						<use href={img + '#navigate_before'} />
-					</svg>
+					<svg className="usa-icon previous-svg" aria-hidden="true" focusable="false" role="img"></svg>
 					<span className="usa-pagination__link-text">{previousLabel}</span>
 				</a>
 			</li>
@@ -124,9 +122,7 @@ const Pager = ({ current = 1, currentPageNeighbours = 2, nextLabel = 'Next', onP
 					aria-hidden={currentPage === pageCount}
 					aria-label="Next page">
 					<span className="usa-pagination__link-text">{nextLabel}</span>
-					<svg className="usa-icon" aria-hidden="true" focusable="false" role="img">
-						<use href={img + '#navigate_next'} />
-					</svg>
+					<svg className="usa-icon next-svg" aria-hidden="true" focusable="false" role="img"></svg>
 				</a>
 			</li>
 		);
