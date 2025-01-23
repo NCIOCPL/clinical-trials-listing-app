@@ -33,6 +33,9 @@ const initialState = {
 	isDirty: false,
 	shouldSearch: true,
 	isInitialLoad: true,
+	currentPage: null,
+	paramOrder: [], // Track parameter order
+	preservedParams: '',
 };
 
 // const getAgeRangeFilters = (ageFilters) => {
@@ -269,7 +272,11 @@ const initialState = {
 function filterReducer(state, action) {
 	const { enabledFilters } = PAGE_FILTER_CONFIGS[state.pageType];
 	const clearedFilters = {};
-
+	let isNewPageLoad = null;
+	let preservedParams = null;
+	let pageNumber = null;
+	let paramPairs = null;
+	let orderedParams = null;
 	switch (action.type) {
 		case FilterActionTypes.SET_FILTER:
 			if (!enabledFilters.includes(action.payload.filterType)) {
@@ -285,11 +292,29 @@ function filterReducer(state, action) {
 			};
 
 		case FilterActionTypes.APPLY_FILTERS:
+			isNewPageLoad = action.payload?.isNewPageLoad;
+			preservedParams = action.payload?.preservedParams;
+
+			// Parse preserved params while maintaining order
+			paramPairs = (preservedParams || '').split('&').filter(Boolean);
+			orderedParams = new Map();
+			paramPairs.forEach((pair) => {
+				const [key, value] = pair.split('=');
+				if (key) orderedParams.set(key, value);
+			});
+
+			// During initial load, preserve the original page number
+			pageNumber = isNewPageLoad ? orderedParams.get('pn') || '1' : '1';
+
 			return {
 				...state,
 				appliedFilters: { ...state.filters },
 				isDirty: false,
 				shouldSearch: true,
+				isInitialLoad: isNewPageLoad || false,
+				preservedParams: preservedParams || '',
+				currentPage: pageNumber || '1',
+				paramOrder: Array.from(orderedParams.keys()),
 			};
 
 		case FilterActionTypes.CLEAR_FILTERS:
@@ -383,69 +408,138 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 
 	// Effect to sync URL params to filter state on mount
 	useEffect(() => {
-		const params = new URLSearchParams(location.search);
-		const filtersFromUrl = getFiltersFromURL(params);
+		let params = new URLSearchParams(location.search);
+		let filtersFromUrl = getFiltersFromURL(params);
+		let isNewPageLoad = true;
+
+		// Keep track of original parameter order and preserve non-filter params
+		let paramOrder = Array.from(params.keys());
+		let filterParams = ['age', 'zip', 'radius'];
+		let preservedParamsMap = new Map();
+
+		// Preserve original parameter order for non-filter params
+		for (const key of paramOrder) {
+			if (!filterParams.includes(key)) {
+				preservedParamsMap.set(key, params.get(key));
+			}
+		}
+
+		// Convert to string while maintaining order
+		const preservedParams = Array.from(preservedParamsMap.entries())
+			.map(([key, value]) => `${key}=${value}`)
+			.join('&');
 
 		if (Object.keys(filtersFromUrl).length > 0) {
 			Object.entries(filtersFromUrl).forEach(([filterType, value]) => {
 				dispatch({
 					type: FilterActionTypes.SET_FILTER,
-					payload: { filterType, value },
+					payload: { filterType, value, isNewPageLoad },
 				});
 			});
 			dispatch({
 				type: FilterActionTypes.APPLY_FILTERS,
+				payload: { isNewPageLoad, preservedParams: preservedParams.toString() },
 			});
 		} else {
-			// Even if no filters, still trigger the search to ensure pn is set
+			// Even if no filters, still trigger the search to ensure pn is preserved
 			dispatch({
 				type: FilterActionTypes.APPLY_FILTERS,
+				payload: { isNewPageLoad, preservedParams: preservedParams.toString() },
 			});
 		}
-	}, []);
+	}, [location.pathname]); // Re-run when pathname changes for disease/intervention pages
 
 	useEffect(() => {
 		// Meaning, we have not modified the form, and we should search
 		// AKA its initial
 		if (!state.isDirty && state.shouldSearch) {
-			const params = new URLSearchParams(window.location.search);
+			let params = new URLSearchParams(window.location.search);
+			let isInitialLoad = state.isInitialLoad;
+			// Get the original page number from URL during initial load
+			const originalPn = params.get('pn');
 
-			// Always ensure pn exists, regardless of filters
-			if (!params.has('pn')) {
-				params.set('pn', '1');
-			}
+			// Keep track of original parameter order
+			let paramOrder = Array.from(params.keys());
+			let filterParams = ['age', 'zip', 'radius'];
+			let updatedParams = new Map();
 
-			// Handle filter updates
-			if (Object.keys(state.appliedFilters).length > 0) {
-				// console.log(state.appliedFilters);
-
-				// Clear and re-add filter params
-				['age', 'zip', 'radius'].forEach((param) => params.delete(param));
-
-				// Add age filters
-				if (state.appliedFilters.age?.toString().trim()) {
-					params.set('age', state.appliedFilters.age);
-				} else {
-					params.delete('age');
-				}
-				// Add location filter
-				if (state.appliedFilters.location?.zipCode) {
-					params.set('zip', state.appliedFilters.location.zipCode);
-					if (state.appliedFilters.location.radius) {
-						params.set('radius', state.appliedFilters.location.radius.toString());
+			// First, store all non-filter params in their original order
+			// During initial load, preserve the original page number
+			for (const key of paramOrder) {
+				if (!filterParams.includes(key)) {
+					if (key === 'pn' && isInitialLoad) {
+						updatedParams.set(key, originalPn);
+					} else {
+						updatedParams.set(key, params.get(key));
 					}
 				}
-				// Reset page to 1 when filters actively change
-				params.set('pn', '1');
-
-				navigate(
-					{
-						pathname: location.pathname,
-						search: `?${params.toString()}`,
-					},
-					{ replace: true }
-				);
 			}
+
+			// Then add any active filters while preserving their position if they existed
+			if (Object.keys(state.appliedFilters).length > 0) {
+				if (state.appliedFilters.age?.toString().trim()) {
+					const ageIndex = paramOrder.indexOf('age');
+					if (ageIndex >= 0) {
+						// Keep age in its original position
+						const temp = new Map();
+						for (const [key, value] of updatedParams.entries()) {
+							if (paramOrder.indexOf(key) < ageIndex) {
+								temp.set(key, value);
+							}
+						}
+						temp.set('age', state.appliedFilters.age);
+						for (const [key, value] of updatedParams.entries()) {
+							if (paramOrder.indexOf(key) > ageIndex) {
+								temp.set(key, value);
+							}
+						}
+						updatedParams = temp;
+					} else {
+						updatedParams.set('age', state.appliedFilters.age);
+					}
+				}
+
+				if (state.appliedFilters.location?.zipCode) {
+					updatedParams.set('zip', state.appliedFilters.location.zipCode);
+					if (state.appliedFilters.location.radius) {
+						updatedParams.set('radius', state.appliedFilters.location.radius.toString());
+					}
+				}
+			}
+
+			// Handle page number while preserving its original position
+			const pnValue = isInitialLoad || !state.isDirty ? originalPn || '1' : '1';
+			const pnIndex = paramOrder.indexOf('pn');
+			if (pnIndex >= 0) {
+				const temp = new Map();
+				for (const [key, value] of updatedParams.entries()) {
+					if (paramOrder.indexOf(key) < pnIndex) {
+						temp.set(key, value);
+					}
+				}
+				temp.set('pn', pnValue);
+				for (const [key, value] of updatedParams.entries()) {
+					if (paramOrder.indexOf(key) > pnIndex) {
+						temp.set(key, value);
+					}
+				}
+				updatedParams = temp;
+			} else {
+				updatedParams.set('pn', pnValue);
+			}
+
+			// Convert Map to URLSearchParams while maintaining order
+			const queryString = Array.from(updatedParams.entries())
+				.map(([key, value]) => `${key}=${value}`)
+				.join('&');
+
+			navigate(
+				{
+					pathname: location.pathname,
+					search: queryString ? `?${queryString}` : '',
+				},
+				{ replace: true }
+			);
 		}
 	}, [state.appliedFilters, state.isDirty, state.shouldSearch, location.pathname, navigate]);
 
