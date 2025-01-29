@@ -1,3 +1,5 @@
+import { URL_PARAM_MAPPING } from '../constants/urlParams';
+
 export const FILTER_CONFIG = {
 	subtype: {
 		title: 'Subtype',
@@ -37,12 +39,14 @@ export const FILTER_CONFIG = {
 		placeholder: 'Enter the age of the participant.',
 		min: 0,
 		max: 120,
+		urlParam: URL_PARAM_MAPPING.age.shortCode,
 	},
 
 	location: {
 		title: 'Location by Zip Code',
 		type: 'text',
 		placeholder: 'Enter U.S. Zip Code',
+		urlParam: URL_PARAM_MAPPING.zipCode.shortCode,
 	},
 
 	radius: {
@@ -55,6 +59,7 @@ export const FILTER_CONFIG = {
 			{ id: '200', label: '200 miles', value: '200' },
 			{ id: '500', label: '500 miles', value: '500' },
 		],
+		urlParam: URL_PARAM_MAPPING.radius.shortCode,
 	},
 };
 

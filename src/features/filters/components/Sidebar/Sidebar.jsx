@@ -15,6 +15,7 @@ import { FILTER_EVENTS, INTERACTION_TYPES } from '../../tracking/filterEvents';
 import { useFilterCounters } from '../../hooks/useFilterCounters';
 import { formatLocationString, getAppliedFieldsString } from '../../utils/analytics';
 import { useTracking } from 'react-tracking';
+import { URL_PARAM_MAPPING } from '../../constants/urlParams';
 
 const Sidebar = ({ pageType = 'Disease' }) => {
 	const navigate = useNavigate();
@@ -24,19 +25,7 @@ const Sidebar = ({ pageType = 'Disease' }) => {
 	const [hasInteracted, setHasInteracted] = useState(false);
 	const { filterAppliedCounter, filterRemovedCounter, incrementAppliedCounter, incrementRemovedCounter } = useFilterCounters();
 	const tracking = useTracking();
-	// const [{ canonicalHost, language, analyticsChannel, analyticsContentGroup, analyticsPublishedDate, siteName }] = useStateValue();
-	//
-	// const getBaseAnalyticsData = () => ({
-	// 	name: canonicalHost?.replace(/^(http|https):\/\//, '') + location.pathname,
-	// 	title: siteName, // Fallback to siteName since pageTitle may not be available
-	// 	metaTitle: siteName,
-	// 	language: language === 'en' ? 'english' : 'spanish',
-	// 	channel: analyticsChannel,
-	// 	contentGroup: analyticsContentGroup,
-	// 	publishedDate: analyticsPublishedDate,
-	// 	trialListingPageType: pageType,
-	// 	type: 'nciAppModulePage',
-	// });
+
 	const validateFilters = () => {
 		const errors = {};
 
@@ -61,10 +50,10 @@ const Sidebar = ({ pageType = 'Disease' }) => {
 			.map((field) => {
 				switch (field) {
 					case 'age':
-						return 'a';
+						return URL_PARAM_MAPPING.age.shortCode;
 					case 'location':
 					case 'radius':
-						return 'z';
+						return URL_PARAM_MAPPING.zipCode.shortCode;
 					default:
 						return field;
 				}
@@ -177,9 +166,9 @@ const Sidebar = ({ pageType = 'Disease' }) => {
 			});
 			const params = new URLSearchParams(window.location.search);
 			if (filters.age) {
-				params.set('age', filters.age);
+				params.set(URL_PARAM_MAPPING.age.shortCode, filters.age);
 			} else {
-				params.delete('age');
+				params.delete(URL_PARAM_MAPPING.age.shortCode);
 			}
 			params.set('pn', '1');
 			navigate(`${window.location.pathname}?${params.toString()}`);
@@ -247,7 +236,7 @@ const Sidebar = ({ pageType = 'Disease' }) => {
 
 	useEffect(() => {
 		const params = new URLSearchParams(location.search);
-		const age = params.get('age');
+		const age = params.get(URL_PARAM_MAPPING.age.shortCode);
 
 		if (age) {
 			dispatch({

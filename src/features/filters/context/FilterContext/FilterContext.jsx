@@ -4,7 +4,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useZipConversion } from '../../hooks/useZipConversion';
 import { getFiltersFromURL } from '../../../../utils/url';
 import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
-// import { useTracking } from 'react-tracking';
+import { URL_PARAM_MAPPING } from '../../constants/urlParams';
+
 export const FilterActionTypes = {
 	SET_FILTER: 'SET_FILTER',
 	APPLY_FILTERS: 'APPLY_FILTERS',
@@ -12,13 +13,6 @@ export const FilterActionTypes = {
 	REMOVE_FILTER: 'REMOVE_FILTER',
 	SET_BASE_FILTERS: 'SET_BASE_FILTERS',
 };
-
-// 'diseases.nci_thesaurus_concept_id': ['C4872'],
-
-// const baseParams = {
-// 	current_trial_status: ['Active', 'Approved', 'Enrolling by Invitation', 'In Review', 'Temporarily Closed to Accrual', 'Temporarily Closed to Accrual and Intervention'],
-// 	include: ['brief_summary', 'brief_title', 'current_trial_status', 'nci_id', 'nct_id', 'sites.org_name', 'sites.org_country', 'sites.org_state_or_province', 'sites.org_city', 'sites.recruitment_status'],
-// };
 
 const initialState = {
 	filters: {
@@ -34,241 +28,10 @@ const initialState = {
 	shouldSearch: true,
 	isInitialLoad: true,
 	currentPage: null,
-	paramOrder: [], // Track parameter order
+	paramOrder: [],
 	preservedParams: '',
 };
 
-// const getAgeRangeFilters = (ageFilters) => {
-// 	if (!ageFilters?.length) return {};
-//
-// 	const ageRanges = {
-// 		child: { min: 0, max: 17 },
-// 		adult: { min: 18, max: 64 },
-// 		older_adult: { min: 65, max: null },
-// 	};
-//
-// 	const selectedRanges = ageFilters.map((age) => ageRanges[age]).filter(Boolean);
-//
-// 	if (!selectedRanges.length) return {};
-//
-// 	const minAge = Math.min(...selectedRanges.map((r) => r.min));
-// 	const maxAge = Math.max(...selectedRanges.map((r) => r.max || 999));
-//
-// 	const filters = {};
-//
-// 	if (minAge > 0) {
-// 		filters['eligibility.structured.min_age_in_years_gte'] = minAge;
-// 	}
-//
-// 	if (maxAge < 999) {
-// 		filters['eligibility.structured.max_age_in_years_lte'] = maxAge;
-// 	}
-//
-// 	return filters;
-// };
-
-// const getAgeFilters = (age) => {
-// 	if (!age) return {};
-//
-// 	return {
-// 		'eligibility.structured.min_age_in_years_lte': parseInt(age),
-// 		'eligibility.structured.max_age_in_years_gte': parseInt(age),
-// 	};
-// };
-
-// const getLocationFilters = (location) => {
-// 	if (!location?.zipCode || !location?.radius) return {};
-//
-// 	return {
-// 		'sites.org_coordinates': {
-// 			zipCode: location.zipCode,
-// 			radius: location.radius,
-// 		},
-// 	};
-// };
-
-// const transformFiltersToApi = (filters) => {
-// 	let apiFilters = {};
-//
-// 	// Age filter handling
-// 	if (filters.age) {
-// 		apiFilters['eligibility.structured.min_age_in_years_lte'] = filters.age;
-// 		apiFilters['eligibility.structured.max_age_in_years_gte'] = filters.age;
-// 	}
-//
-// 	return {
-// 		...apiFilters,
-// 		...getLocationFilters(filters.location),
-// 	};
-// };
-//
-// const getFiltersFromURL = (params) => {
-// 	const filters = {};
-//
-// 	// Handle age filter params
-// 	// const ageValues = params.getAll('age');
-// 	// if (ageValues.length) {
-// 	// 	filters.age = ageValues;
-// 	// }
-// 	const age = params.get('age');
-// 	if (age) {
-// 		filters.age = age;
-// 	}
-//
-// 	// Handle location params
-// 	const zipCode = params.get('zip');
-// 	const radius = params.get('radius');
-// 	if (zipCode || radius) {
-// 		filters.location = {
-// 			zipCode: zipCode || '',
-// 			radius: radius ? parseInt(radius, 10) : null,
-// 		};
-// 		}
-//
-// 	return filters;
-// };
-// const updateURLWithFilters = (filters, existingSearch, isInitialLoad = false) => {
-// 	// Start with empty params
-// 	const params = new URLSearchParams();
-//
-// 	// First, copy all existing non-filter params
-// 	const existingParams = new URLSearchParams(existingSearch);
-// 	for (const [key, value] of existingParams.entries()) {
-// 		if (!['age', 'zip', 'radius'].includes(key)) {
-// 			params.set(key, value);
-// 		}
-// 	}
-//
-// 	// Set pn=1 only for non-initial loads
-// 	if (!isInitialLoad) {
-// 		params.set('pn', '1');
-// 	}
-//
-// 	// Add filter params
-// 	// if (filters.age?.length) {
-// 	// 	filters.age.forEach((age) => params.append('age', age));
-// 	// }
-// 	if (filters.age) {
-// 		params.set('age', filters.age.toString());
-// 	} else {
-// 		params.delete('age');
-// 	}
-//
-// 	if (filters.location?.zipCode) {
-// 		params.set('zip', filters.location.zipCode);
-// 		if (filters.location.radius) {
-// 			params.set('radius', filters.location.radius.toString());
-// 		}
-// 	}
-//
-// 	return params.toString();
-// };
-// const getAgeRangeFilters = (ageFilters, baseParams = {}) => {
-// 	if (!ageFilters?.length) return {};
-//
-// 	const path = 'eligibility.structured';
-// 	const filters = {};
-//
-// 	// Helper to add a complete query (base params + age filter)
-// 	const addQuery = (prefix = '', ageGroup) => {
-// 		// Add all base parameters with prefix
-// 		Object.entries(baseParams).forEach(([key, value]) => {
-// 			filters[`${prefix}${key}`] = value;
-// 		});
-//
-// 		// Add age-specific filters with same prefix
-// 		switch (ageGroup) {
-// 			case 'child':
-// 				filters[`${prefix}${path}.min_age_in_years_lte`] = 17;
-// 				break;
-// 			case 'adult':
-// 				filters[`${prefix}${path}.min_age_in_years_lte`] = 64;
-// 				filters[`${prefix}${path}.max_age_in_years_gte`] = 18;
-// 				break;
-// 			case 'older_adult':
-// 				filters[`${prefix}${path}.max_age_in_years_gte`] = 65;
-// 				break;
-// 		}
-// 	};
-//
-// 	// Add first age filter with base parameters (no prefix)
-// 	addQuery('', ageFilters[0]);
-//
-// 	// Add parallel queries for additional age filters
-// 	ageFilters.slice(1).forEach((filter, index) => {
-// 		const prefix = 'outer_or_'.repeat(index + 1);
-// 		addQuery(prefix, filter);
-// 	});
-//
-// 	return filters;
-// };
-
-// const getAgeRangeFilters = (ageFilters) => {
-// 	if (!ageFilters?.length) return {};
-//
-// 	let filters = {};
-// 	let minAge = null;
-// 	let maxAge = null;
-//
-// 	// Anything avialable to a 17 year old or below. Solid.
-// 	if (ageFilters.includes('child')) {
-// 		minAge = Math.min(minAge || 17, 17);
-// 		filters['eligibility.structured.min_age_in_years_lte'] = minAge; // anything below this included
-// 	}
-//
-// 	// Solid.
-// 	if (ageFilters.includes('adult')) {
-// 		minAge = Math.min(minAge || 18, 18);
-// 		maxAge = Math.max(maxAge || 64, 64);
-// 		filters['eligibility.structured.min_age_in_years_lte'] = maxAge;
-// 		filters['eligibility.structured.max_age_in_years_gte'] = minAge;
-// 	}
-// 	// Maximim age allowesi greater than or equal to 65. Max age 64 and below. Solid.
-// 	if (ageFilters.includes('older_adult')) {
-// 		maxAge = Math.max(maxAge || 65, 65);
-// 		// filters['eligibility.structured.min_age_in_years_gte'] = minAge;
-// 		filters['eligibility.structured.max_age_in_years_gte'] = maxAge;
-// 	}
-//
-// 	// // WE want the range captured by child and adult. THis hsould be OR, butits doing AND Wrong.
-// 	// if (ageFilters.includes('child') && ageFilters.includes('older_adult')) {
-// 	// 	maxAge = Math.max(maxAge || 65, 65);
-// 	// 	filters['eligibility.structured.max_age_in_years_gte'] = maxAge;
-// 	// }
-//
-// 	// // Solid.
-// 	// if (ageFilters.includes('adult') && ageFilters.includes('child')) {
-// 	// 	// minAge = Math.min(minAge || 18, 18);
-// 	// 	// maxAge = Math.max(maxAge || 64, 64);
-// 	// 	// filters['eligibility.structured.min_age_in_years_lte'] = minAge;
-// 	// 	// filters['eligibility.structured.max_age_in_years_gte'] = maxAge;
-// 	// 	filters['eligibility.structured.min_age_in_years_lte'] = 64; //anything beliw this included. unapted
-// 	// }
-// 	//
-// 	// // WE want the range captured by child and adult. Solid. but weird..
-// 	// if (ageFilters.includes('adult') && ageFilters.includes('older_adult')) {
-// 	// 	// minAge = Math.min(minAge || 18, 18);
-// 	// 	// maxAge = Math.max(maxAge || 64, 64);
-// 	// 	// filters['eligibility.structured.min_age_in_years_lte'] = 999; // Anything below 1000
-// 	// 	filters['eligibility.structured.max_age_in_years_gte'] = 18; // anything above 18, uncapped
-// 	// }
-//
-// 	// We want all trials, aka same as no filer. Solid.
-// 	if (ageFilters.includes('child') && ageFilters.includes('older_adult') && ageFilters.includes('adult')) {
-// 		filters = {};
-// 		minAge = null;
-// 		maxAge = null;
-// 	}
-// 	//
-// 	// if (minAge !== null) {
-// 	// 	filters['eligibility.structured.min_age_in_years_lte'] = minAge;
-// 	// }
-// 	// if (maxAge !== null) {
-// 	// 	filters['eligibility.structured.max_age_in_years_gte'] = maxAge;
-// 	// }
-//
-// 	return filters;
-// };
 function filterReducer(state, action) {
 	const { enabledFilters } = PAGE_FILTER_CONFIGS[state.pageType];
 	const clearedFilters = {};
@@ -288,14 +51,13 @@ function filterReducer(state, action) {
 					...state.filters,
 					[action.payload.filterType]: action.payload.value,
 				},
-				isDirty: true, // Make sure this is being set to true
+				isDirty: true,
 			};
 
 		case FilterActionTypes.APPLY_FILTERS:
 			isNewPageLoad = action.payload?.isNewPageLoad;
 			preservedParams = action.payload?.preservedParams;
 
-			// Parse preserved params while maintaining order
 			paramPairs = (preservedParams || '').split('&').filter(Boolean);
 			orderedParams = new Map();
 			paramPairs.forEach((pair) => {
@@ -303,7 +65,6 @@ function filterReducer(state, action) {
 				if (key) orderedParams.set(key, value);
 			});
 
-			// During initial load, preserve the original page number
 			pageNumber = isNewPageLoad ? orderedParams.get('pn') || '1' : '1';
 
 			return {
@@ -331,9 +92,7 @@ function filterReducer(state, action) {
 			};
 
 		case FilterActionTypes.REMOVE_FILTER:
-			// eslint-disable-next-line no-case-declarations
 			const { filterType, value } = action.payload;
-			// eslint-disable-next-line no-case-declarations
 			const updatedFilters = { ...state.filters };
 			if (Array.isArray(updatedFilters[filterType])) {
 				updatedFilters[filterType] = updatedFilters[filterType].filter((v) => v !== value);
@@ -364,12 +123,7 @@ function filterReducer(state, action) {
 export const FilterContext = createContext();
 
 export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease' }) {
-	// Add defensive check for pageType
-	// console.log('FilterProvider pageType:', pageType);
-	// console.log('PAGE_FILTER_CONFIGS:', PAGE_FILTER_CONFIGS);
-
 	const filterConfig = PAGE_FILTER_CONFIGS[pageType];
-	// console.log('enabled FIlter context', filterConfig.enabledFilters);
 	const [state, dispatch] = useReducer(filterReducer, {
 		...initialState,
 		baseFilters,
@@ -381,11 +135,9 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 	const location = useLocation();
 	const navigate = useNavigate();
 
-	// Add state for zip coordinates
 	const [zipCoords, setZipCoords] = useState(null);
 	const [hasInvalidZip, setHasInvalidZip] = useState(false);
 
-	// Create updateFunc for useZipConversion
 	const updateZipState = (key, value) => {
 		if (key === 'zipCoords') {
 			setZipCoords(value);
@@ -395,8 +147,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 	};
 
 	const [{ getZipCoords, isError }] = useZipConversion(updateZipState);
-	// const [isInitialLoad, setIsInitialLoad] = useState(true);
-	// Effect to handle zip code updates
+
 	useEffect(() => {
 		if (state.appliedFilters?.location?.zipCode) {
 			getZipCoords(state.appliedFilters.location.zipCode);
@@ -406,25 +157,25 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		}
 	}, [state.appliedFilters?.location?.zipCode]);
 
-	// Effect to sync URL params to filter state on mount
 	useEffect(() => {
 		let params = new URLSearchParams(location.search);
 		let filtersFromUrl = getFiltersFromURL(params);
 		let isNewPageLoad = true;
 
-		// Keep track of original parameter order and preserve non-filter params
 		let paramOrder = Array.from(params.keys());
-		let filterParams = ['age', 'zip', 'radius'];
+		let filterParams = [
+			URL_PARAM_MAPPING.age.shortCode,
+			URL_PARAM_MAPPING.zipCode.shortCode,
+			URL_PARAM_MAPPING.radius.shortCode
+		];
 		let preservedParamsMap = new Map();
 
-		// Preserve original parameter order for non-filter params
 		for (const key of paramOrder) {
 			if (!filterParams.includes(key)) {
 				preservedParamsMap.set(key, params.get(key));
 			}
 		}
 
-		// Convert to string while maintaining order
 		const preservedParams = Array.from(preservedParamsMap.entries())
 			.map(([key, value]) => `${key}=${value}`)
 			.join('&');
@@ -441,30 +192,27 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 				payload: { isNewPageLoad, preservedParams: preservedParams.toString() },
 			});
 		} else {
-			// Even if no filters, still trigger the search to ensure pn is preserved
 			dispatch({
 				type: FilterActionTypes.APPLY_FILTERS,
 				payload: { isNewPageLoad, preservedParams: preservedParams.toString() },
 			});
 		}
-	}, [location.pathname]); // Re-run when pathname changes for disease/intervention pages
+	}, [location.pathname]);
 
 	useEffect(() => {
-		// Meaning, we have not modified the form, and we should search
-		// AKA its initial
 		if (!state.isDirty && state.shouldSearch) {
 			let params = new URLSearchParams(window.location.search);
 			let isInitialLoad = state.isInitialLoad;
-			// Get the original page number from URL during initial load
 			const originalPn = params.get('pn');
 
-			// Keep track of original parameter order
 			let paramOrder = Array.from(params.keys());
-			let filterParams = ['age', 'zip', 'radius'];
+			let filterParams = [
+				URL_PARAM_MAPPING.age.shortCode,
+				URL_PARAM_MAPPING.zipCode.shortCode,
+				URL_PARAM_MAPPING.radius.shortCode
+			];
 			let updatedParams = new Map();
 
-			// First, store all non-filter params in their original order
-			// During initial load, preserve the original page number
 			for (const key of paramOrder) {
 				if (!filterParams.includes(key)) {
 					if (key === 'pn' && isInitialLoad) {
@@ -475,19 +223,17 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 				}
 			}
 
-			// Then add any active filters while preserving their position if they existed
 			if (Object.keys(state.appliedFilters).length > 0) {
 				if (state.appliedFilters.age?.toString().trim()) {
-					const ageIndex = paramOrder.indexOf('age');
+					const ageIndex = paramOrder.indexOf(URL_PARAM_MAPPING.age.shortCode);
 					if (ageIndex >= 0) {
-						// Keep age in its original position
 						const temp = new Map();
 						for (const [key, value] of updatedParams.entries()) {
 							if (paramOrder.indexOf(key) < ageIndex) {
 								temp.set(key, value);
 							}
 						}
-						temp.set('age', state.appliedFilters.age);
+						temp.set(URL_PARAM_MAPPING.age.shortCode, state.appliedFilters.age);
 						for (const [key, value] of updatedParams.entries()) {
 							if (paramOrder.indexOf(key) > ageIndex) {
 								temp.set(key, value);
@@ -495,19 +241,18 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 						}
 						updatedParams = temp;
 					} else {
-						updatedParams.set('age', state.appliedFilters.age);
+						updatedParams.set(URL_PARAM_MAPPING.age.shortCode, state.appliedFilters.age);
 					}
 				}
 
 				if (state.appliedFilters.location?.zipCode) {
-					updatedParams.set('zip', state.appliedFilters.location.zipCode);
+					updatedParams.set(URL_PARAM_MAPPING.zipCode.shortCode, state.appliedFilters.location.zipCode);
 					if (state.appliedFilters.location.radius) {
-						updatedParams.set('radius', state.appliedFilters.location.radius.toString());
+						updatedParams.set(URL_PARAM_MAPPING.radius.shortCode, state.appliedFilters.location.radius.toString());
 					}
 				}
 			}
 
-			// Handle page number while preserving its original position
 			const pnValue = isInitialLoad || !state.isDirty ? originalPn || '1' : '1';
 			const pnIndex = paramOrder.indexOf('pn');
 			if (pnIndex >= 0) {
@@ -528,7 +273,6 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 				updatedParams.set('pn', pnValue);
 			}
 
-			// Convert Map to URLSearchParams while maintaining order
 			const queryString = Array.from(updatedParams.entries())
 				.map(([key, value]) => `${key}=${value}`)
 				.join('&');
@@ -544,24 +288,19 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 	}, [state.appliedFilters, state.isDirty, state.shouldSearch, location.pathname, navigate]);
 
 	const getLocationFilters = (location) => {
-		// Early return if any required values are missing
 		if (!location?.zipCode || !location?.radius || !zipCoords || hasInvalidZip) {
 			return {};
 		}
 
-		// Validate coordinate structure
 		if (!zipCoords.lat || !zipCoords.long) {
 			console.error('Invalid coordinate structure:', zipCoords);
 			console.log('zipCoords:', isError);
-
 			return {};
 		}
 
-		// Convert coordinates safely using 'long' for longitude
 		const lat = String(zipCoords.lat);
-		const lon = String(zipCoords.long); // Changed from lon to long
+		const lon = String(zipCoords.long);
 
-		// Validate converted values
 		if (!lat || !lon) {
 			console.error('Invalid coordinate values after conversion:', { lat, lon });
 			return {};
@@ -569,7 +308,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 
 		return {
 			'sites.org_coordinates_lat': lat,
-			'sites.org_coordinates_lon': lon, // API still expects 'lon'
+			'sites.org_coordinates_lon': lon,
 			'sites.org_coordinates_dist': `${location.radius}mi`,
 		};
 	};
@@ -577,15 +316,12 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 	const transformFiltersToApi = (filters) => {
 		let apiFilters = {};
 
-		// Age filter handling
 		if (filters.age?.toString().trim()) {
 			apiFilters['eligibility.structured.min_age_in_years_lte'] = filters.age;
 			apiFilters['eligibility.structured.max_age_in_years_gte'] = filters.age;
 		}
 
 		return {
-			// ...getAgeRangeFilters(filters.age, baseParams),
-			// ...getAgeFilters(filters.age),
 			...apiFilters,
 			...getLocationFilters(filters.location),
 		};
@@ -640,7 +376,6 @@ export function useFilters() {
 	const applyFilters = async () => {
 		setIsApplyingFilters(true);
 		dispatch({ type: FilterActionTypes.APPLY_FILTERS });
-		// Give enough time for visual feedback
 		await new Promise((resolve) => setTimeout(resolve, 300));
 		setIsApplyingFilters(false);
 	};

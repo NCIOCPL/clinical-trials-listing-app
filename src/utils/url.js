@@ -1,35 +1,4 @@
-/**
- * appendOrUpdateToQueryString - Appends or updates params to query string
- *
- * @param {string} queryString
- * @param {string} key
- * @param {string} val
- * @return {string}
- */
-// export const appendOrUpdateToQueryString = (queryString, key, val) => {
-// 	// Strip out "?" char
-// 	queryString = queryString.replace('?', '');
-//
-// 	if (!queryString.length) {
-// 		return `?${key}=${val}`;
-// 	}
-//
-// 	// Convert query string to array by splitting
-// 	const paramsArray = queryString.split('&');
-//
-// 	// Filter out "pn" param if any
-// 	const retArray = paramsArray.filter((param) => !param.includes(`${key}=`));
-//
-// 	// Add param key-value
-// 	retArray.push(`${key}=${val}`);
-//
-// 	// Convert array back to string with join
-// 	const retQueryString = `?${retArray.join('&')}`;
-//
-// 	// Return value
-// 	return retQueryString;
-// };
-//
+import { URL_PARAM_MAPPING } from '../features/filters/constants/urlParams';
 
 export const appendOrUpdateToQueryString = (queryString, key, val) => {
 	const params = new URLSearchParams(queryString);
@@ -47,20 +16,15 @@ export const getKeyValueFromQueryString = (key, queryString) => {
 export const getFiltersFromURL = (search) => {
 	const params = new URLSearchParams(search);
 	const filters = {};
-	//
-	// // Handle age filter params
-	// const ageValues = params.getAll('age');
-	// if (ageValues.length) {
-	// 	filters.age = ageValues;
-	// }
-	const ageValues = params.getAll('age');
+
+	const ageValues = params.getAll(URL_PARAM_MAPPING.age.shortCode);
 	if (ageValues.length) {
 		filters.age = ageValues;
 	}
 
 	// Handle zip and radius params
-	const zip = params.get('zip');
-	const radius = params.get('radius');
+	const zip = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
+	const radius = params.get(URL_PARAM_MAPPING.radius.shortCode);
 	if (zip || radius) {
 		filters.location = {
 			zipCode: zip || '',
@@ -76,20 +40,20 @@ export const updateURLWithFilters = (filters, existingSearch) => {
 	const params = new URLSearchParams(existingSearch);
 
 	// Clear any existing filter params
-	params.delete('age');
+	params.delete(URL_PARAM_MAPPING.age.shortCode);
 	// We can add other filter param deletions here as needed
 
 	// Add new filter params
 	if (filters.age?.length) {
-		filters.age.forEach((age) => params.append('age', age));
+		filters.age.forEach((age) => params.append(URL_PARAM_MAPPING.age.shortCode, age));
 	}
 
 	// Add location params if they exist
 	if (filters.location?.zipCode) {
-		params.set('zip', filters.location.zipCode);
+		params.set(URL_PARAM_MAPPING.zipCode.shortCode, filters.location.zipCode);
 	}
 	if (filters.location?.radius) {
-		params.set('radius', filters.location.radius.toString());
+		params.set(URL_PARAM_MAPPING.radius.shortCode, filters.location.radius.toString());
 	}
 
 	// Return the full query string

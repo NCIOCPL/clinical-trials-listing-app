@@ -1,3 +1,5 @@
+import { URL_PARAM_MAPPING } from '../constants/urlParams';
+
 export const trackFilterChange = (filterType, value, analytics) => {
 	analytics.trackEvent({
 		type: 'Other',
@@ -25,12 +27,12 @@ export const trackFilterClear = (analytics) => {
 
 export const formatLocationString = (location) => {
 	if (!location?.zipCode || !location?.radius) return '';
-	return `zip|${location.zipCode}|${location.radius}`;
+	return `${URL_PARAM_MAPPING.zipCode.shortCode}|${location.zipCode}|${location.radius}`;
 };
 
 export const getAppliedFieldsString = (filters) => {
 	const fields = [];
-	if (filters.age) fields.push('a');
+	if (filters.age) fields.push(URL_PARAM_MAPPING.age.shortCode);
 	if (filters.location?.zipCode) fields.push('loc');
 	return fields.join(':');
 };
