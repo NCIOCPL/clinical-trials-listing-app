@@ -5,17 +5,16 @@ $pagination-color-current: "accent-cool-dark";
 @forward 'usa-pagination';
 
 .usa-pagination {
-    justify-content: left;
-    margin-top: 12px;
-    margin-bottom: 12px;
+    @include u-flex('justify-start');
+    @include u-margin-y('105');
 }
 
 .usa-pagination__list {
-    margin-bottom: 0px !important;
+    @include u-margin-bottom (0, !important);
 }
 
 .usa-pagination__arrow:has(a.hidden) {
-    display: none;
+    @include u-display('none');
 }
 
 .usa-pagination .usa-current {
@@ -23,7 +22,7 @@ $pagination-color-current: "accent-cool-dark";
 }
 
 .usa-pagination .usa-current:hover {
-    background-color: #06162D;
+    @include u-bg($theme-color-accent-cool-darker);
 }
 
 .usa-pagination__next-page svg {

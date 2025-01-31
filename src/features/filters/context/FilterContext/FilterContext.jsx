@@ -91,7 +91,7 @@ function filterReducer(state, action) {
 				shouldSearch: true,
 			};
 
-		case FilterActionTypes.REMOVE_FILTER:
+		case FilterActionTypes.REMOVE_FILTER: {
 			const { filterType, value } = action.payload;
 			const updatedFilters = { ...state.filters };
 			if (Array.isArray(updatedFilters[filterType])) {
@@ -108,6 +108,7 @@ function filterReducer(state, action) {
 				filters: updatedFilters,
 				isDirty: true,
 			};
+		}
 
 		case FilterActionTypes.SET_BASE_FILTERS:
 			return {
@@ -163,11 +164,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		let isNewPageLoad = true;
 
 		let paramOrder = Array.from(params.keys());
-		let filterParams = [
-			URL_PARAM_MAPPING.age.shortCode,
-			URL_PARAM_MAPPING.zipCode.shortCode,
-			URL_PARAM_MAPPING.radius.shortCode
-		];
+		let filterParams = [URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
 		let preservedParamsMap = new Map();
 
 		for (const key of paramOrder) {
@@ -206,11 +203,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 			const originalPn = params.get('pn');
 
 			let paramOrder = Array.from(params.keys());
-			let filterParams = [
-				URL_PARAM_MAPPING.age.shortCode,
-				URL_PARAM_MAPPING.zipCode.shortCode,
-				URL_PARAM_MAPPING.radius.shortCode
-			];
+			let filterParams = [URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
 			let updatedParams = new Map();
 
 			for (const key of paramOrder) {

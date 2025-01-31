@@ -1,16 +1,21 @@
+@use 'uswds-core' as *;
+
 .ctla-results__list-item {
 	&-title {
-		font-family: Montserrat, Avant Garde, Arial, sans-serif;
-		font-weight: 600;
-		font-size: 1.125em;
-		line-height: 1.111em;
-		text-decoration: underline;
+		//font-family: Montserrat, Avant Garde, Arial, sans-serif;
+		//font-weight: 600;
+		//font-size: 1.125em;
+		//line-height: 1.111em;
+		//text-decoration: underline;
+		@include u-line-height('body', 2);
+		@include u-font($theme-font-role-body, $theme-type-scale-sm);
+		@include u-text('bold', 'underline');
 	}
 
 	.ctla-results__list-item-title {
 		&:hover {
-			color: #004971;
-			text-decoration: underline;
+			color: color($theme-color-primary-dark);
+			@include u-text('underline');
 		}
 	}
 

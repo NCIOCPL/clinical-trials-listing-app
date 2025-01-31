@@ -1,27 +1,26 @@
+@use 'uswds-core' as *;
 .filter-group {
-	margin-bottom: 1.75rem;
+	//margin-bottom: 1.75rem;
 
 	&:last-child {
-		margin-bottom: 0;
+		@include u-margin-bottom(0);
 	}
 
 	&__header {
-		margin-bottom: 0.5rem;
+		@include u-margin-bottom(1);
 	}
 
 	&__title-container {
-		display: flex;
+		@include u-display('flex');
+		@include u-flex('align-center');
 		justify-content: space-between;
-		align-items: center;
 	}
 
 	&__title {
-		font-size: 1.125rem;
-		font-weight: 600;
-		color: #1B1B1B;
-		margin: 0;
-		display: flex;
-		align-items: center;
+		@include u-text($theme-font-weight-bold, $theme-color-base-darkest); // 600 font weight #1B1B1B
+		@include u-margin(0);
+		@include u-display('flex');
+		@include u-flex('align-center');
 		gap: 0.5rem;
 	}
 
@@ -106,7 +105,8 @@
 	// Styling for when group has selected values
 	&--has-selection {
 		.filter-group__title {
-			color: #01679D;
+			@include u-text($theme-link-color);
+			//color: #01679D;
 		}
 	}
 
@@ -162,15 +162,15 @@
   }
 
   &__title {
-    display: flex;
-    align-items: center;
+	@include u-display('flex');
+	@include u-flex('align-center');
   }
 
 }
 
 select#radius-filter.usa-select {
 	margin-top: unset;
-	width: 100% !important;
+	@include u-width('full', !important);
 }
 
 
