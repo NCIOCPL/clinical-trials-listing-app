@@ -5,12 +5,12 @@ export const PAGE_FILTER_CONFIGS = {
 	},
 
 	Manual: {
-		enabledFilters: ['age'], // Only age filter enabled
-		order: ['age'],
+		enabledFilters: [],
+		order: [],
 	},
 
 	Intervention: {
-		enabledFilters: ['location'], // Only location filter enabled
-		order: ['location'],
+		enabledFilters: ['age', 'location'],
+		order: ['age', 'location'],
 	},
 };
