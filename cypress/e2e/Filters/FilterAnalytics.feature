@@ -39,8 +39,8 @@ Feature: Filter Analytics Events
 	Scenario: Analytics event fires when filters are cleared
 		Given "trialListingPageType" is set to "Disease"
 		And "dynamicListingPatterns" object is set to "Disease"
-		When the user navigates to "/breast-cancer?age=65&zip=20850&radius=50&cfg=0"
-		And clicks the "Clear All" button
+		When the user navigates to "/breast-cancer?a=65&z=20850&zr=50&cfg=0"
+		And clicks the "Clear Filters" button
 		Then there should be an analytics event with the following details
 			| key                | value                           |
 			| type              | Other                           |

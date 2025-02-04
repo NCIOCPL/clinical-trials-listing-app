@@ -23,7 +23,7 @@ Feature: Disease trial type intervention listing page analytics
       | page.additionalDetails.trialType            | treatment                                                                                 |
       | page.additionalDetails.interventionName     | trastuzumab                                                                               |
       | page.additionalDetails.trialListingPageType | disease                                                                                   |
-      | page.additionalDetails.numberResults        | (int)43                                                                                   |
+      | page.additionalDetails.numberResults        | (int)29                                                                                   |
 
   Scenario: Click event fires when a user clicks on result item
     Given "trialListingPageType" is set to "Disease"

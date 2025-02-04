@@ -31,23 +31,23 @@ Feature: Location Filter Functionality
 		And enters "20850" in the zip code filter
 		And selects "50" from the radius dropdown
 		And clicks the "Apply Filters" button
-		Then the page URL includes "zip=20850"
-		And the page URL includes "radius=50"
+		Then the page URL includes "z=20850"
+		And the page URL includes "zr=50"
 		And the system displays updated trial results
-		And "Clear All" button is enabled
+		And "Clear Filters" button is enabled
 
 	Scenario: Location filter clears correctly
 		Given "trialListingPageType" is set to "Disease"
 		And "dynamicListingPatterns" object is set to "Disease"
-		When the user navigates to "/breast-cancer?zip=20850&radius=50&cfg=0"
+		When the user navigates to "/breast-cancer?z=20850&zr=50&cfg=0"
 		Then the zip code filter shows "20850"
 		And the radius dropdown shows "50"
-		When clicks the "Clear All" button
+		When clicks the "Clear Filters" button
 		Then the zip code filter is empty
 		And the radius dropdown is disabled
-		And the page URL does not include "zip"
-		And the page URL does not include "radius"
-		And "Clear All" button is disabled
+		And the page URL does not include "z"
+		And the page URL does not include "zr"
+		And "Clear Filters" button is disabled
 
 	Scenario: Location filter validates zip code format
 		Given "trialListingPageType" is set to "Disease"
@@ -71,5 +71,5 @@ Feature: Location Filter Functionality
 		And clicks on "Next" button
 		Then the zip code filter shows "20850"
 		And the radius dropdown shows "50"
-		And the page URL includes "zip=20850"
-		And the page URL includes "radius=50"
+		And the page URL includes "z=20850"
+		And the page URL includes "zr=50"

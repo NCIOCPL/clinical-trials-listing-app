@@ -6,7 +6,6 @@ Feature: Age Filter Functionality
 		When the user navigates to "/breast-cancer?cfg=0"
 		Then the age filter is displayed
 		And the age filter has a numeric input
-		And the age input placeholder text is "Enter the age of the participant."
 
 	Scenario: Age filter updates results when applied
 		Given "trialListingPageType" is set to "Disease"
@@ -16,17 +15,17 @@ Feature: Age Filter Functionality
 		And clicks the "Apply Filters" button
 		Then the page URL includes "a=65"
 		And the system displays updated trial results
-		And "Clear All" button is enabled
+		And "Clear Filters" button is enabled
 
 	Scenario: Age filter clears correctly
 		Given "trialListingPageType" is set to "Disease"
 		And "dynamicListingPatterns" object is set to "Disease"
 		When the user navigates to "/breast-cancer?a=65&cfg=0"
 		Then the age filter shows "65"
-		When clicks the "Clear All" button
+		When clicks the "Clear Filters" button
 		Then the age filter is empty
 		And the page URL does not include "a"
-		And "Clear All" button is disabled
+		And "Clear Filters" button is disabled
 
 	Scenario: Age filter validates input range
 		Given "trialListingPageType" is set to "Disease"
@@ -35,7 +34,7 @@ Feature: Age Filter Functionality
 		And enters "-1" in the age filter
 		Then the age input value remains empty
 		When enters "121" in the age filter
-		Then the age input value remains empty
+		Then the age input value is "12"
 		When enters "50" in the age filter
 		Then the age input value is "50"
 

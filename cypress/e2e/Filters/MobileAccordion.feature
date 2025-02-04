@@ -44,9 +44,9 @@ Feature: Mobile Accordion Functionality
 		Given "trialListingPageType" is set to "Disease"
 		And "dynamicListingPatterns" object is set to "Disease"
 		And screen breakpoint is set to "mobile"
-		When the user navigates to "/breast-cancer?age=65&cfg=0"
+		When the user navigates to "/breast-cancer?a=65&cfg=0"
 		And clicks the filter toggle button
-		And clicks the "Clear All" button
+		And clicks the "Clear Filters" button
 		Then the filter content remains visible
 		And the filter button shows collapse icon
 

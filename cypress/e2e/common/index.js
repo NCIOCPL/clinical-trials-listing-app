@@ -1,4 +1,4 @@
-/// <reference types="Cypress" />
+//<reference types="Cypress" />
 import { And, Given, Then, When } from 'cypress-cucumber-preprocessor/steps';
 
 Then('page title is {string}', (title) => {
@@ -344,11 +344,12 @@ Then('the age filter has a numeric input', () => {
 	cy.get('.ctla-sidebar').find('input[type="number"]').should('have.attr', 'type', 'number');
 });
 
-Then('the age input placeholder text is {string}', (placeholder) => {
-	cy.get('.nci-spinner').should('not.exist');
+// Age does not have placeholder text
+// Then('the age input placeholder text is {string}', (placeholder) => {
+// 	cy.get('.nci-spinner').should('not.exist');
 
-	cy.get('.ctla-sidebar').find('input[type="number"]').should('have.attr', 'placeholder', placeholder);
-});
+// 	cy.get('.ctla-sidebar').find('input[type="number"]').should('have.attr', 'placeholder', placeholder);
+// });
 
 When('enters {string} in the age filter', (age) => {
 	cy.get('.nci-spinner').should('not.exist');
