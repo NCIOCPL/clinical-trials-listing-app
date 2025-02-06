@@ -17,7 +17,7 @@ import { formatLocationString, getAppliedFieldsString } from '../../utils/analyt
 import { useTracking } from 'react-tracking';
 import { URL_PARAM_MAPPING } from '../../constants/urlParams';
 
-const Sidebar = ({ pageType = 'Disease' }) => {
+const Sidebar = ({ pageType = 'Disease', isDisabled = false }) => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { state, dispatch, applyFilters, enabledFilters = [], listingInfo, fetchState } = useFilters();
@@ -175,12 +175,12 @@ const Sidebar = ({ pageType = 'Disease' }) => {
 		}
 	};
 
-	const renderFilter = (filterType) => {
+	const renderFilter = (filterType, isDisabled) => {
 		switch (filterType) {
 			case 'age':
-				return <AgeFilter value={filters.age} onChange={handleAgeFilterChange} onFocus={() => trackFilterStart(filterType)} />;
+				return <AgeFilter value={filters.age} onChange={handleAgeFilterChange} onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'location':
-				return <ZipCodeFilter zipCode={filters.location.zipCode} radius={filters.location.radius} onZipCodeChange={handleZipCodeChange} onRadiusChange={handleRadiusChange} onFocus={() => trackFilterStart(filterType)} />;
+				return <ZipCodeFilter zipCode={filters.location.zipCode} radius={filters.location.radius} onZipCodeChange={handleZipCodeChange} onRadiusChange={handleRadiusChange} onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			default:
 				return null;
 		}
@@ -267,15 +267,15 @@ const Sidebar = ({ pageType = 'Disease' }) => {
 			<div id="accordionContent" className="usa-accordion__content ctla-sidebar__content">
 				{PAGE_FILTER_CONFIGS[pageType].order.map((filterType) => {
 					if (enabledFilters.includes(filterType)) {
-						return <div key={filterType}>{renderFilter(filterType)}</div>;
+						return <div key={filterType}>{renderFilter(filterType, isDisabled)}</div>;
 					}
 					return null;
 				})}
 				<div className="ctla-sidebar__actions">
-					<button className="usa-button ctla-sidebar__button--clear" onClick={handleClearFilters} disabled={!hasActiveFilters()}>
+					<button className="usa-button ctla-sidebar__button--clear" onClick={handleClearFilters} disabled={isDisabled || !hasActiveFilters()}>
 						Clear Filters
 					</button>
-					<button className="usa-button ctla-sidebar__button--apply" onClick={handleApplyFilters} disabled={!isDirty}>
+					<button className="usa-button ctla-sidebar__button--apply" onClick={handleApplyFilters} disabled={isDisabled || !isDirty}>
 						Apply Filters
 					</button>
 				</div>
@@ -283,5 +283,6 @@ const Sidebar = ({ pageType = 'Disease' }) => {
 		</aside>
 	);
 };
+
 
 export default Sidebar;

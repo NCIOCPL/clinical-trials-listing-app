@@ -319,7 +319,6 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading }) => {
 							<Spinner />
 						) : fetchState?.total === 0 ? (
 							<>
-								{replacedText.introText && <div className="disease-view__intro ctla-results__intro" dangerouslySetInnerHTML={{ __html: replacedText.introText }} />}
 								<div className="ctla-results__summary grid-container">
 									<div className="grid-row">
 										<div className="ctla-results__count grid-col">Trials 0 of 0</div>

@@ -7,6 +7,8 @@ import { useLocation } from 'react-router';
 import { CISBanner, NoResults } from '../../components';
 import { useStateValue } from '../../store/store';
 import { TokenParser } from '../../utils';
+import { FilterProvider } from '../../features/filters/context/FilterContext/FilterContext';
+import { Sidebar } from '../../features/filters/components';
 
 const NoTrialsFound = ({ routeParamMap, data }) => {
 	const location = useLocation();
@@ -108,12 +110,46 @@ const NoTrialsFound = ({ routeParamMap, data }) => {
 		window.open(liveHelpUrl, 'ProactiveLiveHelpForCTS', 'height=600,width=633');
 	};
 
+	const baseFilters = data.reduce((acQuery, paramData, idx) => {
+		const paramInfo = routeParamMap[idx];
+
+		switch (paramInfo.paramName) {
+			case 'codeOrPurl':
+				return {
+					...acQuery,
+					'diseases.nci_thesaurus_concept_id': paramData?.conceptId || [],
+					diseaseName: paramData?.name?.label || '',
+				};
+			case 'type':
+				return {
+					...acQuery,
+					primary_purpose: paramData?.idString || '',
+					trialType: paramData?.label || '',
+				};
+			case 'interCodeOrPurl':
+				return {
+					...acQuery,
+					'arms.interventions.nci_thesaurus_concept_id': paramData?.conceptId || [],
+					interventionName: paramData?.name?.label || '',
+				};
+			default:
+				return acQuery;
+		}
+	}, {});
+
 	return (
-		<div>
+		<div className="disease-view">
 			{renderHelmet()}
-			<h1>{replacementText.pageTitle}</h1>
-			<NoResults replacedNoTrialsHtml={replacementText.noTrialsHtml} />
-			<CISBanner onLiveHelpClick={onLiveHelpClickHandler} />
+			<FilterProvider baseFilters={baseFilters} pageType={trialListingPageType}>
+				<div className="disease-view__container">
+					<Sidebar pageType={trialListingPageType} isDisabled={true} />
+					<div className="disease-view__content">
+						<h1 className="disease-view__heading">{replacementText.pageTitle}</h1>
+						<NoResults replacedNoTrialsHtml={replacementText.noTrialsHtml} />
+						<CISBanner onLiveHelpClick={onLiveHelpClickHandler} />
+					</div>
+				</div>
+			</FilterProvider>
 		</div>
 	);
 };

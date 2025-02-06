@@ -6,7 +6,7 @@ import { useState } from 'react';
 // import { useTracking } from 'react-tracking';
 
 // eslint-disable-next-line react/prop-types
-const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onFocus }) => {
+const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onFocus, disabled }) => {
 	const [error] = useState('');
 	// const tracking = useTracking();
 	//
@@ -45,7 +45,19 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onFoc
 	return (
 		<>
 			<FilterGroup title="Location by ZIP Code">
-				<input id="zip-code-filter" name="zip-code" aria-label="Enter ZIP code" type="text" className="usa-input form-control" placeholder="Enter U.S. Zip Code" value={zipCode} onChange={onZipCodeChange} onFocus={onFocus} maxLength={5} />
+				<input
+					id="zip-code-filter"
+					name="zip-code"
+					aria-label="Enter ZIP code"
+					type="text"
+					className="usa-input form-control"
+					placeholder="Enter U.S. Zip Code"
+					value={zipCode}
+					onChange={onZipCodeChange}
+					onFocus={onFocus}
+					maxLength={5}
+					disabled={disabled}
+				/>
 				{error && (
 					<div id="zip-error" className="zip-code-filter__error">
 						{error}
@@ -55,7 +67,16 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onFoc
 
 			<FilterGroup title={FILTER_CONFIG.radius.title}>
 				<div className="usa-combo-box">
-					<select id="radius-filter" name="radius" aria-label="Select search radius" className="usa-select usa-combo-box__select form-control" value={radius || (zipCode ? '100' : '')} onChange={onRadiusChange} onFocus={onFocus} disabled={!zipCode}>
+					<select
+						id="radius-filter"
+						name="radius"
+						aria-label="Select search radius"
+						className="usa-select usa-combo-box__select form-control"
+						value={radius || (zipCode ? '100' : '')}
+						onChange={onRadiusChange}
+						onFocus={onFocus}
+						disabled={disabled || !zipCode}
+					>
 						<option value="">Select</option>
 						{FILTER_CONFIG.radius.options.map((option) => (
 							<option key={option.id} value={option.value}>
@@ -74,6 +95,8 @@ ZipCodeFilter.propTypes = {
 	radius: PropTypes.string,
 	onZipCodeChange: PropTypes.func.isRequired,
 	onRadiusChange: PropTypes.func.isRequired,
+	onFocus: PropTypes.func,
+	disabled: PropTypes.bool,
 };
 
 export default ZipCodeFilter;
