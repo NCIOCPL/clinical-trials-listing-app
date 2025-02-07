@@ -42,10 +42,28 @@
 
 .usa-input.form-control {
 	@include u-bg($theme-body-background-color, !important);
+
+	&:disabled {
+		@include u-bg('gray-5', !important);
+		@include u-text($theme-color-disabled);
+		@include u-border($theme-color-disabled);
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
 }
 
 .usa-combo-box__input, .usa-combo-box, .usa-select, .usa-input {
 	max-width: unset !important;
+}
+
+.usa-select {
+	&:disabled {
+		@include u-bg('gray-5', !important);
+		@include u-text($theme-color-disabled);
+		@include u-border($theme-color-disabled);
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
 }
 
 .ctla-sidebar {
