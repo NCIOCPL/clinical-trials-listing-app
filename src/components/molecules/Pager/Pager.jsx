@@ -27,6 +27,7 @@ const Pager = ({ current = 1, currentPageNeighbours = 2, nextLabel = 'Next', onP
 	 * @param{number} pageNumber - The new page number to navigate to.
 	 */
 	const pageNavigationChangeHandler = (pageNumber) => {
+		window.scrollTo(0, 0);
 		const offset = getOffset(pageNumber);
 		const pager = { offset, page: pageNumber, pageUnit: resultsPerPage };
 		onPageNavigationChange(pager);

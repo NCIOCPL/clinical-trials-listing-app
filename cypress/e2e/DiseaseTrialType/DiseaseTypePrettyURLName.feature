@@ -16,7 +16,7 @@ Feature: As a user, I would like to view the trial results for a disease listing
       | 1      |
       | 2      |
       | ...    |
-      | 6      |
+      | 7      |
       | Next   |
     When user clicks on "Next" button
     Then the user is redirected to "/breast-cancer/supportive-care" with query parameters "cfg=0&pn=2"
@@ -52,14 +52,14 @@ Feature: As a user, I would like to view the trial results for a disease listing
     Then the page title is "Supportive Care Clinical Trials for Breast Cancer"
     Then the system displays 1 paragraph "Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer supportive care. All trials on the list are NCI-supported clinical trials, which are sponsored or otherwise financially supported by NCI."
     Then the system displays 2 paragraph "NCI’s basic information about clinical trials explains the types and phases of trials and how they are carried out. Clinical trials look at new ways to prevent, detect, or treat disease. You may want to think about taking part in a clinical trial. Talk to your doctor for help in deciding if one is right for you."
-    Then the system displays "Trials 1-25 of" "140"
+    Then the system displays "Trials 1-25 of" "158"
     Then each result displays the trial title as a link to the trial description page
     And pager displays the following navigation options
       | pages  |
       | 1      |
       | 2      |
       | ...    |
-      | 6      |
+      | 7      |
     When user clicks on "2" button
     Then the user is redirected to "/breast-cancer/supportive-care" with query parameters "cfg=0&pn=2"
     And user is brought to the top of a page
