@@ -46,6 +46,7 @@
 
 .ctla-results__list ul > li {
 	@include u-margin-bottom(4, !important);
+	@include u-margin-top(0, !important);
 	clear: both;
 }
 

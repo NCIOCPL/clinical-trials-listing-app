@@ -8,7 +8,7 @@
 		//line-height: 1.111em;
 		//text-decoration: underline;
 		@include u-line-height('body', 2);
-		@include u-font($theme-font-role-body, $theme-type-scale-sm);
+		@include u-font($theme-font-role-heading, $theme-type-scale-sm);
 		@include u-text('bold', 'underline');
 	}
 
