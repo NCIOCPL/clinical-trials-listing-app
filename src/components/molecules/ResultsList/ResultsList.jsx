@@ -11,7 +11,7 @@ const ResultsList = ({ results, resultsItemTitleLink }) => {
 	const { state, zipCoords } = useFilters();
 	const { appliedFilters } = state;
 
-	var zipRadius = appliedFilters.location.radius;
+	let zipRadius = appliedFilters.location?.radius;
 	var hasZipInput = false;
 	var zipInputReturn = '';
 

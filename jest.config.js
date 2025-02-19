@@ -5,16 +5,16 @@ module.exports = {
 	collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/*.test.{js,jsx,ts,tsx}', '!src/**/*.d.ts', '!cypress/**/*.{spec,test}.{js,jsx,ts,tsx}', '!src/setupTests.js', '!src/serviceWorker.js', '!src/index.jsx'],
 	coverageThreshold: {
 		global: {
-			branches: 0,
-			functions: 0,
-			lines: 0,
+			branches: 80,
+			functions: 80,
+			lines: 80,
 		},
 	},
 	setupFiles: ['react-app-polyfill/jsdom', '<rootDir>/jest-test-setup.js'],
 	setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
 	testMatch: [
 		'<rootDir>/src/**/__tests__/**/*.{js,ts,tsx}',
-		// '<rootDir>/src/**/*.test.{js,jsx,ts,tsx}',
+		'<rootDir>/src/**/*.test.{js,jsx,ts,tsx}',
 	],
 	testEnvironment: 'jest-environment-jsdom-global',
 	transform: {
