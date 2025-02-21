@@ -88,15 +88,15 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false }) => {
 		}
 	};
 
-	const handleZipCodeChange = (e) => {
+	const handleZipCodeChange = (value) => {
 		dispatch({
 			type: FilterActionTypes.SET_FILTER,
 			payload: {
 				filterType: 'location',
 				value: {
 					...filters.location,
-					zipCode: e.target.value,
-					radius: e.target.value ? filters.location.radius || '100' : null,
+					zipCode: value,
+					radius: value ? filters.location.radius || '100' : null,
 				},
 			},
 		});
@@ -135,14 +135,16 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false }) => {
 	const handleApplyFilters = async () => {
 		if (isDirty) {
 			const validationErrors = validateFilters();
+			const zipErrorElement = document.getElementById('zip-error');
+			const zipError = zipErrorElement !== null;
 
-			if (Object.keys(validationErrors).length > 0) {
+			if (Object.keys(validationErrors).length > 0 || zipError) {
 				tracking.trackEvent({
 					type: 'Other',
 					event: FILTER_EVENTS.APPLY_ERROR,
 					data: {
 						interactionType: INTERACTION_TYPES.APPLIED_WITH_ERRORS,
-						errorField: getErrorFields(validationErrors),
+						errorField: zipError ? 'zip' : getErrorFields(validationErrors),
 					},
 				});
 				return;

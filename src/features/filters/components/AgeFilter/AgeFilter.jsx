@@ -10,13 +10,35 @@ const AgeFilter = ({ value, onChange, onFocus, disabled }) => {
 	const { filters } = state;
 
 	const handleAgeChange = (e) => {
-		const value = e.target.value;
-		if (value >= FILTER_CONFIG.age.min && value <= FILTER_CONFIG.age.max) {
+		// Get the raw input value
+		const inputValue = e.target.value;
+
+		// If the input is empty, clear the filter
+		if (inputValue === '') {
 			dispatch({
 				type: 'SET_FILTER',
 				payload: {
 					filterType: 'age',
-					value: value,
+					value: '',
+				},
+			});
+			return;
+		}
+
+		// Convert to a number and ensure it's positive
+		const numericValue = parseInt(inputValue, 10);
+
+		// Only dispatch if it's a valid positive number within range
+		if (!isNaN(numericValue) &&
+			numericValue >= FILTER_CONFIG.age.min &&
+			numericValue <= FILTER_CONFIG.age.max &&
+			numericValue.toString() === inputValue) { // Ensures no leading minus sign
+
+			dispatch({
+				type: 'SET_FILTER',
+				payload: {
+					filterType: 'age',
+					value: numericValue,
 				},
 			});
 		}
@@ -35,6 +57,8 @@ const AgeFilter = ({ value, onChange, onFocus, disabled }) => {
 				onFocus={onFocus}
 				min={FILTER_CONFIG.age.min}
 				max={FILTER_CONFIG.age.max}
+				pattern="[0-9]*"
+				inputMode="numeric"
 				disabled={disabled}
 			/>
 		</FilterGroup>

@@ -6,6 +6,7 @@ import { useFilters } from '../features/filters/context/FilterContext/FilterCont
 import { Spinner } from '../components';
 import { ErrorPage, PageNotFound } from './ErrorBoundary';
 import { useAppPaths, useListingSupport } from '../hooks';
+import { useStateValue } from '../store/store';
 import { getTrialType } from '../services/api/actions';
 import { appendOrUpdateToQueryString, getIdOrNameAction, getKeyValueFromQueryString, convertObjectToBase64 } from '../utils';
 import { hocReducer, hocStates, setLoading, setSuccessfulFetch, setFailedFetch, setNotFound, setRedirecting } from './hocReducer';
@@ -23,6 +24,7 @@ const CTLViewsHoC = (WrappedView) => {
 		const location = useLocation();
 		const navigate = useNavigate();
 		const { search } = location;
+		const [{ baseHost }] = useStateValue();
 
 		const [state, hocDispatch] = useReducer(hocReducer, {
 			status: hocStates.LOADING_STATE,
@@ -127,18 +129,54 @@ const CTLViewsHoC = (WrappedView) => {
 								// have a default only to never get code coverage.
 							}
 						}, {});
-						// Let's set the state BEFORE we navigate
-						hocDispatch(setRedirecting());
+						// Check if this is a code-to-pretty URL redirect
+						const isCodeToPrettyRedirect = fetchActions.some(action => action.type === 'id');
+						const redirectStatus = isCodeToPrettyRedirect ? '301' : '302';
+						const redirectPathOnly = redirectPath(redirectParams);
+						const redirectUrl = `${redirectPathOnly}${queryString}`;
 
-						// Navigate to the passed in redirectPath. This is really cause
-						// we can't easily figure out the current route from react-router.
-						navigate(`${redirectPath(redirectParams)}${queryString}`, {
-							replace: true,
-							state: {
+						// For code-to-pretty redirects, we need to preserve the redirectStatus
+						// and set the prerender-header Location to the final URL
+						if (isCodeToPrettyRedirect) {
+							// Set state to REDIR_STATE with 301 status
+							hocDispatch(setRedirecting('301'));
+
+							// Set state for navigation
+							const navigationState = {
 								redirectStatus: '301',
-							},
-						});
-						return;
+								// Don't include query params in prerender Location header
+								prerenderLocation: baseHost + redirectPathOnly
+							};
+
+							// Set state first
+							hocDispatch(setRedirecting('301'));
+
+							// Then navigate
+							navigate(redirectUrl, {
+								replace: true,
+								state: navigationState
+							});
+
+							// Return early to ensure state is set
+							return;
+						} else {
+							// For other redirects, use the provided status
+							hocDispatch(setRedirecting(redirectStatus));
+
+							// Set state for navigation
+							const navigationState = {
+								redirectStatus
+							};
+
+							// Navigate with state
+							navigate(redirectUrl, {
+								replace: true,
+								state: navigationState
+							});
+
+							// Return early to ensure state is set
+							return;
+						}
 					}
 				}
 
@@ -183,34 +221,40 @@ const CTLViewsHoC = (WrappedView) => {
 					// Add loading check helper
 					const isLoading = getListingInfo.loading || state.status === hocStates.REDIR_STATE || state.status === hocStates.LOADING_STATE || (state.status === hocStates.LOADED_STATE && state.actionsHash !== currentActionsHash);
 
-					// // Show loading.
-					if (getListingInfo.loading || state.status === hocStates.REDIR_STATE || state.status === hocStates.LOADING_STATE || (state.status === hocStates.LOADED_STATE && state.actionsHash !== currentActionsHash)) {
-						if (WrappedView.name === 'Disease') {
-							return <WrappedView routeParamMap={filteredRouteParamMap} routePath={redirectPath} {...props} data={state.listingData}     isInitialLoading={isLoading }  />;
-						}
+					// Always pass state to Disease component
+					if (WrappedView.name === 'Disease') {
+						return <WrappedView
+							routeParamMap={filteredRouteParamMap}
+							routePath={redirectPath}
+							{...props}
+							data={state.listingData}
+							isInitialLoading={isLoading}
+							state={state}
+						/>;
+					}
 
-						if (isLoading) {
-							return <Spinner />;
+					// Handle other components
+					if (isLoading) {
+						return <Spinner />;
+					}
+
+					// We have finished loading and either need to display
+					// 404, error or the results.
+					switch (state.status) {
+						case hocStates.NOTFOUND_STATE: {
+							return <PageNotFound />;
 						}
-					} else {
-						// We have finished loading and either need to display
-						// 404, error or the results.
-						switch (state.status) {
-							case hocStates.NOTFOUND_STATE: {
-								return <PageNotFound />;
+						case hocStates.LOADED_STATE: {
+							if (isNoTrials) {
+								return <WrappedView routeParamMap={filteredRouteParamMap} {...props} data={state.listingData} state={state} />;
+							} else {
+								return <WrappedView routeParamMap={filteredRouteParamMap} routePath={redirectPath} {...props} data={state.listingData} state={state} />;
 							}
-							case hocStates.LOADED_STATE: {
-								if (isNoTrials) {
-									return <WrappedView routeParamMap={filteredRouteParamMap} {...props} data={state.listingData} />;
-								} else {
-									return <WrappedView routeParamMap={filteredRouteParamMap} routePath={redirectPath} {...props} data={state.listingData} />;
-								}
-							}
-							default: {
-								// This should only happen for hocStates.ERROR_STATE, but it
-								// felt very wrong for there not to be a default here.
-								return <ErrorPage />;
-							}
+						}
+						default: {
+							// This should only happen for hocStates.ERROR_STATE, but it
+							// felt very wrong for there not to be a default here.
+							return <ErrorPage />;
 						}
 					}
 				})()}

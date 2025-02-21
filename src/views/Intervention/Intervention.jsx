@@ -206,6 +206,18 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 	}, [loading, fetchState, error]);
 
 	useEffect(() => {
+		// Check if page number exceeds total pages
+		if (fetchState?.total && pn) {
+			const totalPages = Math.ceil(fetchState.total / itemsPerPage);
+			if (Number(pn) > totalPages) {
+				// Redirect to page 1
+				const qryStr = appendOrUpdateToQueryString(search, 'pn', 1);
+				const paramsObject = getParamsForRoute(data, routeParamMap);
+				navigate(`${routePath(paramsObject)}${qryStr}`, { replace: true });
+				return;
+			}
+		}
+
 		if (pn !== pager.page.toString()) {
 			setPager({
 				...pager,
@@ -213,7 +225,7 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 				page: typeof pn === 'string' ? pn : 1,
 			});
 		}
-	}, [pn]);
+	}, [pn, fetchState?.total]);
 
 	const onPageNavigationChangeHandler = (pagination) => {
 		setPager(pagination);

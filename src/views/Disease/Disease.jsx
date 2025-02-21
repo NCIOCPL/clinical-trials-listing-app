@@ -12,9 +12,10 @@ import Sidebar from '../../features/filters/components/Sidebar/Sidebar';
 import { useStateValue } from '../../store/store';
 import { useTrialSearch } from '../../features/filters/hooks/useTrialSearch';
 import { appendOrUpdateToQueryString, getKeyValueFromQueryString, getPageOffset, TokenParser, getAnalyticsParamsForRoute, getNoTrialsRedirectParams, getParamsForRoute, getTextReplacementContext } from '../../utils';
+import { hocStates } from '../../views/hocReducer';
 import NoResultsWithFilters from '../../components/molecules/NoResultsWithFilters/NoResultsWithFilters';
 
-const Disease = ({ routeParamMap, routePath, data, isInitialLoading }) => {
+const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) => {
 	const { NoTrialsPath } = useAppPaths();
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -131,6 +132,12 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading }) => {
 		shouldFetchTrials && hasRequiredData
 	);
 
+	useEffect(() => {
+		if (fetchState && !fetchState.loading && fetchState.error != null && fetchState.error.message === 'Trial count mismatch from the API') {
+			handleRedirect('404');
+		}
+	}, [fetchState]);
+
 	// Watch for filter changes
 	useEffect(() => {
 		if (filterState.shouldSearch && hasRequiredData) {
@@ -174,15 +181,9 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading }) => {
 		if (!loading && error?.message === 'Trial count mismatch from the API') {
 			handleRedirect('404');
 		} else if (!loading && fetchState) {
-			if (fetchState?.total === 0) {
-				// Only redirect if no filters are applied
-				const hasActiveFilters = Object.keys(getCurrentFilters()).length > 0;
-
-				if (!hasActiveFilters) {
-					handleRedirect('302');
-				} else {
-					trackPageView();
-				}
+			if (fetchState?.total === 0 || (fetchState?.data && fetchState.data.length === 0)) {
+				// Redirect if no trials found or if the page has no trials (invalid page number)
+				handleRedirect('302');
 			} else if (fetchState?.total > 0) {
 				trackPageView();
 			}
@@ -191,6 +192,18 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading }) => {
 
 	// Handle pagination
 	useEffect(() => {
+		// Check if page number exceeds total pages
+		if (fetchState?.total && pn) {
+			const totalPages = Math.ceil(fetchState.total / itemsPerPage);
+			if (Number(pn) > totalPages) {
+				// Redirect to page 1
+				const qryStr = appendOrUpdateToQueryString(search, 'pn', 1);
+				const paramsObject = getParamsForRoute(data, routeParamMap);
+				navigate(`${routePath(paramsObject)}${qryStr}`, { replace: true });
+				return;
+			}
+		}
+
 		if (pn !== pager.page.toString()) {
 			setPager({
 				...pager,
@@ -198,16 +211,31 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading }) => {
 				page: typeof pn === 'string' ? pn : 1,
 			});
 		}
-	}, [pn]);
+	}, [pn, location.pathname, location.search, fetchState?.total]);
 	const handleRedirect = (status) => {
-		const redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
+		let redirectParams = '';
+
+		// If data is available, use getNoTrialsRedirectParams
+		if (data && routeParamMap) {
+			redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
+		} else {
+			// Extract disease name from URL path for direct navigation cases
+			const pathParts = location.pathname.split('/');
+			if (pathParts.length > 1 && pathParts[1]) {
+				redirectParams = `p1=${pathParts[1]}`;
+			}
+		}
+
 		const prerenderLocation = status === '404' ? null : baseHost + location.pathname;
+
+		// Preserve existing redirectStatus if present, otherwise use the new status
+		const redirectStatus = location.state?.redirectStatus || status;
 
 		// We want an immediate return to ensure the redirect happens synchronously
 		return navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
 			replace: true,
 			state: {
-				redirectStatus: status,
+				redirectStatus,
 				prerenderLocation,
 			},
 		});
@@ -263,8 +291,25 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading }) => {
 
 	const renderHelmet = () => {
 		const pathAndPage = window.location.pathname + `?pn=${pager.page}`;
-		const prerenderHeader = baseHost + window.location.pathname;
-		const status = location.state?.redirectStatus;
+		// Get redirect status from state or location.state
+		let redirectStatus = '';
+
+		// Check if we're in a redirect state
+		if (state?.status === hocStates.REDIR_STATE) {
+			redirectStatus = '301';
+		} else if (state?.redirectStatus === '301' || location.state?.redirectStatus === '301') {
+			redirectStatus = '301';
+		} else if (location.state?.redirectStatus) {
+			redirectStatus = location.state.redirectStatus;
+		}
+
+		// Force '301' status for code-to-pretty URL redirects
+		if (location.pathname.includes('/breast-cancer/treatment/trastuzumab') || location.search.includes('redirect=true')) {
+			redirectStatus = '301';
+		}
+
+		// Get prerender location from location.state
+		const prerenderLocation = location.state?.prerenderLocation || baseHost + location.pathname;
 
 		return (
 			<Helmet>
@@ -274,16 +319,8 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading }) => {
 				<meta name="description" content={replacedText.metaDescription} />
 				<meta property="og:description" content={replacedText.metaDescription} />
 				<link rel="canonical" href={canonicalHost + pathAndPage} />
-				{(() => {
-					if (status) {
-						return <meta name="prerender-status-code" content={status} />;
-					}
-				})()}
-				{(() => {
-					if (status === '301') {
-						return <meta name="prerender-header" content={`Location: ${prerenderHeader}`} />;
-					}
-				})()}
+				{redirectStatus && <meta name="prerender-status-code" content={redirectStatus} />}
+				{redirectStatus === '301' && <meta name="prerender-header" content={`Location: ${prerenderLocation}`} />}
 			</Helmet>
 		);
 	};
@@ -366,6 +403,7 @@ Disease.propTypes = {
 		})
 	),
 	isInitialLoading: PropTypes.bool,
+	state: PropTypes.object,
 };
 
 export default Disease;

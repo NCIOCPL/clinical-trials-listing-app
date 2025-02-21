@@ -40,9 +40,12 @@ export const setSuccessfulFetch = (fetchActionsHash, fetchResponse) => {
 	};
 };
 
-export const setRedirecting = () => {
+export const setRedirecting = (redirectStatus) => {
 	return {
 		type: REDIRECT_NEEDED,
+		payload: {
+			redirectStatus,
+		},
 	};
 };
 
@@ -81,6 +84,7 @@ export const hocReducer = (state = {}, action) => {
 				status: hocStates.LOADED_STATE,
 				listingData: action.payload.fetchResponse,
 				actionsHash: action.payload.fetchActionsHash,
+				redirectStatus: null,
 			};
 		} else {
 			// Status is the same, did the payload change, or are we trying to update
@@ -95,6 +99,7 @@ export const hocReducer = (state = {}, action) => {
 					status: hocStates.LOADED_STATE,
 					listingData: action.payload.fetchResponse,
 					actionsHash: action.payload.fetchActionsHash,
+					redirectStatus: null,
 				};
 			}
 		}
@@ -109,9 +114,10 @@ export const hocReducer = (state = {}, action) => {
 					return state;
 				} else {
 					return {
-						status,
+						status: action.type === REDIRECT_NEEDED ? hocStates.REDIR_STATE : status,
 						listingData: null,
 						actionsHash: '',
+						redirectStatus: action.type === REDIRECT_NEEDED ? action.payload.redirectStatus : null,
 					};
 				}
 			}
