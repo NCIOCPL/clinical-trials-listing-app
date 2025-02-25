@@ -18,7 +18,7 @@
 
 	&__title {
 		@include u-text($theme-font-weight-bold, $theme-color-base-darkest); // 600 font weight #1B1B1B
-		@include u-font($theme-font-role-body, $theme-type-scale-sm); // Open Sans
+		@include u-font($theme-font-role-body, $theme-type-scale-xs); // Open Sans
 		@include u-margin(0);
 		@include u-display('flex');
 		@include u-flex('align-center');

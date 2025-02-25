@@ -71,7 +71,7 @@
 	@include u-width('mobile');
 	@include u-height('full');
 	@include u-padding-top('205');
-	min-width: 320px;
+	@include u-minw(units('mobile'));
 
 	&__header {
 		//background: #f5f5f5;
@@ -86,25 +86,25 @@
 		font-size: 1.25rem;
 	}
 
-	&__minimize {
-		background: none;
-		border: none;
-		font-size: 1.5rem;
-		color: #444;
-		cursor: pointer;
-		@include u-padding('05');
-	}
+	// &__minimize {
+	// 	background: none;
+	// 	border: none;
+	// 	font-size: 1.5rem;
+	// 	color: #444;
+	// 	cursor: pointer;
+	// 	@include u-padding('05');
+	// }
 
 	&__content{
 		@include u-padding(3);
 	}
 
-	@media (max-width: 1023px) {
+	@include at-media-max('desktop') {
 		@include u-width('full');
 	}
 
 	.usa-accordion__button:focus, .usa-accordion__button:hover {
-		@media (min-width: 1024px) {
+		@include at-media('desktop') {
 			//outline: unset;
 			@include u-bg($theme-color-base-lightest); // #f0f0f0
 		}
@@ -118,8 +118,11 @@
 
 	// Filter Group Styles
 	.filter-group {
-		@include u-margin-bottom('05');
 
+		& input.usa-input, select.usa-select {
+			@include u-margin-bottom('205');
+		}
+		// @include u-margin-bottom('05');
 		&__header {
 			@include u-margin-bottom(1);
 		}
@@ -131,23 +134,24 @@
 		}
 
 		&__title {
+			@include u-font($theme-font-role-body, $theme-type-scale-xs); // Open Sans
 			@include u-margin(0);
 			@include u-display('flex');
 			@include u-flex('align-center');
 			@include u-text($theme-color-base-darkest); // #1B1B1B
-			font-size: 1.125rem;
+			//font-size: 1.125rem;
 			font-weight: 700;
 			gap: 0.5rem;
 		}
 
-		&__help-text {
-			color: #666666;
-			font-size: 0.875rem;
-			margin-top: 0.25rem;
-			margin-bottom: 0.75rem;
-			line-height: 1.4;
-			margin-left: 0; // Ensure no left margin
-		}
+		// &__help-text {
+		// 	color: #666666;
+		// 	font-size: 0.875rem;
+		// 	margin-top: 0.25rem;
+		// 	margin-bottom: 0.75rem;
+		// 	line-height: 1.4;
+		// 	margin-left: 0; // Ensure no left margin
+		// }
 	}
 
 	// Form Controls
@@ -189,17 +193,17 @@
 	// Update the button styles in Sidebar.scss
 	.ctla-sidebar {
 		&__actions {
-			@include u-margin-top('205');
+			//@include u-margin-top('205');
 			@include u-display('flex');
 			gap: 1.25rem;
 			//margin-top: 1.25rem;
 			//display: flex;
 
-			@media (min-width: 481px) {
+			@include at-media('mobile-lg') {
 				max-width: 288px;
 			}
 
-			@media (max-width: 480px) {
+			@include at-media-max('mobile-lg') {
 				@include u-flex('column');
 				//flex-direction: column;
 			}
@@ -209,7 +213,7 @@
 			&--clear {
 				flex: 1;
 
-				@media (max-width: 480px) {
+				@include at-media-max('mobile-lg') {
 					@include u-width('full');
 				}
 
@@ -240,7 +244,7 @@
 			&--apply {
 				flex: 1;
 
-				@media (max-width: 1023px) {
+				@include at-media-max('desktop') {
 					@include u-width('full');
 				}
 
