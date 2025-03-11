@@ -303,13 +303,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 			'sites.org_coordinates_lat': lat,
 			'sites.org_coordinates_lon': lon,
 			'sites.org_coordinates_dist': `${location.radius}mi`,
-			'sites.recruitment_status': [
-				'active',
-				'approved',
-				'enrolling_by_invitation',
-				'in_review',
-				'temporarily_closed_to_accrual'
-			]
+			'sites.recruitment_status': ['active', 'approved', 'enrolling_by_invitation', 'in_review', 'temporarily_closed_to_accrual'],
 		};
 	};
 
