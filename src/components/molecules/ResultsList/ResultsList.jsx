@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { getLocationInfoFromSites } from '../../../utils';
+import { getLocationInfoFromSites, filterSitesByActiveRecruitment } from '../../../utils';
 import ResultsListItem from './ResultsListItem';
 import './ResultsList.scss';
 import { useFilters } from '../../../features/filters/context/FilterContext/FilterContext';
@@ -16,11 +16,14 @@ const ResultsList = ({ results, resultsItemTitleLink }) => {
 	var zipInputReturn = '';
 
 	function displayLocation(sitesList, zipCoords, zipRadius) {
+		// Filter sites by active recruitment status before counting nearby sites
+		const activeSites = filterSitesByActiveRecruitment(sitesList);
+
 		const countNearbySitesByZip = (arr) => {
 			return arr.reduce((count, itemSite) => count + isWithinRadius(zipCoords, itemSite.org_coordinates, zipRadius), 0);
 		};
 
-		zipInputReturn = `, including ${countNearbySitesByZip(sitesList)} near you`;
+		zipInputReturn = `, including ${countNearbySitesByZip(activeSites)} near you`;
 	}
 
 	return (

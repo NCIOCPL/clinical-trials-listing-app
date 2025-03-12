@@ -25,6 +25,12 @@ const AgeFilter = ({ value, onChange, onFocus, disabled }) => {
 			return;
 		}
 
+		// Ignore leading zeros (except when input is just a single '0')
+		const hasLeadingZeros = inputValue.length > 1 && inputValue[0] === '0';
+		if (hasLeadingZeros) {
+			return; // aka do nothing
+		}
+
 		// Convert to a number and ensure it's positive
 		const numericValue = parseInt(inputValue, 10);
 

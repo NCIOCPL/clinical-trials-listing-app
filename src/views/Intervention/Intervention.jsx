@@ -11,9 +11,10 @@ import { useFilters } from '../../features/filters/context/FilterContext/FilterC
 import Sidebar from '../../features/filters/components/Sidebar/Sidebar';
 import { useStateValue } from '../../store/store';
 import { appendOrUpdateToQueryString, getKeyValueFromQueryString, getPageOffset, TokenParser, getAnalyticsParamsForRoute, getNoTrialsRedirectParams, getParamsForRoute } from '../../utils';
+import { hocStates } from '../hocReducer';
 import { useTrialSearch } from '../../features/filters/hooks/useTrialSearch';
 
-const Intervention = ({ routeParamMap, routePath, data }) => {
+const Intervention = ({ routeParamMap, routePath, data, state }) => {
 	const { NoTrialsPath } = useAppPaths();
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -175,7 +176,19 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 					}
 				}, {});
 
-				navigate(`${NoTrialsPath()}?${redirectParams}`, {
+				// Create a new URLSearchParams object with only the parameters we want
+				const params = new URLSearchParams();
+
+				// Split the redirectParams string by '&' to get individual parameters
+				redirectParams.split('&').forEach((param) => {
+					if (param) {
+						const [key, value] = param.split('=');
+						params.append(key, value);
+					}
+				});
+
+				// Navigate to the no trials page with only our specific parameters
+				navigate(`${NoTrialsPath()}?${params.toString()}`, {
 					replace: true,
 					state: {
 						redirectStatus: redirectStatusCode,
@@ -237,27 +250,38 @@ const Intervention = ({ routeParamMap, routePath, data }) => {
 	};
 
 	const renderHelmet = () => {
-		const prerenderHeader = baseHost + window.location.pathname;
-		const status = location.state?.redirectStatus;
+		const pathAndPage = window.location.pathname + `?pn=${pager.page}`;
+
+		// Get redirect status from state or location.state
+		let redirectStatus = '';
+
+		// Check if we're in a redirect state
+		if (state && state.status === hocStates.REDIR_STATE) {
+			redirectStatus = '301';
+		} else if ((state && state.redirectStatus === '301') || location.state?.redirectStatus === '301') {
+			redirectStatus = '301';
+		} else if (location.state?.redirectStatus) {
+			redirectStatus = location.state.redirectStatus;
+		}
+
+		// Force '301' status for code-to-pretty URL redirects
+		if (location.search.includes('redirect=true')) {
+			redirectStatus = '301';
+		}
+
+		// Get prerender location from location.state
+		const prerenderLocation = location.state?.prerenderLocation || baseHost + location.pathname;
 
 		return (
 			<Helmet>
 				<title>{`${replacedText.browserTitle} - ${siteName}`}</title>
-				<meta property="og:title" content={`${replacedText.pageTitle}`} />
-				<meta property="og:url" content={baseHost + window.location.pathname} />
+				<meta property="og:title" content={replacedText.pageTitle} />
+				<meta property="og:url" content={baseHost + pathAndPage} />
 				<meta name="description" content={replacedText.metaDescription} />
 				<meta property="og:description" content={replacedText.metaDescription} />
-				<link rel="canonical" href={canonicalHost + window.location.pathname} />
-				{(() => {
-					if (status) {
-						return <meta name="prerender-status-code" content={status} />;
-					}
-				})()}
-				{(() => {
-					if (status === '301') {
-						return <meta name="prerender-header" content={`Location: ${prerenderHeader}`} />;
-					}
-				})()}
+				<link rel="canonical" href={canonicalHost + pathAndPage} />
+				{redirectStatus && <meta name="prerender-status-code" content={redirectStatus} />}
+				{redirectStatus === '301' && <meta name="prerender-header" content={`Location: ${prerenderLocation}`} />}
 			</Helmet>
 		);
 	};
@@ -368,6 +392,7 @@ Intervention.propTypes = {
 			prettyUrlName: PropTypes.string,
 		})
 	),
+	state: PropTypes.object,
 };
 
 export default Intervention;

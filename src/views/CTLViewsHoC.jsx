@@ -221,6 +221,11 @@ const CTLViewsHoC = (WrappedView) => {
 					// Add loading check helper
 					const isLoading = getListingInfo.loading || state.status === hocStates.REDIR_STATE || state.status === hocStates.LOADING_STATE || (state.status === hocStates.LOADED_STATE && state.actionsHash !== currentActionsHash);
 
+					// First check for 404 regardless of component type
+					if (state.status === hocStates.NOTFOUND_STATE) {
+						return <PageNotFound />;
+					}
+
 					// Always pass state to Disease component
 					if (WrappedView.name === 'Disease') {
 						return <WrappedView
@@ -239,11 +244,8 @@ const CTLViewsHoC = (WrappedView) => {
 					}
 
 					// We have finished loading and either need to display
-					// 404, error or the results.
+					// error or the results.
 					switch (state.status) {
-						case hocStates.NOTFOUND_STATE: {
-							return <PageNotFound />;
-						}
 						case hocStates.LOADED_STATE: {
 							if (isNoTrials) {
 								return <WrappedView routeParamMap={filteredRouteParamMap} {...props} data={state.listingData} state={state} />;

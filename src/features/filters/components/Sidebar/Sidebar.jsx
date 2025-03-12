@@ -20,7 +20,7 @@ import { URL_PARAM_MAPPING } from '../../constants/urlParams';
 const Sidebar = ({ pageType = 'Disease', isDisabled = false }) => {
 	const navigate = useNavigate();
 	const location = useLocation();
-	const { state, dispatch, applyFilters, enabledFilters = [], listingInfo, fetchState } = useFilters();
+	const { state, dispatch, applyFilters, hasInvalidZip, enabledFilters = [], listingInfo, fetchState } = useFilters();
 	const { filters, isDirty } = state;
 	const [hasInteracted, setHasInteracted] = useState(false);
 	const { filterAppliedCounter, filterRemovedCounter, incrementAppliedCounter, incrementRemovedCounter } = useFilterCounters();
@@ -182,7 +182,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false }) => {
 			case 'age':
 				return <AgeFilter value={filters.age} onChange={handleAgeFilterChange} onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'location':
-				return <ZipCodeFilter zipCode={filters.location.zipCode} radius={filters.location.radius} onZipCodeChange={handleZipCodeChange} onRadiusChange={handleRadiusChange} onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
+				return <ZipCodeFilter zipCode={filters.location.zipCode} radius={filters.location.radius} onZipCodeChange={handleZipCodeChange} onRadiusChange={handleRadiusChange} onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} hasInvalidZip={hasInvalidZip} />;
 			default:
 				return null;
 		}

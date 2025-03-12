@@ -181,8 +181,18 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 		if (!loading && error?.message === 'Trial count mismatch from the API') {
 			handleRedirect('404');
 		} else if (!loading && fetchState) {
-			if (fetchState?.total === 0 || (fetchState?.data && fetchState.data.length === 0)) {
-				// Redirect if no trials found or if the page has no trials (invalid page number)
+			// If we have trials (total > 0) but current page is empty,
+			// this is an invalid page number situation
+			if (fetchState?.total > 0 && fetchState?.data && fetchState.data.length === 0) {
+				// Simply update the URL to page 1 instead of redirecting to NoTrialsFound
+				const qryStr = appendOrUpdateToQueryString(search, 'pn', 1);
+				const paramsObject = getParamsForRoute(data, routeParamMap);
+				navigate(`${routePath(paramsObject)}${qryStr}`, { replace: true });
+				return; // Exit early to prevent other conditions from executing
+			}
+
+			// Handle truly empty results (no trials at all)
+			if (fetchState?.total === 0) {
 				handleRedirect('302');
 			} else if (fetchState?.total > 0) {
 				trackPageView();
@@ -301,10 +311,8 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 			redirectStatus = '301';
 		} else if (location.state?.redirectStatus) {
 			redirectStatus = location.state.redirectStatus;
-		}
-
-		// Force '301' status for code-to-pretty URL redirects
-		if (location.pathname.includes('/breast-cancer/treatment/trastuzumab') || location.search.includes('redirect=true')) {
+		} else if (filterState.isInitialLoad && location.search.includes('redirect=true')) {
+			// Handle case where page is loaded initially with redirect=true parameter
 			redirectStatus = '301';
 		}
 

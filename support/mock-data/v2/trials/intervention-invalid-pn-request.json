@@ -17,11 +17,12 @@
 		"sites.org_country",
 		"sites.org_state_or_province",
 		"sites.org_city",
-		"sites.recruitment_status"
+		"sites.recruitment_status",
+		"sites.org_coordinates"
 	],
-	"diseases.nci_thesaurus_concept_id": ["C4872", "C118809"],
-	"from": 1000,
-	"size": 25
+	"from": 1325,
+	"size": 25,
+	"arms.interventions.nci_thesaurus_concept_id": [
+		"C1647"
+	]
 }
-
-

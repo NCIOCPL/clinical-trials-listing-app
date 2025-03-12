@@ -119,6 +119,25 @@ And('the CTS API is responding with a server error', () => {
 	cy.triggerServerError();
 });
 
+// Intercepts CTS API Calls
+Cypress.Commands.add('triggerPNF', () => {
+	cy.intercept('/cts/mock-api/v2/*', {
+		statusCode: 404,
+	}).as('mockApiError');
+
+	cy.intercept('/cts/proxy-api/v2/*', {
+		statusCode: 404,
+	}).as('proxyApiError');
+
+	cy.intercept('https://clinicaltrialsapi.cancer.gov/api/v2/*', {
+		statusCode: 404,
+	}).as('ctsApiError');
+});
+
+And('the CTS API is responding with a 404', () => {
+	cy.triggerPNF();
+});
+
 /*
 	----------------------------------------
 	 Analytics
@@ -294,21 +313,32 @@ Then('the error message {string} appears on the page', (text) => {
 		Redirect
 	-----------------------
 */
+Then('the user is navigated to {string} with query parameters {string} without redirect', (url, queryParams) => {
+	cy.wait(2000);
+	cy.location('href').should('include', url);
+	cy.location('href').should('include', `${queryParams}`);
+	cy.location('href').should('not.include', 'redirect=true');
+});
+
 Then('the user is redirected to {string}', (redirectUrl) => {
 	cy.location('href').should('include', redirectUrl);
 });
 
 Then('the user is redirected with filter parameters to {string}', (redirectUrl) => {
+	cy.wait(2000);
 	cy.location('href').should('include', 'redirect=true');
 	cy.location('href').should('include', redirectUrl);
 });
 
 Then('the redirect parameter is not appended', () => {
+	cy.wait(2000);
 	cy.location('href').should('not.include', 'redirect=true');
 });
 
 Then('the user is redirected to {string} with query parameters {string}', (redirectUrl, queryParams) => {
-	cy.location('href').should('include', `${redirectUrl}?${queryParams}`);
+	cy.wait(2000);
+	cy.location('href').should('include', `${redirectUrl}?`);
+	cy.location('href').should('include', `${queryParams}`);
 });
 
 And('the CIS Banner displays below', () => {

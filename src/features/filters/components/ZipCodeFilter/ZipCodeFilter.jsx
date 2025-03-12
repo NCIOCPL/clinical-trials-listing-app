@@ -5,20 +5,21 @@ import FilterGroup from '../FilterGroup';
 import { useState } from 'react';
 import { useTracking } from 'react-tracking';
 import './ZipCodeFilter.scss';
-
 // eslint-disable-next-line react/prop-types
-const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onFocus, disabled }) => {
-	const [error, setError] = useState('');
+const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onFocus, disabled, hasInvalidZip }) => {
+	const [formatError, setFormatError] = useState('');
 	const tracking = useTracking();
 
 	const validateZipCode = (value) => {
 		if (value && !/^\d{5}$/.test(value)) {
-			setError('Please enter a five-digit ZIP code');
+			setFormatError('Please enter a five-digit ZIP code');
 			return false;
 		}
-		setError('');
+		setFormatError('');
 		return true;
 	};
+
+	const error = formatError || (hasInvalidZip ? 'Please enter a valid five-digit ZIP code' : '');
 
 	const handleZipCodeChange = (e) => {
 		const value = e.target.value;
@@ -80,6 +81,7 @@ ZipCodeFilter.propTypes = {
 	onRadiusChange: PropTypes.func.isRequired,
 	onFocus: PropTypes.func,
 	disabled: PropTypes.bool,
+	hasInvalidZip: PropTypes.bool,
 };
 
 export default ZipCodeFilter;

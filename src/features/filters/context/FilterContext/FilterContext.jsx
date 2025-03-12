@@ -210,6 +210,12 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 				if (!filterParams.includes(key)) {
 					if (key === 'pn' && isInitialLoad) {
 						updatedParams.set(key, originalPn);
+					} else if (key === 'redirect') {
+						// Set the rediret param on the initial loads but ignore otherwise
+						if (isInitialLoad) {
+							updatedParams.set(key, params.get(key));
+						}
+						// When filters are applied (not initial load), we don't include redirect=true
 					} else {
 						updatedParams.set(key, params.get(key));
 					}
@@ -359,7 +365,7 @@ export function useFilters() {
 		throw new Error('useFilters must be used within a FilterProvider');
 	}
 
-	const { state, dispatch, getCurrentFilters, isApplyingFilters, setIsApplyingFilters, enabledFilters, zipCoords, pageType } = context;
+	const { state, dispatch, getCurrentFilters, isApplyingFilters, setIsApplyingFilters, hasInvalidZip, enabledFilters, zipCoords, pageType } = context;
 
 	const setFilter = (filterType, value) =>
 		dispatch({
@@ -391,6 +397,7 @@ export function useFilters() {
 		clearFilters,
 		removeFilter,
 		isApplyingFilters,
+		hasInvalidZip,
 		enabledFilters,
 		pageType,
 		zipCoords,
