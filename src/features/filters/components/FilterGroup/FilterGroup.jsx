@@ -35,7 +35,7 @@ const FilterGroup = ({ title, helpText, children, defaultExpanded = true, requir
       `}
 			role="group"
 			aria-labelledby={`${groupId}-header`}>
-			<div className="filter-group__header">
+			<div id={`${groupId}-header`} className="filter-group__header">
 				<div className="filter-group__title-container">
 					<h3 className="filter-group__title">
 						{title}
