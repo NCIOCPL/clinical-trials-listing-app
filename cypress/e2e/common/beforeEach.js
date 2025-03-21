@@ -21,8 +21,8 @@ beforeEach(() => {
 			baseHost: 'http://localhost:3000',
 			basePath: '/',
 			canonicalHost: 'https://www.cancer.gov',
-			cisBannerImgUrlLarge: '%PUBLIC_URL%/images/cts-cis-banner-xl.jpeg',
-			cisBannerImgUrlSmall: '%PUBLIC_URL%/images/cts-cis-banner-smartphone.jpeg',
+			cisBannerImgUrlLarge: '/images/cts-cis-banner-xl.jpeg',
+			cisBannerImgUrlSmall: '/images/cts-cis-banner-smartphone.jpeg',
 			dynamicListingPatterns: {
 				Disease: {
 					Disease: {
