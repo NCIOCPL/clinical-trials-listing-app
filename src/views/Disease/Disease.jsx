@@ -177,6 +177,24 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 	// 		}
 	// 	}
 	// }, [loading, fetchState, error]);
+	// Helper function to determine if user has applied any filters
+	const hasAppliedFilters = () => {
+		const filters = getCurrentFilters();
+		// const baseFilters = baseRequestFilters;
+
+		// Check if age filter is applied
+		if (filters['eligibility.structured.min_age_in_years_lte'] || filters['eligibility.structured.max_age_in_years_gte']) {
+			return true;
+		}
+
+		// Check if location filter is applied
+		if (filters['sites.org_coordinates_lat'] || filters['sites.org_coordinates_lon'] || filters['sites.org_coordinates_dist']) {
+			return true;
+		}
+
+		return false;
+	};
+
 	useEffect(() => {
 		if (!loading && error?.message === 'Trial count mismatch from the API') {
 			handleRedirect('404');
@@ -193,7 +211,11 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 
 			// Handle truly empty results (no trials at all)
 			if (fetchState?.total === 0) {
-				handleRedirect('302');
+				// Only redirect to NoTrialsFound if no filters are applied
+				if (!hasAppliedFilters()) {
+					handleRedirect('302');
+				}
+				// If filters are applied, stay on page and show NoResultsWithFilters (handled in render)
 			} else if (fetchState?.total > 0) {
 				trackPageView();
 			}

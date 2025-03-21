@@ -4,7 +4,8 @@ import { Helmet } from 'react-helmet';
 import { useLocation, useNavigate } from 'react-router';
 import track, { useTracking } from 'react-tracking';
 
-import { Pager, NoResults, ResultsList, ScrollRestoration, Spinner } from '../../components';
+import { Pager, ResultsList, ScrollRestoration, Spinner } from '../../components';
+import NoResultsWithFilters from '../../components/molecules/NoResultsWithFilters/NoResultsWithFilters';
 import { ErrorPage } from '../ErrorBoundary';
 import { useAppPaths } from '../../hooks';
 import { useFilters } from '../../features/filters/context/FilterContext/FilterContext';
@@ -92,6 +93,51 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 	const replacedText = setupReplacementText();
 	const tracking = useTracking();
 
+	// Helper function to determine if user has applied any filters
+	const hasAppliedFilters = () => {
+		const filters = getCurrentFilters();
+
+		// Check if age filter is applied
+		if (filters['eligibility.structured.min_age_in_years_lte'] || filters['eligibility.structured.max_age_in_years_gte']) {
+			return true;
+		}
+
+		// Check if location filter is applied
+		if (filters['sites.org_coordinates_lat'] || filters['sites.org_coordinates_lon'] || filters['sites.org_coordinates_dist']) {
+			return true;
+		}
+
+		return false;
+	};
+
+	const handleRedirect = (status) => {
+		let redirectParams = '';
+
+		// If data is available, use getNoTrialsRedirectParams
+		if (data && routeParamMap) {
+			redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
+		} else {
+			// Extract intervention name from URL path for direct navigation cases
+			const pathParts = location.pathname.split('/');
+			if (pathParts.length > 1 && pathParts[1]) {
+				redirectParams = `p1=${pathParts[1]}`;
+			}
+		}
+
+		const prerenderLocation = status === '404' ? null : baseHost + location.pathname;
+
+		// Preserve existing redirectStatus if present, otherwise use the new status
+		const redirectStatus = location.state?.redirectStatus || status;
+
+		return navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
+			replace: true,
+			state: {
+				redirectStatus,
+				prerenderLocation,
+			},
+		});
+	};
+
 	// Watch for filter changes
 	useEffect(() => {
 		if (filterState.shouldSearch) {
@@ -136,80 +182,36 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 	const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
 
 	useEffect(() => {
-		//if you try to access a nonexistent page, eg: try to access page 41 of 1-40 pages
-		if (!loading && error != null && error.message === 'Trial count mismatch from the API') {
-			const redirectStatusCode = location.state?.redirectStatus ? location.state?.redirectStatus : '404';
-
-			const prerenderLocation = location.state?.redirectStatus ? baseHost + window.location.pathname : null;
-
-			// So this is handling the redirect to the no trials page.
-			// it is the job of the dynamic route views to property
-			// set the p1,p2,p3 parameters.
-			const redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
-
-			navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
-				replace: true,
-				state: {
-					redirectStatus: redirectStatusCode,
-					prerenderLocation: prerenderLocation,
-				},
-			});
+		// If you try to access a nonexistent page, eg: try to access page 41 of 1-40 pages
+		if (!loading && error?.message === 'Trial count mismatch from the API') {
+			handleRedirect('404');
 		} else if (!loading && fetchState) {
-			if (fetchState.total === 0) {
-				const redirectStatusCode = location.state?.redirectStatus ? location.state?.redirectStatus : '302';
-
-				const prerenderLocation = location.state?.redirectStatus ? baseHost + window.location.pathname : null;
-
-				// So this is handling the redirect to the no trials page.
-				// it is the job of the dynamic route views to property
-				// set the p1,p2,p3 parameters.
-				const redirectParams = data.reduce((acQuery, paramData, idx) => {
-					const paramInfo = routeParamMap[idx];
-
-					switch (paramInfo.paramName) {
-						case 'codeOrPurl': {
-							return `p${idx + 1}=${paramData.prettyUrlName ? paramData.prettyUrlName : paramData.conceptId.join(',')}`;
-						}
-						case 'type': {
-							return `${acQuery}&p${idx + 1}=${paramData.prettyUrlName}`;
-						}
-					}
-				}, {});
-
-				// Create a new URLSearchParams object with only the parameters we want
-				const params = new URLSearchParams();
-
-				// Split the redirectParams string by '&' to get individual parameters
-				redirectParams.split('&').forEach((param) => {
-					if (param) {
-						const [key, value] = param.split('=');
-						params.append(key, value);
-					}
-				});
-
-				// Navigate to the no trials page with only our specific parameters
-				navigate(`${NoTrialsPath()}?${params.toString()}`, {
-					replace: true,
-					state: {
-						redirectStatus: redirectStatusCode,
-						prerenderLocation: prerenderLocation,
-					},
-				});
+			// If we have trials (total > 0) but current page is empty,
+			// this is an invalid page number situation
+			if (fetchState?.total > 0 && fetchState?.data && fetchState.data.length === 0) {
+				// Simply update the URL to page 1 instead of redirecting to NoTrialsFound
+				const qryStr = appendOrUpdateToQueryString(search, 'pn', 1);
+				const paramsObject = getParamsForRoute(data, routeParamMap);
+				navigate(`${routePath(paramsObject)}${qryStr}`, { replace: true });
+				return; // Exit early to prevent other conditions from executing
 			}
 
-			// Fire off a page load event. Usually this would be in
-			// some effect when something loaded.
-			if (fetchState.total > 0) {
+			// Handle truly empty results (no trials at all)
+			if (fetchState?.total === 0) {
+				// Only redirect to NoTrialsFound if no filters are applied
+				if (!hasAppliedFilters()) {
+					handleRedirect('302');
+				}
+				// If filters are applied, stay on page and show NoResultsWithFilters (handled in render)
+			} else if (fetchState?.total > 0) {
+				// Fire off tracking event for successful results
 				tracking.trackEvent({
-					// These properties are required.
 					type: 'PageLoad',
 					event: 'TrialListingApp:Load:Results',
 					name: canonicalHost.replace(/^(http|https):\/\//, '') + window.location.pathname,
 					title: replacedText.pageTitle,
 					language: language === 'en' ? 'english' : 'spanish',
 					metaTitle: `${replacedText.pageTitle} - ${siteName}`,
-					// Any additional properties fall into the "page.additionalDetails" bucket
-					// for the event.
 					numberResults: fetchState.total,
 					trialListingPageType: `${trialListingPageType.toLowerCase()}`,
 					...trackingData,
@@ -322,15 +324,19 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 
 	return (
 		<div className="disease-view">
+			{renderHelmet()}
+
 			<div className="disease-view__container">
 				<aside className="ctla-sidebar">
 					<Sidebar pageType="Intervention" />
 				</aside>
 
-				<div className="disease-view__content">
-					{renderHelmet()}
-					<h1>{replacedText.pageTitle}</h1>
+				<h1 className="disease-view__heading">{replacedText.pageTitle}</h1>
 
+				{/* ::: Intro Text ::: */}
+				{replacedText.introText.length > 0 && <div className="disease-view__intro ctla-results__intro" dangerouslySetInnerHTML={{ __html: replacedText.introText }}></div>}
+
+				<div className="disease-view__content">
 					<main className="disease-view__main">
 						{(() => {
 							if (loading || isApplyingFilters) {
@@ -339,18 +345,6 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 								if (fetchState.total > 0) {
 									return (
 										<>
-											{/* ::: Intro Text ::: */}
-											{replacedText.introText.length > 0 && (
-												<div className="ctla-results__intro grid-container">
-													<div>
-														<div
-															className="grid-col"
-															dangerouslySetInnerHTML={{
-																__html: replacedText.introText,
-															}}></div>
-													</div>
-												</div>
-											)}
 											{/* ::: Top Paging Section ::: */}
 											{renderPagerSection('top')}
 											<ScrollRestoration />
@@ -359,8 +353,19 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 											{renderPagerSection('bottom')}
 										</>
 									);
-								} else {
-									return <NoResults />;
+								} else if (fetchState.total === 0) {
+									// No trials found case
+									return (
+										<>
+											<div className="ctla-results__summary grid-container">
+												<div className="grid-row">
+													<div className="ctla-results__count grid-col">Trials 0 of 0</div>
+												</div>
+											</div>
+											<hr className="ctla-results__divider" />
+											<NoResultsWithFilters />
+										</>
+									);
 								}
 							} else {
 								return <ErrorPage />;
