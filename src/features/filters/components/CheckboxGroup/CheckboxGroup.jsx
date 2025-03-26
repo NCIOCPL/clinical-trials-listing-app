@@ -1,12 +1,12 @@
 /* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTracking } from 'react-tracking';
+// import { useTracking } from 'react-tracking';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import './CheckboxGroup.scss';
 
 const CheckboxGroup = ({ selectedValues = [], onChange, name, disabled = false }) => {
-	const tracking = useTracking();
+	// const tracking = useTracking();
 
 	const filterConfig = FILTER_CONFIG[name];
 
@@ -15,13 +15,14 @@ const CheckboxGroup = ({ selectedValues = [], onChange, name, disabled = false }
 
 		onChange(newValues);
 
-		tracking.trackEvent({
-			type: 'Other',
-			event: 'TrialListingApp:Filter:Change',
-			filterType: name,
-			filterValue: value,
-			action: checked ? 'select' : 'deselect',
-		});
+		// tracking.trackEvent({
+		// 	type: 'Other',
+		// 	event: 'TrialListingApp:Filter:Change',
+		// 	linkName: 'TrialListingApp:Filter:Change',
+		// 	filterType: name,
+		// 	filterValue: value,
+		// 	action: checked ? 'select' : 'deselect',
+		// });
 	};
 
 	return (

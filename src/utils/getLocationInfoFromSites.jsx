@@ -55,7 +55,6 @@ export const getLocationInfoFromSites = (currentTrialStatus, nctId, sites = [], 
 		// Get full state name from state code
 		const stateName = getStateNameFromAbbr(filteredSites[lastUSLocationSite].org_state_or_province.toUpperCase());
 
-		console.log(sites[lastUSLocationSite]);
 		// Return text in format "org name, org city, state"
 		return (
 			<>
