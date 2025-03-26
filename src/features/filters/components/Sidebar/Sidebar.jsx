@@ -17,7 +17,7 @@ import { formatLocationString, getAppliedFieldsString } from '../../utils/analyt
 import { useTracking } from 'react-tracking';
 import { URL_PARAM_MAPPING } from '../../constants/urlParams';
 
-const Sidebar = ({ pageType = 'Disease', isDisabled = false }) => {
+const Sidebar = ({ pageType = 'Disease', isDisabled = false, initialTotalCount = null, onFilterApplied = () => {}, onFilterCleared = () => {} }) => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { state, dispatch, applyFilters, hasInvalidZip, enabledFilters = [], listingInfo, fetchState } = useFilters();
@@ -66,10 +66,9 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false }) => {
 			tracking.trackEvent({
 				type: 'Other',
 				event: FILTER_EVENTS.START,
-				data: {
-					interactionType: INTERACTION_TYPES.FILTER_START,
-					fieldInteractedWith: fieldName,
-				},
+				linkName: FILTER_EVENTS.START,
+				interactionType: INTERACTION_TYPES.FILTER_START,
+				fieldInteractedWith: fieldName,
 			});
 			setHasInteracted(true);
 		}
@@ -117,17 +116,10 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false }) => {
 
 	const handleClearFilters = () => {
 		incrementRemovedCounter();
-		tracking.trackEvent({
-			type: 'Other',
-			event: FILTER_EVENTS.MODIFY,
-			data: {
-				interactionType: INTERACTION_TYPES.CLEAR_ALL,
-				fieldRemoved: 'all',
-				filterAppliedCounter,
-				filterRemovedCounter,
-				numberResults: fetchState?.total || 0,
-			},
-		});
+
+		// Notify parent component about filter clearing with counter value
+		onFilterCleared(filterRemovedCounter + 1, filterAppliedCounter);
+
 		dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
 		dispatch({ type: FilterActionTypes.APPLY_FILTERS });
 	};
@@ -142,30 +134,23 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false }) => {
 				tracking.trackEvent({
 					type: 'Other',
 					event: FILTER_EVENTS.APPLY_ERROR,
-					data: {
-						interactionType: INTERACTION_TYPES.APPLIED_WITH_ERRORS,
-						errorField: zipError ? 'zip' : getErrorFields(validationErrors),
-					},
+					linkName: FILTER_EVENTS.APPLY_ERROR,
+					interactionType: INTERACTION_TYPES.APPLIED_WITH_ERRORS,
+					errorField: zipError ? 'zip' : getErrorFields(validationErrors),
 				});
 				return;
 			}
 
+			// Capture current filter values at time of click
+			const currentFilters = { ...filters };
+
 			incrementAppliedCounter();
+
+			// Notify parent component about applying filters, and the values
+			onFilterApplied(currentFilters, filterAppliedCounter + 1);
+
 			await applyFilters();
 
-			tracking.trackEvent({
-				type: 'Other',
-				event: FILTER_EVENTS.APPLY,
-				data: {
-					interactionType: INTERACTION_TYPES.FILTER_APPLIED,
-					numberResults: fetchState?.total || 0,
-					fieldsUsed: getAppliedFieldsString(filters),
-					age: filters.age,
-					loc: formatLocationString(filters.location),
-					filterAppliedCounter,
-					filterRemovedCounter,
-				},
-			});
 			const params = new URLSearchParams(window.location.search);
 			if (filters.age) {
 				params.set(URL_PARAM_MAPPING.age.shortCode, filters.age);

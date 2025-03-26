@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useTracking } from 'react-tracking';
+// import { useTracking } from 'react-tracking';
 import './ComboBox.scss';
 
 const ComboBox = ({ label, placeholder, options, multiSelect, value, onChange, helpText, disabled = false, loading = false, error, required = false, minChars = 2, onSearch, name }) => {
@@ -11,7 +11,7 @@ const ComboBox = ({ label, placeholder, options, multiSelect, value, onChange, h
 	const wrapperRef = useRef(null);
 	const inputRef = useRef(null);
 	const listboxRef = useRef(null);
-	const tracking = useTracking();
+	// const tracking = useTracking();
 
 	useEffect(() => {
 		function handleClickOutside(event) {
@@ -36,24 +36,26 @@ const ComboBox = ({ label, placeholder, options, multiSelect, value, onChange, h
 			const newValue = value.includes(option.value) ? value.filter((v) => v !== option.value) : [...value, option.value];
 			onChange(newValue);
 
-			tracking.trackEvent({
-				type: 'Other',
-				event: 'TrialListingApp:Filter:Change',
-				filterType: name,
-				filterValue: option.value,
-				action: newValue.includes(option.value) ? 'select' : 'deselect',
-			});
+			// tracking.trackEvent({
+			// 	type: 'Other',
+			// 	event: 'TrialListingApp:Filter:Change',
+			// 	linkName: 'TrialListingApp:Filter:Change',
+			// 	filterType: name,
+			// 	filterValue: option.value,
+			// 	action: newValue.includes(option.value) ? 'select' : 'deselect',
+			// });
 		} else {
 			onChange([option.value]);
 			setIsOpen(false);
 
-			tracking.trackEvent({
-				type: 'Other',
-				event: 'TrialListingApp:Filter:Change',
-				filterType: name,
-				filterValue: option.value,
-				action: 'select',
-			});
+			// tracking.trackEvent({
+			// 	type: 'Other',
+			// 	event: 'TrialListingApp:Filter:Change',
+			// 	linkName: 'TrialListingApp:Filter:Change',
+			// 	filterType: name,
+			// 	filterValue: option.value,
+			// 	action: 'select',
+			// });
 		}
 		setSearchText('');
 	};

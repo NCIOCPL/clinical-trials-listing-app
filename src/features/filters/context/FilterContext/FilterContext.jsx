@@ -147,7 +147,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		}
 	};
 
-	const [{ getZipCoords, isError }] = useZipConversion(updateZipState);
+	const [{ getZipCoords }] = useZipConversion(updateZipState);
 
 	useEffect(() => {
 		if (state.appliedFilters?.location?.zipCode) {
@@ -293,7 +293,6 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 
 		if (!zipCoords.lat || !zipCoords.long) {
 			console.error('Invalid coordinate structure:', zipCoords);
-			console.log('zipCoords:', isError);
 			return {};
 		}
 

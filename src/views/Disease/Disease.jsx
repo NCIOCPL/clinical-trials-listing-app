@@ -12,6 +12,9 @@ import Sidebar from '../../features/filters/components/Sidebar/Sidebar';
 import { useStateValue } from '../../store/store';
 import { useTrialSearch } from '../../features/filters/hooks/useTrialSearch';
 import { appendOrUpdateToQueryString, getKeyValueFromQueryString, getPageOffset, TokenParser, getAnalyticsParamsForRoute, getNoTrialsRedirectParams, getParamsForRoute, getTextReplacementContext } from '../../utils';
+import { formatLocationString, getAppliedFieldsString } from '../../features/filters/utils/analytics.js';
+import { FILTER_EVENTS, INTERACTION_TYPES } from '../../features/filters/tracking/filterEvents';
+import { useFilterCounters } from '../../features/filters/hooks/useFilterCounters';
 import { hocStates } from '../../views/hocReducer';
 import NoResultsWithFilters from '../../components/molecules/NoResultsWithFilters/NoResultsWithFilters';
 
@@ -27,6 +30,11 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 	// Filter and pagination state
 	const { state: filterState, getCurrentFilters, isApplyingFilters } = useFilters();
 	const [shouldFetchTrials, setShouldFetchTrials] = useState(true);
+	const [isInitialLoad, setIsInitialLoad] = useState(true);
+	const [filtersSubmitted, setFiltersSubmitted] = useState(false);
+	const [initialTotalCount, setInitialTotalCount] = useState(null);
+	const [pendingFilterEvent, setPendingFilterEvent] = useState(null); // { type: 'apply'|'clear', filters?, counter, appliedCounter? }
+	const { filterRemovedCounter } = useFilterCounters();
 	const pn = getKeyValueFromQueryString('pn', search.toLowerCase());
 	const [pager, setPager] = useState({
 		offset: pn ? getPageOffset(pn, itemsPerPage) : 0,
@@ -142,6 +150,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 	useEffect(() => {
 		if (filterState.shouldSearch && hasRequiredData) {
 			setShouldFetchTrials(true);
+			setFiltersSubmitted(true); // Set flag when filters are submitted
 		}
 	}, [filterState.shouldSearch, hasRequiredData]);
 
@@ -209,6 +218,11 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 				return; // Exit early to prevent other conditions from executing
 			}
 
+			// Capture initial total count
+			if (isInitialLoad && !loading && fetchState?.total > 0) {
+				setInitialTotalCount(fetchState.total);
+			}
+
 			// Handle truly empty results (no trials at all)
 			if (fetchState?.total === 0) {
 				// Only redirect to NoTrialsFound if no filters are applied
@@ -217,10 +231,75 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 				}
 				// If filters are applied, stay on page and show NoResultsWithFilters (handled in render)
 			} else if (fetchState?.total > 0) {
-				trackPageView();
+				// Only fire tracking event on initial load or when filters are submitted
+				if (isInitialLoad || filtersSubmitted) {
+					trackPageView();
+
+					// Filter apply tracking moved to dedicated useEffect
+
+					// Reset flags after firing the event
+					if (isInitialLoad) {
+						setIsInitialLoad(false);
+					}
+					if (filtersSubmitted) {
+						setFiltersSubmitted(false);
+					}
+				}
 			}
 		}
-	}, [loading, fetchState, error]);
+	}, [loading, fetchState, error, isInitialLoad, filtersSubmitted]);
+
+	// Dedicated useEffect for filter analytics
+	useEffect(() => {
+		// Only process when we have a pending event, data fetch is complete, and we have results
+		if (pendingFilterEvent && !loading && fetchState && fetchState.total !== undefined) {
+			// Handle different event types
+			if (pendingFilterEvent.type === 'apply') {
+				const { filters, counter } = pendingFilterEvent;
+
+				// Check if actual filters were applied (not just clicking apply with no filters)
+				const isAgeApplied = !!filters.age?.toString().trim();
+				const isLocationApplied = !!filters.location?.zipCode;
+
+				if (isAgeApplied || isLocationApplied) {
+					// Use the utility functions with the exact filters that were applied
+					// Use "none" for age when no age filter is set
+					const age = filters.age?.toString().trim() || 'none';
+					// Use "all" for loc when no location filter is set
+					const loc = filters.location?.zipCode ? formatLocationString(filters.location) : 'all';
+					const fieldsUsed = getAppliedFieldsString(filters);
+
+					tracking.trackEvent({
+						type: 'Other',
+						event: FILTER_EVENTS.APPLY,
+						linkName: FILTER_EVENTS.APPLY,
+						interactionType: INTERACTION_TYPES.FILTER_APPLIED,
+						numberResults: fetchState.total, // Current results with applied filters
+						fieldsUsed: fieldsUsed,
+						age: age,
+						loc: loc,
+						filterAppliedCounter: counter,
+						filterRemovedCounter: filterRemovedCounter,
+					});
+				}
+			} else if (pendingFilterEvent.type === 'clear') {
+				// Handle clear filters event
+				tracking.trackEvent({
+					type: 'Other',
+					event: FILTER_EVENTS.MODIFY,
+					linkName: FILTER_EVENTS.MODIFY,
+					interactionType: INTERACTION_TYPES.CLEAR_ALL,
+					fieldRemoved: 'all',
+					filterAppliedCounter: pendingFilterEvent.appliedCounter,
+					filterRemovedCounter: pendingFilterEvent.counter,
+					numberResults: fetchState.total, // Current unfiltered results count
+				});
+			}
+
+			// Clear the pending event once processed
+			setPendingFilterEvent(null);
+		}
+	}, [pendingFilterEvent, loading, fetchState, filterRemovedCounter, tracking]);
 
 	// Handle pagination
 	useEffect(() => {
@@ -360,7 +439,24 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 		return (
 			<div className="disease-view">
 				<div className="disease-view__container">
-					<Sidebar pageType="Disease" />
+					<Sidebar
+						pageType="Disease"
+						initialTotalCount={initialTotalCount}
+						onFilterApplied={(appliedFilters, counterValue) => {
+							setPendingFilterEvent({
+								type: 'apply',
+								filters: appliedFilters,
+								counter: counterValue,
+							});
+						}}
+						onFilterCleared={(counterValue, appliedCounter) => {
+							setPendingFilterEvent({
+								type: 'clear',
+								counter: counterValue,
+								appliedCounter: appliedCounter,
+							});
+						}}
+					/>
 					<div className="disease-view__content">
 						<Spinner />
 					</div>
@@ -374,7 +470,24 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 			{renderHelmet()}
 
 			<div className="disease-view__container">
-				<Sidebar pageType="Disease" />
+				<Sidebar
+					pageType="Disease"
+					initialTotalCount={initialTotalCount}
+					onFilterApplied={(appliedFilters, counterValue) => {
+						setPendingFilterEvent({
+							type: 'apply',
+							filters: appliedFilters,
+							counter: counterValue,
+						});
+					}}
+					onFilterCleared={(counterValue, appliedCounter) => {
+						setPendingFilterEvent({
+							type: 'clear',
+							counter: counterValue,
+							appliedCounter: appliedCounter,
+						});
+					}}
+				/>
 
 				<h1 className="disease-view__heading">{replacedText.pageTitle}</h1>
 
