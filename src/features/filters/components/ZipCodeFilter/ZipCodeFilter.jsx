@@ -3,12 +3,12 @@ import React from 'react';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import FilterGroup from '../FilterGroup';
 import { useState } from 'react';
-import { useTracking } from 'react-tracking';
+// import { useTracking } from 'react-tracking';
 import './ZipCodeFilter.scss';
 // eslint-disable-next-line react/prop-types
 const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onFocus, disabled, hasInvalidZip }) => {
 	const [formatError, setFormatError] = useState('');
-	const tracking = useTracking();
+	// const tracking = useTracking();
 
 	const validateZipCode = (value) => {
 		if (value && !/^\d{5}$/.test(value)) {
@@ -26,11 +26,12 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onFoc
 		validateZipCode(value);
 		onZipCodeChange(value);
 		if (value && value.length === 5 && /^\d{5}$/.test(value)) {
-			tracking.trackEvent({
-				type: 'Other',
-				event: 'TrialListingApp:Filter:ZipCode',
-				value,
-			});
+			// tracking.trackEvent({
+			// 	type: 'Other',
+			// 	event: 'TrialListingApp:Filter:ZipCode',
+			// 	linkName: 'TrialListingApp:Filter:ZipCode',
+			// 	value,
+			// });
 		}
 	};
 
@@ -40,6 +41,7 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onFoc
 	// 	tracking.trackEvent({
 	// 		type: 'Other',
 	// 		event: 'TrialListingApp:Filter:Radius',
+	// 		linkName: 'TrialListingApp:Filter:Radius',
 	// 		value,
 	// 	});
 	// };

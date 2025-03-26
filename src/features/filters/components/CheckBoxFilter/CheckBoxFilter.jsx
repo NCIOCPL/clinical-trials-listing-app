@@ -1,23 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTracking } from 'react-tracking';
+// import { useTracking } from 'react-tracking';
 import './CheckboxFilter.scss';
 
-const CheckboxFilter = ({ options, selectedValues, onChange, name, disabled = false }) => {
-	const tracking = useTracking();
+const CheckboxFilter = ({ options, selectedValues, onChange, disabled = false }) => {
+	// const tracking = useTracking();
 
 	const handleChange = (value, checked) => {
 		const newValues = checked ? [...selectedValues, value] : selectedValues.filter((v) => v !== value);
 
 		onChange(newValues);
 
-		tracking.trackEvent({
-			type: 'Other',
-			event: 'TrialListingApp:Filter:Checkbox',
-			filterName: name,
-			value,
-			action: checked ? 'select' : 'deselect',
-		});
+		// tracking.trackEvent({
+		// 	type: 'Other',
+		// 	event: 'TrialListingApp:Filter:Checkbox',
+		// 	linkName: 'TrialListingApp:Filter:Checkbox',
+		// 	filterName: name,
+		// 	value,
+		// 	action: checked ? 'select' : 'deselect',
+		// });
 	};
 
 	return (
