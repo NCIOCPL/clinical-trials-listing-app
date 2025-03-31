@@ -84,6 +84,12 @@
 
 	&__content {
 		grid-area: content;
+
+		&:has( .no-results) {
+			@include at-media('desktop') {
+				grid-area: heading;
+			}
+		}
 	}
 }
 
