@@ -1,0 +1,23 @@
+{
+	"data": [
+		{
+			"name": "Bilateral Breast Cancer",
+			"codes": [
+				"C8287"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"synonyms": [
+                "Bilateral Breast Carcinoma"
+            ],
+            "count": 9
+		}
+	]
+}

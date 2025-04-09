@@ -1,0 +1,86 @@
+{
+	"data": [
+		{
+			"name": "Breast Cancer",
+			"codes": [
+				"C4872"
+			],
+			"ancestor_ids": [
+
+			],
+			"parent_ids": [
+
+			],
+			"type": [
+				"maintype"
+			],
+			"synonyms": [
+                "Breast Carcinoma",
+                "Breast cancer, NOS",
+                "Cancer of Breast",
+                "Cancer of the Breast",
+                "Carcinoma of Breast",
+                "Carcinoma of the Breast",
+                "Mammary Carcinoma",
+                "breast cancer"
+            ],
+            "count": 986
+		},
+		{
+			"name": "Ductal Carcinoma In Situ (DCIS)",
+			"codes": [
+				"C2924"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"type": [
+				"grade",
+				"stage",
+				"subtype"
+			],
+			"synonyms": [
+                "Breast Ductal Carcinoma In Situ",
+                "Breast Ductal Carcinoma In Situ, NOS",
+                "Breast Ductal Carcinoma In Situ, Not Otherwise Specified",
+                "DCIS",
+                "DCIS, NOS",
+                "Ductal Breast Carcinoma In Situ",
+                "Ductal Carcinoma In Situ",
+                "Ductal Carcinoma In Situ of Breast",
+                "Ductal Carcinoma In Situ of the Breast",
+                "Ductal carcinoma in situ",
+                "Intraductal Breast Carcinoma",
+                "Intraductal Carcinoma",
+                "Intraductal Carcinoma of Breast",
+                "Intraductal Carcinoma of the Breast",
+                "Non-Infiltrating Ductal Adenocarcinoma of Breast",
+                "Non-Infiltrating Ductal Adenocarcinoma of the Breast",
+                "Non-Infiltrating Ductal Breast Adenocarcinoma",
+                "Non-Infiltrating Ductal Breast Carcinoma",
+                "Non-Infiltrating Ductal Carcinoma of Breast",
+                "Non-Infiltrating Ductal Carcinoma of the Breast",
+                "Non-Infiltrating Intraductal Adenocarcinoma",
+                "Non-Infiltrating Intraductal Adenocarcinoma of Breast",
+                "Non-Infiltrating Intraductal Adenocarcinoma of the Breast",
+                "Non-Infiltrating Intraductal Breast Adenocarcinoma",
+                "Non-Infiltrating Intraductal Carcinoma",
+                "Non-Invasive Ductal Adenocarcinoma of Breast",
+                "Non-Invasive Ductal Adenocarcinoma of the Breast",
+                "Non-Invasive Ductal Breast Adenocarcinoma",
+                "Non-Invasive Ductal Breast Carcinoma",
+                "Non-Invasive Ductal Carcinoma of Breast",
+                "Non-Invasive Ductal Carcinoma of the Breast",
+                "Non-Invasive Intraductal Adenocarcinoma of Breast",
+                "Non-Invasive Intraductal Adenocarcinoma of the Breast",
+                "Non-Invasive Intraductal Breast Adenocarcinoma",
+                "ductal carcinoma in situ",
+                "intraductal carcinoma"
+            ],
+            "count": 60
+		}
+	]
+}

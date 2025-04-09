@@ -1,0 +1,3153 @@
+{
+   "data": [
+       {
+           "name": "Acute Lymphoblastic Leukemia (ALL)",
+           "codes": [
+               "C3167"
+           ],
+           "ancestor_ids": [
+               "C27134",
+               "C3161",
+               "C7539"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C7539"
+           ],
+           "synonyms": [
+               "ALL",
+               "ALL - Acute Lymphocytic Leukemia",
+               "ALL_TYPE",
+               "Acute Lymphoblastic Leukemia",
+               "Acute Lymphocytic Leukaemia",
+               "Acute Lymphocytic Leukemia",
+               "Acute Lymphocytic Leukemias",
+               "Acute Lymphogenous Leukemia",
+               "Acute Lymphoid Leukemia",
+               "Acute lymphatic leukemia",
+               "Acute lymphoblastic leukemia",
+               "Acute lymphoblastic leukemia (ALL)",
+               "Acute lymphoblastic leukemia, NOS",
+               "Acute lymphoblastic leukemia, precursor cell type",
+               "Acute lymphocytic leukemia",
+               "Acute lymphoid leukemia",
+               "LEUKEMIA, LYMPHOBLASTIC, MALIGNANT",
+               "Lymphoblastic Leukemia",
+               "Lymphoblastic leukemia, NOS",
+               "Precursor Cell Lymphoblastic Leukemia",
+               "Precursor Lymphoblasic Leukemia",
+               "Precursor Lymphoblastic Leukemia",
+               "Precursor cell lymphoblastic leukemia, NOS",
+               "acute lymphoblastic leukemia",
+               "acute lymphocytic leukemia"
+           ],
+           "count": 242
+       },
+       {
+           "name": "Acute Myeloid Leukemia (AML)",
+           "codes": [
+               "C3171"
+           ],
+           "ancestor_ids": [
+               "C27134",
+               "C3172",
+               "C3161",
+               "C9290"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3172"
+           ],
+           "synonyms": [
+               "AML",
+               "AML - Acute Myeloid Leukemia",
+               "ANLL",
+               "Acute Granulocytic Leukemia",
+               "Acute Myeloblastic Leukemia",
+               "Acute Myelocytic Leukemia",
+               "Acute Myelogenous Leukemia",
+               "Acute Myelogenous Leukemias",
+               "Acute Myeloid Leukemia",
+               "Acute Nonlymphocytic Leukemia",
+               "Acute granulocytic leukemia",
+               "Acute myeloblastic leukemia",
+               "Acute myelocytic leukemia",
+               "Acute myelogenous leukemia",
+               "Acute myeloid leukemia (AML)",
+               "Hematopoeitic - Acute Myleogenous Leukemia (AML)",
+               "acute myeloblastic leukemia",
+               "acute myelogenous leukemia",
+               "acute myeloid leukemia",
+               "acute nonlymphocytic leukemia"
+           ],
+           "count": 760
+       },
+       {
+           "name": "Adrenal Cortex Cancer",
+           "codes": [
+               "C9325"
+           ],
+           "ancestor_ids": [
+               "C7352"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C7352"
+           ],
+           "synonyms": [
+               "Adenocarcinoma, Adrenocortical, Malignant",
+               "Adrenal Cortex Adenocarcinoma",
+               "Adrenal Cortex Carcinoma",
+               "Adrenal Cortical Adenocarcinoma",
+               "Adrenal Cortical Carcinoma",
+               "Adrenal cortical adenocarcinoma",
+               "Adrenal cortical carcinoma",
+               "Adrenocortical Carcinoma",
+               "Adrenocortical carcinoma",
+               "Adrenocortical carcinoma, NOS",
+               "CARCINOMA, ADRENOCORTICAL, MALIGNANT",
+               "Carcinoma of Adrenal Cortex",
+               "Carcinoma of the Adrenal Cortex",
+               "Cortical Cell Carcinoma",
+               "adrenocortical cancer",
+               "adrenocortical carcinoma",
+               "cancer of the adrenal cortex"
+           ],
+           "count": 13
+       },
+       {
+           "name": "Ampulla of Vater Cancer",
+           "codes": [
+               "C3908"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Ampulla of Vater Carcinoma",
+               "Ampullary Carcinoma",
+               "ampulla of Vater cancer",
+               "ampullary cancer"
+           ],
+           "count": 7
+       },
+       {
+           "name": "Anal Cancer",
+           "codes": [
+               "C9291"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Anal Cancer (all types)",
+               "Anal Carcinoma",
+               "Anal cancer",
+               "Anal cancer, NOS",
+               "Cancer of Anus",
+               "Cancer of the Anus",
+               "Carcinoma of Anus",
+               "Carcinoma of the Anus",
+               "anal cancer"
+           ],
+           "count": 46
+       },
+       {
+           "name": "Angiosarcoma",
+           "codes": [
+               "C3088"
+           ],
+           "ancestor_ids": [
+               "C9118"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9118"
+           ],
+           "synonyms": [
+               "HEMANGIOSARCOMA, MALIGNANT",
+               "Hemangiosarcoma",
+               "Malignant Angioendothelioma",
+               "Malignant Hemangioendothelioma",
+               "angiosarcoma",
+               "hemangiosarcoma"
+           ],
+           "count": 17
+       },
+       {
+           "name": "Appendix Cancer",
+           "codes": [
+               "C9330"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Appendiceal Cancer",
+               "Appendix Carcinoma",
+               "Carcinoma of Appendix",
+               "Carcinoma of the Appendix"
+           ],
+           "count": 18
+       },
+       {
+           "name": "Astrocytoma",
+           "codes": [
+               "C60781"
+           ],
+           "ancestor_ids": [
+               "C3059",
+               "C3268",
+               "C9293"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3059"
+           ],
+           "synonyms": [
+               "Astrocytoma, NOS",
+               "astrocytoma"
+           ],
+           "count": 70
+       },
+       {
+           "name": "Atypical Teratoid/Rhabdoid Tumor",
+           "codes": [
+               "C6906"
+           ],
+           "ancestor_ids": [
+               "C3268",
+               "C9293"
+           ],
+           "type": [
+               "maintype",
+               "subtype",
+               "grade"
+           ],
+           "parent_ids": [
+               "C9293"
+           ],
+           "synonyms": [
+               "AT/RT",
+               "ATT/RHT",
+               "Atypical Teratoid/Rhabdoid Tumor (WHO Grade IV)",
+               "Atypical teratoid/rhabdoid tumor",
+               "CNS Rhabdoid Neoplasm",
+               "CNS Rhabdoid Tumor",
+               "Central Nervous System Rhabdoid Neoplasm",
+               "Central Nervous System Rhabdoid Tumor",
+               "Malignant Brain Rhabdoid Neoplasm",
+               "Malignant Brain Rhabdoid Tumor",
+               "Malignant Rhabdoid Neoplasm of Brain",
+               "Malignant Rhabdoid Neoplasm of the Brain",
+               "Malignant Rhabdoid Tumor of Brain",
+               "Malignant Rhabdoid Tumor of the Brain",
+               "Primary Malignant Brain Rhabdoid Neoplasm",
+               "Primary Malignant Brain Rhabdoid Tumor",
+               "Primary Malignant Rhabdoid Neoplasm of Brain",
+               "Primary Malignant Rhabdoid Neoplasm of the Brain",
+               "Primary Malignant Rhabdoid Tumor of Brain",
+               "Primary Malignant Rhabdoid Tumor of the Brain",
+               "Rhabdoid Neoplasm of CNS",
+               "Rhabdoid Neoplasm of Central Nervous System",
+               "Rhabdoid Neoplasm of the CNS",
+               "Rhabdoid Neoplasm of the Central Nervous System",
+               "Rhabdoid Tumor of CNS",
+               "Rhabdoid Tumor of Central Nervous System",
+               "Rhabdoid Tumor of the CNS",
+               "Rhabdoid Tumor of the Central Nervous System",
+               "atypical teratoid/rhabdoid tumor"
+           ],
+           "count": 13
+       },
+       {
+           "name": "Bile Duct Cancer (including Cholangiocarcinoma)",
+           "codes": [
+               "C27814"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Bile Duct Cancer",
+               "Bile Duct Carcinoma",
+               "Bile duct carcinoma",
+               "bile duct cancer"
+           ],
+           "count": 100
+       },
+       {
+           "name": "Bladder Cancer",
+           "codes": [
+               "C4912"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Bladder Carcinoma",
+               "Cancer of Bladder",
+               "Cancer of Urinary Bladder",
+               "Cancer of the Bladder",
+               "Cancer of the Urinary Bladder",
+               "Carcinoma of Bladder",
+               "Carcinoma of Urinary Bladder",
+               "Carcinoma of the Bladder",
+               "Carcinoma of the Urinary Bladder",
+               "Urinary Bladder Cancer",
+               "Urinary Bladder Carcinoma",
+               "bladder cancer"
+           ],
+           "count": 185
+       },
+       {
+           "name": "Bone Cancer",
+           "codes": [
+               "C4016"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Bone cancer, NOS",
+               "Cancer of Bone",
+               "Cancer of the Bone",
+               "Malignant Bone Neoplasm",
+               "Malignant Bone Tumor",
+               "Malignant Neoplasm of Bone",
+               "Malignant Neoplasm of the Bone",
+               "Malignant Osseous Neoplasm",
+               "Malignant Osseous Tumor",
+               "Malignant Tumor of Bone",
+               "Malignant Tumor of the Bone",
+               "Osseous Cancer",
+               "bone cancer"
+           ],
+           "count": 116
+       },
+       {
+           "name": "Bone Sarcoma",
+           "codes": [
+               "C9312"
+           ],
+           "ancestor_ids": [
+               "C4016",
+               "C9118"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C4016",
+               "C9118"
+           ],
+           "synonyms": [
+               "Osseous Sarcoma",
+               "Sarcoma of Bone",
+               "Sarcoma of the Bone",
+               "Skeletal Sarcoma"
+           ],
+           "count": 42
+       },
+       {
+           "name": "Brain/Spinal Cord Tumor",
+           "codes": [
+               "C9293"
+           ],
+           "ancestor_ids": [
+               "C3268"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3268"
+           ],
+           "synonyms": [
+               "CNS Neoplasm",
+               "CNS Tumor",
+               "CNS tumor",
+               "Central Nervous System Neoplasm",
+               "Central Nervous System Tumor",
+               "Neoplasm of CNS",
+               "Neoplasm of Central Nervous System",
+               "Neoplasm of the Central Nervous System",
+               "Tumor of CNS",
+               "Tumor of Central Nervous System",
+               "Tumor of the CNS",
+               "Tumor of the Central Nervous System",
+               "central nervous system tumor"
+           ],
+           "count": 627
+       },
+       {
+           "name": "Breast Cancer",
+           "codes": [
+               "C4872"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Breast Carcinoma",
+               "Breast cancer, NOS",
+               "Cancer of Breast",
+               "Cancer of the Breast",
+               "Carcinoma of Breast",
+               "Carcinoma of the Breast",
+               "Mammary Carcinoma",
+               "breast cancer"
+           ],
+           "count": 980
+       },
+       {
+           "name": "COVID-19",
+           "codes": [
+               "C171133"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "2019-nCoV Infection",
+               "COVID-19 Infection",
+               "COVID-19 Virus Infection",
+               "HCoV-19 Infection",
+               "Human Coronavirus 2019 Infection",
+               "SARS Coronavirus 2 Infection",
+               "SARS-2 Infection",
+               "SARS-CoV-2 Disease",
+               "SARS-CoV-2 Infection",
+               "SARS-CoV2 Disease",
+               "SARS-CoV2 Infection",
+               "SARS2 Infection",
+               "Severe Acute Respiratory Syndrome Coronavirus 2 Infection"
+           ],
+           "count": 49
+       },
+       {
+           "name": "Cancer-Related Syndrome",
+           "codes": [
+               "C54705"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Neoplastic Syndrome",
+               "Tumor Syndrome"
+           ],
+           "count": 118
+       },
+       {
+           "name": "Cervical Cancer",
+           "codes": [
+               "C9039"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Cancer of Cervix",
+               "Cancer of Uterine Cervix",
+               "Cancer of the Cervix",
+               "Cancer of the Uterine Cervix",
+               "Carcinoma of Cervix",
+               "Carcinoma of Cervix Uteri",
+               "Carcinoma of Uterine Cervix",
+               "Carcinoma of the Cervix",
+               "Carcinoma of the Cervix Uteri",
+               "Carcinoma of the Uterine Cervix",
+               "Cervical Cancer (all types)",
+               "Cervical Carcinoma",
+               "Cervical cancer, NOS",
+               "Cervix Cancer",
+               "Cervix Carcinoma",
+               "Cervix Uteri Carcinoma",
+               "Uterine Cervix Cancer",
+               "Uterine Cervix Carcinoma",
+               "cervical cancer"
+           ],
+           "count": 155
+       },
+       {
+           "name": "Chondrosarcoma",
+           "codes": [
+               "C2946"
+           ],
+           "ancestor_ids": [
+               "C9118"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9118"
+           ],
+           "synonyms": [
+               "CHONDROSARCOMA, MALIGNANT",
+               "Chondrosarcoma, NOS",
+               "chondrosarcoma"
+           ],
+           "count": 14
+       },
+       {
+           "name": "Chordoma",
+           "codes": [
+               "C2947"
+           ],
+           "ancestor_ids": [
+               "C3264",
+               "C4016"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3264",
+               "C4016"
+           ],
+           "synonyms": [
+               "CHORDOMA, MALIGNANT",
+               "Chordoma, NOS",
+               "chordoma"
+           ],
+           "count": 25
+       },
+       {
+           "name": "Choriocarcinoma",
+           "codes": [
+               "C2948"
+           ],
+           "ancestor_ids": [
+               "C3422"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3422"
+           ],
+           "synonyms": [
+               "CHORIOCARCINOMA, MALIGNANT",
+               "Choriocarcinoma, NOS",
+               "Chorioepithelioma",
+               "chorioblastoma",
+               "choriocarcinoma",
+               "chorioepithelioma",
+               "chorionic carcinoma"
+           ],
+           "count": 4
+       },
+       {
+           "name": "Choroid Plexus Cancer",
+           "codes": [
+               "C4715"
+           ],
+           "ancestor_ids": [
+               "C3268",
+               "C9293"
+           ],
+           "type": [
+               "grade",
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9293"
+           ],
+           "synonyms": [
+               "Anaplastic Choroid Plexus Papilloma",
+               "CARCINOMA, CHOROID PLEXUS, MALIGNANT",
+               "Cancer of Choroid Plexus",
+               "Cancer of the Choroid Plexus",
+               "Carcinoma of Choroid Plexus",
+               "Carcinoma of the Choroid Plexus",
+               "Choroid Plexus Carcinoma",
+               "Choroid plexus carcinoma",
+               "Choroid plexus papilloma, anaplastic",
+               "Choroid plexus papilloma, malignant"
+           ],
+           "count": 3
+       },
+       {
+           "name": "Chronic Lymphocytic Leukemia (CLL)",
+           "codes": [
+               "C3163"
+           ],
+           "ancestor_ids": [
+               "C27134",
+               "C3161",
+               "C7539"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C7539"
+           ],
+           "synonyms": [
+               "B Cell CLL",
+               "B Cell Chronic Lymphocytic Leukemia",
+               "B Cell Lymphocytic Leukemia",
+               "B-Cell CLL",
+               "B-Cell Chronic Lymphocytic Leukemia",
+               "B-Cell Chronic Lymphoid Leukemia",
+               "B-Cell Lymphocytic Leukemia",
+               "BCLL",
+               "CLL",
+               "Chronic B-Cell Lymphocytic Leukemia",
+               "Chronic Lymphocytic Leukemia",
+               "Chronic lymphatic leukemia",
+               "Chronic lymphocytic leukemia",
+               "Chronic lymphocytic leukemia, NOS",
+               "Hematopoeitic - Chronic Lymphocytic Leukemia (CLL)",
+               "chronic lymphocytic leukemia"
+           ],
+           "count": 183
+       },
+       {
+           "name": "Chronic Myelogenous Leukemia (CML)",
+           "codes": [
+               "C3174"
+           ],
+           "ancestor_ids": [
+               "C27134",
+               "C3172",
+               "C9290",
+               "C3161",
+               "C4345"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3172",
+               "C4345"
+           ],
+           "synonyms": [
+               "BCR-ABL Positive Chronic Myelogenous Leukemia",
+               "CML",
+               "CML - Chronic Myelogenous Leukemia",
+               "Chronic Granulocytic Leukemia",
+               "Chronic Myelocytic Leukemia",
+               "Chronic Myelogenous Leukemia",
+               "Chronic Myelogenous Leukemia, BCR-ABL1 Positive",
+               "Chronic Myelogenous Leukemias",
+               "Chronic Myeloid Leukemia",
+               "Chronic myelogenous leukemia, BCR-ABL positive",
+               "Hematopoeitic - Chronic Myelocytic Leukemia (CML)",
+               "chronic granulocytic leukemia",
+               "chronic myelogenous leukemia",
+               "chronic myeloid leukemia"
+           ],
+           "count": 263
+       },
+       {
+           "name": "Chronic Myelomonocytic Leukemia (CMML)",
+           "codes": [
+               "C3178"
+           ],
+           "ancestor_ids": [
+               "C27134",
+               "C9290"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9290"
+           ],
+           "synonyms": [
+               "CMML",
+               "Chronic Myelomonocytic Leukemia",
+               "Chronic myelomonocytic leukemia",
+               "chronic myelomonocytic leukemia"
+           ],
+           "count": 88
+       },
+       {
+           "name": "Chronic Myeloproliferative Disease",
+           "codes": [
+               "C4345"
+           ],
+           "ancestor_ids": [
+               "C27134",
+               "C9290"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9290"
+           ],
+           "synonyms": [
+               "CMPD",
+               "Chronic Myeloproliferative Disorder",
+               "Chronic Myeloproliferative Disorders",
+               "Chronic Myeloproliferative Neoplasm",
+               "Chronic myeloproliferative disease, NOS",
+               "Chronic myeloproliferative disorder",
+               "MPD",
+               "MPN",
+               "Myeloproliferative Disease",
+               "Myeloproliferative Disorder",
+               "Myeloproliferative Neoplasm",
+               "Myeloproliferative Tumor",
+               "Myeloproliferative disease, NOS",
+               "Myeloproliferative neoplasm, NOS",
+               "myeloproliferative disorder"
+           ],
+           "count": 179
+       },
+       {
+           "name": "Colorectal (Colon or Rectal) Cancer",
+           "codes": [
+               "C2955"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "CRC",
+               "Cancer of Large Bowel",
+               "Cancer of Large Intestine",
+               "Cancer of the Large Bowel",
+               "Cancer of the Large Intestine",
+               "Carcinoma of Large Bowel",
+               "Carcinoma of Large Intestine",
+               "Carcinoma of the Large Bowel",
+               "Carcinoma of the Large Intestine",
+               "Colorectal Cancer",
+               "Colorectal Carcinoma",
+               "Colorectal cancer, NOS",
+               "Large Bowel Cancer",
+               "Large Bowel Carcinoma",
+               "Large Intestine Cancer",
+               "Large Intestine Carcinoma",
+               "colorectal cancer"
+           ],
+           "count": 469
+       },
+       {
+           "name": "Composite Lymphoma",
+           "codes": [
+               "C38661"
+           ],
+           "ancestor_ids": [
+               "C27134",
+               "C3208"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3208"
+           ],
+           "synonyms": [
+               "composite lymphoma"
+           ],
+           "count": 3
+       },
+       {
+           "name": "Cutaneous (Skin) Melanoma",
+           "codes": [
+               "C3510"
+           ],
+           "ancestor_ids": [
+               "C3224"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3224"
+           ],
+           "synonyms": [
+               "CM",
+               "Cutaneous Melanoma",
+               "Malignant Cutaneous Melanoma",
+               "Malignant Melanoma (of Skin), Stage Unspecified",
+               "Malignant Melanoma of Skin",
+               "Malignant Melanoma of Skin Stage Unspecified",
+               "Melanoma of Skin",
+               "Melanoma of the Skin",
+               "Skin Melanoma",
+               "Skin, Melanoma"
+           ],
+           "count": 274
+       },
+       {
+           "name": "Embryonal Carcinoma",
+           "codes": [
+               "C3752"
+           ],
+           "ancestor_ids": [
+               "C3708"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3708"
+           ],
+           "synonyms": [
+               "CARCINOMA, EMBRYONAL, MALIGNANT",
+               "Carcinoma, Embryonal, Malignant",
+               "Embryonal carcinoma, NOS"
+           ],
+           "count": 2
+       },
+       {
+           "name": "Embryonal Neoplasm",
+           "codes": [
+               "C3264"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "embryonal tumor"
+           ],
+           "count": 134
+       },
+       {
+           "name": "Ependymoma",
+           "codes": [
+               "C3017"
+           ],
+           "ancestor_ids": [
+               "C3059",
+               "C3268",
+               "C9293"
+           ],
+           "type": [
+               "maintype",
+               "subtype",
+               "grade"
+           ],
+           "parent_ids": [
+               "C3059"
+           ],
+           "synonyms": [
+               "CNS, ependymoma",
+               "Ependymoma, NOS",
+               "WHO Grade II Ependymal Neoplasm",
+               "WHO Grade II Ependymal Tumor",
+               "ependymoma"
+           ],
+           "count": 37
+       },
+       {
+           "name": "Esophageal Cancer",
+           "codes": [
+               "C3513"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Cancer of Esophagus",
+               "Cancer of the Esophagus",
+               "Carcinoma of Esophagus",
+               "Carcinoma of the Esophagus",
+               "ESCA",
+               "Esophageal Carcinoma",
+               "Esophageal cancer, NOS",
+               "Esophagus Carcinoma",
+               "esophageal cancer"
+           ],
+           "count": 164
+       },
+       {
+           "name": "Ewing Sarcoma",
+           "codes": [
+               "C4817"
+           ],
+           "ancestor_ids": [
+               "C3264",
+               "C9118"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3264",
+               "C9118"
+           ],
+           "synonyms": [
+               "ES",
+               "Ewing sarcoma",
+               "Ewing tumor",
+               "Ewing's Sarcoma",
+               "Ewing's Tumor"
+           ],
+           "count": 70
+       },
+       {
+           "name": "Extrahepatic (Distal) Bile Duct Cancer",
+           "codes": [
+               "C7109"
+           ],
+           "ancestor_ids": [
+               "C27814"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C27814"
+           ],
+           "synonyms": [
+               "Distal Bile Duct Carcinoma"
+           ],
+           "count": 15
+       },
+       {
+           "name": "Eye Cancer",
+           "codes": [
+               "C4767"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Cancer of Eye",
+               "Cancer of the Eye",
+               "Eye Neoplasm, Malignant",
+               "Malignant Eye Neoplasm",
+               "Malignant Eye Tumor",
+               "Malignant Neoplasm of Eye",
+               "Malignant Neoplasm of the Eye",
+               "Malignant Ocular Neoplasm",
+               "Malignant Ocular Tumor",
+               "Malignant Tumor of Eye",
+               "Malignant Tumor of the Eye",
+               "Malignant eye cancer, NOS",
+               "eye cancer"
+           ],
+           "count": 11
+       },
+       {
+           "name": "Fallopian Tube Cancer",
+           "codes": [
+               "C3867"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Cancer of Fallopian Tube",
+               "Cancer of the Fallopian Tube",
+               "Carcinoma of Fallopian Tube",
+               "Carcinoma of the Fallopian Tube",
+               "Fallopian Tube Carcinoma",
+               "Fallopian tube carcinoma"
+           ],
+           "count": 146
+       },
+       {
+           "name": "Gallbladder Cancer",
+           "codes": [
+               "C3844"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Cancer of Gallbladder",
+               "Cancer of the Gallbladder",
+               "Carcinoma of Gallbladder",
+               "Carcinoma of the Gallbladder",
+               "Gall bladder carcinoma (adeno)",
+               "Gall bladder carcinoma (adenocarcinoma)",
+               "Gallbladder Carcinoma",
+               "gallbladder cancer"
+           ],
+           "count": 33
+       },
+       {
+           "name": "Ganglioneuroblastoma",
+           "codes": [
+               "C3790"
+           ],
+           "ancestor_ids": [
+               "C3716",
+               "C3264",
+               "C3268"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3716"
+           ],
+           "synonyms": [
+               "GANGLIONEUROBLASTOMA, MALIGNANT"
+           ],
+           "count": 16
+       },
+       {
+           "name": "Gastric (Stomach) Cancer",
+           "codes": [
+               "C4911"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Cancer of Stomach",
+               "Cancer of the Stomach",
+               "Carcinoma of Stomach",
+               "Carcinoma of the Stomach",
+               "Gastric Cancer",
+               "Gastric Carcinoma",
+               "Gastric cancer, NOS",
+               "Stomach Cancer",
+               "Stomach Carcinoma",
+               "gastric cancer",
+               "stomach cancer"
+           ],
+           "count": 240
+       },
+       {
+           "name": "Gastrointestinal Stromal Tumor (GIST)",
+           "codes": [
+               "C3868"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "GIST",
+               "GIST, NOS",
+               "GISTs",
+               "Gastrointestinal Stromal Neoplasm",
+               "Gastrointestinal Stromal Tumor",
+               "Gastrointestinal stromal tumor",
+               "Gastrointestinal stromal tumor, NOS",
+               "gastrointestinal stromal tumor"
+           ],
+           "count": 8
+       },
+       {
+           "name": "Germ Cell Tumor",
+           "codes": [
+               "C3708"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Germ Cell Neoplasm",
+               "Germ Cell Neoplasms",
+               "Germ cell tumor, NOS",
+               "Neoplasm of Germ Cell",
+               "Neoplasm of the Germ Cell",
+               "Tumor of Germ Cell",
+               "Tumor of the Germ Cell",
+               "germ cell tumor"
+           ],
+           "count": 33
+       },
+       {
+           "name": "Gestational Trophoblastic Tumor",
+           "codes": [
+               "C4699"
+           ],
+           "ancestor_ids": [
+               "C3422"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3422"
+           ],
+           "synonyms": [
+               "GTT",
+               "gestational trophoblastic neoplasia",
+               "gestational trophoblastic tumor"
+           ],
+           "count": 2
+       },
+       {
+           "name": "Glioblastoma",
+           "codes": [
+               "C3058"
+           ],
+           "ancestor_ids": [
+               "C3059",
+               "C3268",
+               "C9293"
+           ],
+           "type": [
+               "maintype",
+               "subtype",
+               "grade"
+           ],
+           "parent_ids": [
+               "C3059"
+           ],
+           "synonyms": [
+               "CNS, glioblastoma (GBM)",
+               "GBM",
+               "GBM (Glioblastoma)",
+               "Glioblastoma Multiforme",
+               "Glioblastoma multiforme",
+               "Grade IV Astrocytic Neoplasm",
+               "Grade IV Astrocytic Tumor",
+               "Spongioblastoma Multiforme",
+               "Spongioblastoma multiforme",
+               "WHO Grade IV Glioma",
+               "glioblastoma",
+               "glioblastoma multiforme"
+           ],
+           "count": 240
+       },
+       {
+           "name": "Glioma",
+           "codes": [
+               "C3059"
+           ],
+           "ancestor_ids": [
+               "C3268",
+               "C9293"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9293"
+           ],
+           "synonyms": [
+               "Glial Neoplasm",
+               "Glial Tumor",
+               "Glioma, NOS",
+               "Neoplasm of Neuroglia",
+               "Neoplasm of the Neuroglia",
+               "Neuroglial Neoplasm",
+               "Neuroglial Tumor",
+               "Tumor of Neuroglia",
+               "Tumor of the Neuroglia",
+               "glial tumor",
+               "glioma"
+           ],
+           "count": 324
+       },
+       {
+           "name": "Head and Neck Carcinoma",
+           "codes": [
+               "C35850"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Carcinoma of Head and Neck",
+               "Carcinoma of the Head and Neck"
+           ],
+           "count": 491
+       },
+       {
+           "name": "Hematopoietic and Lymphoid Cell Neoplasm",
+           "codes": [
+               "C27134"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "HEMOLYMPHORETICULAR TUMOR, MALIGNANT",
+               "Hematologic Cancer",
+               "Hematologic Malignancy",
+               "Hematologic Neoplasm",
+               "Hematological Neoplasm",
+               "Hematopoietic Cancer",
+               "Hematopoietic Neoplasm",
+               "Hematopoietic Neoplasms Including Lymphomas",
+               "Hematopoietic and Lymphoid Neoplasm",
+               "Hematopoietic malignancy, NOS",
+               "Malignant Hematologic Neoplasm",
+               "Malignant Hematopoietic Neoplasm",
+               "hematologic cancer"
+           ],
+           "count": 1974
+       },
+       {
+           "name": "Hepatoblastoma",
+           "codes": [
+               "C3728"
+           ],
+           "ancestor_ids": [
+               "C3264"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3264"
+           ],
+           "synonyms": [
+               "HBL",
+               "HEPATOBLASTOMA, MALIGNANT",
+               "Pediatric Embryonal Hepatoma",
+               "Pediatric Hepatoblastoma",
+               "hepatoblastoma"
+           ],
+           "count": 16
+       },
+       {
+           "name": "Hepatocellular Cancer",
+           "codes": [
+               "C3099"
+           ],
+           "ancestor_ids": [
+               "C7927"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C7927"
+           ],
+           "synonyms": [
+               "CARCINOMA, HEPATOCELLULAR, MALIGNANT",
+               "Carcinoma of Liver Cells",
+               "Carcinoma of the Liver Cells",
+               "HCC",
+               "Hepatocellular Carcinoma",
+               "Hepatocellular carcinoma",
+               "Hepatoma",
+               "LIHC",
+               "Liver Cell Cancer (Hepatocellular Carcinoma)",
+               "Liver Cell Carcinoma",
+               "Liver cell carcinoma",
+               "Primary Carcinoma of Liver Cells",
+               "Primary Carcinoma of the Liver Cells",
+               "hepatocellular carcinoma",
+               "hepatoma"
+           ],
+           "count": 191
+       },
+       {
+           "name": "Hodgkin Lymphoma",
+           "codes": [
+               "C9357"
+           ],
+           "ancestor_ids": [
+               "C27134",
+               "C3208"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3208"
+           ],
+           "synonyms": [
+               "HL",
+               "Hodgkin disease",
+               "Hodgkin disease, NOS",
+               "Hodgkin lymphoma",
+               "Hodgkin lymphoma, NOS",
+               "Hodgkin's Disease",
+               "Hodgkin's Lymphoma",
+               "Malignant lymphoma, Hodgkin"
+           ],
+           "count": 137
+       },
+       {
+           "name": "Hypopharyngeal Throat Cancer",
+           "codes": [
+               "C9465"
+           ],
+           "ancestor_ids": [
+               "C35850",
+               "C9466"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9466"
+           ],
+           "synonyms": [
+               "Cancer of Hypopharynx",
+               "Cancer of the Hypopharynx",
+               "Carcinoma of Hypopharynx",
+               "Carcinoma of the Hypopharynx",
+               "Hypopharyngeal Cancer",
+               "Hypopharyngeal Carcinoma",
+               "hypopharyngeal cancer"
+           ],
+           "count": 82
+       },
+       {
+           "name": "Intrahepatic Bile Duct Cancer (Cholangiocarcinoma)",
+           "codes": [
+               "C4436"
+           ],
+           "ancestor_ids": [
+               "C27814"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C27814"
+           ],
+           "synonyms": [
+               "CC",
+               "CHOLANGIOCARCINOMA, MALIGNANT",
+               "Cholangiocar.- intra/extrahepatic",
+               "Cholangiocarcinoma",
+               "Cholangiocarcinoma, intrahepatic and extrahepatic bile ducts (adenocarcinoma)",
+               "Cholangiocellular Carcinoma",
+               "cholangiocarcinoma",
+               "cholangiosarcoma"
+           ],
+           "count": 87
+       },
+       {
+           "name": "Kaposi Sarcoma",
+           "codes": [
+               "C9087"
+           ],
+           "ancestor_ids": [
+               "C9118",
+               "C9306"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9306"
+           ],
+           "synonyms": [
+               "KS",
+               "Kaposi sarcoma",
+               "Kaposi's Sarcoma",
+               "Kaposi's sarcoma",
+               "Multiple Hemorrhagic Sarcoma",
+               "Multiple hemorrhagic sarcoma"
+           ],
+           "count": 18
+       },
+       {
+           "name": "Kidney (including Renal Cell) Cancer",
+           "codes": [
+               "C9384"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Kidney Cancer",
+               "Kidney Carcinoma",
+               "Kidney cancer, NOS",
+               "Renal Cancer",
+               "Renal Carcinoma",
+               "kidney cancer"
+           ],
+           "count": 251
+       },
+       {
+           "name": "Laryngeal Throat Cancer",
+           "codes": [
+               "C4855"
+           ],
+           "ancestor_ids": [
+               "C35850"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C35850"
+           ],
+           "synonyms": [
+               "Cancer of Larynx",
+               "Cancer of the Larynx",
+               "Carcinoma of Larynx",
+               "Carcinoma of the Larynx",
+               "Laryngeal Cancer",
+               "Laryngeal Carcinoma",
+               "Larynx Cancer",
+               "Larynx Carcinoma",
+               "laryngeal cancer"
+           ],
+           "count": 103
+       },
+       {
+           "name": "Leiomyosarcoma",
+           "codes": [
+               "C3158"
+           ],
+           "ancestor_ids": [
+               "C9118"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9118"
+           ],
+           "synonyms": [
+               "LEIOMYOSARCOMA, MALIGNANT",
+               "Leiomyosarcoma (excluding uterine leiomyosarcoma)",
+               "Leiomyosarcoma - not uterine",
+               "Leiomyosarcoma, NOS",
+               "Leiomyosarcomas",
+               "leiomyosarcoma"
+           ],
+           "count": 28
+       },
+       {
+           "name": "Leukemia",
+           "codes": [
+               "C3161"
+           ],
+           "ancestor_ids": [
+               "C27134"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C27134"
+           ],
+           "synonyms": [
+               "Blood (Leukemia)",
+               "LEUKEMIA, MALIGNANT",
+               "Leukemia NOS",
+               "Leukemia, Disease",
+               "Leukemia, NOS",
+               "Leukemias",
+               "Leukemias, General",
+               "leukemia"
+           ],
+           "count": 758
+       },
+       {
+           "name": "Lip and Oral Cavity Cancer",
+           "codes": [
+               "C9315"
+           ],
+           "ancestor_ids": [
+               "C35850"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C35850"
+           ],
+           "synonyms": [
+               "Lip and Oral Cavity Carcinoma",
+               "Oral Cancer",
+               "Oral Carcinoma",
+               "oral cancer"
+           ],
+           "count": 115
+       },
+       {
+           "name": "Liposarcoma",
+           "codes": [
+               "C3194"
+           ],
+           "ancestor_ids": [
+               "C9118"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9118"
+           ],
+           "synonyms": [
+               "LIPOSARCOMA, MALIGNANT",
+               "Liposarcoma Not Otherwise Specified",
+               "Liposarcoma, NOS",
+               "Malignant Lipomatous Neoplasm",
+               "liposarcoma"
+           ],
+           "count": 41
+       },
+       {
+           "name": "Liver Cancer",
+           "codes": [
+               "C7927"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Biliary Tract Cancer",
+               "Cancer of Liver",
+               "Cancer of Liver and Intrahepatic Biliary Tract",
+               "Cancer of the Liver",
+               "Cancer of the Liver and Intrahepatic Biliary Tract",
+               "Liver Carcinoma",
+               "Liver and Intrahepatic Bile Duct Cancer",
+               "Liver and Intrahepatic Bile Duct Carcinoma",
+               "Liver and Intrahepatic Biliary Tract Cancer",
+               "Liver and Intrahepatic Biliary Tract Carcinoma",
+               "Liver and hepatobiliary cancer, NOS",
+               "Liver/hepatobiliary cancer",
+               "Primary Liver Carcinoma",
+               "liver cancer"
+           ],
+           "count": 235
+       },
+       {
+           "name": "Lung Cancer",
+           "codes": [
+               "C4878"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Cancer of Lung",
+               "Cancer of the Lung",
+               "Carcinoma of Lung",
+               "Carcinoma of the Lung",
+               "Lung Cancer (all types)",
+               "Lung Carcinoma",
+               "Lung cancer, NOS",
+               "lung cancer"
+           ],
+           "count": 851
+       },
+       {
+           "name": "Lymphoid Leukemia",
+           "codes": [
+               "C7539"
+           ],
+           "ancestor_ids": [
+               "C27134",
+               "C3161"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3161"
+           ],
+           "synonyms": [
+               "LEUKEMIA, LYMPHOCYTIC, MALIGNANT",
+               "Lymphocytic Leukemia",
+               "Lymphogenous Leukemia",
+               "Lymphoid leukemia, NOS",
+               "lymphocytic leukemia"
+           ],
+           "count": 423
+       },
+       {
+           "name": "Lymphoma",
+           "codes": [
+               "C3208"
+           ],
+           "ancestor_ids": [
+               "C27134"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C27134"
+           ],
+           "synonyms": [
+               "LYMPHOMA, MALIGNANT",
+               "Lymphoma (Hodgkin and Non-Hodgkin)",
+               "Lymphoma (Hodgkin's and Non-Hodgkin's)",
+               "Lymphoma, NOS",
+               "Lymphomatous",
+               "Malignant Lymphoma",
+               "lymphoma"
+           ],
+           "count": 768
+       },
+       {
+           "name": "Melanoma",
+           "codes": [
+               "C3224"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "MELANOMA, MALIGNANT",
+               "Malignant Melanoma",
+               "Melanoma, NOS",
+               "melanoma"
+           ],
+           "count": 360
+       },
+       {
+           "name": "Meningioma",
+           "codes": [
+               "C3230"
+           ],
+           "ancestor_ids": [
+               "C3268",
+               "C9293"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9293"
+           ],
+           "synonyms": [
+               "Meningioma, NOS",
+               "Meningiomas",
+               "meningioma"
+           ],
+           "count": 26
+       },
+       {
+           "name": "Mesothelioma",
+           "codes": [
+               "C3234"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Mesothelioma, NOS",
+               "mesothelioma"
+           ],
+           "count": 70
+       },
+       {
+           "name": "Mixed Germ Cell Tumor",
+           "codes": [
+               "C4290"
+           ],
+           "ancestor_ids": [
+               "C3708"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3708"
+           ],
+           "synonyms": [
+               "Combined Germ Cell Neoplasm",
+               "Combined Germ Cell Tumor",
+               "Mixed Germ Cell Neoplasm",
+               "Mixed germ cell tumor"
+           ],
+           "count": 3
+       },
+       {
+           "name": "Multiple Myeloma/Plasma Cell Myeloma",
+           "codes": [
+               "C3242"
+           ],
+           "ancestor_ids": [
+               "C27134",
+               "C4665"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C4665"
+           ],
+           "synonyms": [
+               "Kahler disease",
+               "MYELOMA, PLASMA CELL, MALIGNANT",
+               "Multiple Myeloma",
+               "Multiple myeloma",
+               "Myeloma",
+               "Myeloma, NOS",
+               "Myelomatosis",
+               "Plasma Cell Myeloma",
+               "Plasma cell myeloma",
+               "multiple myeloma",
+               "myeloma",
+               "myelomatosis",
+               "plasma cell myeloma"
+           ],
+           "count": 317
+       },
+       {
+           "name": "Myelodysplastic Syndrome",
+           "codes": [
+               "C3247"
+           ],
+           "ancestor_ids": [
+               "C27134",
+               "C9290"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9290"
+           ],
+           "synonyms": [
+               "Dysmyelopoietic Syndrome",
+               "Hematopoeitic - Myelodysplastic Syndrome (MDS)",
+               "MDS",
+               "Myelodysplasia",
+               "Myelodysplastic Neoplasm",
+               "Myelodysplastic Syndrome/Neoplasm",
+               "Myelodysplastic Syndromes",
+               "Myelodysplastic syndrome",
+               "Myelodysplastic syndrome, NOS",
+               "Oligoblastic Leukemia",
+               "Preleukemia",
+               "Smoldering Leukemia",
+               "myelodysplasia",
+               "myelodysplastic syndromes",
+               "preleukemia",
+               "smoldering leukemia"
+           ],
+           "count": 266
+       },
+       {
+           "name": "Myeloid Leukemia",
+           "codes": [
+               "C3172"
+           ],
+           "ancestor_ids": [
+               "C27134",
+               "C3161",
+               "C9290"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3161",
+               "C9290"
+           ],
+           "synonyms": [
+               "LEUKEMIA, GRANULOCYTIC, MALIGNANT",
+               "Leukemia Granulocytic",
+               "Leukemia Myeloid",
+               "Myelocytic Leukemia",
+               "Myelogenous Leukemia",
+               "Myeloid leukemia, NOS",
+               "Non-Lymphoblastic Leukemia",
+               "Non-Lymphocytic Leukemia",
+               "Non-lymphoblastic Leukemia",
+               "Non-lymphocytic Leukemia"
+           ],
+           "count": 861
+       },
+       {
+           "name": "Myeloid Neoplasm",
+           "codes": [
+               "C9290"
+           ],
+           "ancestor_ids": [
+               "C27134"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C27134"
+           ],
+           "synonyms": [
+               "Myeloid Malignancy",
+               "Myeloid Tumor"
+           ],
+           "count": 561
+       },
+       {
+           "name": "Nasal Cavity and Paranasal Sinus Cancer",
+           "codes": [
+               "C54293"
+           ],
+           "ancestor_ids": [
+               "C35850"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C35850"
+           ],
+           "synonyms": [
+               "Nasal Cavity and Paranasal Sinus Carcinoma",
+               "Sinonasal Carcinoma",
+               "paranasal sinus and nasal cavity cancer"
+           ],
+           "count": 32
+       },
+       {
+           "name": "Nasopharyngeal Throat Cancer",
+           "codes": [
+               "C3871"
+           ],
+           "ancestor_ids": [
+               "C35850",
+               "C9466"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9466"
+           ],
+           "synonyms": [
+               "Cancer of Nasopharynx",
+               "Cancer of the Nasopharynx",
+               "Carcinoma of Nasopharynx",
+               "Carcinoma of the Nasopharynx",
+               "NPC",
+               "Nasopharyngeal Cancer",
+               "Nasopharyngeal Carcinoma",
+               "Nasopharyngeal carcinoma",
+               "Nasopharynx Cancer",
+               "nasopharyngeal cancer"
+           ],
+           "count": 36
+       },
+       {
+           "name": "Nervous System Tumor",
+           "codes": [
+               "C3268"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Neoplasm of Nervous System",
+               "Neoplasm of the Nervous System",
+               "Nervous System Neoplasm",
+               "Nervous System Neoplasms",
+               "Nervous System Tumour",
+               "Tumor of Nervous System",
+               "Tumor of the Nervous System"
+           ],
+           "count": 712
+       },
+       {
+           "name": "Neuroblastoma",
+           "codes": [
+               "C3270"
+           ],
+           "ancestor_ids": [
+               "C3716",
+               "C3264",
+               "C3268"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3716"
+           ],
+           "synonyms": [
+               "NEUROBLASTOMA, MALIGNANT",
+               "Neural Crest Tumor, Malignant",
+               "Neuroblastoma (NBL)",
+               "Neuroblastoma (Schwannian Stroma-Poor)",
+               "Neuroblastoma (Schwannian Stroma-poor)",
+               "Neuroblastoma, NOS",
+               "neuroblastoma"
+           ],
+           "count": 156
+       },
+       {
+           "name": "Neuroendocrine Tumor",
+           "codes": [
+               "C3809"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "NEN",
+               "Neuroendocrine Neoplasm",
+               "neuroendocrine tumor"
+           ],
+           "count": 102
+       },
+       {
+           "name": "Non-Cutaneous Melanoma",
+           "codes": [
+               "C8711"
+           ],
+           "ancestor_ids": [
+               "C3224"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3224"
+           ],
+           "synonyms": [
+               "Extracutaneous Melanoma"
+           ],
+           "count": 56
+       },
+       {
+           "name": "Non-Hodgkin Lymphoma",
+           "codes": [
+               "C3211"
+           ],
+           "ancestor_ids": [
+               "C27134",
+               "C3208"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3208"
+           ],
+           "synonyms": [
+               "NHL",
+               "NHL, NOS",
+               "Non-Hodgkin lymphoma, NOS",
+               "Non-Hodgkin's Lymphoma",
+               "Non-Hodgkin's Lymphoma (NHL)",
+               "non-Hodgkin lymphoma"
+           ],
+           "count": 626
+       },
+       {
+           "name": "Non-Melanoma Skin Cancer",
+           "codes": [
+               "C4914"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Carcinoma of Skin",
+               "Carcinoma of the Skin",
+               "Non-Melanoma Cancer of Skin",
+               "Non-Melanoma Cancer of the Skin",
+               "Non-melanoma Skin Cancer",
+               "Skin Cancer, Non-Melanoma",
+               "Skin Carcinoma",
+               "nonmelanoma skin cancer"
+           ],
+           "count": 235
+       },
+       {
+           "name": "Non-Small Cell Lung Cancer",
+           "codes": [
+               "C2926"
+           ],
+           "ancestor_ids": [
+               "C4878"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C4878"
+           ],
+           "synonyms": [
+               "Lung Non-Small Cell Carcinoma",
+               "NSCLC",
+               "NSCLC - Non-Small Cell Lung Cancer",
+               "Non Small Cell Lung Cancer NOS",
+               "Non-Small Cell Cancer of Lung",
+               "Non-Small Cell Cancer of the Lung",
+               "Non-Small Cell Carcinoma of Lung",
+               "Non-Small Cell Carcinoma of the Lung",
+               "Non-Small Cell Lung Carcinoma",
+               "Non-small cell lung cancer, NOS",
+               "non-small cell lung cancer"
+           ],
+           "count": 624
+       },
+       {
+           "name": "Oral Cavity Cancer",
+           "codes": [
+               "C8990"
+           ],
+           "ancestor_ids": [
+               "C35850",
+               "C9315"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9315"
+           ],
+           "synonyms": [
+               "Carcinoma of Mouth",
+               "Carcinoma of Oral Cavity",
+               "Carcinoma of the Oral Cavity",
+               "Mouth Cancer",
+               "Mouth Carcinoma",
+               "Oral Cavity Carcinoma",
+               "oral cavity cancer"
+           ],
+           "count": 104
+       },
+       {
+           "name": "Oropharyngeal Throat Cancer",
+           "codes": [
+               "C9105"
+           ],
+           "ancestor_ids": [
+               "C35850",
+               "C9466"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9466"
+           ],
+           "synonyms": [
+               "Cancer of Oropharynx",
+               "Cancer of the Oropharynx",
+               "Carcinoma of Oropharynx",
+               "Carcinoma of the Oropharynx",
+               "Oropharyngeal Cancer",
+               "Oropharyngeal Carcinoma",
+               "Oropharynx Carcinoma",
+               "oropharyngeal cancer"
+           ],
+           "count": 134
+       },
+       {
+           "name": "Osteosarcoma",
+           "codes": [
+               "C9145"
+           ],
+           "ancestor_ids": [
+               "C9118"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9118"
+           ],
+           "synonyms": [
+               "OSTEOSARCOMA, MALIGNANT",
+               "Osteogenic Sarcoma",
+               "Osteosarcoma, NOS",
+               "osteogenic sarcoma",
+               "osteosarcoma"
+           ],
+           "count": 57
+       },
+       {
+           "name": "Other Carcinoma",
+           "codes": [
+               "C2916"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "CARCINOMA, MALIGNANT",
+               "Carcinoma",
+               "Carcinoma, NOS",
+               "Epithelial Carcinoma",
+               "Epithelial tumor, malignant",
+               "Epithelioma Malignant",
+               "Malignant Epithelial Neoplasm",
+               "Malignant Epithelial Tumor",
+               "Malignant Epithelioma",
+               "carcinoma",
+               "epithelial carcinoma"
+           ],
+           "count": 546
+       },
+       {
+           "name": "Other Disease",
+           "codes": [
+               "C2991"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Diagnosis",
+               "Disease",
+               "Disease or Disorder",
+               "Disease or Disorder, Non-Neoplastic",
+               "Diseases",
+               "Diseases and Disorders",
+               "Disorder",
+               "Disorders",
+               "condition",
+               "disease",
+               "disease term",
+               "disease type",
+               "disease_term",
+               "disease_type",
+               "disorder"
+           ],
+           "count": 672
+       },
+       {
+           "name": "Other Neoplasm",
+           "codes": [
+               "C3262"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Neoplasia",
+               "Neoplasm",
+               "Neoplasm, NOS",
+               "Neoplasms, NOS",
+               "Neoplastic Disease",
+               "Neoplastic Growth",
+               "Tumor, NOS",
+               "neoplasia",
+               "neoplasm",
+               "tumor"
+           ],
+           "count": 849
+       },
+       {
+           "name": "Ovarian Cancer",
+           "codes": [
+               "C4908"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Carcinoma of Ovary",
+               "Carcinoma of the Ovary",
+               "Epithelial Ovarian Cancer",
+               "Ovarian Carcinoma",
+               "Ovarian Epithelial Cancer",
+               "Ovarian epithelial cancer",
+               "epithelial ovarian cancer",
+               "ovarian epithelial cancer"
+           ],
+           "count": 336
+       },
+       {
+           "name": "Paget Disease",
+           "codes": [
+               "C7073"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Paget Cell Neoplasm",
+               "Paget's Cell Neoplasm",
+               "Paget's Disease"
+           ],
+           "count": 3
+       },
+       {
+           "name": "Pancreatic Cancer",
+           "codes": [
+               "C3850"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Cancer of Pancreas",
+               "Cancer of the Pancreas",
+               "Carcinoma of Pancreas",
+               "Carcinoma of the Pancreas",
+               "Exocrine Pancreas Carcinoma",
+               "Pancreas Cancer",
+               "Pancreas Carcinoma",
+               "Pancreatic Carcinoma",
+               "Pancreatic cancer (excluding Islets), NOS",
+               "Pancreatic cancer (not Islets)",
+               "exocrine cancer",
+               "pancreatic cancer"
+           ],
+           "count": 367
+       },
+       {
+           "name": "Parathyroid Gland Cancer",
+           "codes": [
+               "C4906"
+           ],
+           "ancestor_ids": [
+               "C35850"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C35850"
+           ],
+           "synonyms": [
+               "Adenocarcinoma of Parathyroid",
+               "Adenocarcinoma of Parathyroid Gland",
+               "Adenocarcinoma of the Parathyroid",
+               "Adenocarcinoma of the Parathyroid Gland",
+               "CARCINOMA, PARATHYROID GLAND, MALIGNANT",
+               "Cancer of Parathyroid Gland",
+               "Cancer of the Parathyroid Gland",
+               "Carcinoma of Parathyroid",
+               "Carcinoma of Parathyroid Gland",
+               "Carcinoma of the Parathyroid",
+               "Carcinoma of the Parathyroid Gland",
+               "Parathyroid Adenocarcinoma",
+               "Parathyroid Cancer",
+               "Parathyroid Carcinoma",
+               "Parathyroid Gland Adenocarcinoma",
+               "Parathyroid Gland Carcinoma",
+               "Parathyroid cancer, NOS",
+               "parathyroid cancer"
+           ],
+           "count": 3
+       },
+       {
+           "name": "Penile Cancer",
+           "codes": [
+               "C9061"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Cancer of Penis",
+               "Cancer of the Penis",
+               "Carcinoma of Penis",
+               "Carcinoma of the Penis",
+               "Penile Carcinoma",
+               "Penile cancer, NOS",
+               "penile cancer"
+           ],
+           "count": 20
+       },
+       {
+           "name": "Pharyngeal Throat Cancer",
+           "codes": [
+               "C9466"
+           ],
+           "ancestor_ids": [
+               "C35850"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C35850"
+           ],
+           "synonyms": [
+               "Cancer of Pharynx",
+               "Cancer of the Pharynx",
+               "Carcinoma of Pharynx",
+               "Carcinoma of the Pharynx",
+               "Pharyngeal Cancer",
+               "Pharyngeal Carcinoma",
+               "Pharynx Cancer",
+               "Pharynx Carcinoma",
+               "pharyngeal cancer"
+           ],
+           "count": 161
+       },
+       {
+           "name": "Pineoblastoma",
+           "codes": [
+               "C9344"
+           ],
+           "ancestor_ids": [
+               "C3268",
+               "C9293"
+           ],
+           "type": [
+               "grade",
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9293"
+           ],
+           "synonyms": [
+               "PINEOBLASTOMA, MALIGNANT",
+               "PNET of Pineal Gland",
+               "PNET of the Pineal Gland",
+               "Pineal Gland PNET",
+               "Pineal Gland Primitive Neuroectodermal Neoplasm",
+               "Pineal Gland Primitive Neuroectodermal Tumor",
+               "Pineal PNET",
+               "Pineal Primitive Neuroectodermal Neoplasm",
+               "Pineal Primitive Neuroectodermal Tumor",
+               "Pineoblastoma (WHO Grade IV)",
+               "Primitive Neuroectodermal Neoplasm of Pineal Gland",
+               "Primitive Neuroectodermal Neoplasm of the Pineal Gland",
+               "Primitive Neuroectodermal Tumor of Pineal Gland",
+               "Primitive Neuroectodermal Tumor of the Pineal Gland",
+               "pineoblastoma"
+           ],
+           "count": 5
+       },
+       {
+           "name": "Pituitary Gland Cancer",
+           "codes": [
+               "C4536"
+           ],
+           "ancestor_ids": [
+               "C3268",
+               "C9293"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9293"
+           ],
+           "synonyms": [
+               "Cancer of Pituitary",
+               "Cancer of Pituitary Gland",
+               "Cancer of the Pituitary",
+               "Cancer of the Pituitary Gland",
+               "Carcinoma of Pituitary",
+               "Carcinoma of Pituitary Gland",
+               "Carcinoma of the Pituitary",
+               "Carcinoma of the Pituitary Gland",
+               "Pituitary Carcinoma",
+               "Pituitary Gland Adenocarcinoma",
+               "Pituitary Gland Carcinoma",
+               "Pituitary carcinoma, NOS",
+               "Pituitary gland cancer, NOS"
+           ],
+           "count": 3
+       },
+       {
+           "name": "Plasma Cell Tumor",
+           "codes": [
+               "C4665"
+           ],
+           "ancestor_ids": [
+               "C27134"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C27134"
+           ],
+           "synonyms": [
+               "PLASMA CELL TUMOR, MALIGNANT",
+               "Plasma Cell Dyscrasia",
+               "Plasma Cell Neoplasm",
+               "Plasma Cell Tumors",
+               "Plasma cell tumor",
+               "Plasmacytic Neoplasm",
+               "Plasmacytic Tumor",
+               "Plasmacytic Tumour",
+               "plasma cell tumor"
+           ],
+           "count": 330
+       },
+       {
+           "name": "Plasmacytoma",
+           "codes": [
+               "C9349"
+           ],
+           "ancestor_ids": [
+               "C27134",
+               "C4665"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C4665"
+           ],
+           "synonyms": [
+               "Plasmacytoma, NOS",
+               "plasmacytoma"
+           ],
+           "count": 13
+       },
+       {
+           "name": "Pleuropulmonary Blastoma",
+           "codes": [
+               "C5669"
+           ],
+           "ancestor_ids": [
+               "C3264"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3264"
+           ],
+           "synonyms": [
+               "PPB",
+               "Pleuropulmonary blastoma",
+               "Pulmonary Blastoma of Childhood",
+               "pleuropulmonary blastoma"
+           ],
+           "count": 2
+       },
+       {
+           "name": "Primary Peritoneal Cancer",
+           "codes": [
+               "C40022"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "PPC",
+               "Primary Peritoneal Carcinoma",
+               "Primary peritoneal carcinoma"
+           ],
+           "count": 142
+       },
+       {
+           "name": "Primitive Neuroectodermal Tumor (PNET)",
+           "codes": [
+               "C3716"
+           ],
+           "ancestor_ids": [
+               "C3264",
+               "C3268"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3264",
+               "C3268"
+           ],
+           "synonyms": [
+               "Neuroectodermal Neoplasm",
+               "Neuroectodermal Tumor",
+               "Neuroepithelioma",
+               "PNET",
+               "PNET, NOS",
+               "Primitive Neuroectodermal Neoplasm",
+               "Primitive Neuroectodermal Tumor",
+               "Primitive neuroectodermal tumor, NOS",
+               "neuroectodermal tumor",
+               "primitive neuroectodermal tumor"
+           ],
+           "count": 176
+       },
+       {
+           "name": "Prostate Cancer",
+           "codes": [
+               "C4863"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Cancer of Prostate",
+               "Cancer of the Prostate",
+               "Carcinoma of Prostate",
+               "Carcinoma of the Prostate",
+               "Prostate Carcinoma",
+               "Prostate cancer, NOS",
+               "prostate cancer"
+           ],
+           "count": 548
+       },
+       {
+           "name": "Retinoblastoma",
+           "codes": [
+               "C7541"
+           ],
+           "ancestor_ids": [
+               "C3268",
+               "C9293"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9293"
+           ],
+           "synonyms": [
+               "RB",
+               "RETINOBLASTOMA, MALIGNANT",
+               "Retinoblastoma, NOS",
+               "retinoblastoma"
+           ],
+           "count": 15
+       },
+       {
+           "name": "Retroperitoneal Cancer",
+           "codes": [
+               "C7352"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Carcinoma of Retroperitoneum",
+               "Carcinoma of the Retroperitoneum",
+               "Retroperitoneal Carcinoma"
+           ],
+           "count": 13
+       },
+       {
+           "name": "Rhabdomyosarcoma",
+           "codes": [
+               "C3359"
+           ],
+           "ancestor_ids": [
+               "C9118"
+           ],
+           "type": [
+               "maintype",
+               "subtype",
+               "grade"
+           ],
+           "parent_ids": [
+               "C9118"
+           ],
+           "synonyms": [
+               "RHABDOMYOSARCOMA, MALIGNANT",
+               "Rhabdomyosarcoma, NOS",
+               "rhabdomyosarcoma"
+           ],
+           "count": 48
+       },
+       {
+           "name": "Salivary Gland Cancer",
+           "codes": [
+               "C9272"
+           ],
+           "ancestor_ids": [
+               "C35850"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C35850"
+           ],
+           "synonyms": [
+               "Carcinoma of Salivary Gland",
+               "Carcinoma of the Salivary Gland",
+               "Salivary Gland Carcinoma"
+           ],
+           "count": 24
+       },
+       {
+           "name": "Sarcoma",
+           "codes": [
+               "C9118"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Mesenchymal Tumor, Malignant",
+               "Mesenchymal tumor, malignant",
+               "SAR",
+               "SARCOMA, MALIGNANT",
+               "Sarcoma of Soft Tissue and Bone",
+               "Sarcoma of the Soft Tissue and Bone",
+               "Sarcoma, NOS",
+               "Sarcoma, Not Otherwise Specified",
+               "sarcoma"
+           ],
+           "count": 314
+       },
+       {
+           "name": "Seminoma",
+           "codes": [
+               "C9309"
+           ],
+           "ancestor_ids": [
+               "C3708"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3708"
+           ],
+           "synonyms": [
+               "SEMINOMA, MALIGNANT",
+               "Seminoma, NOS",
+               "Seminoma, Pure",
+               "seminoma"
+           ],
+           "count": 6
+       },
+       {
+           "name": "Small Cell Lung Cancer",
+           "codes": [
+               "C4917"
+           ],
+           "ancestor_ids": [
+               "C4878"
+           ],
+           "type": [
+               "maintype",
+               "subtype",
+               "grade"
+           ],
+           "parent_ids": [
+               "C4878"
+           ],
+           "synonyms": [
+               "Lung Oat Cell Carcinoma",
+               "Lung Small Cell Carcinoma",
+               "Lung Small Cell Neuroendocrine Carcinoma",
+               "Oat Cell Carcinoma of Lung",
+               "Oat Cell Carcinoma of the Lung",
+               "Oat Cell Lung Carcinoma",
+               "SCLC",
+               "Small Cell Carcinoma of Lung",
+               "Small Cell Carcinoma of the Lung",
+               "Small Cell Lung Carcinoma",
+               "Small Cell Neuroendocrine Carcinoma of Lung",
+               "Small Cell Neuroendocrine Carcinoma of the Lung",
+               "Small cell lung cancer",
+               "small cell lung cancer"
+           ],
+           "count": 146
+       },
+       {
+           "name": "Small Intestinal Cancer",
+           "codes": [
+               "C7724"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Cancer of Small Bowel",
+               "Cancer of the Small Bowel",
+               "Carcinoma of Small Bowel",
+               "Carcinoma of Small Intestine",
+               "Carcinoma of the Small Bowel",
+               "Carcinoma of the Small Intestine",
+               "Small Bowel Cancer",
+               "Small Bowel Carcinoma",
+               "Small Intestinal Carcinoma",
+               "Small Intestine Cancer",
+               "Small intestine cancer, NOS",
+               "small intestine cancer"
+           ],
+           "count": 21
+       },
+       {
+           "name": "Soft Tissue Sarcoma",
+           "codes": [
+               "C9306"
+           ],
+           "ancestor_ids": [
+               "C9118"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9118"
+           ],
+           "synonyms": [
+               "Connective Tissue Sarcoma",
+               "Non-Rhabdo. soft tissue sarcoma",
+               "Non-Rhabdomyosarcoma soft tissue sarcoma, NOS",
+               "Sarcoma of Soft Tissue",
+               "Sarcoma of the Soft Tissue",
+               "Soft tissue sarcoma",
+               "soft tissue sarcoma"
+           ],
+           "count": 194
+       },
+       {
+           "name": "Solid Tumor",
+           "codes": [
+               "C9292"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Solid Neoplasm",
+               "Solid Tumour",
+               "Solid tumor, NOS",
+               "solid tumor"
+           ],
+           "count": 1319
+       },
+       {
+           "name": "Teratoma",
+           "codes": [
+               "C3403"
+           ],
+           "ancestor_ids": [
+               "C3708"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3708"
+           ],
+           "synonyms": [
+               "Teratoma, NOS",
+               "Teratoma, Not Otherwise Specified",
+               "teratoma"
+           ],
+           "count": 5
+       },
+       {
+           "name": "Testicular Cancer",
+           "codes": [
+               "C7251"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Malignant Neoplasm of Testis",
+               "Malignant Neoplasm of the Testis",
+               "Malignant Testicular Neoplasm",
+               "Malignant Testicular Tumor",
+               "Malignant Tumor of Testis",
+               "Malignant Tumor of the Testis"
+           ],
+           "count": 6
+       },
+       {
+           "name": "Thymic Carcinoma",
+           "codes": [
+               "C7569"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Thymic Carcinoma (Excluding Well Differentiated Thymic Carcinoma)",
+               "Thymic Carcinoma Excluding Well Differentiated Thymic Carcinoma",
+               "Thymoma Type C",
+               "thymic carcinoma",
+               "type C thymoma"
+           ],
+           "count": 15
+       },
+       {
+           "name": "Thymoma",
+           "codes": [
+               "C3411"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Thymoma, NOS",
+               "thymoma"
+           ],
+           "count": 7
+       },
+       {
+           "name": "Thyroid Gland Cancer",
+           "codes": [
+               "C4815"
+           ],
+           "ancestor_ids": [
+               "C35850"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C35850"
+           ],
+           "synonyms": [
+               "Cancer of Thyroid",
+               "Cancer of the Thyroid",
+               "Carcinoma of Thyroid",
+               "Carcinoma of Thyroid Gland",
+               "Carcinoma of the Thyroid",
+               "Carcinoma of the Thyroid Gland",
+               "THCA",
+               "Thyroid Cancer",
+               "Thyroid Carcinoma",
+               "Thyroid Gland Carcinoma",
+               "Thyroid cancer, NOS",
+               "thyroid cancer"
+           ],
+           "count": 71
+       },
+       {
+           "name": "Trophoblastic Tumor",
+           "codes": [
+               "C3422"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Trophoblastic Neoplasm",
+               "Trophoblastic Neoplasms",
+               "Trophoblastic neoplasms"
+           ],
+           "count": 5
+       },
+       {
+           "name": "Ureter Cancer",
+           "codes": [
+               "C8993"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Carcinoma of Ureter",
+               "Carcinoma of the Ureter",
+               "Ureter Carcinoma",
+               "Ureteral Carcinoma"
+           ],
+           "count": 39
+       },
+       {
+           "name": "Urethral Cancer",
+           "codes": [
+               "C9106"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Carcinoma of Urethra",
+               "Carcinoma of the Urethra",
+               "Urethra Carcinoma",
+               "Urethral Carcinoma",
+               "urethral cancer"
+           ],
+           "count": 39
+       },
+       {
+           "name": "Uterine (Including Endometrial) Cancer",
+           "codes": [
+               "C61574"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Cancer of the Corpus Uteri",
+               "Corpus Uteri Cancer",
+               "Uterine Corpus Cancer"
+           ],
+           "count": 181
+       },
+       {
+           "name": "Uterine Sarcoma",
+           "codes": [
+               "C6339"
+           ],
+           "ancestor_ids": [
+               "C9118",
+               "C9306"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C9306"
+           ],
+           "synonyms": [
+               "Body of Uterus Sarcoma",
+               "Corpus Uteri Sarcoma",
+               "Sarcoma of Body of Uterus",
+               "Sarcoma of Corpus Uteri",
+               "Sarcoma of Uterine Body",
+               "Sarcoma of Uterine Corpus",
+               "Sarcoma of Uterus",
+               "Sarcoma of the Body of Uterus",
+               "Sarcoma of the Corpus Uteri",
+               "Sarcoma of the Uterine Body",
+               "Sarcoma of the Uterine Corpus",
+               "Sarcoma of the Uterus",
+               "Uterine Body Sarcoma",
+               "Uterine Corpus Sarcoma",
+               "Uterus Sarcoma",
+               "uterine sarcoma"
+           ],
+           "count": 9
+       },
+       {
+           "name": "Vaginal Cancer",
+           "codes": [
+               "C3917"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Cancer of Vagina",
+               "Cancer of the Vagina",
+               "Carcinoma of Vagina",
+               "Carcinoma of the Vagina",
+               "Vagina Cancer",
+               "Vagina Carcinoma",
+               "Vaginal Carcinoma",
+               "Vaginal cancer, NOS",
+               "vaginal cancer"
+           ],
+           "count": 24
+       },
+       {
+           "name": "Vulvar Cancer",
+           "codes": [
+               "C4866"
+           ],
+           "ancestor_ids": [],
+           "type": [
+               "maintype"
+           ],
+           "parent_ids": [],
+           "synonyms": [
+               "Cancer of Vulva",
+               "Cancer of the Vulva",
+               "Carcinoma of Vulva",
+               "Carcinoma of the Vulva",
+               "Vulva Cancer",
+               "Vulva Carcinoma",
+               "Vulvar Carcinoma",
+               "Vulvar cancer, NOS",
+               "vulvar cancer"
+           ],
+           "count": 32
+       },
+       {
+           "name": "Wilms Tumor",
+           "codes": [
+               "C3267"
+           ],
+           "ancestor_ids": [
+               "C3264"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3264"
+           ],
+           "synonyms": [
+               "Nephroblastoma",
+               "Wilms tumor",
+               "Wilms tumor (Nephroblastoma)",
+               "Wilms tumor (WT)",
+               "Wilms' Tumor"
+           ],
+           "count": 20
+       },
+       {
+           "name": "Yolk Sac Tumor",
+           "codes": [
+               "C3011"
+           ],
+           "ancestor_ids": [
+               "C3708"
+           ],
+           "type": [
+               "maintype",
+               "subtype"
+           ],
+           "parent_ids": [
+               "C3708"
+           ],
+           "synonyms": [
+               "Carcinoma, Yolk Sac",
+               "Endodermal Sinus Neoplasm",
+               "Endodermal Sinus Tumor",
+               "Endodermal sinus tumor",
+               "YOLK SAC TUMOR, MALIGNANT",
+               "Yolk Sac Neoplasm",
+               "Yolk Sac Tumor Site Unspecified",
+               "Yolk Sac Tumour Site Unspecified",
+               "Yolk sac tumor"
+           ],
+           "count": 3
+       }
+   ],
+   "total": 124
+}

@@ -33,6 +33,7 @@ export const FilterActionTypes = {
  */
 const initialState = {
 	filters: {
+		maintype: [],
 		age: '',
 		location: {
 			zipCode: '',
@@ -212,7 +213,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 
 		// Preserve non-filter URL parameters
 		let paramOrder = Array.from(params.keys());
-		let filterParams = [URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
+		let filterParams = [URL_PARAM_MAPPING.maintype.shortCode, URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
 		let preservedParamsMap = new Map();
 
 		for (const key of paramOrder) {
@@ -332,7 +333,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 
 			// Preserve non-filter URL parameters
 			let paramOrder = Array.from(params.keys());
-			let filterParams = [URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
+			let filterParams = [URL_PARAM_MAPPING.maintype.shortCode, URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
 			let updatedParams = new Map();
 
 			// Handle non-filter parameters
@@ -440,6 +441,10 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		if (filters.age?.toString().trim() !== '') {
 			apiFilters['eligibility.structured.min_age_in_years_lte'] = filters.age;
 			apiFilters['eligibility.structured.max_age_in_years_gte'] = filters.age;
+		}
+
+		if (filters.maintype && Array.isArray(filters.maintype) && filters.maintype.length > 0) {
+			apiFilters['_diseases.primary_purpose'] = filters.maintype;
 		}
 
 		// Transform location filter using utility function
