@@ -10,6 +10,9 @@
 
 @use '../features/filters/components/Sidebar/Sidebar';
 
+// Import NCIDS application styles that include USWDS component styles
+@use './ncids-application-page';
+
 @use 'uswds-core' as *;
 
 // h1 {

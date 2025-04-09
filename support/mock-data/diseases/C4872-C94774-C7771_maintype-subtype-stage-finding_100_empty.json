@@ -1,0 +1,44 @@
+{
+	"data": [
+		{
+			"name": "Breast Cancer",
+			"codes": ["C4872"],
+			"ancestor_ids": [],
+			"parent_ids": [],
+			"type": ["maintype"],
+			"synonyms": [
+				"Breast Carcinoma",
+				"Breast cancer, NOS",
+				"Cancer of Breast",
+				"Cancer of the Breast",
+				"Carcinoma of Breast",
+				"Carcinoma of the Breast",
+				"Mammary Carcinoma",
+				"breast cancer"
+			],
+			"count": 986
+		},
+		{
+			"name": "Early-Stage Breast Cancer",
+			"codes": ["C94774"],
+			"ancestor_ids": ["C4872"],
+			"parent_ids": ["C4872"],
+			"type": ["stage"],
+			"synonyms": [
+				"Early Stage Breast Carcinoma",
+				"Early-Stage Breast Carcinoma",
+				"early-stage breast cancer"
+			],
+			"count": 32
+		},
+		{
+			"name": "Recurrent Breast Cancer",
+			"codes": ["C7771"],
+			"ancestor_ids": ["C4872"],
+			"parent_ids": ["C4872"],
+			"type": ["stage"],
+			"synonyms": ["Breast Cancer, Recurrent", "Recurrent Breast Carcinoma"],
+			"count": 109
+		}
+	]
+}

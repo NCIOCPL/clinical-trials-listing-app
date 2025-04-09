@@ -1,0 +1,702 @@
+{
+    "data": [
+        {
+            "name": "Advanced Bladder Carcinoma",
+            "codes": [
+                "C167338"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Advanced Bladder Urothelial Carcinoma",
+            "codes": [
+                "C163954"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bladder Adenocarcinoma",
+            "codes": [
+                "C4032"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bladder Carcinoma Infiltrating the Muscle of the Bladder Wall",
+            "codes": [
+                "C150572"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bladder Clear Cell Adenocarcinoma",
+            "codes": [
+                "C6179"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bladder Large Cell Neuroendocrine Carcinoma",
+            "codes": [
+                "C157760"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bladder Mixed Adenocarcinoma",
+            "codes": [
+                "C39839"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bladder Neuroendocrine Carcinoma",
+            "codes": [
+                "C157759"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bladder Non-Invasive Papillary Urothelial Carcinoma",
+            "codes": [
+                "C158382"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bladder Papillary Urothelial Carcinoma",
+            "codes": [
+                "C7383"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bladder Small Cell Neuroendocrine Cancer",
+            "codes": [
+                "C9461"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bladder Squamous Cell Cancer",
+            "codes": [
+                "C4031"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bladder Urachal Adenocarcinoma",
+            "codes": [
+                "C39843"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bladder Urothelial Cancer",
+            "codes": [
+                "C39851"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bladder Urothelial Carcinoma In Situ",
+            "codes": [
+                "C37266"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "grade",
+                "stage",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Infiltrating Bladder Cancer",
+            "codes": [
+                "C150570"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Infiltrating Bladder Lymphoepithelioma-Like Carcinoma",
+            "codes": [
+                "C39821"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Infiltrating Bladder Mixed Carcinoma",
+            "codes": [
+                "C165716"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Infiltrating Bladder Urothelial Carcinoma",
+            "codes": [
+                "C27885"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Infiltrating Bladder Urothelial Carcinoma Sarcomatoid Variant",
+            "codes": [
+                "C39824"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Infiltrating Bladder Urothelial Carcinoma with Giant Cells",
+            "codes": [
+                "C39829"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Infiltrating Bladder Urothelial Carcinoma with Glandular Differentiation",
+            "codes": [
+                "C39817"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Infiltrating Bladder Urothelial Carcinoma with Squamous Differentiation",
+            "codes": [
+                "C39816"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Infiltrating Bladder Urothelial Carcinoma with Trophoblastic Differentiation",
+            "codes": [
+                "C39818"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Infiltrating Bladder Urothelial Carcinoma, Clear Cell Variant",
+            "codes": [
+                "C39827"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Infiltrating Bladder Urothelial Carcinoma, Micropapillary Variant",
+            "codes": [
+                "C27202"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Infiltrating Bladder Urothelial Carcinoma, Nested Variant",
+            "codes": [
+                "C39819"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Infiltrating Bladder Urothelial Carcinoma, Plasmacytoid Variant",
+            "codes": [
+                "C39823"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Locally Advanced Bladder Carcinoma",
+            "codes": [
+                "C167071"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Locally Advanced Bladder Urothelial Carcinoma",
+            "codes": [
+                "C162618"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Bladder Carcinoma",
+            "codes": [
+                "C156062"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Bladder Large Cell Neuroendocrine Carcinoma",
+            "codes": [
+                "C157762"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Bladder Small Cell Neuroendocrine Carcinoma",
+            "codes": [
+                "C157763"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Bladder Squamous Cell Carcinoma",
+            "codes": [
+                "C157750"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Bladder Urothelial Cancer",
+            "codes": [
+                "C150513"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Clear Cell Urothelial Carcinoma",
+            "codes": [
+                "C157768"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Lipid Rich Urothelial Carcinoma",
+            "codes": [
+                "C157754"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Micropapillary Urothelial Carcinoma",
+            "codes": [
+                "C157767"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Plasmacytoid Urothelial Carcinoma",
+            "codes": [
+                "C157751"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Sarcomatoid Urothelial Carcinoma",
+            "codes": [
+                "C157766"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Bladder Cancer",
+            "codes": [
+                "C150316"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Bladder Urothelial Carcinoma",
+            "codes": [
+                "C165702"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Superficial Bladder Cancer",
+            "codes": [
+                "C27474"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Superficial Bladder Urothelial Carcinoma",
+            "codes": [
+                "C170772"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Unresectable Bladder Carcinoma",
+            "codes": [
+                "C167075"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Unresectable Bladder Urothelial Carcinoma",
+            "codes": [
+                "C158586"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "subtype"
+            ]
+        }
+    ],
+    "total": 46
+}

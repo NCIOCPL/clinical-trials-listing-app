@@ -32,6 +32,12 @@ export const getFiltersFromURL = (search) => {
 		}
 	}
 
+	// Handle maintype param
+	const maintypeValue = params.get(URL_PARAM_MAPPING.maintype.shortCode);
+	if (maintypeValue) {
+		filters.maintype = [maintypeValue]; // Store as array to match filter state structure
+	}
+
 	// Handle zip and radius params with validation
 	const zip = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
 	const radius = params.get(URL_PARAM_MAPPING.radius.shortCode);
@@ -59,11 +65,17 @@ export const updateURLWithFilters = (filters, existingSearch) => {
 
 	// Clear any existing filter params
 	params.delete(URL_PARAM_MAPPING.age.shortCode);
+	params.delete(URL_PARAM_MAPPING.maintype.shortCode);
 	// We can add other filter param deletions here as needed
 
 	// Add new filter params
 	if (filters.age?.length) {
 		filters.age.forEach((age) => params.append(URL_PARAM_MAPPING.age.shortCode, age));
+	}
+
+	// Add maintype param if it exists
+	if (filters.maintype?.length && filters.maintype[0]) {
+		params.set(URL_PARAM_MAPPING.maintype.shortCode, filters.maintype[0]);
 	}
 
 	// Add location params if they exist

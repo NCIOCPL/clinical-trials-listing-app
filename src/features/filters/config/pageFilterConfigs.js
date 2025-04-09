@@ -25,8 +25,8 @@ export const PAGE_FILTER_CONFIGS = {
 
 	// Configuration for 'Intervention' type pages
 	Intervention: {
-		enabledFilters: ['age', 'location'], // Only Age and Location filters are enabled
-		order: ['age', 'location'], // Display Age first, then Location
+		enabledFilters: ['age', 'location', 'maintype'],
+		order: ['age', 'location', 'maintype'],
 	},
 	// Add configurations for other page types as needed
 };

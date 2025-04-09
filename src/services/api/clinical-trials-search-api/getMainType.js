@@ -1,4 +1,4 @@
-import querystring from 'query-string';
+import qs from 'qs';
 
 /**
  * Fetches disease main types to populate the Primary Cancer Type/Condition field
@@ -8,7 +8,11 @@ import querystring from 'query-string';
  */
 export const getMainType = async (client, query) => {
 	try {
-		const res = await client.get(`/diseases?${querystring.stringify(query)}`);
+		// Using arrayFormat: 'repeat' to ensure arrays are serialized as repeated parameters
+		// e.g., &current_trial_status=A&current_trial_status=B instead of &current_trial_status=A,B
+		const queryString = qs.stringify(query, { arrayFormat: 'repeat' });
+
+		const res = await client.get(`/diseases?${queryString}`);
 		if (res.status === 200) {
 			return res.data;
 		} else {

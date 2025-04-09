@@ -1,0 +1,235 @@
+{
+	"data": [
+		{
+			"name": "Advanced Breast Adenocarcinoma",
+			"codes": [
+				"C165700"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [],
+			"count": 4
+		},
+		{
+			"name": "Advanced Breast Carcinoma",
+			"codes": [
+				"C162648"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [],
+			"count": 87
+		},
+		{
+			"name": "Advanced HER2 Negative Breast Carcinoma",
+			"codes": [
+				"C168782"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Advanced HER2 Negative Breast Adenocarcinoma",
+				"Advanced HER2-Negative Breast Carcinoma"
+			],
+			"count": 6
+		},
+		{
+			"name": "Advanced HER2 Positive Breast Carcinoma",
+			"codes": [
+				"C180925"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Advanced HER2-Positive Breast Carcinoma"
+			],
+			"count": 1
+		},
+		{
+			"name": "Advanced Primary Malignant Brain Neoplasm",
+			"codes": [
+				"C175549"
+			],
+			"ancestor_ids": [
+				"C3268",
+				"C9293"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C9293"
+			],
+			"synonyms": [],
+			"count": 3
+		},
+		{
+			"name": "Advanced Triple-Negative Breast Carcinoma",
+			"codes": [
+				"C175236"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [],
+			"count": 26
+		},
+		{
+			"name": "Atypical Breast Papilloma",
+			"codes": [
+				"C36089"
+			],
+			"ancestor_ids": [
+				"C3262"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C3262"
+			],
+			"synonyms": [
+				"Breast Atypical Papilloma",
+				"Intraductal Breast Papilloma with Atypia"
+			],
+			"count": 3
+		},
+		{
+			"name": "Atypical Ductal Breast Hyperplasia",
+			"codes": [
+				"C8436"
+			],
+			"ancestor_ids": [
+				"C3262"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C3262"
+			],
+			"synonyms": [
+				"ADH",
+				"Atypical Breast Ductal Hyperplasia",
+				"Atypical Ductal Hyperplasia of Breast",
+				"Atypical Ductal Hyperplasia of the Breast",
+				"Breast Atypical Ductal Hyperplasia",
+				"DIN 1B",
+				"Ductal Intraepithelial Neoplasia, Grade 1B",
+				"atypical ductal breast hyperplasia",
+				"atypical ductal hyperplasia"
+			],
+			"count": 9
+		},
+		{
+			"name": "Atypical Lobular Breast Hyperplasia",
+			"codes": [
+				"C4730"
+			],
+			"ancestor_ids": [
+				"C3262"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C3262"
+			],
+			"synonyms": [
+				"ALH",
+				"Atypical Breast Lobular Hyperplasia",
+				"Atypical Lobular Hyperplasia of Breast",
+				"Atypical Lobular Hyperplasia of the Breast",
+				"Breast Atypical Lobular Hyperplasia",
+				"atypical lobular breast hyperplasia",
+				"atypical lobular hyperplasia"
+			],
+			"count": 5
+		},
+		{
+			"name": "Atypical Teratoid/Rhabdoid Tumor",
+			"codes": [
+				"C6906"
+			],
+			"ancestor_ids": [
+				"C3268",
+				"C9293"
+			],
+			"type": [
+				"maintype",
+				"subtype",
+				"grade"
+			],
+			"parent_ids": [
+				"C9293"
+			],
+			"synonyms": [
+				"AT/RT",
+				"ATT/RHT",
+				"Atypical Teratoid/Rhabdoid Tumor (WHO Grade 4)",
+				"Atypical Teratoid/Rhabdoid Tumor (WHO Grade IV)",
+				"Atypical teratoid/rhabdoid tumor",
+				"CNS Rhabdoid Neoplasm",
+				"CNS Rhabdoid Tumor",
+				"Central Nervous System Rhabdoid Neoplasm",
+				"Central Nervous System Rhabdoid Tumor",
+				"Malignant Brain Rhabdoid Neoplasm",
+				"Malignant Brain Rhabdoid Tumor",
+				"Malignant Rhabdoid Neoplasm of Brain",
+				"Malignant Rhabdoid Neoplasm of the Brain",
+				"Malignant Rhabdoid Tumor of Brain",
+				"Malignant Rhabdoid Tumor of the Brain",
+				"Primary Malignant Brain Rhabdoid Neoplasm",
+				"Primary Malignant Brain Rhabdoid Tumor",
+				"Primary Malignant Rhabdoid Neoplasm of Brain",
+				"Primary Malignant Rhabdoid Neoplasm of the Brain",
+				"Primary Malignant Rhabdoid Tumor of Brain",
+				"Primary Malignant Rhabdoid Tumor of the Brain",
+				"Rhabdoid Neoplasm of CNS",
+				"Rhabdoid Neoplasm of Central Nervous System",
+				"Rhabdoid Neoplasm of the CNS",
+				"Rhabdoid Neoplasm of the Central Nervous System",
+				"Rhabdoid Tumor of CNS",
+				"Rhabdoid Tumor of Central Nervous System",
+				"Rhabdoid Tumor of the CNS",
+				"Rhabdoid Tumor of the Central Nervous System",
+				"atypical teratoid/rhabdoid tumor"
+			],
+			"count": 13
+		}
+	]
+}

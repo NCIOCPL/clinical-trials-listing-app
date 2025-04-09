@@ -1,0 +1,33 @@
+{
+	"data": [
+		{
+			"name": "Bladder Cancer",
+			"codes": ["C4912"],
+			"ancestor_ids": [],
+			"parent_ids": [],
+			"type": ["maintype"]
+		},
+		{
+			"name": "Stage III Bladder Cancer",
+			"codes": ["C140421", "C7898"],
+			"ancestor_ids": ["C4912"],
+			"parent_ids": ["C4912"],
+			"type": ["stage"],
+			"synonyms": [
+				"Bladder Carcinoma",
+				"Cancer of Bladder",
+				"Cancer of Urinary Bladder",
+				"Cancer of the Bladder",
+				"Cancer of the Urinary Bladder",
+				"Carcinoma of Bladder",
+				"Carcinoma of Urinary Bladder",
+				"Carcinoma of the Bladder",
+				"Carcinoma of the Urinary Bladder",
+				"Urinary Bladder Cancer",
+				"Urinary Bladder Carcinoma",
+				"bladder cancer"
+			],
+			"count": 184
+		}
+	]
+}
