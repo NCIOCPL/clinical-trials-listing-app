@@ -1,0 +1,121 @@
+{
+    "data": [
+        {
+            "name": "ENSAT Stage I Adrenal Cortex Cancer",
+            "codes": [
+                "C104031"
+            ],
+            "ancestor_ids": [
+                "C7352",
+                "C9325"
+            ],
+            "parent_ids": [
+                "C9325"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "ENSAT Stage II Adrenal Cortex Cancer",
+            "codes": [
+                "C104032"
+            ],
+            "ancestor_ids": [
+                "C7352",
+                "C9325"
+            ],
+            "parent_ids": [
+                "C9325"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "ENSAT Stage III Adrenal Cortex Cancer",
+            "codes": [
+                "C104033"
+            ],
+            "ancestor_ids": [
+                "C7352",
+                "C9325"
+            ],
+            "parent_ids": [
+                "C9325"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage I Adrenal Cortex Cancer",
+            "codes": [
+                "C141101",
+                "C9214"
+            ],
+            "ancestor_ids": [
+                "C7352",
+                "C9325"
+            ],
+            "parent_ids": [
+                "C9325"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage II Adrenal Cortex Cancer",
+            "codes": [
+                "C141102",
+                "C9215"
+            ],
+            "ancestor_ids": [
+                "C7352",
+                "C9325"
+            ],
+            "parent_ids": [
+                "C9325"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage III Adrenal Cortex Cancer",
+            "codes": [
+                "C141103",
+                "C9216"
+            ],
+            "ancestor_ids": [
+                "C7352",
+                "C9325"
+            ],
+            "parent_ids": [
+                "C9325"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage IV Adrenal Cortex Cancer",
+            "codes": [
+                "C141104",
+                "C9217"
+            ],
+            "ancestor_ids": [
+                "C7352",
+                "C9325"
+            ],
+            "parent_ids": [
+                "C9325"
+            ],
+            "type": [
+                "stage"
+            ]
+        }
+    ],
+    "total": 7
+}

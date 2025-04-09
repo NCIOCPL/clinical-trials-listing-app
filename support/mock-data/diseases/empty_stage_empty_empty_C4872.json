@@ -1,0 +1,417 @@
+{
+    "data": [
+        {
+            "name": "Breast Ductal Carcinoma In Situ, Intermediate Grade",
+            "codes": [
+                "C9456"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "grade",
+                "stage",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Breast Ductal Carcinoma In Situ, Low Grade",
+            "codes": [
+                "C9457"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "grade",
+                "stage",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Breast Pleomorphic Lobular Carcinoma In Situ",
+            "codes": [
+                "C137839"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "grade",
+                "stage",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Ductal Carcinoma In Situ (DCIS)",
+            "codes": [
+                "C2924"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "grade",
+                "stage",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Early-Stage Breast Cancer",
+            "codes": [
+                "C94774"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "High Grade Ductal Breast Carcinoma In Situ",
+            "codes": [
+                "C7949"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "grade",
+                "stage",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Lobular Carcinoma In Situ (LCIS)",
+            "codes": [
+                "C4018"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "grade",
+                "stage",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Recurrent Breast Adenocarcinoma",
+            "codes": [
+                "C175588"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Breast Cancer",
+            "codes": [
+                "C7771"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Breast Inflammatory Carcinoma",
+            "codes": [
+                "C8607"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent HER2 Negative Breast Carcinoma",
+            "codes": [
+                "C168783"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Triple-Negative Breast Carcinoma",
+            "codes": [
+                "C171014"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage 0 Breast Cancer",
+            "codes": [
+                "C139534",
+                "C139555",
+                "C3641"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage I Breast Cancer",
+            "codes": [
+                "C139556",
+                "C139535",
+                "C88375"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage IA Breast Cancer",
+            "codes": [
+                "C139536",
+                "C139557",
+                "C85835"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage IB Breast Cancer",
+            "codes": [
+                "C139558",
+                "C139537",
+                "C85836"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage II Breast Cancer",
+            "codes": [
+                "C139538",
+                "C139569",
+                "C7768"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage IIA Breast Cancer",
+            "codes": [
+                "C139539",
+                "C139571",
+                "C5454"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage IIB Breast Cancer",
+            "codes": [
+                "C139572",
+                "C139540",
+                "C5455"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage III Breast Cancer",
+            "codes": [
+                "C139582",
+                "C139541",
+                "C88376"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage IIIA Breast Cancer",
+            "codes": [
+                "C139583",
+                "C139542",
+                "C7770"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage IIIB Breast Cancer",
+            "codes": [
+                "C139584",
+                "C139543",
+                "C7782"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage IIIC Breast Cancer",
+            "codes": [
+                "C139585",
+                "C139544",
+                "C88377"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage IV Breast Cancer",
+            "codes": [
+                "C139587",
+                "C139545",
+                "C3995"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Stage IV Inflammatory Breast Cancer",
+            "codes": [
+                "C7696"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "stage"
+            ]
+        }
+    ],
+    "total": 25
+}

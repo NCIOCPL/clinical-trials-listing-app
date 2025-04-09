@@ -1,0 +1,1116 @@
+{
+    "data": [
+        {
+            "name": "Advanced Breast Adenocarcinoma",
+            "codes": [
+                "C165700"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Advanced Breast Carcinoma",
+            "codes": [
+                "C162648"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Advanced HER2 Negative Breast Carcinoma",
+            "codes": [
+                "C168782"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Advanced Triple-Negative Breast Carcinoma",
+            "codes": [
+                "C175236"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "BRCA-Mutated Metastatic Breast Carcinoma",
+            "codes": [
+                "C161830"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bilateral Breast Cancer",
+            "codes": [
+                "C8287"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Breast Adenocarcinoma",
+            "codes": [
+                "C5214"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Breast Ductal Carcinoma In Situ, Intermediate Grade",
+            "codes": [
+                "C9456"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "grade",
+                "stage",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Breast Ductal Carcinoma In Situ, Low Grade",
+            "codes": [
+                "C9457"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "grade",
+                "stage",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Breast Metaplastic Carcinoma",
+            "codes": [
+                "C5164"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Breast Pleomorphic Lobular Carcinoma In Situ",
+            "codes": [
+                "C137839"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "grade",
+                "stage",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Breast Secretory Carcinoma",
+            "codes": [
+                "C4189"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Ductal Breast Carcinoma",
+            "codes": [
+                "C4017"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Ductal Carcinoma In Situ (DCIS)",
+            "codes": [
+                "C2924"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "grade",
+                "stage",
+                "subtype"
+            ]
+        },
+        {
+            "name": "HER2 Negative Breast Carcinoma",
+            "codes": [
+                "C168519"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "HER2-Positive Breast Carcinoma",
+            "codes": [
+                "C53556"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Hereditary Breast Cancer",
+            "codes": [
+                "C4503"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Hereditary Female Breast Carcinoma",
+            "codes": [
+                "C36107"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Hereditary Male Breast Carcinoma",
+            "codes": [
+                "C36106"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "High Grade Ductal Breast Carcinoma In Situ",
+            "codes": [
+                "C7949"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "grade",
+                "stage",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Hormone Receptor Negative Breast Carcinoma",
+            "codes": [
+                "C165743"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Hormone Receptor Positive Breast Carcinoma",
+            "codes": [
+                "C157056"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Hormone-Resistant Breast Cancer",
+            "codes": [
+                "C114932"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Inflammatory Breast Cancer",
+            "codes": [
+                "C4001"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Invasive Breast Cancer",
+            "codes": [
+                "C9245"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Invasive Breast Ductal Carcinoma and Invasive Lobular Carcinoma",
+            "codes": [
+                "C6393"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Invasive Breast Papillary Carcinoma",
+            "codes": [
+                "C36085"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Invasive Ductal Breast Carcinoma with Predominant Intraductal Component",
+            "codes": [
+                "C9132"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Invasive Ductal Carcinoma, NOS",
+            "codes": [
+                "C4194"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Invasive Lobular Breast Carcinoma",
+            "codes": [
+                "C7950"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Lobular Breast Carcinoma",
+            "codes": [
+                "C3771"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Lobular Carcinoma In Situ (LCIS)",
+            "codes": [
+                "C4018"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "grade",
+                "stage",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Locally Advanced Breast Adenocarcinoma",
+            "codes": [
+                "C165699"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Locally Advanced Breast Carcinoma",
+            "codes": [
+                "C160920"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Locally Advanced HER2 Negative Breast Adenocarcinoma",
+            "codes": [
+                "C178348"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Locally Advanced Triple-Negative Breast Carcinoma",
+            "codes": [
+                "C175237"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Locally Advanced Unresectable Breast Carcinoma",
+            "codes": [
+                "C162182"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Luminal A Breast Cancer",
+            "codes": [
+                "C53554"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Luminal B Breast Carcinoma",
+            "codes": [
+                "C53555"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Male Breast Cancer",
+            "codes": [
+                "C3862"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Medullary Breast Cancer",
+            "codes": [
+                "C9119"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Breast Adenocarcinoma",
+            "codes": [
+                "C165698"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Breast Cancer in the Bone",
+            "codes": [
+                "C36303"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Breast Cancer in the Brain",
+            "codes": [
+                "C36301"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C4872",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C4872",
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Breast Cancer in the Liver",
+            "codes": [
+                "C36302"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Breast Cancer in the Lung",
+            "codes": [
+                "C36300"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Breast Cancer in the Lymph Nodes",
+            "codes": [
+                "C153227"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Breast Cancer in the Skin",
+            "codes": [
+                "C28311"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Breast Cancer in the Spine",
+            "codes": [
+                "C153226"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Breast Carcinoma",
+            "codes": [
+                "C153238"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Breast Ductal Carcinoma",
+            "codes": [
+                "C76326"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic HER2-Negative Breast Carcinoma",
+            "codes": [
+                "C168777"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Lobular Breast Carcinoma",
+            "codes": [
+                "C76328"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Triple-Negative Breast Carcinoma",
+            "codes": [
+                "C153348"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Microinvasive Breast Carcinoma",
+            "codes": [
+                "C40374"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Mucinous Breast Cancer",
+            "codes": [
+                "C9131"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Multicentric Breast Cancer",
+            "codes": [
+                "C94772"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Multifocal Breast Cancer",
+            "codes": [
+                "C94770"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Non-Metastatic Breast Carcinoma",
+            "codes": [
+                "C162782"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Papillary Breast Cancer",
+            "codes": [
+                "C9134"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Breast Adenocarcinoma",
+            "codes": [
+                "C165703"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Breast Cancer",
+            "codes": [
+                "C147965"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory HER2 Negative Breast Carcinoma",
+            "codes": [
+                "C168784"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Hormone Receptor Positive Breast Carcinoma",
+            "codes": [
+                "C157057"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Triple-Negative Breast Carcinoma",
+            "codes": [
+                "C167076"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Sporadic Breast Cancer",
+            "codes": [
+                "C7566"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Synchronous Bilateral Breast Carcinoma",
+            "codes": [
+                "C40370"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Triple-Negative Breast Cancer",
+            "codes": [
+                "C71732"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Tubular Breast Cancer",
+            "codes": [
+                "C9135"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Unilateral Breast Cancer",
+            "codes": [
+                "C46073"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Unresectable Breast Carcinoma",
+            "codes": [
+                "C158752"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Unresectable Inflammatory Breast Carcinoma",
+            "codes": [
+                "C158751"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Unresectable Triple-Negative Breast Carcinoma",
+            "codes": [
+                "C165491"
+            ],
+            "ancestor_ids": [
+                "C4872"
+            ],
+            "parent_ids": [
+                "C4872"
+            ],
+            "type": [
+                "subtype"
+            ]
+        }
+    ],
+    "total": 73
+}

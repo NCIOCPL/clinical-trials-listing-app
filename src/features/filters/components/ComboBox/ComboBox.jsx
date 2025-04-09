@@ -204,6 +204,14 @@ const ComboBox = ({
 	const inputId = `${name}-input`;
 	const listboxId = `${name}-listbox`;
 
+	// Automatically open the dropdown when options are available
+	// Using an additional useEffect hook to separate concerns
+	useEffect(() => {
+		if (options && options.length > 0) {
+			setIsOpen(true);
+		}
+	}, [options]);
+
 	return (
 		<div className="combobox" ref={wrapperRef}>
 			{/* Optional Label */}
