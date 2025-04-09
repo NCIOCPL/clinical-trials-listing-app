@@ -1,5 +1,3 @@
-import querystring from 'query-string';
-
 /**
  * Fetches disease main types to populate the Primary Cancer Type/Condition field
  *
@@ -8,7 +6,11 @@ import querystring from 'query-string';
  */
 export const getMainType = async (client, query) => {
 	try {
-		const res = await client.get(`/diseases?${querystring.stringify(query)}`);
+		const queryParams = new URLSearchParams();
+		Object.entries(query).forEach(([key, value]) => {
+			queryParams.append(key, value);
+		});
+		const res = await client.get(`/diseases?${queryParams.toString()}`);
 		if (res.status === 200) {
 			return res.data;
 		} else {

@@ -1,6 +1,14 @@
 import { URL_PARAM_MAPPING } from '../constants/urlParams';
 
 export const FILTER_CONFIG = {
+	maintype: {
+		title: 'Primary Cancer Type/Condition',
+		type: 'combobox',
+		multiSelect: false,
+		helpText: 'Search for a primary cancer type or condition.',
+		placeholder: 'Start typing to select a type',
+		urlParam: URL_PARAM_MAPPING.maintype?.shortCode,
+	},
 	subtype: {
 		title: 'Subtype',
 		type: 'combobox',

@@ -1,7 +1,7 @@
 export const PAGE_FILTER_CONFIGS = {
 	Disease: {
-		enabledFilters: ['age', 'location'],
-		order: ['age', 'location'],
+		enabledFilters: ['maintype', 'age', 'location'],
+		order: ['maintype', 'age', 'location'],
 	},
 
 	Manual: {
@@ -10,7 +10,7 @@ export const PAGE_FILTER_CONFIGS = {
 	},
 
 	Intervention: {
-		enabledFilters: ['age', 'location'],
-		order: ['age', 'location'],
+		enabledFilters: ['maintype', 'age', 'location'],
+		order: ['maintype', 'age', 'location'],
 	},
 };

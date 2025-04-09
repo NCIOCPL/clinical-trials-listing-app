@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useFilters } from '../../context/FilterContext/FilterContext';
 import ZipCodeFilter from '../ZipCodeFilter';
 import AgeFilter from '../AgeFilter/AgeFilter';
+import MainTypeFilter from '../MainTypeFilter';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import { FilterActionTypes } from '../../context/FilterContext/FilterContext';
 import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
@@ -172,6 +173,13 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false }) => {
 			} else {
 				params.delete(URL_PARAM_MAPPING.age.shortCode);
 			}
+
+			if (filters.maintype && filters.maintype.length > 0) {
+				params.set(URL_PARAM_MAPPING.maintype.shortCode, filters.maintype.join(','));
+			} else {
+				params.delete(URL_PARAM_MAPPING.maintype.shortCode);
+			}
+
 			params.set('pn', '1');
 			navigate(`${window.location.pathname}?${params.toString()}`);
 		}
@@ -179,6 +187,8 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false }) => {
 
 	const renderFilter = (filterType, isDisabled) => {
 		switch (filterType) {
+			case 'maintype':
+				return <MainTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'age':
 				return <AgeFilter value={filters.age} onChange={handleAgeFilterChange} onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'location':
@@ -233,12 +243,15 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false }) => {
 
 		const hasLocationFilter = Boolean(filters.location?.zipCode);
 
-		return hasAgeFilter || hasLocationFilter;
+		const hasMainTypeFilter = Array.isArray(filters.maintype) && filters.maintype.length > 0;
+
+		return hasAgeFilter || hasLocationFilter || hasMainTypeFilter;
 	};
 
 	useEffect(() => {
 		const params = new URLSearchParams(location.search);
 		const age = params.get(URL_PARAM_MAPPING.age.shortCode);
+		const maintype = params.get(URL_PARAM_MAPPING.maintype.shortCode);
 
 		if (age) {
 			dispatch({
@@ -248,6 +261,19 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false }) => {
 					value: age,
 				},
 			});
+		}
+
+		if (maintype) {
+			dispatch({
+				type: FilterActionTypes.SET_FILTER,
+				payload: {
+					filterType: 'maintype',
+					value: maintype.split(','),
+				},
+			});
+		}
+
+		if (age || maintype) {
 			dispatch({ type: FilterActionTypes.APPLY_FILTERS });
 		}
 	}, []);
