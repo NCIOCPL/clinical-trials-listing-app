@@ -1,12 +1,15 @@
 /// <reference path="../../node_modules/@types/express/index.d.ts"/>
 
 const express = require('express');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const mockZipCodeLookup = require('./mock-zipcode-lookup');
 const mockClinicalTrials = require('./mock-clinical-trials/clinical-trials');
 const mockListingInformationById = require('./mock-listing-information/listing-information-by-id');
 const mockListingInformationByName = require('./mock-listing-information/listing-information-by-name');
 const mockTrialTypeGetByName = require('./mock-trial-type/trial-type-by-name');
-const { createProxyMiddleware } = require('http-proxy-middleware');
+
+// Uncomment to pass the requests through to the proxy instead of mock
+// const passThrough = (req, res, next) => next();
 
 module.exports = function (app) {
 	// Any posts done with application/json will have thier body convered as an object.
@@ -15,23 +18,31 @@ module.exports = function (app) {
 	// CTS API Mocks
 	// NOTE: The client does not allow us to change the base path.
 
-	// Log all requests
-	// app.use((req, res, next) => {
-	// 	console.log('Incoming request:', req.method, req.url);
-	// 	next();
-	// });
+	// Log all requests (uncomment to debug)
+	/*
+	app.use((req, res, next) => {
+		console.log('Incoming request:', req.method, req.url, req.query);
+		next();
+	});
+	*/
 
 	// v1 endpoints
 	app.use('/api/listing-information/get', mockListingInformationById);
 	app.use('/api/listing-information/:queryParam', mockListingInformationByName);
 	app.use('/api/trial-type/:name', mockTrialTypeGetByName);
+
 	// Handle mock requests for the zip code lookup API
 	app.use('/mock-api/zip_code_lookup/:zip', mockZipCodeLookup);
 
 	// new v2 endpoints
 	app.use('/cts/mock-api/v2/trials', mockClinicalTrials);
+
+	// // Let disease queries pass through to the proxy
+	// app.use('/cts/mock-api/v2/diseases', passThrough);
+
+	// The main proxy middleware that handles API requests
 	app.use(
-		'/cts/proxy-api/v2/**',
+		'/cts/proxy-api/v2',
 		createProxyMiddleware({
 			target: 'https://clinicaltrialsapi.cancer.gov',
 			headers: {

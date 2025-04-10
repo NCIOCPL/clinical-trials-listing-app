@@ -1,0 +1,42 @@
+{
+    "data": [
+        {
+            "name": "Stage III Bladder Cancer",
+            "codes": [
+                "C140421",
+                "C7898"
+            ],
+            "ancestor_ids": [
+                "C4912"
+            ],
+            "parent_ids": [
+                "C4912"
+            ],
+            "type": [
+                "stage"
+            ],
+            "synonyms": [
+                "Cancer of Bladder Stage III",
+                "Cancer of the Bladder Stage III",
+                "Jewett-Marshall Stage C Bladder Cancer",
+                "Jewett-Marshall Stage C Urinary Bladder Cancer",
+                "Jewett-Marshall Stage C Urinary Bladder Carcinoma",
+                "Stage III Bladder Cancer AJCC v6",
+                "Stage III Bladder Cancer AJCC v6 and v7",
+                "Stage III Bladder Cancer AJCC v7",
+                "Stage III Bladder Cancer AJCC v8",
+                "Stage III Bladder Carcinoma",
+                "Stage III Bladder Carcinoma AJCC v6",
+                "Stage III Bladder Carcinoma AJCC v7",
+                "Stage III Bladder Carcinoma AJCC v8",
+                "Stage III Carcinoma of Bladder",
+                "Stage III Carcinoma of Urinary Bladder",
+                "Stage III Carcinoma of the Bladder",
+                "Stage III Carcinoma of the Urinary Bladder",
+                "Stage III Urinary Bladder Carcinoma",
+                "stage III bladder cancer"
+            ],
+            "count": 70
+        }
+    ]
+}

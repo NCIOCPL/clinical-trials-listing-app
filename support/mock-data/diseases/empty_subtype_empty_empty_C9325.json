@@ -1,0 +1,53 @@
+{
+    "data": [
+        {
+            "name": "Locally Advanced Adrenal Cortex Carcinoma",
+            "codes": [
+                "C174443"
+            ],
+            "ancestor_ids": [
+                "C7352",
+                "C9325"
+            ],
+            "parent_ids": [
+                "C9325"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Adrenal Cortex Carcinoma",
+            "codes": [
+                "C156070"
+            ],
+            "ancestor_ids": [
+                "C7352",
+                "C9325"
+            ],
+            "parent_ids": [
+                "C9325"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Unresectable Adrenal Cortex Carcinoma",
+            "codes": [
+                "C150580"
+            ],
+            "ancestor_ids": [
+                "C7352",
+                "C9325"
+            ],
+            "parent_ids": [
+                "C9325"
+            ],
+            "type": [
+                "subtype"
+            ]
+        }
+    ],
+    "total": 3
+}

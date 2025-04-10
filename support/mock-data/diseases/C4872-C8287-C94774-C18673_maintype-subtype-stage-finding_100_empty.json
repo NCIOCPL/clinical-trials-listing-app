@@ -1,0 +1,87 @@
+{
+	"data": [
+		{
+			"name": "Bilateral Breast Cancer",
+			"codes": ["C8287"],
+			"ancestor_ids": ["C4872"],
+			"parent_ids": ["C4872"],
+			"type": ["subtype"],
+			"synonyms": ["Bilateral Breast Carcinoma"],
+			"count": 9
+		},
+		{
+			"name": "Breast Cancer",
+			"codes": ["C4872"],
+			"ancestor_ids": [],
+			"parent_ids": [],
+			"type": ["maintype"],
+			"synonyms": [
+				"Breast Carcinoma",
+				"Breast cancer, NOS",
+				"Cancer of Breast",
+				"Cancer of the Breast",
+				"Carcinoma of Breast",
+				"Carcinoma of the Breast",
+				"Mammary Carcinoma",
+				"breast cancer"
+			],
+			"count": 986
+		},
+		{
+			"name": "Cancer Survivor",
+			"codes": ["C18673"],
+			"ancestor_ids": [
+				"C4872",
+				"C127153",
+				"C136478",
+				"C136479",
+				"C136480",
+				"C136481",
+				"C140164",
+				"C140165",
+				"C140166",
+				"C140167",
+				"C140168",
+				"C140169",
+				"C140170",
+				"C140171",
+				"C140172",
+				"C160587",
+				"C27134",
+				"C2955",
+				"C2991",
+				"C3161",
+				"C3167",
+				"C3850",
+				"C3998",
+				"C4863",
+				"C4878",
+				"C5099",
+				"C7539",
+				"C7626",
+				"C7771",
+				"C78444",
+				"C8953",
+				"C9238",
+				"C9292"
+			],
+			"parent_ids": [],
+			"type": ["finding"],
+			"synonyms": ["Survivor, Cancer"],
+			"count": 4
+		},
+		{
+			"name": "Early-Stage Breast Cancer",
+			"codes": ["C94774"],
+			"ancestor_ids": ["C4872"],
+			"parent_ids": ["C4872"],
+			"type": ["stage"],
+			"synonyms": [
+				"Early Stage Breast Carcinoma",
+				"Early-Stage Breast Carcinoma",
+				"early-stage breast cancer"
+			],
+			"count": 32
+		}
+	]
+}

@@ -1,0 +1,247 @@
+{
+	"data": [
+		{
+			"name": "AIDS Related Immunoblastic Lymphoma",
+			"codes": [
+				"C8285"
+			],
+			"ancestor_ids": [
+				"C27134",
+				"C3208",
+				"C3211"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C3211"
+			],
+			"synonyms": [
+				"AIDS Associated Immunoblastic Lymphoma",
+				"AIDS Related Immunoblastic Large Cell Lymphoma",
+				"AIDS-Associated Immunoblastic Large Cell Lymphoma",
+				"AIDS-Related Immunoblastic Lymphoma"
+			],
+			"count": 1
+		},
+		{
+			"name": "AIDS-Related Burkitt Lymphoma",
+			"codes": [
+				"C8286"
+			],
+			"ancestor_ids": [
+				"C27134",
+				"C3208",
+				"C3211"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C3211"
+			],
+			"synonyms": [
+				"AIDS Related Burkitt's Lymphoma",
+				"AIDS Related Small Non Cleaved Cell Lymphoma",
+				"AIDS-Associated Burkitt's Lymphoma",
+				"AIDS-Associated Small Non Cleaved Cell Lymphoma",
+				"AIDS-Related Burkitt's Lymphoma",
+				"AIDS-Related Small Non-Cleaved Cell Lymphoma"
+			],
+			"count": 2
+		},
+		{
+			"name": "AIDS-Related Diffuse Large B-cell Lymphoma",
+			"codes": [
+				"C7212"
+			],
+			"ancestor_ids": [
+				"C27134",
+				"C3208",
+				"C3211"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C3211"
+			],
+			"synonyms": [],
+			"count": 1
+		},
+		{
+			"name": "AIDS-Related Plasmablastic Lymphoma",
+			"codes": [
+				"C27859"
+			],
+			"ancestor_ids": [
+				"C27134",
+				"C3208",
+				"C3211"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C3211"
+			],
+			"synonyms": [],
+			"count": 1
+		},
+		{
+			"name": "ALK-Positive Large B-Cell Lymphoma",
+			"codes": [
+				"C7225"
+			],
+			"ancestor_ids": [
+				"C27134",
+				"C3208",
+				"C3211"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C3211"
+			],
+			"synonyms": [
+				"ALK positive large B-cell lymphoma",
+				"ALK-DLBCL",
+				"Diffuse Large B-Cell Lymphoma with Expression of Full-Length ALK",
+				"Diffuse Large B-Cell Lymphoma with Expression of Full-Length Anaplastic Lymphoma Kinase"
+			],
+			"count": 8
+		},
+		{
+			"name": "Accelerated Phase Chronic Myelogenous Leukemia, BCR-ABL1 Positive",
+			"codes": [
+				"C3173"
+			],
+			"ancestor_ids": [
+				"C27134",
+				"C3161",
+				"C3172",
+				"C3174",
+				"C4345",
+				"C9290"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C3174"
+			],
+			"synonyms": [
+				"Accelerated Phase CML",
+				"Accelerated Phase Chronic Granulocytic Leukemia",
+				"Accelerated Phase Chronic Myelocytic Leukemia",
+				"Accelerated Phase Chronic Myelogenous Leukemia",
+				"Accelerated Phase Chronic Myeloid Leukemia",
+				"Aggressive-Phase CML",
+				"Aggressive-Phase Chronic Myelocytic Leukemia",
+				"Aggressive-Phase Chronic Myelogenous Leukemia",
+				"Aggressive-Phase Chronic Myeloid Leukemia",
+				"accelerated phase chronic myelogenous leukemia"
+			],
+			"count": 31
+		},
+		{
+			"name": "Acoustic Schwannoma",
+			"codes": [
+				"C3276"
+			],
+			"ancestor_ids": [
+				"C3268"
+			],
+			"type": [
+				"grade",
+				"subtype"
+			],
+			"parent_ids": [
+				"C3268"
+			],
+			"synonyms": [
+				"Acoustic Neurilemmoma",
+				"Acoustic Neuroma",
+				"Acoustic neuroma",
+				"Neurilemoma, Acoustic",
+				"Neuroma, Acoustic",
+				"Vestibular Neurilemmoma",
+				"Vestibular Schwannoma"
+			],
+			"count": 3
+		},
+		{
+			"name": "Acute Bilineal Leukemia",
+			"codes": [
+				"C6923"
+			],
+			"ancestor_ids": [
+				"C27134",
+				"C3161"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C3161"
+			],
+			"synonyms": [
+				"Acute bilineal leukemia"
+			],
+			"count": 4
+		},
+		{
+			"name": "Acute Biphenotypic Leukemia",
+			"codes": [
+				"C4673"
+			],
+			"ancestor_ids": [
+				"C27134",
+				"C3161"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C3161"
+			],
+			"synonyms": [
+				"Acute biphenotypic leukemia"
+			],
+			"count": 25
+		},
+		{
+			"name": "Acute Erythroid Leukemia",
+			"codes": [
+				"C8923"
+			],
+			"ancestor_ids": [
+				"C27134",
+				"C3161",
+				"C3171",
+				"C3172",
+				"C9290"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C3171"
+			],
+			"synonyms": [
+				"AEL",
+				"Acute Erythroblastic Leukemia",
+				"Acute erythroid leukaemia",
+				"Erythroblastic Leukemia",
+				"FAB M6",
+				"Fab M6",
+				"LEUKEMIA, ERYTHROID, MALIGNANT",
+				"M6",
+				"M6 Acute Myeloid Leukemia",
+				"M6 OR Acute Erythroid Leukemia"
+			],
+			"count": 2
+		}
+	]
+}

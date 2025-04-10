@@ -1,0 +1,61 @@
+{
+	"data": [
+		{
+			"name": "TP53 Gene Mutation",
+			"codes": [
+				"C118396"
+			],
+			"ancestor_ids": [
+				"C3262",
+				"C3268",
+				"C3476",
+				"C4715",
+				"C54705",
+				"C7352",
+				"C9293",
+				"C9325"
+			],
+			"type": [
+				"finding"
+			],
+			"parent_ids": [],
+			"synonyms": [
+				"Abnormal",
+				"P53 Gene Mutation",
+				"Positive",
+				"TP53",
+				"Tumor Protein p53 Gene Mutation",
+				"Yes",
+				"p53 Mutation"
+			],
+			"count": 1
+		},
+		{
+			"name": "TP53 Mutation Carrier",
+			"codes": [
+				"C156121"
+			],
+			"ancestor_ids": [
+				"C3262",
+				"C3268",
+				"C3476",
+				"C4715",
+				"C54705",
+				"C7352",
+				"C9293",
+				"C9325"
+			],
+			"type": [
+				"finding"
+			],
+			"parent_ids": [],
+			"synonyms": [
+				"P53 Gene Mutation Carrier",
+				"Tumor Protein p53 Gene Mutation Carrier",
+				"p53 Mutation Carrier"
+			],
+			"count": 1
+		}
+	],
+	"total": 2
+}

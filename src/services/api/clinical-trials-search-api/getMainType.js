@@ -1,3 +1,5 @@
+import qs from 'qs';
+
 /**
  * Fetches disease main types to populate the Primary Cancer Type/Condition field
  *
@@ -6,11 +8,11 @@
  */
 export const getMainType = async (client, query) => {
 	try {
-		const queryParams = new URLSearchParams();
-		Object.entries(query).forEach(([key, value]) => {
-			queryParams.append(key, value);
-		});
-		const res = await client.get(`/diseases?${queryParams.toString()}`);
+		// Using arrayFormat: 'repeat' to ensure arrays are serialized as repeated parameters
+		// e.g., &current_trial_status=A&current_trial_status=B instead of &current_trial_status=A,B
+		const queryString = qs.stringify(query, { arrayFormat: 'repeat' });
+
+		const res = await client.get(`/diseases?${queryString}`);
 		if (res.status === 200) {
 			return res.data;
 		} else {
