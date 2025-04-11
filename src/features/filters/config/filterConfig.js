@@ -37,7 +37,7 @@ export const FILTER_CONFIG = {
 		title: 'Age',
 		type: 'number',
 		placeholder: 'Enter the age of the participant.',
-		min: 0,
+		min: 1,
 		max: 120,
 		urlParam: URL_PARAM_MAPPING.age.shortCode,
 	},

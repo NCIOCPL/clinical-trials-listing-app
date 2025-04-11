@@ -1,51 +1,134 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import FilterGroup from '../FilterGroup';
-import { useState } from 'react';
 // import { useTracking } from 'react-tracking';
+import { useZipConversion } from '../../hooks/useZipConversion';
+import { isValidZipFormat } from '../../utils/locationUtils';
 import './ZipCodeFilter.scss';
-// eslint-disable-next-line react/prop-types
-const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onFocus, disabled, hasInvalidZip }) => {
+
+const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onValidationChange, onFocus, disabled }) => {
 	const [formatError, setFormatError] = useState('');
+	const [, setIsValidating] = useState(false);
+	const [hasInvalidZip, setHasInvalidZip] = useState(false);
+	const [validCoordinates, setValidCoordinates] = useState(null);
 	// const tracking = useTracking();
 
-	const validateZipCode = (value) => {
-		if (value && !/^\d{5}$/.test(value)) {
-			setFormatError('Please enter a five-digit ZIP code');
+	const [{ getZipCoords, validationStatus }] = useZipConversion();
+
+	// Update component state based on validation status changes
+	useEffect(() => {
+		if (!validationStatus) return;
+
+		setIsValidating(false); // End validation when we have a result
+
+		if (validationStatus.isValid) {
+			// Valid coordinates received
+			setHasInvalidZip(false);
+			setValidCoordinates(validationStatus.coordinates);
+		} else {
+			// Invalid zipcode
+			setHasInvalidZip(true);
+			setValidCoordinates(null);
+		}
+	}, [validationStatus]);
+
+	// Called by parent when Apply button is clicked
+	const getValidationStatus = () => {
+		// Return current validation state
+		if (!zipCode) {
+			return { isValid: true, coordinates: null };
+		}
+
+		if (formatError || hasInvalidZip) {
+			return { isValid: false, coordinates: null };
+		}
+
+		return { isValid: !!validCoordinates, coordinates: validCoordinates };
+	};
+
+	useEffect(() => {
+		if (onValidationChange) {
+			onValidationChange(getValidationStatus);
+		}
+	}, [onValidationChange]);
+
+	// Validate the format
+	const validateFormat = (value) => {
+		const isFormatValid = !value || isValidZipFormat(value);
+		if (!isFormatValid) {
+			setFormatError('Please enter a valid U.S. ZIP code');
+			// Clear coordinates if format is invalid
+			setValidCoordinates(null);
 			return false;
 		}
 		setFormatError('');
 		return true;
 	};
 
-	const error = formatError || (hasInvalidZip ? 'Please enter a valid five-digit ZIP code' : '');
-
+	// Handle zipcode change
 	const handleZipCodeChange = (e) => {
 		const value = e.target.value;
-		validateZipCode(value);
-		onZipCodeChange(value);
-		if (value && value.length === 5 && /^\d{5}$/.test(value)) {
+		const isFormatValid = validateFormat(value);
+
+		// Always reset invalid zip state when the input changes
+		setHasInvalidZip(false);
+
+		// Track complete, valid zipcodes (optional analytics)
+		if (value && value.length === 5 && isFormatValid) {
 			// tracking.trackEvent({
 			// 	type: 'Other',
 			// 	event: 'TrialListingApp:Filter:ZipCode',
-			// 	linkName: 'TrialListingApp:Filter:ZipCode',
 			// 	value,
 			// });
+		} else if (!value) {
+			// Empty zipcode is valid
+			setHasInvalidZip(false);
+			setValidCoordinates(null);
 		}
+
+		// This will trigger the useEffect that handles validation
+		onZipCodeChange(value);
 	};
 
-	// const handleRadiusChange = (e) => {
-	// 	const value = e.target.value;
-	// 	onRadiusChange(value);
-	// 	tracking.trackEvent({
-	// 		type: 'Other',
-	// 		event: 'TrialListingApp:Filter:Radius',
-	// 		linkName: 'TrialListingApp:Filter:Radius',
-	// 		value,
-	// 	});
-	// };
-	//
+	useEffect(() => {
+		if (zipCode && zipCode.length === 5 && isValidZipFormat(zipCode)) {
+			// Set validating state to true when starting validation
+			setIsValidating(true);
+
+			// Call directly since getZipCoords now handles all validation internally
+			getZipCoords(zipCode).catch((err) => {
+				console.error('Error fetching ZIP coordinates:', err);
+				setIsValidating(false); // Ensure we reset state even if there's an error
+			});
+		} else if (!zipCode) {
+			// Reset all error states when zipCode is cleared (e.g. by clear filters button)
+			setFormatError('');
+			setHasInvalidZip(false);
+			setValidCoordinates(null);
+			setIsValidating(false);
+		}
+	}, [zipCode, getZipCoords]);
+
+	// When validCoordinates change and we have a zipCode from URL, notify parent
+	useEffect(() => {
+		if (validCoordinates && !hasInvalidZip && onValidationChange) {
+			// For URL parameters, pass the validation result directly
+			onValidationChange({
+				isValid: true,
+				coordinates: validCoordinates,
+			});
+		} else if (hasInvalidZip && onValidationChange) {
+			// Explicitly communicate invalid ZIP
+			onValidationChange({
+				isValid: false,
+				coordinates: null,
+			});
+		}
+	}, [validCoordinates, hasInvalidZip, zipCode, onValidationChange]);
+
+	// Determine error message
+	const error = formatError || (hasInvalidZip ? 'Please enter a valid U.S. ZIP code' : '');
 
 	return (
 		<>
@@ -81,9 +164,9 @@ ZipCodeFilter.propTypes = {
 	radius: PropTypes.string,
 	onZipCodeChange: PropTypes.func.isRequired,
 	onRadiusChange: PropTypes.func.isRequired,
+	onValidationChange: PropTypes.func,
 	onFocus: PropTypes.func,
 	disabled: PropTypes.bool,
-	hasInvalidZip: PropTypes.bool,
 };
 
 export default ZipCodeFilter;

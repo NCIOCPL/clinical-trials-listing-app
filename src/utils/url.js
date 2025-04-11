@@ -19,17 +19,35 @@ export const getFiltersFromURL = (search) => {
 
 	const ageValues = params.getAll(URL_PARAM_MAPPING.age.shortCode);
 	if (ageValues.length) {
-		filters.age = ageValues;
+		// Validate age values
+		const validAgeValues = ageValues.filter((age) => {
+			const numAge = parseInt(age, 10);
+			return !isNaN(numAge) && numAge >= 0 && numAge <= 120;
+		});
+
+		if (validAgeValues.length) {
+			filters.age = validAgeValues;
+		} else {
+			console.warn('Invalid age values in URL:', ageValues);
+		}
 	}
 
-	// Handle zip and radius params
+	// Handle zip and radius params with validation
 	const zip = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
 	const radius = params.get(URL_PARAM_MAPPING.radius.shortCode);
+
 	if (zip || radius) {
-		filters.location = {
-			zipCode: zip || '',
-			radius: radius || (zip ? '100' : ''),
-		};
+		// Validate ZIP format if present
+		const validZip = zip ? /^\d{5}$/.test(zip) : true;
+
+		if (validZip) {
+			filters.location = {
+				zipCode: zip || '',
+				radius: radius || (zip ? '100' : ''),
+			};
+		} else {
+			console.warn('Invalid ZIP code in URL:', zip);
+		}
 	}
 
 	return filters;

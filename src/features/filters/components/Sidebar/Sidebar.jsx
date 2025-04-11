@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useFilters } from '../../context/FilterContext/FilterContext';
 import ZipCodeFilter from '../ZipCodeFilter';
@@ -16,13 +16,16 @@ import { useFilterCounters } from '../../hooks/useFilterCounters';
 import { formatLocationString, getAppliedFieldsString } from '../../utils/analytics';
 import { useTracking } from 'react-tracking';
 import { URL_PARAM_MAPPING } from '../../constants/urlParams';
+import { isValidZipFormat } from '../../utils/locationUtils';
 
 const Sidebar = ({ pageType = 'Disease', isDisabled = false, initialTotalCount = null, onFilterApplied = () => {}, onFilterCleared = () => {} }) => {
 	const navigate = useNavigate();
 	const location = useLocation();
-	const { state, dispatch, applyFilters, hasInvalidZip, enabledFilters = [], listingInfo, fetchState } = useFilters();
+	const { state, dispatch, applyFilters, enabledFilters = [], listingInfo, fetchState } = useFilters();
 	const { filters, isDirty } = state;
 	const [hasInteracted, setHasInteracted] = useState(false);
+	const [isFirstLoad, setIsFirstLoad] = useState(true);
+	const [getZipValidationStatus, setGetZipValidationStatus] = useState(null);
 	const { filterAppliedCounter, filterRemovedCounter, incrementAppliedCounter, incrementRemovedCounter } = useFilterCounters();
 	const tracking = useTracking();
 
@@ -34,7 +37,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, initialTotalCount =
 		}
 
 		if (filters.location?.zipCode) {
-			if (!/^\d{5}$/.test(filters.location.zipCode)) {
+			if (!isValidZipFormat(filters.location.zipCode)) {
 				errors.location = 'Invalid ZIP code format';
 			}
 			if (!filters.location.radius) {
@@ -125,49 +128,120 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, initialTotalCount =
 	};
 
 	const handleApplyFilters = async () => {
-		if (isDirty) {
-			const validationErrors = validateFilters();
-			const zipErrorElement = document.getElementById('zip-error');
-			const zipError = zipErrorElement !== null;
+		if (!isDirty) return;
 
-			if (Object.keys(validationErrors).length > 0 || zipError) {
+		// Clear any existing error state
+		const errors = validateFilters();
+		const hasErrors = Object.keys(errors).length > 0;
+
+		// If there are validation errors in the form values
+		if (hasErrors) {
+			tracking.trackEvent({
+				type: 'Other',
+				event: FILTER_EVENTS.APPLY_ERROR,
+				linkName: FILTER_EVENTS.APPLY_ERROR,
+				interactionType: INTERACTION_TYPES.APPLIED_WITH_ERRORS,
+				errorField: getErrorFields(errors)
+			});
+			return;
+		}
+
+		// Handle ZIP code validation specifically
+		if (filters.location?.zipCode) {
+			// If we have a ZIP code, we must have validation status
+			if (!getZipValidationStatus) {
+				console.error('Missing ZIP validation status');
+				return;
+			}
+
+			// Get the latest validation status
+			const validationResult = getZipValidationStatus();
+
+			// If ZIP is invalid, track error and stop
+			if (!validationResult.isValid) {
 				tracking.trackEvent({
 					type: 'Other',
 					event: FILTER_EVENTS.APPLY_ERROR,
 					linkName: FILTER_EVENTS.APPLY_ERROR,
 					interactionType: INTERACTION_TYPES.APPLIED_WITH_ERRORS,
-					errorField: zipError ? 'zip' : getErrorFields(validationErrors),
+					errorField: 'zip'
 				});
 				return;
 			}
 
-			// Capture current filter values at time of click
-			const currentFilters = { ...filters };
-
-			incrementAppliedCounter();
-
-			// Notify parent component about applying filters, and the values
-			onFilterApplied(currentFilters, filterAppliedCounter + 1);
-
-			await applyFilters();
-
-			const params = new URLSearchParams(window.location.search);
-			if (filters.age) {
-				params.set(URL_PARAM_MAPPING.age.shortCode, filters.age);
-			} else {
-				params.delete(URL_PARAM_MAPPING.age.shortCode);
+			// Set coordinates before proceeding
+			if (validationResult.coordinates) {
+				dispatch({
+					type: FilterActionTypes.SET_ZIP_COORDINATES,
+					payload: validationResult.coordinates
+				});
 			}
-			params.set('pn', '1');
-			navigate(`${window.location.pathname}?${params.toString()}`);
 		}
+
+		// Capture current filter values for tracking
+		const currentFilters = { ...filters };
+
+		// Track successful application
+		incrementAppliedCounter();
+		onFilterApplied(currentFilters, filterAppliedCounter + 1);
+
+		// Apply filters and wait for it to complete
+		await applyFilters();
+
+		// Update URL parameters
+		const params = new URLSearchParams(window.location.search);
+
+		// Handle age parameter
+		if (filters.age && filters.age.toString().trim() !== '') {
+			params.set(URL_PARAM_MAPPING.age.shortCode, filters.age);
+		} else {
+			params.delete(URL_PARAM_MAPPING.age.shortCode);
+		}
+
+		// Reset to page 1 when filters change
+		params.set('pn', '1');
+
+		// Update URL
+		navigate(`${window.location.pathname}?${params.toString()}`);
 	};
+
+	// Handle zipcode validation change, doing it like this to keep the logic modular
+	const handleZipValidationChange = useCallback((validationOrResult) => {
+		// If we received a validation function, store it for later use
+		if (typeof validationOrResult === 'function') {
+			setGetZipValidationStatus(() => validationOrResult);
+			return;
+		}
+
+		// If we received a direct validation result (from URL params)
+		if (validationOrResult && typeof validationOrResult === 'object') {
+			// Store the validation status
+			setGetZipValidationStatus(() => () => validationOrResult);
+
+			// If it's valid, immediately set the coordinates
+			if (validationOrResult.isValid && validationOrResult.coordinates) {
+				dispatch({
+					type: FilterActionTypes.SET_ZIP_COORDINATES,
+					payload: validationOrResult.coordinates
+				});
+			}
+		}
+	}, [dispatch]);
 
 	const renderFilter = (filterType, isDisabled) => {
 		switch (filterType) {
 			case 'age':
 				return <AgeFilter value={filters.age} onChange={handleAgeFilterChange} onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'location':
-				return <ZipCodeFilter zipCode={filters.location.zipCode} radius={filters.location.radius} onZipCodeChange={handleZipCodeChange} onRadiusChange={handleRadiusChange} onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} hasInvalidZip={hasInvalidZip} />;
+				return <ZipCodeFilter
+					zipCode={filters.location.zipCode}
+					radius={filters.location.radius}
+					onZipCodeChange={handleZipCodeChange}
+					onRadiusChange={handleRadiusChange}
+					onValidationChange={handleZipValidationChange}
+					onFocus={() => trackFilterStart(filterType)}
+					disabled={isDisabled}
+				/>;
 			default:
 				return null;
 		}

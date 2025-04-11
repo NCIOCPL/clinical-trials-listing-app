@@ -73,3 +73,19 @@ Feature: Location Filter Functionality
 		And the radius dropdown shows "50"
 		And the page URL includes "z=20850"
 		And the page URL includes "zr=50"
+
+	Scenario: Location filter should only update results after Apply button is clicked
+		Given "trialListingPageType" is set to "Disease"
+		And "dynamicListingPatterns" object is set to "Disease"
+		When the user navigates to "/breast-cancer?cfg=0"
+		And captures the current trial results
+		And enters "1234" in the zip code filter
+		Then the zip code field shows validation error
+		And the trial results remain unchanged
+		When enters "20850" in the zip code filter
+		Then the radius dropdown is enabled
+		And the trial results still remain unchanged
+		When clicks the "Apply Filters" button
+		Then the page URL includes "z=20850"
+		And the page URL includes "zr=100"
+		And the trial results are updated

@@ -25,21 +25,27 @@ const AgeFilter = ({ value, onChange, onFocus, disabled }) => {
 			return;
 		}
 
+		// Validate input is a number
+		const numericValue = parseInt(inputValue, 10);
+		if (isNaN(numericValue)) {
+			// Don't update for non-numeric input
+			return;
+		}
+
 		// Ignore leading zeros (except when input is just a single '0')
 		const hasLeadingZeros = inputValue.length > 1 && inputValue[0] === '0';
 		if (hasLeadingZeros) {
 			return; // aka do nothing
 		}
 
-		// Convert to a number and ensure it's positive
-		const numericValue = parseInt(inputValue, 10);
+		// Check range constraints
+		if (numericValue < FILTER_CONFIG.age.min || numericValue > FILTER_CONFIG.age.max) {
+			// Prevent the update
+			return;
+		}
 
-		// Only dispatch if it's a valid positive number within range
-		if (!isNaN(numericValue) &&
-			numericValue >= FILTER_CONFIG.age.min &&
-			numericValue <= FILTER_CONFIG.age.max &&
-			numericValue.toString() === inputValue) { // Ensures no leading minus sign
-
+		// Only update if input is valid number in correct format
+		if (numericValue.toString() === inputValue) {
 			dispatch({
 				type: 'SET_FILTER',
 				payload: {
@@ -52,21 +58,21 @@ const AgeFilter = ({ value, onChange, onFocus, disabled }) => {
 
 	return (
 		<FilterGroup title="Age">
-			<input
-				id="age-filter-input"
-				name="age-filter"
-				aria-label="Enter participant age"
-				type="number"
+				<input
+					id="age-filter-input"
+					name="age-filter"
+					aria-label="Enter participant age"
+					type="number"
 				className="usa-input form-control"
-				value={filters.age || ''}
-				onChange={handleAgeChange}
-				onFocus={onFocus}
-				min={FILTER_CONFIG.age.min}
-				max={FILTER_CONFIG.age.max}
-				pattern="[0-9]*"
-				inputMode="numeric"
-				disabled={disabled}
-			/>
+					value={filters.age || ''}
+					onChange={handleAgeChange}
+					onFocus={onFocus}
+					min={FILTER_CONFIG.age.min}
+					max={FILTER_CONFIG.age.max}
+					pattern="[0-9]*"
+					inputMode="numeric"
+					disabled={disabled}
+				/>
 		</FilterGroup>
 	);
 };
