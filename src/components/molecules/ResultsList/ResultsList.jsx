@@ -8,7 +8,7 @@ import { useFilters } from '../../../features/filters/context/FilterContext/Filt
 import { isWithinRadius } from '../../../utils/isWithinRadius';
 
 const ResultsList = ({ results, resultsItemTitleLink }) => {
-	const { state, zipCoords } = useFilters();
+	const { state, appliedZipCoords } = useFilters();
 	const { appliedFilters } = state;
 
 	let zipRadius = appliedFilters.location?.radius;
@@ -44,11 +44,11 @@ const ResultsList = ({ results, resultsItemTitleLink }) => {
 						{results.map((resultItem, index) => {
 							const { brief_title, current_trial_status, nci_id, nct_id, sites } = resultItem;
 
-							if (zipCoords !== null) {
+							if (appliedZipCoords !== null) {
 								hasZipInput = true;
 								zipRadius = appliedFilters.location.radius;
 
-								displayLocation(sites, zipCoords, zipRadius, hasZipInput);
+								displayLocation(sites, appliedZipCoords, zipRadius, hasZipInput);
 							}
 
 							const locationInfo = getLocationInfoFromSites(current_trial_status, nct_id, sites, hasZipInput, zipInputReturn);

@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useReducer, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useZipConversion } from '../../hooks/useZipConversion';
 import { getFiltersFromURL } from '../../../../utils/url';
 import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
 import { URL_PARAM_MAPPING } from '../../constants/urlParams';
+import { getLocationFilters } from '../../utils/locationUtils';
+import { isValidZipFormat } from '../../utils/locationUtils';
 
 export const FilterActionTypes = {
 	SET_FILTER: 'SET_FILTER',
@@ -12,6 +13,7 @@ export const FilterActionTypes = {
 	CLEAR_FILTERS: 'CLEAR_FILTERS',
 	REMOVE_FILTER: 'REMOVE_FILTER',
 	SET_BASE_FILTERS: 'SET_BASE_FILTERS',
+	SET_ZIP_COORDINATES: 'SET_ZIP_COORDINATES',
 };
 
 const initialState = {
@@ -30,6 +32,8 @@ const initialState = {
 	currentPage: null,
 	paramOrder: [],
 	preservedParams: '',
+	zipCoords: null,
+	appliedZipCoords: null,
 };
 
 function filterReducer(state, action) {
@@ -54,7 +58,7 @@ function filterReducer(state, action) {
 				isDirty: true,
 			};
 
-		case FilterActionTypes.APPLY_FILTERS:
+		case FilterActionTypes.APPLY_FILTERS: {
 			isNewPageLoad = action.payload?.isNewPageLoad;
 			preservedParams = action.payload?.preservedParams;
 
@@ -67,6 +71,17 @@ function filterReducer(state, action) {
 
 			pageNumber = isNewPageLoad ? orderedParams.get('pn') || '1' : '1';
 
+			// Improved ZIP coordinates handling
+			let newAppliedZipCoords = null;
+
+			// Only apply coordinates if we have both a ZIP code and coordinates
+			if (state.filters.location?.zipCode && state.zipCoords) {
+				newAppliedZipCoords = state.zipCoords;
+			} else if (state.filters.location?.zipCode && !state.zipCoords) {
+				// Log warning when ZIP exists but coordinates don't
+				console.warn('ZIP code exists but coordinates not found');
+			}
+
 			return {
 				...state,
 				appliedFilters: { ...state.filters },
@@ -76,7 +91,9 @@ function filterReducer(state, action) {
 				preservedParams: preservedParams || '',
 				currentPage: pageNumber || '1',
 				paramOrder: Array.from(orderedParams.keys()),
+				appliedZipCoords: newAppliedZipCoords,
 			};
+		}
 
 		case FilterActionTypes.CLEAR_FILTERS:
 			enabledFilters.forEach((filterType) => {
@@ -89,6 +106,7 @@ function filterReducer(state, action) {
 				appliedFilters: [],
 				isDirty: false,
 				shouldSearch: true,
+				appliedZipCoords: null,
 			};
 
 		case FilterActionTypes.REMOVE_FILTER: {
@@ -116,6 +134,12 @@ function filterReducer(state, action) {
 				baseFilters: action.payload,
 			};
 
+		case FilterActionTypes.SET_ZIP_COORDINATES:
+			return {
+				...state,
+				zipCoords: action.payload,
+			};
+
 		default:
 			return state;
 	}
@@ -135,28 +159,6 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 
 	const location = useLocation();
 	const navigate = useNavigate();
-
-	const [zipCoords, setZipCoords] = useState(null);
-	const [hasInvalidZip, setHasInvalidZip] = useState(false);
-
-	const updateZipState = (key, value) => {
-		if (key === 'zipCoords') {
-			setZipCoords(value);
-		} else if (key === 'hasInvalidZip') {
-			setHasInvalidZip(value);
-		}
-	};
-
-	const [{ getZipCoords }] = useZipConversion(updateZipState);
-
-	useEffect(() => {
-		if (state.appliedFilters?.location?.zipCode) {
-			getZipCoords(state.appliedFilters.location.zipCode);
-		} else {
-			setZipCoords(null);
-			setHasInvalidZip(false);
-		}
-	}, [state.appliedFilters?.location?.zipCode]);
 
 	useEffect(() => {
 		let params = new URLSearchParams(location.search);
@@ -196,6 +198,32 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		}
 	}, [location.pathname]);
 
+	// Add a useEffect to handle URL parameters for ZIP codes
+	useEffect(() => {
+		// Get ZIP and radius from URL parameters
+		const params = new URLSearchParams(location.search);
+		const zipParam = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
+		const radiusParam = params.get(URL_PARAM_MAPPING.radius.shortCode);
+
+		// If we have a ZIP code from URL parameters
+		if (zipParam && isValidZipFormat(zipParam)) {
+			// Set the filter values
+			dispatch({
+				type: FilterActionTypes.SET_FILTER,
+				payload: {
+					filterType: 'location',
+					value: {
+						zipCode: zipParam,
+						radius: radiusParam || '100',
+					},
+				},
+			});
+
+			// This will trigger the ZIP validation in ZipCodeFilter
+			dispatch({ type: FilterActionTypes.APPLY_FILTERS });
+		}
+	}, [location.pathname]);
+
 	useEffect(() => {
 		if (!state.isDirty && state.shouldSearch) {
 			let params = new URLSearchParams(window.location.search);
@@ -223,7 +251,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 			}
 
 			if (Object.keys(state.appliedFilters).length > 0) {
-				if (state.appliedFilters.age?.toString().trim()) {
+				if (state.appliedFilters.age?.toString().trim() !== '') {
 					const ageIndex = paramOrder.indexOf(URL_PARAM_MAPPING.age.shortCode);
 					if (ageIndex >= 0) {
 						const temp = new Map();
@@ -273,6 +301,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 			}
 
 			const queryString = Array.from(updatedParams.entries())
+				.filter(([, value]) => value.toString().trim() !== '')
 				.map(([key, value]) => `${key}=${value}`)
 				.join('&');
 
@@ -286,43 +315,19 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		}
 	}, [state.appliedFilters, state.isDirty, state.shouldSearch, location.pathname, navigate]);
 
-	const getLocationFilters = (location) => {
-		if (!location?.zipCode || !location?.radius || !zipCoords || hasInvalidZip) {
-			return {};
-		}
-
-		if (!zipCoords.lat || !zipCoords.long) {
-			console.error('Invalid coordinate structure:', zipCoords);
-			return {};
-		}
-
-		const lat = String(zipCoords.lat);
-		const lon = String(zipCoords.long);
-
-		if (!lat || !lon) {
-			console.error('Invalid coordinate values after conversion:', { lat, lon });
-			return {};
-		}
-
-		return {
-			'sites.org_coordinates_lat': lat,
-			'sites.org_coordinates_lon': lon,
-			'sites.org_coordinates_dist': `${location.radius}mi`,
-			'sites.recruitment_status': ['active', 'approved', 'enrolling_by_invitation', 'in_review', 'temporarily_closed_to_accrual'],
-		};
-	};
-
 	const transformFiltersToApi = (filters) => {
 		let apiFilters = {};
 
-		if (filters.age?.toString().trim()) {
+		if (filters.age?.toString().trim() !== '') {
 			apiFilters['eligibility.structured.min_age_in_years_lte'] = filters.age;
 			apiFilters['eligibility.structured.max_age_in_years_gte'] = filters.age;
 		}
 
+		const locationFilters = getLocationFilters(filters.location, state.appliedZipCoords);
+
 		return {
 			...apiFilters,
-			...getLocationFilters(filters.location),
+			...locationFilters,
 		};
 	};
 
@@ -337,10 +342,10 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		getCurrentFilters,
 		isApplyingFilters,
 		setIsApplyingFilters,
-		hasInvalidZip,
 		enabledFilters: filterConfig.enabledFilters,
 		pageType,
-		zipCoords,
+		zipCoords: state.zipCoords,
+		appliedZipCoords: state.appliedZipCoords,
 		listingInfo: {
 			diseaseName: pageType === 'Disease' ? baseFilters.diseaseName : null,
 			interventionName: pageType === 'Intervention' ? baseFilters.interventionName : null,
@@ -364,7 +369,7 @@ export function useFilters() {
 		throw new Error('useFilters must be used within a FilterProvider');
 	}
 
-	const { state, dispatch, getCurrentFilters, isApplyingFilters, setIsApplyingFilters, hasInvalidZip, enabledFilters, zipCoords, pageType } = context;
+	const { state, dispatch, getCurrentFilters, isApplyingFilters, setIsApplyingFilters, enabledFilters, zipCoords, appliedZipCoords, pageType } = context;
 
 	const setFilter = (filterType, value) =>
 		dispatch({
@@ -396,9 +401,9 @@ export function useFilters() {
 		clearFilters,
 		removeFilter,
 		isApplyingFilters,
-		hasInvalidZip,
 		enabledFilters,
 		pageType,
 		zipCoords,
+		appliedZipCoords,
 	};
 }

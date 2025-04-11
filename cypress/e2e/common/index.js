@@ -1,6 +1,9 @@
 //<reference types="Cypress" />
 import { And, Given, Then, When } from 'cypress-cucumber-preprocessor/steps';
 
+// Variables to store state
+let initialTrialResults;
+
 Then('page title is {string}', (title) => {
 	cy.get('h1').should('contain', title);
 });
@@ -892,4 +895,56 @@ Then('only {string} remains in selected subtypes', (label) => {
 
 Then('only {string} shows as selected main type', (label) => {
 	cy.get('.filter-group:contains("Primary Cancer Type")').find('.combobox__value').should('have.text', label);
+});
+
+// Step to capture current trial results
+When('captures the current trial results', () => {
+	cy.get('.ctla-trials-container').then(($results) => {
+		initialTrialResults = $results.html();
+	});
+});
+
+// Steps to validate that results remain unchanged
+Then('the trial results remain unchanged', () => {
+	cy.get('.ctla-trials-container').then(($currentResults) => {
+		expect($currentResults.html()).to.equal(initialTrialResults);
+	});
+});
+
+Then('the trial results still remain unchanged', () => {
+	cy.get('.ctla-trials-container').then(($currentResults) => {
+		expect($currentResults.html()).to.equal(initialTrialResults);
+	});
+});
+
+// Step to check for validation error on ZIP code field
+Then('the zip code field shows validation error', () => {
+	cy.get('.usa-error-message').should('be.visible');
+});
+
+// Step to verify results have been updated after clicking apply
+Then('the trial results are updated', () => {
+	cy.get('.ctla-trials-container').then(($updatedResults) => {
+		expect($updatedResults.html()).not.to.equal(initialTrialResults);
+	});
+});
+
+When('enters {string} in the zip code filter', (zipcode) => {
+	cy.get('#zip-code-filter').clear().type(zipcode);
+});
+
+Then('the radius dropdown is enabled', () => {
+	cy.get('#radius-filter').should('be.enabled');
+});
+
+Then('the radius dropdown shows {string} as default value', (value) => {
+	cy.get('#radius-filter').should('have.value', value);
+});
+
+When('clicks the {string} button', (buttonText) => {
+	cy.contains('button', buttonText).click();
+});
+
+Then('the page URL includes {string}', (paramString) => {
+	cy.url().should('include', paramString);
 });
