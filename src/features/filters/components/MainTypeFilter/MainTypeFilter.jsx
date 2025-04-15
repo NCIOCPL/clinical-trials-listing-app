@@ -7,8 +7,8 @@ import FilterGroup from '../FilterGroup';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import { useTracking } from 'react-tracking';
 import { useMainTypeSearch } from '../../../../hooks/useMainTypeSearch';
-// Import the NCIDS ComboBox component auto-initializer
-import '@nciocpl/ncids-js/usa-combo-box/auto-init';
+// Import the NCIDS ComboBox component for manual initialization
+import { USAComboBox } from '@nciocpl/ncids-js/usa-combo-box';
 
 const MainTypeFilter = ({ onFocus, disabled = false }) => {
 	const { state, dispatch } = useFilters();
@@ -30,15 +30,31 @@ const MainTypeFilter = ({ onFocus, disabled = false }) => {
 
 	// Reference to the combo box container
 	const comboBoxRef = useRef(null);
+	// Reference to store the combobox instance for cleanup
+	const comboBoxInstanceRef = useRef(null);
 
-	// Initialize USWDS combobox when component mounts
+	// Initialize USWDS combobox when component mounts OR when isLoading changes
 	useEffect(() => {
-		// NCIDS/USWDS JS should automatically initialize based on the classes
-		// The import should ensure the auto-init runs
+		// Only initialize the combobox when the element exists AND data is loaded (not loading)
+		if (comboBoxRef.current && !isLoading) {
+			// Clean up any existing instance first to prevent duplicates
+			if (comboBoxInstanceRef.current && typeof comboBoxInstanceRef.current.destroy === 'function') {
+				comboBoxInstanceRef.current.destroy();
+				comboBoxInstanceRef.current = null;
+			}
 
-		// ComponentDidMount equivalent - nothing more needed as the auto-init
-		// should take care of enhancing all elements with class usa-combo-box
-	}, []);
+			// Create a new instance of USAComboBox
+			comboBoxInstanceRef.current = USAComboBox.create(comboBoxRef.current);
+		}
+
+		// Return a cleanup function
+		return () => {
+			if (comboBoxInstanceRef.current && typeof comboBoxInstanceRef.current.destroy === 'function') {
+				comboBoxInstanceRef.current.destroy();
+				comboBoxInstanceRef.current = null;
+			}
+		};
+	}, [isLoading]);
 
 	const handleChange = (event) => {
 		const selectedValue = event.target.value;
