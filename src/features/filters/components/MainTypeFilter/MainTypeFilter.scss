@@ -1,0 +1,22 @@
+#maintype-filter-label {
+    display: none;
+}
+  
+#maintype-filter {
+    background-color: white;  
+}
+  
+.usa-combo-box__clear-input {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.2521 2.54675L17.3721 0.666748L9.91878 8.12008L2.46545 0.666748L0.585449 2.54675L8.03878 10.0001L0.585449 17.4534L2.46545 19.3334L9.91878 11.8801L17.3721 19.3334L19.2521 17.4534L11.7988 10.0001L19.2521 2.54675Z" fill="%231B1B1B"/></svg>') !important;
+    background-size: 1rem !important;
+}
+  
+.usa-accordion__content {
+    overflow: unset !important;
+}
+  
+button.usa-combo-box__toggle-list{
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59003L12 13.17L7.41 8.59003L6 10L12 16L18 10L16.59 8.59003Z" fill="%231B1B1B"/></svg>') !important;
+}
+  
+  

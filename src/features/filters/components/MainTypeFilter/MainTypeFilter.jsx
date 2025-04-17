@@ -7,8 +7,12 @@ import FilterGroup from '../FilterGroup';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import { useTracking } from 'react-tracking';
 import { useMainTypeSearch } from '../../../../hooks/useMainTypeSearch';
+import './MainTypeFilter.scss';
+
+
 // Import the NCIDS ComboBox component for manual initialization
 import { USAComboBox } from '@nciocpl/ncids-js/usa-combo-box';
+import '@nciocpl/ncids-js/usa-combo-box/auto-init';
 
 const MainTypeFilter = ({ onFocus, disabled = false }) => {
 	const { state, dispatch } = useFilters();
@@ -86,12 +90,12 @@ const MainTypeFilter = ({ onFocus, disabled = false }) => {
 			) : (
 				<div className="filter-content">
 					<label className="usa-label" htmlFor="maintype-filter">Primary Cancer Type</label>
-					{FILTER_CONFIG.maintype.helpText && (
+					{/* {FILTER_CONFIG.maintype.helpText && (
 						<div className="usa-hint">{FILTER_CONFIG.maintype.helpText}</div>
-					)}
+					)} */}
 					<div className="usa-combo-box" ref={comboBoxRef}>
 						<select
-							className="usa-select"
+							className="usa-select usa-combo-box__select"
 							name="maintype-filter"
 							id="maintype-filter"
 							onChange={handleChange}

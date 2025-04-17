@@ -10,7 +10,7 @@ export const PAGE_FILTER_CONFIGS = {
 	},
 
 	Intervention: {
-		enabledFilters: ['maintype', 'age', 'location'],
-		order: ['maintype', 'age', 'location'],
+		enabledFilters: ['age', 'location', 'maintype'],
+		order: ['age', 'location', 'maintype'],
 	},
 };
