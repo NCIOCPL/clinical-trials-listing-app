@@ -81,13 +81,13 @@
 		height: 20px;
 	}
 
-	&__help-text {
-		color: #666666;
-		font-size: 0.875rem;
-		margin-top: 0.25rem;
-		margin-bottom: 0.75rem;
-		line-height: 1.4;
-	}
+	// &__help-text {
+	// 	color: #666666;
+	// 	font-size: 0.875rem;
+	// 	margin-top: 0.25rem;
+	// 	margin-bottom: 0.75rem;
+	// 	line-height: 1.4;
+	// }
 
 	&__content {
 		//overflow: hidden;
@@ -130,42 +130,47 @@
     cursor: pointer;
     position: relative;
 
-    &:hover::before {
-      content: attr(data-tooltip);
-      position: fixed;
-      transform-origin: bottom center;
-      transform: translateX(-50%);
-      padding: 8px 12px;
-      background-color: #333;
-      color: white;
-      font-size: 14px;
-      border-radius: 4px;
-      white-space: normal;
-      z-index: 9999;
-      min-width: 200px;
-      max-width: 300px;
-      text-align: left;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      pointer-events: none;
-    }
+	// &:hover {
+	// 	opacity: 1;
+	// 	content: attr(data-tooltip);
+	// }
 
-    &:hover::after {
-      content: '';
-      position: fixed;
-      transform-origin: bottom center;
-      transform: translateX(-50%);
-      border-width: 6px;
-      border-style: solid;
-      border-color: #333 transparent transparent transparent;
-      z-index: 9999;
-      pointer-events: none;
-    }
+    // &:hover::before {
+    //   content: attr(data-tooltip);
+    //   position: fixed;
+    //   transform-origin: bottom center;
+    //   transform: translateX(-50%);
+    //   padding: 8px 12px;
+    //   background-color: #333;
+    //   color: white;
+    //   font-size: 14px;
+    //   border-radius: 4px;
+    //   white-space: normal;
+    //   z-index: 9999;
+    //   min-width: 200px;
+    //   max-width: 300px;
+    //   text-align: left;
+    //   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    //   pointer-events: none;
+    // }
+
+    // &:hover::after {
+    //   content: '';
+    //   position: fixed;
+    //   transform-origin: bottom center;
+    //   transform: translateX(-50%);
+    //   border-width: 6px;
+    //   border-style: solid;
+    //   border-color: #333 transparent transparent transparent;
+    //   z-index: 9999;
+    //   pointer-events: none;
+    // }
   }
 
-  &__title {
-	@include u-display('flex');
-	@include u-flex('align-center');
-  }
+//   &__title {
+// 	@include u-display('flex');
+// 	@include u-flex('align-center');
+//   }
 
 }
 
@@ -174,4 +179,8 @@ select#radius-filter.usa-select {
 	@include u-width('full', !important);
 }
 
-
+.is-set.usa-tooltip__body.is-visible {
+	top: 50%;
+	left: 24px;
+	margin: -18px 0px 0px;
+}

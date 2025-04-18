@@ -1,7 +1,8 @@
 /* eslint-disable */
 import React, { useState, useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { element } from 'prop-types';
 import { useTracking } from 'react-tracking';
+import { FILTER_CONFIG } from '../../config/filterConfig';
 import './FilterGroup.scss';
 
 const FilterGroup = ({ title, helpText, children, defaultExpanded = true, required = false, className = '', id, badge, hasSelectedValues = false }) => {
@@ -26,6 +27,20 @@ const FilterGroup = ({ title, helpText, children, defaultExpanded = true, requir
 	// 	});
 	// };
 
+	const container = document.getElementById(`${groupId}-tooltip-container`);
+	if (container !== null) {
+		const body = document.getElementById(`${groupId}-tooltip-body`);
+		container.addEventListener('mouseover', function() {
+			body.classList.add('is-visible', 'is-set');
+			body.setAttribute('aria-hidden', 'false');
+		});
+
+		container.addEventListener('mouseout', function() {
+			body.classList.remove('is-visible', 'is-set');
+			body.setAttribute('aria-hidden', 'true');
+		});
+	}
+	
 	return (
 		<div
 			className={`
@@ -40,11 +55,12 @@ const FilterGroup = ({ title, helpText, children, defaultExpanded = true, requir
 					<h3 className="filter-group__title">
 						{title}
 						{helpText && (
-							<div className="filter-group__help-icon-container">
-								<span className="filter-group__help-icon" role="tooltip" aria-label={helpText} data-tooltip={helpText}>
+							<span id={`${groupId}-tooltip-container`} className="filter-group__help-icon-container usa-tooltip">
+								<span className="filter-group__help-icon usa-tooltip__trigger" role="tooltip" aria-label={helpText} data-position="right" data-tooltip={helpText} tabIndex="0">
 									?
 								</span>
-							</div>
+								<span id={`${groupId}-tooltip-body`} aria-hidden='true' role='tooltip' className='usa-tooltip__body usa-tooltip__body--right'>{helpText}</span>
+							</span>
 						)}
 						{required && (
 							<span className="filter-group__required" aria-label="required">
