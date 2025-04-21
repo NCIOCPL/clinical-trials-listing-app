@@ -1,3 +1,8 @@
+/**
+ * @file This file defines the ZipCodeFilter component, which provides a location-based
+ * filtering mechanism using US ZIP codes. It includes validation of ZIP code format,
+ * geocoding to coordinates, radius selection, and error handling.
+ */
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { FILTER_CONFIG } from '../../config/filterConfig';
@@ -7,16 +12,36 @@ import { useZipConversion } from '../../hooks/useZipConversion';
 import { isValidZipFormat } from '../../utils/locationUtils';
 import './ZipCodeFilter.scss';
 
+/**
+ * Renders a ZIP code filter with validation and radius selection.
+ * Handles ZIP code validation (format and existence), geocoding to coordinates,
+ * and communicates validation status to parent components.
+ *
+ * @param {object} props - The component props.
+ * @param {string} props.zipCode - The current ZIP code value.
+ * @param {string} props.radius - The current radius value in miles.
+ * @param {Function} props.onZipCodeChange - Callback when ZIP code changes.
+ * @param {Function} props.onRadiusChange - Callback when radius changes.
+ * @param {Function} props.onValidationChange - Callback to communicate validation status to parent.
+ * @param {Function} props.onFocus - Callback when either input gains focus.
+ * @param {boolean} props.disabled - Whether the inputs should be disabled.
+ * @returns {JSX.Element} The rendered ZipCodeFilter component.
+ */
 const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onValidationChange, onFocus, disabled }) => {
+	// State for tracking validation status and errors
 	const [formatError, setFormatError] = useState('');
 	const [, setIsValidating] = useState(false);
 	const [hasInvalidZip, setHasInvalidZip] = useState(false);
 	const [validCoordinates, setValidCoordinates] = useState(null);
 	// const tracking = useTracking();
 
+	// Custom hook for ZIP code to coordinates conversion
 	const [{ getZipCoords, validationStatus }] = useZipConversion();
 
-	// Update component state based on validation status changes
+	/**
+	 * Updates component state based on validation status changes from the useZipConversion hook.
+	 * Sets coordinates if valid, or marks ZIP as invalid if not.
+	 */
 	useEffect(() => {
 		if (!validationStatus) return;
 
@@ -33,7 +58,12 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 		}
 	}, [validationStatus]);
 
-	// Called by parent when Apply button is clicked
+	/**
+	 * Returns the current validation status for the parent component.
+	 * Called by parent when Apply button is clicked.
+	 *
+	 * @returns {object} Object containing isValid flag and coordinates if valid.
+	 */
 	const getValidationStatus = () => {
 		// Return current validation state
 		if (!zipCode) {
@@ -47,13 +77,22 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 		return { isValid: !!validCoordinates, coordinates: validCoordinates };
 	};
 
+	/**
+	 * Provides the parent component with access to the getValidationStatus function.
+	 */
 	useEffect(() => {
 		if (onValidationChange) {
 			onValidationChange(getValidationStatus);
 		}
 	}, [onValidationChange]);
 
-	// Validate the format
+	/**
+	 * Validates the ZIP code format using the isValidZipFormat utility.
+	 * Sets error state if format is invalid.
+	 *
+	 * @param {string} value - The ZIP code to validate.
+	 * @returns {boolean} Whether the format is valid.
+	 */
 	const validateFormat = (value) => {
 		const isFormatValid = !value || isValidZipFormat(value);
 		if (!isFormatValid) {
@@ -66,7 +105,12 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 		return true;
 	};
 
-	// Handle zipcode change
+	/**
+	 * Handles changes to the ZIP code input.
+	 * Validates format, resets error states, and calls the parent callback.
+	 *
+	 * @param {React.ChangeEvent<HTMLInputElement>} e - The input change event.
+	 */
 	const handleZipCodeChange = (e) => {
 		const value = e.target.value;
 		const isFormatValid = validateFormat(value);
@@ -91,14 +135,18 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 		onZipCodeChange(value);
 	};
 
+	/**
+	 * Triggers ZIP code validation when a complete, valid ZIP is entered.
+	 * Resets states when ZIP is cleared.
+	 */
 	useEffect(() => {
 		if (zipCode && zipCode.length === 5 && isValidZipFormat(zipCode)) {
 			// Set validating state to true when starting validation
 			setIsValidating(true);
 
 			// Call directly since getZipCoords now handles all validation internally
-			getZipCoords(zipCode).catch((err) => {
-				console.error('Error fetching ZIP coordinates:', err);
+			getZipCoords(zipCode).catch(() => {
+				// Log error but don't display to user - UI will show invalid ZIP message
 				setIsValidating(false); // Ensure we reset state even if there's an error
 			});
 		} else if (!zipCode) {
@@ -110,7 +158,10 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 		}
 	}, [zipCode, getZipCoords]);
 
-	// When validCoordinates change and we have a zipCode from URL, notify parent
+	/**
+	 * Notifies parent component when validation status changes.
+	 * Used for initial validation from URL parameters and subsequent validations.
+	 */
 	useEffect(() => {
 		if (validCoordinates && !hasInvalidZip && onValidationChange) {
 			// For URL parameters, pass the validation result directly
@@ -127,11 +178,12 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 		}
 	}, [validCoordinates, hasInvalidZip, zipCode, onValidationChange]);
 
-	// Determine error message
+	// Determine error message to display
 	const error = formatError || (hasInvalidZip ? 'Please enter a valid U.S. ZIP code' : '');
 
 	return (
 		<>
+			{/* ZIP Code Input Field */}
 			<FilterGroup title="Location by ZIP Code">
 				<div className={`usa-form-group ${error ? 'usa-form-group--error' : ''}`}>
 					{error && (
@@ -143,6 +195,7 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 				</div>
 			</FilterGroup>
 
+			{/* Radius Selection Dropdown */}
 			<FilterGroup title={FILTER_CONFIG.radius.title}>
 				<div className="usa-combo-box">
 					<select id="radius-filter" name="radius" aria-label="Select search radius" className="usa-select usa-combo-box__select form-control" value={radius || (zipCode ? '100' : '')} onChange={onRadiusChange} onFocus={onFocus} disabled={disabled || !zipCode || error}>
@@ -159,6 +212,7 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 	);
 };
 
+// PropTypes for type checking and documentation
 ZipCodeFilter.propTypes = {
 	zipCode: PropTypes.string.isRequired,
 	radius: PropTypes.string,

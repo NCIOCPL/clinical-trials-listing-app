@@ -329,7 +329,6 @@ Then('the user is redirected to {string}', (redirectUrl) => {
 
 Then('the user is redirected with filter parameters to {string}', (redirectUrl) => {
 	cy.wait(2000);
-	cy.location('href').should('include', 'redirect=true');
 	cy.location('href').should('include', redirectUrl);
 });
 

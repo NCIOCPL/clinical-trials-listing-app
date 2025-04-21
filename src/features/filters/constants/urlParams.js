@@ -15,6 +15,10 @@ export const URL_PARAM_MAPPING = {
 		shortCode: 'zr',
 		longName: 'radius',
 	},
+	page: {
+		shortCode: 'pn',
+		longName: 'page',
+	},
 };
 
 /**

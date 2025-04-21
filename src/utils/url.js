@@ -77,3 +77,11 @@ export const updateURLWithFilters = (filters, existingSearch) => {
 	// Return the full query string
 	return params.toString();
 };
+
+export const removeQueryParam = (queryString, keyToRemove) => {
+	const params = new URLSearchParams(queryString);
+	params.delete(keyToRemove);
+	const newSearch = params.toString();
+	// Return with '?' prefix if there are still params, otherwise empty string
+	return newSearch ? `?${newSearch}` : '';
+};

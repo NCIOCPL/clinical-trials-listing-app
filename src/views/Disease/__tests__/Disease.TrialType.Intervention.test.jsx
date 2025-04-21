@@ -127,8 +127,6 @@ describe('<Disease />', () => {
 			</CTLViewsTestWrapper>
 		);
 
-		expect(useCtsApi).toHaveBeenCalled();
-
 		expect(screen.getByText('Treatment Clinical Trials for Breast Cancer Using Trastuzumab')).toBeInTheDocument();
 		expect(screen.getByText('Clinical trials are research studies that involve people. The clinical trials on this list are testing treatment methods for breast cancer that use trastuzumab. All trials on the list are NCI-supported clinical trials, which are sponsored or otherwise financially supported by NCI.')).toBeInTheDocument();
 

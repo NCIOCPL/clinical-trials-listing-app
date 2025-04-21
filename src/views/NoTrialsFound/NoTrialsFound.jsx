@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useTracking } from 'react-tracking';
-import { useLocation } from 'react-router';
+// Removed useLocation as it might not be needed anymore
+// import { useLocation } from 'react-router';
 
 import { CISBanner, NoResults } from '../../components';
 import { useStateValue } from '../../store/store';
@@ -10,8 +11,11 @@ import { TokenParser } from '../../utils';
 import { FilterProvider } from '../../features/filters/context/FilterContext/FilterContext';
 import { Sidebar } from '../../features/filters/components';
 
-const NoTrialsFound = ({ routeParamMap, data }) => {
-	const location = useLocation();
+// Added redirectStatus and prerenderLocation props
+const NoTrialsFound = ({ routeParamMap, data, redirectStatus, prerenderLocation }) => {
+	console.log('[NoTrialsFound] Rendering. Props:', { redirectStatus, prerenderLocation }); // LOG PROPS
+	// Removed location hook
+	// const location = useLocation();
 	const tracking = useTracking();
 	const [{ baseHost, canonicalHost, dynamicListingPatterns, language, siteName, trialListingPageType }] = useStateValue();
 
@@ -83,9 +87,11 @@ const NoTrialsFound = ({ routeParamMap, data }) => {
 	}, []);
 
 	const renderHelmet = () => {
-		const prerenderHeader = location.state?.prerenderLocation ? location.state?.prerenderLocation : baseHost + window.location.pathname + window.location.search;
+		// Use props for status and header, with fallbacks
+		const status = redirectStatus || '404';
+		const finalPrerenderLocation = prerenderLocation || baseHost + window.location.pathname + window.location.search;
 
-		const status = location.state?.redirectStatus ? location.state?.redirectStatus : '404';
+		// console.log('[NoTrialsFound Helmet] Status:', status, 'Location:', finalPrerenderLocation); // LOG HELMET VALUES
 
 		return (
 			<Helmet>
@@ -98,7 +104,8 @@ const NoTrialsFound = ({ routeParamMap, data }) => {
 				<meta name="prerender-status-code" content={status} />
 				{(() => {
 					if (status !== '404') {
-						return <meta name="prerender-header" content={`Location: ${prerenderHeader}`} />;
+						// Use the prop-derived value
+						return <meta name="prerender-header" content={`Location: ${finalPrerenderLocation}`} />;
 					}
 				})()}
 				<meta name="robots" content="noindex" />
@@ -172,6 +179,9 @@ NoTrialsFound.propTypes = {
 			prettyUrlName: PropTypes.string,
 		})
 	),
+	// Add new prop types
+	redirectStatus: PropTypes.string,
+	prerenderLocation: PropTypes.string,
 };
 
 export default NoTrialsFound;

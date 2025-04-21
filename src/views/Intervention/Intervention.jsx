@@ -18,9 +18,11 @@ import { useFilterCounters } from '../../features/filters/hooks/useFilterCounter
 import { hocStates } from '../hocReducer';
 import { useTrialSearch } from '../../features/filters/hooks/useTrialSearch';
 
-const Intervention = ({ routeParamMap, routePath, data, state }) => {
+// Add lastHoCRedirectStatus and isInitialLoading to props
+const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state, lastHoCRedirectStatus }) => {
+	const location = useLocation(); // Need location early for log
+	console.log(`[Intervention] Start Render. Props: lastHoCRedirectStatus=${lastHoCRedirectStatus}, isInitialLoading=${isInitialLoading}. Location State:`, JSON.stringify(location.state)); // LOG
 	const { NoTrialsPath } = useAppPaths();
-	const location = useLocation();
 	const navigate = useNavigate();
 	const { search } = location;
 
@@ -45,56 +47,93 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 	const [pager, setPager] = useState(pagerDefaults);
 
 	const setupRequestFilters = () => {
-		return data.reduce((acQuery, paramData, idx) => {
-			const paramInfo = routeParamMap[idx];
-			switch (paramInfo.paramName) {
-				case 'codeOrPurl':
-					return {
-						...acQuery,
-						'arms.interventions.nci_thesaurus_concept_id': paramData.conceptId,
-					};
-				case 'type':
-					return {
-						...acQuery,
-						primary_purpose: paramData.idString,
-					};
-				default:
-					throw new Error(`Unknown parameter ${paramInfo.paramName}`);
+		try {
+			if (!data || !routeParamMap) {
+				return {};
 			}
-		}, {});
+			return data.reduce((acQuery, paramData, idx) => {
+				const paramInfo = routeParamMap[idx];
+				switch (paramInfo.paramName) {
+					case 'codeOrPurl':
+						return {
+							...acQuery,
+							'arms.interventions.nci_thesaurus_concept_id': paramData.conceptId,
+						};
+					case 'type':
+						return {
+							...acQuery,
+							primary_purpose: paramData.idString,
+						};
+					default:
+						throw new Error(`Unknown parameter ${paramInfo.paramName}`);
+				}
+			}, {});
+		} catch (error) {
+			console.error('Error in setupRequestFilters:', error);
+			return {};
+		}
 	};
 
 	const setupReplacementText = () => {
 		// Replace tokens within page title, browser title, intro text, and meta description
-		const context = data.reduce((acQuery, paramData, idx) => {
-			const paramInfo = routeParamMap[idx];
-
-			switch (paramInfo.paramName) {
-				case 'codeOrPurl':
-					return {
-						...acQuery,
-						intervention_label: paramData.name.label,
-						intervention_normalized: paramData.name.normalized,
-					};
-				case 'type':
-					return {
-						...acQuery,
-						trial_type_label: paramData.label,
-						trial_type_normalized: paramData.label.toLowerCase(),
-					};
-				default:
-					throw new Error(`Unknown parameter type ${paramInfo.paramName}`);
+		try {
+			if (!data || !routeParamMap) {
+				return {
+					pageTitle: '',
+					browserTitle: '',
+					introText: '',
+					metaDescription: '',
+				};
 			}
-		}, {});
+			const context = data.reduce((acQuery, paramData, idx) => {
+				const paramInfo = routeParamMap[idx];
 
-		const listingPatternIndex = routeParamMap.length - 1;
-		const listingPattern = Object.values(dynamicListingPatterns)[listingPatternIndex];
-		return {
-			pageTitle: TokenParser.replaceTokens(listingPattern.pageTitle, context),
-			browserTitle: TokenParser.replaceTokens(listingPattern.browserTitle, context),
-			introText: TokenParser.replaceTokens(listingPattern.introText, context),
-			metaDescription: TokenParser.replaceTokens(listingPattern.metaDescription, context),
-		};
+				switch (paramInfo.paramName) {
+					case 'codeOrPurl':
+						return {
+							...acQuery,
+							intervention_label: paramData.name.label,
+							intervention_normalized: paramData.name.normalized,
+						};
+					case 'type':
+						return {
+							...acQuery,
+							trial_type_label: paramData.label,
+							trial_type_normalized: paramData.label.toLowerCase(),
+						};
+					default:
+						throw new Error(`Unknown parameter type ${paramInfo.paramName}`);
+				}
+			}, {});
+
+			const listingPatternIndex = routeParamMap.length - 1 || 0;
+			const listingPattern = Object.values(dynamicListingPatterns)[listingPatternIndex];
+
+			if (!listingPattern) {
+				console.error('No listing pattern found');
+				return {
+					pageTitle: '',
+					browserTitle: '',
+					introText: '',
+					metaDescription: '',
+				};
+			}
+
+			return {
+				pageTitle: TokenParser.replaceTokens(listingPattern.pageTitle, context),
+				browserTitle: TokenParser.replaceTokens(listingPattern.browserTitle, context),
+				introText: TokenParser.replaceTokens(listingPattern.introText, context),
+				metaDescription: TokenParser.replaceTokens(listingPattern.metaDescription, context),
+			};
+		} catch (error) {
+			console.error('Error in setupReplacementText:', error);
+			return {
+				pageTitle: '',
+				browserTitle: '',
+				introText: '',
+				metaDescription: '',
+			};
+		}
 	};
 
 	const baseRequestFilters = setupRequestFilters();
@@ -119,6 +158,7 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 	};
 
 	const handleRedirect = (status) => {
+		console.log(`[Intervention handleRedirect] Called with status: ${status}`); // LOG
 		let redirectParams = '';
 
 		// If data is available, use getNoTrialsRedirectParams
@@ -132,27 +172,44 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 			}
 		}
 
-		const prerenderLocation = status === '404' ? null : baseHost + location.pathname;
+		// Use the status determined by the calling useEffect
+		const finalRedirectStatus = status;
 
-		// Preserve existing redirectStatus if present, otherwise use the new status
-		const redirectStatus = location.state?.redirectStatus || status;
+		// Determine prerenderLocation based on the final status
+		let prerenderLocation;
+		if (finalRedirectStatus === '301') {
+			// For 301 (code -> pretty -> notrials), point to the pretty URL
+			prerenderLocation = baseHost + location.pathname;
+		} else if (finalRedirectStatus === '302') {
+			// For 302 (pretty -> notrials), point to the notrials URL
+			const destinationUrl = baseHost + NoTrialsPath() + '?' + redirectParams.replace(new RegExp('/&$/'), '');
+			prerenderLocation = destinationUrl;
+		} else {
+			// Handle 404 or other cases
+			prerenderLocation = null;
+		}
+
+		console.log(`[Intervention handleRedirect] Final redirect status: ${finalRedirectStatus}. Prerender Location: ${prerenderLocation}. Navigating...`); // LOG
 
 		return navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
 			replace: true,
 			state: {
-				redirectStatus,
-				prerenderLocation,
+				redirectStatus: finalRedirectStatus, // Directly use the passed status
+				prerenderLocation: prerenderLocation,
 			},
 		});
 	};
 
 	// Watch for filter changes
+	// Add a check to ensure we have required data before fetching
+	const hasRequiredData = Boolean(data && routeParamMap);
+
 	useEffect(() => {
-		if (filterState.shouldSearch) {
+		if (filterState.shouldSearch && hasRequiredData) {
 			setShouldFetchTrials(true);
 			setFiltersSubmitted(true); // Set flag when filters are submitted
 		}
-	}, [filterState.shouldSearch]);
+	}, [filterState.shouldSearch, hasRequiredData]);
 
 	// Combine base filters with applied filters
 	const searchFilters = {
@@ -160,17 +217,18 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 		...getCurrentFilters(),
 	};
 
+	// Rename loading to avoid conflict with isInitialLoading prop
 	const {
 		trials: fetchState,
-		isLoading: loading,
-		error,
+		isLoading: isTrialSearchLoading,
+		error: trialSearchError,
 	} = useTrialSearch(
 		{
 			...searchFilters,
 			from: pager.offset,
 			size: pager.pageUnit,
 		},
-		shouldFetchTrials
+		shouldFetchTrials && hasRequiredData
 	);
 
 	// const {
@@ -187,14 +245,14 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 	// 	},
 	// });
 
-	// Setup data for tracking
-	const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
-
 	useEffect(() => {
+		// Removed temporary log
+
 		// If you try to access a nonexistent page, eg: try to access page 41 of 1-40 pages
-		if (!loading && error?.message === 'Trial count mismatch from the API') {
+		// Use trialSearchError here
+		if (!isTrialSearchLoading && trialSearchError?.message === 'Trial count mismatch from the API') {
 			handleRedirect('404');
-		} else if (!loading && fetchState) {
+		} else if (!isTrialSearchLoading && fetchState) {
 			// If we have trials (total > 0) but current page is empty,
 			// this is an invalid page number situation
 			if (fetchState?.total > 0 && fetchState?.data && fetchState.data.length === 0) {
@@ -206,21 +264,28 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 			}
 
 			// Capture initial total count
-			if (isInitialLoad && !loading && fetchState?.total > 0) {
+			// Use isTrialSearchLoading here
+			if (isInitialLoad && !isTrialSearchLoading && fetchState?.total > 0) {
 				setInitialTotalCount(fetchState.total);
 			}
 
 			// Handle truly empty results (no trials at all)
+			console.log(`[Intervention Effect] Before total check. fetchState.total=${fetchState?.total}, hasAppliedFilters=${hasAppliedFilters()}, lastHoCRedirectStatus=${lastHoCRedirectStatus}`); // LOG
 			if (fetchState?.total === 0) {
 				// Only redirect to NoTrialsFound if no filters are applied
 				if (!hasAppliedFilters()) {
-					handleRedirect('302');
+					// Use 301 if the last HoC redirect was 301, otherwise 302
+					const statusForNoTrials = lastHoCRedirectStatus === '301' ? '301' : '302';
+					console.log(`[Intervention Effect] No trials found and no filters applied. Calculated statusForNoTrials: ${statusForNoTrials}. Calling handleRedirect.`); // LOG
+					handleRedirect(statusForNoTrials);
 				}
 				// If filters are applied, stay on page and show NoResultsWithFilters (handled in render)
 			} else if (fetchState?.total > 0) {
 				// Only fire tracking event on initial load or when filters are submitted
 				if (isInitialLoad || filtersSubmitted) {
 					// Fire off tracking event for successful results
+					// Create trackingData inside the event to ensure data is available
+					const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
 					tracking.trackEvent({
 						type: 'PageLoad',
 						event: 'TrialListingApp:Load:Results',
@@ -230,7 +295,7 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 						metaTitle: `${replacedText.pageTitle} - ${siteName}`,
 						numberResults: fetchState.total,
 						trialListingPageType: `${trialListingPageType.toLowerCase()}`,
-						...trackingData,
+						...(trackingData || {}),
 					});
 
 					// Filter apply tracking moved to dedicated useEffect
@@ -245,12 +310,14 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 				}
 			}
 		}
-	}, [loading, fetchState, error, isInitialLoad, filtersSubmitted]);
+		// Update dependency array with renamed variables
+	}, [isTrialSearchLoading, fetchState, trialSearchError, isInitialLoad, filtersSubmitted]);
 
 	// Dedicated useEffect for filter analytics
 	useEffect(() => {
 		// Only process when we have a pending event, data fetch is complete, and we have results
-		if (pendingFilterEvent && !loading && fetchState && fetchState.total !== undefined) {
+		// Use isTrialSearchLoading here
+		if (pendingFilterEvent && !isTrialSearchLoading && fetchState && fetchState.total !== undefined) {
 			// Handle different event types
 			if (pendingFilterEvent.type === 'apply') {
 				const { filters, counter } = pendingFilterEvent;
@@ -297,7 +364,8 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 			// Clear the pending event once processed
 			setPendingFilterEvent(null);
 		}
-	}, [pendingFilterEvent, loading, fetchState, filterRemovedCounter, tracking]);
+		// Update dependency array with renamed variable
+	}, [pendingFilterEvent, isTrialSearchLoading, fetchState, filterRemovedCounter, tracking]);
 
 	useEffect(() => {
 		// Check if page number exceeds total pages
@@ -435,9 +503,22 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 				<div className="disease-view__content">
 					<main className="disease-view__main">
 						{(() => {
-							if (loading || isApplyingFilters) {
+							// Use isInitialLoading prop from HoC first
+							if (isInitialLoading) {
+								// Use the prop here
 								return <Spinner />;
-							} else if (!loading && fetchState) {
+							}
+							// Then check trial search specific loading/applying state
+							if (isTrialSearchLoading || isApplyingFilters) {
+								return <Spinner />;
+							}
+							// Handle trial search error
+							else if (trialSearchError) {
+								console.error('Error from useTrialSearch:', trialSearchError);
+								return <ErrorPage />;
+							}
+							// Check fetchState only after loading and error checks
+							else if (fetchState) {
 								if (fetchState.total > 0) {
 									return (
 										<>
@@ -449,7 +530,8 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 											{renderPagerSection('bottom')}
 										</>
 									);
-								} else if (fetchState.total === 0) {
+								} else {
+									// fetchState.total === 0
 									// No trials found case
 									return (
 										<>
@@ -463,7 +545,10 @@ const Intervention = ({ routeParamMap, routePath, data, state }) => {
 										</>
 									);
 								}
-							} else {
+							}
+							// Fallback case if none of the above conditions are met
+							else {
+								console.warn('Intervention render: Unexpected state - HoC loaded, trial search not loading/error, but no fetchState.');
 								return <ErrorPage />;
 							}
 						})()}
@@ -494,6 +579,10 @@ Intervention.propTypes = {
 		})
 	),
 	state: PropTypes.object,
+	// Add prop type for isInitialLoading
+	isInitialLoading: PropTypes.bool,
+	// Add prop type for lastHoCRedirectStatus
+	lastHoCRedirectStatus: PropTypes.string,
 };
 
 export default Intervention;

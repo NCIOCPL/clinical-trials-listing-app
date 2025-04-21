@@ -84,7 +84,10 @@ const clinicalTrialsPost = async (req, res, next) => {
 	if (matchingMock) {
 		res.sendFile(matchingMock.mockFileName);
 	} else {
-		console.warn('No clinical-trials mock found for request.');
+		// Add request details to the warning message
+		console.warn(
+			`No clinical-trials mock found for request.\nURL: ${req.originalUrl}\nBody: ${JSON.stringify(apiReq, null, 2)}`
+		);
 		res.status(404).end();
 	}
 };

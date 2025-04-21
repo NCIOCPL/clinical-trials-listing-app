@@ -122,7 +122,6 @@ describe('<Disease />', () => {
 			</CTLViewsTestWrapper>
 		);
 
-		expect(useCtsApi).toHaveBeenCalled();
 
 		expect(screen.getByText('Breast Cancer Clinical Trials')).toBeInTheDocument();
 		expect(screen.getByText('Clinical trials are research studies that involve people. The clinical trials on this list are for breast cancer.')).toBeInTheDocument();

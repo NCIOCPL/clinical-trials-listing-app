@@ -1,6 +1,6 @@
 /* eslint-disable */
 import PropTypes from 'prop-types';
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router';
 import { useFilters } from '../features/filters/context/FilterContext/FilterContext';
 import { Spinner } from '../components';
@@ -8,7 +8,8 @@ import { ErrorPage, PageNotFound } from './ErrorBoundary';
 import { useAppPaths, useListingSupport } from '../hooks';
 import { useStateValue } from '../store/store';
 import { getTrialType } from '../services/api/actions';
-import { appendOrUpdateToQueryString, getIdOrNameAction, getKeyValueFromQueryString, convertObjectToBase64 } from '../utils';
+// Import the new utility function
+import { appendOrUpdateToQueryString, getIdOrNameAction, getKeyValueFromQueryString, convertObjectToBase64, removeQueryParam } from '../utils';
 import { hocReducer, hocStates, setLoading, setSuccessfulFetch, setFailedFetch, setNotFound, setRedirecting } from './hocReducer';
 import Sidebar from '../features/filters/components/Sidebar';
 /**
@@ -19,12 +20,20 @@ import Sidebar from '../features/filters/components/Sidebar';
 
 const CTLViewsHoC = (WrappedView) => {
 	const WithPreFetch = ({ redirectPath, routeParamMap, ...props }) => {
+		const location = useLocation(); // Need location early for log
+		// console.log(`[CTLViewsHoC ${WrappedView.name}] Start Render. Path: ${location.pathname}, Search: ${location.search}, State: ${JSON.stringify(location.state)}`);
 		const { NoTrialsPath } = useAppPaths();
 		const params = useParams();
-		const location = useLocation();
 		const navigate = useNavigate();
 		const { search } = location;
 		const [{ baseHost }] = useStateValue();
+
+		// Capture initial location state to preserve it across re-renders
+		const [initialLocationState] = useState({
+			redirectStatus: location.state?.redirectStatus,
+			prerenderLocation: location.state?.prerenderLocation,
+		});
+		console.log(`[CTLViewsHoC ${WrappedView.name}] Captured initialLocationState:`, JSON.stringify(initialLocationState)); // LOG
 
 		const [state, hocDispatch] = useReducer(hocReducer, {
 			status: hocStates.LOADING_STATE,
@@ -87,15 +96,18 @@ const CTLViewsHoC = (WrappedView) => {
 			// it will result in an equivalent object. So setting loading -> loading
 			// will not trigger a reload.
 			if (getListingInfo.loading) {
+				// console.log(`[CTLViewsHoC ${WrappedView.name} Effect] getListingInfo is loading. Dispatching setLoading.`); // LOG + Action
 				hocDispatch(setLoading());
 			}
 
 			if (!getListingInfo.loading && getListingInfo.payload) {
+				// console.log(`[CTLViewsHoC ${WrappedView.name} Effect] getListingInfo loaded. Payload received.`); // LOG
 				// Check if any of the elements of the payload are null,
 				// this is a 404.
 				if (getListingInfo.payload.some((res) => res === null)) {
 					// Handle 404. Currently this is a bit hacky, but
 					// we will just throw here for the ErrorBoundary.
+					// console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Payload contains null. Dispatching setNotFound.`); // LOG + Action
 					hocDispatch(setNotFound());
 					return;
 				}
@@ -104,7 +116,12 @@ const CTLViewsHoC = (WrappedView) => {
 				// any of the requests did not match the redirect. We only
 				// handle redirects if we are not showing /notrials, for
 				// sanity.
-				if (!isNoTrials) {
+
+				// If we just redirected (redirect=true is in the query string), don't check again.
+				const alreadyRedirected = search.includes('redirect=true');
+
+				if (!isNoTrials && !alreadyRedirected) { // Check if not already redirected
+					// console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Before redirect check. Fetch actions:`, fetchActions, 'Payload:', getListingInfo.payload); // LOG
 					const redirectCheck = fetchActions.some((action, idx) => (action.type === 'id' && getListingInfo.payload[idx].prettyUrlName) || (action.type === 'trialType' && action.payload !== getListingInfo.payload[idx].prettyUrlName));
 
 					if (redirectCheck) {
@@ -134,12 +151,14 @@ const CTLViewsHoC = (WrappedView) => {
 						const redirectStatus = isCodeToPrettyRedirect ? '301' : '302';
 						const redirectPathOnly = redirectPath(redirectParams);
 						const redirectUrl = `${redirectPathOnly}${queryString}`;
+						console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Redirect check passed. isCodeToPretty: ${isCodeToPrettyRedirect}, Calculated Status: ${redirectStatus}, PathOnly: ${redirectPathOnly}`); // LOG
 
 						// For code-to-pretty redirects, we need to preserve the redirectStatus
 						// and set the prerender-header Location to the final URL
 						if (isCodeToPrettyRedirect) {
+							console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Code-to-pretty redirect needed.`); // LOG
 							// Set state to REDIR_STATE with 301 status
-							hocDispatch(setRedirecting('301'));
+							// hocDispatch(setRedirecting('301')); // Dispatching twice below
 
 							// Set state for navigation
 							const navigationState = {
@@ -149,9 +168,11 @@ const CTLViewsHoC = (WrappedView) => {
 							};
 
 							// Set state first
+							console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Dispatching setRedirecting('301').`); // LOG Action
 							hocDispatch(setRedirecting('301'));
 
 							// Then navigate
+							console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Navigating (replace: true) to ${redirectUrl} with state:`, JSON.stringify(navigationState)); // LOG Navigate
 							navigate(redirectUrl, {
 								replace: true,
 								state: navigationState
@@ -161,6 +182,7 @@ const CTLViewsHoC = (WrappedView) => {
 							return;
 						} else {
 							// For other redirects, use the provided status
+							console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Other redirect needed. Dispatching setRedirecting('${redirectStatus}').`); // LOG Action
 							hocDispatch(setRedirecting(redirectStatus));
 
 							// Set state for navigation
@@ -169,6 +191,7 @@ const CTLViewsHoC = (WrappedView) => {
 							};
 
 							// Navigate with state
+							console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Navigating (replace: true) to ${redirectUrl} with state:`, JSON.stringify(navigationState)); // LOG Navigate
 							navigate(redirectUrl, {
 								replace: true,
 								state: navigationState
@@ -181,9 +204,11 @@ const CTLViewsHoC = (WrappedView) => {
 				}
 
 				// At this point, the wrapped view is going to handle this request.
+				console.log(`[CTLViewsHoC ${WrappedView.name} Effect] No redirect needed or already redirected. Dispatching setSuccessfulFetch.`); // LOG Action
 				hocDispatch(setSuccessfulFetch(currentActionsHash, getListingInfo.payload));
 			} else if (!getListingInfo.loading && getListingInfo.error) {
 				// Raise error for ErrorBoundary for now.
+				console.error(`[CTLViewsHoC ${WrappedView.name} Effect] getListingInfo failed. Dispatching setFailedFetch. Error:`, getListingInfo.error); // LOG + Action
 				hocDispatch(setFailedFetch());
 			}
 			// This effect should only fire if getListingInfo has been updated, even
@@ -196,29 +221,33 @@ const CTLViewsHoC = (WrappedView) => {
 			// previously good fetch with data, back to a loading state.
 		}, [getListingInfo]);
 
+		// Effect to clean up the redirect=true query parameter after successful load
+		useEffect(() => {
+			console.log('[CTLViewsHoC Cleanup Effect] Running. Status:', state.status, 'Search:', search); // LOG
+			if (state.status === hocStates.LOADED_STATE && search.includes('redirect=true')) {
+				console.log('[CTLViewsHoC Cleanup Effect] Conditions met. Removing redirect=true.'); // LOG
+				const newSearch = removeQueryParam(search, 'redirect');
+				// Use navigate with object form to preserve existing state
+				navigate(
+					{
+						pathname: location.pathname,
+						search: newSearch,
+					},
+                {
+                    replace: true,
+                    // state: location.state, // Remove state preservation during cleanup
+                }
+            );
+			}
+			// Depend on status and search string to re-run when needed
+		}, [state.status, search, location.pathname, navigate, location.state]);
+
+		console.log(`[CTLViewsHoC ${WrappedView.name}] Rendering. HoC State:`, state, 'Passing lastHoCRedirectStatus:', state.lastHoCRedirectStatus); // LOG
+
 		return (
 			<div>
 				<div className="page-options-container" />
 				{(() => {
-					// Don't show spinner for Sidebar component
-					// if (WrappedView.name === 'Sidebar') {
-					// 	return <WrappedView {...props} />;
-					// }
-
-					// if (WrappedView.name === 'Disease' && (getListingInfo.loading || state.status === hocStates.REDIR_STATE || state.status === hocStates.LOADING_STATE || (state.status === hocStates.LOADED_STATE && state.actionsHash !== currentActionsHash))) {
-					// 	return (
-					// 		<div className="disease-view">
-					// 			<div className="disease-view__container">
-					// 				<Sidebar />
-					// 				<main className="disease-view__main">
-					// 					<Spinner />
-					// 				</main>
-					// 			</div>
-					// 		</div>
-					// 	);
-					// }
-
-					// Add loading check helper
 					const isLoading = getListingInfo.loading || state.status === hocStates.REDIR_STATE || state.status === hocStates.LOADING_STATE || (state.status === hocStates.LOADED_STATE && state.actionsHash !== currentActionsHash);
 
 					// First check for 404 regardless of component type
@@ -226,39 +255,40 @@ const CTLViewsHoC = (WrappedView) => {
 						return <PageNotFound />;
 					}
 
-					// Always pass state to Disease component
-					if (WrappedView.name === 'Disease') {
+					// Handle loading state for all components
+					if (isLoading) {
+						return <Spinner />;
+					}
+
+					// Handle 404 state
+					if (state.status === hocStates.NOTFOUND_STATE) {
+						return <PageNotFound />;
+					}
+
+					// Handle error state
+					if (state.status === hocStates.ERROR_STATE) {
+						return <ErrorPage />;
+					}
+
+					// Render the wrapped component only when data is loaded
+					if (state.status === hocStates.LOADED_STATE) {
 						return <WrappedView
 							routeParamMap={filteredRouteParamMap}
 							routePath={redirectPath}
 							{...props}
 							data={state.listingData}
-							isInitialLoading={isLoading}
+							isInitialLoading={isLoading} // This will be false here
 							state={state}
+							// Pass down the status of the last HoC redirect
+							lastHoCRedirectStatus={state.lastHoCRedirectStatus}
+							// Pass redirect status and prerender location for NoTrials view
+							redirectStatus={initialLocationState.redirectStatus}
+							prerenderLocation={initialLocationState.prerenderLocation}
 						/>;
 					}
 
-					// Handle other components
-					if (isLoading) {
-						return <Spinner />;
-					}
-
-					// We have finished loading and either need to display
-					// error or the results.
-					switch (state.status) {
-						case hocStates.LOADED_STATE: {
-							if (isNoTrials) {
-								return <WrappedView routeParamMap={filteredRouteParamMap} {...props} data={state.listingData} state={state} />;
-							} else {
-								return <WrappedView routeParamMap={filteredRouteParamMap} routePath={redirectPath} {...props} data={state.listingData} state={state} />;
-							}
-						}
-						default: {
-							// This should only happen for hocStates.ERROR_STATE, but it
-							// felt very wrong for there not to be a default here.
-							return <ErrorPage />;
-						}
-					}
+					// Fallback for unexpected states (should not be reached)
+					return null;
 				})()}
 			</div>
 		);

@@ -18,9 +18,11 @@ import { useFilterCounters } from '../../features/filters/hooks/useFilterCounter
 import { hocStates } from '../../views/hocReducer';
 import NoResultsWithFilters from '../../components/molecules/NoResultsWithFilters/NoResultsWithFilters';
 
-const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) => {
+// Add lastHoCRedirectStatus to props
+const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, lastHoCRedirectStatus }) => {
+	const location = useLocation(); // Need location early for log
+	console.log(`[Disease] Start Render. Props: lastHoCRedirectStatus=${lastHoCRedirectStatus}, isInitialLoading=${isInitialLoading}. Location State:`, JSON.stringify(location.state)); // LOG
 	const { NoTrialsPath } = useAppPaths();
-	const location = useLocation();
 	const navigate = useNavigate();
 	const { search } = location;
 	const tracking = useTracking();
@@ -41,6 +43,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 		page: pn ?? 1,
 		pageUnit: itemsPerPage,
 	});
+	// const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
 
 	/**
 	 * Sets up text content by replacing placeholders with dynamic values from the provided data.
@@ -140,11 +143,68 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 		shouldFetchTrials && hasRequiredData
 	);
 
-	useEffect(() => {
-		if (fetchState && !fetchState.loading && fetchState.error != null && fetchState.error.message === 'Trial count mismatch from the API') {
-			handleRedirect('404');
-		}
-	}, [fetchState]);
+	// // spmething has wrong or no trials
+	// useEffect(() => {
+	// 	if (fetchState && !fetchState.loading && fetchState.error != null && fetchState.error.message === 'Trial count mismatch from the API') {
+	// 		//	handleRedirect('404');
+	//
+	// 		const redirectStatusCode = location.state?.redirectStatus ? location.state?.redirectStatus : '404';
+	//
+	// 		const prerenderLocation = location.state?.redirectStatus ? baseHost + window.location.pathname : null;
+	//
+	// 		// So this is handling the redirect to the no trials page.
+	// 		// it is the job of the dynamic route views to property
+	// 		// set the p1,p2,p3 parameters.
+	// 		const redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
+	//
+	// 		navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
+	// 			replace: true,
+	// 			state: {
+	// 				redirectStatus: redirectStatusCode,
+	// 				prerenderLocation: prerenderLocation,
+	// 			},
+	// 		});
+	// 	} else if (fetchState && !fetchState.loading && fetchState.payload) {
+	// 		if (fetchState.payload.total === 0) {
+	// 			// Ww have no trials
+	// 			const redirectStatusCode = location.state?.redirectStatus ? location.state?.redirectStatus : '302';
+	// 			const prerenderLocation = location.state?.redirectStatus ? baseHost + window.location.pathname : null;
+	//
+	// 			// So this is handling the redirect to the no trials page.
+	// 			// it is the job of the dynamic route views to property
+	// 			// set the p1,p2,p3 parameters.
+	// 			const redirectParams = getNoTrialsRedirectParams(data, routeParamMap);
+	//
+	// 			navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
+	// 				replace: true,
+	// 				state: {
+	// 					redirectStatus: redirectStatusCode,
+	// 					prerenderLocation: prerenderLocation,
+	// 				},
+	// 			});
+	// 			// return ;
+	// 		}
+	//
+	// 		// Fire off a page load event. Usually this would be in
+	// 		// some effect when something loaded.
+	// 		if (fetchState.payload.total > 0) {
+	// 			tracking.trackEvent({
+	// 				// These properties are required.
+	// 				type: 'PageLoad',
+	// 				event: 'TrialListingApp:Load:Results',
+	// 				name: canonicalHost.replace(/^(http|https):\/\//, '') + window.location.pathname,
+	// 				title: replacedText.pageTitle,
+	// 				language: language === 'en' ? 'english' : 'spanish',
+	// 				metaTitle: `${replacedText.pageTitle} - ${siteName}`,
+	// 				// Any additional properties fall into the "page.additionalDetails" bucket
+	// 				// for the event.
+	// 				numberResults: fetchState.payload?.total,
+	// 				trialListingPageType: `${trialListingPageType.toLowerCase()}`,
+	// 				// ...trackingData,
+	// 			});
+	// 		}
+	// 	}
+	// }, [fetchState]);
 
 	// Watch for filter changes
 	useEffect(() => {
@@ -205,6 +265,8 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 	};
 
 	useEffect(() => {
+		// Removed temporary log
+
 		if (!loading && error?.message === 'Trial count mismatch from the API') {
 			handleRedirect('404');
 		} else if (!loading && fetchState) {
@@ -224,10 +286,14 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 			}
 
 			// Handle truly empty results (no trials at all)
+			console.log(`[Disease Effect] Before total check. fetchState.total=${fetchState?.total}, hasAppliedFilters=${hasAppliedFilters()}, lastHoCRedirectStatus=${lastHoCRedirectStatus}`); // LOG
 			if (fetchState?.total === 0) {
 				// Only redirect to NoTrialsFound if no filters are applied
 				if (!hasAppliedFilters()) {
-					handleRedirect('302');
+					// Use 301 if the last HoC redirect was 301, otherwise 302
+					const statusForNoTrials = lastHoCRedirectStatus === '301' ? '301' : '302';
+					console.log(`[Disease Effect] No trials found and no filters applied. Calculated statusForNoTrials: ${statusForNoTrials}. Calling handleRedirect.`); // LOG
+					handleRedirect(statusForNoTrials);
 				}
 				// If filters are applied, stay on page and show NoResultsWithFilters (handled in render)
 			} else if (fetchState?.total > 0) {
@@ -324,6 +390,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 		}
 	}, [pn, location.pathname, location.search, fetchState?.total]);
 	const handleRedirect = (status) => {
+		console.log(`[Disease handleRedirect] Called with status: ${status}`); // LOG
 		let redirectParams = '';
 
 		// If data is available, use getNoTrialsRedirectParams
@@ -337,17 +404,31 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 			}
 		}
 
-		const prerenderLocation = status === '404' ? null : baseHost + location.pathname;
+		// Use the status determined by the calling useEffect
+		const finalRedirectStatus = status;
 
-		// Preserve existing redirectStatus if present, otherwise use the new status
-		const redirectStatus = location.state?.redirectStatus || status;
+		// Determine prerenderLocation based on the final status
+		let prerenderLocation;
+		if (finalRedirectStatus === '301') {
+			// For 301 (code -> pretty -> notrials), point to the pretty URL
+			prerenderLocation = baseHost + location.pathname;
+		} else if (finalRedirectStatus === '302') {
+			// For 302 (pretty -> notrials), point to the notrials URL
+			const destinationUrl = baseHost + NoTrialsPath() + '?' + redirectParams.replace(new RegExp('/&$/'), '');
+			prerenderLocation = destinationUrl;
+		} else {
+			// Handle 404 or other cases
+			prerenderLocation = null;
+		}
+
+		console.log(`[Disease handleRedirect] Final redirect status: ${finalRedirectStatus}. Prerender Location: ${prerenderLocation}. Navigating...`); // LOG
 
 		// We want an immediate return to ensure the redirect happens synchronously
 		return navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
 			replace: true,
 			state: {
-				redirectStatus,
-				prerenderLocation,
+				redirectStatus: finalRedirectStatus, // Directly use the passed status
+				prerenderLocation: prerenderLocation,
 			},
 		});
 	};
@@ -405,9 +486,13 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state }) =>
 		// Get redirect status from state or location.state
 		let redirectStatus = '';
 
-		// Check if we're in a redirect state
-		if (state?.status === hocStates.REDIR_STATE) {
-			redirectStatus = '301';
+		// Prioritize the persistent status from the last HoC redirect
+		if (lastHoCRedirectStatus) {
+			redirectStatus = lastHoCRedirectStatus;
+		}
+		// Then check other potential sources (though lastHoCRedirectStatus should cover the 301 case)
+		else if (state?.status === hocStates.REDIR_STATE) {
+			redirectStatus = '301'; // This might be redundant if lastHoCRedirectStatus is always set
 		} else if (state?.redirectStatus === '301' || location.state?.redirectStatus === '301') {
 			redirectStatus = '301';
 		} else if (location.state?.redirectStatus) {
@@ -547,6 +632,8 @@ Disease.propTypes = {
 	),
 	isInitialLoading: PropTypes.bool,
 	state: PropTypes.object,
+	// Add prop type for lastHoCRedirectStatus
+	lastHoCRedirectStatus: PropTypes.string,
 };
 
 export default Disease;

@@ -1,3 +1,8 @@
+/**
+ * @file This file defines the FilterContext, which provides a centralized state management
+ * system for all filter-related functionality in the application. It handles filter state,
+ * URL synchronization, ZIP code validation and geocoding, and transforming filters to API parameters.
+ */
 import React, { createContext, useContext, useReducer, useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import { useStateValue } from '../../../../store/store.jsx';
@@ -9,15 +14,23 @@ import { URL_PARAM_MAPPING } from '../../constants/urlParams';
 import { getLocationFilters } from '../../utils/locationUtils';
 import { isValidZipFormat } from '../../utils/locationUtils';
 
+/**
+ * Action types for the filter reducer.
+ * These define all possible actions that can be dispatched to modify filter state.
+ */
 export const FilterActionTypes = {
-	SET_FILTER: 'SET_FILTER',
-	APPLY_FILTERS: 'APPLY_FILTERS',
-	CLEAR_FILTERS: 'CLEAR_FILTERS',
-	REMOVE_FILTER: 'REMOVE_FILTER',
-	SET_BASE_FILTERS: 'SET_BASE_FILTERS',
-	SET_ZIP_COORDINATES: 'SET_ZIP_COORDINATES',
+	SET_FILTER: 'SET_FILTER', // Set a specific filter value
+	APPLY_FILTERS: 'APPLY_FILTERS', // Apply current filter values (marks them as "applied")
+	CLEAR_FILTERS: 'CLEAR_FILTERS', // Reset all filters to initial state
+	REMOVE_FILTER: 'REMOVE_FILTER', // Remove a specific filter value
+	SET_BASE_FILTERS: 'SET_BASE_FILTERS', // Set base filters (e.g., disease, intervention)
+	SET_ZIP_COORDINATES: 'SET_ZIP_COORDINATES', // Set coordinates for ZIP code
 };
 
+/**
+ * Initial state for the filter reducer.
+ * Defines the default structure and values for the filter state.
+ */
 const initialState = {
 	filters: {
 		age: [],
@@ -26,18 +39,26 @@ const initialState = {
 			radius: null,
 		},
 	},
-	appliedFilters: [],
-	baseFilters: {},
-	isDirty: false,
-	shouldSearch: true,
-	isInitialLoad: true,
-	currentPage: null,
-	paramOrder: [],
-	preservedParams: '',
-	zipCoords: null,
-	appliedZipCoords: null,
+	appliedFilters: [], // Filters that have been applied (after clicking "Apply")
+	baseFilters: {}, // Base filters that are always applied (e.g., disease type)
+	isDirty: false, // Whether filters have been modified but not applied
+	shouldSearch: true, // Whether a search should be triggered
+	isInitialLoad: true, // Whether this is the initial page load
+	currentPage: null, // Current page number
+	paramOrder: [], // Order of URL parameters
+	preservedParams: '', // URL parameters to preserve
+	zipCoords: null, // Coordinates for the current ZIP code
+	appliedZipCoords: null, // Coordinates for the applied ZIP code
 };
 
+/**
+ * Reducer function for managing filter state.
+ * Handles all actions defined in FilterActionTypes.
+ *
+ * @param {object} state - Current filter state
+ * @param {object} action - Action object with type and payload
+ * @returns {object} New filter state
+ */
 function filterReducer(state, action) {
 	const { enabledFilters } = PAGE_FILTER_CONFIGS[state.pageType];
 	const clearedFilters = {};
@@ -48,6 +69,7 @@ function filterReducer(state, action) {
 	let orderedParams = null;
 	switch (action.type) {
 		case FilterActionTypes.SET_FILTER:
+			// Ignore if filter type is not enabled for this page
 			if (!enabledFilters.includes(action.payload.filterType)) {
 				return state;
 			}
@@ -57,13 +79,14 @@ function filterReducer(state, action) {
 					...state.filters,
 					[action.payload.filterType]: action.payload.value,
 				},
-				isDirty: true,
+				isDirty: true, // Mark as dirty since filter was changed
 			};
 
 		case FilterActionTypes.APPLY_FILTERS: {
 			isNewPageLoad = action.payload?.isNewPageLoad;
 			preservedParams = action.payload?.preservedParams;
 
+			// Process preserved URL parameters
 			paramPairs = (preservedParams || '').split('&').filter(Boolean);
 			orderedParams = new Map();
 			paramPairs.forEach((pair) => {
@@ -73,22 +96,19 @@ function filterReducer(state, action) {
 
 			pageNumber = isNewPageLoad ? orderedParams.get('pn') || '1' : '1';
 
-			// Improved ZIP coordinates handling
+			// Handle ZIP coordinates
 			let newAppliedZipCoords = null;
 
 			// Only apply coordinates if we have both a ZIP code and coordinates
 			if (state.filters.location?.zipCode && state.zipCoords) {
 				newAppliedZipCoords = state.zipCoords;
-			} else if (state.filters.location?.zipCode && !state.zipCoords) {
-				// Log warning when ZIP exists but coordinates don't
-				console.warn('ZIP code exists but coordinates not found');
 			}
 
 			return {
 				...state,
-				appliedFilters: { ...state.filters },
-				isDirty: false,
-				shouldSearch: true,
+				appliedFilters: { ...state.filters }, // Copy current filters to applied filters
+				isDirty: false, // No longer dirty after applying
+				shouldSearch: true, // Should trigger a search
 				isInitialLoad: isNewPageLoad || false,
 				preservedParams: preservedParams || '',
 				currentPage: pageNumber || '1',
@@ -98,6 +118,7 @@ function filterReducer(state, action) {
 		}
 
 		case FilterActionTypes.CLEAR_FILTERS:
+			// Reset all enabled filters to their initial state
 			enabledFilters.forEach((filterType) => {
 				clearedFilters[filterType] = initialState.filters[filterType];
 			});
@@ -114,9 +135,13 @@ function filterReducer(state, action) {
 		case FilterActionTypes.REMOVE_FILTER: {
 			const { filterType, value } = action.payload;
 			const updatedFilters = { ...state.filters };
+
+			// Handle array filters (remove specific value)
 			if (Array.isArray(updatedFilters[filterType])) {
 				updatedFilters[filterType] = updatedFilters[filterType].filter((v) => v !== value);
-			} else if (filterType === 'location') {
+			}
+			// Handle location filter (reset both ZIP and radius)
+			else if (filterType === 'location') {
 				updatedFilters.location = {
 					zipCode: '',
 					radius: null,
@@ -147,8 +172,21 @@ function filterReducer(state, action) {
 	}
 }
 
+/**
+ * Context for providing filter state and actions throughout the application.
+ */
 export const FilterContext = createContext();
 
+/**
+ * Provider component for the FilterContext.
+ * Manages filter state, URL synchronization, and filter application.
+ *
+ * @param {object} props - Component props
+ * @param {React.ReactNode} props.children - Child components
+ * @param {object} [props.baseFilters={}] - Base filters to always apply
+ * @param {string} [props.pageType='Disease'] - Type of page (e.g., 'Disease', 'Intervention')
+ * @returns {JSX.Element} FilterContext.Provider component
+ */
 export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease' }) {
 	const filterConfig = PAGE_FILTER_CONFIGS[pageType];
 	const [state, dispatch] = useReducer(filterReducer, {
@@ -163,11 +201,16 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 	const location = useLocation();
 	const navigate = useNavigate();
 
+	/**
+	 * Effect to initialize filters from URL parameters when the path changes.
+	 * Extracts filter values from URL and dispatches actions to set them.
+	 */
 	useEffect(() => {
 		let params = new URLSearchParams(location.search);
 		let filtersFromUrl = getFiltersFromURL(params);
 		let isNewPageLoad = true;
 
+		// Preserve non-filter URL parameters
 		let paramOrder = Array.from(params.keys());
 		let filterParams = [URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
 		let preservedParamsMap = new Map();
@@ -182,6 +225,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 			.map(([key, value]) => `${key}=${value}`)
 			.join('&');
 
+		// Set filters from URL if they exist
 		if (Object.keys(filtersFromUrl).length > 0) {
 			Object.entries(filtersFromUrl).forEach(([filterType, value]) => {
 				dispatch({
@@ -194,6 +238,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 				payload: { isNewPageLoad, preservedParams: preservedParams.toString() },
 			});
 		} else {
+			// Just apply empty filters if no URL parameters
 			dispatch({
 				type: FilterActionTypes.APPLY_FILTERS,
 				payload: { isNewPageLoad, preservedParams: preservedParams.toString() },
@@ -201,7 +246,13 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		}
 	}, [location.pathname]);
 
-	// Helper function to validate zipcode and apply filters - memoized to prevent infinite loops
+	/**
+	 * Helper function to validate ZIP code and apply filters.
+	 * Memoized to prevent infinite loops in useEffect dependencies.
+	 *
+	 * @param {string} zipCode - ZIP code to validate
+	 * @param {string} radius - Search radius in miles
+	 */
 	const validateZipcodeAndApplyFilters = useCallback(
 		async (zipCode, radius) => {
 			// Set the filter values first (this won't trigger a search yet)
@@ -237,12 +288,12 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 						// THEN apply filters
 						dispatch({ type: FilterActionTypes.APPLY_FILTERS });
 					} else {
-						console.warn(`Invalid ZIP code from URL parameter: ${zipCode}`);
 						// Don't apply filters with invalid zipcode
+						// Invalid ZIP code - silently handle
 					}
 				} catch (error) {
-					console.error(`Error validating ZIP code from URL: ${zipCode}`, error);
 					// Don't apply filters if validation fails
+					// Error validating ZIP - silently handle
 				}
 			} else {
 				// Invalid format - just apply filters normally
@@ -253,7 +304,10 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		[zipConversionEndpoint, dispatch]
 	);
 
-	// useEffect to handle URL parameters for ZIP codes
+	/**
+	 * Effect to handle ZIP code validation when URL parameters change.
+	 * Extracts ZIP and radius from URL and validates if present.
+	 */
 	useEffect(() => {
 		// Get ZIP and radius from URL parameters
 		const params = new URLSearchParams(location.search);
@@ -266,22 +320,28 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		}
 	}, [location.pathname, location.search, zipConversionEndpoint, validateZipcodeAndApplyFilters]);
 
+	/**
+	 * Effect to update URL parameters when filters are applied.
+	 * Synchronizes the URL with the current filter state.
+	 */
 	useEffect(() => {
 		if (!state.isDirty && state.shouldSearch) {
 			let params = new URLSearchParams(window.location.search);
 			let isInitialLoad = state.isInitialLoad;
 			const originalPn = params.get('pn');
 
+			// Preserve non-filter URL parameters
 			let paramOrder = Array.from(params.keys());
 			let filterParams = [URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
 			let updatedParams = new Map();
 
+			// Handle non-filter parameters
 			for (const key of paramOrder) {
 				if (!filterParams.includes(key)) {
 					if (key === 'pn' && isInitialLoad) {
 						updatedParams.set(key, originalPn);
 					} else if (key === 'redirect') {
-						// Set the rediret param on the initial loads but ignore otherwise
+						// Set the redirect param on the initial loads but ignore otherwise
 						if (isInitialLoad) {
 							updatedParams.set(key, params.get(key));
 						}
@@ -292,10 +352,13 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 				}
 			}
 
+			// Add filter parameters if they exist
 			if (Object.keys(state.appliedFilters).length > 0) {
+				// Handle age parameter
 				if (state.appliedFilters.age?.toString().trim() !== '') {
 					const ageIndex = paramOrder.indexOf(URL_PARAM_MAPPING.age.shortCode);
 					if (ageIndex >= 0) {
+						// Preserve parameter order if age already exists in URL
 						const temp = new Map();
 						for (const [key, value] of updatedParams.entries()) {
 							if (paramOrder.indexOf(key) < ageIndex) {
@@ -314,6 +377,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 					}
 				}
 
+				// Handle location parameters
 				if (state.appliedFilters.location?.zipCode) {
 					updatedParams.set(URL_PARAM_MAPPING.zipCode.shortCode, state.appliedFilters.location.zipCode);
 					if (state.appliedFilters.location.radius) {
@@ -322,9 +386,11 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 				}
 			}
 
+			// Handle pagination parameter
 			const pnValue = isInitialLoad || !state.isDirty ? originalPn || '1' : '1';
 			const pnIndex = paramOrder.indexOf('pn');
 			if (pnIndex >= 0) {
+				// Preserve parameter order if 'pn' already exists
 				const temp = new Map();
 				for (const [key, value] of updatedParams.entries()) {
 					if (paramOrder.indexOf(key) < pnIndex) {
@@ -342,11 +408,13 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 				updatedParams.set('pn', pnValue);
 			}
 
+			// Construct the final query string
 			const queryString = Array.from(updatedParams.entries())
 				.filter(([, value]) => value.toString().trim() !== '')
 				.map(([key, value]) => `${key}=${value}`)
 				.join('&');
 
+			// Update the URL without adding to browser history
 			navigate(
 				{
 					pathname: location.pathname,
@@ -357,14 +425,22 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		}
 	}, [state.appliedFilters, state.isDirty, state.shouldSearch, location.pathname, navigate]);
 
+	/**
+	 * Transforms the applied filter state into the format expected by the API.
+	 *
+	 * @param {object} filters - The applied filter state object.
+	 * @returns {object} Filters formatted for the API request.
+	 */
 	const transformFiltersToApi = (filters) => {
 		let apiFilters = {};
 
+		// Transform age filter
 		if (filters.age?.toString().trim() !== '') {
 			apiFilters['eligibility.structured.min_age_in_years_lte'] = filters.age;
 			apiFilters['eligibility.structured.max_age_in_years_gte'] = filters.age;
 		}
 
+		// Transform location filter using utility function
 		const locationFilters = getLocationFilters(filters.location, state.appliedZipCoords);
 
 		return {
@@ -373,11 +449,17 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		};
 	};
 
+	/**
+	 * Gets the current filters (base filters + applied filters) formatted for the API.
+	 *
+	 * @returns {object} Current filters ready for API request.
+	 */
 	const getCurrentFilters = () => ({
 		...state.baseFilters,
 		...transformFiltersToApi(state.appliedFilters),
 	});
 
+	// Value provided by the context
 	const value = {
 		state,
 		dispatch,
@@ -399,12 +481,19 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 	return <FilterContext.Provider value={value}>{children}</FilterContext.Provider>;
 }
 
+// PropTypes for the FilterProvider component
 FilterProvider.propTypes = {
 	children: PropTypes.node.isRequired,
 	baseFilters: PropTypes.object,
 	pageType: PropTypes.string,
 };
 
+/**
+ * Custom hook for accessing the FilterContext.
+ * Provides convenient access to state and action dispatchers.
+ *
+ * @returns {object} Filter context values (state, dispatch, actions, etc.)
+ */
 export function useFilters() {
 	const context = useContext(FilterContext);
 	if (!context) {
@@ -413,27 +502,46 @@ export function useFilters() {
 
 	const { state, dispatch, getCurrentFilters, isApplyingFilters, setIsApplyingFilters, enabledFilters, zipCoords, appliedZipCoords, pageType } = context;
 
+	/**
+	 * Dispatches an action to set a specific filter value.
+	 * @param {string} filterType - The type of filter to set.
+	 * @param {*} value - The value to set for the filter.
+	 */
 	const setFilter = (filterType, value) =>
 		dispatch({
 			type: FilterActionTypes.SET_FILTER,
 			payload: { filterType, value },
 		});
 
+	/**
+	 * Dispatches an action to apply the current filter state.
+	 * Includes a small delay for visual feedback.
+	 */
 	const applyFilters = async () => {
 		setIsApplyingFilters(true);
 		dispatch({ type: FilterActionTypes.APPLY_FILTERS });
+		// Artificial delay for visual feedback (optional)
 		await new Promise((resolve) => setTimeout(resolve, 300));
 		setIsApplyingFilters(false);
 	};
 
+	/**
+	 * Dispatches an action to clear all filters.
+	 */
 	const clearFilters = () => dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
 
+	/**
+	 * Dispatches an action to remove a specific filter value.
+	 * @param {string} filterType - The type of filter to remove from.
+	 * @param {*} value - The specific value to remove.
+	 */
 	const removeFilter = (filterType, value) =>
 		dispatch({
 			type: FilterActionTypes.REMOVE_FILTER,
 			payload: { filterType, value },
 		});
 
+	// Return context values and action functions
 	return {
 		state,
 		dispatch,

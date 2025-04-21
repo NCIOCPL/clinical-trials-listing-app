@@ -8,6 +8,9 @@
 // https://on.cypress.io/plugins-guide
 // ***********************************************************
 
+// Set NODE_ENV to 'test' for babel-preset-react-app
+process.env.NODE_ENV = 'test';
+
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 const cucumber = require('cypress-cucumber-preprocessor').default;

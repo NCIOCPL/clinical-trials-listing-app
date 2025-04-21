@@ -1,0 +1,88 @@
+Feature: Filter Section Layout and Accordion Functionality
+
+  Scenario: User sees left filter section on desktop/widescreen on disease pages
+    Given user is viewing the preview site at 1024px or larger breakpoint
+    When user navigates to /breast-cancer/treatment?cfg=0&pn=1
+    Then Filter Trials section displays on the left side of the screen
+      And Filter Trials section has grid-col-3 width
+      And Filter Trials section has the heading "Filter Trials"
+      And page title displays on the right side of the screen
+      And intro text displays below the page title
+      And results count displays below the intro text
+      And pagination displays below the results count
+      And results list displays below the pagination
+      And page content has grid-col-width-9
+    # Check accordion state on desktop
+    And the filter content is visible
+    And the filter button does not show expand/collapse icon
+
+  Scenario: User sees left filter section on desktop/widescreen on intervention pages
+    Given user is viewing the preview site at 1024px or larger breakpoint
+    When user navigates to /trastuzumab/treatment?cfg=1&pn=1
+    Then Filter Trials section displays on the left side of the screen
+      And Filter Trials section has grid-col-3 width
+      And Filter Trials section has the heading "Filter Trials"
+      And page title displays on the right side of the screen
+      And intro text displays below the page title
+      And results count displays below the intro text
+      And pagination displays below the results count
+      And results list displays below the pagination
+      And page content has grid-col-width-9
+    # Check accordion state on desktop
+    And the filter content is visible
+    And the filter button does not show expand/collapse icon
+
+  Scenario: Filters section starts collapsed on mobile
+    Given "trialListingPageType" is set to "Disease" # Assuming this setup is still needed for mobile
+    And "dynamicListingPatterns" object is set to "Disease" # Assuming this setup is still needed for mobile
+    And screen breakpoint is set to "mobile"
+    When the user navigates to "/breast-cancer?cfg=0"
+    Then the filter content is hidden
+    And the filter button shows expand icon
+
+  Scenario: Clicking filter button toggles content visibility on mobile
+    Given "trialListingPageType" is set to "Disease"
+    And "dynamicListingPatterns" object is set to "Disease"
+    And screen breakpoint is set to "mobile"
+    When the user navigates to "/breast-cancer?cfg=0"
+    Then the filter content is hidden
+    When clicks the filter toggle button
+    Then the filter content is visible
+    And the filter button shows collapse icon
+    When clicks the filter toggle button
+    Then the filter content is hidden
+    And the filter button shows expand icon
+
+  Scenario: Filter section maintains visibility state after applying filters on mobile
+    Given "trialListingPageType" is set to "Disease"
+    And "dynamicListingPatterns" object is set to "Disease"
+    And screen breakpoint is set to "mobile"
+    When the user navigates to "/breast-cancer?cfg=0"
+    And clicks the filter toggle button
+    And enters "65" in the age filter
+    And clicks the "Apply Filters" button
+    Then the filter content remains visible
+    And the filter button shows collapse icon
+
+  Scenario: Filter section maintains visibility state after clearing filters on mobile
+    Given "trialListingPageType" is set to "Disease"
+    And "dynamicListingPatterns" object is set to "Disease"
+    And screen breakpoint is set to "mobile"
+    When the user navigates to "/breast-cancer?a=65&cfg=0"
+    And clicks the filter toggle button
+    And clicks the "Clear Filters" button
+    Then the filter content remains visible
+    And the filter button shows collapse icon
+
+  Scenario: Filter section state persists during page navigation on mobile
+    Given "trialListingPageType" is set to "Disease"
+    And "dynamicListingPatterns" object is set to "Disease"
+    And screen breakpoint is set to "mobile"
+    When the user navigates to "/breast-cancer?cfg=0"
+    And clicks the filter toggle button
+    And enters "65" in the age filter
+    And clicks the "Apply Filters" button
+    And clicks on "Next" button
+    Then the filter content remains visible
+    And the age filter shows "65"
+    And the filter button shows collapse icon
