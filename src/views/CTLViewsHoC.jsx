@@ -8,7 +8,6 @@ import { ErrorPage, PageNotFound } from './ErrorBoundary';
 import { useAppPaths, useListingSupport } from '../hooks';
 import { useStateValue } from '../store/store';
 import { getTrialType } from '../services/api/actions';
-// Import the new utility function
 import { appendOrUpdateToQueryString, getIdOrNameAction, getKeyValueFromQueryString, convertObjectToBase64, removeQueryParam } from '../utils';
 import { hocReducer, hocStates, setLoading, setSuccessfulFetch, setFailedFetch, setNotFound, setRedirecting } from './hocReducer';
 import Sidebar from '../features/filters/components/Sidebar';

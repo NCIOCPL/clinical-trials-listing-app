@@ -271,18 +271,19 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 			if (isValidZipFormat(zipCode)) {
 				try {
 					// Get the zipcode conversion endpoint from the component state
-					const zipBase = zipConversionEndpoint || 'https://clinicaltrialsapi.cancer.gov/api/v2/zip_coords';
+					const zipBase = zipConversionEndpoint || 'https://react-app-dev.cancer.gov/cts_api/zip_code_lookup/';
 					const url = `${zipBase}/${zipCode}`;
 
 					// Call the API directly
 					const response = await axios.get(url);
 
 					// Only if we get valid coordinates...
-					if (response.data && !response.data.message) {
+					// Check if the response contains the coordinates object
+					if (response.data && response.data.coordinates) {
 						// Set the coordinates
 						dispatch({
 							type: FilterActionTypes.SET_ZIP_COORDINATES,
-							payload: response.data,
+							payload: response.data.coordinates, // Pass the nested coordinates object
 						});
 
 						// THEN apply filters

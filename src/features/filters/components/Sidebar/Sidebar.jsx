@@ -37,7 +37,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	// Hooks for navigation, location, filter context, tracking, and counters
 	const navigate = useNavigate();
 	const location = useLocation();
-	const { state, dispatch, applyFilters } = useFilters();
+	const { state, dispatch, applyFilters, enabledFilters = [] } = useFilters();
 	const { filters, isDirty } = state; // Get current filters and dirty state from context
 	const [hasInteracted, setHasInteracted] = useState(false); // Tracks if user has interacted with any filter yet
 	// const [isFirstLoad, setIsFirstLoad] = useState(true); // Unused state variable
@@ -406,7 +406,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			mediaQueryMobile.removeEventListener('change', handleMediaQueryChange);
 			filterBtn.removeEventListener('click', accordionOnClick); // Ensure listener is removed on unmount
 		};
-	}, []); // Empty dependency array - runs once on mount
+	}, []); // Revert dependency array
 
 	/**
 	 * Effect to set up the mobile accordion listener on component mount.
@@ -483,44 +483,30 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		return null;
 	}
 
-	// Get the configuration for the current page type
-	const pageConfig = PAGE_FILTER_CONFIGS[pageType];
-
 	return (
 		<aside className="ctla-sidebar">
 			{/* Accordion Header for Mobile */}
 			<div className="usa-accordion ctla-sidebar__header">
 				<h2 className="usa-accordion__heading ctla-sidebar__title">
-					<button id="filterButton" className="usa-accordion__button ctla-sidebar__accordion-button is-closed" type="button" aria-expanded="false" aria-controls="accordionContent" disabled={isDisabled}>
-						Filters
+					<button id="filterButton" type="button" className="usa-accordion__button" aria-expanded="true" aria-controls="accordionContent" onClick={setMobileOnClick}>
+						Filter Trials
 					</button>
 				</h2>
-				{/* Filter Content (Accordion) */}
-				<div id="accordionContent" className="usa-accordion__content ctla-sidebar__content" hidden>
-					{/* Render filter components based on configuration */}
-					{(pageConfig?.order ?? []).map((filterType) => (
-						<React.Fragment key={filterType}>{renderFilter(filterType, isDisabled)}</React.Fragment>
-					))}
-
-					{/* Action Buttons */}
-					<div className="ctla-sidebar__actions">
-						<button
-							type="button"
-							className="usa-button ctla-sidebar__button ctla-sidebar__button--apply"
-							onClick={handleApplyFilters}
-							disabled={isDisabled || !isDirty} // Disable if sidebar disabled or no changes
-						>
-							Apply Filters
-						</button>
-						<button
-							type="button"
-							className="usa-button usa-button--outline ctla-sidebar__button ctla-sidebar__button--clear"
-							onClick={handleClearFilters}
-							disabled={isDisabled || !hasActiveFilters()} // Disable if sidebar disabled or no active filters
-						>
-							Clear Filters
-						</button>
-					</div>
+			</div>
+			<div id="accordionContent" className="usa-accordion__content ctla-sidebar__content">
+				{PAGE_FILTER_CONFIGS[pageType].order.map((filterType) => {
+					if (enabledFilters.includes(filterType)) {
+						return <div key={filterType}>{renderFilter(filterType, isDisabled)}</div>;
+					}
+					return null;
+				})}
+				<div className="ctla-sidebar__actions">
+					<button className="usa-button ctla-sidebar__button--clear" onClick={handleClearFilters} disabled={isDisabled || !hasActiveFilters()}>
+						Clear Filters
+					</button>
+					<button className="usa-button ctla-sidebar__button--apply" onClick={handleApplyFilters} disabled={isDisabled || !isDirty}>
+						Apply Filters
+					</button>
 				</div>
 			</div>
 		</aside>

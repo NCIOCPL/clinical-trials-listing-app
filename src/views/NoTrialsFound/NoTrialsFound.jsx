@@ -10,6 +10,7 @@ import { useStateValue } from '../../store/store';
 import { TokenParser } from '../../utils';
 import { FilterProvider } from '../../features/filters/context/FilterContext/FilterContext';
 import { Sidebar } from '../../features/filters/components';
+import './NoTrialsFound.scss'; // Import our custom stylesheet that extends Disease.scss
 
 // Added redirectStatus and prerenderLocation props
 const NoTrialsFound = ({ routeParamMap, data, redirectStatus, prerenderLocation }) => {
@@ -145,13 +146,17 @@ const NoTrialsFound = ({ routeParamMap, data, redirectStatus, prerenderLocation 
 	}, {});
 
 	return (
-		<div className="disease-view">
+		<div className="disease-view no-trials-page"> {/* Added no-trials-page class for specific styling */}
 			{renderHelmet()}
 			<FilterProvider baseFilters={baseFilters} pageType={trialListingPageType}>
 				<div className="disease-view__container">
 					<Sidebar pageType={trialListingPageType} isDisabled={true} />
+					{/* H1 remains a direct child */}
+					<h1 className="disease-view__heading">{replacementText.pageTitle}</h1>
+					{/* Empty intro area for proper grid layout */}
+					<div className="disease-view__intro"></div>
+					{/* NoResults and CISBanner inside content area */}
 					<div className="disease-view__content">
-						<h1 className="disease-view__heading">{replacementText.pageTitle}</h1>
 						<NoResults replacedNoTrialsHtml={replacementText.noTrialsHtml} />
 						<CISBanner onLiveHelpClick={onLiveHelpClickHandler} />
 					</div>
