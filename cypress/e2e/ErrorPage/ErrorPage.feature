@@ -1,3 +1,4 @@
+@misc
 Feature: As a user, when the listing API encounters and error, I am presented with an error page
 
     Scenario: Display error page when a user views a manual listing page that encounters a CTS API error

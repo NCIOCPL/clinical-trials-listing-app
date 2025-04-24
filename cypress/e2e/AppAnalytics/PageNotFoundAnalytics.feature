@@ -1,3 +1,4 @@
+@analytics @misc
 Feature: Analytics Page Not Found
 
 	Scenario: Page Load Analytics fires for a 404 on a disease dynamic listing page with no parameters

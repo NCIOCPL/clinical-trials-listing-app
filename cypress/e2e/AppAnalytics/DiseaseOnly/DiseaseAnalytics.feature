@@ -1,3 +1,4 @@
+@disease @analytics
 Feature: Disease listing page analytics
 
 	Scenario: Page Load Analytics fires when a user views a disease listing page

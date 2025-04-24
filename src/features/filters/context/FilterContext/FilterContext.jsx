@@ -33,7 +33,7 @@ export const FilterActionTypes = {
  */
 const initialState = {
 	filters: {
-		age: [],
+		age: '',
 		location: {
 			zipCode: '',
 			radius: null,
@@ -271,19 +271,18 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 			if (isValidZipFormat(zipCode)) {
 				try {
 					// Get the zipcode conversion endpoint from the component state
-					const zipBase = zipConversionEndpoint || 'https://react-app-dev.cancer.gov/cts_api/zip_code_lookup/';
+					const zipBase = zipConversionEndpoint || 'https://clinicaltrialsapi.cancer.gov/api/v2/zip_coords';
 					const url = `${zipBase}/${zipCode}`;
 
 					// Call the API directly
 					const response = await axios.get(url);
 
 					// Only if we get valid coordinates...
-					// Check if the response contains the coordinates object
-					if (response.data && response.data.coordinates) {
+					if (response.data && !response.data.message) {
 						// Set the coordinates
 						dispatch({
 							type: FilterActionTypes.SET_ZIP_COORDINATES,
-							payload: response.data.coordinates, // Pass the nested coordinates object
+							payload: response.data,
 						});
 
 						// THEN apply filters
@@ -408,10 +407,12 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 			} else {
 				updatedParams.set('pn', pnValue);
 			}
-
 			// Construct the final query string
 			const queryString = Array.from(updatedParams.entries())
-				.filter(([, value]) => value.toString().trim() !== '')
+				.filter(([, value]) => {
+					// Check if value is null or undefined before calling toString()
+					return value !== null && value !== undefined && value.toString().trim() !== '';
+				})
 				.map(([key, value]) => `${key}=${value}`)
 				.join('&');
 

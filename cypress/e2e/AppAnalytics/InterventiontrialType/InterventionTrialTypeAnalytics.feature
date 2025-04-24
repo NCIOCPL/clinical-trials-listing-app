@@ -1,3 +1,4 @@
+@intervention @analytics
 Feature: Intervention listing page analytics
 
 	Scenario: Page Load Analytics fires when a user views an intervention listing page

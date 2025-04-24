@@ -14,7 +14,7 @@ import './NoTrialsFound.scss'; // Import our custom stylesheet that extends Dise
 
 // Added redirectStatus and prerenderLocation props
 const NoTrialsFound = ({ routeParamMap, data, redirectStatus, prerenderLocation }) => {
-	console.log('[NoTrialsFound] Rendering. Props:', { redirectStatus, prerenderLocation }); // LOG PROPS
+	// console.log('[NoTrialsFound] Rendering. Props:', { redirectStatus, prerenderLocation }); // LOG PROPS
 	// Removed location hook
 	// const location = useLocation();
 	const tracking = useTracking();
@@ -154,7 +154,7 @@ const NoTrialsFound = ({ routeParamMap, data, redirectStatus, prerenderLocation 
 				<div className="disease-view__container">
 					<Sidebar pageType={trialListingPageType} isDisabled={true} />
 					{/* H1 remains a direct child */}
-					<h1 className="disease-view__heading">{replacementText.pageTitle}</h1>
+					<h1 className="disease-view__heading nci-heading-h1">{replacementText.pageTitle}</h1>
 					{/* Empty intro area for proper grid layout */}
 					<div className="disease-view__intro"></div>
 					{/* NoResults and CISBanner inside content area */}

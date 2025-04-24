@@ -32,7 +32,7 @@ const CTLViewsHoC = (WrappedView) => {
 			redirectStatus: location.state?.redirectStatus,
 			prerenderLocation: location.state?.prerenderLocation,
 		});
-		console.log(`[CTLViewsHoC ${WrappedView.name}] Captured initialLocationState:`, JSON.stringify(initialLocationState)); // LOG
+		// console.log(`[CTLViewsHoC ${WrappedView.name}] Captured initialLocationState:`, JSON.stringify(initialLocationState)); // LOG
 
 		const [state, hocDispatch] = useReducer(hocReducer, {
 			status: hocStates.LOADING_STATE,
@@ -150,12 +150,12 @@ const CTLViewsHoC = (WrappedView) => {
 						const redirectStatus = isCodeToPrettyRedirect ? '301' : '302';
 						const redirectPathOnly = redirectPath(redirectParams);
 						const redirectUrl = `${redirectPathOnly}${queryString}`;
-						console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Redirect check passed. isCodeToPretty: ${isCodeToPrettyRedirect}, Calculated Status: ${redirectStatus}, PathOnly: ${redirectPathOnly}`); // LOG
+						// console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Redirect check passed. isCodeToPretty: ${isCodeToPrettyRedirect}, Calculated Status: ${redirectStatus}, PathOnly: ${redirectPathOnly}`); // LOG
 
 						// For code-to-pretty redirects, we need to preserve the redirectStatus
 						// and set the prerender-header Location to the final URL
 						if (isCodeToPrettyRedirect) {
-							console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Code-to-pretty redirect needed.`); // LOG
+							// console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Code-to-pretty redirect needed.`); // LOG
 							// Set state to REDIR_STATE with 301 status
 							// hocDispatch(setRedirecting('301')); // Dispatching twice below
 
@@ -167,11 +167,11 @@ const CTLViewsHoC = (WrappedView) => {
 							};
 
 							// Set state first
-							console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Dispatching setRedirecting('301').`); // LOG Action
+							// console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Dispatching setRedirecting('301').`); // LOG Action
 							hocDispatch(setRedirecting('301'));
 
 							// Then navigate
-							console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Navigating (replace: true) to ${redirectUrl} with state:`, JSON.stringify(navigationState)); // LOG Navigate
+							// console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Navigating (replace: true) to ${redirectUrl} with state:`, JSON.stringify(navigationState)); // LOG Navigate
 							navigate(redirectUrl, {
 								replace: true,
 								state: navigationState
@@ -181,7 +181,7 @@ const CTLViewsHoC = (WrappedView) => {
 							return;
 						} else {
 							// For other redirects, use the provided status
-							console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Other redirect needed. Dispatching setRedirecting('${redirectStatus}').`); // LOG Action
+							// console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Other redirect needed. Dispatching setRedirecting('${redirectStatus}').`); // LOG Action
 							hocDispatch(setRedirecting(redirectStatus));
 
 							// Set state for navigation
@@ -190,7 +190,7 @@ const CTLViewsHoC = (WrappedView) => {
 							};
 
 							// Navigate with state
-							console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Navigating (replace: true) to ${redirectUrl} with state:`, JSON.stringify(navigationState)); // LOG Navigate
+							// console.log(`[CTLViewsHoC ${WrappedView.name} Effect] Navigating (replace: true) to ${redirectUrl} with state:`, JSON.stringify(navigationState)); // LOG Navigate
 							navigate(redirectUrl, {
 								replace: true,
 								state: navigationState
@@ -203,7 +203,7 @@ const CTLViewsHoC = (WrappedView) => {
 				}
 
 				// At this point, the wrapped view is going to handle this request.
-				console.log(`[CTLViewsHoC ${WrappedView.name} Effect] No redirect needed or already redirected. Dispatching setSuccessfulFetch.`); // LOG Action
+				// console.log(`[CTLViewsHoC ${WrappedView.name} Effect] No redirect needed or already redirected. Dispatching setSuccessfulFetch.`); // LOG Action
 				hocDispatch(setSuccessfulFetch(currentActionsHash, getListingInfo.payload));
 			} else if (!getListingInfo.loading && getListingInfo.error) {
 				// Raise error for ErrorBoundary for now.
@@ -222,9 +222,9 @@ const CTLViewsHoC = (WrappedView) => {
 
 		// Effect to clean up the redirect=true query parameter after successful load
 		useEffect(() => {
-			console.log('[CTLViewsHoC Cleanup Effect] Running. Status:', state.status, 'Search:', search); // LOG
+			// console.log('[CTLViewsHoC Cleanup Effect] Running. Status:', state.status, 'Search:', search); // LOG
 			if (state.status === hocStates.LOADED_STATE && search.includes('redirect=true')) {
-				console.log('[CTLViewsHoC Cleanup Effect] Conditions met. Removing redirect=true.'); // LOG
+				// console.log('[CTLViewsHoC Cleanup Effect] Conditions met. Removing redirect=true.'); // LOG
 				const newSearch = removeQueryParam(search, 'redirect');
 				// Use navigate with object form to preserve existing state
 				navigate(
@@ -241,7 +241,7 @@ const CTLViewsHoC = (WrappedView) => {
 			// Depend on status and search string to re-run when needed
 		}, [state.status, search, location.pathname, navigate, location.state]);
 
-		console.log(`[CTLViewsHoC ${WrappedView.name}] Rendering. HoC State:`, state, 'Passing lastHoCRedirectStatus:', state.lastHoCRedirectStatus); // LOG
+		// console.log(`[CTLViewsHoC ${WrappedView.name}] Rendering. HoC State:`, state, 'Passing lastHoCRedirectStatus:', state.lastHoCRedirectStatus); // LOG
 
 		return (
 			<div>

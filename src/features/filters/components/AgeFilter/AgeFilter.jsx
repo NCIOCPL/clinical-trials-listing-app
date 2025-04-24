@@ -48,6 +48,11 @@ const AgeFilter = ({ onFocus, disabled }) => {
 			return; // Exit early
 		}
 
+		// Explicitly reject any non-numeric characters (including 'e')
+		if (!/^\d+$/.test(inputValue)) {
+			return; // Exit early for any non-digit characters
+		}
+
 		// Attempt to parse the input as an integer
 		const numericValue = parseInt(inputValue, 10);
 
@@ -81,6 +86,30 @@ const AgeFilter = ({ onFocus, disabled }) => {
 		}
 	};
 
+	/**
+	 * Handles keydown events on the age input field.
+	 * Prevents 'e', '+', '-' and any non-numeric characters from being entered.
+	 *
+	 * @param {React.KeyboardEvent<HTMLInputElement>} e - The keyboard event.
+	 */
+	const handleKeyDown = (e) => {
+		// Allow: backspace, delete, tab, escape, enter, arrows
+		if (
+			[8, 46, 9, 27, 13, 37, 38, 39, 40].indexOf(e.keyCode) !== -1 ||
+			// Allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+			(e.ctrlKey === true && [65, 67, 86, 88].indexOf(e.keyCode) !== -1) ||
+			// Allow: home, end
+			(e.keyCode >= 35 && e.keyCode <= 39)
+		) {
+			return;
+		}
+
+		// Prevent 'e', '+', '-' and any non-numeric characters
+		if (e.key === 'e' || e.key === '+' || e.key === '-' || !/^\d$/.test(e.key)) {
+			e.preventDefault();
+		}
+	};
+
 	return (
 		<FilterGroup title="Age">
 			<input
@@ -97,6 +126,7 @@ const AgeFilter = ({ onFocus, disabled }) => {
 				pattern="[0-9]*" // Allow only digits (helps with validation)
 				inputMode="numeric" // Hint for numeric keyboard on mobile devices
 				disabled={disabled} // Set disabled state based on prop
+				onKeyDown={handleKeyDown} // Prevent non-numeric characters from being entered
 			/>
 		</FilterGroup>
 	);

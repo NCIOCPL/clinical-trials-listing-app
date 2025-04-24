@@ -21,7 +21,7 @@ import { useTrialSearch } from '../../features/filters/hooks/useTrialSearch';
 // Add lastHoCRedirectStatus and isInitialLoading to props
 const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state, lastHoCRedirectStatus }) => {
 	const location = useLocation(); // Need location early for log
-	console.log(`[Intervention] Start Render. Props: lastHoCRedirectStatus=${lastHoCRedirectStatus}, isInitialLoading=${isInitialLoading}. Location State:`, JSON.stringify(location.state)); // LOG
+	// console.log(`[Intervention] Start Render. Props: lastHoCRedirectStatus=${lastHoCRedirectStatus}, isInitialLoading=${isInitialLoading}. Location State:`, JSON.stringify(location.state)); // LOG
 	const { NoTrialsPath } = useAppPaths();
 	const navigate = useNavigate();
 	const { search } = location;
@@ -158,7 +158,7 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 	};
 
 	const handleRedirect = (status) => {
-		console.log(`[Intervention handleRedirect] Called with status: ${status}`); // LOG
+		// console.log(`[Intervention handleRedirect] Called with status: ${status}`); // LOG
 		let redirectParams = '';
 
 		// If data is available, use getNoTrialsRedirectParams
@@ -189,7 +189,7 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 			prerenderLocation = null;
 		}
 
-		console.log(`[Intervention handleRedirect] Final redirect status: ${finalRedirectStatus}. Prerender Location: ${prerenderLocation}. Navigating...`); // LOG
+		// console.log(`[Intervention handleRedirect] Final redirect status: ${finalRedirectStatus}. Prerender Location: ${prerenderLocation}. Navigating...`); // LOG
 
 		return navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
 			replace: true,
@@ -270,13 +270,13 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 			}
 
 			// Handle truly empty results (no trials at all)
-			console.log(`[Intervention Effect] Before total check. fetchState.total=${fetchState?.total}, hasAppliedFilters=${hasAppliedFilters()}, lastHoCRedirectStatus=${lastHoCRedirectStatus}`); // LOG
+			// console.log(`[Intervention Effect] Before total check. fetchState.total=${fetchState?.total}, hasAppliedFilters=${hasAppliedFilters()}, lastHoCRedirectStatus=${lastHoCRedirectStatus}`); // LOG
 			if (fetchState?.total === 0) {
 				// Only redirect to NoTrialsFound if no filters are applied
 				if (!hasAppliedFilters()) {
 					// Use 301 if the last HoC redirect was 301, otherwise 302
 					const statusForNoTrials = lastHoCRedirectStatus === '301' ? '301' : '302';
-					console.log(`[Intervention Effect] No trials found and no filters applied. Calculated statusForNoTrials: ${statusForNoTrials}. Calling handleRedirect.`); // LOG
+					// console.log(`[Intervention Effect] No trials found and no filters applied. Calculated statusForNoTrials: ${statusForNoTrials}. Calling handleRedirect.`); // LOG
 					handleRedirect(statusForNoTrials);
 				}
 				// If filters are applied, stay on page and show NoResultsWithFilters (handled in render)
@@ -397,15 +397,18 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 
 		navigate(`${routePath(paramsObject)}${qryStr}`);
 	};
-
 	const renderHelmet = () => {
 		const pathAndPage = window.location.pathname + `?pn=${pager.page}`;
 
 		// Get redirect status from state or location.state
 		let redirectStatus = '';
 
-		// Check if we're in a redirect state
-		if (state && state.status === hocStates.REDIR_STATE) {
+		// Prioritize the persistent status from the last HoC redirect - THIS IS THE KEY ADDITION
+		if (lastHoCRedirectStatus) {
+			redirectStatus = lastHoCRedirectStatus;
+		}
+		// Then check other potential sources
+		else if (state && state.status === hocStates.REDIR_STATE) {
 			redirectStatus = '301';
 		} else if ((state && state.redirectStatus === '301') || location.state?.redirectStatus === '301') {
 			redirectStatus = '301';
@@ -495,7 +498,7 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 					/>
 				</aside>
 
-				<h1 className="disease-view__heading">{replacedText.pageTitle}</h1>
+				<h1 className="disease-view__heading nci-heading-h1">{replacedText.pageTitle}</h1>
 
 				{/* ::: Intro Text ::: */}
 				{replacedText.introText.length > 0 && <div className="disease-view__intro ctla-results__intro" dangerouslySetInnerHTML={{ __html: replacedText.introText }}></div>}

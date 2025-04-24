@@ -7,17 +7,36 @@
  *
  * In v2 this should reconciled with the other styling for Disease and Intervention results.
  */
-/* Specific override to remove left padding from grid containers in Manual listing page */
-.app-content .manual-listing-page.grid-container,
-.manual-listing-page.grid-container {
-    padding-left: 0;
+/* Specific override to remove padding and margins for Manual view */
+
+ .app .app-content.manual-listing-page .grid-container,
+.app .app-content.manual-listing-page .grid-container,
+.manual-listing-page .app-content .grid-container,
+.manual-listing-page.app-content .grid-container {
+	padding-left: 0;
+	padding-right: 0;
 }
 
-.manual-listing-page {
 
+.app .app-content.manual-listing-page .grid-row,
+.app .app-content.manual-listing-page .grid-row,
+.manual-listing-page .app-content .grid-row,
+.manual-listing-page.app-content .grid-row {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+
+.app .app-content .manual-listing-page .ctla-results__intro {
+  margin-top: 0;
+}
+
+.manual-listing-page .page-options-container{margin-top:0}
+
+
+.manual-listing-page {
     .ctla-results__intro.grid-container,
     .ctla-results__list.grid-container {
-        /* Ensure proper containment by setting overflow to hidden */
         overflow: hidden;
         padding-left: 0;
 
@@ -27,10 +46,10 @@
             padding-left: 0;
         }
 
-        /* More specific selector to target the exact path in the DOM */
-        div > div > ul > li {
-            padding-left: 0 !important;
-            margin-left: 0 !important;
+
+        .manual-listing-page .ctla-results__list.grid-container div > div > ul > li {
+            padding-left: 0;
+            margin-left: 0;
         }
 
         /* Reset the negative margins on the grid row */
@@ -66,6 +85,8 @@
     }
 }
 
+
+
 .ctla-results__intro a {
 	text-decoration: underline;
 }
@@ -89,8 +110,8 @@
 }
 
 @media (max-width: 63.99em) {
-    .usa-footer__nci-return-to-top a::after {
-        mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="m4 12 1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" fill="%231B1B1B"/></svg>') !important;
+    html body .usa-footer__nci-return-to-top a::after {
+        mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="m4 12 1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" fill="%231B1B1B"/></svg>');
     }
 }
 
@@ -110,9 +131,9 @@
 	list-style-type: none;
 }
 
-.ctla-results__list ul > li {
-	@include u-margin-bottom(4, !important);
-	@include u-margin-top(0, !important);
+.manual-listing-page .ctla-results__list ul > li {
+	@include u-margin-bottom(4);
+	@include u-margin-top(0);
 	clear: both;
 }
 

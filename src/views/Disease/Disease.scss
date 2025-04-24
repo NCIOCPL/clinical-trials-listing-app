@@ -1,5 +1,24 @@
 @use 'uswds-core' as *;
 
+
+
+.app-content.manual-listing-page.grid-row,
+.manual-listing-page .grid-row {
+	@include u-margin-x(0);
+
+}
+
+
+
+
+.app-content .manual-listing-page.grid-container,
+.manual-listing-page.grid-container {
+	@include u-padding-x(0);
+
+}
+
+
+
 .ctla-results__intro a {
 	text-decoration: underline;
 }

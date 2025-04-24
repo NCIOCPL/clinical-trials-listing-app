@@ -93,7 +93,8 @@ const Manual = () => {
 
 		return (
 			<>
-				<div className="ctla-results__summary grid-container">
+				{/* TODO: Add appropriate padding/margin utility classes if needed */}
+				<div className="ctla-results__summary">
 					<div className="grid-row">
 						{placement === 'top' && (
 							<div className="ctla-results__count grid-col">
@@ -120,11 +121,11 @@ const Manual = () => {
 		currentPage: Number(pager.page),
 	})(ResultsList);
 	return (
-		<div className="grid-container manual-listing-page">
+		<div className="manual-listing-page">
 			<div className="grid-row">
 				<div className="grid-col">
 					{renderHelmet()}
-					<h1>{pageTitle}</h1>
+					<h1 className="nci-heading-h1">{pageTitle}</h1>
 					<div className="page-options-container" />
 					{(() => {
 						if (fetchState.loading) {
@@ -135,7 +136,8 @@ const Manual = () => {
 									<>
 										{/* ::: Intro Text ::: */}
 										{introText.length > 0 && (
-											<div className="ctla-results__intro grid-container">
+											// TODO: Add appropriate padding/margin utility classes if needed
+											<div className="ctla-results__intro">
 												<div className="grid-row">
 													<div
 														className="grid-col"

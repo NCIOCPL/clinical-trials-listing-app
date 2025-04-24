@@ -21,7 +21,7 @@ import NoResultsWithFilters from '../../components/molecules/NoResultsWithFilter
 // Add lastHoCRedirectStatus to props
 const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, lastHoCRedirectStatus }) => {
 	const location = useLocation(); // Need location early for log
-	console.log(`[Disease] Start Render. Props: lastHoCRedirectStatus=${lastHoCRedirectStatus}, isInitialLoading=${isInitialLoading}. Location State:`, JSON.stringify(location.state)); // LOG
+	// console.log(`[Disease] Start Render. Props: lastHoCRedirectStatus=${lastHoCRedirectStatus}, isInitialLoading=${isInitialLoading}. Location State:`, JSON.stringify(location.state)); // LOG
 	const { NoTrialsPath } = useAppPaths();
 	const navigate = useNavigate();
 	const { search } = location;
@@ -286,13 +286,13 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 			}
 
 			// Handle truly empty results (no trials at all)
-			console.log(`[Disease Effect] Before total check. fetchState.total=${fetchState?.total}, hasAppliedFilters=${hasAppliedFilters()}, lastHoCRedirectStatus=${lastHoCRedirectStatus}`); // LOG
+			// console.log(`[Disease Effect] Before total check. fetchState.total=${fetchState?.total}, hasAppliedFilters=${hasAppliedFilters()}, lastHoCRedirectStatus=${lastHoCRedirectStatus}`); // LOG
 			if (fetchState?.total === 0) {
 				// Only redirect to NoTrialsFound if no filters are applied
 				if (!hasAppliedFilters()) {
 					// Use 301 if the last HoC redirect was 301, otherwise 302
 					const statusForNoTrials = lastHoCRedirectStatus === '301' ? '301' : '302';
-					console.log(`[Disease Effect] No trials found and no filters applied. Calculated statusForNoTrials: ${statusForNoTrials}. Calling handleRedirect.`); // LOG
+					// console.log(`[Disease Effect] No trials found and no filters applied. Calculated statusForNoTrials: ${statusForNoTrials}. Calling handleRedirect.`); // LOG
 					handleRedirect(statusForNoTrials);
 				}
 				// If filters are applied, stay on page and show NoResultsWithFilters (handled in render)
@@ -390,7 +390,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 		}
 	}, [pn, location.pathname, location.search, fetchState?.total]);
 	const handleRedirect = (status) => {
-		console.log(`[Disease handleRedirect] Called with status: ${status}`); // LOG
+		// console.log(`[Disease handleRedirect] Called with status: ${status}`); // LOG
 		let redirectParams = '';
 
 		// If data is available, use getNoTrialsRedirectParams
@@ -421,7 +421,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 			prerenderLocation = null;
 		}
 
-		console.log(`[Disease handleRedirect] Final redirect status: ${finalRedirectStatus}. Prerender Location: ${prerenderLocation}. Navigating...`); // LOG
+		// console.log(`[Disease handleRedirect] Final redirect status: ${finalRedirectStatus}. Prerender Location: ${prerenderLocation}. Navigating...`); // LOG
 
 		// We want an immediate return to ensure the redirect happens synchronously
 		return navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
@@ -574,7 +574,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 					}}
 				/>
 
-				<h1 className="disease-view__heading">{replacedText.pageTitle}</h1>
+				<h1 className="disease-view__heading nci-heading-h1">{replacedText.pageTitle}</h1>
 
 				{replacedText.introText && <div className="disease-view__intro ctla-results__intro" dangerouslySetInnerHTML={{ __html: replacedText.introText }} />}
 

@@ -1,3 +1,4 @@
+@misc
 Feature: As a user when I visit a non existent trial listing page I am presented with page not found
 
     Scenario: Disease 404: Page Not Found displays when a user views a dynamic listing page with invalid disease c-code

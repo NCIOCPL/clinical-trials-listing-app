@@ -38,7 +38,7 @@ const ErrorPage = ({ error }) => {
 		<>
 			{renderHelmet()}
 			<div className="error-container">
-				<h1>{i18n.errorPageText[language]}</h1>
+				<h1 class="nci-heading-h1">{i18n.errorPageText[language]}</h1>
 			</div>
 		</>
 	);

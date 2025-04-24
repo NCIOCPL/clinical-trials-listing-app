@@ -1,5 +1,6 @@
+@notrials
 Feature: As the system, I want to be able to view the No Trials Found page for the dynamic listing pages, so that the pages are more user and SEO friendly.
-
+@smoke
 	Scenario: No Trials Found page is displayed if pretty URL name is given as p1 parameter to /notrials route for Disease
 		Given "trialListingPageType" is set to "Disease"
 		And "dynamicListingPatterns" object is set to "Disease"

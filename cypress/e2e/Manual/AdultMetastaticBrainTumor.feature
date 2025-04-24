@@ -1,3 +1,4 @@
+@manual @smoke
 Feature: As a user, I would like to view the trial results for a manual listing page that is given specific parameters, along with links to the trial's description page, the brief summary of the trial, and the number of locations of the trial
 
   Scenario: View manual listing page results

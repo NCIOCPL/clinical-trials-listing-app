@@ -58,6 +58,8 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		if (filters.age !== undefined && filters.age !== null && filters.age !== '') {
 			if (filters.age < FILTER_CONFIG.age.min || filters.age > FILTER_CONFIG.age.max) {
 				errors.age = `Invalid age value. Must be between ${FILTER_CONFIG.age.min} and ${FILTER_CONFIG.age.max}.`;
+				// console.log(errors.age);
+				// console.log(filters.age);
 			}
 		}
 
