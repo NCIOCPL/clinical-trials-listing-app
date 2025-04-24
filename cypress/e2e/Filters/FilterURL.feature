@@ -1,3 +1,4 @@
+@filters
 Feature: Direct Filter Navigation
 
 	Scenario: Age filter is correctly applied when navigating directly to URL

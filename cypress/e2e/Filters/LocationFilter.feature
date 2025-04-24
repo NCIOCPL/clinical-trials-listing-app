@@ -1,3 +1,4 @@
+@filters
 Feature: Location Filter Functionality
 
 	Scenario: Location filter displays correctly

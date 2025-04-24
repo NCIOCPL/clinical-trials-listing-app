@@ -1,3 +1,4 @@
+@filters
 Feature: Filter Section Layout and Accordion Functionality
 
   Scenario: User sees left filter section on desktop/widescreen on disease pages

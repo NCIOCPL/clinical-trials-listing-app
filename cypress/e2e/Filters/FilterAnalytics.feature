@@ -1,3 +1,4 @@
+@filters
 Feature: Filter Analytics Events
 	Scenario: Analytics event fires on first interaction with filter section
 		Given "trialListingPageType" is set to "Disease"

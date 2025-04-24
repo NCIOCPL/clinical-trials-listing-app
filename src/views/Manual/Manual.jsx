@@ -120,7 +120,7 @@ const Manual = () => {
 		currentPage: Number(pager.page),
 	})(ResultsList);
 	return (
-		<div className="grid-container">
+		<div className="grid-container manual-listing-page">
 			<div className="grid-row">
 				<div className="grid-col">
 					{renderHelmet()}

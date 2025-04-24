@@ -1,5 +1,71 @@
 @use 'uswds-core' as *;
 
+/*
+ * Fix for alignment issues between intro text and main body content
+ * Problem: The grid-row and its children are extending outside of their parent container
+ * due to negative margins applied to grid-row elements
+ *
+ * In v2 this should reconciled with the other styling for Disease and Intervention results.
+ */
+/* Specific override to remove left padding from grid containers in Manual listing page */
+.app-content .manual-listing-page.grid-container,
+.manual-listing-page.grid-container {
+    padding-left: 0;
+}
+
+.manual-listing-page {
+
+    .ctla-results__intro.grid-container,
+    .ctla-results__list.grid-container {
+        /* Ensure proper containment by setting overflow to hidden */
+        overflow: hidden;
+        padding-left: 0;
+
+        /* Target the list items inside the results list */
+        ul,
+        ul > li {
+            padding-left: 0;
+        }
+
+        /* More specific selector to target the exact path in the DOM */
+        div > div > ul > li {
+            padding-left: 0 !important;
+            margin-left: 0 !important;
+        }
+
+        /* Reset the negative margins on the grid row */
+        .grid-row {
+            margin-left: 0;
+            margin-right: 0;
+
+            /* Ensure the grid column fits properly within its container */
+            .grid-col {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+
+    /* Special handling for summary section - remove padding left */
+    .ctla-results__summary.grid-container {
+        /* Ensure proper containment by setting overflow to hidden */
+        overflow: hidden;
+        padding-left: 0;
+
+        /* Reset the negative margins on the grid row */
+        .grid-row {
+            margin-left: 0;
+            margin-right: 0;
+
+            /* Ensure the grid column fits properly within its container */
+            .grid-col {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+}
+
 .ctla-results__intro a {
 	text-decoration: underline;
 }

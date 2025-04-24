@@ -146,7 +146,9 @@ const NoTrialsFound = ({ routeParamMap, data, redirectStatus, prerenderLocation 
 	}, {});
 
 	return (
-		<div className="disease-view no-trials-page"> {/* Added no-trials-page class for specific styling */}
+		<div className="disease-view no-trials-page">
+			{' '}
+			{/* Added no-trials-page class for specific styling */}
 			{renderHelmet()}
 			<FilterProvider baseFilters={baseFilters} pageType={trialListingPageType}>
 				<div className="disease-view__container">

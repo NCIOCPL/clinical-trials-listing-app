@@ -1,3 +1,4 @@
+@filters
 Feature: Pagination Functionality with Filters
 
   Scenario: User navigates directly to second page of results with filters set

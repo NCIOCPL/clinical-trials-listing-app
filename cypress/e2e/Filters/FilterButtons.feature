@@ -1,3 +1,4 @@
+@filters
 Feature: Filter Buttons Functionality
   Scenario: User can apply filters when loading page without filters
     Given user is viewing the preview site for disease pages

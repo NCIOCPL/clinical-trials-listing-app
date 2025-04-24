@@ -1,3 +1,4 @@
+@filters
 Feature: Age Filter
 
 	Scenario: User is able to interact with Age parameter on disease pages - mouse

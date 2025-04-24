@@ -17,7 +17,8 @@ import { createTrialQueries } from '../../../api/queries';
  * @returns {object} The react-query query object containing data, status, error, etc.
  *                   for the trials query. Includes `keepPreviousData` for smoother pagination.
  */
-export function useTrials(filters = {}, page, pageSize) { // Default filters to {}
+export function useTrials(filters = {}, page, pageSize) {
+	// Default filters to {}
 	// Access the clinical trials API client from the global state
 	const [
 		{
@@ -36,12 +37,7 @@ export function useTrials(filters = {}, page, pageSize) { // Default filters to 
 	}
 
 	// Handle location filter - include zip, radius, and coordinates if valid
-	if (
-		filters.location?.zipCode &&
-		filters.location?.radius &&
-		filters.location?.coordinates?.lat &&
-		filters.location?.coordinates?.lon
-	) {
+	if (filters.location?.zipCode && filters.location?.radius && filters.location?.coordinates?.lat && filters.location?.coordinates?.lon) {
 		// Assuming API expects these parameter names based on typical patterns
 		apiFilters.zipCode = filters.location.zipCode;
 		apiFilters.zipRadius = filters.location.radius;

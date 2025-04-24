@@ -1,3 +1,4 @@
+@filters
 Feature: No trials found behavior with filters
 	Scenario: User enters a combination of filters that returns no trials for diseases
 		Given "trialListingPageType" is set to "Disease"

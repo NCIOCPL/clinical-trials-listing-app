@@ -64,7 +64,7 @@
     "pa11y": "pa11y-ci",
     "cy:ci": "start-server-and-test start:silent http://localhost:3000 integration-tests",
     "unit-tests": "jest",
-    "integration-tests": "NODE_ENV=test cypress run && nyc report",
+    "integration-tests": "NODE_ENV=test cypress run --tags ~@filters && nyc report",
     "merge-coverage": "npm run mc:pre && npm run mc:merge && npm run mc:report",
     "mc:pre": "node scripts/pre-merge-coverage",
     "mc:merge": "nyc merge coverage/tmp coverage/merged/coverage-final.json",

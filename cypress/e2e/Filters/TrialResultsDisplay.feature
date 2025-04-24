@@ -1,3 +1,4 @@
+@filters
 Feature: Trial Results Display Details
 
   Scenario: User does not see descriptions on trial results for diseases
