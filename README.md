@@ -314,7 +314,7 @@ import { useTracking } from 'react-tracking';
 import './Application.scss';
 
 import { useAppPaths } from '../../hooks';
-import { useStateValue } from '../../store/store.js';
+import { useStateValue } from '../../store/store';
 ```
 
 ### Linting

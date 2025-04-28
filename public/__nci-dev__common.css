@@ -95,39 +95,6 @@
 	font-style: italic;
 }
 
-.contentzone ul.no-bullets,
-.rawHtml ul.no-bullets,
-ul.no-bullets {
-	padding: 0;
-}
-
-.contentzone ul.no-bullets > li,
-.rawHtml ul.no-bullets > li,
-ul.no-bullets > li {
-	background: none;
-	list-style-type: none;
-	padding: 0;
-}
-
-.contentzone ul.no-bullets > li:before,
-.rawHtml ul.no-bullets > li:before,
-ul.no-bullets > li:before {
-	display: none;
-	content: none;
-}
-
-.contentzone ul.no-bullets ul,
-.rawHtml ul.no-bullets ul,
-ul.no-bullets ul {
-	margin: 5px 0 8px;
-}
-
-.contentzone ul.no-bullets ul > li,
-.rawHtml ul.no-bullets ul > li,
-ul.no-bullets ul > li {
-	padding: 0 0 0 10px;
-	margin: 0 0 5px;
-}
 
 a.arrow-link-white:focus,
 a.arrow-link-white:hover,
@@ -289,13 +256,13 @@ table {
 .cts-which a:before,
 .feature-card .image-hover a.icon-exit-notification,
 .icon-exit-notification,
-.list .file .filetype.ebook,
-.list .file .filetype.excel,
-.list .file .filetype.exe,
-.list .file .filetype.pdf,
-.list .file .filetype.ppt,
-.list .file .filetype.txt,
-.list .file .filetype.word,
+.ctla-results__list .file .filetype.ebook,
+.ctla-results__list .file .filetype.excel,
+.ctla-results__list .file .filetype.exe,
+.ctla-results__list .file .filetype.pdf,
+.ctla-results__list .file .filetype.ppt,
+.ctla-results__list .file .filetype.txt,
+.ctla-results__list .file .filetype.word,
 .modal__btn-close,
 .modal__content .CDR_audiofile,
 .news-share a.news-events:before,
@@ -1697,7 +1664,7 @@ ul {
 }
 
 a {
-	color: #2ba6cb;
+	color: #01679D;
 	text-decoration: none;
 	line-height: inherit;
 }
@@ -2029,7 +1996,7 @@ blockquote p {
 .breadcrumbs > * a,
 .breadcrumbs > * span {
 	text-transform: uppercase;
-	color: #2ba6cb;
+	color: #01679D;
 }
 
 .breadcrumbs > .current,
@@ -2090,7 +2057,7 @@ blockquote p {
 	display: block;
 }
 
-ul.pagination {
+/* ul.pagination {
 	display: block;
 	height: 1.5em;
 	margin-left: -0.3125em;
@@ -2133,7 +2100,7 @@ ul.pagination li.current a {
 
 ul.pagination li.current a:focus,
 ul.pagination li.current a:hover {
-	background: #2ba6cb;
+	background: #01679D;
 }
 
 ul.pagination li {
@@ -2148,7 +2115,7 @@ ul.pagination li {
 .pagination-centered ul.pagination li {
 	float: none;
 	display: inline-block;
-}
+} */
 
 .panel {
 	border: 1px solid #bdbdc2;
@@ -2204,7 +2171,7 @@ ul.pagination li {
 	border: 1px solid #bdbdc2;
 	margin-bottom: 1.25em;
 	padding: 1.25em;
-	background: #2ba6cb;
+	background: #01679D;
 	-webkit-box-shadow: 0 1px 0 hsla(0, 0%, 100%, 0.5) inset;
 	box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.5);
 }
@@ -2339,7 +2306,7 @@ a.th {
 .has-tip:focus,
 .has-tip:hover {
 	border-bottom: 1px dotted #196177;
-	color: #2ba6cb;
+	color: #01679D;
 }
 
 .has-tip.tip-left,
@@ -2375,7 +2342,7 @@ a.th {
 }
 
 .tooltip.opened {
-	color: #2ba6cb !important;
+	color: #01679D !important;
 	border-bottom: 1px dotted #196177 !important;
 }
 
@@ -2446,7 +2413,7 @@ ul.breadcrumbs > :before {
 
 ul.breadcrumbs > * a {
 	text-transform: none;
-	color: #2b7bba;
+	color: #01679D;
 }
 
 ul li ul {
@@ -2614,7 +2581,7 @@ ul.slick-dots li:before {
 
 ul.slick-dots li button {
 	display: block;
-	border: 3px solid #2b7bba;
+	border: 3px solid #01679D;
 	border-radius: 50%;
 	background-color: #fff;
 	height: 20px;
@@ -2627,7 +2594,7 @@ ul.slick-dots li button {
 }
 
 ul.slick-dots li button:focus {
-	outline: 1px dotted #2b7bba;
+	outline: 1px dotted #01679D;
 }
 
 ul.slick-dots li button:hover {
@@ -2636,7 +2603,7 @@ ul.slick-dots li button:hover {
 
 ul.slick-dots li.slick-active button,
 ul.slick-dots li button:active {
-	background-color: #2b7bba;
+	background-color: #01679D;
 }
 
 .ui-draggable-handle {
@@ -4729,7 +4696,7 @@ a.ui-button:active {
 .ui-selectmenu-button span.ui-icon {
 	position: relative;
 	background-image: none;
-	background-color: #2b7bba;
+	background-color: #01679D;
 	top: 0;
 	right: 0;
 	margin-top: 0;
@@ -4758,7 +4725,7 @@ a.ui-button:active {
 .ui-selectmenu-button:focus span.ui-icon,
 .ui-selectmenu-button:hover span.ui-icon {
 	background-image: none;
-	background-color: #2b7bba;
+	background-color: #01679D;
 }
 
 .ui-menu .ui-state-active {
@@ -4961,36 +4928,6 @@ form a.button:hover {
 	min-width: 130px;
 }
 
-.button,
-form button {
-	cursor: pointer;
-	font-family: 'Montserrat', 'Avant Garde', Arial, sans-serif;
-	font-weight: 700;
-	line-height: normal;
-	position: relative;
-	text-decoration: none;
-	text-align: center;
-	display: inline-block;
-	background-color: #2ba6cb;
-	border: 0 #2284a1;
-	color: #fff;
-	border-radius: 2px;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	margin: 0 28px 1.25em 0;
-	padding: 5px 12px;
-	font-size: 1em;
-	min-height: 39px;
-}
-
-.button:focus,
-.button:hover,
-form button:focus,
-form button:hover {
-	background-color: #2284a1;
-	color: #fff;
-}
 
 .button.submit,
 .button[type='submit'],
@@ -5020,7 +4957,7 @@ form button[type='reset'] {
 	background-color: transparent;
 	border-color: transparent;
 	color: #fff;
-	color: #2b7bba;
+	color: #01679D;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	font-weight: 400;
@@ -5042,7 +4979,7 @@ form button[type='reset']:hover {
 .button[type='reset']:hover,
 form button.reset:hover,
 form button[type='reset']:hover {
-	color: #2b7bba;
+	color: #01679D;
 	text-decoration: underline;
 }
 
@@ -6319,14 +6256,14 @@ fieldset fieldset .legend {
 	line-height: 1;
 	font-family: 'Montserrat', 'Avant Garde', Arial, sans-serif;
 	font-weight: 700;
-	color: #2b7bba;
+	color: #01679D;
 	background-color: #fff;
 	display: inline-block;
 	height: 1.5625em;
 	width: 1.5625em;
 	padding: 0.21875em;
 	text-align: center;
-	border: 2px solid #2b7bba;
+	border: 2px solid #01679D;
 	border-radius: 1em;
 	-webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1) inset;
 	box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.1);
@@ -7437,63 +7374,7 @@ header {
 	padding-top: 1.5em;
 }
 
-.nci-logo-pages.columns {
-	padding-left: 0;
-	padding-right: 0;
-}
 
-.nci-logo-pages a {
-	display: block;
-}
-
-.nci-logo-pages img[src*='.svg'] {
-	-webkit-transform: translateY(0.5px);
-	transform: translateY(0.5px);
-}
-
-.nci-logo-pages img {
-	width: 60%;
-}
-
-.nci-logo-pages a {
-	padding-left: 20px;
-	padding-right: 20px;
-}
-
-@media only screen and (min-width: 1025px) and (max-width: 1440px) {
-	.nci-logo-pages img {
-		width: 60%;
-	}
-
-	.nci-logo-pages a {
-		padding-left: 7.5px;
-		padding-right: 7.5px;
-	}
-}
-
-@media only screen and (min-width: 641px) and (max-width: 1024px) {
-	.nci-logo-pages img {
-		width: 70%;
-		min-width: 564.3px;
-		max-width: 595.5px;
-	}
-
-	.nci-logo-pages a {
-		padding-left: 15px;
-		padding-right: 15px;
-	}
-}
-
-@media only screen and (max-width: 640px) {
-	.nci-logo-pages img {
-		width: 90%;
-	}
-
-	.nci-logo-pages a {
-		padding-left: 13px;
-		padding-right: 13px;
-	}
-}
 
 a.nav-contact:before,
 a.nav-dictionary:before,
@@ -7533,44 +7414,7 @@ button.nav-search:before {
 	background-position: 6.13497% 86.23831%;
 }
 
-.nci-logo {
-	font-weight: 700;
-	font-size: 37.7px;
-	background: url(https://cancer.gov/PublishedContent/images/images/design-elements/logos/NIH-red-logo.png)
-		no-repeat 20px 0;
-	min-height: 54px;
-}
 
-.nci-logo.columns {
-	padding-left: 0;
-	padding-right: 0;
-}
-
-.nci-logo a {
-	color: #bb0e3d;
-	padding-left: 113px;
-	padding-top: 16px;
-	display: block;
-}
-
-.nci-logo a span {
-	position: absolute;
-	left: -10000px;
-	color: #5d5d5d;
-	font-size: 0.6em;
-}
-
-@media only screen and (min-width: 641px) and (max-width: 1024px) {
-	.nci-logo {
-		font-size: 24px;
-		min-height: 36px;
-	}
-
-	.nci-logo a {
-		padding-left: 95px;
-		padding-top: 9px;
-	}
-}
 
 @media only screen and (max-width: 1024px) {
 	header {
@@ -7623,16 +7467,6 @@ button.nav-search:before {
 }
 
 @media only screen and (max-width: 640px) {
-	.nci-logo {
-		font-size: 16px;
-		min-height: 28px;
-	}
-
-	.nci-logo a {
-		padding-left: 80px;
-		padding-top: 5px;
-	}
-
 	.mobile-menu-bar > a,
 	.mobile-menu-bar > button {
 		width: 19%;
@@ -7650,12 +7484,6 @@ button.nav-search:before {
 
 	button.nav-search {
 		margin-left: 4%;
-	}
-}
-
-@media only screen and (max-width: 390px) {
-	.nci-logo {
-		font-size: 13px;
 	}
 }
 
@@ -7678,7 +7506,7 @@ button.nav-search:before {
 }
 
 .sitewide-language a {
-	color: #2b7bba;
+	color: #01679D;
 }
 
 .sitewide-language ul {
@@ -8151,15 +7979,9 @@ button.nav-search:before {
 	}
 }
 
-.main-content {
-	padding: 0;
-	background: #f7f8f3
-		url(https://cancer.gov/PublishedContent/images/images/design-elements/background-graphics/hexagon_molecular_structure_body.png)
-		no-repeat 110% 600px;
-}
 
 .main-content a {
-	color: #2b7bba;
+	color: #01679D;
 }
 
 .main-content a:focus,
@@ -8198,13 +8020,13 @@ a.definition:hover {
 }
 
 .general-page-body-container {
-	background: #fffffb;
+	background: white;
 	padding-bottom: 1.5em;
 	position: relative;
-	-webkit-box-shadow: 10px 0 10px -7px rgba(0, 0, 0, 0.5),
+	/* -webkit-box-shadow: 10px 0 10px -7px rgba(0, 0, 0, 0.5),
 		-10px 0 10px -7px rgba(0, 0, 0, 0.5);
 	box-shadow: 10px 0 10px -7px rgba(0, 0, 0, 0.5),
-		-10px 0 10px -7px rgba(0, 0, 0, 0.5);
+		-10px 0 10px -7px rgba(0, 0, 0, 0.5); */
 }
 
 .no-boxshadow .general-page-body-container {
@@ -8285,7 +8107,7 @@ div.row > div.contentzone:first-child {
 #my-toc ul {
 	margin: 0 1em;
 	list-style-type: disc;
-	color: #2b7bba;
+	color: #01679D;
 }
 
 #my-toc li {
@@ -8296,7 +8118,7 @@ div.row > div.contentzone:first-child {
 }
 
 #my-toc ul a {
-	color: #2b7bba;
+	color: #01679D;
 	font-weight: 700;
 }
 
@@ -8327,7 +8149,7 @@ ol.upper-roman {
 }
 
 .contentzone ol,
-.contentzone ul,
+.contentzone ul:not(.usa-pagination__list),
 .rawHtml ol,
 .rawHtml ul {
 	margin-bottom: 1em;
@@ -8338,26 +8160,6 @@ ol.upper-roman {
 	margin-left: 38px;
 }
 
-.contentzone li,
-.rawHtml li {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-	margin-left: 28px;
-}
-
-.contentzone li li,
-.rawHtml li li {
-	margin-left: 32px;
-}
-
-.contentzone ol.no-bullets > li,
-.contentzone ul.no-bullets > li,
-.rawHtml ol.no-bullets > li,
-.rawHtml ul.no-bullets > li {
-	margin-top: 30px;
-	margin-bottom: 30px;
-	margin-left: 0;
-}
 
 .contentzone ul.no-description > li {
 	margin-top: 4px;
@@ -8367,19 +8169,6 @@ ol.upper-roman {
 .contentzone ul > li,
 .rawHtml ul > li {
 	list-style-type: none;
-}
-
-.contentzone ul > li:before,
-.rawHtml ul > li:before {
-	content: '\2022';
-	display: inline;
-	position: relative;
-	float: left;
-	left: -0.5em;
-	top: 0.25em;
-	margin: 0 -0.2em;
-	font-size: 1.1em;
-	line-height: 0.90909em;
 }
 
 .toptoc ul > li:before {
@@ -9407,7 +9196,7 @@ a.social-share--custom-tweet:after {
 		margin: 0 0.875em 0 0;
 		width: 35px;
 		height: 35px;
-		background-color: #2b7bba;
+		background-color: #01679D;
 		border-radius: 50%;
 	}
 
@@ -10250,7 +10039,7 @@ a.news-footer.arrow-link-white {
 		margin: 0;
 	}
 
-	.news .list .general-list-item a.news-footer {
+	.news .ctla-results__list .general-list-item a.news-footer {
 		padding-left: 15px;
 	}
 }
@@ -10259,11 +10048,11 @@ a.news-footer.arrow-link-white {
 	padding-top: 0;
 }
 
-.news .list .general-list-item {
+.news .ctla-results__list .general-list-item {
 	display: list-item;
 }
 
-.news .list li {
+.news .ctla-results__list li {
 	display: none;
 }
 
@@ -10714,12 +10503,12 @@ ul {
 	line-height: 1.5;
 }
 
-.list {
+.ctla-results__list {
 	position: relative;
 	margin: 0 0 1em;
 }
 
-.list > .title {
+.ctla-results__list > .title {
 	font-family: 'Montserrat', 'Avant Garde', Arial, sans-serif;
 	color: #606060;
 	font-weight: 400;
@@ -10727,21 +10516,21 @@ ul {
 	line-height: 1.2em;
 }
 
-.list .description {
+.ctla-results__list .description {
 	font-size: 1em;
 	line-height: 1.5em;
 }
 
-.list .description > .body,
-.list .description > .date {
+.ctla-results__list .description > .body,
+.ctla-results__list .description > .date {
 	margin: 0.25em 0;
 }
 
-.list.compact li {
+.ctla-results__list.compact li {
 	margin: 1em 0 1em 2em;
 }
 
-.list.compact li:before {
+.ctla-results__list.compact li:before {
 	content: '\2022';
 	display: inline;
 	position: relative;
@@ -10754,11 +10543,11 @@ ul {
 	color: #2e2e2e;
 }
 
-.list.more-info li {
+.ctla-results__list.more-info li {
 	margin: 0;
 }
 
-.list.more-info li:before {
+.ctla-results__list.more-info li:before {
 	content: '\2022';
 	display: inline;
 	position: relative;
@@ -10771,163 +10560,163 @@ ul {
 	color: #2e2e2e;
 }
 
-.list.more-info li .title-and-desc {
+.ctla-results__list.more-info li .title-and-desc {
 	display: inline;
 }
 
-.list.more-info li .title {
+.ctla-results__list.more-info li .title {
 	font-family: inherit;
 	font-size: inherit;
 }
 
-.list.related-resources li {
+.ctla-results__list.related-resources li {
 	margin-top: 0.25em;
 	margin-bottom: 0.25em;
 	margin-left: 0;
 }
 
-.list.related-resources li .title {
+.ctla-results__list.related-resources li .title {
 	font-family: inherit;
 	font-size: inherit;
 }
 
-.list .title a.title:focus,
-.list .title a.title:hover,
-.list .title a:focus,
-.list .title a:hover {
+.ctla-results__list .title a.title:focus,
+.ctla-results__list .title a.title:hover,
+.ctla-results__list .title a:focus,
+.ctla-results__list .title a:hover {
 	color: #bb0e3d;
 	text-decoration: none;
 }
 
-.list ul {
+.ctla-results__list ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
 
-.list ul > li {
+.ctla-results__list ul > li {
 	margin: 1.875em 0;
 	clear: both;
 }
 
-.list ul > li:before {
+.ctla-results__list ul > li:before {
 	content: '';
 	display: none;
 }
 
-.list.has-images ul > li {
+.ctla-results__list.has-images ul > li {
 	margin-top: 2.5em;
 	margin-bottom: 2.5em;
 }
 
-.list.has-images ul > li:first-child {
+.ctla-results__list.has-images ul > li:first-child {
 	margin-top: 1.875em;
 }
 
-.list .container {
+.ctla-results__list .container {
 	display: inline-block;
 	vertical-align: top;
 	padding: 0;
 }
 
-.list .container.image {
+.ctla-results__list .container.image {
 	width: 21%;
 	margin-top: 0.25em;
 	padding: 0;
 	margin-right: -4px;
 }
 
-.list .container.image + .container.title {
+.ctla-results__list .container.image + .container.title {
 	width: 78%;
 	padding-left: 1.25em;
 	margin-right: -4px;
 }
 
 @media only screen and (max-width: 640px) {
-	.list .container.image + .container.title {
+	.ctla-results__list .container.image + .container.title {
 		width: 100%;
 		padding: 0;
 	}
 }
 
 @media only screen and (max-width: 640px) {
-	.list .container.image {
+	.ctla-results__list .container.image {
 		display: none;
 	}
 }
 
-.list .container .title {
+.ctla-results__list .container .title {
 	font-family: 'Montserrat', 'Avant Garde', Arial, sans-serif;
 	font-weight: 400;
 	font-size: 1.125em;
 	line-height: 1.111em;
 }
 
-.list .container .desc {
+.ctla-results__list .container .desc {
 	font-size: inherit;
 	font-family: inherit;
 	color: inherit;
 }
 
-.list .infographic {
+.ctla-results__list .infographic {
 	background: transparent;
 }
 
-.list .file .filetype {
+.ctla-results__list .file .filetype {
 	position: relative;
 	top: 0.25em;
 	display: inline-block;
 	margin-left: 5px;
 }
 
-.list .file .filetype.pdf {
+.ctla-results__list .file .filetype.pdf {
 	width: 1.25em;
 	height: 1.4375em;
 	background-position: 5.84795% 41.45115%;
 }
 
-.list .file .filetype.exe,
-.list .file .filetype.txt {
+.ctla-results__list .file .filetype.exe,
+.ctla-results__list .file .filetype.txt {
 	width: 1.25em;
 	height: 1.4375em;
 	background-position: 5.84795% 37.33238%;
 }
 
-.list .file .filetype.ebook {
+.ctla-results__list .file .filetype.ebook {
 	width: 1.3125em;
 	height: 1.59963em;
 	background-position: 5.88235% 38.38591%;
 }
 
-.list .file .filetype.ppt {
+.ctla-results__list .file .filetype.ppt {
 	width: 1.3125em;
 	height: 1.25019em;
 	background-position: 5.88235% 44.48436%;
 }
 
-.list .file .filetype.word {
+.ctla-results__list .file .filetype.word {
 	width: 1.3125em;
 	height: 1.25em;
 	background-position: 5.88235% 45.46542%;
 }
 
-.list .file .filetype.excel {
+.ctla-results__list .file .filetype.excel {
 	width: 1.3125em;
 	height: 1.29081em;
 	background-position: 5.88235% 39.44143%;
 }
 
-.list .file .filetype.unknown {
+.ctla-results__list .file .filetype.unknown {
 	top: 0;
 	height: auto;
 	background: none;
 }
 
-.row.news .list .container.image {
+.row.news .ctla-results__list .container.image {
 	width: 25%;
 }
 
-.list-item span.title a.title {
+.ctla-results__list-item span.title a.title {
 	font-family: 'Montserrat', 'Avant Garde', Arial, sans-serif;
 	font-size: 1em;
 	line-height: 1.11111em;
@@ -10939,12 +10728,12 @@ ul {
 	}
 }
 
-.large-8 .list .container.image + .container.title {
+.large-8 .ctla-results__list .container.image + .container.title {
 	width: 73%;
 }
 
 @media only screen and (max-width: 640px) {
-	.large-8 .list .container.image + .container.title {
+	.large-8 .ctla-results__list .container.image + .container.title {
 		width: 100%;
 	}
 }
@@ -11077,7 +10866,7 @@ ul.cancer-list ul > li {
 	top: 0;
 }
 
-.list.no-bullets .general-list-item {
+.ctla-results__list.no-bullets .general-list-item {
 	margin: 0 0 1.875em;
 }
 
@@ -11946,7 +11735,7 @@ h4.video100title {
 		display: block;
 		width: calc(100% - 68px);
 		height: 10px;
-		border: 2px solid #2ba6cb;
+		border: 2px solid #01679D;
 		border-top: none;
 		background-color: transparent;
 		position: absolute;
@@ -12311,8 +12100,8 @@ h4.video100title {
 }
 
 .ic-carousel .slick-slide {
-	background-color: #fffffb;
-	border-color: #fffffb;
+	background-color: white;
+	border-color: white;
 	float: none;
 }
 
@@ -12422,8 +12211,8 @@ span.ic-arrow-button {
 }
 
 .ytc-thumb-container {
-	background-color: #fffffb;
-	border-color: #fffffb;
+	background-color: white;
+	border-color: white;
 	padding-top: 10px;
 	padding-right: 10px;
 }
@@ -12818,14 +12607,14 @@ table[data-sortable] {
 }
 
 table[data-sortable] thead tr {
-	background-color: #2b7bba !important;
+	background-color: #01679D !important;
 }
 
 table[data-sortable] thead th {
 	position: relative;
 	padding: 10px 10px 20px;
 	border-left: none;
-	background-color: #2b7bba;
+	background-color: #01679D;
 	color: #fff;
 	font-family: 'Montserrat', 'Avant Garde', Arial, sans-serif;
 	font-size: 14px;
@@ -13602,7 +13391,7 @@ html[lang='es'] .nav-menu .nav-item.item-6 {
 		font-size: 15px;
 		text-transform: uppercase;
 		font-weight: 700;
-		color: #2b7bba;
+		color: #01679D;
 		display: block;
 		font-family: 'Montserrat', 'Avant Garde', Arial, sans-serif;
 		line-height: 19px;
@@ -13722,7 +13511,7 @@ html[lang='es'] .nav-menu .nav-item.item-6 {
 	.navigation,
 	.other-nci-sites,
 	.page-options,
-	.pagination,
+	/* .pagination, */
 	.previous-next-links,
 	.site-footer,
 	.syndication,
@@ -13977,225 +13766,3 @@ table.table-default tfoot td {
 .blog-comment-policy {
 	display: none;
 }
-
-/* floating delighter styles */
-
-.floating-delighter {
-    position: fixed;
-    top: 51%;
-    right: 20px;
-    z-index: 998
-}
-
-.floating-delighter .floating-delighter__link {
-    display: inline-flex;
-    flex-direction: column;
-    padding: 7px 10px;
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    color: #fff;
-    font-weight: 700;
-    font-family: Montserrat,sans-serif;
-    font-size: 14px;
-    line-height: 16px
-}
-
-.floating-delighter__icon,.floating-delighter__label {
-    height: 50%;
-    width: 100%
-}
-
-.floating-delighter__icon {
-    display: flex;
-    justify-content: center;
-    align-items: center
-}
-
-.floating-delighter__label {
-    text-align: center;
-    font-size: .92em
-}
-
-@media only screen and (min-width: 1770px) {
-    .floating-delighter {
-        right:10%
-    }
-}
-
-@media only screen and (max-width: 640px) {
-    .floating-delighter {
-        position:static;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        z-index: 0;
-        width: 50%;
-        margin: 7px 0;
-        padding: 0
-    }
-
-    .floating-delighter .floating-delighter__link {
-        flex-direction: row;
-        align-items: center;
-        width: 80%;
-        max-width: 100%;
-        height: 90%;
-        padding: 12px 10px;
-        border-radius: 0;
-        border-radius: initial;
-        margin: 0 auto;
-        font-size: 1.2em;
-        letter-spacing: 1.5px;
-        font-weight: 400
-    }
-
-    .floating-delighter .floating-delighter__link:active,.floating-delighter .floating-delighter__link:focus,.floating-delighter .floating-delighter__link:hover {
-        text-decoration: none
-    }
-
-    .floating-delighter__icon {
-        width: 25%;
-        height: 100%;
-        margin-right: 4px
-    }
-
-    .floating-delighter__label {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-grow: 1;
-        height: 100%;
-        font-size: .8em;
-        letter-spacing: 1px
-    }
-}
-
-@media only screen and (max-width: 390px) {
-    .floating-delighter {
-        width:100%;
-        margin-top: 20px;
-        margin-bottom: 10px
-    }
-
-    .floating-delighter .floating-delighter__link {
-        width: 95%;
-        height: auto
-    }
-
-    .floating-delighter__icon {
-        flex-grow: 1;
-        width: 23%;
-        margin-right: 0
-    }
-
-    .floating-delighter__label {
-        flex-grow: 1;
-        font-size: .9em
-    }
-}
-
-.results-delighter-rail .delighter.cts-feedback,.view-delighter-rail .delighter.cts-feedback {
-    display: none
-}
-
-.floating-delighter--cts .floating-delighter__icon:after {
-    display: inline-block;
-    background-image: url(https://cancer.gov/PublishedContent/images/images/design-elements/sprites/svg-sprite.svg);
-    background-size: 12em 287.375em
-}
-
-.floating-delighter--cts .floating-delighter__link {
-    background-color: #82368c
-}
-
-.floating-delighter--cts .floating-delighter__link:active,.floating-delighter--cts .floating-delighter__link:focus,.floating-delighter--cts .floating-delighter__link:hover {
-    background-color: #3f0557;
-    text-decoration: none
-}
-
-.floating-delighter--cts .floating-delighter__icon:after {
-    content: "";
-    width: 1.75em;
-    height: 1.75em;
-    background-position: 6.13497% 86.20%;
-    font-size: 1.1em
-}
-
-@media only screen and (max-width: 640px) {
-    .floating-delighter--cts .floating-delighter__icon:after {
-        font-size:.7em
-    }
-}
-
-.floating-delighter--social-media .floating-delighter__icon:after {
-    display: inline-block;
-    background-image: url(https://cancer.gov/PublishedContent/images/images/design-elements/sprites/svg-sprite.svg);
-    background-size: 12em 287.375em
-}
-
-.floating-delighter--social-media .floating-delighter__link {
-    background-color: #0d95a1;
-    font-size: .9em
-}
-
-.floating-delighter--social-media .floating-delighter__link:active,.floating-delighter--social-media .floating-delighter__link:focus,.floating-delighter--social-media .floating-delighter__link:hover {
-    background-color: #0b8590;
-    text-decoration: none
-}
-
-.floating-delighter--social-media .floating-delighter__icon:after {
-    content: "";
-    width: 2.75em;
-    height: 2.75em;
-    background-position: 6.80272% 87.78827%
-}
-
-@media only screen and (max-width: 640px) {
-    .floating-delighter--social-media .floating-delighter__icon:after {
-        font-size:.7em
-    }
-}
-
-@media only screen and (max-width: 390px) {
-    .floating-delighter--social-media .floating-delighter__label {
-        font-size:14px
-    }
-}
-
-.floating-delighter--nci-connect .floating-delighter__link {
-    background-color: #951b81;
-    font-size: .9em
-}
-
-.floating-delighter--nci-connect .floating-delighter__link:active,.floating-delighter--nci-connect .floating-delighter__link:focus,.floating-delighter--nci-connect .floating-delighter__link:hover {
-    background-color: #951b81;
-    text-decoration: none
-}
-
-.floating-delighter--nci-connect .floating-delighter__icon:after {
-    content: ""
-}
-
-@media only screen and (max-width: 640px) {
-    .floating-delighter--nci-connect .floating-delighter__icon:after {
-        font-size:.7em
-    }
-}
-
-.floating-delighter--nci-connect .floating-delighter__label {
-    padding-top: 26px
-}
-
-@media only screen and (max-width: 390px) {
-    .floating-delighter--nci-connect .floating-delighter__label {
-        font-size:14px
-    }
-}
-
-@media only screen and (max-width: 640px) {
-    .floating-delighter--nci-connect .floating-delighter__label {
-        padding-top:0
-    }
-}
-

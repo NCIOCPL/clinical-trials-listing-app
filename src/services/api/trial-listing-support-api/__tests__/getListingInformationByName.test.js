@@ -1,9 +1,5 @@
-import axios from 'axios';
 import nock from 'nock';
 import { getListingInformationByName, default as factory } from '../';
-
-// Required for unit tests to not have CORS issues
-axios.defaults.adapter = require('axios/lib/adapters/http');
 
 describe('Get listing information by name', () => {
 	beforeAll(() => {
@@ -17,7 +13,7 @@ describe('Get listing information by name', () => {
 
 	const client = factory('http://example.org');
 
-	test('works with name', async () => {
+	it('works with name', async () => {
 		const expected = {
 			conceptId: ['C1234'],
 			name: {
@@ -27,9 +23,7 @@ describe('Get listing information by name', () => {
 			prettyUrlName: 'spiroplatin',
 		};
 
-		const scope = nock('http://example.org')
-			.get('/listing-information/spiroplatin')
-			.reply(200, expected);
+		const scope = nock('http://example.org').get('/listing-information/spiroplatin').reply(200, expected);
 
 		const actual = await getListingInformationByName(client, 'spiroplatin');
 
@@ -37,10 +31,8 @@ describe('Get listing information by name', () => {
 		scope.isDone();
 	});
 
-	test('handles not found', async () => {
-		const scope = nock('http://example.org')
-			.get('/listing-information/asdf')
-			.reply(404);
+	it('handles not found', async () => {
+		const scope = nock('http://example.org').get('/listing-information/asdf').reply(404);
 
 		const actual = await getListingInformationByName(client, 'asdf');
 
@@ -48,33 +40,23 @@ describe('Get listing information by name', () => {
 		scope.isDone();
 	});
 
-	test('handles error', async () => {
-		const scope = nock('http://example.org')
-			.get('/listing-information/asdf')
-			.reply(500);
+	it('handles error', async () => {
+		const scope = nock('http://example.org').get('/listing-information/asdf').reply(500);
 
-		await expect(getListingInformationByName(client, 'asdf')).rejects.toThrow(
-			'Unexpected status 500 for fetching name'
-		);
+		await expect(getListingInformationByName(client, 'asdf')).rejects.toThrow('Unexpected status 500 for fetching name');
 
 		scope.isDone();
 	});
 
-	test('handles unexpected status', async () => {
-		const scope = nock('http://example.org')
-			.get('/listing-information/asdf')
-			.reply(201);
+	it('handles unexpected status', async () => {
+		const scope = nock('http://example.org').get('/listing-information/asdf').reply(201);
 
-		await expect(getListingInformationByName(client, 'asdf')).rejects.toThrow(
-			'Unexpected status 201 for fetching name'
-		);
+		await expect(getListingInformationByName(client, 'asdf')).rejects.toThrow('Unexpected status 201 for fetching name');
 
 		scope.isDone();
 	});
 
-	test('validates name', async () => {
-		await expect(getListingInformationByName(client, '!$')).rejects.toThrow(
-			'Name does not match valid string, can only include a-z,0-9 and dashes (-)'
-		);
+	it('validates name', async () => {
+		await expect(getListingInformationByName(client, '!$')).rejects.toThrow('Name does not match valid string, can only include a-z,0-9 and dashes (-)');
 	});
 });

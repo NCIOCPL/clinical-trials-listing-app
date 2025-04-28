@@ -1,3 +1,4 @@
+@disease
 Feature: As a user, I would like to see an error page when I visit a dynamic listing page with invalid parameters.
 
 	Scenario: User visits disease trials listing page with invalid parameters

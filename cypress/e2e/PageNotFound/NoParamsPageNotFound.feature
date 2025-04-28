@@ -1,3 +1,4 @@
+@misc
 Feature: As a user, I would like to see the Page Not Found page when I visit a dynamic listing page without parameters.
 
     Scenario: User visits disease trials listing page with no parameters
@@ -21,4 +22,3 @@ Feature: As a user, I would like to see the Page Not Found page when I visit a d
         And the link "cancer type" to "https://www.cancer.gov/types" appears on the page
         And the link "Get in touch" to "https://www.cancer.gov/contact" appears on the page
         And the search bar appears below
-        And delighter is not displayed

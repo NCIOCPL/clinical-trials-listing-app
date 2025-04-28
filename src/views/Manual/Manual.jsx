@@ -3,22 +3,12 @@ import { Helmet } from 'react-helmet';
 import { useLocation, useNavigate } from 'react-router';
 import track, { useTracking } from 'react-tracking';
 
-import {
-	NoResults,
-	Pager,
-	ResultsList,
-	ScrollRestoration,
-	Spinner,
-} from '../../components';
+import { NoResults, Pager, ResultsList, ScrollRestoration, Spinner } from '../../components';
 import ErrorPage from '../ErrorBoundary/ErrorPage';
 import { useAppPaths, useCtsApi } from '../../hooks';
 import { getClinicalTrials } from '../../services/api/actions';
 import { useStateValue } from '../../store/store';
-import {
-	appendOrUpdateToQueryString,
-	getKeyValueFromQueryString,
-	getPageOffset,
-} from '../../utils';
+import { appendOrUpdateToQueryString, getKeyValueFromQueryString, getPageOffset } from '../../utils';
 
 const Manual = () => {
 	const { BasePath } = useAppPaths();
@@ -26,22 +16,7 @@ const Manual = () => {
 	const navigate = useNavigate();
 	const { search } = location;
 	const tracking = useTracking();
-	const [
-		{
-			detailedViewPagePrettyUrlFormatter,
-			pageTitle,
-			requestFilters,
-			siteName,
-			introText,
-			language,
-			canonicalHost,
-			trialListingPageType,
-			baseHost,
-			metaDescription,
-			itemsPerPage,
-			noTrialsHtml,
-		},
-	] = useStateValue();
+	const [{ detailedViewPagePrettyUrlFormatter, pageTitle, requestFilters, siteName, introText, language, canonicalHost, trialListingPageType, baseHost, metaDescription, itemsPerPage, noTrialsHtml }] = useStateValue();
 
 	const pn = getKeyValueFromQueryString('pn', search.toLowerCase());
 	const pagerDefaults = {
@@ -66,9 +41,7 @@ const Manual = () => {
 				// These properties are required.
 				type: 'PageLoad',
 				event: 'TrialListingApp:Load:Results',
-				name:
-					canonicalHost.replace(/^(http|https):\/\//, '') +
-					window.location.pathname,
+				name: canonicalHost.replace(/^(http|https):\/\//, '') + window.location.pathname,
 				title: pageTitle,
 				language: language === 'en' ? 'english' : 'spanish',
 				metaTitle: `${pageTitle} - ${siteName}`,
@@ -98,14 +71,16 @@ const Manual = () => {
 	};
 
 	const renderHelmet = () => {
+		const pathAndPage = window.location.pathname + `?pn=${pager.page}`;
+
 		return (
 			<Helmet>
 				<title>{`${pageTitle} - ${siteName}`}</title>
 				<meta property="og:title" content={`${pageTitle}`} />
-				<meta property="og:url" content={baseHost + window.location.pathname} />
+				<meta property="og:url" content={baseHost + pathAndPage} />
 				<meta name="description" content={metaDescription} />
 				<meta property="og:description" content={metaDescription} />
-				<link rel="canonical" href={canonicalHost + window.location.pathname} />
+				<link rel="canonical" href={canonicalHost + pathAndPage} />
 			</Helmet>
 		);
 	};
@@ -115,30 +90,28 @@ const Manual = () => {
 	const renderPagerSection = (placement) => {
 		const page = pn ?? 1;
 		const pagerOffset = getPageOffset(page, itemsPerPage);
+
 		return (
 			<>
-				<div className="paging-section">
-					{placement === 'top' && (
-						<div className="paging-section__page-info">
-							{`
-							Trials ${pagerOffset + 1}-${Math.min(
-								pagerOffset + itemsPerPage,
-								fetchState.payload.total
-							)} of
-							${fetchState.payload.total}
-						`}
-						</div>
-					)}
-					{fetchState.payload.total > itemsPerPage && (
-						<div className="paging-section__pager">
-							<Pager
-								current={Number(pager.page)}
-								onPageNavigationChange={onPageNavigationChangeHandler}
-								resultsPerPage={pager.pageUnit}
-								totalResults={fetchState.payload.total}
-							/>
-						</div>
-					)}
+				{/* TODO: Add appropriate padding/margin utility classes if needed */}
+				<div className="ctla-results__summary">
+					<div className="grid-row">
+						{placement === 'top' && (
+							<div className="ctla-results__count grid-col">
+								{`
+								Trials ${pagerOffset + 1}-${Math.min(pagerOffset + itemsPerPage, fetchState.payload.total)} of
+								${fetchState.payload.total}
+							`}
+							</div>
+						)}
+					</div>
+					<div className="grid-row">
+						{fetchState.payload.total > itemsPerPage && (
+							<div className="ctla-results__pager grid-col">
+								<Pager current={Number(pager.page)} onPageNavigationChange={onPageNavigationChangeHandler} resultsPerPage={pager.pageUnit} totalResults={fetchState.payload.total} />
+							</div>
+						)}
+					</div>
 				</div>
 			</>
 		);
@@ -148,59 +121,62 @@ const Manual = () => {
 		currentPage: Number(pager.page),
 	})(ResultsList);
 	return (
-		<div>
-			{renderHelmet()}
-			<h1>{pageTitle}</h1>
-			<div className="page-options-container" />
-			{(() => {
-				if (fetchState.loading) {
-					return <Spinner />;
-				} else if (!fetchState.loading && fetchState.payload) {
-					if (fetchState.payload.total > 0) {
-						return (
-							<>
-								{/* ::: Intro Text ::: */}
-								{introText.length > 0 && (
+		<div className="manual-listing-page">
+			<div className="grid-row">
+				<div className="grid-col">
+					{renderHelmet()}
+					<h1 className="nci-heading-h1">{pageTitle}</h1>
+					<div className="page-options-container" />
+					{(() => {
+						if (fetchState.loading) {
+							return <Spinner />;
+						} else if (!fetchState.loading && fetchState.payload) {
+							if (fetchState.payload.total > 0) {
+								return (
+									<>
+										{/* ::: Intro Text ::: */}
+										{introText.length > 0 && (
+											// TODO: Add appropriate padding/margin utility classes if needed
+											<div className="ctla-results__intro">
+												<div className="grid-row">
+													<div
+														className="grid-col"
+														dangerouslySetInnerHTML={{
+															__html: introText,
+														}}></div>
+												</div>
+											</div>
+										)}
+
+										{/* ::: Top Paging Section ::: */}
+										{renderPagerSection('top')}
+
+										<ScrollRestoration />
+										<ResultsListWithPage results={fetchState.payload.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
+										{/* ::: Bottom Paging Section ::: */}
+										{renderPagerSection('bottom')}
+									</>
+								);
+							} else {
+								return <NoResults />;
+							}
+						}
+						if (!fetchState.loading && fetchState.error != null && fetchState.error.message === 'Trial count mismatch from the API') {
+							return (
+								<>
 									<div
-										className="intro-text"
-										dangerouslySetInnerHTML={{ __html: introText }}
-									/>
-								)}
-
-								{/* ::: Top Paging Section ::: */}
-								{renderPagerSection('top')}
-
-								<ScrollRestoration />
-								<ResultsListWithPage
-									results={fetchState.payload.data}
-									resultsItemTitleLink={detailedViewPagePrettyUrlFormatter}
-								/>
-								{/* ::: Bottom Paging Section ::: */}
-								{renderPagerSection('bottom')}
-							</>
-						);
-					} else {
-						return <NoResults />;
-					}
-				}
-				if (
-					!fetchState.loading &&
-					fetchState.error != null &&
-					fetchState.error.message === 'Trial count mismatch from the API'
-				) {
-					return (
-						<>
-							<div
-								className="No_Trials_Found"
-								dangerouslySetInnerHTML={{
-									__html: noTrialsHtml,
-								}}></div>
-						</>
-					);
-				} else {
-					return <ErrorPage />;
-				}
-			})()}
+										className="No_Trials_Found"
+										dangerouslySetInnerHTML={{
+											__html: noTrialsHtml,
+										}}></div>
+								</>
+							);
+						} else {
+							return <ErrorPage />;
+						}
+					})()}
+				</div>
+			</div>
 		</div>
 	);
 };

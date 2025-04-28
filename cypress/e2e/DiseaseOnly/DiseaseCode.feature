@@ -1,5 +1,6 @@
+@smoke
 Feature: As a user, I would like to view the trial results for a disease listing page that is given a c-code parameter, along with links to the trial's description page, the brief summary of the trial, and the number of locations of the trial
-
+  @smoke
   Scenario: View disease listing page results with c-code parameter
     Given "trialListingPageType" is set to "Disease"
     And "dynamicListingPatterns" object is set to "Disease"
@@ -21,9 +22,9 @@ Feature: As a user, I would like to view the trial results for a disease listing
     And the page contains meta tags with the following properties
       | property       | content                                                                                                                               |
       | og:title       | Breast Cancer Clinical Trials                                                                                                         |
-      | og:url         | http://localhost:3000/breast-cancer                                                                                                   |
+      | og:url         | http://localhost:3000/breast-cancer?pn=1                                                                                              |
       | og:description | NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials for breast cancer. |
     And the page contains meta tags with the following names
       | name        | content                                                                                                                               |
       | description | NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials for breast cancer. |
-    And there is a canonical link with the href "https://www.cancer.gov/breast-cancer"
+		And there is a canonical link with the href "https://www.cancer.gov/breast-cancer?pn=1"

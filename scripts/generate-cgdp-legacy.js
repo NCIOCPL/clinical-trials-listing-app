@@ -13,10 +13,7 @@ const postcss = require('postcss');
 const prefixer = require('postcss-prefix-selector');
 
 const inputFileName = path.join(appPaths.appBuild, '/static/css/main.css');
-const outputFileName = path.join(
-	appPaths.appBuild,
-	'/static/css/main-legacy.css'
-);
+const outputFileName = path.join(appPaths.appBuild, '/static/css/main.css');
 
 try {
 	const inputCss = fs.readFileSync(inputFileName, 'utf8');

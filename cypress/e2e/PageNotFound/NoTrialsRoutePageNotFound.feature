@@ -1,3 +1,4 @@
+@misc
 Feature: As a user, I would like to see the Page Not Found page when I visit a dynamic listing page with invalid parameters.
 
 	Scenario: User visits the no trials found page with invalid c-code for Disease

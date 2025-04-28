@@ -1,9 +1,4 @@
-import {
-	getTextReplacementContext,
-	getNoTrialsRedirectParams,
-	getParamsForRoute,
-	getAnalyticsParamsForRoute,
-} from '../data-route-param-util';
+import { getTextReplacementContext, getNoTrialsRedirectParams, getParamsForRoute, getAnalyticsParamsForRoute } from '../data-route-param-util';
 
 describe('data-route-param-util', () => {
 	const COMMON_DATA = [
@@ -74,7 +69,7 @@ describe('data-route-param-util', () => {
 						},
 					]
 				);
-			}).toThrowError('Unknown parameter type foo-bar');
+			}).toThrow('Unknown parameter type foo-bar');
 		});
 	});
 
@@ -98,7 +93,7 @@ describe('data-route-param-util', () => {
 						},
 					]
 				);
-			}).toThrowError('Unknown parameter type foo-bar');
+			}).toThrow('Unknown parameter type foo-bar');
 		});
 	});
 
@@ -126,7 +121,7 @@ describe('data-route-param-util', () => {
 						},
 					]
 				);
-			}).toThrowError('Unknown parameter type foo-bar');
+			}).toThrow('Unknown parameter type foo-bar');
 		});
 	});
 
@@ -154,7 +149,7 @@ describe('data-route-param-util', () => {
 						},
 					]
 				);
-			}).toThrowError('Unknown parameter type foo-bar');
+			}).toThrow('Unknown parameter type foo-bar');
 		});
 	});
 });

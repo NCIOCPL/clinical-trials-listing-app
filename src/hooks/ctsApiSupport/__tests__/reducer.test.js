@@ -1,10 +1,5 @@
 import reducer from '../reducer';
-import {
-	setSuccessfulFetch,
-	setFailedFetch,
-	setLoading,
-	setAborted,
-} from '../actions';
+import { setSuccessfulFetch, setFailedFetch, setLoading, setAborted } from '../actions';
 
 import { getClinicalTrials } from '../../../services/api/actions/getClinicalTrials';
 

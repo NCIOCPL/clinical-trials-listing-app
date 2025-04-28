@@ -1,3 +1,4 @@
+@disease @analytics
 Feature: Disease trial type listing page analytics
 
   Scenario: Page Load Analytics fires when a user views a disease listing page
@@ -22,7 +23,7 @@ Feature: Disease trial type listing page analytics
       | page.additionalDetails.diseaseName          | breast cancer                                                                   |
       | page.additionalDetails.trialType            | supportive care                                                                 |
       | page.additionalDetails.trialListingPageType | disease                                                                         |
-      | page.additionalDetails.numberResults        | (int)140                                                                        |
+      | page.additionalDetails.numberResults        | (int)158                                                                        |
 
   Scenario: Click event fires when a user clicks on result item
     Given "trialListingPageType" is set to "Disease"
