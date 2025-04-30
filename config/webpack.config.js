@@ -271,6 +271,9 @@ module.exports = function (webpackEnv) {
 					'react-dom$': 'react-dom/profiling',
 					'scheduler/tracing': 'scheduler/tracing-profiling',
 				}),
+				// Add alias for USWDS images to help resolve paths in imported CSS
+				'@uswds-img': path.resolve(__dirname, '../node_modules/@nciocpl/ncids-css/uswds-img'),
+				'../img': path.resolve(__dirname, '../node_modules/@nciocpl/ncids-css/uswds-img'),
 				...(modules.webpackAliases || {}),
 			},
 			plugins: [

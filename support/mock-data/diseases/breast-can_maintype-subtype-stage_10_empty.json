@@ -1,0 +1,233 @@
+{
+	"data": [
+		{
+			"name": "Bilateral Breast Cancer",
+			"codes": [
+				"C8287"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Bilateral Breast Carcinoma"
+			],
+			"count": 9
+		},
+		{
+			"name": "Breast Cancer",
+			"codes": [
+				"C4872"
+			],
+			"ancestor_ids": [],
+			"type": [
+				"maintype"
+			],
+			"parent_ids": [],
+			"synonyms": [
+				"Breast Carcinoma",
+				"Breast cancer, NOS",
+				"Cancer of Breast",
+				"Cancer of the Breast",
+				"Carcinoma of Breast",
+				"Carcinoma of the Breast",
+				"Mammary Carcinoma",
+				"breast cancer"
+			],
+			"count": 979
+		},
+		{
+			"name": "Early-Stage Breast Cancer",
+			"codes": [
+				"C94774"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"stage"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Early Stage Breast Carcinoma",
+				"Early-Stage Breast Carcinoma",
+				"early-stage breast cancer"
+			],
+			"count": 32
+		},
+		{
+			"name": "HER2-Positive Breast Carcinoma",
+			"codes": [
+				"C53556"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"ERBB2 Overexpressing Subtype of Breast Carcinoma",
+				"HER2 Overexpressing Breast Carcinoma",
+				"HER2 Overexpressing Subtype of Breast Carcinoma",
+				"HER2 Positive Breast Cancer",
+				"HER2 Positive Breast Carcinoma"
+			],
+			"count": 74
+		},
+		{
+			"name": "Hereditary Breast Cancer",
+			"codes": [
+				"C4503"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Familial Breast Carcinoma",
+				"Familial Cancer of Breast",
+				"Familial Cancer of the Breast",
+				"Hereditary Breast Carcinoma"
+			],
+			"count": 8
+		},
+		{
+			"name": "Hereditary Breast and Ovarian Cancer Syndrome",
+			"codes": [
+				"C8493"
+			],
+			"ancestor_ids": [
+				"C54705"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C54705"
+			],
+			"synonyms": [
+				"BRCA1/2-Associated Hereditary Breast and Ovarian Cancer Syndrome",
+				"Breast and Ovarian Cancer",
+				"Familial Breast and Ovarian Cancer Syndrome",
+				"Familial Breast/Ovarian Cancer (BRCA1, BRCA2)",
+				"Hereditary Breast and Ovarian Cancer",
+				"Hereditary Breast/Ovarian Cancer (BRCA1, BRCA2)"
+			],
+			"count": 11
+		},
+		{
+			"name": "Hormone-Resistant Breast Cancer",
+			"codes": [
+				"C114932"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Hormone-Refractory Breast Cancer",
+				"Hormone-Resistant Breast Adenocarcinoma",
+				"Hormone-Resistant Breast Carcinoma"
+			],
+			"count": 3
+		},
+		{
+			"name": "Inflammatory Breast Cancer",
+			"codes": [
+				"C4001"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Breast Inflammatory Carcinoma",
+				"Inflammatory Breast Carcinoma",
+				"Inflammatory Carcinoma of Breast",
+				"Inflammatory Carcinoma of the Breast",
+				"Inflammatory breast carcinoma",
+				"Inflammatory carcinoma",
+				"Mastitis Carcinomatosa",
+				"inflammatory breast cancer"
+			],
+			"count": 17
+		},
+		{
+			"name": "Invasive Breast Cancer",
+			"codes": [
+				"C9245"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Infiltrating Breast Carcinoma",
+				"Infiltrating Carcinoma of Breast",
+				"Infiltrating Carcinoma of the Breast",
+				"Invasive Breast Carcinoma",
+				"Invasive Carcinoma of Breast",
+				"Invasive Carcinoma of the Breast",
+				"Invasive Mammary Carcinoma",
+				"Invasive breast carcinoma",
+				"Invasive mammary carcinoma",
+				"infiltrating breast cancer",
+				"invasive breast cancer"
+			],
+			"count": 147
+		},
+		{
+			"name": "Luminal A Breast Cancer",
+			"codes": [
+				"C53554"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Luminal A",
+				"Luminal A Breast Carcinoma",
+				"Luminal A Estrogen Receptor Positive Subtype of Breast Carcinoma",
+				"Luminal A Subtype of Breast Carcinoma"
+			],
+			"count": 1
+		}
+	]
+}

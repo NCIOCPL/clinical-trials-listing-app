@@ -6,6 +6,15 @@ const path = require('path');
 const readline = require('readline');
 const mockZipCodeLookup = require('./mock-zipcode-lookup');
 const mockClinicalTrials = require('./mock-clinical-trials/clinical-trials');
+
+const mockInterventions = require('./mock-clinical-trials/interventions');
+const mockTerm = require('./mock-clinical-trials/term');
+const mockTerms = require('./mock-clinical-trials/terms');
+const mockDiseases = require('./mock-clinical-trials/diseases');
+const mockTrials = require('./mock-clinical-trials/trials');
+const mockTrial = require('./mock-clinical-trials/trial');
+const mockOrganizations = require('./mock-clinical-trials/organizations');
+
 const mockListingInformationById = require('./mock-listing-information/listing-information-by-id');
 const mockListingInformationByName = require('./mock-listing-information/listing-information-by-name');
 const mockTrialTypeGetByName = require('./mock-trial-type/trial-type-by-name');
@@ -33,6 +42,12 @@ module.exports = function (app) {
 
 	// new v2 endpoints
 	app.use('/cts/mock-api/v2/trials', mockClinicalTrials);
+	//CTS API V2 endpoints
+	app.use('/cts/mock-api/v2/trials/:id', mockTrial);
+	app.use('/cts/mock-api/v2/trials', mockTrials);
+	app.use('/cts/mock-api/v2/diseases', mockDiseases);
+	app.use('/cts/mock-api/v2/interventions', mockInterventions);
+	app.use('/cts/mock-api/v2/organizations', mockOrganizations);
 	app.use(
 		'/cts/proxy-api/v2/**',
 		createProxyMiddleware({
@@ -43,7 +58,8 @@ module.exports = function (app) {
 			pathRewrite: {
 				'^/cts/proxy-api/v2': '/api/v2',
 			},
-			onProxyReq: (proxyReq, req, res) => { // Added res
+			onProxyReq: (proxyReq, req, res) => {
+				// Added res
 				// Strip cookies because CTSAPI chokes on certain ones.
 				proxyReq.removeHeader('cookie');
 
@@ -115,7 +131,6 @@ module.exports = function (app) {
 											// Write response file
 											fs.writeFileSync(responseFilePath, formattedResponseBody);
 											console.log(`[Mock Capture] Response saved to: ${responseFilePath}`);
-
 										} catch (writeErr) {
 											console.error('[Mock Capture] Error writing mock files:', writeErr);
 										} finally {
@@ -123,8 +138,6 @@ module.exports = function (app) {
 										}
 									});
 								});
-
-
 							} catch (parseErr) {
 								console.error('[Mock Capture] Error parsing response body as JSON. Cannot save mock files.', parseErr);
 								// Optionally save the raw response if needed

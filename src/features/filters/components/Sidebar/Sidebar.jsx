@@ -9,6 +9,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useFilters, FilterActionTypes } from '../../context/FilterContext/FilterContext';
 import ZipCodeFilter from '../ZipCodeFilter';
 import AgeFilter from '../AgeFilter/AgeFilter';
+import MainTypeFilter from '../MainTypeFilter';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
 import './Sidebar.scss';
@@ -256,6 +257,12 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			params.delete(URL_PARAM_MAPPING.age.shortCode);
 		}
 
+		if (filters.maintype && filters.maintype.length > 0) {
+			params.set(URL_PARAM_MAPPING.maintype.shortCode, filters.maintype.join(','));
+		} else {
+			params.delete(URL_PARAM_MAPPING.maintype.shortCode);
+		}
+
 		// Update 'z' parameter for zip code
 		if (filters.location?.zipCode && isValidZipFormat(filters.location.zipCode)) {
 			params.set(URL_PARAM_MAPPING.zipCode.shortCode, filters.location.zipCode);
@@ -315,6 +322,8 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	 */
 	const renderFilter = (filterType, isDisabled) => {
 		switch (filterType) {
+			case 'maintype':
+				return <MainTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'age':
 				return (
 					<AgeFilter
@@ -432,8 +441,9 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 
 		// Add checks for other filter types here if they are added
 		// const hasTrialTypeFilter = filters.trialType?.length > 0;
+		const hasMainTypeFilter = Array.isArray(filters.maintype) && filters.maintype.length > 0;
 
-		return hasAgeFilter || hasLocationFilter; // || hasTrialTypeFilter etc.
+		return hasAgeFilter || hasLocationFilter || hasMainTypeFilter;
 	};
 
 	/**
@@ -445,6 +455,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		const age = params.get(URL_PARAM_MAPPING.age.shortCode);
 		const zip = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
 		const radius = params.get(URL_PARAM_MAPPING.radius.shortCode);
+		const maintype = params.get(URL_PARAM_MAPPING.maintype.shortCode);
 
 		let needsApply = false; // Flag to check if APPLY_FILTERS needs dispatch
 
@@ -469,6 +480,17 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			needsApply = true;
 			// Note: Zip validation and coordinate setting will be handled by ZipCodeFilter's
 			// onValidationChange callback triggered by its own useEffect.
+		}
+
+		if (maintype) {
+			dispatch({
+				type: FilterActionTypes.SET_FILTER,
+				payload: {
+					filterType: 'maintype',
+					value: maintype.split(','),
+				},
+			});
+			needsApply = true;
 		}
 
 		// If any filters were set from URL, dispatch APPLY_FILTERS to mark state as non-dirty

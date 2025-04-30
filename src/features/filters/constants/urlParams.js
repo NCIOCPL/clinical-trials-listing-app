@@ -19,6 +19,10 @@ export const URL_PARAM_MAPPING = {
 		shortCode: 'pn',
 		longName: 'page',
 	},
+	maintype: {
+		shortCode: 'mt',
+		longName: 'maintype',
+	},
 };
 
 /**
