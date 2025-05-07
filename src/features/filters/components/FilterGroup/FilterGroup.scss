@@ -129,37 +129,6 @@
     font-size: 14px;
     cursor: pointer;
     position: relative;
-
-    &:hover::before {
-      content: attr(data-tooltip);
-      position: fixed;
-      transform-origin: bottom center;
-      transform: translateX(-50%);
-      padding: 8px 12px;
-      background-color: #333;
-      color: white;
-      font-size: 14px;
-      border-radius: 4px;
-      white-space: normal;
-      z-index: 9999;
-      min-width: 200px;
-      max-width: 300px;
-      text-align: left;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      pointer-events: none;
-    }
-
-    &:hover::after {
-      content: '';
-      position: fixed;
-      transform-origin: bottom center;
-      transform: translateX(-50%);
-      border-width: 6px;
-      border-style: solid;
-      border-color: #333 transparent transparent transparent;
-      z-index: 9999;
-      pointer-events: none;
-    }
   }
 
   &__title {
@@ -174,4 +143,31 @@ select#radius-filter.usa-select {
 	@include u-width('full', !important);
 }
 
+.is-set.usa-tooltip__body.is-visible {
+	top: 50%;
+	left: 24px;
+	margin: -18px 0px 0px;
 
+	// &.usa-tooltip__body--top {
+	// 	margin: -50px 0px 0px -200px;
+	// }
+}
+
+span#filter-group-primary-cancer-type\/condition-tooltip-body.usa-tooltip__body--top {
+	//margin: -100px 0 0 -100px;
+	min-width: 240px;
+	margin-top: -64px;
+	margin-bottom: 24px;
+	//position: absolute;
+	//display: inline-block;
+	bottom: 0px;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, 0);
+	@include at-media-max('mobile-lg') {
+		transform: translate(-85%, 0);
+		&:after {
+			left: 85%;
+		}
+	}
+}

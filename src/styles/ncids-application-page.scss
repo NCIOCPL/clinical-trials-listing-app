@@ -1,5 +1,7 @@
 @use 'uswds-core' as *;
 
+@forward 'usa-tooltip';
+@forward 'usa-button';
 @forward 'usa-accordion';
 @forward 'usa-select';
 @forward 'usa-input';
