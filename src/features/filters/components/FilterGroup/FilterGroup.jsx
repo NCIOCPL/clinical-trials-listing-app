@@ -8,6 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // Note: Tracking functionality is currently commented out.
 // import { useTracking } from 'react-tracking';
+//import { FILTER_CONFIG } from '../../config/filterConfig';
 import './FilterGroup.scss';
 
 /**
@@ -42,6 +43,76 @@ const FilterGroup = ({ title, helpText, children, defaultExpanded = true, requir
 	// 	}
 	// }, [hasSelectedValues]);
 
+	// Add event listeners for tooltip functionality
+	React.useEffect(() => {
+		if (helpText) {
+			const container = document.getElementById(`${groupId}-tooltip-container`);
+			if (container !== null) {
+				const body = document.getElementById(`${groupId}-tooltip-body`);
+
+				const handleMouseOver = () => {
+					body.classList.add('is-visible', 'is-set');
+					body.setAttribute('aria-hidden', 'false');
+				};
+
+				const handleMouseOut = () => {
+					if (isOpen) {
+						body.classList.add('is-visible', 'is-set');
+						body.setAttribute('aria-hidden', 'false');
+					} else {
+						body.classList.remove('is-visible', 'is-set');
+						body.setAttribute('aria-hidden', 'true');
+					}
+				};
+
+				let isOpen = false;
+				const handleOnClick = () => {
+					if (isOpen) {
+						body.classList.remove('is-visible', 'is-set');
+						body.setAttribute('aria-hidden', 'true');
+						isOpen = false;
+					} else {
+						body.classList.add('is-visible', 'is-set');
+						body.setAttribute('aria-hidden', 'false');
+						isOpen = true;
+					}
+				};
+
+				const mobileSize = '(min-width: 880px)';
+				const mediaQueryMobile = window.matchMedia(mobileSize);
+
+				// switches tooltip view from right to top for anything smaller than tablet-lg
+				let handleMediaQueryChange = (event) => {
+					if (event.matches) {
+						if (body.getElementsByClassName('usa-tooltip__body--top') !== null) {
+							body.classList.remove('usa-tooltip__body--top', 'usa-tooltip__body--wrap');
+						}
+						body.classList.add('usa-tooltip__body--right');
+					} else {
+						if (body.getElementsByClassName('usa-tooltip__body--right') !== null) {
+							body.classList.remove('usa-tooltip__body--right');
+						}
+						body.classList.add('usa-tooltip__body--top', 'usa-tooltip__body--wrap');
+					}
+				};
+
+				container.addEventListener('click', handleOnClick, true);
+				container.addEventListener('mouseover', handleMouseOver);
+				container.addEventListener('mouseout', handleMouseOut);
+
+				handleMediaQueryChange(mediaQueryMobile);
+				mediaQueryMobile.addEventListener('change', handleMediaQueryChange);
+
+				// Clean up event listeners on unmount
+				return () => {
+					container.removeEventListener('mouseover', handleMouseOver);
+					container.removeEventListener('mouseout', handleMouseOut);
+					container.removeEventListener('onclick', handleOnClick);
+				};
+			}
+		}
+	}, [groupId, helpText]);
+
 	// Commented-out toggle handler:
 	// const handleToggle = () => {
 	// 	setIsExpanded(!isExpanded);
@@ -74,17 +145,14 @@ const FilterGroup = ({ title, helpText, children, defaultExpanded = true, requir
 						{title}
 						{/* Optional Help Text Tooltip */}
 						{helpText && (
-							<div className="filter-group__help-icon-container">
-								{/* Simple tooltip using data-attribute and CSS */}
-								<span
-									className="filter-group__help-icon"
-									role="tooltip"
-									aria-label={helpText} // Provide accessible label
-									data-tooltip={helpText} // For CSS-based tooltip
-								>
+							<span id={`${groupId}-tooltip-container`} className="filter-group__help-icon-container usa-tooltip">
+								<span className="filter-group__help-icon usa-tooltip__trigger" role="tooltip" aria-label={helpText} data-position="right" data-tooltip={helpText}>
 									?
 								</span>
-							</div>
+								<span id={`${groupId}-tooltip-body`} aria-hidden="true" role="tooltip" className="usa-tooltip__body usa-tooltip__body--right">
+									{helpText}
+								</span>
+							</span>
 						)}
 						{/* Optional Required Indicator */}
 						{required && (

@@ -15,8 +15,8 @@ export const FILTER_CONFIG = {
 		title: 'Primary Cancer Type/Condition',
 		type: 'combobox',
 		multiSelect: false,
-		helpText: 'Search for a primary cancer type or condition.',
-		placeholder: '',
+		helpText: 'Filter trials by the type of cancer being studied',
+		placeholder: 'Start typing to select a type',
 		urlParam: URL_PARAM_MAPPING.maintype?.shortCode,
 	},
 	// Configuration for the 'Subtype' filter

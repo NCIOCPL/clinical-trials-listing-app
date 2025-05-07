@@ -82,7 +82,7 @@ const MainTypeFilter = ({ onFocus, disabled = false }) => {
 	};
 
 	return (
-		<FilterGroup title="Primary Cancer Type/Condition">
+		<FilterGroup title="Primary Cancer Type/Condition" helpText={FILTER_CONFIG.maintype.helpText}>
 			{error ? (
 				<div className="error-message">
 					Unable to load cancer types. Please try again later.
