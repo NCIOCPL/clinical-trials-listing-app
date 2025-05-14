@@ -13,4 +13,17 @@
 .usa-combo-box {
   max-width: 100%;
   margin-top: 0.5rem;
+
+  // Ensure enabled ComboBox inputs are white.
+  .usa-combo-box__input:not([disabled]) {
+    background-color: #ffffff;
+  }
+}
+
+#subtype-filter {
+  &:disabled {
+    background-color: #f0f0f0;
+  }
+
+  background-color: white;
 }

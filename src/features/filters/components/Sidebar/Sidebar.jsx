@@ -10,7 +10,7 @@ import { useFilters, FilterActionTypes } from '../../context/FilterContext/Filte
 import ZipCodeFilter from '../ZipCodeFilter';
 import AgeFilter from '../AgeFilter/AgeFilter';
 import MainTypeFilter from '../MainTypeFilter';
-import SubTypeFilter from '../SubTypeFilter';
+import Subtype from '../Subtype';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
 import './Sidebar.scss';
@@ -336,7 +336,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			case 'maintype':
 				return <MainTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'subtype':
-				return <SubTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
+				return <Subtype onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'age':
 				return (
 					<AgeFilter
@@ -570,7 +570,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 					<button className="usa-button ctla-sidebar__button--clear" onClick={handleClearFilters} disabled={isDisabled || !hasActiveFilters()}>
 						Clear Filters
 					</button>
-					<button className="usa-button ctla-sidebar__button--apply" onClick={handleApplyFilters} disabled={isDisabled || !isDirty} style={{ backgroundColor: isDirty ? '#2e8540' : '#ccc' }}>
+					<button className="usa-button ctla-sidebar__button--apply" onClick={handleApplyFilters} disabled={isDisabled || !isDirty}>
 						Apply Filters
 					</button>
 				</div>

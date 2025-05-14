@@ -14,7 +14,7 @@ export const PAGE_FILTER_CONFIGS = {
 	// Configuration for 'Disease' type pages
 	Disease: {
 		enabledFilters: ['age', 'location', 'maintype', 'subtype'],
-		order: ['maintype', 'subtype', 'age', 'location'],
+		order: ['age', 'location'],
 	},
 
 	// Configuration for 'Manual' type pages (currently no filters enabled)

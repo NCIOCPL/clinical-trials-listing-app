@@ -1,18 +1,12 @@
-/* eslint-disable */
-
-import React, { useEffect, useRef } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useFilters } from '../../context/FilterContext/FilterContext';
 import FilterGroup from '../FilterGroup';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import { useTracking } from 'react-tracking';
 import { useMainTypeSearch } from '../../../../hooks/ctsApiSupport/useMainTypeSearch';
+import ComboBox from '../ComboBox/ComboBox';
 import './MainTypeFilter.scss';
-
-
-// Import the NCIDS ComboBox component for manual initialization
-import { USAComboBox } from '@nciocpl/ncids-js/usa-combo-box';
-import '@nciocpl/ncids-js/usa-combo-box/auto-init';
 
 const MainTypeFilter = ({ onFocus, disabled = false }) => {
 	const { state, dispatch } = useFilters();
@@ -23,106 +17,54 @@ const MainTypeFilter = ({ onFocus, disabled = false }) => {
 	const { options, isLoading, error } = useMainTypeSearch();
 
 	// Ensure each option has required properties for the ComboBox
-	const formattedOptions = options.map(option => ({
-		value: option.value || option.id || '',
-		label: option.label || '',
-		count: option.count || 0
-	}));
+	const formattedOptions = useMemo(() => {
+		return options.map((option) => ({
+			value: option.value || option.id || '',
+			label: option.label || '',
+		}));
+	}, [options]);
 
 	// Initialize value as empty array if not already set
 	const value = Array.isArray(filters.maintype) ? filters.maintype : [];
 
-	// Reference to the combo box container
-	const comboBoxRef = useRef(null);
-	// Reference to store the combobox instance for cleanup
-	const comboBoxInstanceRef = useRef(null);
+	const handleChange = (selectedValue) => {
+		const newValue = selectedValue ? [selectedValue] : [];
 
-	// Initialize USWDS combobox when component mounts OR when isLoading changes
-	useEffect(() => {
-		// Only initialize the combobox when the element exists AND data is loaded (not loading)
-		if (comboBoxRef.current && !isLoading) {
-			// Clean up any existing instance first to prevent duplicates
-			if (comboBoxInstanceRef.current && typeof comboBoxInstanceRef.current.destroy === 'function') {
-				comboBoxInstanceRef.current.destroy();
-				comboBoxInstanceRef.current = null;
-			}
+		// Dispatch the action to update the filter state
+		dispatch({
+			type: 'SET_FILTER',
+			payload: {
+				filterType: 'maintype',
+				value: newValue,
+			},
+		});
 
-			// Create a new instance of USAComboBox
-			comboBoxInstanceRef.current = USAComboBox.create(comboBoxRef.current);
-		}
+		// Manually trigger a focus event to ensure the tracker fires
+		if (onFocus) onFocus();
 
-		// Return a cleanup function
-		return () => {
-			if (comboBoxInstanceRef.current && typeof comboBoxInstanceRef.current.destroy === 'function') {
-				comboBoxInstanceRef.current.destroy();
-				comboBoxInstanceRef.current = null;
-			}
-		};
-	}, [isLoading]);
-
-	const handleChange = (event) => {
-		const selectedValue = event.target.value;
-		// Ensure we have a valid value before updating state
-		if (selectedValue) {
-			const newValue = [selectedValue];
-
-			// Force a console log to verify the value
-			console.log('MainTypeFilter - Dispatching with value:', newValue);
-
-			// Dispatch the action to update the filter state
-			dispatch({
-				type: 'SET_FILTER',
-				payload: {
-					filterType: 'maintype',
-					value: newValue,
-				},
-			});
-
-			// Manually trigger a focus event to ensure the tracker fires
-			if (onFocus) onFocus();
-		}
+		tracking.trackEvent({
+			type: 'Other',
+			event: 'TrialListingApp:Filter:Change',
+			filterType: 'maintype',
+			filterValue: selectedValue || '',
+			action: selectedValue ? 'select' : 'clear',
+		});
 	};
-// Log the current state of the component
-console.log('MainTypeFilter - Rendering with value:', value);
-console.log('MainTypeFilter - isDirty:', state.isDirty);
 
-return (
+	return (
 		<FilterGroup title="Primary Cancer Type/Condition" helpText={FILTER_CONFIG.maintype.helpText}>
-		{error ? (
-			<div className="error-message">
-				Unable to load cancer types. Please try again later.
-			</div>
-		) : (
-			<div className="filter-content">
-				<label className="usa-label usa-sr-only" htmlFor="maintype-filter">Select a cancer type</label>
-				{/* {FILTER_CONFIG.maintype.helpText && (
-					<div className="usa-hint">{FILTER_CONFIG.maintype.helpText}</div>
-				)} */}
-				{/*<div className="usa-combo-box" ref={comboBoxRef}>*/}
-					<div className="usa-combo-box" >
-
-					<select
-						className="usa-select usa-combo-box__select"
-						name="maintype-filter"
-						id="maintype-filter"
-						onChange={handleChange}
-						value={value.length > 0 ? value[0] : ''}
-						disabled={disabled || isLoading}
-					>
-						<option value="">{FILTER_CONFIG.maintype.placeholder}</option>
-						{formattedOptions.map(option => (
-							<option key={option.value} value={option.value}>
-								{option.label}
-							</option>
-						))}
-					</select>
+			{error ? (
+				<div className="error-message">Unable to load cancer types. Please try again later.</div>
+			) : (
+				<div className="filter-content">
+					<label className="usa-label usa-sr-only" htmlFor="maintype-filter">
+						Select a cancer type
+					</label>
+					<ComboBox id="maintype-filter" name="maintype-filter" options={formattedOptions} defaultValue={value.length > 0 ? value[0] : ''} disabled={disabled || isLoading} onChange={handleChange} noResults="No cancer types found" />
 				</div>
-			</div>
-		)}
-	</FilterGroup>
-
-);
-
+			)}
+		</FilterGroup>
+	);
 };
 
 MainTypeFilter.propTypes = {
