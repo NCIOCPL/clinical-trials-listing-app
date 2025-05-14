@@ -19,12 +19,11 @@ export function useSubTypeSearch(maintypeCode) {
 		queryFn: async () => {
 			if (!maintypeCode) return [];
 
-			// Include parameters for the specific maintype
+			// Include parameters for the specific maintype [used here as the 'ancestor_ids']
 			const query = {
 				type: 'subtype',
-				maintype: maintypeCode,
-				current_trial_status: ['Active', 'Approved', 'Enrolling by Invitation', 'In Review',
-                                'Temporarily Closed to Accrual', 'Temporarily Closed to Accrual and Intervention'],
+				ancestor_ids: maintypeCode,
+				current_trial_status: ['Active', 'Approved', 'Enrolling by Invitation', 'In Review', 'Temporarily Closed to Accrual', 'Temporarily Closed to Accrual and Intervention'],
 			};
 
 			const response = await getMainType(clinicalTrialsSearchClient, query);

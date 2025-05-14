@@ -70,7 +70,7 @@ function filterReducer(state, action) {
 	let paramPairs = null;
 	let orderedParams = null;
 	switch (action.type) {
-		case FilterActionTypes.SET_FILTER:
+		case FilterActionTypes.SET_FILTER: {
 			// Log the incoming action
 			console.log('FilterContext - SET_FILTER - payload:', action.payload);
 			console.log('FilterContext - SET_FILTER - current state:', state);
@@ -79,29 +79,79 @@ function filterReducer(state, action) {
 				return state;
 			}
 
-			// Special case: When maintype changes, clear subtype
+			const newFilters = { ...state.filters };
 			if (action.payload.filterType === 'maintype') {
-				return {
-					...state,
-					filters: {
-						...state.filters,
-						[action.payload.filterType]: action.payload.value,
-						subtype: [], // Clear subtypes when maintype changes
-					},
-					isDirty: true, // Mark as dirty since filter was changed
-				};
+				newFilters[action.payload.filterType] = action.payload.value;
+				newFilters.subtype = []; // Clear subtypes when maintype changes
+			} else {
+				newFilters[action.payload.filterType] = action.payload.value;
 			}
 
-			// Normal case for other filters
+			let newIsDirty = false;
+			// Compare newFilters with appliedFilters if appliedFilters is not empty
+			if (Object.keys(state.appliedFilters).length > 0) {
+				for (const key in newFilters) {
+					// Ensure the key exists in appliedFilters before comparison,
+					// or if it doesn't, it means a new filter type was added (hence dirty).
+					// Also check if the key is part of the initial state's filter structure.
+					if (Object.prototype.hasOwnProperty.call(initialState.filters, key)) {
+						const filterValue = newFilters[key];
+						const appliedValue = state.appliedFilters[key];
+
+						if (typeof filterValue === 'object' && filterValue !== null) {
+							if (JSON.stringify(filterValue) !== JSON.stringify(appliedValue)) {
+								newIsDirty = true;
+								break;
+							}
+						} else {
+							if (filterValue !== appliedValue) {
+								newIsDirty = true;
+								break;
+							}
+						}
+					} else {
+						// A key exists in newFilters that wasn't in initialState.filters, consider it dirty.
+						if (newFilters[key] !== undefined && newFilters[key] !== null && (Array.isArray(newFilters[key]) ? newFilters[key].length > 0 : newFilters[key] !== '')) {
+							newIsDirty = true;
+							break;
+						}
+					}
+				}
+			} else {
+				// If appliedFilters is empty (e.g., initial load, or after clear),
+				// compare with initialState.filters.
+				// It's dirty if any filter in newFilters differs from its corresponding initial default.
+				for (const key in newFilters) {
+					if (Object.prototype.hasOwnProperty.call(initialState.filters, key)) {
+						const filterValue = newFilters[key];
+						const initialDefaultValue = initialState.filters[key];
+						if (typeof filterValue === 'object' && filterValue !== null) {
+							if (JSON.stringify(filterValue) !== JSON.stringify(initialDefaultValue)) {
+								newIsDirty = true;
+								break;
+							}
+						} else {
+							if (filterValue !== initialDefaultValue) {
+								newIsDirty = true;
+								break;
+							}
+						}
+					} else {
+						// Similar to above, if a new key appears that wasn't in initial defaults and has a value.
+						if (newFilters[key] !== undefined && newFilters[key] !== null && (Array.isArray(newFilters[key]) ? newFilters[key].length > 0 : newFilters[key] !== '')) {
+							newIsDirty = true;
+							break;
+						}
+					}
+				}
+			}
+
 			return {
 				...state,
-				filters: {
-					...state.filters,
-					[action.payload.filterType]: action.payload.value,
-				},
-				isDirty: true, // Mark as dirty since filter was changed
+				filters: newFilters,
+				isDirty: newIsDirty,
 			};
-
+		}
 		case FilterActionTypes.APPLY_FILTERS: {
 			isNewPageLoad = action.payload?.isNewPageLoad;
 			preservedParams = action.payload?.preservedParams;
