@@ -10,6 +10,10 @@
 	margin-right: unset;
 }
 
+.usa-combo-box ul.usa-combo-box__list {
+	margin-top: -16px;
+  }
+
 #accordionContent {
 	@media (max-width: 1023px) {
 		@include u-padding-top('205');
