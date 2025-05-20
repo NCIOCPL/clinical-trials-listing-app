@@ -47,6 +47,7 @@ const ComboBox = ({
 	minChars = 2,
 	onSearch,
 	name,
+	onFocus,
 }) => {
 	// State for controlling the dropdown visibility
 	const [isOpen, setIsOpen] = useState(false);
@@ -235,7 +236,10 @@ const ComboBox = ({
 						setSearchText(e.target.value); // Update search text state
 						if (!isOpen) setIsOpen(true); // Open dropdown on change if closed
 					}}
-					onFocus={() => setIsOpen(true)} // Open dropdown on focus
+					onFocus={() => {
+		setIsOpen(true); // Open dropdown on focus
+		if (onFocus) onFocus(); // Call the onFocus prop if provided
+	}}
 					onKeyDown={handleKeyDown} // Handle keyboard navigation
 					disabled={disabled}
 					// ARIA attributes for accessibility
@@ -398,6 +402,8 @@ ComboBox.propTypes = {
 	onSearch: PropTypes.func,
 	/** A unique name for the component, used for generating IDs and potentially in tracking. */
 	name: PropTypes.string.isRequired,
+	/** Optional callback function triggered when the input is focused. */
+	onFocus: PropTypes.func,
 };
 
 export default ComboBox;

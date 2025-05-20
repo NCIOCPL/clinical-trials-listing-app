@@ -23,6 +23,10 @@ export const URL_PARAM_MAPPING = {
 		shortCode: 't',
 		longName: 'maintype',
 	},
+	subtype: {
+		shortCode: 'st',
+		longName: 'subtype',
+	},
 };
 
 /**

@@ -10,6 +10,7 @@ import { useFilters, FilterActionTypes } from '../../context/FilterContext/Filte
 import ZipCodeFilter from '../ZipCodeFilter';
 import AgeFilter from '../AgeFilter/AgeFilter';
 import MainTypeFilter from '../MainTypeFilter';
+import SubTypeFilter from '../SubTypeFilter';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
 import './Sidebar.scss';
@@ -183,6 +184,9 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		// Do nothing if filters haven't changed
 		if (!isDirty) return;
 
+		console.log('Sidebar - handleApplyFilters - Current filters:', filters);
+		console.log('Sidebar - handleApplyFilters - isDirty:', isDirty);
+
 		// Validate form field values (e.g., age range)
 		const errors = validateFilters();
 		const hasErrors = Object.keys(errors).length > 0;
@@ -263,6 +267,13 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			params.delete(URL_PARAM_MAPPING.maintype.shortCode);
 		}
 
+		// Update subtype parameter
+		if (filters.subtype && filters.subtype.length > 0) {
+			params.set(URL_PARAM_MAPPING.subtype.shortCode, filters.subtype.join(','));
+		} else {
+			params.delete(URL_PARAM_MAPPING.subtype.shortCode);
+		}
+
 		// Update 'z' parameter for zip code
 		if (filters.location?.zipCode && isValidZipFormat(filters.location.zipCode)) {
 			params.set(URL_PARAM_MAPPING.zipCode.shortCode, filters.location.zipCode);
@@ -324,6 +335,8 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		switch (filterType) {
 			case 'maintype':
 				return <MainTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
+			case 'subtype':
+				return <SubTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'age':
 				return (
 					<AgeFilter
@@ -442,8 +455,9 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		// Add checks for other filter types here if they are added
 		// const hasTrialTypeFilter = filters.trialType?.length > 0;
 		const hasMainTypeFilter = Array.isArray(filters.maintype) && filters.maintype.length > 0;
+		const hasSubTypeFilter = Array.isArray(filters.subtype) && filters.subtype.length > 0;
 
-		return hasAgeFilter || hasLocationFilter || hasMainTypeFilter;
+		return hasAgeFilter || hasLocationFilter || hasMainTypeFilter || hasSubTypeFilter;
 	};
 
 	/**
@@ -456,6 +470,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		const zip = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
 		const radius = params.get(URL_PARAM_MAPPING.radius.shortCode);
 		const maintype = params.get(URL_PARAM_MAPPING.maintype.shortCode);
+		const subtype = params.get(URL_PARAM_MAPPING.subtype.shortCode);
 
 		let needsApply = false; // Flag to check if APPLY_FILTERS needs dispatch
 
@@ -493,6 +508,17 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			needsApply = true;
 		}
 
+		if (subtype) {
+			dispatch({
+				type: FilterActionTypes.SET_FILTER,
+				payload: {
+					filterType: 'subtype',
+					value: subtype.split(','),
+				},
+			});
+			needsApply = true;
+		}
+
 		// If any filters were set from URL, dispatch APPLY_FILTERS to mark state as non-dirty
 		if (needsApply) {
 			dispatch({ type: FilterActionTypes.APPLY_FILTERS });
@@ -500,12 +526,28 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []); // Empty dependency array ensures this runs only once on mount
 
+	/**
+	 * Effect to automatically apply filters when maintype changes
+	 * This ensures the subtype filter is enabled immediately when a maintype is selected
+	 */
+	useEffect(() => {
+		// Only auto-apply if maintype is selected and filters are dirty
+		if (filters.maintype?.length > 0 && isDirty) {
+			console.log('Sidebar - maintype change:', filters.maintype);
+			// handleApplyFilters();
+		}
+	}, [filters.maintype]); // Only run when maintype changes
+
 	// Validate pageType and configuration existence
 	if (!pageType || !PAGE_FILTER_CONFIGS[pageType]) {
 		// Log error during development, return null to prevent rendering
 		// console.error('Sidebar: Invalid or missing pageType configuration:', pageType);
 		return null;
 	}
+
+	// Near the top of the component
+	console.log('Sidebar - Rendering with isDirty:', state.isDirty);
+	console.log('Sidebar - Current filters:', filters);
 
 	return (
 		<aside className="ctla-sidebar">
@@ -528,7 +570,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 					<button className="usa-button ctla-sidebar__button--clear" onClick={handleClearFilters} disabled={isDisabled || !hasActiveFilters()}>
 						Clear Filters
 					</button>
-					<button className="usa-button ctla-sidebar__button--apply" onClick={handleApplyFilters} disabled={isDisabled || !isDirty}>
+					<button className="usa-button ctla-sidebar__button--apply" onClick={handleApplyFilters} disabled={isDisabled || !isDirty} style={{ backgroundColor: isDirty ? '#2e8540' : '#ccc' }}>
 						Apply Filters
 					</button>
 				</div>
