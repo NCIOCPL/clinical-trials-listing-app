@@ -21,18 +21,12 @@ export const FILTER_CONFIG = {
 	},
 	// Configuration for the 'Subtype' filter
 	subtype: {
-		title: 'Subtype', // Display title for the filter group
+		title: 'Cancer Subtype', // Display title for the filter group
 		type: 'combobox', // Type of input control (used for rendering logic)
-		multiSelect: true, // Allows multiple selections
-		helpText: 'More than one selection may be made.', // Tooltip text
-		placeholder: 'Start typing to select a subtype', // Placeholder for input
-		options: [
-			// Static options (can be overridden by dynamic options)
-			{ id: 'her2_pos', label: 'HER2-Positive', value: 'her2_pos' },
-			{ id: 'her2_neg', label: 'HER2-Negative', value: 'her2_neg' },
-			{ id: 'triple_neg', label: 'Triple Negative', value: 'triple_neg' },
-		],
-		// urlParam: URL_PARAM_MAPPING.subtype.shortCode, // Link to URL parameter mapping (if applicable)
+		multiSelect: false, // Single selection for simplicity
+		helpText: 'Select a cancer subtype based on the primary cancer type.', // Tooltip text
+		placeholder: '', // Placeholder for input
+		urlParam: URL_PARAM_MAPPING.subtype.shortCode, // Link to URL parameter mapping
 	},
 
 	// Configuration for the 'Stage' filter

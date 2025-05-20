@@ -62,58 +62,67 @@ const MainTypeFilter = ({ onFocus, disabled = false }) => {
 
 	const handleChange = (event) => {
 		const selectedValue = event.target.value;
-		const newValue = selectedValue ? [selectedValue] : [];
+		// Ensure we have a valid value before updating state
+		if (selectedValue) {
+			const newValue = [selectedValue];
 
-		dispatch({
-			type: 'SET_FILTER',
-			payload: {
-				filterType: 'maintype',
-				value: newValue,
-			},
-		});
+			// Force a console log to verify the value
+			console.log('MainTypeFilter - Dispatching with value:', newValue);
 
-		tracking.trackEvent({
-			type: 'Other',
-			event: 'TrialListingApp:Filter:Change',
-			filterType: 'maintype',
-			filterValue: selectedValue,
-			action: 'select',
-		});
+			// Dispatch the action to update the filter state
+			dispatch({
+				type: 'SET_FILTER',
+				payload: {
+					filterType: 'maintype',
+					value: newValue,
+				},
+			});
+
+			// Manually trigger a focus event to ensure the tracker fires
+			if (onFocus) onFocus();
+		}
 	};
+// Log the current state of the component
+console.log('MainTypeFilter - Rendering with value:', value);
+console.log('MainTypeFilter - isDirty:', state.isDirty);
 
-	return (
+return (
 		<FilterGroup title="Primary Cancer Type/Condition" helpText={FILTER_CONFIG.maintype.helpText}>
-			{error ? (
-				<div className="error-message">
-					Unable to load cancer types. Please try again later.
+		{error ? (
+			<div className="error-message">
+				Unable to load cancer types. Please try again later.
+			</div>
+		) : (
+			<div className="filter-content">
+				<label className="usa-label usa-sr-only" htmlFor="maintype-filter">Select a cancer type</label>
+				{/* {FILTER_CONFIG.maintype.helpText && (
+					<div className="usa-hint">{FILTER_CONFIG.maintype.helpText}</div>
+				)} */}
+				{/*<div className="usa-combo-box" ref={comboBoxRef}>*/}
+					<div className="usa-combo-box" >
+
+					<select
+						className="usa-select usa-combo-box__select"
+						name="maintype-filter"
+						id="maintype-filter"
+						onChange={handleChange}
+						value={value.length > 0 ? value[0] : ''}
+						disabled={disabled || isLoading}
+					>
+						<option value="">{FILTER_CONFIG.maintype.placeholder}</option>
+						{formattedOptions.map(option => (
+							<option key={option.value} value={option.value}>
+								{option.label}
+							</option>
+						))}
+					</select>
 				</div>
-			) : (
-				<div className="filter-content">
-					<label className="usa-label usa-sr-only" htmlFor="maintype-filter">Select a cancer type</label>
-					{/* {FILTER_CONFIG.maintype.helpText && (
-						<div className="usa-hint">{FILTER_CONFIG.maintype.helpText}</div>
-					)} */}
-					<div className="usa-combo-box" ref={comboBoxRef}>
-						<select
-							className="usa-select usa-combo-box__select"
-							name="maintype-filter"
-							id="maintype-filter"
-							onChange={handleChange}
-							value={value.length > 0 ? value[0] : ''}
-							disabled={disabled || isLoading}
-						>
-							<option value="">{FILTER_CONFIG.maintype.placeholder}</option>
-							{formattedOptions.map(option => (
-								<option key={option.value} value={option.value}>
-									{option.label}
-								</option>
-							))}
-						</select>
-					</div>
-				</div>
-			)}
-		</FilterGroup>
-	);
+			</div>
+		)}
+	</FilterGroup>
+
+);
+
 };
 
 MainTypeFilter.propTypes = {
