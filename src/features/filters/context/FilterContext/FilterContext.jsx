@@ -34,6 +34,7 @@ export const FilterActionTypes = {
 const initialState = {
 	filters: {
 		maintype: [],
+		subtype: [],
 		age: '',
 		location: {
 			zipCode: '',
@@ -70,10 +71,28 @@ function filterReducer(state, action) {
 	let orderedParams = null;
 	switch (action.type) {
 		case FilterActionTypes.SET_FILTER:
+			// Log the incoming action
+			console.log('FilterContext - SET_FILTER - payload:', action.payload);
+			console.log('FilterContext - SET_FILTER - current state:', state);
 			// Ignore if filter type is not enabled for this page
 			if (!enabledFilters.includes(action.payload.filterType)) {
 				return state;
 			}
+
+			// Special case: When maintype changes, clear subtype
+			if (action.payload.filterType === 'maintype') {
+				return {
+					...state,
+					filters: {
+						...state.filters,
+						[action.payload.filterType]: action.payload.value,
+						subtype: [], // Clear subtypes when maintype changes
+					},
+					isDirty: true, // Mark as dirty since filter was changed
+				};
+			}
+
+			// Normal case for other filters
 			return {
 				...state,
 				filters: {
@@ -213,7 +232,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 
 		// Preserve non-filter URL parameters
 		let paramOrder = Array.from(params.keys());
-		let filterParams = [URL_PARAM_MAPPING.maintype.shortCode, URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
+		let filterParams = [URL_PARAM_MAPPING.maintype.shortCode, URL_PARAM_MAPPING.subtype.shortCode, URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
 		let preservedParamsMap = new Map();
 
 		for (const key of paramOrder) {
@@ -333,7 +352,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 
 			// Preserve non-filter URL parameters
 			let paramOrder = Array.from(params.keys());
-			let filterParams = [URL_PARAM_MAPPING.maintype.shortCode, URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
+			let filterParams = [URL_PARAM_MAPPING.maintype.shortCode, URL_PARAM_MAPPING.subtype.shortCode, URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
 			let updatedParams = new Map();
 
 			// Handle non-filter parameters
@@ -375,6 +394,29 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 						updatedParams = temp;
 					} else {
 						updatedParams.set(URL_PARAM_MAPPING.maintype.shortCode, state.appliedFilters.maintype[0]);
+					}
+				}
+
+				// Handle subtype parameter
+				if (state.appliedFilters.subtype?.length > 0 && state.appliedFilters.subtype[0]) {
+					const subtypeIndex = paramOrder.indexOf(URL_PARAM_MAPPING.subtype.shortCode);
+					if (subtypeIndex >= 0) {
+						// Preserve parameter order if subtype already exists in URL
+						const temp = new Map();
+						for (const [key, value] of updatedParams.entries()) {
+							if (paramOrder.indexOf(key) < subtypeIndex) {
+								temp.set(key, value);
+							}
+						}
+						temp.set(URL_PARAM_MAPPING.subtype.shortCode, state.appliedFilters.subtype[0]);
+						for (const [key, value] of updatedParams.entries()) {
+							if (paramOrder.indexOf(key) > subtypeIndex) {
+								temp.set(key, value);
+							}
+						}
+						updatedParams = temp;
+					} else {
+						updatedParams.set(URL_PARAM_MAPPING.subtype.shortCode, state.appliedFilters.subtype[0]);
 					}
 				}
 
@@ -466,8 +508,14 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 			apiFilters['eligibility.structured.max_age_in_years_gte'] = filters.age;
 		}
 
+		// Transform maintype filter
 		if (filters.maintype && Array.isArray(filters.maintype) && filters.maintype.length > 0) {
 			apiFilters['_diseases.primary_purpose'] = filters.maintype;
+		}
+
+		// Transform subtype filter
+		if (filters.subtype && Array.isArray(filters.subtype) && filters.subtype.length > 0) {
+			apiFilters['_diseases.subtype'] = filters.subtype;
 		}
 
 		// Transform location filter using utility function
