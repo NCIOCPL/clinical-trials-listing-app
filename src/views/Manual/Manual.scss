@@ -29,12 +29,24 @@
 
 .app .app-content .manual-listing-page .ctla-results__intro {
   margin-top: 0;
+
+  & p {
+    margin-top: 0;
+  }
+
+  & br {
+    display: none;
+  }
 }
 
 .manual-listing-page .page-options-container{margin-top:0}
 
 
 .manual-listing-page {
+    & .nci-heading-h1 {
+        margin-bottom: 1rem;
+    }
+
     .ctla-results__intro.grid-container,
     .ctla-results__list.grid-container {
         overflow: hidden;
