@@ -62,6 +62,7 @@ export const FILTER_CONFIG = {
 	age: {
 		title: 'Age',
 		type: 'number', // Numeric input type
+		helpText: 'Enter the age of the participant',
 		placeholder: 'Enter the age of the participant.',
 		min: 1, // Minimum allowed age
 		max: 120, // Maximum allowed age
