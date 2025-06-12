@@ -171,3 +171,16 @@ span#filter-group-primary-cancer-type\/condition-tooltip-body.usa-tooltip__body-
 		}
 	}
 }
+
+span#filter-group-age-tooltip-body.usa-tooltip__body--top {
+	@include u-minw(260px);
+	@include u-margin-top('neg-5');
+	@include u-margin-bottom(3);
+	@include u-bottom(0);
+	@include u-top(0);
+	@include u-left(50%);
+	transform: translate(-25%, 0);
+	&:after {
+		@include u-left(25%);
+	}
+}

@@ -111,7 +111,7 @@ const AgeFilter = ({ onFocus, disabled }) => {
 	};
 
 	return (
-		<FilterGroup title="Age">
+		<FilterGroup title="Age" helpText={FILTER_CONFIG.age.helpText}>
 			<input
 				id="age-filter-input"
 				name="age-filter"
