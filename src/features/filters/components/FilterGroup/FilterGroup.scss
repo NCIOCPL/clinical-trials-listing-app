@@ -154,12 +154,9 @@ select#radius-filter.usa-select {
 }
 
 span#filter-group-primary-cancer-type\/condition-tooltip-body.usa-tooltip__body--top {
-	//margin: -100px 0 0 -100px;
 	min-width: 240px;
 	margin-top: -64px;
 	margin-bottom: 24px;
-	//position: absolute;
-	//display: inline-block;
 	bottom: 0px;
 	top: 0;
 	left: 50%;
@@ -168,6 +165,23 @@ span#filter-group-primary-cancer-type\/condition-tooltip-body.usa-tooltip__body-
 		transform: translate(-85%, 0);
 		&:after {
 			left: 85%;
+		}
+	}
+}
+
+span#filter-group-location-by-zip-code-tooltip-body.usa-tooltip__body--top {
+	@include u-minw(221px);
+	@include u-margin-top('neg-5');
+	@include u-margin-bottom(3);
+	@include u-bottom(0);
+	@include u-top(0);
+	@include u-left(50%);
+	transform: translate(-50%, 0);
+	
+	@include at-media-max('mobile-lg') {
+		transform: translate(-80%, 0);
+		&:after {
+			@include u-left(80%);
 		}
 	}
 }
