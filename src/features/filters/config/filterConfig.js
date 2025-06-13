@@ -73,6 +73,7 @@ export const FILTER_CONFIG = {
 	location: {
 		title: 'Location by Zip Code',
 		type: 'text', // Text input for ZIP code
+		helpText: 'Enter a valid U.S. ZIP code',
 		placeholder: 'Enter U.S. Zip Code',
 		urlParam: URL_PARAM_MAPPING.zipCode.shortCode, // Associated URL parameter
 	},
