@@ -78,7 +78,7 @@ export const FILTER_CONFIG = {
 
 	// Configuration for the 'Radius' filter (used with Location)
 	radius: {
-		title: 'Radius',
+		title: 'Distance from Location',
 		type: 'select', // Dropdown select input
 		options: [
 			// Static radius options
