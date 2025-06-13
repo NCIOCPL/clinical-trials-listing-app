@@ -58,7 +58,7 @@ const Subtype = ({ disabled = false, onFocus }) => {
 	const isSubtypeDisabled = disabled || isLoading || !maintypeCode;
 
 	return (
-		<FilterGroup title={FILTER_CONFIG.subtype.title}>
+		<FilterGroup title={FILTER_CONFIG.subtype.title} helpText={FILTER_CONFIG.subtype.helpText}>
 			<label id="subtype-filter-label" className="usa-label usa-sr-only" htmlFor="subtype-filter">
 				Subtype
 			</label>

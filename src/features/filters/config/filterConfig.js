@@ -21,10 +21,10 @@ export const FILTER_CONFIG = {
 	},
 	// Configuration for the 'Subtype' filter
 	subtype: {
-		title: 'Cancer Subtype', // Display title for the filter group
+		title: 'Subtype', // Display title for the filter group
 		type: 'combobox', // Type of input control (used for rendering logic)
 		multiSelect: false, // Single selection for simplicity
-		helpText: 'Select a cancer subtype based on the primary cancer type.', // Tooltip text
+		helpText: 'The smaller groups that the primary cancer can be divided into', // Tooltip text
 		placeholder: '', // Placeholder for input
 		urlParam: URL_PARAM_MAPPING.subtype.shortCode, // Link to URL parameter mapping
 	},

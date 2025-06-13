@@ -215,3 +215,16 @@ span#filter-group-age-tooltip-body.usa-tooltip__body--top {
 		@include u-left(25%);
 	}
 }
+
+span#filter-group-subtype-tooltip-body.usa-tooltip__body--top {
+	@include u-minw(290px);
+	@include u-margin-top('neg-8');
+	@include u-margin-bottom(3);
+	@include u-bottom(0);
+	@include u-top(0);
+	@include u-left(45%);
+	transform: translate(-45%, 0);
+	&:after {
+		left: 45%;
+	}
+}
