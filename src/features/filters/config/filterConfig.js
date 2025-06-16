@@ -82,6 +82,7 @@ export const FILTER_CONFIG = {
 	radius: {
 		title: 'Distance from Location',
 		type: 'select', // Dropdown select input
+		helpText: 'Select miles within search radius',
 		options: [
 			// Static radius options
 			{ id: '20', label: '20 miles', value: '20' },

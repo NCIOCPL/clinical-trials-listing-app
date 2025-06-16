@@ -186,6 +186,23 @@ span#filter-group-location-by-zip-code-tooltip-body.usa-tooltip__body--top {
 	}
 }
 
+span#filter-group-distance-from-location-tooltip-body.usa-tooltip__body--top {
+	@include u-minw(273px);
+	@include u-margin-top('neg-5');
+	@include u-margin-bottom(3);
+	@include u-bottom(0);
+	@include u-top(0);
+	@include u-left(50%);
+	transform: translate(-50%, 0);
+
+	@include at-media-max('mobile-lg') {
+		transform: translate(-85%, 0);
+		&:after {
+			@include u-left(85%);
+		}
+	}
+}
+
 span#filter-group-age-tooltip-body.usa-tooltip__body--top {
 	@include u-minw(260px);
 	@include u-margin-top('neg-5');
