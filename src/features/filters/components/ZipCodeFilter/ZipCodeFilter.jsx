@@ -196,7 +196,7 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 			</FilterGroup>
 
 			{/* Radius Selection Dropdown */}
-			<FilterGroup title={FILTER_CONFIG.radius.title}>
+			<FilterGroup title={FILTER_CONFIG.radius.title} helpText={FILTER_CONFIG.radius.helpText}>
 				<div className="usa-combo-box">
 					<select id="radius-filter" name="radius" aria-label="Select search radius" className="usa-select usa-combo-box__select form-control" value={radius || (zipCode ? '100' : '')} onChange={onRadiusChange} onFocus={onFocus} disabled={disabled || !zipCode || error}>
 						<option value="">Select</option>
