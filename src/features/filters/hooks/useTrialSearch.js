@@ -7,6 +7,8 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useStateValue } from '../../../store/store';
+import { isWithinRadius } from '../../../utils/isWithinRadius';
+import { filterSitesByActiveRecruitment } from '../../../utils';
 
 /**
  * Cleans the request filter object by removing empty arrays, empty objects,
@@ -165,6 +167,24 @@ export const useTrialSearch = (requestFilters, isEnabled = true) => {
 		retry: 1, // Retry once on failure
 		retryDelay: 1000, // Wait 1 second before retrying
 	});
+
+	// If there is a location filter, we need to filter the results
+	if (requestFilters['sites.org_coordinates_lat'] && trials) {
+		const filteredData = {
+			...trials,
+			data: trials.data.filter((trial) => {
+				const activeSites = filterSitesByActiveRecruitment(trial.sites);
+				const nearbyCount = activeSites.reduce((count, itemSite) => count + isWithinRadius({ lat: requestFilters['sites.org_coordinates_lat'], long: requestFilters['sites.org_coordinates_lon'] }, itemSite.org_coordinates, requestFilters['sites.org_coordinates_dist'].replace('mi', '')), 0);
+				return nearbyCount > 0;
+			}),
+		};
+		filteredData.total = filteredData.data.length;
+		return {
+			trials: filteredData,
+			isLoading,
+			error,
+		};
+	}
 
 	// Return the fetched data, loading state, and formatted error object
 	return {

@@ -23,7 +23,9 @@ const ResultsList = ({ results, resultsItemTitleLink }) => {
 			return arr.reduce((count, itemSite) => count + isWithinRadius(zipCoords, itemSite.org_coordinates, zipRadius), 0);
 		};
 
-		zipInputReturn = `, including ${countNearbySitesByZip(activeSites)} near you`;
+		const nearbyCount = countNearbySitesByZip(activeSites);
+		zipInputReturn = `, including ${nearbyCount} near you`;
+		return nearbyCount;
 	}
 
 	return (
@@ -41,20 +43,34 @@ const ResultsList = ({ results, resultsItemTitleLink }) => {
 						</div>
 					)}
 					<ul>
-						{results.map((resultItem, index) => {
-							const { brief_title, current_trial_status, nci_id, nct_id, sites } = resultItem;
+						{results
+							.filter((resultItem) => {
+								// If location filter is applied, filter out trials with 0 nearby locations
+								if (appliedZipCoords !== null) {
+									hasZipInput = true;
+									zipRadius = appliedFilters.location.radius;
 
-							if (appliedZipCoords !== null) {
-								hasZipInput = true;
-								zipRadius = appliedFilters.location.radius;
+									// Count nearby locations and filter out trials with 0 nearby locations
+									const nearbyCount = displayLocation(resultItem.sites, appliedZipCoords, zipRadius);
+									return nearbyCount > 0;
+								}
+								return true;
+							})
+							.map((resultItem, index) => {
+								const { brief_title, current_trial_status, nci_id, nct_id, sites } = resultItem;
 
-								displayLocation(sites, appliedZipCoords, zipRadius, hasZipInput);
-							}
+								if (appliedZipCoords !== null) {
+									hasZipInput = true;
+									zipRadius = appliedFilters.location.radius;
 
-							const locationInfo = getLocationInfoFromSites(current_trial_status, nct_id, sites, hasZipInput, zipInputReturn);
+									// We already calculated this in the filter, but we need to set the global-ish zipInputReturn again
+									displayLocation(sites, appliedZipCoords, zipRadius);
+								}
 
-							return <ResultsListItem key={nci_id} locationInfo={locationInfo} nciId={nci_id} status={current_trial_status} title={brief_title} resultsItemTitleLink={resultsItemTitleLink} resultIndex={index} />;
-						})}
+								const locationInfo = getLocationInfoFromSites(current_trial_status, nct_id, sites, hasZipInput, zipInputReturn);
+
+								return <ResultsListItem key={nci_id} locationInfo={locationInfo} nciId={nci_id} status={current_trial_status} title={brief_title} resultsItemTitleLink={resultsItemTitleLink} resultIndex={index} />;
+							})}
 					</ul>
 				</div>
 			</div>
