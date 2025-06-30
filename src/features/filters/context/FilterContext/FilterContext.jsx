@@ -470,6 +470,29 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 					}
 				}
 
+				// Handle stage parameter
+				if (state.appliedFilters.stage?.length > 0 && state.appliedFilters.stage[0]) {
+					const stageIndex = paramOrder.indexOf(URL_PARAM_MAPPING.stage.shortCode);
+					if (stageIndex >= 0) {
+						// Preserve parameter order if subtype already exists in URL
+						const temp = new Map();
+						for (const [key, value] of updatedParams.entries()) {
+							if (paramOrder.indexOf(key) < stageIndex) {
+								temp.set(key, value);
+							}
+						}
+						temp.set(URL_PARAM_MAPPING.stage.shortCode, state.appliedFilters.stage[0]);
+						for (const [key, value] of updatedParams.entries()) {
+							if (paramOrder.indexOf(key) > stageIndex) {
+								temp.set(key, value);
+							}
+						}
+						updatedParams = temp;
+					} else {
+						updatedParams.set(URL_PARAM_MAPPING.stage.shortCode, state.appliedFilters.stage[0]);
+					}
+				}
+
 				// Handle age parameter
 				if (state.appliedFilters.age?.toString().trim() !== '') {
 					const ageIndex = paramOrder.indexOf(URL_PARAM_MAPPING.age.shortCode);
@@ -566,6 +589,11 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		// Transform subtype filter
 		if (filters.subtype && Array.isArray(filters.subtype) && filters.subtype.length > 0) {
 			apiFilters['_diseases.subtype'] = filters.subtype;
+		}
+
+		// Transform subtype filter
+		if (filters.stage && Array.isArray(filters.stage) && filters.stage.length > 0) {
+			apiFilters['_diseases.stage'] = filters.stage;
 		}
 
 		// Transform location filter using utility function

@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { useStateValue } from '../../store/store';
-import { getSubtypes } from '../../services/api/clinical-trials-search-api/getSubtypes';
+import { getStages } from '../../services/api/clinical-trials-search-api/getStages';
 
-export function useSubTypeSearch(maintypeCode) {
+export function useStageSearch(maintypeCode) {
 	const [
 		{
 			apiClients: { clinicalTrialsSearchClient },
@@ -11,7 +11,7 @@ export function useSubTypeSearch(maintypeCode) {
 
 	const { data, isLoading, error } = useQuery({
 		// Include maintype in the query key for proper caching
-		queryKey: ['subtypes', maintypeCode],
+		queryKey: ['stages', maintypeCode],
 
 		// Only fetch if we have a maintype code
 		enabled: !!maintypeCode,
@@ -21,12 +21,12 @@ export function useSubTypeSearch(maintypeCode) {
 
 			// Include parameters for the specific maintype [used here as the 'ancestor_ids']
 			const query = {
-				type: 'subtype',
+				type: 'stage',
 				ancestor_ids: maintypeCode,
 				current_trial_status: ['Active', 'Approved', 'Enrolling by Invitation', 'In Review', 'Temporarily Closed to Accrual', 'Temporarily Closed to Accrual and Intervention'],
 			};
 
-			const response = await getSubtypes(clinicalTrialsSearchClient, query);
+			const response = await getStages(clinicalTrialsSearchClient, query);
 
 			// The API response has the data in a nested 'data' property
 			if (response && Array.isArray(response.data)) {

@@ -1,4 +1,4 @@
-import querystring from 'query-string';
+import qs from 'qs';
 
 /**
  * Fetches subtypes based on ancestor id of main type to populate the Subtypes field
@@ -8,7 +8,10 @@ import querystring from 'query-string';
  */
 export const getSubtypes = async (client, query) => {
 	try {
-		const res = await client.get(`/diseases?${querystring.stringify(query)}`);
+		const queryString = qs.stringify(query, { arrayFormat: 'repeat' });
+
+		const res = await client.get(`/diseases?${queryString}`);
+
 		if (res.status === 200) {
 			return res.data;
 		} else {

@@ -24,6 +24,10 @@ export const URL_PARAM_MAPPING = {
 		longName: 'maintype',
 	},
 	subtype: {
+		shortCode: 'st',
+		longName: 'subtype',
+	},
+	stage: {
 		shortCode: 'stg',
 		longName: 'subtype',
 	},
