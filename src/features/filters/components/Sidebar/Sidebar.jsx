@@ -459,6 +459,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		// const hasTrialTypeFilter = filters.trialType?.length > 0;
 		const hasMainTypeFilter = Array.isArray(filters.maintype) && filters.maintype.length > 0;
 		const hasSubTypeFilter = Array.isArray(filters.subtype) && filters.subtype.length > 0;
+		const hasStageFilter = Array.isArray(filters.stage) && filters.stage.length > 0;
 
 		return hasAgeFilter || hasLocationFilter || hasMainTypeFilter || hasSubTypeFilter || hasStageFilter;
 	};

@@ -8,7 +8,7 @@ import './StageFilter.scss';
 import { useTracking } from 'react-tracking';
 import ComboBox from '../ComboBox/ComboBox';
 
-import { useSubTypeSearch } from '../../../../hooks/ctsApiSupport/useSubTypeSearch';
+import { useStageSearch } from '../../../../hooks/ctsApiSupport/useStageSearch';
 
 const StageFilter = ({ disabled = false, onFocus }) => {
 	const { state, dispatch } = useFilters();
@@ -18,8 +18,8 @@ const StageFilter = ({ disabled = false, onFocus }) => {
 	// Get the selected maintype code from filters
 	const maintypeCode = filters.maintype && filters.maintype.length > 0 ? filters.maintype[0] : null;
 
-	const { options, isLoading } = useSubTypeSearch(maintypeCode);
-
+	const { options, isLoading } = useStageSearch(maintypeCode);
+	console.log(options);
 	const formattedOptions = useMemo(() => {
 		return options.map((option) => ({
 			value: option.value || option.id || '',
@@ -36,7 +36,7 @@ const StageFilter = ({ disabled = false, onFocus }) => {
 		dispatch({
 			type: 'SET_FILTER',
 			payload: {
-				filterType: 'subtype',
+				filterType: 'stage',
 				value: newValue,
 			},
 		});
@@ -47,7 +47,7 @@ const StageFilter = ({ disabled = false, onFocus }) => {
 		tracking.trackEvent({
 			type: 'Other',
 			event: 'TrialListingApp:Filter:Change',
-			filterType: 'subtype',
+			filterType: 'stage',
 			filterValue: selectedValue || '',
 			action: selectedValue ? 'select' : 'clear',
 		});
@@ -57,7 +57,7 @@ const StageFilter = ({ disabled = false, onFocus }) => {
 	const isStageDisabled = disabled || isLoading || !maintypeCode;
 
 	return (
-		<FilterGroup title={FILTER_CONFIG.stage.title}>
+		<FilterGroup title={FILTER_CONFIG.stage.title} helpText={FILTER_CONFIG.stage.helpText}>
 			<label id="stage-filter-label" className="usa-label usa-sr-only" htmlFor="stage-filter">
 				Stage
 			</label>

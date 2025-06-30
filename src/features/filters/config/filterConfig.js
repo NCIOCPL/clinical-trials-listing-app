@@ -34,12 +34,9 @@ export const FILTER_CONFIG = {
 		title: 'Stage',
 		type: 'combobox',
 		multiSelect: false, // Only single selection allowed
+		helpText: 'Select the extent of the cancer in the body',
 		placeholder: 'Select',
-		options: [
-			{ id: 'stage_1', label: 'Stage I', value: 'stage_1' },
-			{ id: 'stage_2', label: 'Stage II', value: 'stage_2' },
-		],
-		// urlParam: URL_PARAM_MAPPING.stage.shortCode,
+		urlParam: URL_PARAM_MAPPING.stage.shortCode,
 	},
 
 	// Configuration for the 'Drug/Intervention' filter
