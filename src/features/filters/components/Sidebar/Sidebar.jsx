@@ -12,6 +12,7 @@ import AgeFilter from '../AgeFilter/AgeFilter';
 import MainTypeFilter from '../MainTypeFilter';
 import Subtype from '../Subtype';
 import { FILTER_CONFIG } from '../../config/filterConfig';
+import StageFilter from '../StageFilter';
 import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
 import './Sidebar.scss';
 // import { useStateValue } from '../../../../store/store'; // Unused import
@@ -184,8 +185,8 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		// Do nothing if filters haven't changed
 		if (!isDirty) return;
 
-		console.log('Sidebar - handleApplyFilters - Current filters:', filters);
-		console.log('Sidebar - handleApplyFilters - isDirty:', isDirty);
+		// console.log('Sidebar - handleApplyFilters - Current filters:', filters);
+		// console.log('Sidebar - handleApplyFilters - isDirty:', isDirty);
 
 		// Validate form field values (e.g., age range)
 		const errors = validateFilters();
@@ -337,6 +338,8 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 				return <MainTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'subtype':
 				return <Subtype onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
+			case 'stage':
+				return <StageFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'age':
 				return (
 					<AgeFilter
@@ -457,7 +460,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		const hasMainTypeFilter = Array.isArray(filters.maintype) && filters.maintype.length > 0;
 		const hasSubTypeFilter = Array.isArray(filters.subtype) && filters.subtype.length > 0;
 
-		return hasAgeFilter || hasLocationFilter || hasMainTypeFilter || hasSubTypeFilter;
+		return hasAgeFilter || hasLocationFilter || hasMainTypeFilter || hasSubTypeFilter || hasStageFilter;
 	};
 
 	/**
@@ -471,6 +474,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		const radius = params.get(URL_PARAM_MAPPING.radius.shortCode);
 		const maintype = params.get(URL_PARAM_MAPPING.maintype.shortCode);
 		const subtype = params.get(URL_PARAM_MAPPING.subtype.shortCode);
+		const stage = params.get(URL_PARAM_MAPPING.stage.shortCode);
 
 		let needsApply = false; // Flag to check if APPLY_FILTERS needs dispatch
 
@@ -519,6 +523,17 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			needsApply = true;
 		}
 
+		if (stage) {
+			dispatch({
+				type: FilterActionTypes.SET_FILTER,
+				payload: {
+					filterType: 'stage',
+					value: stage.split(','),
+				},
+			});
+			needsApply = true;
+		}
+
 		// If any filters were set from URL, dispatch APPLY_FILTERS to mark state as non-dirty
 		if (needsApply) {
 			dispatch({ type: FilterActionTypes.APPLY_FILTERS });
@@ -531,6 +546,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	 * This ensures the subtype filter is enabled immediately when a maintype is selected
 	 */
 	useEffect(() => {
+		// TODO: Still needed?
 		// Only auto-apply if maintype is selected and filters are dirty
 		if (filters.maintype?.length > 0 && isDirty) {
 			console.log('Sidebar - maintype change:', filters.maintype);
@@ -546,8 +562,8 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	}
 
 	// Near the top of the component
-	console.log('Sidebar - Rendering with isDirty:', state.isDirty);
-	console.log('Sidebar - Current filters:', filters);
+	// console.log('Sidebar - Rendering with isDirty:', state.isDirty);
+	// console.log('Sidebar - Current filters:', filters);
 
 	return (
 		<aside className="ctla-sidebar">
