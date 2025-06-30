@@ -11,6 +11,7 @@ import ZipCodeFilter from '../ZipCodeFilter';
 import AgeFilter from '../AgeFilter/AgeFilter';
 import MainTypeFilter from '../MainTypeFilter';
 import Subtype from '../Subtype';
+import StageFilter from '../StageFilter';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
 import './Sidebar.scss';
@@ -337,6 +338,8 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 				return <MainTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'subtype':
 				return <Subtype onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
+			case 'stage':
+				return <StageFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'age':
 				return (
 					<AgeFilter

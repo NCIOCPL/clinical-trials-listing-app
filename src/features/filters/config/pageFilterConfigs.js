@@ -25,8 +25,8 @@ export const PAGE_FILTER_CONFIGS = {
 
 	// Configuration for 'Intervention' type pages
 	Intervention: {
-		enabledFilters: ['age', 'location', 'maintype', 'subtype'],
-		order: ['age', 'location', 'maintype', 'subtype'],
+		enabledFilters: ['age', 'location', 'maintype', 'subtype', 'stage'],
+		order: ['age', 'location', 'maintype', 'subtype', 'stage'],
 	},
 	// Add configurations for other page types as needed
 };
