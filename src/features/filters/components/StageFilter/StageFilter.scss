@@ -1,0 +1,9 @@
+@use 'uswds-core' as *;
+
+#stage-filter {
+    &:disabled {
+        @include u-bg($theme-color-base-lightest); // #f0f0f0
+    }
+  
+    @include u-bg($theme-body-background-color); // white
+  }
