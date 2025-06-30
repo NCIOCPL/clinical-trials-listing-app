@@ -34,6 +34,7 @@ export const FILTER_CONFIG = {
 		title: 'Stage',
 		type: 'combobox',
 		multiSelect: false, // Only single selection allowed
+		helpText: 'Select the extent of the cancer in the body',
 		placeholder: 'Select',
 		options: [
 			{ id: 'stage_1', label: 'Stage I', value: 'stage_1' },

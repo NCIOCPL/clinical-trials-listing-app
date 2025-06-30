@@ -57,7 +57,7 @@ const StageFilter = ({ disabled = false, onFocus }) => {
 	const isStageDisabled = disabled || isLoading || !maintypeCode;
 
 	return (
-		<FilterGroup title={FILTER_CONFIG.stage.title}>
+		<FilterGroup title={FILTER_CONFIG.stage.title} helpText={FILTER_CONFIG.stage.helpText}>
 			<label id="stage-filter-label" className="usa-label usa-sr-only" htmlFor="stage-filter">
 				Stage
 			</label>
