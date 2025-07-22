@@ -137,7 +137,7 @@
     "babel-loader": "^8.4.1",
     "babel-plugin-istanbul": "^7.0.0",
     "babel-plugin-named-asset-import": "^0.3.6",
-    "babel-preset-react-app": "^9.1.2",
+    "babel-preset-react-app": "^10.1.0",
     "buffer": "^6.0.3",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
     "css-loader": "^6.11.0",
@@ -164,7 +164,7 @@
     "nock": "^11.7.2",
     "nyc": "^15.1.0",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
-    "pa11y-ci": "^3.0.1",
+    "pa11y-ci": "^2.4.2",
     "pnp-webpack-plugin": "1.6.4",
     "postcss": "^8.4.47",
     "postcss-flexbugs-fixes": "^5.0.2",
@@ -179,7 +179,7 @@
     "sass": "^1.80.5",
     "sass-loader": "^10.5.2",
     "semver": "^6.3.1",
-    "start-server-and-test": "2.0.0",
+    "start-server-and-test": "^2.0.12",
     "storybook": "^8.4.1",
     "storybook-addon-react-router-v6": "^1.0.1",
     "stream-http": "^3.2.0",
@@ -190,8 +190,8 @@
     "url-loader": "2.3.0",
     "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.11.1",
+    "webpack-dev-server": "^5.2.2",
     "webpack-manifest-plugin": "3.0.0",
-    "workbox-webpack-plugin": "4.3.1"
+    "workbox-webpack-plugin": "^7.3.0"
   }
 }
