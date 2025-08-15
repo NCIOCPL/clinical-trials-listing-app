@@ -67,7 +67,7 @@ export const useComboBox = (initialState, initialOptionsList, disableFiltering, 
 					newState.focusedOption = closestMatch;
 				} else if (state.selectedOption) {
 					if (newState.filteredOptions.includes(state.selectedOption)) {
-						newState.focusedOption = state.selectedOption;
+						newState.focusedOption = newState.filteredOptions[0] || state.selectedOption;
 					} else {
 						newState.focusedOption = closestMatch;
 					}
@@ -82,7 +82,7 @@ export const useComboBox = (initialState, initialOptionsList, disableFiltering, 
 					...state,
 					isOpen: true,
 					focusMode: FocusMode.Input,
-					focusedOption: state.selectedOption || state.focusedOption || optionsList[0],
+					focusedOption: state.selectedOption,
 					statusText,
 				};
 			}

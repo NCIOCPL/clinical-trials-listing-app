@@ -3,6 +3,7 @@ import React, { useEffect, useRef, forwardRef, useImperativeHandle } from 'react
 import classnames from 'classnames';
 
 import { ActionTypes, useComboBox } from './useComboBox';
+import './ComboBox.scss';
 
 /*  As per USWDS spec, ComboBox includes a HTML <select> with options AND a separate <input> and dropdown <ul> with items.
     The select is usa-sr-only and is always hidden via CSS. The input and dropdown list are the elements used for interaction.
@@ -162,7 +163,7 @@ const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabl
 			event.preventDefault();
 			dispatch({
 				type: ActionTypes.FOCUS_OPTION,
-				option: state.selectedOption || state.focusedOption || state.filteredOptions[0],
+				option: state.focusedOption || state.filteredOptions[0] || state.selectedOption,
 			});
 		} else if (event.key === 'Tab') {
 			// Clear button is not visible in this case so manually handle focus
@@ -190,6 +191,7 @@ const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabl
 			}
 		} else if (event.key === 'Enter') {
 			if (state.isOpen) {
+				state.selectedOption = state.focusedOption;
 				event.preventDefault();
 				const exactMatch = state.filteredOptions.find((option) => option.label.toLowerCase() === state.inputValue.toLowerCase());
 				if (exactMatch) {
@@ -237,6 +239,7 @@ const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabl
 
 		if (currentIndex === -1) {
 			dispatch({ type: ActionTypes.FOCUS_OPTION, option: firstOption });
+			//dispatch({ type: ActionTypes.SELECT_OPTION, option: firstOption });
 		} else {
 			const newIndex = currentIndex + change;
 			if (newIndex < 0) {
@@ -278,7 +281,7 @@ const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabl
 		}
 	};
 
-	const isPristine = state.selectedOption && state.selectedOption.label === state.inputValue;
+	const isPristine = state.selectedOption;
 
 	const containerClasses = classnames('usa-combo-box', className, {
 		'usa-combo-box--pristine': isPristine,
@@ -310,7 +313,13 @@ const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabl
 
 					dispatch({ type: ActionTypes.UPDATE_FILTER, value: e.target.value });
 				}}
-				onClick={() => dispatch({ type: ActionTypes.OPEN_LIST })}
+				onClick={(e) => {
+					if (e.target.value) {
+						dispatch({ type: ActionTypes.UPDATE_FILTER, value: e.target.value });
+					}
+
+					dispatch({ type: ActionTypes.OPEN_LIST });
+				}}
 				onBlur={handleInputBlur}
 				onKeyDown={handleInputKeyDown}
 				value={state.inputValue}
