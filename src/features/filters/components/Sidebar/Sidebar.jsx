@@ -11,6 +11,7 @@ import ZipCodeFilter from '../ZipCodeFilter';
 import AgeFilter from '../AgeFilter/AgeFilter';
 import MainTypeFilter from '../MainTypeFilter';
 import Subtype from '../Subtype';
+import DrugInterventionFilter from '../DrugInterventionFilter/DrugInterventionFilter';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import StageFilter from '../StageFilter';
 import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
@@ -334,6 +335,8 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	 */
 	const renderFilter = (filterType, isDisabled) => {
 		switch (filterType) {
+			case 'drugIntervention':
+				return <DrugInterventionFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'maintype':
 				return <MainTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'subtype':
@@ -459,9 +462,10 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		// const hasTrialTypeFilter = filters.trialType?.length > 0;
 		const hasMainTypeFilter = Array.isArray(filters.maintype) && filters.maintype.length > 0;
 		const hasSubTypeFilter = Array.isArray(filters.subtype) && filters.subtype.length > 0;
+		const hasDrugInterventionFilter = Array.isArray(filters.drugIntervention) && filters.drugIntervention.length > 0;
 		const hasStageFilter = Array.isArray(filters.stage) && filters.stage.length > 0;
 
-		return hasAgeFilter || hasLocationFilter || hasMainTypeFilter || hasSubTypeFilter || hasStageFilter;
+		return hasAgeFilter || hasLocationFilter || hasMainTypeFilter || hasSubTypeFilter || hasDrugInterventionFilter || hasStageFilter;
 	};
 
 	/**
