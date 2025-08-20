@@ -473,7 +473,7 @@ When('clicks in the age filter input', () => {
 When('clicks in the zip code filter input', () => {
 	cy.get('.nci-spinner').should('not.exist', { timeout: 30000 });
 
-	cy.get('.ctla-sidebar').find('input[type="text"]').click();
+	cy.get('#filter-group-location-by-zip-code-content').find('input[type="text"]').click();
 });
 
 Then('there should be exactly one {string} analytics event', (eventName) => {

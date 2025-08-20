@@ -41,7 +41,7 @@ export const FILTER_CONFIG = {
 
 	// Configuration for the 'Drug/Intervention' filter
 	drugIntervention: {
-		title: 'Drug/Intervention',
+		title: 'Drug/Drug Family',
 		type: 'combobox', // Likely uses dynamic options fetched elsewhere
 		multiSelect: true,
 		helpText: "You can use the drug's generic or brand name. More than one selection may be made.",
