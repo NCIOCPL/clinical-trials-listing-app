@@ -21,10 +21,22 @@ import PropTypes from 'prop-types';
  */
 const AppliedFilters = ({ pageType = 'Disease' }) => {
 	const { state, dispatch } = useFilters();
-	const { filters } = state; // Get the list of applied filters from context
+	const { appliedFilters: filters } = state; // Get the list of applied filters from context
+	const [, forceUpdate] = React.useReducer((x) => x + 1, 0);
+
+	// Force a re-render after a delay to pick up DOM changes and ensure display text is available
+	React.useEffect(() => {
+		const timer = setTimeout(() => {
+			forceUpdate();
+		}, 100);
+		return () => clearTimeout(timer);
+	}, [filters]);
+
+	// console.log('[AppliedFilters] pageType:', pageType, 'appliedFilters:', filters);
 
 	// If there are no applied filters, don't render anything
 	if (!filters || Object.keys(filters).length === 0) {
+		// console.log('[AppliedFilters] No filters, returning null');
 		return null;
 	}
 
@@ -45,20 +57,23 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 		// dispatch({ type: 'APPLY_FILTERS' });
 	};
 
-	/**
-	 * Handles clearing all applied filters.
-	 * Dispatches the 'CLEAR_FILTERS' action to reset the filter state.
-	 */
-	const handleClearAll = () => {
-		dispatch({ type: 'CLEAR_FILTERS' });
-	};
+	// Helper function to get display text from ComboBox or input field
+	const getFilterDisplayText = (filterElementId) => {
+		// First try to get from selected option in dropdown
+		const selectedOption = document.querySelector(`#${filterElementId}--list .usa-combo-box__list-option--selected`);
+		if (selectedOption?.innerText) {
+			return selectedOption.innerText;
+		}
 
-	let maintypeSelectedText = document.querySelector('#maintype-filter--list .usa-combo-box__list-option--selected');
-	// let maintypeText = maintypeSelectedText?.innerText;
-	let subtypeSelectedText = document.querySelector('#subtype-filter--list .usa-combo-box__list-option--selected');
-	// let subtypeText = subtypeSelectedText?.innerText;
-	let stageSelectedText = document.querySelector('#stage-filter--list .usa-combo-box__list-option--selected');
-	//let stageText = subtypeSelectedText?.innerText;
+		// Then try to get from the input field itself
+		const inputField = document.querySelector(`#${filterElementId}`);
+		if (inputField?.value) {
+			return inputField.value;
+		}
+
+		// Return null if neither works
+		return null;
+	};
 
 	/**
 	 * Formats the filter data into a user-friendly label and display type for the tag.
@@ -71,29 +86,59 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 	 */
 	const formatFilterLabel = (filter) => {
 		switch (filter.type) {
-			case 'maintype':
+			case 'maintype': {
+				const maintypeText = getFilterDisplayText('maintype-filter');
+				// Only show if we have proper display text from DOM, not concept codes
+				if (!maintypeText) {
+					return null;
+				}
 				return {
-					label: [maintypeSelectedText?.innerText],
+					label: [maintypeText],
 					displayType: 'Maintype',
 				};
-			case 'subtype':
-				// Format subtype labels (replace underscores, capitalize words)
+			}
+			case 'subtype': {
+				const subtypeText = getFilterDisplayText('subtype-filter');
+				// Only show if we have proper display text from DOM, not concept codes
+				if (!subtypeText) {
+					return null;
+				}
 				return {
-					label: [subtypeSelectedText?.innerText],
+					label: [subtypeText],
 					displayType: 'Subtype',
 				};
-			case 'stage':
-				// Format stage labels (e.g., "Stage IV")
+			}
+			case 'stage': {
+				const stageText = getFilterDisplayText('stage-filter');
+				// Only show if we have proper display text from DOM, not concept codes
+				if (!stageText) {
+					return null;
+				}
 				return {
-					label: [stageSelectedText?.innerText],
+					label: [stageText],
 					displayType: 'Stage',
 				};
+			}
 			case 'drugIntervention':
-				// Use values directly for drug/intervention
-				return {
-					label: filter.values,
-					displayType: 'Drug/Intervention',
-				};
+				// Show if we have a complete drug object with name OR a concept code
+				if (Array.isArray(filter.values) && filter.values.length > 0) {
+					const drug = filter.values[0];
+					if (drug && typeof drug === 'object' && drug.name) {
+						// Full drug object with name
+						return {
+							label: [drug.name],
+							displayType: 'Drug / Drug Family',
+						};
+					} else if (typeof drug === 'string') {
+						// Concept code - display as fallback
+						return {
+							label: [drug],
+							displayType: 'Drug / Drug Family',
+						};
+					}
+				}
+				// Don't show if no data at all
+				return null;
 			case 'age':
 				// Format age label
 				return {
@@ -143,7 +188,15 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 						return null;
 					}
 
-					const { label } = formatFilterLabel(filter);
+					const formattedFilter = formatFilterLabel(filter);
+					// console.log('[AppliedFilters] formatFilterLabel returned:', formattedFilter);
+					// Skip if formatFilterLabel returns null (e.g., incomplete drugIntervention data)
+					if (!formattedFilter) {
+						// console.log('[AppliedFilters] formattedFilter is null, skipping');
+						return null;
+					}
+
+					const { label } = formattedFilter;
 					// Map through each value within the filter group (most have one, some like subtype can have multiple)
 					return label.map((value, index) => (
 						<div key={`${filter.type}-${value}-${index}`} className="applied-filters__tag usa-tag">
@@ -157,11 +210,6 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 						</div>
 					));
 				})}
-			</div>
-			<div className="ctla-sidebar__actions">
-				<button className="applied-filters__clear-all usa-button ctla-sidebar__button--clear" onClick={handleClearAll}>
-					Clear Filters
-				</button>
 			</div>
 		</div>
 	);

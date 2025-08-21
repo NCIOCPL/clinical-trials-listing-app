@@ -106,11 +106,26 @@ const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabl
 				type: ActionTypes.RESET_OPTIONS_LIST,
 				optionsList: options,
 			});
+
+			// If we have a defaultValue but no selected option yet (because options were loading),
+			// try to select the matching option now that options are available
+			if (defaultValue && !state.selectedOption && options.length > 0) {
+				const matchingOption = options.find((opt) => opt.value === defaultValue);
+				if (matchingOption) {
+					dispatch({
+						type: ActionTypes.SELECT_OPTION,
+						option: matchingOption,
+					});
+				}
+			}
 		}
-	}, [defaultValue, options, dispatch]);
+	}, [defaultValue, options, dispatch, state.selectedOption]);
 
 	useEffect(() => {
-		onChange && onChange(state.selectedOption?.value || undefined);
+		// When clearing (selectedOption becomes undefined), call onChange with empty string
+		// When selecting, call onChange with the selected value
+		const valueToPass = state.selectedOption?.value ?? '';
+		onChange && onChange(valueToPass);
 	}, [state.selectedOption]);
 
 	useEffect(() => {

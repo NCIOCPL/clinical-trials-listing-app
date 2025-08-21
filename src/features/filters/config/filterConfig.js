@@ -39,13 +39,13 @@ export const FILTER_CONFIG = {
 		urlParam: URL_PARAM_MAPPING.stage.shortCode,
 	},
 
-	// Configuration for the 'Drug/Intervention' filter
+	// Configuration for the 'Drug/Drug Family' filter
 	drugIntervention: {
-		title: 'Drug/Drug Family',
+		title: 'Drug / Drug Family',
 		type: 'combobox', // Likely uses dynamic options fetched elsewhere
-		multiSelect: true,
-		helpText: "You can use the drug's generic or brand name. More than one selection may be made.",
-		placeholder: 'Start typing to select drugs and/or drug combinations',
+		multiSelect: false, // Single selection only
+		helpText: 'Start typing to select a drug and/or drug family',
+		placeholder: 'Start typing to select drugs and/or drug families',
 		// urlParam: URL_PARAM_MAPPING.drugIntervention.shortCode,
 	},
 

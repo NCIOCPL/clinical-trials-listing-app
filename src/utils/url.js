@@ -38,6 +38,29 @@ export const getFiltersFromURL = (search) => {
 		filters.maintype = [maintypeValue]; // Store as array to match filter state structure
 	}
 
+	// Handle subtype param
+	const subtypeValue = params.get(URL_PARAM_MAPPING.subtype.shortCode);
+	if (subtypeValue) {
+		filters.subtype = [subtypeValue]; // Store as array to match filter state structure
+	}
+
+	// Handle stage param
+	const stageValue = params.get(URL_PARAM_MAPPING.stage.shortCode);
+	if (stageValue) {
+		filters.stage = [stageValue]; // Store as array to match filter state structure
+	}
+
+	// Handle drugIntervention param (comma-separated concept codes)
+	const drugInterventionValue = params.get(URL_PARAM_MAPPING.drugIntervention.shortCode);
+	if (drugInterventionValue) {
+		// Store as concept codes only - the DrugInterventionFilter will handle loading full drug data
+		const codes = drugInterventionValue.split(',').filter((code) => code.trim());
+		if (codes.length > 0) {
+			// Store just the concept codes, DrugInterventionFilter will fetch drug details
+			filters.drugIntervention = codes;
+		}
+	}
+
 	// Handle zip and radius params with validation
 	const zip = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
 	const radius = params.get(URL_PARAM_MAPPING.radius.shortCode);

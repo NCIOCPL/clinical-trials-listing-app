@@ -12,6 +12,7 @@ import Sidebar from '../../features/filters/components/Sidebar/Sidebar';
 import { useStateValue } from '../../store/store';
 import { useTrialSearch } from '../../features/filters/hooks/useTrialSearch';
 import { appendOrUpdateToQueryString, getKeyValueFromQueryString, getPageOffset, TokenParser, getAnalyticsParamsForRoute, getNoTrialsRedirectParams, getParamsForRoute, getTextReplacementContext } from '../../utils';
+import { URL_PARAM_MAPPING } from '../../features/filters/constants/urlParams';
 import { formatLocationString, getAppliedFieldsString } from '../../features/filters/utils/analytics.js';
 import { FILTER_EVENTS, INTERACTION_TYPES } from '../../features/filters/tracking/filterEvents';
 import { useFilterCounters } from '../../features/filters/hooks/useFilterCounters';
@@ -251,6 +252,26 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 		const filters = getCurrentFilters();
 		// const baseFilters = baseRequestFilters;
 
+		// Check if maintype filter is applied
+		if (filters['maintype']) {
+			return true;
+		}
+
+		// Check if subtype filter is applied
+		if (filters['subtype']) {
+			return true;
+		}
+
+		// Check if stage filter is applied
+		if (filters['diseases.stage']) {
+			return true;
+		}
+
+		// Check if drugIntervention filter is applied
+		if (filters['arms.interventions.nci_thesaurus_concept_id']) {
+			return true;
+		}
+
 		// Check if age filter is applied
 		if (filters['eligibility.structured.min_age_in_years_lte'] || filters['eligibility.structured.max_age_in_years_gte']) {
 			return true;
@@ -404,6 +425,52 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 			}
 		}
 
+		// Preserve filter parameters from the applied filter state
+		const appliedFilters = filterState.appliedFilters || {};
+		console.log('[Disease handleRedirect] Applied filters from state:', appliedFilters);
+
+		// Add maintype filter
+		if (appliedFilters.maintype && appliedFilters.maintype.length > 0) {
+			redirectParams += (redirectParams ? '&' : '') + `${URL_PARAM_MAPPING.maintype.shortCode}=${appliedFilters.maintype[0]}`;
+		}
+
+		// Add subtype filter
+		if (appliedFilters.subtype && appliedFilters.subtype.length > 0) {
+			redirectParams += (redirectParams ? '&' : '') + `${URL_PARAM_MAPPING.subtype.shortCode}=${appliedFilters.subtype[0]}`;
+		}
+
+		// Add stage filter
+		if (appliedFilters.stage && appliedFilters.stage.length > 0) {
+			redirectParams += (redirectParams ? '&' : '') + `${URL_PARAM_MAPPING.stage.shortCode}=${appliedFilters.stage[0]}`;
+		}
+
+		// Add drugIntervention filter
+		if (appliedFilters.drugIntervention && appliedFilters.drugIntervention.length > 0) {
+			// Convert drug objects to concept codes for URL
+			const drugCodes = appliedFilters.drugIntervention.map((drug) => drug.codes?.[0]).filter((code) => code);
+
+			if (drugCodes.length > 0) {
+				redirectParams += (redirectParams ? '&' : '') + `${URL_PARAM_MAPPING.drugIntervention.shortCode}=${drugCodes.join(',')}`;
+			}
+		}
+
+		// Add age filter
+		if (appliedFilters.age && appliedFilters.age.toString().trim() !== '') {
+			redirectParams += (redirectParams ? '&' : '') + `${URL_PARAM_MAPPING.age.shortCode}=${appliedFilters.age}`;
+		}
+
+		// Add location filters
+		if (appliedFilters.location) {
+			if (appliedFilters.location.zipCode) {
+				redirectParams += (redirectParams ? '&' : '') + `${URL_PARAM_MAPPING.zipCode.shortCode}=${appliedFilters.location.zipCode}`;
+			}
+			if (appliedFilters.location.radius) {
+				redirectParams += (redirectParams ? '&' : '') + `${URL_PARAM_MAPPING.radius.shortCode}=${appliedFilters.location.radius}`;
+			}
+		}
+
+		console.log('[Disease handleRedirect] Final redirect params with filters:', redirectParams);
+
 		// Use the status determined by the calling useEffect
 		const finalRedirectStatus = status;
 
@@ -424,8 +491,9 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 		// console.log(`[Disease handleRedirect] Final redirect status: ${finalRedirectStatus}. Prerender Location: ${prerenderLocation}. Navigating...`); // LOG
 
 		// We want an immediate return to ensure the redirect happens synchronously
+		// Use replace: false to create browser history entry for back button functionality
 		return navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
-			replace: true,
+			replace: false,
 			state: {
 				redirectStatus: finalRedirectStatus, // Directly use the passed status
 				prerenderLocation: prerenderLocation,

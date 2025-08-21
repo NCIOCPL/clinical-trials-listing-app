@@ -84,19 +84,17 @@ Scenario: Age filter input field is visible
     Given the user navigates to "/breast-cancer?cfg=0"
     Then the user sees the "Age" filter input
 
-  Scenario: Entering a valid age and applying filters updates the URL
+  Scenario: Entering a valid age auto-applies and updates the URL
     Given "trialListingPageType" is set to "Disease"
     And "dynamicListingPatterns" object is set to "Disease"
     Given the user navigates to "/breast-cancer?cfg=0"
     When the user types "45" into the Age filter input
-    And the user clicks the "Apply Filters" button
     Then the URL should contain the parameter "a=45"
 
 		 # Start with age filter applied
-  Scenario: Clearing the age filter removes the parameter from the URL
+  Scenario: Clearing the age filter auto-applies and removes the parameter from the URL
     Given "trialListingPageType" is set to "Disease"
     And "dynamicListingPatterns" object is set to "Disease"
     Given the user navigates to "/breast-cancer?a=50&cfg=0"
     When the user clears the "Age" filter input
-    And the user clicks the "Apply Filters" button
     Then the URL should not contain the parameter "a="

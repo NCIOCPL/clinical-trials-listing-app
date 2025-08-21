@@ -2,6 +2,7 @@
 import React from 'react';
 import FilterGroup from './FilterGroup';
 import { withTracking } from '../../../../../.storybook/decorators/withTracking';
+import { FILTER_CONFIG } from '../../config/filterConfig';
 
 // Move default export to the top
 export default {
@@ -61,8 +62,8 @@ Default.args = {
 export const WithHelpText = Template.bind({});
 WithHelpText.args = {
 	...Default.args,
-	title: 'Drug/Intervention',
-	helpText: "You can use the drug's generic or brand name. More than one selection may be made.",
+	title: FILTER_CONFIG.drugIntervention.title,
+	helpText: FILTER_CONFIG.drugIntervention.helpText,
 };
 
 export const Required = Template.bind({});
@@ -83,7 +84,7 @@ export const MultipleGroups = () => (
 		<FilterGroup title="Subtype" showDivider>
 			<p>Subtype filter content</p>
 		</FilterGroup>
-		<FilterGroup title="Drug/Intervention" helpText="Enter drug names" showDivider>
+		<FilterGroup title={FILTER_CONFIG.drugIntervention.title} helpText={FILTER_CONFIG.drugIntervention.helpText} showDivider>
 			<p>Drug filter content</p>
 		</FilterGroup>
 		<FilterGroup title="Age" required>
