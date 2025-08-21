@@ -44,7 +44,7 @@ export const FILTER_CONFIG = {
 		title: 'Drug/Drug Family',
 		type: 'combobox', // Likely uses dynamic options fetched elsewhere
 		multiSelect: true,
-		helpText: "You can use the drug's generic or brand name. More than one selection may be made.",
+		helpText: 'Start typing to select a drug and/or drug family',
 		placeholder: 'Start typing to select drugs and/or drug combinations',
 		// urlParam: URL_PARAM_MAPPING.drugIntervention.shortCode,
 	},

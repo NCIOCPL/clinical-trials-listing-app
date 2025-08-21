@@ -242,3 +242,19 @@ span#filter-group-stage-tooltip-body.usa-tooltip__body--top {
 		left: 40%;
 	}
 }
+#filter-group-drug\/drug-family-tooltip-body.usa-tooltip__body--top {
+	@include u-minw(260px);
+	@include u-margin-top('neg-8');
+	@include u-margin-bottom(3);
+	@include u-bottom(0);
+	@include u-top(0);
+	@include u-left(50%);
+	transform: translate(-50%, 0);
+
+	@include at-media-max('mobile-lg') {
+		transform: translate(-80%, 0);
+		&:after {
+			@include u-left(80%);
+		}
+	}
+}

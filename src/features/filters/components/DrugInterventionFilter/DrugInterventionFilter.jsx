@@ -56,7 +56,7 @@ const DrugInterventionFilter = ({ onFocus, disabled = false }) => {
 	};
 
 	return (
-		<FilterGroup title={FILTER_CONFIG.drugIntervention.title}>
+		<FilterGroup title={FILTER_CONFIG.drugIntervention.title} helpText={FILTER_CONFIG.drugIntervention.helpText}>
 			{error ? (
 				<div>Unable to load drug/drug family types. Please try again later.</div>
 			) : (
