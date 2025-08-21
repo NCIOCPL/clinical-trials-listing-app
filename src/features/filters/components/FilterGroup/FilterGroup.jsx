@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 // Note: Tracking functionality is currently commented out.
 // import { useTracking } from 'react-tracking';
 //import { FILTER_CONFIG } from '../../config/filterConfig';
+// COMMENTED OUT: import { useFilters } from '../../context/FilterContext/FilterContext';
 import './FilterGroup.scss';
 
 /**
@@ -33,6 +34,39 @@ const FilterGroup = ({ title, helpText, children, defaultExpanded = true, requir
 	const groupId = id || `filter-group-${title.toLowerCase().replace(/\s+/g, '-')}`;
 	// const contentRef = useRef(null); // Ref was likely for managing height transition (unused now)
 	// const tracking = useTracking(); // Tracking hook initialization (commented out)
+
+	// COMMENTED OUT: Get pending state from context for visual feedback
+	// const { state } = useFilters();
+
+	// COMMENTED OUT: Determine if this specific filter group has a value and is pending
+	// const getFilterValue = () => {
+	// 	const titleLower = title.toLowerCase();
+	// 	const filters = state.filters;
+
+	// 	// Map filter group titles to filter values
+	// 	if (titleLower.includes('age')) {
+	// 		return filters.age && filters.age.toString().trim() !== '';
+	// 	}
+	// 	if (titleLower.includes('location') || titleLower.includes('zip')) {
+	// 		return filters.location?.zipCode && filters.location.zipCode.trim() !== '';
+	// 	}
+	// 	if (titleLower.includes('primary cancer') || titleLower.includes('maintype')) {
+	// 		return Array.isArray(filters.maintype) && filters.maintype.length > 0;
+	// 	}
+	// 	if (titleLower.includes('subtype')) {
+	// 		return Array.isArray(filters.subtype) && filters.subtype.length > 0;
+	// 	}
+	// 	if (titleLower.includes('stage')) {
+	// 		return Array.isArray(filters.stage) && filters.stage.length > 0;
+	// 	}
+	// 	if (titleLower.includes('drug')) {
+	// 		return Array.isArray(filters.drugIntervention) && filters.drugIntervention.length > 0;
+	// 	}
+	// 	return false;
+	// };
+
+	// const hasValue = getFilterValue();
+	// const isPending = state.pendingAutoApply && hasValue;
 
 	// Commented-out state and effects for expand/collapse functionality:
 	// const [isExpanded, setIsExpanded] = useState(defaultExpanded);

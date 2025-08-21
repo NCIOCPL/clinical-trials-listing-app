@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useFilters } from '../../context/FilterContext/FilterContext';
 import FilterGroup from '../FilterGroup';
@@ -14,12 +14,13 @@ const StageFilter = ({ disabled = false, onFocus }) => {
 	const { state, dispatch } = useFilters();
 	const { filters } = state;
 	const tracking = useTracking();
+	const isHandlingChangeRef = useRef(false);
 
 	// Get the selected maintype code from filters
 	const maintypeCode = filters.maintype && filters.maintype.length > 0 ? filters.maintype[0] : null;
 
 	const { options, isLoading } = useStageSearch(maintypeCode);
-	console.log(options);
+	// console.log(options);
 	const formattedOptions = useMemo(() => {
 		return options.map((option) => ({
 			value: option.value || option.id || '',
@@ -31,6 +32,19 @@ const StageFilter = ({ disabled = false, onFocus }) => {
 	const value = Array.isArray(filters.stage) ? filters.stage : [];
 
 	const handleChange = (selectedValue) => {
+		// Prevent recursive onChange calls
+		if (isHandlingChangeRef.current) {
+			return;
+		}
+
+		// Guard against ComboBox calling onChange with undefined during initialization
+		if (selectedValue === undefined) {
+			return;
+		}
+
+		// Set flag to prevent recursive calls
+		isHandlingChangeRef.current = true;
+
 		const newValue = selectedValue ? [selectedValue] : [];
 
 		dispatch({
@@ -51,6 +65,11 @@ const StageFilter = ({ disabled = false, onFocus }) => {
 			filterValue: selectedValue || '',
 			action: selectedValue ? 'select' : 'clear',
 		});
+
+		// Reset flag after a short delay to allow state updates to complete
+		setTimeout(() => {
+			isHandlingChangeRef.current = false;
+		}, 100);
 	};
 
 	// Determine if the component should be disabled

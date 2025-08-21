@@ -31,6 +31,10 @@ export const URL_PARAM_MAPPING = {
 		shortCode: 'stg',
 		longName: 'stage',
 	},
+	drugIntervention: {
+		shortCode: 'd',
+		longName: 'drugIntervention',
+	},
 };
 
 /**

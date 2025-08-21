@@ -13,8 +13,8 @@
 export const PAGE_FILTER_CONFIGS = {
 	// Configuration for 'Disease' type pages
 	Disease: {
-		enabledFilters: ['age', 'location', ],// Only Age and Location filters are enabled
-		order: ['age', 'location'],// Display Age first, then Location
+		enabledFilters: ['age', 'location', 'drugIntervention'], // Only Age and Location filters are enabled
+		order: ['age', 'location', 'drugIntervention'], // Display Age first, then Location
 	},
 
 	// Configuration for 'Manual' type pages (currently no filters enabled)
@@ -25,8 +25,8 @@ export const PAGE_FILTER_CONFIGS = {
 
 	// Configuration for 'Intervention' type pages
 	Intervention: {
-		enabledFilters: ['age', 'location', 'maintype', 'subtype', 'drugIntervention'], 
-		order: ['age', 'location', 'maintype', 'subtype', 'drugIntervention'],
+		enabledFilters: ['age', 'location', 'maintype', 'subtype', 'stage'],
+		order: ['age', 'location', 'maintype', 'subtype', 'stage'],
 	},
 	// Add configurations for other page types as needed
 };

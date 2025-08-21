@@ -110,23 +110,19 @@ Feature: Filter Buttons Functionality
 #      And Apply Filters button is disabled
 #      And Clear Filters button is disabled
 
-  Scenario: Apply button stays disabled after applying filters until new changes
+  Scenario: Filters auto-apply when user enters values
     Given "trialListingPageType" is set to "Disease"
     And "dynamicListingPatterns" object is set to "Disease"
     When the user navigates to "/breast-cancer?cfg=0"
 		When the user types "65" into the Age filter input
-		And clicks the "Apply Filters" button
-    Then the "Apply Filters" button is disabled
+    Then the URL should contain the parameter "a=65"
 		When the user types "70" into the Age filter input
-		Then the "Apply Filters" button is enabled
+		Then the URL should contain the parameter "a=70"
 
-  Scenario: Button states persist during page navigation
+  Scenario: Clear Filters button remains functional during page navigation
     Given "trialListingPageType" is set to "Disease"
     And "dynamicListingPatterns" object is set to "Disease"
     When the user navigates to "/breast-cancer?cfg=0"
 		When the user types "65" into the Age filter input
-
-		And clicks the "Apply Filters" button
     And clicks on "Next" button
     Then the "Clear Filters" button is enabled
-    And the "Apply Filters" button is disabled

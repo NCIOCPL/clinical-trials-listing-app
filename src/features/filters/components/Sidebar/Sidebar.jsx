@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * @file This file defines the Sidebar component, which serves as the main container
  * for all filter controls. It dynamically renders filters based on the current page type,
@@ -12,7 +13,6 @@ import AgeFilter from '../AgeFilter/AgeFilter';
 import MainTypeFilter from '../MainTypeFilter';
 import Subtype from '../Subtype';
 import DrugInterventionFilter from '../DrugInterventionFilter/DrugInterventionFilter';
-import { FILTER_CONFIG } from '../../config/filterConfig';
 import StageFilter from '../StageFilter';
 import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
 import './Sidebar.scss';
@@ -38,7 +38,7 @@ import AppliedFilters from '../AppliedFilters/AppliedFilters';
  * @param {Function} [props.onFilterCleared=()=>{}] - Callback function invoked when filters are cleared. Receives clear count and apply count.
  * @returns {JSX.Element|null} The rendered Sidebar component or null if pageType is invalid.
  */
-const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = () => {} }) => {
+const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = () => {}, onFilterCleared = () => {} }) => {
 	// Hooks for navigation, location, filter context, tracking, and counters
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -46,6 +46,8 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	const { filters, isDirty } = state; // Get current filters and dirty state from context
 	const [hasInteracted, setHasInteracted] = useState(false); // Tracks if user has interacted with any filter yet
 	// const [isFirstLoad, setIsFirstLoad] = useState(true); // Unused state variable
+	// Custom hook for tracking filter removal counts
+	const { filterRemovedCounter, incrementRemovedCounter } = useFilterCounters();
 	// State to hold the function that retrieves the latest ZIP validation status from ZipCodeFilter
 	const [getZipValidationStatus, setGetZipValidationStatus] = useState(null);
 	// Custom hook for tracking filter application/removal counts
@@ -58,15 +60,6 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	 */
 	const validateFilters = () => {
 		const errors = {};
-
-		// Validate age filter value is within the allowed range, but only if it's not empty
-		if (filters.age !== undefined && filters.age !== null && filters.age !== '') {
-			if (filters.age < FILTER_CONFIG.age.min || filters.age > FILTER_CONFIG.age.max) {
-				errors.age = `Invalid age value. Must be between ${FILTER_CONFIG.age.min} and ${FILTER_CONFIG.age.max}.`;
-				// console.log(errors.age);
-				// console.log(filters.age);
-			}
-		}
 
 		// Validate location filter (ZIP code format and radius presence)
 		if (filters.location?.zipCode) {
@@ -157,6 +150,25 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 				},
 			},
 		});
+	};
+
+	/**
+	 * Handles the "Clear Filters" button click.
+	 * Increments the removed counter, calls the parent callback,
+	 * dispatches actions to clear and re-apply (empty) filters.
+	 */
+	const handleClearFilters = () => {
+		incrementRemovedCounter(); // Track clear action
+
+		// Notify parent component
+		onFilterCleared(filterRemovedCounter + 1, filterAppliedCounter);
+
+		// Dispatch actions to update context state
+		dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
+		dispatch({ type: FilterActionTypes.APPLY_FILTERS }); // Apply the cleared state
+
+		// TODO: Clear URL parameters as well? Currently only ApplyFilters updates URL.
+		// navigate(window.location.pathname); // Option 1: Navigate to path without params
 	};
 
 	/**
@@ -380,7 +392,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	 * Attaches/detaches the click listener and manages initial state.
 	 * Note: This uses direct DOM manipulation and might be better handled via context/state.
 	 */
-	const setMobileOnClick = useCallback(() => {
+	const setMobileOnClick = () => {
 		const filterBtn = document.getElementById('filterButton');
 		const content = document.getElementById('accordionContent');
 		if (!filterBtn || !content) return; // Guard if elements don't exist yet
@@ -418,7 +430,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			mediaQueryMobile.removeEventListener('change', handleMediaQueryChange);
 			filterBtn.removeEventListener('click', accordionOnClick); // Ensure listener is removed on unmount
 		};
-	}, []); // Revert dependency array
+	};
 
 	/**
 	 * Effect to set up the mobile accordion listener on component mount.
@@ -426,7 +438,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	useEffect(() => {
 		const cleanup = setMobileOnClick();
 		return cleanup; // Return cleanup function
-	}, [setMobileOnClick]); // Dependency on the memoized setup function
+	}, []); // No dependencies needed since function doesn't depend on props/state
 
 	/**
 	 * Checks if any filters (age or location) are currently active.
@@ -521,25 +533,15 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			needsApply = true;
 		}
 
+		// Note: Not handling drugIntervention here - FilterContext handles it
+		// to avoid race conditions with drug data loading
+
 		// If any filters were set from URL, dispatch APPLY_FILTERS to mark state as non-dirty
 		if (needsApply) {
 			dispatch({ type: FilterActionTypes.APPLY_FILTERS });
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []); // Empty dependency array ensures this runs only once on mount
-
-	/**
-	 * Effect to automatically apply filters when maintype changes
-	 * This ensures the subtype filter is enabled immediately when a maintype is selected
-	 */
-	useEffect(() => {
-		// TODO: Still needed?
-		// Only auto-apply if maintype is selected and filters are dirty
-		if (filters.maintype?.length > 0 && isDirty) {
-			console.log('Sidebar - maintype change:', filters.maintype);
-			// handleApplyFilters();
-		}
-	}, [filters.maintype]); // Only run when maintype changes
 
 	// Validate pageType and configuration existence
 	if (!pageType || !PAGE_FILTER_CONFIGS[pageType]) {
@@ -576,12 +578,13 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 					}
 					return null;
 				})}
+				{renderAppliedFilters()}
 				<div className="ctla-sidebar__actions">
-					<button className="applied-filters__clear-all usa-button ctla-sidebar__button--clear" onClick={handleApplyFilters} disabled={isDisabled || !isDirty}>
-						Apply Filters
+					<button className="usa-button ctla-sidebar__button--clear ctla-sidebar__button--full-width" onClick={handleClearFilters} disabled={isDisabled || !hasActiveFilters()}>
+						Clear Filters
 					</button>
 				</div>
-				{renderAppliedFilters()}
+				{/*{renderAppliedFilters()}*/}
 			</div>
 		</aside>
 	);

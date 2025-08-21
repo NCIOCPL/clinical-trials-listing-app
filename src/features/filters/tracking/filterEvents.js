@@ -13,6 +13,7 @@ export const FILTER_EVENTS = {
 	APPLY: 'TrialListingApp:FilterApply', // User clicks the "Apply Filters" button successfully
 	APPLY_ERROR: 'TrialListingApp:FilterApplyError', // User clicks "Apply Filters" but there are validation errors
 	LINK_CLICK: 'TrialListingApp:FilterLinkClick', // User clicks a link related to filters (e.g., help link - currently unused)
+	AUTO_APPLY_TRIGGERED: 'TrialListingApp:FilterAutoApply', // Auto-apply timer has triggered
 };
 
 /**
