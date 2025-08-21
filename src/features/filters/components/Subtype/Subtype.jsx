@@ -19,7 +19,7 @@ const Subtype = ({ disabled = false, onFocus }) => {
 
 	// Use our custom React Query hook with the maintype code
 	const { options, isLoading } = useSubTypeSearch(maintypeCode);
-	console.log(options);
+	// console.log(options);
 	// Ensure each option has required properties for the ComboBox
 	const formattedOptions = useMemo(() => {
 		return options.map((option) => ({
@@ -32,6 +32,11 @@ const Subtype = ({ disabled = false, onFocus }) => {
 	const value = Array.isArray(filters.subtype) ? filters.subtype : [];
 
 	const handleChange = (selectedValue) => {
+		// Guard against ComboBox calling onChange with undefined during initialization
+		if (selectedValue === undefined) {
+			return;
+		}
+
 		const newValue = selectedValue ? [selectedValue] : [];
 
 		dispatch({

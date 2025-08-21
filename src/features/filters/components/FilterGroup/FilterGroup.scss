@@ -111,6 +111,14 @@
 		}
 	}
 
+	// COMMENTED OUT: Styling for when filters are pending auto-apply
+	// &--pending {
+	// 	@include u-border-left('205', 'solid', $theme-color-primary);
+	// 	@include u-padding-left('105');
+	// 	transition: all 0.3s ease;
+	// 	background: linear-gradient(to right, rgba(0, 123, 189, 0.05), transparent);
+	// }
+
 	&__help-icon-container {
     display: inline-block;
     margin-left: 8px;
@@ -240,5 +248,21 @@ span#filter-group-stage-tooltip-body.usa-tooltip__body--top {
 
 	&:after {
 		left: 40%;
+	}
+}
+#filter-group-drug\/drug-family-tooltip-body.usa-tooltip__body--top {
+	@include u-minw(260px);
+	@include u-margin-top('neg-8');
+	@include u-margin-bottom(3);
+	@include u-bottom(0);
+	@include u-top(0);
+	@include u-left(50%);
+	transform: translate(-50%, 0);
+
+	@include at-media-max('mobile-lg') {
+		transform: translate(-80%, 0);
+		&:after {
+			@include u-left(80%);
+		}
 	}
 }

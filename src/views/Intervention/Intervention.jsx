@@ -12,6 +12,7 @@ import { useFilters } from '../../features/filters/context/FilterContext/FilterC
 import Sidebar from '../../features/filters/components/Sidebar/Sidebar';
 import { useStateValue } from '../../store/store';
 import { appendOrUpdateToQueryString, getKeyValueFromQueryString, getPageOffset, TokenParser, getAnalyticsParamsForRoute, getNoTrialsRedirectParams, getParamsForRoute } from '../../utils';
+import { URL_PARAM_MAPPING } from '../../features/filters/constants/urlParams';
 import { formatLocationString, getAppliedFieldsString } from '../../features/filters/utils/analytics';
 import { FILTER_EVENTS, INTERACTION_TYPES } from '../../features/filters/tracking/filterEvents';
 import { useFilterCounters } from '../../features/filters/hooks/useFilterCounters';
@@ -144,6 +145,21 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 	const hasAppliedFilters = () => {
 		const filters = getCurrentFilters();
 
+		// Check if maintype filter is applied
+		if (filters['maintype']) {
+			return true;
+		}
+
+		// Check if subtype filter is applied
+		if (filters['subtype']) {
+			return true;
+		}
+
+		// Check if stage filter is applied
+		if (filters['diseases.stage']) {
+			return true;
+		}
+
 		// Check if age filter is applied
 		if (filters['eligibility.structured.min_age_in_years_lte'] || filters['eligibility.structured.max_age_in_years_gte']) {
 			return true;
@@ -172,6 +188,42 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 			}
 		}
 
+		// Preserve filter parameters from the applied filter state
+		const appliedFilters = filterState.appliedFilters || {};
+		console.log('[Intervention handleRedirect] Applied filters from state:', appliedFilters);
+
+		// Add maintype filter
+		if (appliedFilters.maintype && appliedFilters.maintype.length > 0) {
+			redirectParams += (redirectParams ? '&' : '') + `${URL_PARAM_MAPPING.maintype.shortCode}=${appliedFilters.maintype[0]}`;
+		}
+
+		// Add subtype filter
+		if (appliedFilters.subtype && appliedFilters.subtype.length > 0) {
+			redirectParams += (redirectParams ? '&' : '') + `${URL_PARAM_MAPPING.subtype.shortCode}=${appliedFilters.subtype[0]}`;
+		}
+
+		// Add stage filter
+		if (appliedFilters.stage && appliedFilters.stage.length > 0) {
+			redirectParams += (redirectParams ? '&' : '') + `${URL_PARAM_MAPPING.stage.shortCode}=${appliedFilters.stage[0]}`;
+		}
+
+		// Add age filter
+		if (appliedFilters.age && appliedFilters.age.toString().trim() !== '') {
+			redirectParams += (redirectParams ? '&' : '') + `${URL_PARAM_MAPPING.age.shortCode}=${appliedFilters.age}`;
+		}
+
+		// Add location filters
+		if (appliedFilters.location) {
+			if (appliedFilters.location.zipCode) {
+				redirectParams += (redirectParams ? '&' : '') + `${URL_PARAM_MAPPING.zipCode.shortCode}=${appliedFilters.location.zipCode}`;
+			}
+			if (appliedFilters.location.radius) {
+				redirectParams += (redirectParams ? '&' : '') + `${URL_PARAM_MAPPING.radius.shortCode}=${appliedFilters.location.radius}`;
+			}
+		}
+
+		console.log('[Intervention handleRedirect] Final redirect params with filters:', redirectParams);
+
 		// Use the status determined by the calling useEffect
 		const finalRedirectStatus = status;
 
@@ -191,8 +243,9 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 
 		// console.log(`[Intervention handleRedirect] Final redirect status: ${finalRedirectStatus}. Prerender Location: ${prerenderLocation}. Navigating...`); // LOG
 
+		// Use replace: false to create browser history entry for back button functionality
 		return navigate(`${NoTrialsPath()}?${redirectParams.replace(new RegExp('/&$/'), '')}`, {
-			replace: true,
+			replace: false,
 			state: {
 				redirectStatus: finalRedirectStatus, // Directly use the passed status
 				prerenderLocation: prerenderLocation,

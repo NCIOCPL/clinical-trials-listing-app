@@ -20,12 +20,16 @@ const cleanRequestFilters = (filters) => {
 	try {
 		const cleaned = {};
 		Object.entries(filters).forEach(([key, value]) => {
+			// Skip pagination parameters - they're handled in baseBody
+			if (key === 'from' || key === 'size') {
+				return;
+			}
 			// Skip empty arrays
 			if (Array.isArray(value) && value.length === 0) {
 				return;
 			}
 			// Skip objects where all values are empty/null/undefined
-			if (typeof value === 'object' && value !== null) {
+			if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
 				const isEmptyObject = Object.values(value).every((v) => v === '' || v === null || v === undefined);
 				if (isEmptyObject) {
 					return;
@@ -99,8 +103,8 @@ export const useTrialSearch = (requestFilters, isEnabled = true) => {
 				const baseBody = {
 					current_trial_status: ['Active', 'Approved', 'Enrolling by Invitation', 'In Review', 'Temporarily Closed to Accrual', 'Temporarily Closed to Accrual and Intervention'],
 					include: ['brief_summary', 'brief_title', 'current_trial_status', 'nci_id', 'nct_id', 'sites.org_name', 'sites.org_country', 'sites.org_state_or_province', 'sites.org_city', 'sites.recruitment_status', 'sites.org_coordinates'],
-					from: requestFilters.from || 0, // Default pagination 'from'
-					size: requestFilters.size || 25, // Default pagination 'size'
+					from: requestFilters.from ?? 0, // Default pagination 'from' - use ?? to handle null/undefined
+					size: requestFilters.size ?? 25, // Default pagination 'size' - use ?? to handle null/undefined
 				};
 
 				// Clean the provided filters to remove empty values
@@ -136,6 +140,18 @@ export const useTrialSearch = (requestFilters, isEnabled = true) => {
 			} catch (err) {
 				// Log error during development and throw a user-friendly error
 				// console.error('Error in trial search:', err);
+
+				// Check if this is a rate limiting error
+				const isRateLimited = err.response?.status === 429 || err.response?.data?.message === 'Too Many Requests' || err.message === 'Too Many Requests';
+
+				if (isRateLimited) {
+					// Throw a specific error for rate limiting that the retry logic can catch
+					const rateLimitError = new Error('Too Many Requests');
+					rateLimitError.isRateLimit = true;
+					rateLimitError.originalError = err;
+					throw rateLimitError;
+				}
+
 				throw new Error(err.response?.data?.message || err.message || 'An error occurred while fetching trials');
 			}
 		},
@@ -162,8 +178,24 @@ export const useTrialSearch = (requestFilters, isEnabled = true) => {
 		refetchOnWindowFocus: false, // Disable refetching when window gains focus
 		refetchOnMount: false, // Disable automatic refetch on mount if data is fresh
 		refetchOnReconnect: false, // Disable automatic refetch on network reconnect
-		retry: 1, // Retry once on failure
-		retryDelay: 1000, // Wait 1 second before retrying
+		// Enhanced retry logic for rate limiting
+		retry: (failureCount, error) => {
+			// For rate limiting errors, retry up to 5 times
+			if (error?.isRateLimit) {
+				return failureCount < 5;
+			}
+			// For other errors, retry once
+			return failureCount < 1;
+		},
+		// Exponential backoff with longer delays for rate limiting
+		retryDelay: (attemptIndex, error) => {
+			if (error?.isRateLimit) {
+				// Exponential backoff: 2s, 4s, 8s, 16s, 32s for rate limiting
+				return Math.min(2000 * Math.pow(2, attemptIndex), 32000);
+			}
+			// Standard 1 second delay for other errors
+			return 1000;
+		},
 	});
 
 	// Return the fetched data, loading state, and formatted error object
