@@ -7,6 +7,9 @@
 import React from 'react';
 import { useFilters } from '../../context/FilterContext/FilterContext';
 import './AppliedFilters.scss';
+import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
+import PropTypes from 'prop-types';
+//import img from '@nciocpl/ncids-css/uswds-img/sprite.svg';
 
 /**
  * Renders a section displaying the currently applied filters as tags.
@@ -16,12 +19,12 @@ import './AppliedFilters.scss';
  *
  * @returns {JSX.Element|null} The rendered AppliedFilters component or null.
  */
-const AppliedFilters = () => {
+const AppliedFilters = ({ pageType = 'Disease' }) => {
 	const { state, dispatch } = useFilters();
-	const { appliedFilters } = state; // Get the list of applied filters from context
+	const { filters } = state; // Get the list of applied filters from context
 
 	// If there are no applied filters, don't render anything
-	if (appliedFilters.length === 0) {
+	if (!filters || Object.keys(filters).length === 0) {
 		return null;
 	}
 
@@ -39,7 +42,7 @@ const AppliedFilters = () => {
 			payload: { filterType, value },
 		});
 		// Re-apply filters after removing one to update the list/results
-		dispatch({ type: 'APPLY_FILTERS' });
+		// dispatch({ type: 'APPLY_FILTERS' });
 	};
 
 	/**
@@ -50,6 +53,8 @@ const AppliedFilters = () => {
 		dispatch({ type: 'CLEAR_FILTERS' });
 	};
 
+	let maintypeSelectedText = document.querySelector('#maintype-filter--list .usa-combo-box__list-option--selected');
+	let maintypeText = maintypeSelectedText?.innerText;
 	/**
 	 * Formats the filter data into a user-friendly label and display type for the tag.
 	 * Handles specific formatting for different filter types like 'subtype', 'stage', 'age', 'location'.
@@ -61,6 +66,11 @@ const AppliedFilters = () => {
 	 */
 	const formatFilterLabel = (filter) => {
 		switch (filter.type) {
+			case 'maintype':
+				return {
+					label: maintypeText ? [maintypeText] : [],
+					displayType: 'Maintype',
+				};
 			case 'subtype':
 				// Format subtype labels (replace underscores, capitalize words)
 				return {
@@ -70,7 +80,7 @@ const AppliedFilters = () => {
 			case 'stage':
 				// Format stage labels (e.g., "Stage IV")
 				return {
-					label: filter.values.map((value) => `Stage ${value.split('_')[1].toUpperCase()}`),
+					label: filter.values.map(() => `Stage`),
 					displayType: 'Stage',
 				};
 			case 'drugIntervention':
@@ -100,31 +110,60 @@ const AppliedFilters = () => {
 		}
 	};
 
+	// const filtersArray = Object.entries(filters).map(([type, values]) => ({
+	// 	type,
+	// 	values
+	//   }));
+
+	// Displays filter tags in the correct order
+	const orderedFilterTypes = PAGE_FILTER_CONFIGS[pageType]?.order || [];
+
+	const filtersArray = orderedFilterTypes
+		.filter((type) => filters[type] !== undefined && filters[type] !== null)
+		.map((type) => ({
+			type,
+			values: filters[type],
+		}));
+
 	return (
 		<div className="applied-filters">
 			<div className="applied-filters__header">
-				<h3>Applied Filters</h3>
-				<button className="applied-filters__clear-all" onClick={handleClearAll}>
-					Clear All
-				</button>
+				<h3>Applied Filters:</h3>
 			</div>
 			<div className="applied-filters__content">
 				{/* Map through each applied filter group */}
-				{appliedFilters.map((filter) => {
-					const { label, displayType } = formatFilterLabel(filter);
+				{filtersArray.map((filter) => {
+					let emptyFilter = filter.values == null || filter.values == null || filter.values.length === 0 || (filter.type == 'location' && (filter.values.radius == null || filter.values.radius == undefined));
+					if (emptyFilter) {
+						return null;
+					}
+
+					const { label } = formatFilterLabel(filter);
 					// Map through each value within the filter group (most have one, some like subtype can have multiple)
 					return label.map((value, index) => (
-						<div key={`${filter.type}-${value}-${index}`} className="applied-filters__tag">
-							<span className="applied-filters__tag-type">{displayType}:</span>
+						<div key={`${filter.type}-${value}-${index}`} className="applied-filters__tag usa-tag">
 							<span className="applied-filters__tag-value">{value}</span>
 							{/* Button to remove this specific filter value */}
-							<button onClick={() => handleRemoveFilter(filter.type, filter.values[index])} className="applied-filters__tag-remove" aria-label={`Remove ${value} filter`}></button>
+							<button onClick={() => handleRemoveFilter(filter.type, filter.values[index])} className="applied-filters__tag-remove" aria-label={`Remove ${value} filter`}>
+								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 14 14" fill="none">
+									<path fillRule="evenodd" clipRule="evenodd" d="M13.4167 1.87575L12.1242 0.583252L7.00001 5.70742L1.87584 0.583252L0.583344 1.87575L5.70751 6.99992L0.583344 12.1241L1.87584 13.4166L7.00001 8.29242L12.1242 13.4166L13.4167 12.1241L8.29251 6.99992L13.4167 1.87575Z" fill="white" />
+								</svg>
+							</button>
 						</div>
 					));
 				})}
 			</div>
+			<button className="applied-filters__clear-all usa-button ctla-sidebar__button--clear" onClick={handleClearAll}>
+				Clear Filters
+			</button>
 		</div>
 	);
+};
+
+// Define PropTypes for type checking and documentation
+AppliedFilters.propTypes = {
+	/** The type of page, determining which filters are shown (e.g., 'Disease', 'Intervention'). Defaults to 'Disease'. */
+	pageType: PropTypes.string,
 };
 
 export default AppliedFilters;
