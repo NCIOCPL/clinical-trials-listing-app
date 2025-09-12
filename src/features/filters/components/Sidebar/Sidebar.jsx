@@ -23,6 +23,7 @@ import { useTracking } from 'react-tracking';
 import { URL_PARAM_MAPPING } from '../../constants/urlParams';
 import { isValidZipFormat } from '../../utils/locationUtils';
 import PropTypes from 'prop-types';
+import AppliedFilters from '../AppliedFilters/AppliedFilters';
 
 /**
  * Renders the filter sidebar, including relevant filter components based on pageType.
@@ -562,6 +563,13 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		return null;
 	}
 
+	const renderAppliedFilters = () => {
+		if (hasActiveFilters()) {
+			return <AppliedFilters pageType={pageType} />;
+		}
+		return null;
+	};
+
 	// Near the top of the component
 	// console.log('Sidebar - Rendering with isDirty:', state.isDirty);
 	// console.log('Sidebar - Current filters:', filters);
@@ -591,6 +599,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 						Apply Filters
 					</button>
 				</div>
+				{renderAppliedFilters()}
 			</div>
 		</aside>
 	);
