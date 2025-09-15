@@ -28,7 +28,7 @@ const StageFilter = ({ disabled = false, onFocus }) => {
 	}, [options]);
 
 	// Initialize value as empty array if not already set
-	const value = Array.isArray(filters.subtype) ? filters.subtype : [];
+	const value = Array.isArray(filters.stage) ? filters.stage : [];
 
 	const handleChange = (selectedValue) => {
 		const newValue = selectedValue ? [selectedValue] : [];

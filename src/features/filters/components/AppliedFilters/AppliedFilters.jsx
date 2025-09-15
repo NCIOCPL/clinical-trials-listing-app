@@ -54,9 +54,12 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 	};
 
 	let maintypeSelectedText = document.querySelector('#maintype-filter--list .usa-combo-box__list-option--selected');
-	let maintypeText = maintypeSelectedText?.innerText;
+	// let maintypeText = maintypeSelectedText?.innerText;
 	let subtypeSelectedText = document.querySelector('#subtype-filter--list .usa-combo-box__list-option--selected');
-	let subtypeText = subtypeSelectedText?.innerText;
+	// let subtypeText = subtypeSelectedText?.innerText;
+	let stageSelectedText = document.querySelector('#stage-filter--list .usa-combo-box__list-option--selected');
+	//let stageText = subtypeSelectedText?.innerText;
+
 	/**
 	 * Formats the filter data into a user-friendly label and display type for the tag.
 	 * Handles specific formatting for different filter types like 'subtype', 'stage', 'age', 'location'.
@@ -70,19 +73,19 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 		switch (filter.type) {
 			case 'maintype':
 				return {
-					label: maintypeText ? [maintypeText] : [],
+					label: [maintypeSelectedText?.innerText],
 					displayType: 'Maintype',
 				};
 			case 'subtype':
 				// Format subtype labels (replace underscores, capitalize words)
 				return {
-					label: subtypeText ? [subtypeText] : [],
+					label: [subtypeSelectedText?.innerText],
 					displayType: 'Subtype',
 				};
 			case 'stage':
 				// Format stage labels (e.g., "Stage IV")
 				return {
-					label: filter.values.map(() => `Stage`),
+					label: [stageSelectedText?.innerText],
 					displayType: 'Stage',
 				};
 			case 'drugIntervention':
@@ -155,9 +158,11 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 					));
 				})}
 			</div>
-			<button className="applied-filters__clear-all usa-button ctla-sidebar__button--clear" onClick={handleClearAll}>
-				Clear Filters
-			</button>
+			<div className="ctla-sidebar__actions">
+				<button className="applied-filters__clear-all usa-button ctla-sidebar__button--clear" onClick={handleClearAll}>
+					Clear Filters
+				</button>
+			</div>
 		</div>
 	);
 };

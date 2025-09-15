@@ -29,7 +29,7 @@ export const URL_PARAM_MAPPING = {
 	},
 	stage: {
 		shortCode: 'stg',
-		longName: 'subtype',
+		longName: 'stage',
 	},
 };
 

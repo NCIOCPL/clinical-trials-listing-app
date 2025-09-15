@@ -37,7 +37,7 @@ import AppliedFilters from '../AppliedFilters/AppliedFilters';
  * @param {Function} [props.onFilterCleared=()=>{}] - Callback function invoked when filters are cleared. Receives clear count and apply count.
  * @returns {JSX.Element|null} The rendered Sidebar component or null if pageType is invalid.
  */
-const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = () => {}, onFilterCleared = () => {} }) => {
+const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = () => {} }) => {
 	// Hooks for navigation, location, filter context, tracking, and counters
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -48,7 +48,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	// State to hold the function that retrieves the latest ZIP validation status from ZipCodeFilter
 	const [getZipValidationStatus, setGetZipValidationStatus] = useState(null);
 	// Custom hook for tracking filter application/removal counts
-	const { filterAppliedCounter, filterRemovedCounter, incrementAppliedCounter, incrementRemovedCounter } = useFilterCounters();
+	const { filterAppliedCounter, incrementAppliedCounter } = useFilterCounters();
 	const tracking = useTracking(); // React-tracking hook
 
 	/**
@@ -156,25 +156,6 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 				},
 			},
 		});
-	};
-
-	/**
-	 * Handles the "Clear Filters" button click.
-	 * Increments the removed counter, calls the parent callback,
-	 * dispatches actions to clear and re-apply (empty) filters.
-	 */
-	const handleClearFilters = () => {
-		incrementRemovedCounter(); // Track clear action
-
-		// Notify parent component
-		onFilterCleared(filterRemovedCounter + 1, filterAppliedCounter);
-
-		// Dispatch actions to update context state
-		dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
-		dispatch({ type: FilterActionTypes.APPLY_FILTERS }); // Apply the cleared state
-
-		// TODO: Clear URL parameters as well? Currently only ApplyFilters updates URL.
-		// navigate(window.location.pathname); // Option 1: Navigate to path without params
 	};
 
 	/**
@@ -592,10 +573,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 					return null;
 				})}
 				<div className="ctla-sidebar__actions">
-					<button className="usa-button ctla-sidebar__button--clear" onClick={handleClearFilters} disabled={isDisabled || !hasActiveFilters()}>
-						Clear Filters
-					</button>
-					<button className="usa-button ctla-sidebar__button--apply" onClick={handleApplyFilters} disabled={isDisabled || !isDirty}>
+					<button className="applied-filters__clear-all usa-button ctla-sidebar__button--clear" onClick={handleApplyFilters} disabled={isDisabled || !isDirty}>
 						Apply Filters
 					</button>
 				</div>
