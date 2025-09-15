@@ -55,6 +55,8 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 
 	let maintypeSelectedText = document.querySelector('#maintype-filter--list .usa-combo-box__list-option--selected');
 	let maintypeText = maintypeSelectedText?.innerText;
+	let subtypeSelectedText = document.querySelector('#subtype-filter--list .usa-combo-box__list-option--selected');
+	let subtypeText = subtypeSelectedText?.innerText;
 	/**
 	 * Formats the filter data into a user-friendly label and display type for the tag.
 	 * Handles specific formatting for different filter types like 'subtype', 'stage', 'age', 'location'.
@@ -74,7 +76,7 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 			case 'subtype':
 				// Format subtype labels (replace underscores, capitalize words)
 				return {
-					label: filter.values.map((value) => value.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())),
+					label: subtypeText ? [subtypeText] : [],
 					displayType: 'Subtype',
 				};
 			case 'stage':
