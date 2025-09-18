@@ -216,6 +216,8 @@ function filterReducer(state, action) {
 					zipCode: '',
 					radius: null,
 				};
+			} else {
+				updatedFilters[filterType] = null;
 			}
 
 			return {
