@@ -103,7 +103,7 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 			case 'location':
 				// Format location label using zip and radius
 				return {
-					label: [`Within ${filter.values.radius} miles of ${filter.values.zipCode}`],
+					label: [`within ${filter.values.radius} miles of ${filter.values.zipCode}`],
 					displayType: 'Location',
 				};
 			default:
