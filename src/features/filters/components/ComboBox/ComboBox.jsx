@@ -25,16 +25,18 @@ const FocusMode = {
 	Item: 2,
 };
 
-const Input = ({ focused, ...inputProps }) => {
-	const inputRef = useRef(null);
+const Input = forwardRef(({ focused, ...inputProps }, ref) => {
+	const internalRef = useRef(null);
+	const inputRef = ref ?? internalRef;
+
 	useEffect(() => {
 		if (focused && inputRef.current) {
-			inputRef.current.focus();
+			inputRef.current.focus({ preventScroll: true });
 		}
-	});
+	}, [focused]);
 
 	return <input type="text" {...inputProps} className="usa-combo-box__input" data-testid="combo-box-input" autoCapitalize="off" autoComplete="off" ref={inputRef} />;
-};
+});
 
 const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabled, onChange, assistiveHint, noResults, selectProps, inputProps, ulProps, customFilter, disableFiltering = false }, ref) => {
 	const isDisabled = !!disabled;
@@ -231,6 +233,12 @@ const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabl
 		const { relatedTarget: newTarget } = event;
 		const newTargetIsOutside = !newTarget || (newTarget instanceof Node && !containerRef.current?.contains(newTarget));
 
+		// Reset scroll position and cursor to beginning
+		if (inputRef.current) {
+			inputRef.current.scrollLeft = 0;
+			inputRef.current.setSelectionRange(0, 0);
+		}
+
 		// Only blur if we're not in the middle of a selection
 		if (newTargetIsOutside && state.focusMode !== FocusMode.None && !isSelectionInProgressRef.current) {
 			dispatch({ type: ActionTypes.BLUR });
@@ -307,6 +315,7 @@ const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabl
 
 	const focusedItemIndex = state.focusedOption ? state.filteredOptions.findIndex((i) => i === state.focusedOption) : -1;
 	const focusedItemId = focusedItemIndex > -1 && `${listID}--option-${focusedItemIndex}`;
+	const inputRef = useRef(null);
 
 	return (
 		<div data-testid="combo-box" data-enhanced="true" className={containerClasses} ref={containerRef}>
@@ -319,6 +328,7 @@ const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabl
 			</select>
 			<Input
 				{...inputProps}
+				ref={inputRef}
 				role="combobox"
 				onChange={(e) => {
 					if (inputProps?.onChange) {
