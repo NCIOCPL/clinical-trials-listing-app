@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
 import { getLocationInfoFromSites, filterSitesByActiveRecruitment } from '../../../utils';
 import ResultsListItem from './ResultsListItem';
 import './ResultsList.scss';
-import { useFilters } from '../../../features/filters/context/FilterContext/FilterContext';
+import { FilterContext } from '../../../features/filters/context/FilterContext/FilterContext';
 
 import { isWithinRadius } from '../../../utils/isWithinRadius';
 
@@ -13,17 +13,12 @@ const ResultsList = ({ results, resultsItemTitleLink }) => {
 	let appliedZipCoords = null;
 	let zipRadius = null;
 
-	// Always call the hook, but handle the error gracefully
-	let filterState = null;
-	try {
-		filterState = useFilters();
-	} catch (error) {
-		// Not within FilterProvider context (e.g., Manual pages) - use defaults
-		filterState = null;
-	}
+	// Check if we're in a FilterProvider context using useContext directly
+	const filterContext = useContext(FilterContext);
 
-	if (filterState) {
-		const { state, appliedZipCoords: coords } = filterState;
+	if (filterContext) {
+		// We're within FilterProvider context
+		const { state, appliedZipCoords: coords } = filterContext;
 		appliedFilters = state.appliedFilters;
 		appliedZipCoords = coords;
 		zipRadius = appliedFilters.location?.radius;
