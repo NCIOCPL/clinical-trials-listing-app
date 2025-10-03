@@ -308,6 +308,8 @@ function filterReducer(state, action) {
 					zipCode: '',
 					radius: null,
 				};
+			} else {
+				updatedFilters[filterType] = null;
 			}
 
 			// Update appliedFilters as well when auto-apply is enabled
