@@ -178,7 +178,7 @@ span#filter-group-primary-cancer-type\/condition-tooltip-body.usa-tooltip__body-
 }
 
 span#filter-group-location-by-zip-code-tooltip-body.usa-tooltip__body--top {
-	@include u-minw(221px);
+	@include u-minw(230px);
 	@include u-margin-top('neg-5');
 	@include u-margin-bottom(3);
 	@include u-bottom(0);
@@ -195,7 +195,7 @@ span#filter-group-location-by-zip-code-tooltip-body.usa-tooltip__body--top {
 }
 
 span#filter-group-distance-from-location-tooltip-body.usa-tooltip__body--top {
-	@include u-minw(273px);
+	@include u-minw(285px);
 	@include u-margin-top('neg-5');
 	@include u-margin-bottom(3);
 	@include u-bottom(0);
@@ -212,7 +212,7 @@ span#filter-group-distance-from-location-tooltip-body.usa-tooltip__body--top {
 }
 
 span#filter-group-age-tooltip-body.usa-tooltip__body--top {
-	@include u-minw(260px);
+	@include u-minw(270px);
 	@include u-margin-top('neg-5');
 	@include u-margin-bottom(3);
 	@include u-bottom(0);
@@ -225,7 +225,7 @@ span#filter-group-age-tooltip-body.usa-tooltip__body--top {
 }
 
 span#filter-group-subtype-tooltip-body.usa-tooltip__body--top {
-	@include u-minw(290px);
+	@include u-minw(300px);
 	@include u-margin-top('neg-8');
 	@include u-margin-bottom(3);
 	@include u-bottom(0);
@@ -250,7 +250,7 @@ span#filter-group-stage-tooltip-body.usa-tooltip__body--top {
 		left: 40%;
 	}
 }
-#filter-group-drug\/drug-family-tooltip-body.usa-tooltip__body--top {
+#filter-group-drug-\/-drug-family-tooltip-body.usa-tooltip__body--top {
 	@include u-minw(260px);
 	@include u-margin-top('neg-8');
 	@include u-margin-bottom(3);
