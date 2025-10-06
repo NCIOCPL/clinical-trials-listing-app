@@ -1,6 +1,7 @@
 /* Drug Intervention Filter Styles */
 
 .drug-input-wrapper {
+  width: 100%;
   position: relative;
 }
 
@@ -59,10 +60,12 @@
   }
 
   &__listbox {
+    display: block;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
+    width: 100%;
     z-index: 1000;
     background: white;
     border: 1px solid #ddd;
@@ -124,6 +127,10 @@
       }
     }
   }
+}
+
+#drug-intervention-filter {
+  background-color: white;
 }
 
 /* Focus styles for accessibility */
