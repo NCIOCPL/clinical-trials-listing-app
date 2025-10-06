@@ -1,6 +1,7 @@
 /* Drug Intervention Filter Styles */
 
 .drug-input-wrapper {
+  width: 100%;
   position: relative;
 }
 
@@ -124,6 +125,10 @@
       }
     }
   }
+}
+
+#drug-intervention-filter {
+  background-color: white;
 }
 
 /* Focus styles for accessibility */
