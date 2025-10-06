@@ -15,6 +15,20 @@
 
 @use 'uswds-core' as *;
 
+// FOCUS UNDERLINE EFFECT:
+// USWDS applies a blue outline (outline: .25rem solid #2491ff) on focus to all inputs.
+// To match the main branch design, we clip the top/left/right sides of the outline
+// using clip-path, leaving only the bottom portion visible as an underline effect.
+// The clip-path syntax is: inset(top right bottom left)
+// - 0 on top/left/right clips at the element boundary
+// - -0.5rem on bottom extends to show the full outline thickness
+.usa-input:focus,
+.usa-select:focus,
+.usa-combo-box__input:focus,
+.nci-autocomplete input:focus {
+  clip-path: inset(0 0 -0.5rem 0);
+}
+
 // h1 {
 // 	@include u-margin-bottom('205');
 // 	//margin-bottom: 20px;
