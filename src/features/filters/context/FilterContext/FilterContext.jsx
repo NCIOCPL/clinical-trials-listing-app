@@ -831,7 +831,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 
 		// Transform stage filter
 		if (filters.stage && Array.isArray(filters.stage) && filters.stage.length > 0) {
-			apiFilters['diseases.stage'] = filters.stage;
+			apiFilters['stage'] = filters.stage;
 		}
 
 		// Transform drugIntervention filter

@@ -28,6 +28,15 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 	const { search } = location;
 	const tracking = useTracking();
 
+	// Determine the specific page type based on routeParamMap length
+	// routeParamMap.length: 1 = Disease, 2 = DiseaseTrialType, 3 = DiseaseTrialTypeIntervention
+	const getPageType = () => {
+		if (!routeParamMap) return 'Disease';
+		if (routeParamMap.length === 3) return 'DiseaseTrialTypeIntervention';
+		return 'Disease';
+	};
+	const pageType = getPageType();
+
 	const [{ baseHost, canonicalHost, detailedViewPagePrettyUrlFormatter, dynamicListingPatterns, itemsPerPage, language, siteName, trialListingPageType }] = useStateValue();
 
 	// Filter and pagination state
@@ -263,7 +272,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 		}
 
 		// Check if stage filter is applied
-		if (filters['diseases.stage']) {
+		if (filters['stage']) {
 			return true;
 		}
 
@@ -593,7 +602,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 			<div className="disease-view">
 				<div className="disease-view__container">
 					<Sidebar
-						pageType="Disease"
+						pageType={pageType}
 						initialTotalCount={initialTotalCount}
 						onFilterApplied={(appliedFilters, counterValue) => {
 							setPendingFilterEvent({
@@ -624,7 +633,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 
 			<div className="disease-view__container">
 				<Sidebar
-					pageType="Disease"
+					pageType={pageType}
 					initialTotalCount={initialTotalCount}
 					onFilterApplied={(appliedFilters, counterValue) => {
 						setPendingFilterEvent({

@@ -120,7 +120,7 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 				};
 			}
 			case 'drugIntervention':
-				// Show if we have a complete drug object with name OR a concept code
+				// Show loading state while drug name is being fetched
 				if (Array.isArray(filter.values) && filter.values.length > 0) {
 					const drug = filter.values[0];
 					if (drug && typeof drug === 'object' && drug.name) {
@@ -130,9 +130,9 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 							displayType: 'Drug / Drug Family',
 						};
 					} else if (typeof drug === 'string') {
-						// Concept code - display as fallback
+						// Concept code - show "Loading..." while API fetches the name
 						return {
-							label: [drug],
+							label: ['Loading...'],
 							displayType: 'Drug / Drug Family',
 						};
 					}
@@ -148,7 +148,7 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 			case 'location':
 				// Format location label using zip and radius
 				return {
-					label: [`Within ${filter.values.radius} miles of ${filter.values.zipCode}`],
+					label: [`within ${filter.values.radius} miles of ${filter.values.zipCode}`],
 					displayType: 'Location',
 				};
 			default:

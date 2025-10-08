@@ -48,7 +48,7 @@ const DrugInterventionFilter = ({ onFocus, disabled = false }) => {
 			const matchingDrug = drugsByCode.find((drug) => drug.codes && drug.codes.includes(conceptCodeFromUrl));
 			if (matchingDrug) {
 				// console.log('[DrugInterventionFilter] Found matching drug, dispatching SET_FILTER:', matchingDrug);
-				// Update the filter with the complete drug object
+				// Update the filter with the complete drug object (without isFallback flag)
 				dispatch({
 					type: 'SET_FILTER',
 					payload: {
@@ -75,12 +75,12 @@ const DrugInterventionFilter = ({ onFocus, disabled = false }) => {
 				// console.log('[DrugInterventionFilter selectedDrug] Returning drug object:', firstItem);
 				return firstItem;
 			} else if (typeof firstItem === 'string') {
-				// Create a fallback drug object for concept codes
-				console.log('[DrugInterventionFilter selectedDrug] Creating fallback for concept code:', firstItem);
+				// Create a loading placeholder for concept codes while API fetches the name
+				// console.log('[DrugInterventionFilter selectedDrug] Creating loading placeholder for concept code:', firstItem);
 				return {
-					name: firstItem,
+					name: 'Loading...',
 					codes: [firstItem],
-					isFallback: true,
+					isLoading: true,
 				};
 			}
 		}

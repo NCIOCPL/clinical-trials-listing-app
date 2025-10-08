@@ -17,6 +17,12 @@ export const PAGE_FILTER_CONFIGS = {
 		order: ['age', 'location', 'drugIntervention'], // Display Age first, then Location
 	},
 
+	// Configuration for 'DiseaseTrialTypeIntervention' pages (e.g., /C4872/treatment/C1647)
+	DiseaseTrialTypeIntervention: {
+		enabledFilters: ['age', 'location'],
+		order: ['age', 'location'],
+	},
+
 	// Configuration for 'Manual' type pages (currently no filters enabled)
 	Manual: {
 		enabledFilters: [],

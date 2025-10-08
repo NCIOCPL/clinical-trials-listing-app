@@ -62,7 +62,7 @@ export const useDynamicFilterOptions = () => {
 						},
 						stages: {
 							terms: {
-								field: 'diseases.stage',
+								field: 'stage',
 								size: 50,
 							},
 						},

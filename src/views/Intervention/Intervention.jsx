@@ -156,7 +156,7 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 		}
 
 		// Check if stage filter is applied
-		if (filters['diseases.stage']) {
+		if (filters['stage']) {
 			return true;
 		}
 

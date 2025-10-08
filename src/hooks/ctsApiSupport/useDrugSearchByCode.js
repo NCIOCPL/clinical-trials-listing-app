@@ -20,12 +20,13 @@ export function useDrugSearchByCode(conceptCode) {
 			if (!conceptCode) return [];
 
 			// Build query to search by concept code
+			// The /interventions endpoint uses 'codes' parameter, not 'nci_thesaurus_concept_id'
 			const query = {
 				current_trial_status: ['Active', 'Approved', 'Enrolling by Invitation', 'In Review', 'Temporarily Closed to Accrual', 'Temporarily Closed to Accrual and Intervention'],
 				sort: 'count',
 				order: 'desc',
 				category: ['Agent', 'Agent Category'],
-				nci_thesaurus_concept_id: conceptCode, // Search by concept code instead of name
+				codes: conceptCode, // Search by concept code (correct parameter for /interventions endpoint)
 				size: 10,
 			};
 
