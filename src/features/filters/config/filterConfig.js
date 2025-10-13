@@ -45,7 +45,7 @@ export const FILTER_CONFIG = {
 		type: 'combobox', // Likely uses dynamic options fetched elsewhere
 		multiSelect: false, // Single selection only
 		helpText: 'Start typing to select a drug and/or drug family',
-		placeholder: 'Start typing to select drugs and/or drug families',
+		placeholder: 'Start typing to select',
 		// urlParam: URL_PARAM_MAPPING.drugIntervention.shortCode,
 	},
 

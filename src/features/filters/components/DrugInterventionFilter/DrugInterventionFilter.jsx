@@ -274,7 +274,7 @@ const DrugInterventionFilter = ({ onFocus, disabled = false }) => {
 								</div>
 							)}
 							{/* Input field - hide when drug is selected */}
-							{!selectedDrug && <input ref={inputRef} id={inputId} className="usa-input" type="text" value={inputValue} onChange={handleInputChange} onFocus={handleInputFocus} onBlur={handleInputBlur} onKeyDown={handleKeyDown} disabled={disabled} placeholder="Start typing to select drugs and/or drug families" role="combobox" aria-autocomplete="list" aria-controls={listboxId} aria-expanded={isOpen} aria-activedescendant={highlightedIndex >= 0 ? `${listboxId}-option-${highlightedIndex}` : ''} />}
+							{!selectedDrug && <input ref={inputRef} id={inputId} className="usa-input" type="text" value={inputValue} onChange={handleInputChange} onFocus={handleInputFocus} onBlur={handleInputBlur} onKeyDown={handleKeyDown} disabled={disabled} placeholder={FILTER_CONFIG.drugIntervention.placeholder} role="combobox" aria-autocomplete="list" aria-controls={listboxId} aria-expanded={isOpen} aria-activedescendant={highlightedIndex >= 0 ? `${listboxId}-option-${highlightedIndex}` : ''} />}
 						</div>
 
 						{isOpen && (
