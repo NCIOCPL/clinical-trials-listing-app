@@ -93,7 +93,7 @@
 
 	.ctla-sidebar {
 		grid-area: sidebar;
-		@include u-margin-bottom('205');
+		//@include u-margin-bottom('205');
 		@include u-padding-top(0);
 
 		h2 {

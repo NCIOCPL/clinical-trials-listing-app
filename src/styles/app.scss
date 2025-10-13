@@ -22,12 +22,12 @@
 // The clip-path syntax is: inset(top right bottom left)
 // - 0 on top/left/right clips at the element boundary
 // - -0.5rem on bottom extends to show the full outline thickness
-.usa-input:focus,
-.usa-select:focus,
-.usa-combo-box__input:focus,
-.nci-autocomplete input:focus {
-  clip-path: inset(0 0 -0.5rem 0);
-}
+// .usa-input:focus,
+// .usa-select:focus,
+// .usa-combo-box__input:focus,
+// .nci-autocomplete input:focus {
+//   clip-path: inset(0 0 -0.5rem 0);
+// }
 
 // h1 {
 // 	@include u-margin-bottom('205');

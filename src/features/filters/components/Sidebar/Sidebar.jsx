@@ -552,7 +552,16 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 
 	const renderAppliedFilters = () => {
 		if (hasActiveFilters()) {
-			return <AppliedFilters pageType={pageType} />;
+			return (
+			<>
+				<AppliedFilters pageType={pageType} />
+				<div className="ctla-sidebar__actions">
+					<button className="usa-button ctla-sidebar__button--clear ctla-sidebar__button--full-width" onClick={handleClearFilters} disabled={isDisabled || !hasActiveFilters()}>
+						Clear Filters
+					</button>
+				</div>
+			</>
+			);
 		}
 		return null;
 	};
@@ -579,12 +588,6 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 					return null;
 				})}
 				{renderAppliedFilters()}
-				<div className="ctla-sidebar__actions">
-					<button className="usa-button ctla-sidebar__button--clear ctla-sidebar__button--full-width" onClick={handleClearFilters} disabled={isDisabled || !hasActiveFilters()}>
-						Clear Filters
-					</button>
-				</div>
-				{/*{renderAppliedFilters()}*/}
 			</div>
 		</aside>
 	);
