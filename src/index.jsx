@@ -19,7 +19,7 @@ import { ErrorBoundary } from './views';
 
 import clinicalTrialsSearchClientFactory from './services/api/clinical-trials-search-api/clinicalTrialsSearchClientFactory';
 
-// TODO Do we still want this?
+// TODO  Do we still need this?
 // /**
 //  * Imports the NCI Extended Header with Mega Menu component auto initializer.
 //  * Note: this should output a console warning for mega menu.

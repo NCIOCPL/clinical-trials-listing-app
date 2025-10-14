@@ -138,6 +138,7 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 	/**
 	 * Triggers ZIP code validation when a complete, valid ZIP is entered.
 	 * Resets states when ZIP is cleared.
+	 * Also validates on initial mount for values from URL.
 	 */
 	useEffect(() => {
 		if (zipCode && zipCode.length === 5 && isValidZipFormat(zipCode)) {
@@ -149,6 +150,12 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 				// Log error but don't display to user - UI will show invalid ZIP message
 				setIsValidating(false); // Ensure we reset state even if there's an error
 			});
+		} else if (zipCode && !isValidZipFormat(zipCode)) {
+			// Invalid format - show format error immediately
+			setFormatError('Please enter a valid U.S. ZIP code');
+			setHasInvalidZip(false);
+			setValidCoordinates(null);
+			setIsValidating(false);
 		} else if (!zipCode) {
 			// Reset all error states when zipCode is cleared (e.g. by clear filters button)
 			setFormatError('');

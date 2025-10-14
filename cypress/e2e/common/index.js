@@ -291,7 +291,7 @@ When('user clicks on {string} button', (arrow) => {
 	cy.get('.usa-pagination__list li').contains(arrow).click();
 });
 When('pager is not displayed', () => {
-	cy.get('.usa-pagination__list li').should('not.exist');
+	cy.get('.usa-pagination__list li', { timeout: 10000 }).should('not.exist');
 });
 
 /*

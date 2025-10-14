@@ -418,20 +418,6 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 	 */
 	useEffect(() => {
 		let params = new URLSearchParams(location.search);
-
-		// Check for invalid zipcode and remove it from URL entirely
-		const zipFromUrl = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
-		if (zipFromUrl && !/^\d{5}$/.test(zipFromUrl)) {
-			// Remove invalid zipcode and radius from URL
-			params.delete(URL_PARAM_MAPPING.zipCode.shortCode);
-			params.delete(URL_PARAM_MAPPING.radius.shortCode);
-
-			// Update URL without the invalid parameters
-			const newSearch = params.toString();
-			const newUrl = newSearch ? `?${newSearch}` : location.pathname;
-			window.history.replaceState(null, '', newUrl);
-		}
-
 		let filtersFromUrl = getFiltersFromURL(params);
 		let isNewPageLoad = true;
 
@@ -460,7 +446,6 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 			dispatch({ type: 'SET_URL_INIT_FLAG', payload: true });
 
 			Object.entries(filtersFromUrl).forEach(([filterType, value]) => {
-				// console.log('FilterContext - URL initialization - setting filter:', filterType, 'to value:', value);
 				dispatch({
 					type: FilterActionTypes.SET_FILTER,
 					payload: { filterType, value, isNewPageLoad },
@@ -483,6 +468,68 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 			});
 		}
 	}, [location.pathname]);
+
+	/**
+	 * Effect specifically for handling invalid zipcode URL parameters.
+	 * Runs when search params change to clean invalid zipcodes.
+	 */
+	useEffect(() => {
+		const params = new URLSearchParams(location.search);
+		const zipFromUrl = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
+
+		// Only process if there's an invalid zipcode
+		if (zipFromUrl && !/^\d{5}$/.test(zipFromUrl)) {
+			const radiusFromUrl = params.get(URL_PARAM_MAPPING.radius.shortCode);
+
+			// Store invalid values for form population
+			const invalidZipForForm = zipFromUrl;
+			const invalidRadiusForForm = radiusFromUrl;
+
+			// Remove invalid zipcode and radius from URL
+			params.delete(URL_PARAM_MAPPING.zipCode.shortCode);
+			params.delete(URL_PARAM_MAPPING.radius.shortCode);
+
+			// Update URL without the invalid parameters
+			const newSearch = params.toString();
+
+			// Use setTimeout to avoid potential infinite loops
+			setTimeout(() => {
+				navigate(
+					{
+						pathname: location.pathname,
+						search: newSearch ? `?${newSearch}` : '',
+					},
+					{ replace: true }
+				);
+			}, 0);
+
+			// Add invalid zipcode to filters for form population
+			const filtersFromUrl = {
+				location: {
+					zipCode: invalidZipForForm,
+					radius: invalidRadiusForForm || '100',
+				},
+			};
+
+			// Set flag that we're initializing from URL
+			dispatch({ type: 'SET_URL_INIT_FLAG', payload: true });
+
+			Object.entries(filtersFromUrl).forEach(([filterType, value]) => {
+				dispatch({
+					type: FilterActionTypes.SET_FILTER,
+					payload: { filterType, value, isNewPageLoad: true },
+				});
+			});
+
+			// Clear the flag after all filters are set
+			dispatch({ type: 'SET_URL_INIT_FLAG', payload: false });
+
+			dispatch({
+				type: FilterActionTypes.APPLY_FILTERS,
+				payload: { isNewPageLoad: true, preservedParams: '' },
+			});
+		}
+	}, [location.search]);
 
 	/**
 	 * Helper function to validate ZIP code and apply filters.
@@ -560,8 +607,8 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		const zipParam = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
 		const radiusParam = params.get(URL_PARAM_MAPPING.radius.shortCode);
 
-		// If we have a ZIP code from URL parameters, handle it specially
-		if (zipParam) {
+		// If we have a valid ZIP code from URL parameters, handle it specially
+		if (zipParam && /^\d{5}$/.test(zipParam)) {
 			validateZipcodeAndApplyFilters(zipParam, radiusParam);
 		}
 	}, [location.pathname, location.search, zipConversionEndpoint, validateZipcodeAndApplyFilters]);
