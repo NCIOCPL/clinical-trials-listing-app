@@ -9,6 +9,9 @@ import { useFilters } from '../../context/FilterContext/FilterContext';
 import './AppliedFilters.scss';
 import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
 import PropTypes from 'prop-types';
+import { useMainTypeSearch } from '../../../../hooks/ctsApiSupport/useMainTypeSearch';
+import { useSubTypeSearch } from '../../../../hooks/ctsApiSupport/useSubTypeSearch';
+import { useStageSearch } from '../../../../hooks/ctsApiSupport/useStageSearch';
 //import img from '@nciocpl/ncids-css/uswds-img/sprite.svg';
 
 /**
@@ -21,22 +24,49 @@ import PropTypes from 'prop-types';
  */
 const AppliedFilters = ({ pageType = 'Disease' }) => {
 	const { state, dispatch } = useFilters();
-	const { appliedFilters: filters } = state; // Get the list of applied filters from context
-	const [, forceUpdate] = React.useReducer((x) => x + 1, 0);
+	const filters = state.appliedFilters; // Get the list of applied filters from context
 
-	// Force a re-render after a delay to pick up DOM changes and ensure display text is available
-	React.useEffect(() => {
-		const timer = setTimeout(() => {
-			forceUpdate();
-		}, 100);
-		return () => clearTimeout(timer);
-	}, [filters]);
+	// Get the API data for filter options to display proper names
+	const { options: maintypeOptions } = useMainTypeSearch();
+
+	// Get maintype value to use for subtype and stage searches
+	const maintypeValue = filters.maintype?.[0];
+	const { options: subtypeOptions } = useSubTypeSearch(maintypeValue);
+	const { options: stageOptions } = useStageSearch(maintypeValue);
 
 	// console.log('[AppliedFilters] pageType:', pageType, 'appliedFilters:', filters);
 
+	// Helper function to check if there are any meaningful applied filters
+	const hasAppliedFilters = (filters) => {
+		if (!filters) return false;
+
+		for (const [key, value] of Object.entries(filters)) {
+			if (key === 'location') {
+				// For location, check if zipCode has a value
+				if (value && value.zipCode && value.zipCode.trim() !== '') {
+					return true;
+				}
+			} else if (Array.isArray(value)) {
+				// For arrays, check if they have items
+				if (value.length > 0) {
+					return true;
+				}
+			} else if (typeof value === 'string') {
+				// For strings, check if they're not empty
+				if (value.trim() !== '') {
+					return true;
+				}
+			} else if (value != null && value !== '') {
+				// For other types, check if they have a truthy value
+				return true;
+			}
+		}
+		return false;
+	};
+
 	// If there are no applied filters, don't render anything
-	if (!filters || Object.keys(filters).length === 0) {
-		// console.log('[AppliedFilters] No filters, returning null');
+	if (!hasAppliedFilters(filters)) {
+		// console.log('[AppliedFilters] No meaningful filters, returning null');
 		return null;
 	}
 
@@ -57,24 +87,6 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 		// dispatch({ type: 'APPLY_FILTERS' });
 	};
 
-	// Helper function to get display text from ComboBox or input field
-	const getFilterDisplayText = (filterElementId) => {
-		// First try to get from selected option in dropdown
-		const selectedOption = document.querySelector(`#${filterElementId}--list .usa-combo-box__list-option--selected`);
-		if (selectedOption?.innerText) {
-			return selectedOption.innerText;
-		}
-
-		// Then try to get from the input field itself
-		const inputField = document.querySelector(`#${filterElementId}`);
-		if (inputField?.value) {
-			return inputField.value;
-		}
-
-		// Return null if neither works
-		return null;
-	};
-
 	/**
 	 * Formats the filter data into a user-friendly label and display type for the tag.
 	 * Handles specific formatting for different filter types like 'subtype', 'stage', 'age', 'location'.
@@ -87,35 +99,47 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 	const formatFilterLabel = (filter) => {
 		switch (filter.type) {
 			case 'maintype': {
-				const maintypeText = getFilterDisplayText('maintype-filter');
-				// Only show if we have proper display text from DOM, not concept codes
-				if (!maintypeText) {
+				// Get display name from API data instead of DOM
+				const conceptId = Array.isArray(filter.values) ? filter.values[0] : filter.values;
+				const option = maintypeOptions.find((opt) => opt.value === conceptId || opt.id === conceptId);
+				const displayText = option?.label;
+
+				// Only show if we have proper display text from API
+				if (!displayText) {
 					return null;
 				}
 				return {
-					label: [maintypeText],
-					displayType: 'Maintype',
+					label: [displayText],
+					displayType: 'Primary Cancer Type',
 				};
 			}
 			case 'subtype': {
-				const subtypeText = getFilterDisplayText('subtype-filter');
-				// Only show if we have proper display text from DOM, not concept codes
-				if (!subtypeText) {
+				// Get display name from API data instead of DOM
+				const conceptId = Array.isArray(filter.values) ? filter.values[0] : filter.values;
+				const option = subtypeOptions.find((opt) => opt.value === conceptId || opt.id === conceptId);
+				const displayText = option?.label;
+
+				// Only show if we have proper display text from API
+				if (!displayText) {
 					return null;
 				}
 				return {
-					label: [subtypeText],
+					label: [displayText],
 					displayType: 'Subtype',
 				};
 			}
 			case 'stage': {
-				const stageText = getFilterDisplayText('stage-filter');
-				// Only show if we have proper display text from DOM, not concept codes
-				if (!stageText) {
+				// Get display name from API data instead of DOM
+				const conceptId = Array.isArray(filter.values) ? filter.values[0] : filter.values;
+				const option = stageOptions.find((opt) => opt.value === conceptId || opt.id === conceptId);
+				const displayText = option?.label;
+
+				// Only show if we have proper display text from API
+				if (!displayText) {
 					return null;
 				}
 				return {
-					label: [stageText],
+					label: [displayText],
 					displayType: 'Stage',
 				};
 			}
@@ -166,14 +190,19 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 	//   }));
 
 	// Displays filter tags in the correct order
+	// First get the configured order for this page type
 	const orderedFilterTypes = PAGE_FILTER_CONFIGS[pageType]?.order || [];
 
-	const filtersArray = orderedFilterTypes
-		.filter((type) => filters[type] !== undefined && filters[type] !== null)
-		.map((type) => ({
-			type,
-			values: filters[type],
-		}));
+	// Get all filters that are currently applied
+	const appliedFilterTypes = Object.keys(filters).filter((type) => filters[type] !== undefined && filters[type] !== null);
+
+	// Start with ordered filters, then add any that aren't in the order list
+	const allFilterTypes = [...orderedFilterTypes.filter((type) => appliedFilterTypes.includes(type)), ...appliedFilterTypes.filter((type) => !orderedFilterTypes.includes(type))];
+
+	const filtersArray = allFilterTypes.map((type) => ({
+		type,
+		values: filters[type],
+	}));
 
 	return (
 		<div className="applied-filters">

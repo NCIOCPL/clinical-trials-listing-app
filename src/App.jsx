@@ -181,9 +181,7 @@ const App = () => {
 			if (cisBannerImgUrlLarge == null && cisBannerImgUrlSmall == null) {
 				dynamicRoutes = (
 					<Routes>
-						<FilterProvider pageType={'Manual'}>
-							<Route path={BasePath()} element={<Manual />} />
-						</FilterProvider>
+						<Route path={BasePath()} element={<Manual />} />
 						<Route path="/*" element={<PageNotFound />} />
 					</Routes>
 				);

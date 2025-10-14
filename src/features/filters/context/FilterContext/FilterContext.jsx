@@ -253,10 +253,19 @@ function filterReducer(state, action) {
 			const filtersToApply = state.filters;
 			// console.log('FilterContext - APPLY_FILTERS - filters to apply:', filtersToApply);
 
+			// Create appliedFilters with validation - exclude invalid location filters
+			const appliedFiltersToSet = { ...filtersToApply };
+
+			// Validate location filter before adding to appliedFilters
+			if (appliedFiltersToSet.location?.zipCode && !isValidZipFormat(appliedFiltersToSet.location.zipCode)) {
+				// Remove invalid location filter from appliedFilters (but keep it in filters for UI)
+				delete appliedFiltersToSet.location;
+			}
+
 			const newState = {
 				...state,
-				filters: filtersToApply, // Preserve current filter selections
-				appliedFilters: { ...filtersToApply }, // Copy current filters to applied filters
+				filters: filtersToApply, // Preserve current filter selections (including invalid ones for UI)
+				appliedFilters: appliedFiltersToSet, // Only valid filters are applied
 				isDirty: false, // No longer dirty after applying
 				shouldSearch: true, // Should trigger a search
 				isInitialLoad: isNewPageLoad || false, // Only true for new page loads
@@ -409,6 +418,20 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 	 */
 	useEffect(() => {
 		let params = new URLSearchParams(location.search);
+
+		// Check for invalid zipcode and remove it from URL entirely
+		const zipFromUrl = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
+		if (zipFromUrl && !/^\d{5}$/.test(zipFromUrl)) {
+			// Remove invalid zipcode and radius from URL
+			params.delete(URL_PARAM_MAPPING.zipCode.shortCode);
+			params.delete(URL_PARAM_MAPPING.radius.shortCode);
+
+			// Update URL without the invalid parameters
+			const newSearch = params.toString();
+			const newUrl = newSearch ? `?${newSearch}` : location.pathname;
+			window.history.replaceState(null, '', newUrl);
+		}
+
 		let filtersFromUrl = getFiltersFromURL(params);
 		let isNewPageLoad = true;
 

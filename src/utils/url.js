@@ -66,7 +66,7 @@ export const getFiltersFromURL = (search) => {
 	const radius = params.get(URL_PARAM_MAPPING.radius.shortCode);
 
 	if (zip || radius) {
-		// Validate ZIP format if present
+		// Only add valid zipcodes to filters
 		const validZip = zip ? /^\d{5}$/.test(zip) : true;
 
 		if (validZip) {
@@ -74,8 +74,6 @@ export const getFiltersFromURL = (search) => {
 				zipCode: zip || '',
 				radius: radius || (zip ? '100' : ''),
 			};
-		} else {
-			console.warn('Invalid ZIP code in URL:', zip);
 		}
 	}
 

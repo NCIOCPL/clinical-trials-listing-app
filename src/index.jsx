@@ -71,7 +71,7 @@ const initialize = ({
 	metaDescription = 'NCI supports clinical trials studying new and more effective ways to detect and treat cancer. Find clinical trials for {{disease_normalized}}.',
 	noTrialsHtml = '<p>There are no NCI-supported clinical trials for {{disease_normalized}} at this time. You can try a <a href=\\"/about-cancer/treatment/clinical-trials/search\\">new search</a> or <a href=\\"/contact\\">contact our Cancer Information Service</a> to talk about options for clinical trials.</p>',
 	pageTitle = '{{disease_label}} Clinical Trials',
-	trialListingPageType = 'Manual',
+	trialListingPageType = null,
 	requestFilters = '',
 	rootId = 'NCI-app-root',
 	siteName = 'National Cancer Institute',

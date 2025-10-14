@@ -8,10 +8,26 @@ import { useFilters } from '../../../features/filters/context/FilterContext/Filt
 import { isWithinRadius } from '../../../utils/isWithinRadius';
 
 const ResultsList = ({ results, resultsItemTitleLink }) => {
-	const { state, appliedZipCoords } = useFilters();
-	const { appliedFilters } = state;
+	// Only use filters if we're within a FilterProvider context (not on Manual pages)
+	let appliedFilters = {};
+	let appliedZipCoords = null;
+	let zipRadius = null;
 
-	let zipRadius = appliedFilters.location?.radius;
+	// Always call the hook, but handle the error gracefully
+	let filterState = null;
+	try {
+		filterState = useFilters();
+	} catch (error) {
+		// Not within FilterProvider context (e.g., Manual pages) - use defaults
+		filterState = null;
+	}
+
+	if (filterState) {
+		const { state, appliedZipCoords: coords } = filterState;
+		appliedFilters = state.appliedFilters;
+		appliedZipCoords = coords;
+		zipRadius = appliedFilters.location?.radius;
+	}
 	var hasZipInput = false;
 	var zipInputReturn = '';
 
@@ -46,7 +62,7 @@ const ResultsList = ({ results, resultsItemTitleLink }) => {
 
 							if (appliedZipCoords !== null) {
 								hasZipInput = true;
-								zipRadius = appliedFilters.location.radius;
+								zipRadius = appliedFilters.location?.radius;
 
 								displayLocation(sites, appliedZipCoords, zipRadius, hasZipInput);
 							}
