@@ -1,0 +1,45 @@
+{
+    "total": 22,
+    "data": [
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This phase II trial studies trastuzumab in treating patients with recurrent HER2-positive breast cancer.",
+            "nct_id": "NCT22334455",
+            "nci_id": "NCI-2021-00010",
+            "brief_title": "Trastuzumab for Recurrent HER2-Positive Breast Cancer",
+            "sites": [
+                {
+                    "org_state_or_province": "MD",
+                    "org_city": "Baltimore",
+                    "org_country": "United States",
+                    "org_name": "Johns Hopkins Hospital",
+                    "recruitment_status": "ACTIVE",
+                    "org_coordinates": {
+                        "lat": 39.2904,
+                        "lon": -76.6122
+                    }
+                }
+            ]
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This phase III trial studies combination therapy for recurrent breast cancer patients.",
+            "nct_id": "NCT33445566",
+            "nci_id": "NCI-2021-00011",
+            "brief_title": "Combination Therapy for Recurrent Breast Cancer",
+            "sites": [
+                {
+                    "org_state_or_province": "MA",
+                    "org_city": "Boston",
+                    "org_country": "United States",
+                    "org_name": "Dana-Farber Cancer Institute",
+                    "recruitment_status": "ACTIVE",
+                    "org_coordinates": {
+                        "lat": 42.3601,
+                        "lon": -71.0589
+                    }
+                }
+            ]
+        }
+    ]
+}

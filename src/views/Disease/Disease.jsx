@@ -13,9 +13,7 @@ import { useStateValue } from '../../store/store';
 import { useTrialSearch } from '../../features/filters/hooks/useTrialSearch';
 import { appendOrUpdateToQueryString, getKeyValueFromQueryString, getPageOffset, TokenParser, getAnalyticsParamsForRoute, getNoTrialsRedirectParams, getParamsForRoute, getTextReplacementContext } from '../../utils';
 import { URL_PARAM_MAPPING } from '../../features/filters/constants/urlParams';
-import { formatLocationString, getAppliedFieldsString } from '../../features/filters/utils/analytics.js';
-import { FILTER_EVENTS, INTERACTION_TYPES } from '../../features/filters/tracking/filterEvents';
-import { useFilterCounters } from '../../features/filters/hooks/useFilterCounters';
+import { trackFilterApply } from '../../features/filters/utils/eddlAnalytics';
 import { hocStates } from '../../views/hocReducer';
 import NoResultsWithFilters from '../../components/molecules/NoResultsWithFilters/NoResultsWithFilters';
 
@@ -46,7 +44,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 	const [filtersSubmitted, setFiltersSubmitted] = useState(false);
 	const [initialTotalCount, setInitialTotalCount] = useState(null);
 	const [pendingFilterEvent, setPendingFilterEvent] = useState(null); // { type: 'apply'|'clear', filters?, counter, appliedCounter? }
-	const { filterRemovedCounter } = useFilterCounters();
+	// const lastAutoApplyFiltersRef = useRef(null); // Track last auto-applied filters to prevent duplicates
 	const pn = getKeyValueFromQueryString('pn', search.toLowerCase());
 	const [pager, setPager] = useState({
 		offset: pn ? getPageOffset(pn, itemsPerPage) : 0,
@@ -345,60 +343,78 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 		}
 	}, [loading, fetchState, error, isInitialLoad, filtersSubmitted]);
 
-	// Dedicated useEffect for filter analytics
+	// Dedicated useEffect for EDDL filter analytics
 	useEffect(() => {
 		// Only process when we have a pending event, data fetch is complete, and we have results
 		if (pendingFilterEvent && !loading && fetchState && fetchState.total !== undefined) {
+			const resultCount = typeof fetchState.total === 'number' ? fetchState.total : 0;
+
 			// Handle different event types
 			if (pendingFilterEvent.type === 'apply') {
-				const { filters, counter } = pendingFilterEvent;
+				const { filters, fieldAdded, isInitialLoad = false } = pendingFilterEvent;
 
-				// Check if actual filters were applied (not just clicking apply with no filters)
-				const isAgeApplied = !!filters.age?.toString().trim();
-				const isLocationApplied = !!filters.location?.zipCode;
+				// Convert internal filters to EDDL format
+				const eddlFilters = {
+					maintype: filters.maintype || [],
+					subtype: filters.subtype || [],
+					stage: filters.stage || [],
+					drugIntervention: filters.drugIntervention || [],
+					age: filters.age,
+					location: filters.location,
+				};
 
-				if (isAgeApplied || isLocationApplied) {
-					// Use the utility functions with the exact filters that were applied
-					// Use "none" for age when no age filter is set
-					const age = filters.age?.toString().trim() || 'none';
-					// Use "all" for loc when no location filter is set
-					const loc = filters.location?.zipCode ? formatLocationString(filters.location) : 'all';
-					const fieldsUsed = getAppliedFieldsString(filters);
-
-					tracking.trackEvent({
-						type: 'Other',
-						event: FILTER_EVENTS.APPLY,
-						linkName: FILTER_EVENTS.APPLY,
-						interactionType: INTERACTION_TYPES.FILTER_APPLIED,
-						numberResults: fetchState.total, // Current results with applied filters
-						fieldsUsed: fieldsUsed,
-						age: age,
-						loc: loc,
-						filterAppliedCounter: counter,
-						filterRemovedCounter: filterRemovedCounter,
-					});
-				}
+				// Track the FilterApply event
+				trackFilterApply({
+					filters: eddlFilters,
+					resultCount,
+					fieldAdded: fieldAdded || null, // Include fieldAdded if present
+					isUserInteraction: !isInitialLoad, // Don't track if this is initial page load
+				});
 			} else if (pendingFilterEvent.type === 'clear') {
-				// Handle clear filters event
-				tracking.trackEvent({
-					type: 'Other',
-					event: FILTER_EVENTS.MODIFY,
-					linkName: FILTER_EVENTS.MODIFY,
-					interactionType: INTERACTION_TYPES.CLEAR_ALL,
-					fieldRemoved: 'all',
-					filterAppliedCounter: pendingFilterEvent.appliedCounter,
-					filterRemovedCounter: pendingFilterEvent.counter,
-					numberResults: fetchState.total, // Current unfiltered results count
+				// Handle clear/remove filters event with EDDL tracking
+				const { filters, fieldRemoved } = pendingFilterEvent;
+
+				// Convert internal filters to EDDL format (filters after removal)
+				const eddlFilters = {
+					maintype: filters.maintype || [],
+					subtype: filters.subtype || [],
+					stage: filters.stage || [],
+					drugIntervention: filters.drugIntervention || [],
+					age: filters.age,
+					location: filters.location,
+				};
+
+				// Determine interaction type based on fieldRemoved
+				// When clearing all via button, use 'clear filters'
+				// When removing individual field, use 'filter removed'
+				const interactionType = fieldRemoved === 'all' ? 'clear filters' : 'filter removed';
+
+				// Track as FilterApply event with fieldRemoved
+				trackFilterApply({
+					filters: eddlFilters,
+					resultCount,
+					fieldAdded: null, // No field added when clearing/removing
+					fieldRemoved,
+					interactionType,
+					isUserInteraction: true,
 				});
 			}
 
 			// Clear the pending event once processed
 			setPendingFilterEvent(null);
 		}
-	}, [pendingFilterEvent, loading, fetchState, filterRemovedCounter, tracking]);
+	}, [pendingFilterEvent, loading, fetchState]);
 
 	// Handle pagination
 	useEffect(() => {
+		// Add ?pn=1 to URL on initial load if not present
+		if (!pn && data && routeParamMap) {
+			const qryStr = appendOrUpdateToQueryString(search, 'pn', 1);
+			const paramsObject = getParamsForRoute(data, routeParamMap);
+			navigate(`${routePath(paramsObject)}${qryStr}`, { replace: true });
+			return;
+		}
+
 		// Check if page number exceeds total pages
 		if (fetchState?.total && pn) {
 			const totalPages = Math.ceil(fetchState.total / itemsPerPage);
@@ -419,6 +435,10 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 			});
 		}
 	}, [pn, location.pathname, location.search, fetchState?.total]);
+
+	// TODO: Add proper auto-apply detection later
+	// For now, focus on getting the basic analytics structure working
+
 	const handleRedirect = (status) => {
 		// console.log(`[Disease handleRedirect] Called with status: ${status}`); // LOG
 		let redirectParams = '';
@@ -604,18 +624,19 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 					<Sidebar
 						pageType={pageType}
 						initialTotalCount={initialTotalCount}
-						onFilterApplied={(appliedFilters, counterValue) => {
+						onFilterApplied={(appliedFilters, fieldAdded) => {
 							setPendingFilterEvent({
 								type: 'apply',
 								filters: appliedFilters,
-								counter: counterValue,
+								fieldAdded: fieldAdded, // Field that was added
+								isInitialLoad: false, // User explicitly applied filters
 							});
 						}}
-						onFilterCleared={(counterValue, appliedCounter) => {
+						onFilterCleared={(filters, fieldRemoved) => {
 							setPendingFilterEvent({
 								type: 'clear',
-								counter: counterValue,
-								appliedCounter: appliedCounter,
+								filters: filters,
+								fieldRemoved: fieldRemoved,
 							});
 						}}
 					/>
@@ -635,18 +656,19 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 				<Sidebar
 					pageType={pageType}
 					initialTotalCount={initialTotalCount}
-					onFilterApplied={(appliedFilters, counterValue) => {
+					onFilterApplied={(appliedFilters, fieldAdded) => {
 						setPendingFilterEvent({
 							type: 'apply',
 							filters: appliedFilters,
-							counter: counterValue,
+							fieldAdded: fieldAdded, // Field that was added
+							isInitialLoad: false, // User explicitly applied filters
 						});
 					}}
-					onFilterCleared={(counterValue, appliedCounter) => {
+					onFilterCleared={(filters, fieldRemoved) => {
 						setPendingFilterEvent({
 							type: 'clear',
-							counter: counterValue,
-							appliedCounter: appliedCounter,
+							filters: filters,
+							fieldRemoved: fieldRemoved,
 						});
 					}}
 				/>
@@ -673,7 +695,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 							<>
 								{renderPagerSection('top')}
 								<ScrollRestoration />
-								<ResultsListWithPage results={fetchState.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
+								<ResultsListWithPage results={fetchState.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} totalResults={fetchState.total} />
 								{renderPagerSection('bottom')}
 							</>
 						) : error ? (
@@ -705,6 +727,7 @@ Disease.propTypes = {
 				normalized: PropTypes.string,
 			}),
 			prettyUrlName: PropTypes.string,
+			idString: PropTypes.string,
 		})
 	),
 	isInitialLoading: PropTypes.bool,

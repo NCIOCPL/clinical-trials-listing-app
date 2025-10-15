@@ -5,14 +5,12 @@ import FilterGroup from '../FilterGroup';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import './Subtype.scss';
 
-import { useTracking } from 'react-tracking';
 import { useSubTypeSearch } from '../../../../hooks/ctsApiSupport/useSubTypeSearch';
 import ComboBox from '../ComboBox/ComboBox';
 
 const Subtype = ({ disabled = false, onFocus }) => {
 	const { state, dispatch } = useFilters();
 	const { filters } = state;
-	const tracking = useTracking();
 
 	// Get the selected maintype code from filters
 	const maintypeCode = filters.maintype && filters.maintype.length > 0 ? filters.maintype[0] : null;
@@ -50,13 +48,7 @@ const Subtype = ({ disabled = false, onFocus }) => {
 		// Do we want this on a clear? Maybe instead: (onFocus && selectedValue) onFocus();
 		if (onFocus) onFocus();
 
-		tracking.trackEvent({
-			type: 'Other',
-			event: 'TrialListingApp:Filter:Change',
-			filterType: 'subtype',
-			filterValue: selectedValue || '',
-			action: selectedValue ? 'select' : 'clear',
-		});
+		// Note: Individual filter change tracking removed - FilterApply event covers all changes
 	};
 
 	// Determine if the component should be disabled

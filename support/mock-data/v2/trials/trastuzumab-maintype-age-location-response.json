@@ -1,0 +1,45 @@
+{
+    "total": 12,
+    "data": [
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This trial studies trastuzumab in treating younger adults with HER2-positive breast cancer in the Maryland area.",
+            "nct_id": "NCT11223344",
+            "nci_id": "NCI-2021-00030",
+            "brief_title": "Trastuzumab for Younger Adults with Breast Cancer",
+            "sites": [
+                {
+                    "org_state_or_province": "MD",
+                    "org_city": "Rockville",
+                    "org_country": "United States",
+                    "org_name": "National Cancer Institute",
+                    "recruitment_status": "ACTIVE",
+                    "org_coordinates": {
+                        "lat": 39.0840,
+                        "lon": -77.1528
+                    }
+                }
+            ]
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This trial studies combination therapy with trastuzumab for breast cancer patients in the DC metro area.",
+            "nct_id": "NCT55667788",
+            "nci_id": "NCI-2021-00031",
+            "brief_title": "Combination Therapy for Breast Cancer - Metro DC",
+            "sites": [
+                {
+                    "org_state_or_province": "VA",
+                    "org_city": "Arlington",
+                    "org_country": "United States",
+                    "org_name": "Virginia Hospital Center",
+                    "recruitment_status": "ACTIVE",
+                    "org_coordinates": {
+                        "lat": 38.8816,
+                        "lon": -77.1006
+                    }
+                }
+            ]
+        }
+    ]
+}

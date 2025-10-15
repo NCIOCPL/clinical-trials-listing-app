@@ -632,15 +632,6 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 				// console.log('FilterContext - Auto-apply timer fired - current filters:', state.filters);
 				// console.log('FilterContext - Auto-apply timer fired - lastChangedFilter:', state.lastChangedFilter);
 
-				// Track auto-apply event
-				if (window.dataLayer) {
-					window.dataLayer.push({
-						event: 'TrialListingApp:FilterAutoApply',
-						filterType: state.lastChangedFilter,
-						filters: state.filters,
-					});
-				}
-
 				dispatch({ type: FilterActionTypes.START_AUTO_APPLY });
 				dispatch({ type: FilterActionTypes.APPLY_FILTERS });
 			}, delay);

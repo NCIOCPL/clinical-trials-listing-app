@@ -70,6 +70,7 @@ const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabl
 	const previousDefaultValueRef = useRef(defaultValue);
 	const previousOptionsRef = useRef(options); // Ref to track previous options prop
 	const isSelectionInProgressRef = useRef(false);
+	const hasUserInteractedRef = useRef(false); // Track if user has actually interacted with component
 
 	// Single useEffect to handle both options and defaultValue changes
 	useEffect(() => {
@@ -121,13 +122,16 @@ const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabl
 				}
 			}
 		}
-	}, [defaultValue, options, dispatch, state.selectedOption]);
+	}, [defaultValue, options, dispatch]);
 
 	useEffect(() => {
 		// When clearing (selectedOption becomes undefined), call onChange with empty string
 		// When selecting, call onChange with the selected value
 		const valueToPass = state.selectedOption?.value ?? '';
-		onChange && onChange(valueToPass);
+		// Only call onChange if user has actually interacted with the component
+		if (hasUserInteractedRef.current) {
+			onChange && onChange(valueToPass);
+		}
 	}, [state.selectedOption]);
 
 	useEffect(() => {
@@ -331,6 +335,7 @@ const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabl
 				ref={inputRef}
 				role="combobox"
 				onChange={(e) => {
+					hasUserInteractedRef.current = true; // Mark as user interaction
 					if (inputProps?.onChange) {
 						// Allow a custom input onChange handler
 						inputProps?.onChange(e);
@@ -359,7 +364,18 @@ const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabl
 				disabled={isDisabled}
 			/>
 			<span className="usa-combo-box__clear-input__wrapper" tabIndex={-1}>
-				<button type="button" className="usa-combo-box__clear-input" aria-label="Clear the select contents" onClick={() => dispatch({ type: ActionTypes.CLEAR })} data-testid="combo-box-clear-button" onKeyDown={handleClearKeyDown} hidden={!isPristine || isDisabled} disabled={isDisabled}>
+				<button
+					type="button"
+					className="usa-combo-box__clear-input"
+					aria-label="Clear the select contents"
+					onClick={() => {
+						hasUserInteractedRef.current = true;
+						dispatch({ type: ActionTypes.CLEAR });
+					}}
+					data-testid="combo-box-clear-button"
+					onKeyDown={handleClearKeyDown}
+					hidden={!isPristine || isDisabled}
+					disabled={isDisabled}>
 					&nbsp;
 				</button>
 			</span>
@@ -407,6 +423,7 @@ const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabl
 							data-value={option.value}
 							onMouseEnter={() => dispatch({ type: ActionTypes.FOCUS_OPTION, option: option })}
 							onClick={() => {
+								hasUserInteractedRef.current = true; // Mark as user interaction
 								// Set selection in progress flag to prevent blur handler from overriding
 								isSelectionInProgressRef.current = true;
 

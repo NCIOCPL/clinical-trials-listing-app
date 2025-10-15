@@ -5,7 +5,6 @@ import FilterGroup from '../FilterGroup';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import './StageFilter.scss';
 
-import { useTracking } from 'react-tracking';
 import ComboBox from '../ComboBox/ComboBox';
 
 import { useStageSearch } from '../../../../hooks/ctsApiSupport/useStageSearch';
@@ -13,7 +12,6 @@ import { useStageSearch } from '../../../../hooks/ctsApiSupport/useStageSearch';
 const StageFilter = ({ disabled = false, onFocus }) => {
 	const { state, dispatch } = useFilters();
 	const { filters } = state;
-	const tracking = useTracking();
 	const isHandlingChangeRef = useRef(false);
 
 	// Get the selected maintype code from filters
@@ -58,13 +56,7 @@ const StageFilter = ({ disabled = false, onFocus }) => {
 		// Do we want this on a clear? Maybe instead: (onFocus && selectedValue) onFocus();
 		if (onFocus) onFocus();
 
-		tracking.trackEvent({
-			type: 'Other',
-			event: 'TrialListingApp:Filter:Change',
-			filterType: 'stage',
-			filterValue: selectedValue || '',
-			action: selectedValue ? 'select' : 'clear',
-		});
+		// Note: Individual filter change tracking removed - FilterApply event covers all changes
 
 		// Reset flag after a short delay to allow state updates to complete
 		setTimeout(() => {

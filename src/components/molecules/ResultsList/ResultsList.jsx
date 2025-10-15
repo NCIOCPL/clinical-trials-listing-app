@@ -7,7 +7,7 @@ import { FilterContext } from '../../../features/filters/context/FilterContext/F
 
 import { isWithinRadius } from '../../../utils/isWithinRadius';
 
-const ResultsList = ({ results, resultsItemTitleLink }) => {
+const ResultsList = ({ results, resultsItemTitleLink, totalResults }) => {
 	// Only use filters if we're within a FilterProvider context (not on Manual pages)
 	let appliedFilters = {};
 	let appliedZipCoords = null;
@@ -64,7 +64,7 @@ const ResultsList = ({ results, resultsItemTitleLink }) => {
 
 							const locationInfo = getLocationInfoFromSites(current_trial_status, nct_id, sites, hasZipInput, zipInputReturn);
 
-							return <ResultsListItem key={nci_id} locationInfo={locationInfo} nciId={nci_id} status={current_trial_status} title={brief_title} resultsItemTitleLink={resultsItemTitleLink} resultIndex={index} />;
+							return <ResultsListItem key={nci_id} locationInfo={locationInfo} nciId={nci_id} status={current_trial_status} title={brief_title} resultsItemTitleLink={resultsItemTitleLink} resultIndex={index} totalResults={totalResults} />;
 						})}
 					</ul>
 				</div>
@@ -86,6 +86,7 @@ ResultsList.propTypes = {
 	).isRequired,
 	resultsItemTitleLink: PropTypes.string.isRequired,
 	appliedFilters: PropTypes.array,
+	totalResults: PropTypes.number,
 };
 
 export default ResultsList;

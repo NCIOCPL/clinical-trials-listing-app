@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import { useMainTypeSearch } from '../../../../hooks/ctsApiSupport/useMainTypeSearch';
 import { useSubTypeSearch } from '../../../../hooks/ctsApiSupport/useSubTypeSearch';
 import { useStageSearch } from '../../../../hooks/ctsApiSupport/useStageSearch';
+import { getFieldCode } from '../../utils/eddlAnalytics';
 //import img from '@nciocpl/ncids-css/uswds-img/sprite.svg';
 
 /**
@@ -22,7 +23,7 @@ import { useStageSearch } from '../../../../hooks/ctsApiSupport/useStageSearch';
  *
  * @returns {JSX.Element|null} The rendered AppliedFilters component or null.
  */
-const AppliedFilters = ({ pageType = 'Disease' }) => {
+const AppliedFilters = ({ pageType = 'Disease', onFilterRemoved = () => {} }) => {
 	const { state, dispatch } = useFilters();
 	const filters = state.appliedFilters; // Get the list of applied filters from context
 
@@ -74,17 +75,21 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 	 * Handles the removal of a single filter tag.
 	 * Dispatches the 'REMOVE_FILTER' action with the specific filter type and value,
 	 * and then dispatches 'APPLY_FILTERS' to update the results based on the remaining filters.
+	 * Calls the parent callback to trigger analytics tracking with the result count.
 	 *
 	 * @param {string} filterType - The type of the filter to remove (e.g., 'age', 'subtype').
 	 * @param {string|number|object} value - The specific value of the filter to remove.
 	 */
 	const handleRemoveFilter = (filterType, value) => {
+		// Dispatch remove filter action
 		dispatch({
 			type: 'REMOVE_FILTER',
 			payload: { filterType, value },
 		});
-		// Re-apply filters after removing one to update the list/results
-		// dispatch({ type: 'APPLY_FILTERS' });
+
+		// Call parent callback with the field code that was removed
+		// Parent view will handle analytics tracking when results are available
+		onFilterRemoved(getFieldCode(filterType));
 	};
 
 	/**
@@ -248,6 +253,8 @@ const AppliedFilters = ({ pageType = 'Disease' }) => {
 AppliedFilters.propTypes = {
 	/** The type of page, determining which filters are shown (e.g., 'Disease', 'Intervention'). Defaults to 'Disease'. */
 	pageType: PropTypes.string,
+	/** Callback function invoked when a filter is removed. Receives the field code of the removed filter. */
+	onFilterRemoved: PropTypes.func,
 };
 
 export default AppliedFilters;

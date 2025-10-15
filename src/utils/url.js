@@ -65,14 +65,15 @@ export const getFiltersFromURL = (search) => {
 	const zip = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
 	const radius = params.get(URL_PARAM_MAPPING.radius.shortCode);
 
-	if (zip || radius) {
+	// Only process location if we have a zip code
+	if (zip) {
 		// Only add valid zipcodes to filters
-		const validZip = zip ? /^\d{5}$/.test(zip) : true;
+		const validZip = /^\d{5}$/.test(zip);
 
 		if (validZip) {
 			filters.location = {
-				zipCode: zip || '',
-				radius: radius || (zip ? '100' : ''),
+				zipCode: zip,
+				radius: radius || '100',
 			};
 		}
 	}

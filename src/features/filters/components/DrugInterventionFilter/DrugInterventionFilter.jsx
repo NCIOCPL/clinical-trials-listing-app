@@ -4,14 +4,12 @@ import { useFilters } from '../../context/FilterContext/FilterContext';
 import FilterGroup from '../FilterGroup';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import './DrugInterventionFilter.scss';
-import { useTracking } from 'react-tracking';
 import { useDrugSearch } from '../../../../hooks/ctsApiSupport/useDrugSearch';
 import { useDrugSearchByCode } from '../../../../hooks/ctsApiSupport/useDrugSearchByCode';
 
 const DrugInterventionFilter = ({ onFocus, disabled = false }) => {
 	const { state, dispatch } = useFilters();
 	const { filters } = state;
-	const tracking = useTracking();
 
 	// State for autocomplete functionality
 	const [inputValue, setInputValue] = useState('');
@@ -145,13 +143,7 @@ const DrugInterventionFilter = ({ onFocus, disabled = false }) => {
 			},
 		});
 
-		tracking.trackEvent({
-			type: 'Other',
-			event: 'TrialListingApp:Filter:Change',
-			filterType: 'drugIntervention',
-			filterValue: drug.name,
-			action: 'select',
-		});
+		// Note: Individual filter change tracking removed - FilterApply event covers all changes
 
 		setInputValue('');
 		setIsOpen(false);
@@ -169,13 +161,7 @@ const DrugInterventionFilter = ({ onFocus, disabled = false }) => {
 			},
 		});
 
-		tracking.trackEvent({
-			type: 'Other',
-			event: 'TrialListingApp:Filter:Change',
-			filterType: 'drugIntervention',
-			filterValue: selectedDrug?.name || '',
-			action: 'remove',
-		});
+		// Note: Individual filter change tracking removed - FilterApply event covers all changes
 	};
 
 	const handleKeyDown = (e) => {

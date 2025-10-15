@@ -33,9 +33,15 @@ Feature: Intervention listing page analytics
 		Then the page title is "Treatment Clinical Trials Using Trastuzumab"
 		When user clicks on result item 1
 		Then there should be an analytics event with the following details
-			| key              | value                             |
-			| type             | Other                             |
-			| event            | TrialListingApp:Other:ResultClick |
-			| linkName         | CTSLink                           |
-			| data.resultIndex | (int)1                            |
-			| data.currentPage | (int)1                            |
+			| key                  | value                       |
+			| type                 | Other                       |
+			| event                | TrialListingApp:ResultClick |
+			| linkName             | TrialListingApp:ResultClick |
+			| data.filterRemovedCounter | (int)0                      |
+			| data.filterAppliedCounter | (int)0                      |
+			| data.loc                  | none                        |
+			| data.age                  | none                        |
+			| data.currentPage          | (int)1                      |
+			| data.fieldsUsed           | none                        |
+			| data.numberResults        | (int)44                     |
+			| data.resultIndex          | (int)1                      |

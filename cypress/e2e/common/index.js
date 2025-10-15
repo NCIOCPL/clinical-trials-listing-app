@@ -358,6 +358,7 @@ When('user clicks on result item {int}', (resultIndex) => {
 	cy.get('a.ctla-results__list-item-title')
 		.eq(resultIndex - 1)
 		.trigger('click', { followRedirect: false });
+	cy.wait(100); // Give time for analytics event to fire
 });
 
 And('user is brought to the top of a page', () => {
@@ -394,12 +395,12 @@ Then('the user sees the "Age" filter input', () => {
 
 When(/^the user types "([^"]*)" into the Age filter input$/, (age) => {
 	cy.get('.nci-spinner').should('not.exist', { timeout: 30000 });
-	cy.get('#age-filter-input').clear().type(age);
+	cy.get('.ctla-sidebar input[name="age-filter"]').should('have.length', 1).clear().type(age);
 });
 
 When('the user clears the "Age" filter input', () => {
 	cy.get('.nci-spinner').should('not.exist', { timeout: 30000 }); // Ensure page is ready
-	cy.get('#age-filter-input').clear(); // Use ID selector
+	cy.get('.ctla-sidebar input[name="age-filter"]').should('have.length', 1).clear(); // Use name selector
 });
 
 When('clicks the {string} button', (buttonText) => {
@@ -631,7 +632,8 @@ Then('the radius dropdown has the following options', (dataTable) => {
 });
 
 When('enters {string} in the zip code filter', (zipCode) => {
-	cy.get('.ctla-sidebar').find('input[type="text"]').clear().type(zipCode);
+	cy.get('.nci-spinner').should('not.exist', { timeout: 30000 });
+	cy.get('#zip-code-filter').should('be.visible').clear().type(zipCode);
 });
 
 When('selects {string} from the radius dropdown', (radius) => {
@@ -1677,4 +1679,38 @@ Then('the filter button does not show expand/collapse icon', () => {
 
 	// 4. Check CSS background-image (less common for icons, but possible)
 	// cy.get(filterToggleButtonSelector).should('have.css', 'background-image', 'none');
+});
+
+// EDDL Analytics step definitions
+When('clicks the {string} button', (buttonText) => {
+	if (buttonText === 'Clear Filters') {
+		cy.get('.ctla-sidebar button').contains('Clear Filters').click();
+	} else {
+		cy.get('button').contains(buttonText).click();
+	}
+});
+
+When('removes the age filter tag', () => {
+	cy.get('.nci-spinner').should('not.exist', { timeout: 30000 });
+	cy.get('.applied-filters__tag').filter(':contains("Age:")').find('.applied-filters__tag-remove').click();
+});
+
+When('clicks on the first trial result link', () => {
+	cy.get('.nci-spinner').should('not.exist', { timeout: 30000 });
+	cy.get('.ctla-results__list-item-title').should('have.length.at.least', 1);
+	// Prevent navigation to allow analytics event to fire
+	cy.get('.ctla-results__list-item-title').first().click({ followRedirect: false });
+	cy.wait(100); // Give time for analytics event to fire
+});
+
+When('clicks on the second trial result link', () => {
+	cy.get('.nci-spinner').should('not.exist', { timeout: 30000 });
+	cy.get('.ctla-results__list-item-title').should('have.length.at.least', 2);
+	// Prevent navigation to allow analytics event to fire
+	cy.get('.ctla-results__list-item-title').eq(1).click({ followRedirect: false });
+	cy.wait(100); // Give time for analytics event to fire
+});
+
+When('browser waits 3 seconds', () => {
+	cy.wait(3000);
 });

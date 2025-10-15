@@ -5,7 +5,7 @@
  * manages filter state interactions (setting, applying, clearing), handles URL parameter
  * synchronization, performs basic validation, and includes logic for mobile accordion behavior.
  */
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useFilters, FilterActionTypes } from '../../context/FilterContext/FilterContext';
 import ZipCodeFilter from '../ZipCodeFilter';
@@ -25,6 +25,51 @@ import { URL_PARAM_MAPPING } from '../../constants/urlParams';
 import { isValidZipFormat } from '../../utils/locationUtils';
 import PropTypes from 'prop-types';
 import AppliedFilters from '../AppliedFilters/AppliedFilters';
+import { getFieldCode } from '../../utils/eddlAnalytics';
+
+/**
+ * Helper function to detect which field was added by comparing old and new filters
+ * @param {object} prevFilters - Previous filter state
+ * @param {object} newFilters - New filter state
+ * @returns {string|null} Field code that was added (e.g., 'a', 't', 'loc') or null
+ */
+const detectAddedField = (prevFilters, newFilters) => {
+	// Check each filter type to see if it was added or changed
+	const filterTypes = ['maintype', 'subtype', 'stage', 'drugIntervention', 'age', 'location'];
+
+	for (const filterType of filterTypes) {
+		const prevValue = prevFilters[filterType];
+		const newValue = newFilters[filterType];
+
+		// Check if this field was added or changed
+		if (filterType === 'location') {
+			// For location, check if zipCode was added
+			const prevZip = prevValue?.zipCode;
+			const newZip = newValue?.zipCode;
+			if (!prevZip && newZip) {
+				return getFieldCode(filterType);
+			}
+		} else if (filterType === 'age') {
+			// For age, check if value was added
+			if (!prevValue && newValue) {
+				return getFieldCode(filterType);
+			}
+		} else {
+			// For array filters (maintype, subtype, stage, drugIntervention)
+			const prevLength = Array.isArray(prevValue) ? prevValue.length : 0;
+			const newLength = Array.isArray(newValue) ? newValue.length : 0;
+			if (prevLength === 0 && newLength > 0) {
+				// Field was added
+				return getFieldCode(filterType);
+			} else if (newLength > prevLength) {
+				// More items added
+				return getFieldCode(filterType);
+			}
+		}
+	}
+
+	return null; // No field added, might be a modification
+};
 
 /**
  * Renders the filter sidebar, including relevant filter components based on pageType.
@@ -42,17 +87,18 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	// Hooks for navigation, location, filter context, tracking, and counters
 	const navigate = useNavigate();
 	const location = useLocation();
-	const { state, dispatch, applyFilters, enabledFilters = [] } = useFilters();
+	const { state, dispatch, applyFilters, enabledFilters = [], listingInfo } = useFilters();
 	const { filters, isDirty } = state; // Get current filters and dirty state from context
 	const [hasInteracted, setHasInteracted] = useState(false); // Tracks if user has interacted with any filter yet
 	// const [isFirstLoad, setIsFirstLoad] = useState(true); // Unused state variable
-	// Custom hook for tracking filter removal counts
-	const { filterRemovedCounter, incrementRemovedCounter } = useFilterCounters();
 	// State to hold the function that retrieves the latest ZIP validation status from ZipCodeFilter
 	const [getZipValidationStatus, setGetZipValidationStatus] = useState(null);
-	// Custom hook for tracking filter application/removal counts
-	const { filterAppliedCounter, incrementAppliedCounter } = useFilterCounters();
 	const tracking = useTracking(); // React-tracking hook
+	const { incrementRemovedCounter } = useFilterCounters();
+	const prevAppliedFiltersRef = useRef();
+	const isInitialUrlLoadRef = useRef(true); // Track if this is the first load from URL params
+	const pendingRemovedFieldRef = useRef(null); // Track which field was just removed
+	const pendingAddedFieldRef = useRef(null); // Track which field was just added
 
 	/**
 	 * Validates the current filter values (age range, zip format, radius presence).
@@ -158,17 +204,37 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	 * dispatches actions to clear and re-apply (empty) filters.
 	 */
 	const handleClearFilters = () => {
-		incrementRemovedCounter(); // Track clear action
+		// Increment the removed counter
+		incrementRemovedCounter();
 
-		// Notify parent component
-		onFilterCleared(filterRemovedCounter + 1, filterAppliedCounter);
+		// Mark that we're clearing all filters
+		pendingRemovedFieldRef.current = 'all';
 
 		// Dispatch actions to update context state
 		dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
 		dispatch({ type: FilterActionTypes.APPLY_FILTERS }); // Apply the cleared state
 
+		// The auto-apply detection effect will handle calling onFilterCleared when filters update
+
 		// TODO: Clear URL parameters as well? Currently only ApplyFilters updates URL.
 		// navigate(window.location.pathname); // Option 1: Navigate to path without params
+	};
+
+	/**
+	 * Handles removal of an individual filter from the AppliedFilters component.
+	 * Increments the removed counter and marks which field was removed.
+	 * The auto-apply detection effect will handle the callback with proper filters.
+	 * @param {string} fieldCode - The field code that was removed (e.g., 'a', 'loc', 't')
+	 */
+	const handleIndividualFilterRemoved = (fieldCode) => {
+		// Increment the removed counter
+		incrementRemovedCounter();
+
+		// Mark which field was removed so the auto-apply effect knows to call onFilterCleared
+		pendingRemovedFieldRef.current = fieldCode;
+
+		// The REMOVE_FILTER action has already been dispatched by AppliedFilters
+		// The auto-apply detection effect will handle calling onFilterCleared when filters update
 	};
 
 	/**
@@ -237,13 +303,6 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 
 		// --- If all validations pass ---
 
-		// Capture current filter values before applying for tracking purposes
-		const currentFilters = { ...filters };
-
-		// Track successful filter application
-		incrementAppliedCounter();
-		onFilterApplied(currentFilters, filterAppliedCounter + 1); // Notify parent
-
 		// Call the applyFilters function from context (likely triggers API call)
 		await applyFilters();
 
@@ -289,6 +348,9 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 
 		// Update the URL using navigate (replace avoids adding to history stack)
 		navigate(`${window.location.pathname}?${params.toString()}`, { replace: true });
+
+		// Call the onFilterApplied callback for analytics
+		onFilterApplied(state.appliedFilters, filterAppliedCounter);
 	};
 
 	/**
@@ -540,8 +602,56 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		if (needsApply) {
 			dispatch({ type: FilterActionTypes.APPLY_FILTERS });
 		}
+
+		// Note: isInitialUrlLoadRef will be flipped to false by the auto-apply detection effect
+		// after it skips the first URL-based apply. This ensures correct timing.
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []); // Empty dependency array ensures this runs only once on mount
+
+	// TODO: Remove this effect - auto-apply analytics should be handled by the view
+	// when results are available, not immediately when filters change
+	//
+	// Effect to detect auto-apply and trigger analytics callback
+	useEffect(() => {
+		const { appliedFilters } = state;
+
+		// Skip on first render (when prevAppliedFiltersRef.current is undefined)
+		if (prevAppliedFiltersRef.current === undefined) {
+			prevAppliedFiltersRef.current = appliedFilters;
+			return;
+		}
+
+		// Skip if this is the initial URL load - don't fire analytics for URL params
+		// After skipping once, mark initial load as complete
+		if (isInitialUrlLoadRef.current) {
+			prevAppliedFiltersRef.current = appliedFilters;
+			isInitialUrlLoadRef.current = false; // Mark initial load as complete
+			return;
+		}
+
+		// Check if appliedFilters changed but it wasn't due to manual apply
+		// This indicates auto-apply happened
+		if (appliedFilters !== prevAppliedFiltersRef.current && !isDirty) {
+			// Check if this was a filter removal
+			if (pendingRemovedFieldRef.current) {
+				// Filter removal detected - call the onFilterCleared callback
+				onFilterCleared(appliedFilters, pendingRemovedFieldRef.current);
+				// Clear the pending field
+				pendingRemovedFieldRef.current = null;
+			} else {
+				// Filter addition/modification detected
+				// Determine which field was added by comparing old vs new filters
+				const prevFilters = prevAppliedFiltersRef.current || {};
+				const fieldAdded = detectAddedField(prevFilters, appliedFilters);
+
+				// Call the onFilterApplied callback with field information
+				// Note: resultCount will be updated when the view processes the results
+				onFilterApplied(appliedFilters, fieldAdded);
+			}
+		}
+
+		prevAppliedFiltersRef.current = appliedFilters;
+	}, [state.appliedFilters, isDirty, onFilterApplied, onFilterCleared]);
 
 	// Validate pageType and configuration existence
 	if (!pageType || !PAGE_FILTER_CONFIGS[pageType]) {
@@ -554,7 +664,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		if (hasActiveFilters()) {
 			return (
 			<>
-				<AppliedFilters pageType={pageType} />
+				<AppliedFilters pageType={pageType} onFilterRemoved={handleIndividualFilterRemoved} />
 				<div className="ctla-sidebar__actions">
 					<button className="usa-button ctla-sidebar__button--clear ctla-sidebar__button--full-width" onClick={handleClearFilters} disabled={isDisabled || !hasActiveFilters()}>
 						Clear Filters

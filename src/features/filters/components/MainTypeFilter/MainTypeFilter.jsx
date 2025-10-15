@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { useFilters } from '../../context/FilterContext/FilterContext';
 import FilterGroup from '../FilterGroup';
 import { FILTER_CONFIG } from '../../config/filterConfig';
-import { useTracking } from 'react-tracking';
 import { useMainTypeSearch } from '../../../../hooks/ctsApiSupport/useMainTypeSearch';
 import ComboBox from '../ComboBox/ComboBox';
 import './MainTypeFilter.scss';
@@ -11,7 +10,6 @@ import './MainTypeFilter.scss';
 const MainTypeFilter = ({ onFocus, disabled = false }) => {
 	const { state, dispatch } = useFilters();
 	const { filters } = state;
-	const tracking = useTracking();
 	const isHandlingChangeRef = useRef(false);
 	const isInitializedRef = useRef(false);
 
@@ -97,13 +95,7 @@ const MainTypeFilter = ({ onFocus, disabled = false }) => {
 		// Manually trigger a focus event to ensure the tracker fires
 		if (onFocus) onFocus();
 
-		tracking.trackEvent({
-			type: 'Other',
-			event: 'TrialListingApp:Filter:Change',
-			filterType: 'maintype',
-			filterValue: selectedValue || '',
-			action: selectedValue ? 'select' : 'clear',
-		});
+		// Note: Individual filter change tracking removed - FilterApply event covers all changes
 
 		// Reset flag after a short delay to allow state updates to complete
 		setTimeout(() => {
