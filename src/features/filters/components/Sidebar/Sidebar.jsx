@@ -615,8 +615,11 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	useEffect(() => {
 		const { appliedFilters } = state;
 
+		// Capture previous value at the start to avoid race conditions
+		const prevFilters = prevAppliedFiltersRef.current;
+
 		// Skip on first render (when prevAppliedFiltersRef.current is undefined)
-		if (prevAppliedFiltersRef.current === undefined) {
+		if (prevFilters === undefined) {
 			prevAppliedFiltersRef.current = appliedFilters;
 			return;
 		}
@@ -631,7 +634,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 
 		// Check if appliedFilters changed but it wasn't due to manual apply
 		// This indicates auto-apply happened
-		if (appliedFilters !== prevAppliedFiltersRef.current && !isDirty) {
+		if (appliedFilters !== prevFilters && !isDirty) {
 			// Check if this was a filter removal
 			if (pendingRemovedFieldRef.current) {
 				// Filter removal detected - call the onFilterCleared callback
@@ -641,8 +644,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			} else {
 				// Filter addition/modification detected
 				// Determine which field was added by comparing old vs new filters
-				const prevFilters = prevAppliedFiltersRef.current || {};
-				const fieldAdded = detectAddedField(prevFilters, appliedFilters);
+				const fieldAdded = detectAddedField(prevFilters || {}, appliedFilters);
 
 				// Call the onFilterApplied callback with field information
 				// Note: resultCount will be updated when the view processes the results
@@ -650,6 +652,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			}
 		}
 
+		// Update ref AFTER all comparisons are done
 		prevAppliedFiltersRef.current = appliedFilters;
 	}, [state.appliedFilters, isDirty, onFilterApplied, onFilterCleared]);
 
