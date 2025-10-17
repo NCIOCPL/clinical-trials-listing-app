@@ -257,7 +257,7 @@ function filterReducer(state, action) {
 			const appliedFiltersToSet = { ...filtersToApply };
 
 			// Validate location filter before adding to appliedFilters
-			if (appliedFiltersToSet.location?.zipCode && (!isValidZipFormat(appliedFiltersToSet.location.zipCode) || !state.zipCoords)) {
+			if (appliedFiltersToSet.location?.zipCode && !isValidZipFormat(appliedFiltersToSet.location.zipCode)) {
 				// Remove invalid location filter from appliedFilters (but keep it in filters for UI)
 				delete appliedFiltersToSet.location;
 			}

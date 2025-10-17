@@ -26,6 +26,7 @@ import { getFieldCode } from '../../utils/eddlAnalytics';
 const AppliedFilters = ({ pageType = 'Disease', onFilterRemoved = () => {} }) => {
 	const { state, dispatch } = useFilters();
 	const filters = state.appliedFilters; // Get the list of applied filters from context
+	const appliedZipCoords = state.appliedZipCoords; // Get coordinates for applied ZIP code
 
 	// Get the API data for filter options to display proper names
 	const { options: maintypeOptions } = useMainTypeSearch();
@@ -43,8 +44,8 @@ const AppliedFilters = ({ pageType = 'Disease', onFilterRemoved = () => {} }) =>
 
 		for (const [key, value] of Object.entries(filters)) {
 			if (key === 'location') {
-				// For location, check if zipCode has a value
-				if (value && value.zipCode && value.zipCode.trim() !== '') {
+				// For location, check if zipCode has a value AND has valid coordinates
+				if (value && value.zipCode && value.zipCode.trim() !== '' && appliedZipCoords && appliedZipCoords.lat && appliedZipCoords.long) {
 					return true;
 				}
 			} else if (Array.isArray(value)) {
@@ -175,6 +176,11 @@ const AppliedFilters = ({ pageType = 'Disease', onFilterRemoved = () => {} }) =>
 					displayType: 'Age',
 				};
 			case 'location':
+				// Only show location filter if we have valid coordinates
+				// Invalid ZIP codes should not show as applied filters
+				if (!appliedZipCoords || !appliedZipCoords.lat || !appliedZipCoords.long) {
+					return null;
+				}
 				// Format location label using zip and radius
 				return {
 					label: [`within ${filter.values.radius} miles of ${filter.values.zipCode}`],

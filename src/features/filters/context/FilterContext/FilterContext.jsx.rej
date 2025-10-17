@@ -1,0 +1,10 @@
+@@ -257,7 +257,8 @@
+ 		const appliedFiltersToSet = { ...filtersToApply };
+ 
+ 		// Validate location filter before adding to appliedFilters
+-		if (appliedFiltersToSet.location?.zipCode && !isValidZipFormat(appliedFiltersToSet.location.zipCode)) {
++		// A location is only valid if it has correct format AND coordinates
++		if (appliedFiltersToSet.location?.zipCode && (!isValidZipFormat(appliedFiltersToSet.location.zipCode) || !state.zipCoords)) {
+ 			// Remove invalid location filter from appliedFilters (but keep it in filters for UI)
+ 			delete appliedFiltersToSet.location;
+ 		}

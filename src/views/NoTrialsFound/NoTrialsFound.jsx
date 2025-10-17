@@ -148,8 +148,8 @@ const NoTrialsFound = ({ routeParamMap, data, redirectStatus, prerenderLocation 
 	const urlParams = new URLSearchParams(location.search);
 	const hasFilterParams = urlParams.has(URL_PARAM_MAPPING.maintype.shortCode) || urlParams.has(URL_PARAM_MAPPING.subtype.shortCode) || urlParams.has(URL_PARAM_MAPPING.stage.shortCode) || urlParams.has(URL_PARAM_MAPPING.drugIntervention.shortCode) || urlParams.has(URL_PARAM_MAPPING.age.shortCode) || urlParams.has(URL_PARAM_MAPPING.zipCode.shortCode) || urlParams.has(URL_PARAM_MAPPING.radius.shortCode);
 
-	console.log('[NoTrialsFound] URL params:', location.search, 'Has filter params:', hasFilterParams);
-	console.log('[NoTrialsFound] Filter values - maintype:', urlParams.get(URL_PARAM_MAPPING.maintype.shortCode), 'subtype:', urlParams.get(URL_PARAM_MAPPING.subtype.shortCode), 'stage:', urlParams.get(URL_PARAM_MAPPING.stage.shortCode), 'drugIntervention:', urlParams.get(URL_PARAM_MAPPING.drugIntervention.shortCode), 'age:', urlParams.get(URL_PARAM_MAPPING.age.shortCode));
+	// console.log('[NoTrialsFound] URL params:', location.search, 'Has filter params:', hasFilterParams);
+	// console.log('[NoTrialsFound] Filter values - maintype:', urlParams.get(URL_PARAM_MAPPING.maintype.shortCode), 'subtype:', urlParams.get(URL_PARAM_MAPPING.subtype.shortCode), 'stage:', urlParams.get(URL_PARAM_MAPPING.stage.shortCode), 'drugIntervention:', urlParams.get(URL_PARAM_MAPPING.drugIntervention.shortCode), 'age:', urlParams.get(URL_PARAM_MAPPING.age.shortCode));
 
 	return (
 		<div className="disease-view no-trials-page">
