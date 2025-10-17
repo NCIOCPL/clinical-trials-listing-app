@@ -471,6 +471,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 				const isClosed = filterBtn.classList.contains('is-closed');
 				content.hidden = isClosed;
 				filterBtn.setAttribute('aria-expanded', !isClosed);
+				filterBtn.setAttribute('tabIndex', '0');
 			} else {
 				// If desktop view
 				// Ensure accordion is open and listener is removed
@@ -479,6 +480,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 				filterBtn.style.backgroundImage = minusSign; // Default to open style
 				content.removeAttribute('hidden');
 				filterBtn.setAttribute('aria-expanded', 'true');
+				filterBtn.setAttribute('tabIndex', '-1');
 			}
 		}
 
