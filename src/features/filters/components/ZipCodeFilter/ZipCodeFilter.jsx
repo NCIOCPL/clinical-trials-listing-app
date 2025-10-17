@@ -142,6 +142,9 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 	 */
 	useEffect(() => {
 		if (zipCode && zipCode.length === 5 && isValidZipFormat(zipCode)) {
+			// Clear old coordinates immediately before starting new validation
+			setValidCoordinates(null);
+			setHasInvalidZip(false);
 			// Set validating state to true when starting validation
 			setIsValidating(true);
 

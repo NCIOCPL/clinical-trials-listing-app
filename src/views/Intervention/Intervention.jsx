@@ -187,7 +187,7 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 
 		// Preserve filter parameters from the applied filter state
 		const appliedFilters = filterState.appliedFilters || {};
-		console.log('[Intervention handleRedirect] Applied filters from state:', appliedFilters);
+		// console.log('[Intervention handleRedirect] Applied filters from state:', appliedFilters);
 
 		// Add maintype filter
 		if (appliedFilters.maintype && appliedFilters.maintype.length > 0) {
@@ -219,7 +219,7 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 			}
 		}
 
-		console.log('[Intervention handleRedirect] Final redirect params with filters:', redirectParams);
+		// console.log('[Intervention handleRedirect] Final redirect params with filters:', redirectParams);
 
 		// Use the status determined by the calling useEffect
 		const finalRedirectStatus = status;
@@ -554,7 +554,7 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 								type: 'apply',
 								filters: appliedFilters,
 								fieldAdded: fieldAdded, // Field that was added
-								isInitialLoad: false, // User explicitly applied filters
+								isInitialLoad: isInitialLoad, // User explicitly applied filters
 							});
 						}}
 						onFilterCleared={(filters, fieldRemoved) => {

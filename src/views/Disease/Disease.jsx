@@ -435,10 +435,6 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 			});
 		}
 	}, [pn, location.pathname, location.search, fetchState?.total]);
-
-	// TODO: Add proper auto-apply detection later
-	// For now, focus on getting the basic analytics structure working
-
 	const handleRedirect = (status) => {
 		// console.log(`[Disease handleRedirect] Called with status: ${status}`); // LOG
 		let redirectParams = '';
@@ -456,7 +452,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 
 		// Preserve filter parameters from the applied filter state
 		const appliedFilters = filterState.appliedFilters || {};
-		console.log('[Disease handleRedirect] Applied filters from state:', appliedFilters);
+		// console.log('[Disease handleRedirect] Applied filters from state:', appliedFilters);
 
 		// Add maintype filter
 		if (appliedFilters.maintype && appliedFilters.maintype.length > 0) {
@@ -498,7 +494,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 			}
 		}
 
-		console.log('[Disease handleRedirect] Final redirect params with filters:', redirectParams);
+		// console.log('[Disease handleRedirect] Final redirect params with filters:', redirectParams);
 
 		// Use the status determined by the calling useEffect
 		const finalRedirectStatus = status;
@@ -629,7 +625,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 								type: 'apply',
 								filters: appliedFilters,
 								fieldAdded: fieldAdded, // Field that was added
-								isInitialLoad: false, // User explicitly applied filters
+								isInitialLoad: isInitialLoad, // User explicitly applied filters
 							});
 						}}
 						onFilterCleared={(filters, fieldRemoved) => {
@@ -661,7 +657,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 							type: 'apply',
 							filters: appliedFilters,
 							fieldAdded: fieldAdded, // Field that was added
-							isInitialLoad: false, // User explicitly applied filters
+							isInitialLoad: isInitialLoad, // Use actual state value instead of hardcoding false
 						});
 					}}
 					onFilterCleared={(filters, fieldRemoved) => {

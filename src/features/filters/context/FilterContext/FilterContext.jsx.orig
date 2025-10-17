@@ -216,21 +216,9 @@ function filterReducer(state, action) {
 				}
 			}
 
-			// Clear zipCoords when location zipCode changes to prevent stale coordinates
-			let newZipCoords = state.zipCoords;
-			if (action.payload.filterType === 'location') {
-				const oldZipCode = state.filters.location?.zipCode;
-				const newZipCode = action.payload.value?.zipCode;
-				// If zipcode changed, clear old coordinates
-				if (oldZipCode !== newZipCode) {
-					newZipCoords = null;
-				}
-			}
-
 			return {
 				...state,
 				filters: newFilters,
-				zipCoords: newZipCoords,
 				isDirty: newIsDirty,
 				pendingAutoApply: AUTO_APPLY_ENABLED && newIsDirty,
 				lastChangedFilter: action.payload.filterType,
@@ -269,7 +257,7 @@ function filterReducer(state, action) {
 			const appliedFiltersToSet = { ...filtersToApply };
 
 			// Validate location filter before adding to appliedFilters
-			if (appliedFiltersToSet.location?.zipCode && (!isValidZipFormat(appliedFiltersToSet.location.zipCode) || !state.zipCoords)) {
+			if (appliedFiltersToSet.location?.zipCode && !isValidZipFormat(appliedFiltersToSet.location.zipCode)) {
 				// Remove invalid location filter from appliedFilters (but keep it in filters for UI)
 				delete appliedFiltersToSet.location;
 			}
