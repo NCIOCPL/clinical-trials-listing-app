@@ -1,0 +1,84 @@
+import React, { useMemo, useRef } from 'react';
+import PropTypes from 'prop-types';
+import { useFilters } from '../../context/FilterContext/FilterContext';
+import FilterGroup from '../FilterGroup';
+import { FILTER_CONFIG } from '../../config/filterConfig';
+import './StageFilter.scss';
+
+import ComboBox from '../ComboBox/ComboBox';
+
+import { useStageSearch } from '../../../../hooks/ctsApiSupport/useStageSearch';
+
+const StageFilter = ({ disabled = false, onFocus }) => {
+	const { state, dispatch } = useFilters();
+	const { filters } = state;
+	const isHandlingChangeRef = useRef(false);
+
+	// Get the selected maintype code from filters
+	const maintypeCode = filters.maintype && filters.maintype.length > 0 ? filters.maintype[0] : null;
+
+	const { options, isLoading } = useStageSearch(maintypeCode);
+	// console.log(options);
+	const formattedOptions = useMemo(() => {
+		return options.map((option) => ({
+			value: option.value || option.id || '',
+			label: option.label || '',
+		}));
+	}, [options]);
+
+	// Initialize value as empty array if not already set
+	const value = Array.isArray(filters.stage) ? filters.stage : [];
+
+	const handleChange = (selectedValue) => {
+		// Prevent recursive onChange calls
+		if (isHandlingChangeRef.current) {
+			return;
+		}
+
+		// Guard against ComboBox calling onChange with undefined during initialization
+		if (selectedValue === undefined) {
+			return;
+		}
+
+		// Set flag to prevent recursive calls
+		isHandlingChangeRef.current = true;
+
+		const newValue = selectedValue ? [selectedValue] : [];
+
+		dispatch({
+			type: 'SET_FILTER',
+			payload: {
+				filterType: 'stage',
+				value: newValue,
+			},
+		});
+
+		// Do we want this on a clear? Maybe instead: (onFocus && selectedValue) onFocus();
+		if (onFocus) onFocus();
+
+		// Note: Individual filter change tracking removed - FilterApply event covers all changes
+
+		// Reset flag after a short delay to allow state updates to complete
+		setTimeout(() => {
+			isHandlingChangeRef.current = false;
+		}, 100);
+	};
+
+	// Determine if the component should be disabled
+	const isStageDisabled = disabled || isLoading || !maintypeCode;
+
+	return (
+		<FilterGroup title={FILTER_CONFIG.stage.title} helpText={FILTER_CONFIG.stage.helpText}>
+			<label id="stage-filter-label" className="usa-label usa-sr-only" htmlFor="stage-filter">
+				Stage
+			</label>
+			<ComboBox id="stage-filter" name="stage-filter" options={formattedOptions} defaultValue={value.length > 0 ? value[0] : ''} disabled={isStageDisabled} onChange={handleChange} onFocus={onFocus} noResults="No stages found" />
+		</FilterGroup>
+	);
+};
+
+StageFilter.propTypes = {
+	disabled: PropTypes.bool,
+	onFocus: PropTypes.func,
+};
+export default StageFilter;

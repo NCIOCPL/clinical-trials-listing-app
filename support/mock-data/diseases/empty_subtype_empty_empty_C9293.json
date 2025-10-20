@@ -1,0 +1,3697 @@
+{
+    "data": [
+        {
+            "name": "Adamantinomatous Craniopharyngioma",
+            "codes": [
+                "C4726"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Advanced Glioblastoma",
+            "codes": [
+                "C170978"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Advanced Primary Malignant Brain Neoplasm",
+            "codes": [
+                "C175549"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Anaplastic (Malignant) Meningioma",
+            "codes": [
+                "C4051"
+            ],
+            "ancestor_ids": [
+                "C3230",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3230"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Anaplastic Astrocytoma",
+            "codes": [
+                "C9477"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Anaplastic Astrocytoma, IDH-Mutant",
+            "codes": [
+                "C129290"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Anaplastic Astrocytoma, IDH-Wildtype",
+            "codes": [
+                "C129291"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Anaplastic Ependymoma",
+            "codes": [
+                "C4049"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Anaplastic Ganglioglioma",
+            "codes": [
+                "C4717"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Anaplastic Oligoastrocytoma",
+            "codes": [
+                "C6959"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Anaplastic Oligodendroglioma",
+            "codes": [
+                "C4326"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Anaplastic Pleomorphic Xanthoastrocytoma",
+            "codes": [
+                "C129327"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Angiocentric Glioma",
+            "codes": [
+                "C92552"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Astrocytic Tumor",
+            "codes": [
+                "C6958"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Astrocytoma",
+            "codes": [
+                "C60781"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Atypical Choroid Plexus Papilloma",
+            "codes": [
+                "C53686"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Atypical Meningioma",
+            "codes": [
+                "C4723"
+            ],
+            "ancestor_ids": [
+                "C3230",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3230"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Atypical Teratoid/Rhabdoid Tumor",
+            "codes": [
+                "C6906",
+                "C68634"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293",
+                "C6906"
+            ],
+            "parent_ids": [
+                "C9293",
+                "C6906"
+            ],
+            "type": [
+                "subtype",
+                "maintype",
+                "grade"
+            ]
+        },
+        {
+            "name": "Benign Brain Neoplasm",
+            "codes": [
+                "C4781"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bilateral Retinoblastoma",
+            "codes": [
+                "C8713"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C7541",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C7541"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Bilateral Thalamic Glioma",
+            "codes": [
+                "C173846"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Brain Glioblastoma",
+            "codes": [
+                "C4642",
+                "C9375"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Brain Neoplasm",
+            "codes": [
+                "C7703"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Brain Oligodendroglioma",
+            "codes": [
+                "C9377"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Brain Sarcoma",
+            "codes": [
+                "C5154"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9118",
+                "C9293",
+                "C9306"
+            ],
+            "parent_ids": [
+                "C9293",
+                "C9306"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Brain Stem Glioblastoma",
+            "codes": [
+                "C5097"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Brain Stem Glioma",
+            "codes": [
+                "C8501",
+                "C9042"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Brain Stem Neoplasm",
+            "codes": [
+                "C4869"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Brain Tumor",
+            "codes": [
+                "C2907"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Central Nervous System Carcinoma",
+            "codes": [
+                "C62332"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Central Nervous System Embryonal Neoplasm",
+            "codes": [
+                "C6990"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Central Nervous System Embryonal Tumor with Rhabdoid Features",
+            "codes": [
+                "C129501"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Central Nervous System Embryonal Tumor, Not Otherwise Specified",
+            "codes": [
+                "C5398"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Central Nervous System Germ Cell Tumor",
+            "codes": [
+                "C5461"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Central Nervous System Langerhans Cell Histiocytosis",
+            "codes": [
+                "C129806"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Central Nervous System Leukemia",
+            "codes": [
+                "C5440"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C3161",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3161",
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Central Nervous System Lymphoma",
+            "codes": [
+                "C9301"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C3208",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3208",
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Central Nervous System Melanocytic Neoplasm",
+            "codes": [
+                "C5504"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Central Nervous System Melanoma",
+            "codes": [
+                "C5505"
+            ],
+            "ancestor_ids": [
+                "C3224",
+                "C3268",
+                "C8711",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C8711",
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Central Nervous System Neoplasm",
+            "codes": [
+                "C5132"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Central Nervous System Nongerminomatous Germ Cell Tumor",
+            "codes": [
+                "C100093"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Central Nervous System Sarcoma",
+            "codes": [
+                "C5153"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9118",
+                "C9293",
+                "C9306"
+            ],
+            "parent_ids": [
+                "C9293",
+                "C9306"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Central Neurocytoma",
+            "codes": [
+                "C3791"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Cerebellar Hemangioblastoma",
+            "codes": [
+                "C5146"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Cerebellar Liponeurocytoma",
+            "codes": [
+                "C6905"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Cerebral Hemangioblastoma",
+            "codes": [
+                "C155947"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Childhood Supratentorial Neoplasm",
+            "codes": [
+                "C5960"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Chordoid Glioma of the Third Ventricle",
+            "codes": [
+                "C5592"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Choroid Plexus Cancer",
+            "codes": [
+                "C4715"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Choroid Plexus Neoplasm",
+            "codes": [
+                "C3473"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Choroid Plexus Papilloma",
+            "codes": [
+                "C3698"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Craniopharyngioma",
+            "codes": [
+                "C2964"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Desmoplastic Infantile Astrocytoma",
+            "codes": [
+                "C9476"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Desmoplastic Infantile Ganglioglioma",
+            "codes": [
+                "C4738"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Desmoplastic/Nodular Medulloblastoma",
+            "codes": [
+                "C4956"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Diffuse Astrocytoma",
+            "codes": [
+                "C7173"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Diffuse Astrocytoma, IDH-Mutant",
+            "codes": [
+                "C129271"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Diffuse Astrocytoma, IDH-Wildtype",
+            "codes": [
+                "C129274"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Diffuse Glioma",
+            "codes": [
+                "C129325"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Diffuse Intrinsic Pontine Glioma",
+            "codes": [
+                "C94764"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Diffuse Leptomeningeal Glioneuronal Tumor",
+            "codes": [
+                "C129424"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Diffuse Midline Glioma, H3 K27M-Mutant",
+            "codes": [
+                "C129309"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Dysembryoplastic Neuroepithelial Tumor",
+            "codes": [
+                "C9505"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Dysembryoplastic Neuroepithelial-Like Tumor of the Septum Pellucidum",
+            "codes": [
+                "C180532"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Dysplastic Cerebellar Gangliocytoma",
+            "codes": [
+                "C8419"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Embryonal Tumor with Multilayered Rosettes, C19MC-Altered",
+            "codes": [
+                "C4915"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Embryonal Tumor with Multilayered Rosettes, Not Otherwise Specified",
+            "codes": [
+                "C129499"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Ependymoma",
+            "codes": [
+                "C3017"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "maintype",
+                "subtype",
+                "grade"
+            ]
+        },
+        {
+            "name": "Extraventricular Neurocytoma",
+            "codes": [
+                "C92555"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Fibrillary Astrocytoma",
+            "codes": [
+                "C4322"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Gangliocytoma",
+            "codes": [
+                "C6934"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Ganglioglioma",
+            "codes": [
+                "C3788",
+                "C27362"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Gemistocytic Astrocytoma",
+            "codes": [
+                "C4321"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Giant Cell Glioblastoma",
+            "codes": [
+                "C4325",
+                "C68702"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Glioblastoma",
+            "codes": [
+                "C3058",
+                "C9094"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293",
+                "C3058"
+            ],
+            "parent_ids": [
+                "C3059",
+                "C3058"
+            ],
+            "type": [
+                "subtype",
+                "maintype",
+                "grade"
+            ]
+        },
+        {
+            "name": "Glioblastoma with Primitive Neuronal Component",
+            "codes": [
+                "C129296"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Glioblastoma, IDH-Mutant",
+            "codes": [
+                "C167335"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Glioblastoma, IDH-Wildtype",
+            "codes": [
+                "C39750"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Glioma",
+            "codes": [
+                "C3059"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Gliomatosis Cerebri",
+            "codes": [
+                "C4318"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Gliosarcoma",
+            "codes": [
+                "C3796",
+                "C68701"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Hereditary Retinoblastoma",
+            "codes": [
+                "C8495"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C7541",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C7541"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Hypothalamic Neoplasm",
+            "codes": [
+                "C3129"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Intracranial Melanoma",
+            "codes": [
+                "C5442"
+            ],
+            "ancestor_ids": [
+                "C3224",
+                "C3268",
+                "C8711",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C8711",
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Intracranial Meningioma",
+            "codes": [
+                "C4656"
+            ],
+            "ancestor_ids": [
+                "C3230",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3230"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Intracranial Myeloid Sarcoma",
+            "codes": [
+                "C7008"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C3268",
+                "C9290",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9290",
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Intracranial Neoplasm",
+            "codes": [
+                "C4953"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Intraocular Retinoblastoma",
+            "codes": [
+                "C7846"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C7541",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C7541"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Intraspinal Neoplasm",
+            "codes": [
+                "C3382"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Juvenile Pilocytic Astrocytoma",
+            "codes": [
+                "C27081"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Large Cell/Anaplastic Medulloblastoma",
+            "codes": [
+                "C129436"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Leptomeningeal Neoplasm",
+            "codes": [
+                "C4958"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Localized Brain Neoplasm",
+            "codes": [
+                "C4952"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Localized Cerebral Neoplasm",
+            "codes": [
+                "C150573"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Localized Malignant Brain Neoplasm",
+            "codes": [
+                "C4954"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Locally Advanced Glioblastoma",
+            "codes": [
+                "C170980"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Locally Advanced Glioma",
+            "codes": [
+                "C180876"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Locally Advanced Primary Malignant Brain Neoplasm",
+            "codes": [
+                "C180874"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Locally Advanced Primary Malignant Central Nervous System Neoplasm",
+            "codes": [
+                "C166182"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Lung Carcinoma Metastatic in the Brain",
+            "codes": [
+                "C36304"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C4878",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C4878",
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "MGMT-Methylated Glioblastoma",
+            "codes": [
+                "C154335"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "MGMT-Unmethylated Glioblastoma",
+            "codes": [
+                "C132902"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Malignant Brain Glioma",
+            "codes": [
+                "C162993"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Malignant Brain Tumor",
+            "codes": [
+                "C3568"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Malignant Central Nervous System Neoplasm",
+            "codes": [
+                "C4627"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Malignant Glioma",
+            "codes": [
+                "C4822"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Malignant Intracranial Germ Cell Tumor",
+            "codes": [
+                "C5403"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Malignant Leptomeningeal Neoplasm",
+            "codes": [
+                "C8506"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Malignant Skull Base Neoplasm",
+            "codes": [
+                "C155791"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Malignant Spinal Cord Neoplasm",
+            "codes": [
+                "C3572"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Malignant Supratentorial Neoplasm",
+            "codes": [
+                "C4964"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Medullary Hemangioblastoma",
+            "codes": [
+                "C155949"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Medulloblastoma",
+            "codes": [
+                "C3222"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Medulloblastoma, Non-WNT/Non-SHH",
+            "codes": [
+                "C129444"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Medulloblastoma, Non-WNT/Non-SHH, Group 3",
+            "codes": [
+                "C129445"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Medulloblastoma, Non-WNT/Non-SHH, Group 4",
+            "codes": [
+                "C129446"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Medulloblastoma, Not Otherwise Specified",
+            "codes": [
+                "C129447"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Medulloblastoma, SHH-Activated",
+            "codes": [
+                "C129441"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Medulloblastoma, SHH-Activated, TP53-Mutant",
+            "codes": [
+                "C129442"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Medulloblastoma, SHH-Activated, TP53-Wildtype",
+            "codes": [
+                "C129443"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Medulloblastoma, WNT-Activated",
+            "codes": [
+                "C129440"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Medulloepithelioma",
+            "codes": [
+                "C4327"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Meningeal Carcinomatosis",
+            "codes": [
+                "C27383"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Meningioma",
+            "codes": [
+                "C3230"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Breast Cancer in the Brain",
+            "codes": [
+                "C36301"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C4872",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C4872",
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Glioblastoma",
+            "codes": [
+                "C170979"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Intracranial Malignant Neoplasm",
+            "codes": [
+                "C173155"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Malignant Neoplasm in the Brain",
+            "codes": [
+                "C3813"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Malignant Neoplasm in the Brain Stem",
+            "codes": [
+                "C8550"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Malignant Neoplasm to the Central Nervous System",
+            "codes": [
+                "C4015"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Malignant Neoplasm to the Leptomeninges",
+            "codes": [
+                "C3814"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Malignant Neoplasm to the Spinal Cord",
+            "codes": [
+                "C4585"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Medulloblastoma",
+            "codes": [
+                "C177725"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Meningioma",
+            "codes": [
+                "C5274"
+            ],
+            "ancestor_ids": [
+                "C3230",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3230"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Primary Malignant Brain Neoplasm",
+            "codes": [
+                "C175550"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Metastatic Primary Malignant Central Nervous System Neoplasm",
+            "codes": [
+                "C166181"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Mixed Glioma",
+            "codes": [
+                "C3903"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Multifocal Glioblastomas",
+            "codes": [
+                "C92549"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Multinodular and Vacuolated Tumor of the Cerebrum",
+            "codes": [
+                "C129427"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Myxoid Glioneuronal Tumor, PDGFRA p.K385-Mutant",
+            "codes": [
+                "C179229"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Neuronal and Mixed Neuronal-Glial Tumors",
+            "codes": [
+                "C4747"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Oligoastrocytoma",
+            "codes": [
+                "C4050"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Oligoastrocytoma, Not Otherwise Specified",
+            "codes": [
+                "C129323"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Oligodendroglial Tumor",
+            "codes": [
+                "C6960"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Oligodendroglioma",
+            "codes": [
+                "C3288"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Optic Nerve Glioma",
+            "codes": [
+                "C4537"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Papillary Craniopharyngioma",
+            "codes": [
+                "C4725"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Papillary Glioneuronal Tumor",
+            "codes": [
+                "C92554"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Papillary Tumor of the Pineal Region",
+            "codes": [
+                "C92624"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Pilocytic Astrocytoma",
+            "codes": [
+                "C4047"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Pilomyxoid Astrocytoma",
+            "codes": [
+                "C40315"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Pineal Parenchymal Tumor of Intermediate Differentiation",
+            "codes": [
+                "C6967"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Pineal Region Germ Cell Tumor",
+            "codes": [
+                "C4659"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Pineal Region Immature Teratoma",
+            "codes": [
+                "C6755"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C3403",
+                "C3708",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3403",
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Pineal Region Neoplasm",
+            "codes": [
+                "C3328"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Pineal Region Yolk Sac Tumor",
+            "codes": [
+                "C6752"
+            ],
+            "ancestor_ids": [
+                "C3011",
+                "C3268",
+                "C3708",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3011",
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Pineoblastoma",
+            "codes": [
+                "C9344"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Pineocytoma",
+            "codes": [
+                "C6966"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Pituitary Gland Blastoma",
+            "codes": [
+                "C155304"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Pituitary Gland Cancer",
+            "codes": [
+                "C4536"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Pleomorphic Xanthoastrocytoma",
+            "codes": [
+                "C4323"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Primary Brain Neoplasm",
+            "codes": [
+                "C170814"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Primary Central Nervous System Neoplasm",
+            "codes": [
+                "C102871"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Protoplasmic Astrocytoma",
+            "codes": [
+                "C4320"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Anaplastic Astrocytoma",
+            "codes": [
+                "C169075"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Anaplastic Ependymoma",
+            "codes": [
+                "C160913"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Anaplastic Oligodendroglioma",
+            "codes": [
+                "C169074"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Anaplastic Pleomorphic Xanthoastrocytoma",
+            "codes": [
+                "C160905"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Atypical Teratoid/Rhabdoid Tumor",
+            "codes": [
+                "C162723"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C6906",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C6906"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Brain Neoplasm",
+            "codes": [
+                "C71702"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Central Nervous System Lymphoma",
+            "codes": [
+                "C138020"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C3208",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3208",
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Central Nervous System Neoplasm",
+            "codes": [
+                "C71701"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Diffuse Intrinsic Pontine Glioma (DIPG)",
+            "codes": [
+                "C136519"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Ependymoma",
+            "codes": [
+                "C147108"
+            ],
+            "ancestor_ids": [
+                "C3017",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3017"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Giant Cell Glioblastoma",
+            "codes": [
+                "C176998"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Glioblastoma",
+            "codes": [
+                "C146734"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Glioma",
+            "codes": [
+                "C147107"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Gliosarcoma",
+            "codes": [
+                "C163962"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Malignant Brain Neoplasm",
+            "codes": [
+                "C153845"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Malignant Central Nervous System Neoplasm",
+            "codes": [
+                "C153842"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Malignant Glioma",
+            "codes": [
+                "C142855"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Medulloblastoma",
+            "codes": [
+                "C142856"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Medulloblastoma, SHH-Activated",
+            "codes": [
+                "C147110"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Meningioma",
+            "codes": [
+                "C172953"
+            ],
+            "ancestor_ids": [
+                "C3230",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3230"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Small Cell Glioblastoma",
+            "codes": [
+                "C163960"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Refractory Visual Pathway Glioma",
+            "codes": [
+                "C155984"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Resectable Glioblastoma",
+            "codes": [
+                "C166156"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Retinoblastoma",
+            "codes": [
+                "C7541"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Rosette-Forming Glioneuronal Tumor",
+            "codes": [
+                "C129431"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Secondary Central Nervous System Lymphoma",
+            "codes": [
+                "C87797"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C3208",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3208",
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Secondary Glioblastoma",
+            "codes": [
+                "C39751"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Skull Base Neoplasm",
+            "codes": [
+                "C4676"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Small Cell Glioblastoma",
+            "codes": [
+                "C125890"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Spinal Cord Glioma",
+            "codes": [
+                "C4534"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Spinal Cord Neurofibroma",
+            "codes": [
+                "C5145"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Spinal Cord Tumor",
+            "codes": [
+                "C3381"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Spinal Hemangioblastoma",
+            "codes": [
+                "C155948"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Subependymal Giant Cell Astrocytoma",
+            "codes": [
+                "C3696"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Suprasellar Germ Cell Tumor",
+            "codes": [
+                "C177769"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Supratentorial Embryonal Tumor, Not Otherwise Specified",
+            "codes": [
+                "C6968"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Supratentorial Ependymoma",
+            "codes": [
+                "C9043"
+            ],
+            "ancestor_ids": [
+                "C3017",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3017"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Supratentorial Glioblastoma",
+            "codes": [
+                "C5149"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Supratentorial Gliosarcoma",
+            "codes": [
+                "C171013"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Supratentorial Neoplasm",
+            "codes": [
+                "C3397"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Tectal Glioma",
+            "codes": [
+                "C180407"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Unilateral Retinoblastoma",
+            "codes": [
+                "C8714"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C7541",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C7541"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Unresectable Glioblastoma",
+            "codes": [
+                "C176890"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Unresectable Glioma",
+            "codes": [
+                "C176889"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Unresectable Meningioma",
+            "codes": [
+                "C163006"
+            ],
+            "ancestor_ids": [
+                "C3230",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3230"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Unresectable Pituitary Gland Carcinoma",
+            "codes": [
+                "C163959"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C4536",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C4536"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Visual Pathway Glioma",
+            "codes": [
+                "C8567",
+                "C7535"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "subtype"
+            ]
+        },
+        {
+            "name": "Visual Pathway Neoplasm",
+            "codes": [
+                "C6262"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "subtype"
+            ]
+        }
+    ],
+    "total": 212
+}

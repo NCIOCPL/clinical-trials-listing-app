@@ -1,0 +1,205 @@
+{
+	"data": [
+		{
+			"name": "Advanced Breast Adenocarcinoma",
+			"codes": [
+				"C165700"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [],
+			"count": 4
+		},
+		{
+			"name": "Advanced Breast Carcinoma",
+			"codes": [
+				"C162648"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [],
+			"count": 87
+		},
+		{
+			"name": "Advanced HER2 Negative Breast Carcinoma",
+			"codes": [
+				"C168782"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Advanced HER2 Negative Breast Adenocarcinoma",
+				"Advanced HER2-Negative Breast Carcinoma"
+			],
+			"count": 6
+		},
+		{
+			"name": "Advanced HER2 Positive Breast Carcinoma",
+			"codes": [
+				"C180925"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Advanced HER2-Positive Breast Carcinoma"
+			],
+			"count": 1
+		},
+		{
+			"name": "Advanced Triple-Negative Breast Carcinoma",
+			"codes": [
+				"C175236"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [],
+			"count": 26
+		},
+		{
+			"name": "Atypical Breast Papilloma",
+			"codes": [
+				"C36089"
+			],
+			"ancestor_ids": [
+				"C3262"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C3262"
+			],
+			"synonyms": [
+				"Breast Atypical Papilloma",
+				"Intraductal Breast Papilloma with Atypia"
+			],
+			"count": 3
+		},
+		{
+			"name": "Atypical Ductal Breast Hyperplasia",
+			"codes": [
+				"C8436"
+			],
+			"ancestor_ids": [
+				"C3262"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C3262"
+			],
+			"synonyms": [
+				"ADH",
+				"Atypical Breast Ductal Hyperplasia",
+				"Atypical Ductal Hyperplasia of Breast",
+				"Atypical Ductal Hyperplasia of the Breast",
+				"Breast Atypical Ductal Hyperplasia",
+				"DIN 1B",
+				"Ductal Intraepithelial Neoplasia, Grade 1B",
+				"atypical ductal breast hyperplasia",
+				"atypical ductal hyperplasia"
+			],
+			"count": 9
+		},
+		{
+			"name": "Atypical Lobular Breast Hyperplasia",
+			"codes": [
+				"C4730"
+			],
+			"ancestor_ids": [
+				"C3262"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C3262"
+			],
+			"synonyms": [
+				"ALH",
+				"Atypical Breast Lobular Hyperplasia",
+				"Atypical Lobular Hyperplasia of Breast",
+				"Atypical Lobular Hyperplasia of the Breast",
+				"Breast Atypical Lobular Hyperplasia",
+				"atypical lobular breast hyperplasia",
+				"atypical lobular hyperplasia"
+			],
+			"count": 5
+		},
+		{
+			"name": "BRCA-Associated Breast Carcinoma",
+			"codes": [
+				"C167189"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"BRCA-Mutated Breast Carcinoma"
+			],
+			"count": 1
+		},
+		{
+			"name": "BRCA-Mutated Metastatic Breast Carcinoma",
+			"codes": [
+				"C161830"
+			],
+			"ancestor_ids": [
+				"C4872"
+			],
+			"type": [
+				"subtype"
+			],
+			"parent_ids": [
+				"C4872"
+			],
+			"synonyms": [
+				"Metastatic BRCA-Associated Breast Carcinoma",
+				"Metastatic BRCA-Mutated Breast Carcinoma"
+			],
+			"count": 2
+		}
+	]
+}

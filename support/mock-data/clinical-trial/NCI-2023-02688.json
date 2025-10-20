@@ -1,0 +1,59 @@
+{
+  "current_trial_status": "Active",
+  "brief_summary": "This phase III trial compares the effects of chemotherapy immunotherapy (chemo-immunotherapy) that is both shorter and does not include anthracyclines to usual chemo-immunotherapy for the treatment of early triple negative breast cancer. Paclitaxel is a taxane and in a class of medications called anti-microtubule agents. It stops cancer cells from growing and dividing and may kill them. Carboplatin is in a class of medications known as platinum-containing compounds. It works in a way similar to the anticancer drug cisplatin, but may be better tolerated than cisplatin. Carboplatin works by killing, stopping or slowing the growth of cancer cells. Cyclophosphamide is in a class of medications called alkylating agents. It works by damaging the cell's deoxyribonucleic acid (DNA) and may kill cancer cells. It may also lower the body's immune response. Docetaxel is in a class of medications called taxanes. It stops cancer cells from growing and dividing and may kill them. Doxorubicin is in a class of medications called anthracyclines. Doxorubicin damages the cell's DNA and may kill cancer cells. It also blocks a certain enzyme needed for cell division and DNA repair. Pembrolizumab may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth. Shorter chemo-immunotherapy treatment that uses fewer drugs (without anthracyclines) may be similar to the usual treatment (with anthracyclines) for triple negative breast cancer.",
+  "nct_id": "NCT05929768",
+  "nci_id": "NCI-2023-02688",
+  "brief_title": "Shorter Chemo-Immunotherapy Without Anthracycline Drugs for Early Triple Negative Breast Cancer",
+  "official_title": "A Randomized Phase III Trial Comparing Anthracycline-Free Chemotherapy With Pembrolizumab to Standard Neoadjuvant/Adjuvant Chemotherapy in Early Triple Negative Breast Cancer",
+  "primary_purpose": "Treatment",
+  "phase": "Phase III",
+  "study_type": "Interventional",
+  "study_source": "National Cancer Institute (NCI)",
+  "protocol_section": {
+    "identification_module": {
+      "nct_id": "NCT05929768",
+      "brief_title": "Shorter Chemo-Immunotherapy Without Anthracycline Drugs for Early Triple Negative Breast Cancer"
+    }
+  },
+  "sites": [
+    {
+      "org_state_or_province": "IL",
+      "org_city": "Crystal Lake",
+      "org_country": "United States",
+      "org_name": "AMG Crystal Lake - Oncology",
+      "org_coordinates": {
+        "lon": -88.3202,
+        "lat": 42.2284
+      },
+      "recruitment_status": "ACTIVE"
+    },
+    {
+      "org_state_or_province": "IL",
+      "org_city": "Libertyville",
+      "org_country": "United States",
+      "org_name": "Condell Memorial Hospital",
+      "org_coordinates": {
+        "lon": -87.9449,
+        "lat": 42.2938
+      },
+      "recruitment_status": "ACTIVE"
+    },
+    {
+      "org_state_or_province": "CA",
+      "org_city": "Los Angeles",
+      "org_country": "United States",
+      "org_name": "UCLA / Jonsson Comprehensive Cancer Center",
+      "org_coordinates": {
+        "lon": -118.4432,
+        "lat": 34.071
+      },
+      "recruitment_status": "ACTIVE"
+    }
+  ],
+  "eligibility": {
+    "gender": "All",
+    "minimum_age": "18 Years",
+    "maximum_age": "N/A",
+    "healthy_volunteers": "No"
+  }
+}

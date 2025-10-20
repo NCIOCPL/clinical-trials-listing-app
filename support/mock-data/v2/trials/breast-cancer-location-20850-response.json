@@ -1,0 +1,45 @@
+{
+    "total": 12,
+    "data": [
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This phase III trial compares the addition of chemotherapy to usual treatment for breast cancer.",
+            "nct_id": "NCT05879926",
+            "nci_id": "NCI-2023-04529",
+            "brief_title": "Testing the Addition of Chemotherapy to the Usual Treatment of Breast Cancer",
+            "sites": [
+                {
+                    "org_state_or_province": "MD",
+                    "org_city": "Rockville",
+                    "org_country": "United States",
+                    "org_name": "National Cancer Institute - Rockville",
+                    "org_coordinates": {
+                        "lon": -77.168,
+                        "lat": 39.087
+                    },
+                    "recruitment_status": "ACTIVE"
+                }
+            ]
+        },
+        {
+            "current_trial_status": "Active",
+            "brief_summary": "This phase II trial studies immunotherapy for metastatic breast cancer.",
+            "nct_id": "NCT04567890",
+            "nci_id": "NCI-2023-02688",
+            "brief_title": "Immunotherapy for Metastatic Breast Cancer",
+            "sites": [
+                {
+                    "org_state_or_province": "MD",
+                    "org_city": "Baltimore",
+                    "org_country": "United States",
+                    "org_name": "Johns Hopkins Hospital",
+                    "org_coordinates": {
+                        "lon": -76.605,
+                        "lat": 39.295
+                    },
+                    "recruitment_status": "ACTIVE"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,1827 @@
+{
+    "terms": [
+        {
+            "name": "Acute Lymphoblastic Leukemia (ALL)",
+            "codes": [
+                "C3167"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C3161",
+                "C7539"
+            ],
+            "parent_ids": [
+                "C7539"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Acute Myeloid Leukemia (AML)",
+            "codes": [
+                "C3171"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C3172",
+                "C3161",
+                "C9290"
+            ],
+            "parent_ids": [
+                "C3172"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Adrenal Cortex Cancer",
+            "codes": [
+                "C9325"
+            ],
+            "ancestor_ids": [
+                "C7352"
+            ],
+            "parent_ids": [
+                "C7352"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Ampulla of Vater Cancer",
+            "codes": [
+                "C3908"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Anal Cancer",
+            "codes": [
+                "C9291"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Angiosarcoma",
+            "codes": [
+                "C3088"
+            ],
+            "ancestor_ids": [
+                "C9118"
+            ],
+            "parent_ids": [
+                "C9118"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Appendix Cancer",
+            "codes": [
+                "C9330"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Astrocytoma",
+            "codes": [
+                "C60781"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Atypical Teratoid/Rhabdoid Tumor",
+            "codes": [
+                "C6906"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "maintype",
+                "subtype",
+                "grade"
+            ]
+        },
+        {
+            "name": "Bile Duct Cancer (including Cholangiocarcinoma)",
+            "codes": [
+                "C27814"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Bladder Cancer",
+            "codes": [
+                "C4912"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Bone Cancer",
+            "codes": [
+                "C4016"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Bone Sarcoma",
+            "codes": [
+                "C9312"
+            ],
+            "ancestor_ids": [
+                "C9118",
+                "C4016"
+            ],
+            "parent_ids": [
+                "C9118",
+                "C4016"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Brain/Spinal Cord Tumor",
+            "codes": [
+                "C9293"
+            ],
+            "ancestor_ids": [
+                "C3268"
+            ],
+            "parent_ids": [
+                "C3268"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Breast Cancer",
+            "codes": [
+                "C4872"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "COVID-19",
+            "codes": [
+                "C171133"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Cancer-Related Syndrome",
+            "codes": [
+                "C54705"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Cervical Cancer",
+            "codes": [
+                "C9039"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Chondrosarcoma",
+            "codes": [
+                "C2946"
+            ],
+            "ancestor_ids": [
+                "C9118"
+            ],
+            "parent_ids": [
+                "C9118"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Chordoma",
+            "codes": [
+                "C2947"
+            ],
+            "ancestor_ids": [
+                "C3264",
+                "C4016"
+            ],
+            "parent_ids": [
+                "C3264",
+                "C4016"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Choriocarcinoma",
+            "codes": [
+                "C2948"
+            ],
+            "ancestor_ids": [
+                "C3422"
+            ],
+            "parent_ids": [
+                "C3422"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Choroid Plexus Cancer",
+            "codes": [
+                "C4715"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "maintype",
+                "subtype",
+                "grade"
+            ]
+        },
+        {
+            "name": "Chronic Lymphocytic Leukemia (CLL)",
+            "codes": [
+                "C3163"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C3161",
+                "C7539"
+            ],
+            "parent_ids": [
+                "C7539"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Chronic Myelogenous Leukemia (CML)",
+            "codes": [
+                "C3174"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C3172",
+                "C9290",
+                "C3161",
+                "C4345"
+            ],
+            "parent_ids": [
+                "C3172",
+                "C4345"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Chronic Myelomonocytic Leukemia (CMML)",
+            "codes": [
+                "C3178"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C9290"
+            ],
+            "parent_ids": [
+                "C9290"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Chronic Myeloproliferative Disease",
+            "codes": [
+                "C4345"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C9290"
+            ],
+            "parent_ids": [
+                "C9290"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Colorectal (Colon or Rectal) Cancer",
+            "codes": [
+                "C2955"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Composite Lymphoma",
+            "codes": [
+                "C38661"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C3208"
+            ],
+            "parent_ids": [
+                "C3208"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Cutaneous (Skin) Melanoma",
+            "codes": [
+                "C3510"
+            ],
+            "ancestor_ids": [
+                "C3224"
+            ],
+            "parent_ids": [
+                "C3224"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Dysgerminoma",
+            "codes": [
+                "C2996"
+            ],
+            "ancestor_ids": [
+                "C3708"
+            ],
+            "parent_ids": [
+                "C3708"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Embryonal Carcinoma",
+            "codes": [
+                "C3752"
+            ],
+            "ancestor_ids": [
+                "C3708"
+            ],
+            "parent_ids": [
+                "C3708"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Embryonal Neoplasm",
+            "codes": [
+                "C3264"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Ependymoma",
+            "codes": [
+                "C3017"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "maintype",
+                "subtype",
+                "grade"
+            ]
+        },
+        {
+            "name": "Esophageal Cancer",
+            "codes": [
+                "C3513"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Ewing Sarcoma",
+            "codes": [
+                "C4817"
+            ],
+            "ancestor_ids": [
+                "C9118",
+                "C3264"
+            ],
+            "parent_ids": [
+                "C9118",
+                "C3264"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Extrahepatic (Distal) Bile Duct Cancer",
+            "codes": [
+                "C7109"
+            ],
+            "ancestor_ids": [
+                "C27814"
+            ],
+            "parent_ids": [
+                "C27814"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Eye Cancer",
+            "codes": [
+                "C4767"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Fallopian Tube Cancer",
+            "codes": [
+                "C3867"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Gallbladder Cancer",
+            "codes": [
+                "C3844"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Ganglioneuroblastoma",
+            "codes": [
+                "C3790"
+            ],
+            "ancestor_ids": [
+                "C3716",
+                "C3264",
+                "C3268"
+            ],
+            "parent_ids": [
+                "C3716"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Gastric (Stomach) Cancer",
+            "codes": [
+                "C4911"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Gastrointestinal Stromal Tumor (GIST)",
+            "codes": [
+                "C3868"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Germ Cell Tumor",
+            "codes": [
+                "C3708"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Germinoma",
+            "codes": [
+                "C3753"
+            ],
+            "ancestor_ids": [
+                "C3708"
+            ],
+            "parent_ids": [
+                "C3708"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Gestational Trophoblastic Tumor",
+            "codes": [
+                "C4699"
+            ],
+            "ancestor_ids": [
+                "C3422"
+            ],
+            "parent_ids": [
+                "C3422"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Glioblastoma",
+            "codes": [
+                "C3058"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "maintype",
+                "subtype",
+                "grade"
+            ]
+        },
+        {
+            "name": "Glioma",
+            "codes": [
+                "C3059"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Head and Neck Carcinoma",
+            "codes": [
+                "C35850"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Hematopoietic and Lymphoid Cell Neoplasm",
+            "codes": [
+                "C27134"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Hepatoblastoma",
+            "codes": [
+                "C3728"
+            ],
+            "ancestor_ids": [
+                "C3264"
+            ],
+            "parent_ids": [
+                "C3264"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Hepatocellular Cancer",
+            "codes": [
+                "C3099"
+            ],
+            "ancestor_ids": [
+                "C7927"
+            ],
+            "parent_ids": [
+                "C7927"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Hodgkin Lymphoma",
+            "codes": [
+                "C9357"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C3208"
+            ],
+            "parent_ids": [
+                "C3208"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Hypopharyngeal Throat Cancer",
+            "codes": [
+                "C9465"
+            ],
+            "ancestor_ids": [
+                "C35850",
+                "C9466"
+            ],
+            "parent_ids": [
+                "C9466"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Intrahepatic Bile Duct Cancer (Cholangiocarcinoma)",
+            "codes": [
+                "C4436"
+            ],
+            "ancestor_ids": [
+                "C27814"
+            ],
+            "parent_ids": [
+                "C27814"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Kaposi Sarcoma",
+            "codes": [
+                "C9087"
+            ],
+            "ancestor_ids": [
+                "C9118",
+                "C9306"
+            ],
+            "parent_ids": [
+                "C9306"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Kidney (including Renal Cell) Cancer",
+            "codes": [
+                "C9384"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Laryngeal Throat Cancer",
+            "codes": [
+                "C4855"
+            ],
+            "ancestor_ids": [
+                "C35850"
+            ],
+            "parent_ids": [
+                "C35850"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Leiomyosarcoma",
+            "codes": [
+                "C3158"
+            ],
+            "ancestor_ids": [
+                "C9118"
+            ],
+            "parent_ids": [
+                "C9118"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Leukemia",
+            "codes": [
+                "C3161"
+            ],
+            "ancestor_ids": [
+                "C27134"
+            ],
+            "parent_ids": [
+                "C27134"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Lip and Oral Cavity Cancer",
+            "codes": [
+                "C9315"
+            ],
+            "ancestor_ids": [
+                "C35850"
+            ],
+            "parent_ids": [
+                "C35850"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Liposarcoma",
+            "codes": [
+                "C3194"
+            ],
+            "ancestor_ids": [
+                "C9118"
+            ],
+            "parent_ids": [
+                "C9118"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Liver Cancer",
+            "codes": [
+                "C7927"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Lung Cancer",
+            "codes": [
+                "C4878"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Lymphoid Leukemia",
+            "codes": [
+                "C7539"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C3161"
+            ],
+            "parent_ids": [
+                "C3161"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Lymphoma",
+            "codes": [
+                "C3208"
+            ],
+            "ancestor_ids": [
+                "C27134"
+            ],
+            "parent_ids": [
+                "C27134"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Melanoma",
+            "codes": [
+                "C3224"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Meningioma",
+            "codes": [
+                "C3230"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Mesothelioma",
+            "codes": [
+                "C3234"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Mixed Germ Cell Tumor",
+            "codes": [
+                "C4290"
+            ],
+            "ancestor_ids": [
+                "C3708"
+            ],
+            "parent_ids": [
+                "C3708"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Multiple Myeloma/Plasma Cell Myeloma",
+            "codes": [
+                "C3242"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C4665"
+            ],
+            "parent_ids": [
+                "C4665"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Myelodysplastic Syndrome",
+            "codes": [
+                "C3247"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C9290"
+            ],
+            "parent_ids": [
+                "C9290"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Myeloid Leukemia",
+            "codes": [
+                "C3172"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C3161",
+                "C9290"
+            ],
+            "parent_ids": [
+                "C3161",
+                "C9290"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Myeloid Neoplasm",
+            "codes": [
+                "C9290"
+            ],
+            "ancestor_ids": [
+                "C27134"
+            ],
+            "parent_ids": [
+                "C27134"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Nasal Cavity and Paranasal Sinus Cancer",
+            "codes": [
+                "C54293"
+            ],
+            "ancestor_ids": [
+                "C35850"
+            ],
+            "parent_ids": [
+                "C35850"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Nasopharyngeal Throat Cancer",
+            "codes": [
+                "C3871"
+            ],
+            "ancestor_ids": [
+                "C35850",
+                "C9466"
+            ],
+            "parent_ids": [
+                "C9466"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Nervous System Tumor",
+            "codes": [
+                "C3268"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Neuroblastoma",
+            "codes": [
+                "C3270"
+            ],
+            "ancestor_ids": [
+                "C3716",
+                "C3264",
+                "C3268"
+            ],
+            "parent_ids": [
+                "C3716"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Neuroendocrine Tumor",
+            "codes": [
+                "C3809"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Non-Cutaneous Melanoma",
+            "codes": [
+                "C8711"
+            ],
+            "ancestor_ids": [
+                "C3224"
+            ],
+            "parent_ids": [
+                "C3224"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Non-Hodgkin Lymphoma",
+            "codes": [
+                "C3211"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C3208"
+            ],
+            "parent_ids": [
+                "C3208"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Non-Melanoma Skin Cancer",
+            "codes": [
+                "C4914"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Non-Small Cell Lung Cancer",
+            "codes": [
+                "C2926"
+            ],
+            "ancestor_ids": [
+                "C4878"
+            ],
+            "parent_ids": [
+                "C4878"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Oral Cavity Cancer",
+            "codes": [
+                "C8990"
+            ],
+            "ancestor_ids": [
+                "C35850",
+                "C9315"
+            ],
+            "parent_ids": [
+                "C9315"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Oropharyngeal Throat Cancer",
+            "codes": [
+                "C9105"
+            ],
+            "ancestor_ids": [
+                "C35850",
+                "C9466"
+            ],
+            "parent_ids": [
+                "C9466"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Osteosarcoma",
+            "codes": [
+                "C9145"
+            ],
+            "ancestor_ids": [
+                "C9118"
+            ],
+            "parent_ids": [
+                "C9118"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Other Carcinoma",
+            "codes": [
+                "C2916"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Other Disease",
+            "codes": [
+                "C2991"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Other Neoplasm",
+            "codes": [
+                "C3262"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Ovarian Cancer",
+            "codes": [
+                "C4908"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Paget Disease",
+            "codes": [
+                "C7073"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Pancreatic Cancer",
+            "codes": [
+                "C3850"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Parathyroid Gland Cancer",
+            "codes": [
+                "C4906"
+            ],
+            "ancestor_ids": [
+                "C35850"
+            ],
+            "parent_ids": [
+                "C35850"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Penile Cancer",
+            "codes": [
+                "C9061"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Pharyngeal Throat Cancer",
+            "codes": [
+                "C9466"
+            ],
+            "ancestor_ids": [
+                "C35850"
+            ],
+            "parent_ids": [
+                "C35850"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Pineoblastoma",
+            "codes": [
+                "C9344"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "maintype",
+                "subtype",
+                "grade"
+            ]
+        },
+        {
+            "name": "Pituitary Gland Cancer",
+            "codes": [
+                "C4536"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Plasma Cell Tumor",
+            "codes": [
+                "C4665"
+            ],
+            "ancestor_ids": [
+                "C27134"
+            ],
+            "parent_ids": [
+                "C27134"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Plasmacytoma",
+            "codes": [
+                "C9349"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C4665"
+            ],
+            "parent_ids": [
+                "C4665"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Pleuropulmonary Blastoma",
+            "codes": [
+                "C5669"
+            ],
+            "ancestor_ids": [
+                "C3264"
+            ],
+            "parent_ids": [
+                "C3264"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Primary Peritoneal Cancer",
+            "codes": [
+                "C40022"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Primitive Neuroectodermal Tumor (PNET)",
+            "codes": [
+                "C3716"
+            ],
+            "ancestor_ids": [
+                "C3264",
+                "C3268"
+            ],
+            "parent_ids": [
+                "C3264",
+                "C3268"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Prostate Cancer",
+            "codes": [
+                "C4863"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Retinoblastoma",
+            "codes": [
+                "C7541"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Retroperitoneal Cancer",
+            "codes": [
+                "C7352"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Rhabdomyosarcoma",
+            "codes": [
+                "C3359"
+            ],
+            "ancestor_ids": [
+                "C9118"
+            ],
+            "parent_ids": [
+                "C9118"
+            ],
+            "type": [
+                "maintype",
+                "subtype",
+                "grade"
+            ]
+        },
+        {
+            "name": "Salivary Gland Cancer",
+            "codes": [
+                "C9272"
+            ],
+            "ancestor_ids": [
+                "C35850"
+            ],
+            "parent_ids": [
+                "C35850"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Sarcoma",
+            "codes": [
+                "C9118"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Seminoma",
+            "codes": [
+                "C9309"
+            ],
+            "ancestor_ids": [
+                "C3708"
+            ],
+            "parent_ids": [
+                "C3708"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Small Cell Lung Cancer",
+            "codes": [
+                "C4917"
+            ],
+            "ancestor_ids": [
+                "C4878"
+            ],
+            "parent_ids": [
+                "C4878"
+            ],
+            "type": [
+                "maintype",
+                "subtype",
+                "grade"
+            ]
+        },
+        {
+            "name": "Small Intestinal Cancer",
+            "codes": [
+                "C7724"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Soft Tissue Sarcoma",
+            "codes": [
+                "C9306"
+            ],
+            "ancestor_ids": [
+                "C9118"
+            ],
+            "parent_ids": [
+                "C9118"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Solid Tumor",
+            "codes": [
+                "C9292"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Teratoma",
+            "codes": [
+                "C3403"
+            ],
+            "ancestor_ids": [
+                "C3708"
+            ],
+            "parent_ids": [
+                "C3708"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Testicular Cancer",
+            "codes": [
+                "C7251"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Thymic Carcinoma",
+            "codes": [
+                "C7569"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Thymoma",
+            "codes": [
+                "C3411"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Thyroid Gland Cancer",
+            "codes": [
+                "C4815"
+            ],
+            "ancestor_ids": [
+                "C35850"
+            ],
+            "parent_ids": [
+                "C35850"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Trophoblastic Tumor",
+            "codes": [
+                "C3422"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Ureter Cancer",
+            "codes": [
+                "C8993"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Urethral Cancer",
+            "codes": [
+                "C9106"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Uterine (Including Endometrial) Cancer",
+            "codes": [
+                "C61574"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Uterine Sarcoma",
+            "codes": [
+                "C6339"
+            ],
+            "ancestor_ids": [
+                "C9118",
+                "C9306"
+            ],
+            "parent_ids": [
+                "C9306"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Vaginal Cancer",
+            "codes": [
+                "C3917"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Vulvar Cancer",
+            "codes": [
+                "C4866"
+            ],
+            "ancestor_ids": [],
+            "parent_ids": [],
+            "type": [
+                "maintype"
+            ]
+        },
+        {
+            "name": "Wilms Tumor",
+            "codes": [
+                "C3267"
+            ],
+            "ancestor_ids": [
+                "C3264"
+            ],
+            "parent_ids": [
+                "C3264"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        },
+        {
+            "name": "Yolk Sac Tumor",
+            "codes": [
+                "C3011"
+            ],
+            "ancestor_ids": [
+                "C3708"
+            ],
+            "parent_ids": [
+                "C3708"
+            ],
+            "type": [
+                "maintype",
+                "subtype"
+            ]
+        }
+    ]
+}

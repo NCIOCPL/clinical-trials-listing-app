@@ -6,9 +6,13 @@
 	background-position: right 1rem center !important;
 }
 
-.usa-button.ctla-sidebar__button--clear, .usa-button.ctla-sidebar__button--apply {
+.usa-button.ctla-sidebar__button--clear {
 	margin-right: unset;
 }
+
+.usa-combo-box ul.usa-combo-box__list {
+	margin-top: -16px;
+  }
 
 #accordionContent {
 	@media (max-width: 1023px) {
@@ -72,7 +76,7 @@
 	@include u-width('mobile');
 	@include u-height('full');
 	@include u-padding-top('205');
-	@include u-minw(units('mobile'));
+	// @include u-minw(units('mobile'));
 
 	&__header {
 		//background: #f5f5f5;
@@ -195,29 +199,16 @@
 	.ctla-sidebar {
 		&__actions {
 			//@include u-margin-top('205');
-			@include u-display('flex');
-			gap: 1.25rem;
-			//margin-top: 1.25rem;
-			//display: flex;
 
 			@include at-media('mobile-lg') {
 				max-width: 288px;
-			}
-
-			@include at-media-max('mobile-lg') {
-				@include u-flex('column');
-				//flex-direction: column;
 			}
 		}
 
 		&__button {
 			&--clear {
-				flex: 1;
-
-				@include at-media-max('mobile-lg') {
-					@include u-width('full');
-				}
-
+				@include u-width('full');
+				@include u-margin-bottom('205');
 				@include u-bg($theme-body-background-color); // white
 				@include u-border(2px, 'solid', $theme-color-primary);
 				@include u-text($theme-color-primary); // #007BBD
@@ -242,32 +233,33 @@
 				}
 			}
 
-			&--apply {
-				flex: 1;
+			// COMMENTED OUT: Apply button styles (button removed)
+			// &--apply {
+			// 	flex: 1;
 
-				@include at-media-max('desktop') {
-					@include u-width('full');
-				}
+			// 	@include at-media-max('desktop') {
+			// 		@include u-width('full');
+			// 	}
 
-				@include u-bg($theme-color-primary); // #007BBD
-				@include u-text($theme-body-background-color); // white
-				@include u-padding('105');
-				@include u-radius('md');
-				border: none;
-				font-size: 1rem;
-				font-weight: 700;
-				cursor: pointer;
+			// 	@include u-bg($theme-color-primary); // #007BBD
+			// 	@include u-text($theme-body-background-color); // white
+			// 	@include u-padding('105');
+			// 	@include u-radius('md');
+			// 	border: none;
+			// 	font-size: 1rem;
+			// 	font-weight: 700;
+			// 	cursor: pointer;
 
-				&:hover:not(:disabled) {
-					@include u-bg($theme-color-primary-dark); // #004971
-				}
+			// 	&:hover:not(:disabled) {
+			// 		@include u-bg($theme-color-primary-dark); // #004971
+			// 	}
 
-				&:disabled {
-					opacity: 0.5;
-					cursor: not-allowed;
-				}
-			}
+			// 	&:disabled {
+			// 		opacity: 0.5;
+			// 		cursor: not-allowed;
+			// 	}
+			// }
+
 		}
-
 	}
 }

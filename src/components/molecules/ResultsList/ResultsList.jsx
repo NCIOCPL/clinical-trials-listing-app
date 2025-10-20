@@ -1,17 +1,28 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
 import { getLocationInfoFromSites, filterSitesByActiveRecruitment } from '../../../utils';
 import ResultsListItem from './ResultsListItem';
 import './ResultsList.scss';
-import { useFilters } from '../../../features/filters/context/FilterContext/FilterContext';
+import { FilterContext } from '../../../features/filters/context/FilterContext/FilterContext';
 
 import { isWithinRadius } from '../../../utils/isWithinRadius';
 
-const ResultsList = ({ results, resultsItemTitleLink }) => {
-	const { state, appliedZipCoords } = useFilters();
-	const { appliedFilters } = state;
+const ResultsList = ({ results, resultsItemTitleLink, totalResults }) => {
+	// Only use filters if we're within a FilterProvider context (not on Manual pages)
+	let appliedFilters = {};
+	let appliedZipCoords = null;
+	let zipRadius = null;
 
-	let zipRadius = appliedFilters.location?.radius;
+	// Check if we're in a FilterProvider context using useContext directly
+	const filterContext = useContext(FilterContext);
+
+	if (filterContext) {
+		// We're within FilterProvider context
+		const { state, appliedZipCoords: coords } = filterContext;
+		appliedFilters = state.appliedFilters;
+		appliedZipCoords = coords;
+		zipRadius = appliedFilters.location?.radius;
+	}
 	var hasZipInput = false;
 	var zipInputReturn = '';
 
@@ -46,14 +57,14 @@ const ResultsList = ({ results, resultsItemTitleLink }) => {
 
 							if (appliedZipCoords !== null) {
 								hasZipInput = true;
-								zipRadius = appliedFilters.location.radius;
+								zipRadius = appliedFilters.location?.radius;
 
 								displayLocation(sites, appliedZipCoords, zipRadius, hasZipInput);
 							}
 
 							const locationInfo = getLocationInfoFromSites(current_trial_status, nct_id, sites, hasZipInput, zipInputReturn);
 
-							return <ResultsListItem key={nci_id} locationInfo={locationInfo} nciId={nci_id} status={current_trial_status} title={brief_title} resultsItemTitleLink={resultsItemTitleLink} resultIndex={index} />;
+							return <ResultsListItem key={nci_id} locationInfo={locationInfo} nciId={nci_id} status={current_trial_status} title={brief_title} resultsItemTitleLink={resultsItemTitleLink} resultIndex={index} totalResults={totalResults} />;
 						})}
 					</ul>
 				</div>
@@ -75,6 +86,7 @@ ResultsList.propTypes = {
 	).isRequired,
 	resultsItemTitleLink: PropTypes.string.isRequired,
 	appliedFilters: PropTypes.array,
+	totalResults: PropTypes.number,
 };
 
 export default ResultsList;

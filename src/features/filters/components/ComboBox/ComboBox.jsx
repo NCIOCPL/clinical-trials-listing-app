@@ -1,395 +1,464 @@
-/**
- * @file This file defines the ComboBox component, a versatile input control that combines
- * a text input with a dropdown list of options. It supports single and multi-select,
- * type-ahead filtering, keyboard navigation, and optional asynchronous loading/searching of options.
- * It's used for filters like 'Drug/Intervention' where users can search and select from a list.
- */
-import React, { useState, useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
-// Note: Tracking functionality is currently commented out.
-// import { useTracking } from 'react-tracking';
+/* eslint react/prop-types: 0 */
+import React, { useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
+import classnames from 'classnames';
+
+import { ActionTypes, useComboBox } from './useComboBox';
 import './ComboBox.scss';
 
-/**
- * Renders a ComboBox input component.
- * Allows users to type to filter options or select from a dropdown list.
- * Supports single or multiple selections.
- *
- * @param {object} props - The component props.
- * @param {string} [props.label] - Optional label displayed above the input.
- * @param {string} [props.placeholder] - Placeholder text for the input field.
- * @param {Array<object>} props.options - Array of available options ({ value, label, count? }).
- * @param {boolean} [props.multiSelect=false] - If true, allows selecting multiple options.
- * @param {Array<string>} props.value - Array of currently selected option values.
- * @param {Function} props.onChange - Callback function invoked when the selection changes, passing the new array of selected values.
- * @param {string} [props.helpText] - Optional help text displayed below the input.
- * @param {boolean} [props.disabled=false] - If true, disables the component.
- * @param {boolean} [props.loading=false] - If true, indicates options are loading (currently unused visually).
- * @param {string} [props.error] - If present, displays an error message below the input.
- * @param {boolean} [props.required=false] - If true, marks the label with a required indicator.
- * @param {number} [props.minChars=2] - Minimum characters to type before triggering `onSearch`.
- * @param {Function} [props.onSearch] - Optional callback function triggered when the user types `minChars` or more. Receives the search text.
- * @param {string} props.name - A unique name for the component, used for generating IDs and potentially in tracking.
- * @returns {JSX.Element} The rendered ComboBox component.
- */
-const ComboBox = ({
-	label,
-	placeholder,
-	options,
-	multiSelect = false, // Default to single select
-	value = [], // Default to empty array
-	onChange,
-	helpText,
-	disabled = false,
-	loading = false, // Currently unused visually
-	error,
-	required = false,
-	minChars = 2,
-	onSearch,
-	name,
-}) => {
-	// State for controlling the dropdown visibility
-	const [isOpen, setIsOpen] = useState(false);
-	// State for the text entered in the input field
-	const [searchText, setSearchText] = useState('');
-	// State for tracking the currently highlighted option index for keyboard navigation
-	const [highlightedIndex, setHighlightedIndex] = useState(-1);
+/*  As per USWDS spec, ComboBox includes a HTML <select> with options AND a separate <input> and dropdown <ul> with items.
+    The select is usa-sr-only and is always hidden via CSS. The input and dropdown list are the elements used for interaction.
 
-	// Refs for accessing DOM elements
-	const wrapperRef = useRef(null); // Ref for the main component wrapper div
-	const inputRef = useRef(null); // Ref for the input element
-	const listboxRef = useRef(null); // Ref for the dropdown list (ul)
+    There is the ability to pass in custom props directly to the select and input.
+    This should be using sparingly and not with existing Combobox props such as disabled, onChange, defaultValue.
+*/
 
-	// const tracking = useTracking(); // Tracking hook initialization (commented out)
+const DEFAULT_FILTER = '.*{{query}}.*';
 
-	/**
-	 * Effect to handle clicks outside the component to close the dropdown.
-	 */
+const Direction = {
+	Previous: -1,
+	Next: 1,
+};
+
+const FocusMode = {
+	None: 0,
+	Input: 1,
+	Item: 2,
+};
+
+const Input = forwardRef(({ focused, ...inputProps }, ref) => {
+	const internalRef = useRef(null);
+	const inputRef = ref ?? internalRef;
+
 	useEffect(() => {
-		function handleClickOutside(event) {
-			// If the click is outside the wrapper element, close the dropdown
-			if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-				setIsOpen(false);
-			}
+		if (focused && inputRef.current) {
+			inputRef.current.focus({ preventScroll: true });
 		}
-		// Add event listener when the component mounts
-		document.addEventListener('mousedown', handleClickOutside);
-		// Remove event listener when the component unmounts
-		return () => document.removeEventListener('mousedown', handleClickOutside);
-	}, []); // Empty dependency array means this runs only on mount and unmount
+	}, [focused]);
 
-	/**
-	 * Effect to trigger the onSearch callback when searchText meets the minimum character requirement.
-	 */
-	useEffect(() => {
-		// If onSearch prop is provided and searchText length is sufficient, call onSearch
-		if (searchText.length >= minChars && onSearch) {
-			onSearch(searchText);
-		}
-		// Reset highlighted index when search text changes
-		setHighlightedIndex(-1);
-	}, [searchText, minChars, onSearch]); // Re-run when searchText, minChars, or onSearch changes
+	return <input type="text" {...inputProps} className="usa-combo-box__input" data-testid="combo-box-input" autoCapitalize="off" autoComplete="off" ref={inputRef} />;
+});
 
-	/**
-	 * Effect to scroll the highlighted item into view within the listbox.
-	 */
-	useEffect(() => {
-		if (isOpen && highlightedIndex >= 0 && listboxRef.current) {
-			const highlightedItem = listboxRef.current.children[highlightedIndex];
-			if (highlightedItem) {
-				// Use scrollIntoView with options for smooth scrolling if needed,
-				// or block: 'nearest' to minimize scrolling.
-				highlightedItem.scrollIntoView({ block: 'nearest' });
-			}
-		}
-	}, [isOpen, highlightedIndex]); // Re-run when isOpen or highlightedIndex changes
+const ComboBoxForwardRef = ({ id, name, className, options, defaultValue, disabled, onChange, assistiveHint, noResults, selectProps, inputProps, ulProps, customFilter, disableFiltering = false }, ref) => {
+	const isDisabled = !!disabled;
 
-	// Filter options based on the current search text
-	const filteredOptions = options.filter((option) => option.label.toLowerCase().includes(searchText.toLowerCase()));
+	let defaultOption;
+	if (defaultValue) {
+		defaultOption = options.find((opt) => {
+			return opt.value === defaultValue;
+		});
+	}
 
-	/**
-	 * Handles selecting an option from the list.
-	 * Updates the value state based on multiSelect mode.
-	 * Closes the dropdown in single-select mode.
-	 * Clears the search text.
-	 *
-	 * @param {object} option - The selected option object ({ value, label }).
-	 */
-	const handleSelect = (option) => {
-		let newValue;
-		if (multiSelect) {
-			// Toggle selection in multi-select mode
-			newValue = value.includes(option.value)
-				? value.filter((v) => v !== option.value) // Remove if already selected
-				: [...value, option.value]; // Add if not selected
-			onChange(newValue);
+	const filter = customFilter ? customFilter : { filter: DEFAULT_FILTER };
 
-			// Commented-out tracking logic:
-			// tracking.trackEvent({
-			// 	type: 'Other',
-			// 	event: 'TrialListingApp:Filter:Change',
-			// 	linkName: 'TrialListingApp:Filter:Change',
-			// 	filterType: name,
-			// 	filterValue: option.value,
-			// 	action: newValue.includes(option.value) ? 'select' : 'deselect',
-			// });
-		} else {
-			// Set selection in single-select mode
-			newValue = [option.value];
-			onChange(newValue);
-			setIsOpen(false); // Close dropdown after selection
-
-			// Commented-out tracking logic:
-			// tracking.trackEvent({
-			// 	type: 'Other',
-			// 	event: 'TrialListingApp:Filter:Change',
-			// 	linkName: 'TrialListingApp:Filter:Change',
-			// 	filterType: name,
-			// 	filterValue: option.value,
-			// 	action: 'select',
-			// });
-		}
-		setSearchText(''); // Clear search text after selection
-		inputRef.current?.focus(); // Keep focus on the input
+	const initialState = {
+		isOpen: false,
+		selectedOption: defaultOption ? defaultOption : undefined,
+		focusedOption: undefined,
+		focusMode: FocusMode.None,
+		filteredOptions: options,
+		inputValue: defaultOption ? defaultOption.label : '',
+		statusText: '',
 	};
 
-	/**
-	 * Handles keyboard navigation within the input field (Arrow keys, Enter, Escape).
-	 *
-	 * @param {React.KeyboardEvent<HTMLInputElement>} e - The keyboard event.
-	 */
-	const handleKeyDown = (e) => {
-		switch (e.key) {
-			case 'ArrowDown':
-				e.preventDefault(); // Prevent cursor movement in input
-				if (!isOpen) setIsOpen(true); // Open dropdown if closed
-				// Move highlight down, clamping at the end of the list
-				setHighlightedIndex((prev) => (prev < filteredOptions.length - 1 ? prev + 1 : prev));
-				break;
-			case 'ArrowUp':
-				e.preventDefault(); // Prevent cursor movement in input
-				if (!isOpen) setIsOpen(true); // Open dropdown if closed
-				// Move highlight up, clamping at the beginning (-1 means input focused)
-				setHighlightedIndex((prev) => (prev > 0 ? prev - 1 : -1));
-				break;
-			case 'Enter':
-				e.preventDefault(); // Prevent form submission
-				// If an option is highlighted, select it
-				if (isOpen && highlightedIndex >= 0 && highlightedIndex < filteredOptions.length) {
-					handleSelect(filteredOptions[highlightedIndex]);
+	const [state, dispatch] = useComboBox(initialState, options, disableFiltering, filter);
+
+	const containerRef = useRef(null);
+	const listRef = useRef(null);
+	const focusedItemRef = useRef(null);
+
+	// Use refs to track previous values to avoid infinite loops
+	const previousDefaultValueRef = useRef(defaultValue);
+	const previousOptionsRef = useRef(options); // Ref to track previous options prop
+	const isSelectionInProgressRef = useRef(false);
+	const hasUserInteractedRef = useRef(false); // Track if user has actually interacted with component
+
+	// Single useEffect to handle both options and defaultValue changes
+	useEffect(() => {
+		// Handle defaultValue change
+		if (defaultValue !== previousDefaultValueRef.current) {
+			previousDefaultValueRef.current = defaultValue;
+
+			const currentSelectedValue = state.selectedOption ? state.selectedOption.value : undefined;
+
+			if (defaultValue !== currentSelectedValue) {
+				if (defaultValue) {
+					const optionToSelect = options.find((opt) => opt.value === defaultValue);
+					if (optionToSelect) {
+						dispatch({
+							type: ActionTypes.SELECT_OPTION,
+							option: optionToSelect,
+						});
+					}
+				} else if (defaultValue === '' || defaultValue === null || defaultValue === undefined) {
+					if (state.selectedOption) {
+						dispatch({ type: ActionTypes.CLEAR });
+					}
 				}
-				break;
-			case 'Escape':
-				// Close the dropdown
-				setIsOpen(false);
-				break;
-			default:
-				// For other keys, ensure the dropdown is open if not already
-				if (!isOpen) setIsOpen(true);
-				break;
+			}
+		}
+
+		// Handle options change
+		if (options !== previousOptionsRef.current) {
+			previousOptionsRef.current = options; // Update the ref
+
+			// When options list changes (e.g., subtypes after maintype selection),
+			// re-filter based on the current input value.
+			// The useComboBox hook's UPDATE_FILTER action will handle updating
+			// state.filteredOptions and potentially state.focusedOption.
+			dispatch({
+				type: ActionTypes.RESET_OPTIONS_LIST,
+				optionsList: options,
+			});
+
+			// If we have a defaultValue but no selected option yet (because options were loading),
+			// try to select the matching option now that options are available
+			if (defaultValue && !state.selectedOption && options.length > 0) {
+				const matchingOption = options.find((opt) => opt.value === defaultValue);
+				if (matchingOption) {
+					dispatch({
+						type: ActionTypes.SELECT_OPTION,
+						option: matchingOption,
+					});
+				}
+			}
+		}
+	}, [defaultValue, options, dispatch]);
+
+	useEffect(() => {
+		// When clearing (selectedOption becomes undefined), call onChange with empty string
+		// When selecting, call onChange with the selected value
+		const valueToPass = state.selectedOption?.value ?? '';
+		// Only call onChange if user has actually interacted with the component
+		if (hasUserInteractedRef.current) {
+			onChange && onChange(valueToPass);
+		}
+	}, [state.selectedOption]);
+
+	useEffect(() => {
+		if (state.focusMode === FocusMode.Item && state.focusedOption && focusedItemRef.current) {
+			focusedItemRef.current.focus();
+		}
+	}, [state.focusMode, state.focusedOption]);
+
+	// When opened, the list should scroll to the closest match
+	useEffect(() => {
+		if (state.isOpen && state.focusedOption && focusedItemRef.current && listRef.current && state.focusMode === FocusMode.Input) {
+			const optionBottom = focusedItemRef.current.offsetTop + focusedItemRef.current.offsetHeight;
+			const currentBottom = listRef.current.scrollTop + listRef.current.offsetHeight;
+
+			if (optionBottom > currentBottom) {
+				listRef.current.scrollTop = optionBottom - listRef.current.offsetHeight;
+			}
+
+			if (focusedItemRef.current.offsetTop < listRef.current.scrollTop) {
+				listRef.current.scrollTop = focusedItemRef.current.offsetTop;
+			}
+		}
+	}, [state.isOpen, state.focusedOption]);
+
+	// If the focused element (activeElement) is outside of the combo box,
+	// make sure the focusMode is BLUR
+	useEffect(() => {
+		if (state.focusMode !== FocusMode.None) {
+			if (!containerRef.current?.contains(window.document.activeElement)) {
+				dispatch({
+					type: ActionTypes.BLUR,
+				});
+			}
+		}
+	}, [state.focusMode]);
+
+	useImperativeHandle(
+		ref,
+		() => ({
+			focus: () => dispatch({ type: ActionTypes.FOCUS_INPUT }),
+			clearSelection: () => dispatch({ type: ActionTypes.CLEAR_SELECTION }),
+		}),
+		[]
+	);
+
+	const handleInputKeyDown = (event) => {
+		if (event.key === 'Escape') {
+			dispatch({ type: ActionTypes.CLOSE_LIST });
+		} else if (event.key === 'ArrowDown' || event.key == 'Down') {
+			event.preventDefault();
+			dispatch({
+				type: ActionTypes.FOCUS_OPTION,
+				option: state.focusedOption || state.filteredOptions[0] || state.selectedOption,
+			});
+		} else if (event.key === 'Tab') {
+			// Clear button is not visible in this case so manually handle focus
+			if (state.isOpen && !state.selectedOption) {
+				// If there are filtered options, prevent default
+				// If there are "No Results Found", tab over to prevent a keyboard trap
+				const optionToFocus = disableFiltering ? state.focusedOption : state.selectedOption || state.focusedOption;
+				if (optionToFocus) {
+					event.preventDefault();
+					dispatch({
+						type: ActionTypes.FOCUS_OPTION,
+						option: optionToFocus,
+					});
+				} else {
+					dispatch({
+						type: ActionTypes.BLUR,
+					});
+				}
+			}
+
+			if (!state.isOpen && state.selectedOption) {
+				dispatch({
+					type: ActionTypes.BLUR,
+				});
+			}
+		} else if (event.key === 'Enter') {
+			if (state.isOpen) {
+				state.selectedOption = state.focusedOption;
+				event.preventDefault();
+				const exactMatch = state.filteredOptions.find((option) => option.label.toLowerCase() === state.inputValue.toLowerCase());
+				if (exactMatch) {
+					dispatch({
+						type: ActionTypes.SELECT_OPTION,
+						option: exactMatch,
+					});
+				} else {
+					if (state.selectedOption) {
+						dispatch({
+							type: ActionTypes.CLOSE_LIST,
+						});
+					} else {
+						dispatch({ type: ActionTypes.CLEAR });
+					}
+				}
+			}
 		}
 	};
 
-	/**
-	 * Handles removing a selected value (tag) in multi-select mode.
-	 *
-	 * @param {string} valueToRemove - The value of the tag to remove.
-	 */
-	const removeValue = (valueToRemove) => {
-		const newValue = value.filter((v) => v !== valueToRemove);
-		onChange(newValue);
-		inputRef.current?.focus(); // Return focus to input after removing a tag
+	const handleInputBlur = (event) => {
+		const { relatedTarget: newTarget } = event;
+		const newTargetIsOutside = !newTarget || (newTarget instanceof Node && !containerRef.current?.contains(newTarget));
+
+		// Reset scroll position and cursor to beginning
+		if (inputRef.current) {
+			inputRef.current.scrollLeft = 0;
+			inputRef.current.setSelectionRange(0, 0);
+		}
+
+		// Only blur if we're not in the middle of a selection
+		if (newTargetIsOutside && state.focusMode !== FocusMode.None && !isSelectionInProgressRef.current) {
+			dispatch({ type: ActionTypes.BLUR });
+		}
 	};
 
-	const inputId = `${name}-input`;
-	const listboxId = `${name}-listbox`;
+	const handleClearKeyDown = (event) => {
+		if (event.key === 'Tab' && state.isOpen && state.selectedOption) {
+			event.preventDefault();
+			dispatch({
+				type: ActionTypes.FOCUS_OPTION,
+				option: state.selectedOption,
+			});
+		}
+	};
+
+	const focusSibling = (dispatch, state, change) => {
+		const currentIndex = state.focusedOption ? state.filteredOptions.indexOf(state.focusedOption) : -1;
+		const firstOption = state.filteredOptions[0];
+		const lastOption = state.filteredOptions[state.filteredOptions.length - 1];
+
+		if (currentIndex === -1) {
+			dispatch({ type: ActionTypes.FOCUS_OPTION, option: firstOption });
+			//dispatch({ type: ActionTypes.SELECT_OPTION, option: firstOption });
+		} else {
+			const newIndex = currentIndex + change;
+			if (newIndex < 0) {
+				dispatch({ type: ActionTypes.CLOSE_LIST });
+			} else if (newIndex >= state.filteredOptions.length) {
+				dispatch({ type: ActionTypes.FOCUS_OPTION, option: lastOption });
+			} else {
+				const newOption = state.filteredOptions[newIndex];
+				dispatch({ type: ActionTypes.FOCUS_OPTION, option: newOption });
+			}
+		}
+	};
+
+	const handleListItemBlur = (event) => {
+		const { relatedTarget: newTarget } = event;
+
+		if (!newTarget || (newTarget instanceof Node && !containerRef.current?.contains(newTarget))) {
+			dispatch({ type: ActionTypes.BLUR });
+		}
+	};
+
+	const handleListItemKeyDown = (event) => {
+		if (event.key === 'Escape') {
+			dispatch({ type: ActionTypes.CLOSE_LIST });
+		} else if (event.key === 'Tab' || event.key === 'Enter') {
+			event.preventDefault();
+			if (state.focusedOption) {
+				dispatch({
+					type: ActionTypes.SELECT_OPTION,
+					option: state.focusedOption,
+				});
+			}
+		} else if (event.key === 'ArrowDown' || event.key === 'Down') {
+			event.preventDefault();
+			focusSibling(dispatch, state, Direction.Next);
+		} else if (event.key === 'ArrowUp' || event.key === 'Up') {
+			event.preventDefault();
+			focusSibling(dispatch, state, Direction.Previous);
+		}
+	};
+
+	const isPristine = state.selectedOption;
+
+	const containerClasses = classnames('usa-combo-box', className, {
+		'usa-combo-box--pristine': isPristine,
+	});
+
+	const listID = `${id}--list`;
+	const assistiveHintID = `${id}--assistiveHint`;
+
+	const focusedItemIndex = state.focusedOption ? state.filteredOptions.findIndex((i) => i === state.focusedOption) : -1;
+	const focusedItemId = focusedItemIndex > -1 && `${listID}--option-${focusedItemIndex}`;
+	const inputRef = useRef(null);
 
 	return (
-		<div className="combobox" ref={wrapperRef}>
-			{/* Optional Label */}
-			{label && (
-				<label className="combobox__label" htmlFor={inputId}>
-					{label}
-					{required && <span className="combobox__required">*</span>}
-				</label>
-			)}
+		<div data-testid="combo-box" data-enhanced="true" className={containerClasses} ref={containerRef}>
+			<select {...selectProps} className="usa-select usa-sr-only usa-combo-box__select" name={name} aria-hidden tabIndex={-1} defaultValue={state.selectedOption?.value} data-testid="combo-box-select">
+				{options.map((option) => (
+					<option key={option.value} value={option.value}>
+						{option.label}
+					</option>
+				))}
+			</select>
+			<Input
+				{...inputProps}
+				ref={inputRef}
+				role="combobox"
+				onChange={(e) => {
+					hasUserInteractedRef.current = true; // Mark as user interaction
+					if (inputProps?.onChange) {
+						// Allow a custom input onChange handler
+						inputProps?.onChange(e);
+					}
 
-			{/* Input field and toggle button container */}
-			<div className={`combobox__input-wrapper ${error ? 'has-error' : ''}`}>
-				<input
-					id={inputId}
-					ref={inputRef}
-					type="text"
-					className="combobox__input"
-					placeholder={placeholder}
-					value={searchText}
-					onChange={(e) => {
-						setSearchText(e.target.value); // Update search text state
-						if (!isOpen) setIsOpen(true); // Open dropdown on change if closed
-					}}
-					onFocus={() => setIsOpen(true)} // Open dropdown on focus
-					onKeyDown={handleKeyDown} // Handle keyboard navigation
-					disabled={disabled}
-					// ARIA attributes for accessibility
-					role="combobox"
-					aria-expanded={isOpen}
-					aria-autocomplete="list"
-					aria-controls={listboxId}
-					aria-activedescendant={highlightedIndex >= 0 ? `${name}-option-${highlightedIndex}` : undefined}
-				/>
+					dispatch({ type: ActionTypes.UPDATE_FILTER, value: e.target.value });
+				}}
+				onClick={(e) => {
+					if (e.target.value) {
+						dispatch({ type: ActionTypes.UPDATE_FILTER, value: e.target.value });
+					}
 
-				{/* Loading indicator can be added here if needed */}
-				{/* {loading && <span className="combobox__spinner" aria-hidden="true" />} */}
-
-				{/* Dropdown toggle button */}
+					dispatch({ type: ActionTypes.OPEN_LIST });
+				}}
+				onBlur={handleInputBlur}
+				onKeyDown={handleInputKeyDown}
+				value={state.inputValue}
+				focused={state.focusMode === FocusMode.Input}
+				aria-owns={listID}
+				aria-controls={listID}
+				aria-autocomplete="list"
+				aria-describedby={assistiveHintID}
+				aria-expanded={state.isOpen}
+				aria-activedescendant={(state.isOpen && focusedItemId) || ''}
+				id={id}
+				disabled={isDisabled}
+			/>
+			<span className="usa-combo-box__clear-input__wrapper" tabIndex={-1}>
 				<button
 					type="button"
-					className="combobox__toggle"
-					onClick={() => setIsOpen(!isOpen)} // Toggle dropdown visibility
-					aria-label={isOpen ? 'Close options' : 'Open options'}
-					disabled={disabled}
-					tabIndex={-1} // Prevent button from being tab-focused directly
-				>
-					{/* Arrow icon */}
-					<svg
-						width="10"
-						height="6"
-						viewBox="0 0 10 6"
-						fill="none"
-						aria-hidden="true" // Icon is decorative
-						style={{
-							transform: isOpen ? 'rotate(180deg)' : 'none', // Rotate arrow when open
-						}}>
-						<path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="2" />
-					</svg>
+					className="usa-combo-box__clear-input"
+					aria-label="Clear the select contents"
+					onClick={() => {
+						hasUserInteractedRef.current = true;
+						dispatch({ type: ActionTypes.CLEAR });
+					}}
+					data-testid="combo-box-clear-button"
+					onKeyDown={handleClearKeyDown}
+					hidden={!isPristine || isDisabled}
+					disabled={isDisabled}>
+					&nbsp;
 				</button>
+			</span>
+			<span className="usa-combo-box__input-button-separator">&nbsp;</span>
+			<span className="usa-combo-box__toggle-list__wrapper" tabIndex={-1}>
+				<button
+					data-testid="combo-box-toggle"
+					type="button"
+					className="usa-combo-box__toggle-list"
+					tabIndex={-1}
+					aria-label="Toggle the dropdown list"
+					onClick={() =>
+						dispatch({
+							type: state.isOpen ? ActionTypes.CLOSE_LIST : ActionTypes.OPEN_LIST,
+						})
+					}
+					disabled={isDisabled}>
+					&nbsp;
+				</button>
+			</span>
+			<ul {...ulProps} data-testid="combo-box-option-list" tabIndex={-1} id={listID} className="usa-combo-box__list" role="listbox" ref={listRef} hidden={!state.isOpen}>
+				{state.filteredOptions.map((option, index) => {
+					const focused = option === state.focusedOption;
+					const selected = option === state.selectedOption;
+					const itemClasses = classnames('usa-combo-box__list-option', {
+						'usa-combo-box__list-option--focused': focused,
+						'usa-combo-box__list-option--selected': selected,
+					});
+
+					return (
+						<li
+							ref={focused ? focusedItemRef : null}
+							value={option.value}
+							key={option.value}
+							className={itemClasses}
+							tabIndex={focused ? 0 : -1}
+							role="option"
+							aria-selected={selected}
+							aria-setsize={state.filteredOptions.length}
+							aria-posinset={index + 1}
+							id={listID + `--option-${index}`}
+							onKeyDown={handleListItemKeyDown}
+							onBlur={handleListItemBlur}
+							data-testid={`combo-box-option-${option.value}`}
+							data-value={option.value}
+							onMouseEnter={() => dispatch({ type: ActionTypes.FOCUS_OPTION, option: option })}
+							onClick={() => {
+								hasUserInteractedRef.current = true; // Mark as user interaction
+								// Set selection in progress flag to prevent blur handler from overriding
+								isSelectionInProgressRef.current = true;
+
+								// Dispatch action to update internal state
+								dispatch({ type: ActionTypes.SELECT_OPTION, option: option });
+
+								// Trigger onChange immediately to update parent components
+								onChange && onChange(option.value);
+
+								// Reset flag after a short delay to allow state updates to complete
+								setTimeout(() => {
+									isSelectionInProgressRef.current = false;
+								}, 50);
+							}}>
+							{option.label}
+						</li>
+					);
+				})}
+				{state.filteredOptions.length === 0 ? <li className="usa-combo-box__list-option--no-results">{noResults || 'No results found'}</li> : null}
+			</ul>
+
+			<div className="usa-combo-box__status usa-sr-only" role="status">
+				{state.statusText}
 			</div>
-
-			{/* Optional Error Message */}
-			{error && (
-				<div className="combobox__error" role="alert">
-					{error}
-				</div>
-			)}
-
-			{/* Optional Help Text */}
-			{helpText && <div className="combobox__help-text">{helpText}</div>}
-
-			{/* Dropdown Listbox */}
-			{isOpen && ( // Only render the listbox if isOpen is true
-				<ul
-					ref={listboxRef}
-					className="combobox__options"
-					role="listbox"
-					id={listboxId}
-					aria-label={label || 'Options'} // Use label for listbox aria-label if available
-					aria-multiselectable={multiSelect}>
-					{/* Display loading state */}
-					{loading && <li className="combobox__option is-loading">Loading...</li>}
-					{/* Display 'No results' if not loading, search text exists, and no options match */}
-					{!loading && filteredOptions.length === 0 && searchText.length > 0 && <li className="combobox__option is-disabled">No results found</li>}
-					{/* Map through filtered options */}
-					{!loading &&
-						filteredOptions.map((option, index) => (
-							<li
-								key={option.value}
-								id={`${name}-option-${index}`} // Unique ID for each option
-								role="option"
-								aria-selected={value.includes(option.value)} // Indicate if selected
-								className={`
-						          combobox__option
-						          ${value.includes(option.value) ? 'is-selected' : ''}
-						          ${index === highlightedIndex ? 'is-highlighted' : ''}
-						        `}
-								onClick={() => handleSelect(option)} // Handle click selection
-								onMouseEnter={() => setHighlightedIndex(index)} // Highlight on mouse enter
-								onKeyDown={(e) => {
-									if (e.key === 'Enter' || e.key === ' ') {
-										e.preventDefault();
-										handleSelect(option);
-									}
-								}}
-								tabIndex={0} // Make the list item focusable
-							>
-								{/* Checkbox for multi-select mode */}
-								{multiSelect && (
-									<input
-										type="checkbox"
-										checked={value.includes(option.value)}
-										readOnly // Checkbox state controlled by parent li click
-										tabIndex={-1} // Not focusable
-										aria-hidden="true" // Hide from screen readers (li handles selection state)
-									/>
-								)}
-								{/* Option label */}
-								<span className="combobox__option-label">{option.label}</span>
-								{/* Optional count display */}
-								{option.count !== undefined && <span className="combobox__option-count">({option.count})</span>}
-							</li>
-						))}
-				</ul>
-			)}
-
-			{/* Display selected items as tags in multi-select mode */}
-			{multiSelect && value.length > 0 && (
-				<div className="combobox__selected">
-					{value.map((v) => {
-						// Find the corresponding option object to display the label
-						const option = options.find((o) => o.value === v);
-						// If option not found (e.g., value set externally), display the value itself
-						const displayLabel = option?.label || v;
-						return (
-							<span key={v} className="combobox__tag">
-								{displayLabel}
-								{/* Button to remove the tag */}
-								<button type="button" onClick={() => removeValue(v)} aria-label={`Remove ${displayLabel}`} className="combobox__tag-remove">
-									× {/* Multiplication sign used as 'x' icon */}
-								</button>
-							</span>
-						);
-					})}
-				</div>
-			)}
+			<span id={assistiveHintID} className="usa-sr-only" data-testid="combo-box-assistive-hint">
+				{assistiveHint ||
+					`When autocomplete results are available use up and down arrows to review
+           and enter to select. Touch device users, explore by touch or with swipe
+           gestures.`}
+			</span>
 		</div>
 	);
 };
 
-// Define PropTypes for type checking and documentation
-ComboBox.propTypes = {
-	/** Optional label displayed above the input. */
-	label: PropTypes.string,
-	/** Placeholder text for the input field. */
-	placeholder: PropTypes.string,
-	/** Array of available options. Each object needs 'value' and 'label'. 'count' is optional. */
-	options: PropTypes.arrayOf(
-		PropTypes.shape({
-			value: PropTypes.string.isRequired,
-			label: PropTypes.string.isRequired,
-			count: PropTypes.number,
-		})
-	).isRequired,
-	/** If true, allows selecting multiple options. Defaults to false. */
-	multiSelect: PropTypes.bool,
-	/** Array of strings representing the values of the currently selected options. */
-	value: PropTypes.arrayOf(PropTypes.string),
-	/** Callback function triggered when the selection changes. Receives the new array of selected values. */
-	onChange: PropTypes.func.isRequired,
-	/** Optional help text displayed below the input. */
-	helpText: PropTypes.string,
-	/** If true, disables the component. Defaults to false. */
-	disabled: PropTypes.bool,
-	/** If true, indicates options are loading (visual indicator not implemented yet). Defaults to false. */
-	loading: PropTypes.bool,
-	/** If present, displays an error message below the input. */
-	error: PropTypes.string,
-	/** If true, marks the label with a required indicator (*). Defaults to false. */
-	required: PropTypes.bool,
-	/** Minimum characters to type before triggering `onSearch`. Defaults to 2. */
-	minChars: PropTypes.number,
-	/** Optional callback triggered when user types `minChars` or more. Receives the search text. */
-	onSearch: PropTypes.func,
-	/** A unique name for the component, used for generating IDs and potentially in tracking. */
-	name: PropTypes.string.isRequired,
-};
+export { FocusMode };
+export const ComboBox = forwardRef(ComboBoxForwardRef);
 
 export default ComboBox;

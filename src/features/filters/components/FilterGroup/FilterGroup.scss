@@ -90,7 +90,7 @@
 	}
 
 	&__content {
-		overflow: hidden;
+		//overflow: hidden;
 		transition: max-height 0.3s ease-out;
 		position: relative;
 
@@ -111,6 +111,14 @@
 		}
 	}
 
+	// COMMENTED OUT: Styling for when filters are pending auto-apply
+	// &--pending {
+	// 	@include u-border-left('205', 'solid', $theme-color-primary);
+	// 	@include u-padding-left('105');
+	// 	transition: all 0.3s ease;
+	// 	background: linear-gradient(to right, rgba(0, 123, 189, 0.05), transparent);
+	// }
+
 	&__help-icon-container {
     display: inline-block;
     margin-left: 8px;
@@ -129,37 +137,6 @@
     font-size: 14px;
     cursor: pointer;
     position: relative;
-
-    &:hover::before {
-      content: attr(data-tooltip);
-      position: fixed;
-      transform-origin: bottom center;
-      transform: translateX(-50%);
-      padding: 8px 12px;
-      background-color: #333;
-      color: white;
-      font-size: 14px;
-      border-radius: 4px;
-      white-space: normal;
-      z-index: 9999;
-      min-width: 200px;
-      max-width: 300px;
-      text-align: left;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      pointer-events: none;
-    }
-
-    &:hover::after {
-      content: '';
-      position: fixed;
-      transform-origin: bottom center;
-      transform: translateX(-50%);
-      border-width: 6px;
-      border-style: solid;
-      border-color: #333 transparent transparent transparent;
-      z-index: 9999;
-      pointer-events: none;
-    }
   }
 
   &__title {
@@ -174,4 +151,118 @@ select#radius-filter.usa-select {
 	@include u-width('full', !important);
 }
 
+.is-set.usa-tooltip__body.is-visible {
+	top: 50%;
+	left: 24px;
+	margin: -18px 0px 0px;
 
+	// &.usa-tooltip__body--top {
+	// 	margin: -50px 0px 0px -200px;
+	// }
+}
+
+span#filter-group-primary-cancer-type\/condition-tooltip-body.usa-tooltip__body--top {
+	min-width: 240px;
+	margin-top: -64px;
+	margin-bottom: 24px;
+	bottom: 0px;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, 0);
+	@include at-media-max('mobile-lg') {
+		transform: translate(-85%, 0);
+		&:after {
+			left: 85%;
+		}
+	}
+}
+
+span#filter-group-location-by-zip-code-tooltip-body.usa-tooltip__body--top {
+	@include u-minw(230px);
+	@include u-margin-top('neg-5');
+	@include u-margin-bottom(3);
+	@include u-bottom(0);
+	@include u-top(0);
+	@include u-left(50%);
+	transform: translate(-50%, 0);
+
+	@include at-media-max('mobile-lg') {
+		transform: translate(-80%, 0);
+		&:after {
+			@include u-left(80%);
+		}
+	}
+}
+
+span#filter-group-distance-from-location-tooltip-body.usa-tooltip__body--top {
+	@include u-minw(285px);
+	@include u-margin-top('neg-5');
+	@include u-margin-bottom(3);
+	@include u-bottom(0);
+	@include u-top(0);
+	@include u-left(50%);
+	transform: translate(-50%, 0);
+
+	@include at-media-max('mobile-lg') {
+		transform: translate(-85%, 0);
+		&:after {
+			@include u-left(85%);
+		}
+	}
+}
+
+span#filter-group-age-tooltip-body.usa-tooltip__body--top {
+	@include u-minw(270px);
+	@include u-margin-top('neg-5');
+	@include u-margin-bottom(3);
+	@include u-bottom(0);
+	@include u-top(0);
+	@include u-left(50%);
+	transform: translate(-25%, 0);
+	&:after {
+		@include u-left(25%);
+	}
+}
+
+span#filter-group-subtype-tooltip-body.usa-tooltip__body--top {
+	@include u-minw(300px);
+	@include u-margin-top('neg-8');
+	@include u-margin-bottom(3);
+	@include u-bottom(0);
+	@include u-top(0);
+	@include u-left(45%);
+	transform: translate(-45%, 0);
+	&:after {
+		left: 45%;
+	}
+}
+
+span#filter-group-stage-tooltip-body.usa-tooltip__body--top {
+	@include u-minw(216px);
+	@include u-margin-top('neg-8');
+	@include u-margin-bottom(3);
+	@include u-bottom(0);
+	@include u-top(0);
+	@include u-left(50%);
+	transform: translate(-40%, 0);
+
+	&:after {
+		left: 40%;
+	}
+}
+#filter-group-drug-\/-drug-family-tooltip-body.usa-tooltip__body--top {
+	@include u-minw(260px);
+	@include u-margin-top('neg-8');
+	@include u-margin-bottom(3);
+	@include u-bottom(0);
+	@include u-top(0);
+	@include u-left(50%);
+	transform: translate(-50%, 0);
+
+	@include at-media-max('mobile-lg') {
+		transform: translate(-80%, 0);
+		&:after {
+			@include u-left(80%);
+		}
+	}
+}

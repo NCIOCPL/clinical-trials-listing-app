@@ -1,0 +1,59 @@
+{
+  "current_trial_status": "Active",
+  "brief_summary": "This phase III trial compares the addition of chemotherapy to usual treatment (ovarian function suppression plus hormonal therapy) to usual treatment alone in treating premenopausal estrogen receptor (ER)-positive/HER2-negative breast cancer patients who are at high risk of their cancer returning. One of the likely benefits of chemotherapy is that it can stop the ovaries from releasing eggs and hormones in women who are premenopausal. This study may help researchers determine if adding chemotherapy to ovarian suppression and hormonal therapy has similar effectiveness to ovarian suppression and hormonal therapy alone in preventing cancer from returning.",
+  "nct_id": "NCT05879926",
+  "nci_id": "NCI-2023-04529",
+  "brief_title": "Testing the Addition of Chemotherapy to the Usual Treatment of Ovarian Function Suppression plus Hormonal Therapy in Premenopausal ER-Positive/HER2-Negative Breast Cancer Patients Who Are At High Risk of Cancer Returning, OFSET Trial",
+  "official_title": "A Phase III Trial Comparing Adjuvant Ovarian Function Suppression Plus Hormonal Therapy With Chemotherapy Followed by Ovarian Function Suppression Plus Hormonal Therapy to Ovarian Function Suppression Plus Hormonal Therapy Alone in High-Risk Early-Stage ER-Positive HER2-Negative Breast Cancer Patients",
+  "primary_purpose": "Treatment",
+  "phase": "Phase III",
+  "study_type": "Interventional",
+  "study_source": "National Cancer Institute (NCI)",
+  "protocol_section": {
+    "identification_module": {
+      "nct_id": "NCT05879926",
+      "brief_title": "Testing the Addition of Chemotherapy to the Usual Treatment of Ovarian Function Suppression plus Hormonal Therapy in Premenopausal ER-Positive/HER2-Negative Breast Cancer Patients Who Are At High Risk of Cancer Returning, OFSET Trial"
+    }
+  },
+  "sites": [
+    {
+      "org_state_or_province": "MD",
+      "org_city": "Baltimore",
+      "org_country": "United States",
+      "org_name": "Mercy Medical Center",
+      "org_coordinates": {
+        "lon": -76.6074,
+        "lat": 39.2974
+      },
+      "recruitment_status": "ACTIVE"
+    },
+    {
+      "org_state_or_province": "NY",
+      "org_city": "Brooklyn",
+      "org_country": "United States",
+      "org_name": "New York-Presbyterian/Brooklyn Methodist Hospital",
+      "org_coordinates": {
+        "lon": -73.985,
+        "lat": 40.6678
+      },
+      "recruitment_status": "ACTIVE"
+    },
+    {
+      "org_state_or_province": "IL",
+      "org_city": "Crystal Lake",
+      "org_country": "United States",
+      "org_name": "AMG Crystal Lake - Oncology",
+      "org_coordinates": {
+        "lon": -88.3202,
+        "lat": 42.2284
+      },
+      "recruitment_status": "ACTIVE"
+    }
+  ],
+  "eligibility": {
+    "gender": "All",
+    "minimum_age": "18 Years",
+    "maximum_age": "N/A",
+    "healthy_volunteers": "No"
+  }
+}

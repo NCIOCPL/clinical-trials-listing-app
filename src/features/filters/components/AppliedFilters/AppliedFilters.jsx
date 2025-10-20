@@ -7,6 +7,13 @@
 import React from 'react';
 import { useFilters } from '../../context/FilterContext/FilterContext';
 import './AppliedFilters.scss';
+import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
+import PropTypes from 'prop-types';
+import { useMainTypeSearch } from '../../../../hooks/ctsApiSupport/useMainTypeSearch';
+import { useSubTypeSearch } from '../../../../hooks/ctsApiSupport/useSubTypeSearch';
+import { useStageSearch } from '../../../../hooks/ctsApiSupport/useStageSearch';
+import { getFieldCode } from '../../utils/eddlAnalytics';
+//import img from '@nciocpl/ncids-css/uswds-img/sprite.svg';
 
 /**
  * Renders a section displaying the currently applied filters as tags.
@@ -16,12 +23,52 @@ import './AppliedFilters.scss';
  *
  * @returns {JSX.Element|null} The rendered AppliedFilters component or null.
  */
-const AppliedFilters = () => {
+const AppliedFilters = ({ pageType = 'Disease', onFilterRemoved = () => {} }) => {
 	const { state, dispatch } = useFilters();
-	const { appliedFilters } = state; // Get the list of applied filters from context
+	const filters = state.appliedFilters; // Get the list of applied filters from context
+	const appliedZipCoords = state.appliedZipCoords; // Get coordinates for applied ZIP code
+
+	// Get the API data for filter options to display proper names
+	const { options: maintypeOptions } = useMainTypeSearch();
+
+	// Get maintype value to use for subtype and stage searches
+	const maintypeValue = filters.maintype?.[0];
+	const { options: subtypeOptions } = useSubTypeSearch(maintypeValue);
+	const { options: stageOptions } = useStageSearch(maintypeValue);
+
+	// console.log('[AppliedFilters] pageType:', pageType, 'appliedFilters:', filters);
+
+	// Helper function to check if there are any meaningful applied filters
+	const hasAppliedFilters = (filters) => {
+		if (!filters) return false;
+
+		for (const [key, value] of Object.entries(filters)) {
+			if (key === 'location') {
+				// For location, check if zipCode has a value AND has valid coordinates
+				if (value && value.zipCode && value.zipCode.trim() !== '' && appliedZipCoords && appliedZipCoords.lat && appliedZipCoords.long) {
+					return true;
+				}
+			} else if (Array.isArray(value)) {
+				// For arrays, check if they have items
+				if (value.length > 0) {
+					return true;
+				}
+			} else if (typeof value === 'string') {
+				// For strings, check if they're not empty
+				if (value.trim() !== '') {
+					return true;
+				}
+			} else if (value != null && value !== '') {
+				// For other types, check if they have a truthy value
+				return true;
+			}
+		}
+		return false;
+	};
 
 	// If there are no applied filters, don't render anything
-	if (appliedFilters.length === 0) {
+	if (!hasAppliedFilters(filters)) {
+		// console.log('[AppliedFilters] No meaningful filters, returning null');
 		return null;
 	}
 
@@ -29,25 +76,21 @@ const AppliedFilters = () => {
 	 * Handles the removal of a single filter tag.
 	 * Dispatches the 'REMOVE_FILTER' action with the specific filter type and value,
 	 * and then dispatches 'APPLY_FILTERS' to update the results based on the remaining filters.
+	 * Calls the parent callback to trigger analytics tracking with the result count.
 	 *
 	 * @param {string} filterType - The type of the filter to remove (e.g., 'age', 'subtype').
 	 * @param {string|number|object} value - The specific value of the filter to remove.
 	 */
 	const handleRemoveFilter = (filterType, value) => {
+		// Dispatch remove filter action
 		dispatch({
 			type: 'REMOVE_FILTER',
 			payload: { filterType, value },
 		});
-		// Re-apply filters after removing one to update the list/results
-		dispatch({ type: 'APPLY_FILTERS' });
-	};
 
-	/**
-	 * Handles clearing all applied filters.
-	 * Dispatches the 'CLEAR_FILTERS' action to reset the filter state.
-	 */
-	const handleClearAll = () => {
-		dispatch({ type: 'CLEAR_FILTERS' });
+		// Call parent callback with the field code that was removed
+		// Parent view will handle analytics tracking when results are available
+		onFilterRemoved(getFieldCode(filterType));
 	};
 
 	/**
@@ -61,24 +104,71 @@ const AppliedFilters = () => {
 	 */
 	const formatFilterLabel = (filter) => {
 		switch (filter.type) {
-			case 'subtype':
-				// Format subtype labels (replace underscores, capitalize words)
+			case 'maintype': {
+				// Get display name from API data instead of DOM
+				const conceptId = Array.isArray(filter.values) ? filter.values[0] : filter.values;
+				const option = maintypeOptions.find((opt) => opt.value === conceptId || opt.id === conceptId);
+				const displayText = option?.label;
+
+				// Only show if we have proper display text from API
+				if (!displayText) {
+					return null;
+				}
 				return {
-					label: filter.values.map((value) => value.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())),
+					label: [displayText],
+					displayType: 'Primary Cancer Type',
+				};
+			}
+			case 'subtype': {
+				// Get display name from API data instead of DOM
+				const conceptId = Array.isArray(filter.values) ? filter.values[0] : filter.values;
+				const option = subtypeOptions.find((opt) => opt.value === conceptId || opt.id === conceptId);
+				const displayText = option?.label;
+
+				// Only show if we have proper display text from API
+				if (!displayText) {
+					return null;
+				}
+				return {
+					label: [displayText],
 					displayType: 'Subtype',
 				};
-			case 'stage':
-				// Format stage labels (e.g., "Stage IV")
+			}
+			case 'stage': {
+				// Get display name from API data instead of DOM
+				const conceptId = Array.isArray(filter.values) ? filter.values[0] : filter.values;
+				const option = stageOptions.find((opt) => opt.value === conceptId || opt.id === conceptId);
+				const displayText = option?.label;
+
+				// Only show if we have proper display text from API
+				if (!displayText) {
+					return null;
+				}
 				return {
-					label: filter.values.map((value) => `Stage ${value.split('_')[1].toUpperCase()}`),
+					label: [displayText],
 					displayType: 'Stage',
 				};
+			}
 			case 'drugIntervention':
-				// Use values directly for drug/intervention
-				return {
-					label: filter.values,
-					displayType: 'Drug/Intervention',
-				};
+				// Show loading state while drug name is being fetched
+				if (Array.isArray(filter.values) && filter.values.length > 0) {
+					const drug = filter.values[0];
+					if (drug && typeof drug === 'object' && drug.name) {
+						// Full drug object with name
+						return {
+							label: [drug.name],
+							displayType: 'Drug / Drug Family',
+						};
+					} else if (typeof drug === 'string') {
+						// Concept code - show "Loading..." while API fetches the name
+						return {
+							label: ['Loading...'],
+							displayType: 'Drug / Drug Family',
+						};
+					}
+				}
+				// Don't show if no data at all
+				return null;
 			case 'age':
 				// Format age label
 				return {
@@ -86,9 +176,14 @@ const AppliedFilters = () => {
 					displayType: 'Age',
 				};
 			case 'location':
+				// Only show location filter if we have valid coordinates
+				// Invalid ZIP codes should not show as applied filters
+				if (!appliedZipCoords || !appliedZipCoords.lat || !appliedZipCoords.long) {
+					return null;
+				}
 				// Format location label using zip and radius
 				return {
-					label: [`Within ${filter.values.radius} miles of ${filter.values.zipCode}`],
+					label: [`within ${filter.values.radius} miles of ${filter.values.zipCode}`],
 					displayType: 'Location',
 				};
 			default:
@@ -100,31 +195,72 @@ const AppliedFilters = () => {
 		}
 	};
 
+	// const filtersArray = Object.entries(filters).map(([type, values]) => ({
+	// 	type,
+	// 	values
+	//   }));
+
+	// Displays filter tags in the correct order
+	// First get the configured order for this page type
+	const orderedFilterTypes = PAGE_FILTER_CONFIGS[pageType]?.order || [];
+
+	// Get all filters that are currently applied
+	const appliedFilterTypes = Object.keys(filters).filter((type) => filters[type] !== undefined && filters[type] !== null);
+
+	// Start with ordered filters, then add any that aren't in the order list
+	const allFilterTypes = [...orderedFilterTypes.filter((type) => appliedFilterTypes.includes(type)), ...appliedFilterTypes.filter((type) => !orderedFilterTypes.includes(type))];
+
+	const filtersArray = allFilterTypes.map((type) => ({
+		type,
+		values: filters[type],
+	}));
+
 	return (
 		<div className="applied-filters">
 			<div className="applied-filters__header">
-				<h3>Applied Filters</h3>
-				<button className="applied-filters__clear-all" onClick={handleClearAll}>
-					Clear All
-				</button>
+				<h3>Applied Filters:</h3>
 			</div>
 			<div className="applied-filters__content">
 				{/* Map through each applied filter group */}
-				{appliedFilters.map((filter) => {
-					const { label, displayType } = formatFilterLabel(filter);
+				{filtersArray.map((filter) => {
+					let emptyFilter = filter.values == null || filter.values == null || filter.values.length === 0 || (filter.type == 'location' && (filter.values.radius == null || filter.values.radius == undefined));
+					if (emptyFilter) {
+						return null;
+					}
+
+					const formattedFilter = formatFilterLabel(filter);
+					// console.log('[AppliedFilters] formatFilterLabel returned:', formattedFilter);
+					// Skip if formatFilterLabel returns null (e.g., incomplete drugIntervention data)
+					if (!formattedFilter) {
+						// console.log('[AppliedFilters] formattedFilter is null, skipping');
+						return null;
+					}
+
+					const { label } = formattedFilter;
 					// Map through each value within the filter group (most have one, some like subtype can have multiple)
 					return label.map((value, index) => (
-						<div key={`${filter.type}-${value}-${index}`} className="applied-filters__tag">
-							<span className="applied-filters__tag-type">{displayType}:</span>
+						<div key={`${filter.type}-${value}-${index}`} className="applied-filters__tag usa-tag">
 							<span className="applied-filters__tag-value">{value}</span>
 							{/* Button to remove this specific filter value */}
-							<button onClick={() => handleRemoveFilter(filter.type, filter.values[index])} className="applied-filters__tag-remove" aria-label={`Remove ${value} filter`}></button>
+							<button onClick={() => handleRemoveFilter(filter.type, filter.values[index])} className="applied-filters__tag-remove" aria-label={`Remove ${value} filter`}>
+								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 14 14" fill="none">
+									<path fillRule="evenodd" clipRule="evenodd" d="M13.4167 1.87575L12.1242 0.583252L7.00001 5.70742L1.87584 0.583252L0.583344 1.87575L5.70751 6.99992L0.583344 12.1241L1.87584 13.4166L7.00001 8.29242L12.1242 13.4166L13.4167 12.1241L8.29251 6.99992L13.4167 1.87575Z" fill="white" />
+								</svg>
+							</button>
 						</div>
 					));
 				})}
 			</div>
 		</div>
 	);
+};
+
+// Define PropTypes for type checking and documentation
+AppliedFilters.propTypes = {
+	/** The type of page, determining which filters are shown (e.g., 'Disease', 'Intervention'). Defaults to 'Disease'. */
+	pageType: PropTypes.string,
+	/** Callback function invoked when a filter is removed. Receives the field code of the removed filter. */
+	onFilterRemoved: PropTypes.func,
 };
 
 export default AppliedFilters;

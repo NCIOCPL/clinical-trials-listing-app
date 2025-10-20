@@ -35,7 +35,7 @@ const convertAnalyticsDatatableObject = (obj) => {
 			} else {
 				return {
 					first,
-					value: obj[first],
+					value: convertValue(obj[first]),
 				};
 			}
 		})

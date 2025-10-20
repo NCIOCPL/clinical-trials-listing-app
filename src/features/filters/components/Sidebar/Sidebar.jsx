@@ -1,15 +1,19 @@
+/* eslint-disable */
 /**
  * @file This file defines the Sidebar component, which serves as the main container
  * for all filter controls. It dynamically renders filters based on the current page type,
  * manages filter state interactions (setting, applying, clearing), handles URL parameter
  * synchronization, performs basic validation, and includes logic for mobile accordion behavior.
  */
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useFilters, FilterActionTypes } from '../../context/FilterContext/FilterContext';
 import ZipCodeFilter from '../ZipCodeFilter';
 import AgeFilter from '../AgeFilter/AgeFilter';
-import { FILTER_CONFIG } from '../../config/filterConfig';
+import MainTypeFilter from '../MainTypeFilter';
+import Subtype from '../Subtype';
+import DrugInterventionFilter from '../DrugInterventionFilter/DrugInterventionFilter';
+import StageFilter from '../StageFilter';
 import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
 import './Sidebar.scss';
 // import { useStateValue } from '../../../../store/store'; // Unused import
@@ -20,6 +24,52 @@ import { useTracking } from 'react-tracking';
 import { URL_PARAM_MAPPING } from '../../constants/urlParams';
 import { isValidZipFormat } from '../../utils/locationUtils';
 import PropTypes from 'prop-types';
+import AppliedFilters from '../AppliedFilters/AppliedFilters';
+import { getFieldCode } from '../../utils/eddlAnalytics';
+
+/**
+ * Helper function to detect which field was added by comparing old and new filters
+ * @param {object} prevFilters - Previous filter state
+ * @param {object} newFilters - New filter state
+ * @returns {string|null} Field code that was added (e.g., 'a', 't', 'loc') or null
+ */
+const detectAddedField = (prevFilters, newFilters) => {
+	// Check each filter type to see if it was added or changed
+	const filterTypes = ['maintype', 'subtype', 'stage', 'drugIntervention', 'age', 'location'];
+
+	for (const filterType of filterTypes) {
+		const prevValue = prevFilters[filterType];
+		const newValue = newFilters[filterType];
+
+		// Check if this field was added or changed
+		if (filterType === 'location') {
+			// For location, check if zipCode was added
+			const prevZip = prevValue?.zipCode;
+			const newZip = newValue?.zipCode;
+			if (!prevZip && newZip) {
+				return getFieldCode(filterType);
+			}
+		} else if (filterType === 'age') {
+			// For age, check if value was added
+			if (!prevValue && newValue) {
+				return getFieldCode(filterType);
+			}
+		} else {
+			// For array filters (maintype, subtype, stage, drugIntervention)
+			const prevLength = Array.isArray(prevValue) ? prevValue.length : 0;
+			const newLength = Array.isArray(newValue) ? newValue.length : 0;
+			if (prevLength === 0 && newLength > 0) {
+				// Field was added
+				return getFieldCode(filterType);
+			} else if (newLength > prevLength) {
+				// More items added
+				return getFieldCode(filterType);
+			}
+		}
+	}
+
+	return null; // No field added, might be a modification
+};
 
 /**
  * Renders the filter sidebar, including relevant filter components based on pageType.
@@ -37,15 +87,18 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	// Hooks for navigation, location, filter context, tracking, and counters
 	const navigate = useNavigate();
 	const location = useLocation();
-	const { state, dispatch, applyFilters, enabledFilters = [] } = useFilters();
+	const { state, dispatch, applyFilters, enabledFilters = [], listingInfo } = useFilters();
 	const { filters, isDirty } = state; // Get current filters and dirty state from context
 	const [hasInteracted, setHasInteracted] = useState(false); // Tracks if user has interacted with any filter yet
 	// const [isFirstLoad, setIsFirstLoad] = useState(true); // Unused state variable
 	// State to hold the function that retrieves the latest ZIP validation status from ZipCodeFilter
 	const [getZipValidationStatus, setGetZipValidationStatus] = useState(null);
-	// Custom hook for tracking filter application/removal counts
-	const { filterAppliedCounter, filterRemovedCounter, incrementAppliedCounter, incrementRemovedCounter } = useFilterCounters();
 	const tracking = useTracking(); // React-tracking hook
+	const { incrementRemovedCounter } = useFilterCounters();
+	const prevAppliedFiltersRef = useRef();
+	const isInitialUrlLoadRef = useRef(true); // Track if this is the first load from URL params
+	const pendingRemovedFieldRef = useRef(null); // Track which field was just removed
+	const pendingAddedFieldRef = useRef(null); // Track which field was just added
 
 	/**
 	 * Validates the current filter values (age range, zip format, radius presence).
@@ -53,15 +106,6 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	 */
 	const validateFilters = () => {
 		const errors = {};
-
-		// Validate age filter value is within the allowed range, but only if it's not empty
-		if (filters.age !== undefined && filters.age !== null && filters.age !== '') {
-			if (filters.age < FILTER_CONFIG.age.min || filters.age > FILTER_CONFIG.age.max) {
-				errors.age = `Invalid age value. Must be between ${FILTER_CONFIG.age.min} and ${FILTER_CONFIG.age.max}.`;
-				// console.log(errors.age);
-				// console.log(filters.age);
-			}
-		}
 
 		// Validate location filter (ZIP code format and radius presence)
 		if (filters.location?.zipCode) {
@@ -160,17 +204,37 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	 * dispatches actions to clear and re-apply (empty) filters.
 	 */
 	const handleClearFilters = () => {
-		incrementRemovedCounter(); // Track clear action
+		// Increment the removed counter
+		incrementRemovedCounter();
 
-		// Notify parent component
-		onFilterCleared(filterRemovedCounter + 1, filterAppliedCounter);
+		// Mark that we're clearing all filters
+		pendingRemovedFieldRef.current = 'all';
 
 		// Dispatch actions to update context state
 		dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
 		dispatch({ type: FilterActionTypes.APPLY_FILTERS }); // Apply the cleared state
 
+		// The auto-apply detection effect will handle calling onFilterCleared when filters update
+
 		// TODO: Clear URL parameters as well? Currently only ApplyFilters updates URL.
 		// navigate(window.location.pathname); // Option 1: Navigate to path without params
+	};
+
+	/**
+	 * Handles removal of an individual filter from the AppliedFilters component.
+	 * Increments the removed counter and marks which field was removed.
+	 * The auto-apply detection effect will handle the callback with proper filters.
+	 * @param {string} fieldCode - The field code that was removed (e.g., 'a', 'loc', 't')
+	 */
+	const handleIndividualFilterRemoved = (fieldCode) => {
+		// Increment the removed counter
+		incrementRemovedCounter();
+
+		// Mark which field was removed so the auto-apply effect knows to call onFilterCleared
+		pendingRemovedFieldRef.current = fieldCode;
+
+		// The REMOVE_FILTER action has already been dispatched by AppliedFilters
+		// The auto-apply detection effect will handle calling onFilterCleared when filters update
 	};
 
 	/**
@@ -181,6 +245,9 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	const handleApplyFilters = async () => {
 		// Do nothing if filters haven't changed
 		if (!isDirty) return;
+
+		// console.log('Sidebar - handleApplyFilters - Current filters:', filters);
+		// console.log('Sidebar - handleApplyFilters - isDirty:', isDirty);
 
 		// Validate form field values (e.g., age range)
 		const errors = validateFilters();
@@ -236,13 +303,6 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 
 		// --- If all validations pass ---
 
-		// Capture current filter values before applying for tracking purposes
-		const currentFilters = { ...filters };
-
-		// Track successful filter application
-		incrementAppliedCounter();
-		onFilterApplied(currentFilters, filterAppliedCounter + 1); // Notify parent
-
 		// Call the applyFilters function from context (likely triggers API call)
 		await applyFilters();
 
@@ -254,6 +314,19 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			params.set(URL_PARAM_MAPPING.age.shortCode, filters.age);
 		} else {
 			params.delete(URL_PARAM_MAPPING.age.shortCode);
+		}
+
+		if (filters.maintype && filters.maintype.length > 0) {
+			params.set(URL_PARAM_MAPPING.maintype.shortCode, filters.maintype.join(','));
+		} else {
+			params.delete(URL_PARAM_MAPPING.maintype.shortCode);
+		}
+
+		// Update subtype parameter
+		if (filters.subtype && filters.subtype.length > 0) {
+			params.set(URL_PARAM_MAPPING.subtype.shortCode, filters.subtype.join(','));
+		} else {
+			params.delete(URL_PARAM_MAPPING.subtype.shortCode);
 		}
 
 		// Update 'z' parameter for zip code
@@ -275,6 +348,9 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 
 		// Update the URL using navigate (replace avoids adding to history stack)
 		navigate(`${window.location.pathname}?${params.toString()}`, { replace: true });
+
+		// Call the onFilterApplied callback for analytics
+		onFilterApplied(state.appliedFilters, filterAppliedCounter);
 	};
 
 	/**
@@ -315,6 +391,14 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	 */
 	const renderFilter = (filterType, isDisabled) => {
 		switch (filterType) {
+			case 'drugIntervention':
+				return <DrugInterventionFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
+			case 'maintype':
+				return <MainTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
+			case 'subtype':
+				return <Subtype onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
+			case 'stage':
+				return <StageFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'age':
 				return (
 					<AgeFilter
@@ -370,7 +454,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	 * Attaches/detaches the click listener and manages initial state.
 	 * Note: This uses direct DOM manipulation and might be better handled via context/state.
 	 */
-	const setMobileOnClick = useCallback(() => {
+	const setMobileOnClick = () => {
 		const filterBtn = document.getElementById('filterButton');
 		const content = document.getElementById('accordionContent');
 		if (!filterBtn || !content) return; // Guard if elements don't exist yet
@@ -408,7 +492,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			mediaQueryMobile.removeEventListener('change', handleMediaQueryChange);
 			filterBtn.removeEventListener('click', accordionOnClick); // Ensure listener is removed on unmount
 		};
-	}, []); // Revert dependency array
+	};
 
 	/**
 	 * Effect to set up the mobile accordion listener on component mount.
@@ -416,7 +500,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	useEffect(() => {
 		const cleanup = setMobileOnClick();
 		return cleanup; // Return cleanup function
-	}, [setMobileOnClick]); // Dependency on the memoized setup function
+	}, []); // No dependencies needed since function doesn't depend on props/state
 
 	/**
 	 * Checks if any filters (age or location) are currently active.
@@ -432,8 +516,12 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 
 		// Add checks for other filter types here if they are added
 		// const hasTrialTypeFilter = filters.trialType?.length > 0;
+		const hasMainTypeFilter = Array.isArray(filters.maintype) && filters.maintype.length > 0;
+		const hasSubTypeFilter = Array.isArray(filters.subtype) && filters.subtype.length > 0;
+		const hasDrugInterventionFilter = Array.isArray(filters.drugIntervention) && filters.drugIntervention.length > 0;
+		const hasStageFilter = Array.isArray(filters.stage) && filters.stage.length > 0;
 
-		return hasAgeFilter || hasLocationFilter; // || hasTrialTypeFilter etc.
+		return hasAgeFilter || hasLocationFilter || hasMainTypeFilter || hasSubTypeFilter || hasDrugInterventionFilter || hasStageFilter;
 	};
 
 	/**
@@ -445,6 +533,9 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		const age = params.get(URL_PARAM_MAPPING.age.shortCode);
 		const zip = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
 		const radius = params.get(URL_PARAM_MAPPING.radius.shortCode);
+		const maintype = params.get(URL_PARAM_MAPPING.maintype.shortCode);
+		const subtype = params.get(URL_PARAM_MAPPING.subtype.shortCode);
+		const stage = params.get(URL_PARAM_MAPPING.stage.shortCode);
 
 		let needsApply = false; // Flag to check if APPLY_FILTERS needs dispatch
 
@@ -471,12 +562,99 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			// onValidationChange callback triggered by its own useEffect.
 		}
 
+		if (maintype) {
+			dispatch({
+				type: FilterActionTypes.SET_FILTER,
+				payload: {
+					filterType: 'maintype',
+					value: maintype.split(','),
+				},
+			});
+			needsApply = true;
+		}
+
+		if (subtype) {
+			dispatch({
+				type: FilterActionTypes.SET_FILTER,
+				payload: {
+					filterType: 'subtype',
+					value: subtype.split(','),
+				},
+			});
+			needsApply = true;
+		}
+
+		if (stage) {
+			dispatch({
+				type: FilterActionTypes.SET_FILTER,
+				payload: {
+					filterType: 'stage',
+					value: stage.split(','),
+				},
+			});
+			needsApply = true;
+		}
+
+		// Note: Not handling drugIntervention here - FilterContext handles it
+		// to avoid race conditions with drug data loading
+
 		// If any filters were set from URL, dispatch APPLY_FILTERS to mark state as non-dirty
 		if (needsApply) {
 			dispatch({ type: FilterActionTypes.APPLY_FILTERS });
 		}
+
+		// Note: isInitialUrlLoadRef will be flipped to false by the auto-apply detection effect
+		// after it skips the first URL-based apply. This ensures correct timing.
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []); // Empty dependency array ensures this runs only once on mount
+
+	// TODO: Remove this effect - auto-apply analytics should be handled by the view
+	// when results are available, not immediately when filters change
+	//
+	// Effect to detect auto-apply and trigger analytics callback
+	useEffect(() => {
+		const { appliedFilters } = state;
+
+		// Capture previous value at the start to avoid race conditions
+		const prevFilters = prevAppliedFiltersRef.current;
+
+		// Skip on first render (when prevAppliedFiltersRef.current is undefined)
+		if (prevFilters === undefined) {
+			prevAppliedFiltersRef.current = appliedFilters;
+			return;
+		}
+
+		// Skip if this is the initial URL load - don't fire analytics for URL params
+		// After skipping once, mark initial load as complete
+		if (isInitialUrlLoadRef.current) {
+			prevAppliedFiltersRef.current = appliedFilters;
+			isInitialUrlLoadRef.current = false; // Mark initial load as complete
+			return;
+		}
+
+		// Check if appliedFilters changed but it wasn't due to manual apply
+		// This indicates auto-apply happened
+		if (appliedFilters !== prevFilters && !isDirty) {
+			// Check if this was a filter removal
+			if (pendingRemovedFieldRef.current) {
+				// Filter removal detected - call the onFilterCleared callback
+				onFilterCleared(appliedFilters, pendingRemovedFieldRef.current);
+				// Clear the pending field
+				pendingRemovedFieldRef.current = null;
+			} else {
+				// Filter addition/modification detected
+				// Determine which field was added by comparing old vs new filters
+				const fieldAdded = detectAddedField(prevFilters || {}, appliedFilters);
+
+				// Call the onFilterApplied callback with field information
+				// Note: resultCount will be updated when the view processes the results
+				onFilterApplied(appliedFilters, fieldAdded);
+			}
+		}
+
+		// Update ref AFTER all comparisons are done
+		prevAppliedFiltersRef.current = appliedFilters;
+	}, [state.appliedFilters, isDirty, onFilterApplied, onFilterCleared]);
 
 	// Validate pageType and configuration existence
 	if (!pageType || !PAGE_FILTER_CONFIGS[pageType]) {
@@ -485,12 +663,32 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		return null;
 	}
 
+	const renderAppliedFilters = () => {
+		if (hasActiveFilters()) {
+			return (
+			<>
+				<AppliedFilters pageType={pageType} onFilterRemoved={handleIndividualFilterRemoved} />
+				<div className="ctla-sidebar__actions">
+					<button className="usa-button ctla-sidebar__button--clear ctla-sidebar__button--full-width" onClick={handleClearFilters} disabled={isDisabled || !hasActiveFilters()}>
+						Clear Filters
+					</button>
+				</div>
+			</>
+			);
+		}
+		return null;
+	};
+
+	// Near the top of the component
+	// console.log('Sidebar - Rendering with isDirty:', state.isDirty);
+	// console.log('Sidebar - Current filters:', filters);
+
 	return (
 		<aside className="ctla-sidebar">
 			{/* Accordion Header for Mobile */}
 			<div className="usa-accordion ctla-sidebar__header">
 				<h2 className="usa-accordion__heading ctla-sidebar__title">
-					<button id="filterButton" type="button" className="usa-accordion__button" aria-expanded="true" aria-controls="accordionContent" onClick={setMobileOnClick}>
+					<button id="filterButton" type="button" className="usa-accordion__button" aria-expanded="true" aria-controls="accordionContent">
 						Filter Trials
 					</button>
 				</h2>
@@ -502,14 +700,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 					}
 					return null;
 				})}
-				<div className="ctla-sidebar__actions">
-					<button className="usa-button ctla-sidebar__button--clear" onClick={handleClearFilters} disabled={isDisabled || !hasActiveFilters()}>
-						Clear Filters
-					</button>
-					<button className="usa-button ctla-sidebar__button--apply" onClick={handleApplyFilters} disabled={isDisabled || !isDirty}>
-						Apply Filters
-					</button>
-				</div>
+				{renderAppliedFilters()}
 			</div>
 		</aside>
 	);

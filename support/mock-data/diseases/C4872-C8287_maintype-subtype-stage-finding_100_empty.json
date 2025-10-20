@@ -1,0 +1,31 @@
+{
+	"data": [
+		{
+			"name": "Bilateral Breast Cancer",
+			"codes": ["C8287"],
+			"ancestor_ids": ["C4872"],
+			"parent_ids": ["C4872"],
+			"type": ["subtype"],
+			"synonyms": ["Bilateral Breast Carcinoma"],
+			"count": 9
+		},
+		{
+			"name": "Breast Cancer",
+			"codes": ["C4872"],
+			"ancestor_ids": [],
+			"parent_ids": [],
+			"type": ["maintype"],
+			"synonyms": [
+				"Breast Carcinoma",
+				"Breast cancer, NOS",
+				"Cancer of Breast",
+				"Cancer of the Breast",
+				"Carcinoma of Breast",
+				"Carcinoma of the Breast",
+				"Mammary Carcinoma",
+				"breast cancer"
+			],
+			"count": 986
+		}
+	]
+}

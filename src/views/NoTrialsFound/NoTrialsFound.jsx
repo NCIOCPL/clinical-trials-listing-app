@@ -2,21 +2,20 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useTracking } from 'react-tracking';
-// Removed useLocation as it might not be needed anymore
-// import { useLocation } from 'react-router';
+import { useLocation } from 'react-router';
 
 import { CISBanner, NoResults } from '../../components';
 import { useStateValue } from '../../store/store';
 import { TokenParser } from '../../utils';
 import { FilterProvider } from '../../features/filters/context/FilterContext/FilterContext';
 import { Sidebar } from '../../features/filters/components';
+import { URL_PARAM_MAPPING } from '../../features/filters/constants/urlParams';
 import './NoTrialsFound.scss'; // Import our custom stylesheet that extends Disease.scss
 
 // Added redirectStatus and prerenderLocation props
 const NoTrialsFound = ({ routeParamMap, data, redirectStatus, prerenderLocation }) => {
 	// console.log('[NoTrialsFound] Rendering. Props:', { redirectStatus, prerenderLocation }); // LOG PROPS
-	// Removed location hook
-	// const location = useLocation();
+	const location = useLocation();
 	const tracking = useTracking();
 	const [{ baseHost, canonicalHost, dynamicListingPatterns, language, siteName, trialListingPageType }] = useStateValue();
 
@@ -145,6 +144,13 @@ const NoTrialsFound = ({ routeParamMap, data, redirectStatus, prerenderLocation 
 		}
 	}, {});
 
+	// Check if there are filter parameters in the URL using URL_PARAM_MAPPING
+	const urlParams = new URLSearchParams(location.search);
+	const hasFilterParams = urlParams.has(URL_PARAM_MAPPING.maintype.shortCode) || urlParams.has(URL_PARAM_MAPPING.subtype.shortCode) || urlParams.has(URL_PARAM_MAPPING.stage.shortCode) || urlParams.has(URL_PARAM_MAPPING.drugIntervention.shortCode) || urlParams.has(URL_PARAM_MAPPING.age.shortCode) || urlParams.has(URL_PARAM_MAPPING.zipCode.shortCode) || urlParams.has(URL_PARAM_MAPPING.radius.shortCode);
+
+	// console.log('[NoTrialsFound] URL params:', location.search, 'Has filter params:', hasFilterParams);
+	// console.log('[NoTrialsFound] Filter values - maintype:', urlParams.get(URL_PARAM_MAPPING.maintype.shortCode), 'subtype:', urlParams.get(URL_PARAM_MAPPING.subtype.shortCode), 'stage:', urlParams.get(URL_PARAM_MAPPING.stage.shortCode), 'drugIntervention:', urlParams.get(URL_PARAM_MAPPING.drugIntervention.shortCode), 'age:', urlParams.get(URL_PARAM_MAPPING.age.shortCode));
+
 	return (
 		<div className="disease-view no-trials-page">
 			{' '}
@@ -152,7 +158,7 @@ const NoTrialsFound = ({ routeParamMap, data, redirectStatus, prerenderLocation 
 			{renderHelmet()}
 			<FilterProvider baseFilters={baseFilters} pageType={trialListingPageType}>
 				<div className="disease-view__container">
-					<Sidebar pageType={trialListingPageType} isDisabled={true} />
+					<Sidebar pageType={trialListingPageType} isDisabled={!hasFilterParams} />
 					{/* H1 remains a direct child */}
 					<h1 className="disease-view__heading nci-heading-h1">{replacementText.pageTitle}</h1>
 					{/* Empty intro area for proper grid layout */}

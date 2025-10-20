@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 
 import { useCtsApi } from '../../../hooks/ctsApiSupport/useCtsApi';
@@ -5112,8 +5112,12 @@ describe('<Manual />', () => {
 		// Navigate to page 2 with next pager item. Confirm currently active page on top and bottom is 2
 		fireEvent.click(screen.getAllByRole('button', { name: 'Next page' })[0]);
 
-		expect(screen.getAllByRole('link', { name: 'Page 2' })[0]).toHaveClass('usa-pagination__button usa-current', { exact: true });
-		expect(screen.getAllByRole('link', { name: 'Page 2' })[1]).toHaveClass('usa-pagination__button usa-current', { exact: true });
+		await waitFor(() => {
+			expect(screen.getAllByRole('link', { name: 'Page 2' })[0]).toHaveClass('usa-pagination__button usa-current', { exact: true });
+		});
+		await waitFor(() => {
+			expect(screen.getAllByRole('link', { name: 'Page 2' })[1]).toHaveClass('usa-pagination__button usa-current', { exact: true });
+		});
 	});
 
 	it('should render <NoResults /> component when payload is empty', async () => {

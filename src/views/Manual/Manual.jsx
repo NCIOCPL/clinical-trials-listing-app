@@ -54,6 +54,13 @@ const Manual = () => {
 	}, [fetchState]);
 
 	useEffect(() => {
+		// Add ?pn=1 to URL on initial load if not present
+		if (!pn) {
+			const qryStr = appendOrUpdateToQueryString(search, 'pn', 1);
+			navigate(`${BasePath()}${qryStr}`, { replace: true });
+			return;
+		}
+
 		if (pn !== pager.page.toString()) {
 			setPager({
 				...pager,
@@ -152,7 +159,7 @@ const Manual = () => {
 										{renderPagerSection('top')}
 
 										<ScrollRestoration />
-										<ResultsListWithPage results={fetchState.payload.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} />
+										<ResultsListWithPage results={fetchState.payload.data} resultsItemTitleLink={detailedViewPagePrettyUrlFormatter} totalResults={fetchState.payload.total} />
 										{/* ::: Bottom Paging Section ::: */}
 										{renderPagerSection('bottom')}
 									</>

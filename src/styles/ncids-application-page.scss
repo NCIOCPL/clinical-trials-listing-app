@@ -1,11 +1,14 @@
 @use 'uswds-core' as *;
 
+@forward 'usa-tooltip';
+@forward 'usa-button';
 @forward 'usa-accordion';
 @forward 'usa-select';
 @forward 'usa-input';
 @forward 'usa-combo-box';
 @forward "usa-checkbox";
 @forward "usa-sidenav";
+@forward 'usa-tag';
 
 // fixed spacing issues with the sound, pause, and resume button
 #NCI-glossary-app-root,

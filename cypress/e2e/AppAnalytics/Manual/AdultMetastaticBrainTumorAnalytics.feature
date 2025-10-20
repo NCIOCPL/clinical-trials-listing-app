@@ -35,10 +35,16 @@ Feature: Manual listing page analytics
 		Then the page title is "Clinical Trials for Adult Metastatic Brain Tumors"
 		When user clicks on result item 1
 		Then there should be an analytics event with the following details
-			| key              | value                             |
-			| type             | Other                             |
-			| event            | TrialListingApp:Other:ResultClick |
-			| linkName         | CTSLink                           |
-			| data.resultIndex | (int)1                            |
-			| data.currentPage | (int)1                            |
+			| key                           | value                        |
+			| type                          | Other                        |
+			| event                         | TrialListingApp:ResultClick  |
+			| linkName                      | TrialListingApp:ResultClick  |
+			| data.resultIndex              | (int)1                       |
+			| data.numberResults            | (int)104                     |
+			| data.fieldsUsed               | none                         |
+			| data.age                      | none                         |
+			| data.currentPage              | (int)1                       |
+			| data.loc                      | none                         |
+			| data.filterAppliedCounter     | (int)0                       |
+			| data.filterRemovedCounter     | (int)0                       |
 

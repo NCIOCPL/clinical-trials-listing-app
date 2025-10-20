@@ -138,9 +138,13 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 	/**
 	 * Triggers ZIP code validation when a complete, valid ZIP is entered.
 	 * Resets states when ZIP is cleared.
+	 * Also validates on initial mount for values from URL.
 	 */
 	useEffect(() => {
 		if (zipCode && zipCode.length === 5 && isValidZipFormat(zipCode)) {
+			// Clear old coordinates immediately before starting new validation
+			setValidCoordinates(null);
+			setHasInvalidZip(false);
 			// Set validating state to true when starting validation
 			setIsValidating(true);
 
@@ -149,6 +153,12 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 				// Log error but don't display to user - UI will show invalid ZIP message
 				setIsValidating(false); // Ensure we reset state even if there's an error
 			});
+		} else if (zipCode && !isValidZipFormat(zipCode)) {
+			// Invalid format - show format error immediately
+			setFormatError('Please enter a valid U.S. ZIP code');
+			setHasInvalidZip(false);
+			setValidCoordinates(null);
+			setIsValidating(false);
 		} else if (!zipCode) {
 			// Reset all error states when zipCode is cleared (e.g. by clear filters button)
 			setFormatError('');
@@ -184,7 +194,7 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 	return (
 		<>
 			{/* ZIP Code Input Field */}
-			<FilterGroup title="Location by ZIP Code">
+			<FilterGroup title="Location by ZIP Code" helpText={FILTER_CONFIG.location.helpText}>
 				<div className={`usa-form-group ${error ? 'usa-form-group--error' : ''}`}>
 					{error && (
 						<span className="usa-error-message" id="zip-error" role="alert">
@@ -196,7 +206,7 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 			</FilterGroup>
 
 			{/* Radius Selection Dropdown */}
-			<FilterGroup title={FILTER_CONFIG.radius.title}>
+			<FilterGroup title={FILTER_CONFIG.radius.title} helpText={FILTER_CONFIG.radius.helpText}>
 				<div className="usa-combo-box">
 					<select id="radius-filter" name="radius" aria-label="Select search radius" className="usa-select usa-combo-box__select form-control" value={radius || (zipCode ? '100' : '')} onChange={onRadiusChange} onFocus={onFocus} disabled={disabled || !zipCode || error}>
 						<option value="">Select</option>

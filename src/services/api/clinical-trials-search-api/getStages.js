@@ -1,6 +1,7 @@
-import querystring from 'query-string';
+import qs from 'qs';
 
 /**
+ *
  * Fetches stages based on ancestor id of main type to populate the Stage field
  *
  * @param {import("axios").AxiosInstance} client An axios instance with the correct baseURL
@@ -8,7 +9,9 @@ import querystring from 'query-string';
  */
 export const getStages = async (client, query) => {
 	try {
-		const res = await client.get(`/diseases?${querystring.stringify(query)}`);
+		const queryString = qs.stringify(query, { arrayFormat: 'repeat' });
+
+		const res = await client.get(`/diseases?${queryString}`);
 		if (res.status === 200) {
 			return res.data;
 		} else {

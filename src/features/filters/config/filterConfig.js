@@ -11,20 +11,22 @@ import { URL_PARAM_MAPPING } from '../constants/urlParams';
  * Values are objects containing configuration details for that filter.
  */
 export const FILTER_CONFIG = {
+	maintype: {
+		title: 'Primary Cancer Type/Condition',
+		type: 'combobox',
+		multiSelect: false,
+		helpText: 'Filter trials by the type of cancer being studied',
+		placeholder: 'Start typing to select a type',
+		urlParam: URL_PARAM_MAPPING.maintype?.shortCode,
+	},
 	// Configuration for the 'Subtype' filter
 	subtype: {
 		title: 'Subtype', // Display title for the filter group
 		type: 'combobox', // Type of input control (used for rendering logic)
-		multiSelect: true, // Allows multiple selections
-		helpText: 'More than one selection may be made.', // Tooltip text
-		placeholder: 'Start typing to select a subtype', // Placeholder for input
-		options: [
-			// Static options (can be overridden by dynamic options)
-			{ id: 'her2_pos', label: 'HER2-Positive', value: 'her2_pos' },
-			{ id: 'her2_neg', label: 'HER2-Negative', value: 'her2_neg' },
-			{ id: 'triple_neg', label: 'Triple Negative', value: 'triple_neg' },
-		],
-		// urlParam: URL_PARAM_MAPPING.subtype.shortCode, // Link to URL parameter mapping (if applicable)
+		multiSelect: false, // Single selection for simplicity
+		helpText: 'The smaller groups that the primary cancer can be divided into', // Tooltip text
+		placeholder: '', // Placeholder for input
+		urlParam: URL_PARAM_MAPPING.subtype.shortCode, // Link to URL parameter mapping
 	},
 
 	// Configuration for the 'Stage' filter
@@ -32,21 +34,18 @@ export const FILTER_CONFIG = {
 		title: 'Stage',
 		type: 'combobox',
 		multiSelect: false, // Only single selection allowed
+		helpText: 'Select the extent of the cancer in the body',
 		placeholder: 'Select',
-		options: [
-			{ id: 'stage_1', label: 'Stage I', value: 'stage_1' },
-			{ id: 'stage_2', label: 'Stage II', value: 'stage_2' },
-		],
-		// urlParam: URL_PARAM_MAPPING.stage.shortCode,
+		urlParam: URL_PARAM_MAPPING.stage.shortCode,
 	},
 
-	// Configuration for the 'Drug/Intervention' filter
+	// Configuration for the 'Drug/Drug Family' filter
 	drugIntervention: {
-		title: 'Drug/Intervention',
+		title: 'Drug / Drug Family',
 		type: 'combobox', // Likely uses dynamic options fetched elsewhere
-		multiSelect: true,
-		helpText: "You can use the drug's generic or brand name. More than one selection may be made.",
-		placeholder: 'Start typing to select drugs and/or drug combinations',
+		multiSelect: false, // Single selection only
+		helpText: 'Start typing to select a drug and/or drug family',
+		placeholder: 'Start typing to select',
 		// urlParam: URL_PARAM_MAPPING.drugIntervention.shortCode,
 	},
 
@@ -54,6 +53,7 @@ export const FILTER_CONFIG = {
 	age: {
 		title: 'Age',
 		type: 'number', // Numeric input type
+		helpText: 'Enter the age of the participant',
 		placeholder: 'Enter the age of the participant.',
 		min: 1, // Minimum allowed age
 		max: 120, // Maximum allowed age
@@ -64,14 +64,16 @@ export const FILTER_CONFIG = {
 	location: {
 		title: 'Location by Zip Code',
 		type: 'text', // Text input for ZIP code
+		helpText: 'Enter a valid U.S. ZIP code',
 		placeholder: 'Enter U.S. Zip Code',
 		urlParam: URL_PARAM_MAPPING.zipCode.shortCode, // Associated URL parameter
 	},
 
 	// Configuration for the 'Radius' filter (used with Location)
 	radius: {
-		title: 'Radius',
+		title: 'Distance from Location',
 		type: 'select', // Dropdown select input
+		helpText: 'Select miles within search radius',
 		options: [
 			// Static radius options
 			{ id: '20', label: '20 miles', value: '20' },

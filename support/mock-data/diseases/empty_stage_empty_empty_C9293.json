@@ -1,0 +1,699 @@
+{
+    "data": [
+        {
+            "name": "Recurrent Adamantinomatous Craniopharyngioma",
+            "codes": [
+                "C162612"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Anaplastic Astrocytoma",
+            "codes": [
+                "C136517"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Anaplastic Ependymoma",
+            "codes": [
+                "C160912"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Anaplastic Ganglioglioma",
+            "codes": [
+                "C160914"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Anaplastic Oligoastrocytoma",
+            "codes": [
+                "C142861"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Anaplastic Oligodendroglioma",
+            "codes": [
+                "C142862"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Anaplastic Pleomorphic Xanthoastrocytoma",
+            "codes": [
+                "C160904"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Atypical Teratoid/Rhabdoid Tumor",
+            "codes": [
+                "C133499"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C6906",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C6906"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Brain Neoplasm",
+            "codes": [
+                "C71698",
+                "C7834"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Brain Stem Glioma",
+            "codes": [
+                "C9190"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Central Nervous System Lymphoma",
+            "codes": [
+                "C138019"
+            ],
+            "ancestor_ids": [
+                "C27134",
+                "C3208",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3208",
+                "C9293"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Central Nervous System Neoplasm",
+            "codes": [
+                "C9045"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Diffuse Astrocytoma",
+            "codes": [
+                "C167081"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Diffuse Intrinsic Pontine Glioma (DIPG)",
+            "codes": [
+                "C136518"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Diffuse Midline Glioma, H3 K27M-Mutant",
+            "codes": [
+                "C179222"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Ependymal Tumor",
+            "codes": [
+                "C131617"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Ependymoma",
+            "codes": [
+                "C157601",
+                "C8579"
+            ],
+            "ancestor_ids": [
+                "C3017",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3017"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Giant Cell Glioblastoma",
+            "codes": [
+                "C157600"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Glioblastoma",
+            "codes": [
+                "C126306",
+                "C115364"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Glioma",
+            "codes": [
+                "C132506"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Gliosarcoma",
+            "codes": [
+                "C131209"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Grade II Glioma",
+            "codes": [
+                "C148037"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Grade III Glioma",
+            "codes": [
+                "C148038"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Intracranial Neoplasm",
+            "codes": [
+                "C173154"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Low Grade Astrocytoma",
+            "codes": [
+                "C176464"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Malignant Brain Neoplasm",
+            "codes": [
+                "C153837"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Malignant Central Nervous System Neoplasm",
+            "codes": [
+                "C153823"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Malignant Glioma",
+            "codes": [
+                "C142848"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Medulloblastoma",
+            "codes": [
+                "C5588",
+                "C6774"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Medulloblastoma, SHH-Activated",
+            "codes": [
+                "C147109"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Meningioma",
+            "codes": [
+                "C5312"
+            ],
+            "ancestor_ids": [
+                "C3230",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3230"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Metastatic Malignant Neoplasm in the Leptomeninges",
+            "codes": [
+                "C173916"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Oligodendroglioma",
+            "codes": [
+                "C160737"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Pilocytic Astrocytoma",
+            "codes": [
+                "C115372"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C60781",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C60781"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Primary Central Nervous System Neoplasm",
+            "codes": [
+                "C71700"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Small Cell Glioblastoma",
+            "codes": [
+                "C163961"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Spinal Cord Neoplasm",
+            "codes": [
+                "C71699"
+            ],
+            "ancestor_ids": [
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C9293"
+            ],
+            "type": [
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Supratentorial Glioblastoma",
+            "codes": [
+                "C174202"
+            ],
+            "ancestor_ids": [
+                "C3058",
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3058"
+            ],
+            "type": [
+                "grade",
+                "stage"
+            ]
+        },
+        {
+            "name": "Recurrent Visual Pathway Glioma",
+            "codes": [
+                "C155983",
+                "C7529"
+            ],
+            "ancestor_ids": [
+                "C3059",
+                "C3268",
+                "C9293"
+            ],
+            "parent_ids": [
+                "C3059"
+            ],
+            "type": [
+                "stage"
+            ]
+        }
+    ],
+    "total": 39
+}

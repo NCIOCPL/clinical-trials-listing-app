@@ -32,9 +32,15 @@ Feature: Disease listing page analytics
         Then the page title is "Breast Cancer Clinical Trials"
         When user clicks on result item 2
         Then there should be an analytics event with the following details
-            | key              | value                             |
-            | type             | Other                             |
-            | event            | TrialListingApp:Other:ResultClick |
-            | linkName         | CTSLink                           |
-            | data.resultIndex | (int)2                            |
-            | data.currentPage | (int)1                            |
+            | key                          | value                        |
+            | type                         | Other                        |
+            | event                        | TrialListingApp:ResultClick  |
+            | linkName                     | TrialListingApp:ResultClick  |
+            | data.resultIndex             | (int)2                       |
+            | data.numberResults           | (int)953                     |
+            | data.fieldsUsed              | none                         |
+            | data.age                     | none                         |
+            | data.currentPage             | (int)1                       |
+            | data.loc                     | none                         |
+            | data.filterAppliedCounter    | (int)0                       |
+            | data.filterRemovedCounter    | (int)0                       |

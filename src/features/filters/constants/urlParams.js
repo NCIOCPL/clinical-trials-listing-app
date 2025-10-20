@@ -19,6 +19,22 @@ export const URL_PARAM_MAPPING = {
 		shortCode: 'pn',
 		longName: 'page',
 	},
+	maintype: {
+		shortCode: 't',
+		longName: 'maintype',
+	},
+	subtype: {
+		shortCode: 'st',
+		longName: 'subtype',
+	},
+	stage: {
+		shortCode: 'stg',
+		longName: 'stage',
+	},
+	drugIntervention: {
+		shortCode: 'd',
+		longName: 'drugIntervention',
+	},
 };
 
 /**

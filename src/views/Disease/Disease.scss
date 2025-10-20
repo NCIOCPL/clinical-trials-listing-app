@@ -52,6 +52,7 @@
 .disease-view {
 	&__container {
 		display: grid;
+		align-items: start;
 		@include u-maxw('widescreen');
 		@include u-margin(0);
 		@include u-padding-right(2);
@@ -59,6 +60,7 @@
 
 		// Desktop grid
 		grid-template-columns: units('mobile') 1fr;
+		grid-template-rows: min-content min-content 1fr;
 		grid-template-areas:
       "sidebar heading"
       "sidebar intro"
@@ -67,6 +69,7 @@
 		@include at-media-max('desktop') {
 			// Mobile grid
 			grid-template-columns: 1fr;
+			grid-template-rows: auto auto auto auto;
 			grid-template-areas:
         "heading"
         "intro"
@@ -93,7 +96,7 @@
 
 	.ctla-sidebar {
 		grid-area: sidebar;
-		@include u-margin-bottom('205');
+		//@include u-margin-bottom('205');
 		@include u-padding-top(0);
 
 		h2 {

@@ -13,6 +13,7 @@ import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
 import { URL_PARAM_MAPPING } from '../../constants/urlParams';
 import { getLocationFilters } from '../../utils/locationUtils';
 import { isValidZipFormat } from '../../utils/locationUtils';
+import { AUTO_APPLY_ENABLED, AUTO_APPLY_DELAY_MS, AUTO_APPLY_DELAYS_BY_TYPE } from '../../constants/autoApply';
 
 /**
  * Action types for the filter reducer.
@@ -25,6 +26,9 @@ export const FilterActionTypes = {
 	REMOVE_FILTER: 'REMOVE_FILTER', // Remove a specific filter value
 	SET_BASE_FILTERS: 'SET_BASE_FILTERS', // Set base filters (e.g., disease, intervention)
 	SET_ZIP_COORDINATES: 'SET_ZIP_COORDINATES', // Set coordinates for ZIP code
+	SCHEDULE_AUTO_APPLY: 'SCHEDULE_AUTO_APPLY', // Schedule auto-apply timer
+	CANCEL_AUTO_APPLY: 'CANCEL_AUTO_APPLY', // Cancel pending auto-apply
+	START_AUTO_APPLY: 'START_AUTO_APPLY', // Start auto-apply process
 };
 
 /**
@@ -33,13 +37,28 @@ export const FilterActionTypes = {
  */
 const initialState = {
 	filters: {
+		maintype: [],
+		subtype: [],
+		stage: [],
+		drugIntervention: [],
 		age: '',
 		location: {
 			zipCode: '',
 			radius: null,
 		},
 	},
-	appliedFilters: [], // Filters that have been applied (after clicking "Apply")
+	appliedFilters: {
+		maintype: [],
+		subtype: [],
+		stage: [],
+		drugIntervention: [],
+		age: '',
+		location: {
+			zipCode: '',
+			radius: null,
+		},
+	},
+	isInitializingFromURL: false, // Filters that have been applied (after clicking "Apply")
 	baseFilters: {}, // Base filters that are always applied (e.g., disease type)
 	isDirty: false, // Whether filters have been modified but not applied
 	shouldSearch: true, // Whether a search should be triggered
@@ -49,6 +68,10 @@ const initialState = {
 	preservedParams: '', // URL parameters to preserve
 	zipCoords: null, // Coordinates for the current ZIP code
 	appliedZipCoords: null, // Coordinates for the applied ZIP code
+	autoApplyTimerId: null, // Timer ID for auto-apply
+	isAutoApplying: false, // Whether auto-apply is in progress
+	pendingAutoApply: false, // Whether auto-apply is pending
+	lastChangedFilter: null, // Track which filter was last changed
 };
 
 /**
@@ -68,21 +91,155 @@ function filterReducer(state, action) {
 	let paramPairs = null;
 	let orderedParams = null;
 	switch (action.type) {
-		case FilterActionTypes.SET_FILTER:
+		case FilterActionTypes.SET_FILTER: {
+			// // Log the incoming action
+			// console.log('[FilterContext] SET_FILTER action - filterType:', action.payload.filterType, 'value:', action.payload.value);
+			// console.log('[FilterContext] SET_FILTER - current state.filters:', state.filters);
+			// console.log('[FilterContext] SET_FILTER - current state.appliedFilters:', state.appliedFilters);
 			// Ignore if filter type is not enabled for this page
 			if (!enabledFilters.includes(action.payload.filterType)) {
+				// console.log('[FilterContext] SET_FILTER - filterType not enabled:', action.payload.filterType);
 				return state;
 			}
+
+			const newFilters = { ...state.filters };
+			// console.log('FilterContext - SET_FILTER - newFilters before modification:', newFilters);
+			if (action.payload.filterType === 'maintype') {
+				// console.log('[MAINTYPE DEBUG] Setting maintype, isNewPageLoad:', action.payload.isNewPageLoad, 'isInitializingFromURL:', state.isInitializingFromURL);
+				// console.log('[MAINTYPE DEBUG] Current subtype before:', newFilters.subtype);
+				newFilters[action.payload.filterType] = action.payload.value;
+				// Only clear subtypes when maintype changes from user interaction, not during URL initialization
+				// Check both isNewPageLoad flag and isInitializingFromURL state
+				if (!action.payload.isNewPageLoad && !state.isInitializingFromURL) {
+					// console.log('[MAINTYPE DEBUG] Clearing subtype because NOT new page load AND NOT initializing from URL');
+					newFilters.subtype = []; // Clear subtypes when maintype changes
+				} else {
+					// console.log('[MAINTYPE DEBUG] Preserving subtype because IS new page load OR IS initializing from URL');
+				}
+
+				// Special case: Apply immediately for maintype changes (both select and clear)
+				// BUT not during URL initialization where multiple filters need to be set first
+				if (AUTO_APPLY_ENABLED && !action.payload.isNewPageLoad) {
+					return {
+						...state,
+						filters: newFilters,
+						appliedFilters: { ...newFilters },
+						isDirty: false,
+						shouldSearch: true,
+						pendingAutoApply: false,
+						lastChangedFilter: action.payload.filterType,
+					};
+				}
+			} else if (action.payload.filterType === 'subtype' || action.payload.filterType === 'stage' || action.payload.filterType === 'drugIntervention') {
+				if (action.payload.filterType === 'subtype') {
+					// console.log('[SUBTYPE DEBUG] Setting subtype:', action.payload.value, 'isNewPageLoad:', action.payload.isNewPageLoad);
+				}
+				newFilters[action.payload.filterType] = action.payload.value;
+				// console.log('[FilterContext] SET_FILTER - drugIntervention branch, newFilters after update:', newFilters);
+
+				// Apply immediately for subtype, stage, and drugIntervention changes (both select and clear)
+				// BUT not during URL initialization where multiple filters need to be set first
+				if (AUTO_APPLY_ENABLED && !action.payload.isNewPageLoad) {
+					const newState = {
+						...state,
+						filters: newFilters,
+						appliedFilters: { ...newFilters },
+						isDirty: false,
+						shouldSearch: true,
+						pendingAutoApply: false,
+						lastChangedFilter: action.payload.filterType,
+					};
+					// console.log('[FilterContext] SET_FILTER - returning new state with filters:', newState.filters);
+					// console.log('[FilterContext] SET_FILTER - returning new state with appliedFilters:', newState.appliedFilters);
+					return newState;
+				}
+			} else {
+				newFilters[action.payload.filterType] = action.payload.value;
+			}
+
+			let newIsDirty = false;
+			// Compare newFilters with appliedFilters if appliedFilters is not empty
+			if (Object.keys(state.appliedFilters).length > 0) {
+				for (const key in newFilters) {
+					// Ensure the key exists in appliedFilters before comparison,
+					// or if it doesn't, it means a new filter type was added (hence dirty).
+					// Also check if the key is part of the initial state's filter structure.
+					if (Object.prototype.hasOwnProperty.call(initialState.filters, key)) {
+						const filterValue = newFilters[key];
+						const appliedValue = state.appliedFilters[key];
+
+						if (typeof filterValue === 'object' && filterValue !== null) {
+							if (JSON.stringify(filterValue) !== JSON.stringify(appliedValue)) {
+								newIsDirty = true;
+								break;
+							}
+						} else {
+							if (filterValue !== appliedValue) {
+								newIsDirty = true;
+								break;
+							}
+						}
+					} else {
+						// A key exists in newFilters that wasn't in initialState.filters, consider it dirty.
+						if (newFilters[key] !== undefined && newFilters[key] !== null && (Array.isArray(newFilters[key]) ? newFilters[key].length > 0 : newFilters[key] !== '')) {
+							newIsDirty = true;
+							break;
+						}
+					}
+				}
+			} else {
+				// If appliedFilters is empty (e.g., initial load, or after clear),
+				// compare with initialState.filters.
+				// It's dirty if any filter in newFilters differs from its corresponding initial default.
+				for (const key in newFilters) {
+					if (Object.prototype.hasOwnProperty.call(initialState.filters, key)) {
+						const filterValue = newFilters[key];
+						const initialDefaultValue = initialState.filters[key];
+						if (typeof filterValue === 'object' && filterValue !== null) {
+							if (JSON.stringify(filterValue) !== JSON.stringify(initialDefaultValue)) {
+								newIsDirty = true;
+								break;
+							}
+						} else {
+							if (filterValue !== initialDefaultValue) {
+								newIsDirty = true;
+								break;
+							}
+						}
+					} else {
+						// Similar to above, if a new key appears that wasn't in initial defaults and has a value.
+						if (newFilters[key] !== undefined && newFilters[key] !== null && (Array.isArray(newFilters[key]) ? newFilters[key].length > 0 : newFilters[key] !== '')) {
+							newIsDirty = true;
+							break;
+						}
+					}
+				}
+			}
+
+			// Clear zipCoords when location zipCode changes to prevent stale coordinates
+			let newZipCoords = state.zipCoords;
+			if (action.payload.filterType === 'location') {
+				const oldZipCode = state.filters.location?.zipCode;
+				const newZipCode = action.payload.value?.zipCode;
+				// If zipcode changed, clear old coordinates
+				if (oldZipCode !== newZipCode) {
+					newZipCoords = null;
+				}
+			}
+
 			return {
 				...state,
-				filters: {
-					...state.filters,
-					[action.payload.filterType]: action.payload.value,
-				},
-				isDirty: true, // Mark as dirty since filter was changed
+				filters: newFilters,
+				zipCoords: newZipCoords,
+				isDirty: newIsDirty,
+				pendingAutoApply: AUTO_APPLY_ENABLED && newIsDirty,
+				lastChangedFilter: action.payload.filterType,
 			};
-
+		}
 		case FilterActionTypes.APPLY_FILTERS: {
+			// console.log('FilterContext - APPLY_FILTERS - current state filters:', state.filters);
+			// console.log('FilterContext - APPLY_FILTERS - current state appliedFilters:', state.appliedFilters);
+
 			isNewPageLoad = action.payload?.isNewPageLoad;
 			preservedParams = action.payload?.preservedParams;
 
@@ -104,17 +261,41 @@ function filterReducer(state, action) {
 				newAppliedZipCoords = state.zipCoords;
 			}
 
-			return {
+			// Ensure we're not accidentally clearing user selections
+			const filtersToApply = state.filters;
+			// console.log('FilterContext - APPLY_FILTERS - filters to apply:', filtersToApply);
+
+			// Create appliedFilters with validation - exclude invalid location filters
+			const appliedFiltersToSet = { ...filtersToApply };
+
+			// Validate location filter before adding to appliedFilters
+			if (appliedFiltersToSet.location?.zipCode && (!isValidZipFormat(appliedFiltersToSet.location.zipCode) || !state.zipCoords)) {
+				// Remove invalid location filter from appliedFilters (but keep it in filters for UI)
+				delete appliedFiltersToSet.location;
+			}
+
+			const newState = {
 				...state,
-				appliedFilters: { ...state.filters }, // Copy current filters to applied filters
+				filters: filtersToApply, // Preserve current filter selections (including invalid ones for UI)
+				appliedFilters: appliedFiltersToSet, // Only valid filters are applied
 				isDirty: false, // No longer dirty after applying
 				shouldSearch: true, // Should trigger a search
-				isInitialLoad: isNewPageLoad || false,
+				isInitialLoad: isNewPageLoad || false, // Only true for new page loads
 				preservedParams: preservedParams || '',
 				currentPage: pageNumber || '1',
 				paramOrder: Array.from(orderedParams.keys()),
 				appliedZipCoords: newAppliedZipCoords,
+				autoApplyTimerId: null,
+				isAutoApplying: false,
+				pendingAutoApply: false,
 			};
+
+			// console.log('FilterContext - APPLY_FILTERS - isNewPageLoad:', isNewPageLoad, 'resulting isInitialLoad:', newState.isInitialLoad);
+
+			// console.log('FilterContext - APPLY_FILTERS - new state filters:', newState.filters);
+			// console.log('FilterContext - APPLY_FILTERS - new state appliedFilters:', newState.appliedFilters);
+
+			return newState;
 		}
 
 		case FilterActionTypes.CLEAR_FILTERS:
@@ -126,10 +307,12 @@ function filterReducer(state, action) {
 			return {
 				...state,
 				filters: clearedFilters,
-				appliedFilters: [],
+				appliedFilters: { ...clearedFilters },
 				isDirty: false,
 				shouldSearch: true,
 				appliedZipCoords: null,
+				pendingAutoApply: false,
+				autoApplyTimerId: null,
 			};
 
 		case FilterActionTypes.REMOVE_FILTER: {
@@ -146,12 +329,23 @@ function filterReducer(state, action) {
 					zipCode: '',
 					radius: null,
 				};
+			} else {
+				updatedFilters[filterType] = null;
+			}
+
+			// Update appliedFilters as well when auto-apply is enabled
+			let updatedAppliedFilters = state.appliedFilters;
+			if (AUTO_APPLY_ENABLED) {
+				updatedAppliedFilters = { ...updatedFilters };
 			}
 
 			return {
 				...state,
 				filters: updatedFilters,
-				isDirty: true,
+				appliedFilters: updatedAppliedFilters,
+				isDirty: !AUTO_APPLY_ENABLED,
+				pendingAutoApply: AUTO_APPLY_ENABLED,
+				lastChangedFilter: filterType,
 			};
 		}
 
@@ -160,11 +354,40 @@ function filterReducer(state, action) {
 				...state,
 				baseFilters: action.payload,
 			};
+		case 'SET_URL_INIT_FLAG':
+			return {
+				...state,
+				isInitializingFromURL: action.payload,
+			};
 
 		case FilterActionTypes.SET_ZIP_COORDINATES:
 			return {
 				...state,
 				zipCoords: action.payload,
+			};
+
+		case FilterActionTypes.SCHEDULE_AUTO_APPLY:
+			return {
+				...state,
+				autoApplyTimerId: action.payload.timerId,
+			};
+
+		case FilterActionTypes.CANCEL_AUTO_APPLY:
+			// Clear the timer if it exists
+			if (state.autoApplyTimerId) {
+				clearTimeout(state.autoApplyTimerId);
+			}
+			return {
+				...state,
+				autoApplyTimerId: null,
+				pendingAutoApply: false,
+			};
+
+		case FilterActionTypes.START_AUTO_APPLY:
+			return {
+				...state,
+				isAutoApplying: true,
+				pendingAutoApply: false,
 			};
 
 		default:
@@ -207,12 +430,26 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 	 */
 	useEffect(() => {
 		let params = new URLSearchParams(location.search);
+
+		// Check for invalid zipcode and remove it from URL entirely
+		const zipFromUrl = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
+		if (zipFromUrl && !/^\d{5}$/.test(zipFromUrl)) {
+			// Remove invalid zipcode and radius from URL
+			params.delete(URL_PARAM_MAPPING.zipCode.shortCode);
+			params.delete(URL_PARAM_MAPPING.radius.shortCode);
+
+			// Update URL without the invalid parameters
+			const newSearch = params.toString();
+			const newUrl = newSearch ? `?${newSearch}` : location.pathname;
+			window.history.replaceState(null, '', newUrl);
+		}
+
 		let filtersFromUrl = getFiltersFromURL(params);
 		let isNewPageLoad = true;
 
 		// Preserve non-filter URL parameters
 		let paramOrder = Array.from(params.keys());
-		let filterParams = [URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
+		let filterParams = [URL_PARAM_MAPPING.maintype.shortCode, URL_PARAM_MAPPING.subtype.shortCode, URL_PARAM_MAPPING.stage.shortCode, URL_PARAM_MAPPING.drugIntervention.shortCode, URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
 		let preservedParamsMap = new Map();
 
 		for (const key of paramOrder) {
@@ -226,25 +463,99 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 			.join('&');
 
 		// Set filters from URL if they exist
+		// console.log('[FilterContext URL Effect] filtersFromUrl:', filtersFromUrl);
+		// console.log('[FilterContext URL Effect] current state.filters:', state.filters);
+		// console.log('[FilterContext URL Effect] current state.appliedFilters:', state.appliedFilters);
+
 		if (Object.keys(filtersFromUrl).length > 0) {
+			// Set flag that we're initializing from URL
+			dispatch({ type: 'SET_URL_INIT_FLAG', payload: true });
+
 			Object.entries(filtersFromUrl).forEach(([filterType, value]) => {
 				dispatch({
 					type: FilterActionTypes.SET_FILTER,
 					payload: { filterType, value, isNewPageLoad },
 				});
 			});
+
+			// Clear the flag after all filters are set
+			dispatch({ type: 'SET_URL_INIT_FLAG', payload: false });
+
 			dispatch({
 				type: FilterActionTypes.APPLY_FILTERS,
 				payload: { isNewPageLoad, preservedParams: preservedParams.toString() },
 			});
 		} else {
-			// Just apply empty filters if no URL parameters
+			// console.log('FilterContext - URL initialization - no URL filters, applying current filters');
+			// Just apply current filters if no URL parameters - don't clear existing state
 			dispatch({
 				type: FilterActionTypes.APPLY_FILTERS,
 				payload: { isNewPageLoad, preservedParams: preservedParams.toString() },
 			});
 		}
 	}, [location.pathname]);
+
+	/**
+	 * Effect specifically for handling invalid zipcode URL parameters.
+	 * Runs when search params change to clean invalid zipcodes.
+	 */
+	useEffect(() => {
+		const params = new URLSearchParams(location.search);
+		const zipFromUrl = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
+
+		// Only process if there's an invalid zipcode
+		if (zipFromUrl && !/^\d{5}$/.test(zipFromUrl)) {
+			const radiusFromUrl = params.get(URL_PARAM_MAPPING.radius.shortCode);
+
+			// Store invalid values for form population
+			const invalidZipForForm = zipFromUrl;
+			const invalidRadiusForForm = radiusFromUrl;
+
+			// Remove invalid zipcode and radius from URL
+			params.delete(URL_PARAM_MAPPING.zipCode.shortCode);
+			params.delete(URL_PARAM_MAPPING.radius.shortCode);
+
+			// Update URL without the invalid parameters
+			const newSearch = params.toString();
+
+			// Use setTimeout to avoid potential infinite loops
+			setTimeout(() => {
+				navigate(
+					{
+						pathname: location.pathname,
+						search: newSearch ? `?${newSearch}` : '',
+					},
+					{ replace: true }
+				);
+			}, 0);
+
+			// Add invalid zipcode to filters for form population
+			const filtersFromUrl = {
+				location: {
+					zipCode: invalidZipForForm,
+					radius: invalidRadiusForForm || '100',
+				},
+			};
+
+			// Set flag that we're initializing from URL
+			dispatch({ type: 'SET_URL_INIT_FLAG', payload: true });
+
+			Object.entries(filtersFromUrl).forEach(([filterType, value]) => {
+				dispatch({
+					type: FilterActionTypes.SET_FILTER,
+					payload: { filterType, value, isNewPageLoad: true },
+				});
+			});
+
+			// Clear the flag after all filters are set
+			dispatch({ type: 'SET_URL_INIT_FLAG', payload: false });
+
+			dispatch({
+				type: FilterActionTypes.APPLY_FILTERS,
+				payload: { isNewPageLoad: true, preservedParams: '' },
+			});
+		}
+	}, [location.search]);
 
 	/**
 	 * Helper function to validate ZIP code and apply filters.
@@ -285,8 +596,16 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 							payload: response.data,
 						});
 
-						// THEN apply filters
-						dispatch({ type: FilterActionTypes.APPLY_FILTERS });
+						// For ZIP validation, apply immediately after coordinates are set
+						if (AUTO_APPLY_ENABLED) {
+							// Apply filters immediately for location changes
+							setTimeout(() => {
+								dispatch({ type: FilterActionTypes.APPLY_FILTERS });
+							}, 500);
+						} else {
+							// Legacy behavior: apply immediately
+							dispatch({ type: FilterActionTypes.APPLY_FILTERS });
+						}
 					} else {
 						// Don't apply filters with invalid zipcode
 						// Invalid ZIP code - silently handle
@@ -314,11 +633,49 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		const zipParam = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
 		const radiusParam = params.get(URL_PARAM_MAPPING.radius.shortCode);
 
-		// If we have a ZIP code from URL parameters, handle it specially
-		if (zipParam) {
+		// If we have a valid ZIP code from URL parameters, handle it specially
+		if (zipParam && /^\d{5}$/.test(zipParam)) {
 			validateZipcodeAndApplyFilters(zipParam, radiusParam);
 		}
 	}, [location.pathname, location.search, zipConversionEndpoint, validateZipcodeAndApplyFilters]);
+
+	/**
+	 * Effect to handle auto-apply timer when filters change.
+	 * Automatically applies filters after a delay when pendingAutoApply is true.
+	 */
+	useEffect(() => {
+		if (state.pendingAutoApply && AUTO_APPLY_ENABLED) {
+			// Clear existing timer if it exists
+			if (state.autoApplyTimerId) {
+				clearTimeout(state.autoApplyTimerId);
+			}
+
+			// Get delay based on last changed filter type
+			const delay = AUTO_APPLY_DELAYS_BY_TYPE[state.lastChangedFilter] || AUTO_APPLY_DELAY_MS;
+
+			// Set new timer for auto-apply
+			const timerId = setTimeout(() => {
+				// console.log('FilterContext - Auto-apply timer fired - current filters:', state.filters);
+				// console.log('FilterContext - Auto-apply timer fired - lastChangedFilter:', state.lastChangedFilter);
+
+				dispatch({ type: FilterActionTypes.START_AUTO_APPLY });
+				dispatch({ type: FilterActionTypes.APPLY_FILTERS });
+			}, delay);
+
+			// Store the timer ID
+			dispatch({
+				type: FilterActionTypes.SCHEDULE_AUTO_APPLY,
+				payload: { timerId },
+			});
+
+			// Cleanup function to clear timer on unmount
+			return () => {
+				if (timerId) {
+					clearTimeout(timerId);
+				}
+			};
+		}
+	}, [state.pendingAutoApply, state.filters, state.lastChangedFilter]);
 
 	/**
 	 * Effect to update URL parameters when filters are applied.
@@ -326,13 +683,14 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 	 */
 	useEffect(() => {
 		if (!state.isDirty && state.shouldSearch) {
+			// console.log('FilterContext - URL sync effect - isDirty:', state.isDirty, 'shouldSearch:', state.shouldSearch);
 			let params = new URLSearchParams(window.location.search);
 			let isInitialLoad = state.isInitialLoad;
 			const originalPn = params.get('pn');
 
 			// Preserve non-filter URL parameters
 			let paramOrder = Array.from(params.keys());
-			let filterParams = [URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
+			let filterParams = [URL_PARAM_MAPPING.maintype.shortCode, URL_PARAM_MAPPING.subtype.shortCode, URL_PARAM_MAPPING.stage.shortCode, URL_PARAM_MAPPING.drugIntervention.shortCode, URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
 			let updatedParams = new Map();
 
 			// Handle non-filter parameters
@@ -354,6 +712,75 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 
 			// Add filter parameters if they exist
 			if (Object.keys(state.appliedFilters).length > 0) {
+				// Handle maintype parameter
+				if (state.appliedFilters.maintype?.length > 0 && state.appliedFilters.maintype[0]) {
+					const maintypeIndex = paramOrder.indexOf(URL_PARAM_MAPPING.maintype.shortCode);
+					if (maintypeIndex >= 0) {
+						// Preserve parameter order if maintype already exists in URL
+						const temp = new Map();
+						for (const [key, value] of updatedParams.entries()) {
+							if (paramOrder.indexOf(key) < maintypeIndex) {
+								temp.set(key, value);
+							}
+						}
+						temp.set(URL_PARAM_MAPPING.maintype.shortCode, state.appliedFilters.maintype[0]);
+						for (const [key, value] of updatedParams.entries()) {
+							if (paramOrder.indexOf(key) > maintypeIndex) {
+								temp.set(key, value);
+							}
+						}
+						updatedParams = temp;
+					} else {
+						updatedParams.set(URL_PARAM_MAPPING.maintype.shortCode, state.appliedFilters.maintype[0]);
+					}
+				}
+
+				// Handle subtype parameter
+				if (state.appliedFilters.subtype?.length > 0 && state.appliedFilters.subtype[0]) {
+					const subtypeIndex = paramOrder.indexOf(URL_PARAM_MAPPING.subtype.shortCode);
+					if (subtypeIndex >= 0) {
+						// Preserve parameter order if subtype already exists in URL
+						const temp = new Map();
+						for (const [key, value] of updatedParams.entries()) {
+							if (paramOrder.indexOf(key) < subtypeIndex) {
+								temp.set(key, value);
+							}
+						}
+						temp.set(URL_PARAM_MAPPING.subtype.shortCode, state.appliedFilters.subtype[0]);
+						for (const [key, value] of updatedParams.entries()) {
+							if (paramOrder.indexOf(key) > subtypeIndex) {
+								temp.set(key, value);
+							}
+						}
+						updatedParams = temp;
+					} else {
+						updatedParams.set(URL_PARAM_MAPPING.subtype.shortCode, state.appliedFilters.subtype[0]);
+					}
+				}
+
+				// Handle stage parameter
+				if (state.appliedFilters.stage?.length > 0 && state.appliedFilters.stage[0]) {
+					const stageIndex = paramOrder.indexOf(URL_PARAM_MAPPING.stage.shortCode);
+					if (stageIndex >= 0) {
+						// Preserve parameter order if subtype already exists in URL
+						const temp = new Map();
+						for (const [key, value] of updatedParams.entries()) {
+							if (paramOrder.indexOf(key) < stageIndex) {
+								temp.set(key, value);
+							}
+						}
+						temp.set(URL_PARAM_MAPPING.stage.shortCode, state.appliedFilters.stage[0]);
+						for (const [key, value] of updatedParams.entries()) {
+							if (paramOrder.indexOf(key) > stageIndex) {
+								temp.set(key, value);
+							}
+						}
+						updatedParams = temp;
+					} else {
+						updatedParams.set(URL_PARAM_MAPPING.stage.shortCode, state.appliedFilters.stage[0]);
+					}
+				}
+
 				// Handle age parameter
 				if (state.appliedFilters.age?.toString().trim() !== '') {
 					const ageIndex = paramOrder.indexOf(URL_PARAM_MAPPING.age.shortCode);
@@ -374,6 +801,26 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 						updatedParams = temp;
 					} else {
 						updatedParams.set(URL_PARAM_MAPPING.age.shortCode, state.appliedFilters.age);
+					}
+				}
+
+				// Handle drugIntervention parameter
+				if (state.appliedFilters.drugIntervention?.length > 0) {
+					let drugCodes = [];
+
+					// Handle both drug objects and concept code strings
+					state.appliedFilters.drugIntervention.forEach((item) => {
+						if (typeof item === 'string') {
+							// Direct concept code
+							drugCodes.push(item);
+						} else if (item && item.codes && item.codes[0]) {
+							// Drug object with codes array
+							drugCodes.push(item.codes[0]);
+						}
+					});
+
+					if (drugCodes.length > 0) {
+						updatedParams.set(URL_PARAM_MAPPING.drugIntervention.shortCode, drugCodes.join(','));
 					}
 				}
 
@@ -416,14 +863,29 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 				.map(([key, value]) => `${key}=${value}`)
 				.join('&');
 
-			// Update the URL without adding to browser history
-			navigate(
-				{
-					pathname: location.pathname,
-					search: queryString ? `?${queryString}` : '',
-				},
-				{ replace: true }
-			);
+			// Update the URL - create history entry for user-initiated filter changes, replace for initial loads
+			const shouldReplace = state.isInitialLoad;
+			// console.log('FilterContext - URL update - shouldReplace:', shouldReplace, 'isInitialLoad:', state.isInitialLoad);
+			const currentSearch = window.location.search;
+			const newSearch = queryString ? `?${queryString}` : '';
+
+			// console.log('FilterContext - URL update - current URL:', window.location.href);
+			// console.log('FilterContext - URL update - current search:', currentSearch);
+			// console.log('FilterContext - URL update - new search params:', newSearch);
+
+			// Only navigate if the URL would actually change
+			if (currentSearch !== newSearch) {
+				// console.log('FilterContext - URL update - URL changed, navigating with replace:', shouldReplace);
+				navigate(
+					{
+						pathname: location.pathname,
+						search: newSearch,
+					},
+					{ replace: shouldReplace }
+				);
+			} else {
+				// console.log('FilterContext - URL update - URL unchanged, skipping navigation');
+			}
 		}
 	}, [state.appliedFilters, state.isDirty, state.shouldSearch, location.pathname, navigate]);
 
@@ -434,6 +896,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 	 * @returns {object} Filters formatted for the API request.
 	 */
 	const transformFiltersToApi = (filters) => {
+		// console.log('FilterContext - transformFiltersToApi - input filters:', filters);
 		let apiFilters = {};
 
 		// Transform age filter
@@ -442,13 +905,52 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 			apiFilters['eligibility.structured.max_age_in_years_gte'] = filters.age;
 		}
 
+		// Transform maintype filter
+		if (filters.maintype && Array.isArray(filters.maintype) && filters.maintype.length > 0) {
+			// console.log('FilterContext - transformFiltersToApi - maintype found:', filters.maintype);
+			apiFilters['maintype'] = filters.maintype;
+		}
+
+		// Transform subtype filter
+		if (filters.subtype && Array.isArray(filters.subtype) && filters.subtype.length > 0) {
+			apiFilters['subtype'] = filters.subtype;
+		}
+
+		// Transform stage filter
+		if (filters.stage && Array.isArray(filters.stage) && filters.stage.length > 0) {
+			apiFilters['stage'] = filters.stage;
+		}
+
+		// Transform drugIntervention filter
+		if (filters.drugIntervention && Array.isArray(filters.drugIntervention) && filters.drugIntervention.length > 0) {
+			let drugCodes = [];
+
+			// Handle both drug objects and concept code strings
+			filters.drugIntervention.forEach((item) => {
+				if (typeof item === 'string') {
+					// Direct concept code from URL
+					drugCodes.push(item);
+				} else if (item && item.codes && item.codes[0]) {
+					// Drug object with codes array
+					drugCodes.push(item.codes[0]);
+				}
+			});
+
+			if (drugCodes.length > 0) {
+				apiFilters['arms.interventions.nci_thesaurus_concept_id'] = drugCodes;
+			}
+		}
+
 		// Transform location filter using utility function
 		const locationFilters = getLocationFilters(filters.location, state.appliedZipCoords);
 
-		return {
+		const finalApiFilters = {
 			...apiFilters,
 			...locationFilters,
 		};
+
+		// console.log('FilterContext - transformFiltersToApi - final API filters:', finalApiFilters);
+		return finalApiFilters;
 	};
 
 	/**

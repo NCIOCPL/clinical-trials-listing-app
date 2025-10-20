@@ -32,21 +32,49 @@ export const getFiltersFromURL = (search) => {
 		}
 	}
 
+	// Handle maintype param
+	const maintypeValue = params.get(URL_PARAM_MAPPING.maintype.shortCode);
+	if (maintypeValue) {
+		filters.maintype = [maintypeValue]; // Store as array to match filter state structure
+	}
+
+	// Handle subtype param
+	const subtypeValue = params.get(URL_PARAM_MAPPING.subtype.shortCode);
+	if (subtypeValue) {
+		filters.subtype = [subtypeValue]; // Store as array to match filter state structure
+	}
+
+	// Handle stage param
+	const stageValue = params.get(URL_PARAM_MAPPING.stage.shortCode);
+	if (stageValue) {
+		filters.stage = [stageValue]; // Store as array to match filter state structure
+	}
+
+	// Handle drugIntervention param (comma-separated concept codes)
+	const drugInterventionValue = params.get(URL_PARAM_MAPPING.drugIntervention.shortCode);
+	if (drugInterventionValue) {
+		// Store as concept codes only - the DrugInterventionFilter will handle loading full drug data
+		const codes = drugInterventionValue.split(',').filter((code) => code.trim());
+		if (codes.length > 0) {
+			// Store just the concept codes, DrugInterventionFilter will fetch drug details
+			filters.drugIntervention = codes;
+		}
+	}
+
 	// Handle zip and radius params with validation
 	const zip = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
 	const radius = params.get(URL_PARAM_MAPPING.radius.shortCode);
 
-	if (zip || radius) {
-		// Validate ZIP format if present
-		const validZip = zip ? /^\d{5}$/.test(zip) : true;
+	// Only process location if we have a zip code
+	if (zip) {
+		// Only add valid zipcodes to filters
+		const validZip = /^\d{5}$/.test(zip);
 
 		if (validZip) {
 			filters.location = {
-				zipCode: zip || '',
-				radius: radius || (zip ? '100' : ''),
+				zipCode: zip,
+				radius: radius || '100',
 			};
-		} else {
-			console.warn('Invalid ZIP code in URL:', zip);
 		}
 	}
 
@@ -59,11 +87,17 @@ export const updateURLWithFilters = (filters, existingSearch) => {
 
 	// Clear any existing filter params
 	params.delete(URL_PARAM_MAPPING.age.shortCode);
+	params.delete(URL_PARAM_MAPPING.maintype.shortCode);
 	// We can add other filter param deletions here as needed
 
 	// Add new filter params
 	if (filters.age?.length) {
 		filters.age.forEach((age) => params.append(URL_PARAM_MAPPING.age.shortCode, age));
+	}
+
+	// Add maintype param if it exists
+	if (filters.maintype?.length && filters.maintype[0]) {
+		params.set(URL_PARAM_MAPPING.maintype.shortCode, filters.maintype[0]);
 	}
 
 	// Add location params if they exist
