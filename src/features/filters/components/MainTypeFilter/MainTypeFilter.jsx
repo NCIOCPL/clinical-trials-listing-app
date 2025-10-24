@@ -7,7 +7,7 @@ import { useMainTypeSearch } from '../../../../hooks/ctsApiSupport/useMainTypeSe
 import ComboBox from '../ComboBox/ComboBox';
 import './MainTypeFilter.scss';
 
-const MainTypeFilter = ({ onFocus, disabled = false }) => {
+const MainTypeFilter = ({ onFocus, disabled = false, setIsInvalidQuery }) => {
 	const { state, dispatch } = useFilters();
 	const { filters } = state;
 	const isHandlingChangeRef = useRef(false);
@@ -38,6 +38,43 @@ const MainTypeFilter = ({ onFocus, disabled = false }) => {
 		}
 	}, [formattedOptions.length]);
 
+	// Detect if we need to load maintype data for concept codes from URL
+	const conceptCodeFromUrl = React.useMemo(() => {
+		if (Array.isArray(filters.maintype) && filters.maintype.length > 0) {
+			return filters.maintype[0];
+		}
+		return null;
+	}, [filters.maintype]);
+
+	// Effect to update filter when maintype data loads from URL
+	React.useEffect(() => {
+		const matchingMaintype = formattedOptions.find((option) => option.value && option.value.includes(conceptCodeFromUrl));
+		// console.log('[DrugInterventionFilter useEffect] conceptCodeFromUrl:', conceptCodeFromUrl, 'drugsByCode:', drugsByCode, 'isLoadingByCode:', isLoadingByCode);
+		if (conceptCodeFromUrl) {
+			if (formattedOptions.length > 0) {
+				// Find the maintype with matching concept code
+				if (matchingMaintype) {
+					// If a valid query param then set isInvalidQuery to false
+					setIsInvalidQuery(false);
+				} else if (!isLoading && !matchingMaintype) {
+					// If invalid query param then set isInvalidQuery to true
+					setIsInvalidQuery(true);
+					// If invalid query param then clear out all the filters
+					dispatch({
+						type: 'CLEAR_FILTERS',
+					});
+					// console.log('[DrugInterventionFilter] No matching drug found for code:', conceptCodeFromUrl, 'Available drugs:', drugsByCode);
+				}
+			}
+		}
+	}, [conceptCodeFromUrl, formattedOptions, isLoading, dispatch]);
+
+	// Effect to update isInvalidQuery if there is no invalid query parameter
+	React.useEffect(() => {
+		if (Array.isArray(filters.maintype) && filters.maintype.length > 0 && filters.maintype[0].name) {
+			setIsInvalidQuery(false);
+		}
+	}, [filters.maintype]);
 	// // Debug logging
 	// console.log('MainTypeFilter - render - filters:', filters);
 	// console.log('MainTypeFilter - render - value:', value);
@@ -122,6 +159,7 @@ const MainTypeFilter = ({ onFocus, disabled = false }) => {
 MainTypeFilter.propTypes = {
 	onFocus: PropTypes.func,
 	disabled: PropTypes.bool,
+	setIsInvalidQuery: PropTypes.func,
 };
 
 export default MainTypeFilter;

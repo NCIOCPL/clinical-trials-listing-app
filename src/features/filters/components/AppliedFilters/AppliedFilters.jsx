@@ -222,18 +222,14 @@ const AppliedFilters = ({ pageType = 'Disease', onFilterRemoved = () => {}, isIn
 		return false;
 	};
 
-	const hasVisibleFilters = () => {
-		return filtersArray.some((filter) => {
-			if (isEmptyFilter(filter)) return null;
+	const hasVisibleFilters = filtersArray.some((filter) => {
+		if (isEmptyFilter(filter)) return null;
 
-			const formattedFilter = formatFilterLabel(filter);
-			return formattedFilter?.label?.length > 0;
-		});
-	};
+		const formattedFilter = formatFilterLabel(filter);
+		return formattedFilter?.label?.length > 0;
+	});
 
-	if (!hasVisibleFilters) {
-		return null;
-	}
+	if (!hasVisibleFilters) return null;
 
 	return (
 		<div className="applied-filters">
@@ -243,18 +239,12 @@ const AppliedFilters = ({ pageType = 'Disease', onFilterRemoved = () => {}, isIn
 			<div className="applied-filters__content">
 				{/* Map through each applied filter group */}
 				{filtersArray.map((filter) => {
-					let emptyFilter = filter.values == null || filter.values == null || filter.values.length === 0 || (filter.type == 'location' && (filter.values.radius == null || filter.values.radius == undefined));
-					if (emptyFilter) {
-						return null;
-					}
+					if (isEmptyFilter(filter)) return null;
 
 					const formattedFilter = formatFilterLabel(filter);
 					// console.log('[AppliedFilters] formatFilterLabel returned:', formattedFilter);
 					// Skip if formatFilterLabel returns null (e.g., incomplete drugIntervention data)
-					if (!formattedFilter) {
-						// console.log('[AppliedFilters] formattedFilter is null, skipping');
-						return null;
-					}
+					if (!formattedFilter) return null;
 
 					const { label } = formattedFilter;
 					// Map through each value within the filter group (most have one, some like subtype can have multiple)
