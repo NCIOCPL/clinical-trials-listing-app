@@ -9,7 +9,7 @@ import ComboBox from '../ComboBox/ComboBox';
 
 import { useStageSearch } from '../../../../hooks/ctsApiSupport/useStageSearch';
 
-const StageFilter = ({ disabled = false, onFocus }) => {
+const StageFilter = ({ disabled = false, onFocus, setIsInvalidQuery }) => {
 	const { state, dispatch } = useFilters();
 	const { filters } = state;
 	const isHandlingChangeRef = useRef(false);
@@ -18,7 +18,6 @@ const StageFilter = ({ disabled = false, onFocus }) => {
 	const maintypeCode = filters.maintype && filters.maintype.length > 0 ? filters.maintype[0] : null;
 
 	const { options, isLoading } = useStageSearch(maintypeCode);
-	// console.log(options);
 	const formattedOptions = useMemo(() => {
 		return options.map((option) => ({
 			value: option.value || option.id || '',
@@ -28,6 +27,49 @@ const StageFilter = ({ disabled = false, onFocus }) => {
 
 	// Initialize value as empty array if not already set
 	const value = Array.isArray(filters.stage) ? filters.stage : [];
+
+	// Detect if we need to load stage data for concept codes from URL
+	const conceptCodeFromUrl = React.useMemo(() => {
+		if (Array.isArray(filters.stage) && filters.stage.length > 0) {
+			return filters.stage[0];
+		}
+		return null;
+	}, [filters.stage]);
+
+	// Effect to update filter when stage data loads from URL
+	React.useEffect(() => {
+		const matchingStage = formattedOptions.find((option) => option.value && option.value.includes(conceptCodeFromUrl));
+		if (conceptCodeFromUrl) {
+			if (formattedOptions.length > 0 && maintypeCode) {
+				// Find the stage with matching concept code
+				if (matchingStage) {
+					// If a valid query param then set isInvalidQuery to false
+					setIsInvalidQuery(false);
+				} else if (!isLoading && !matchingStage) {
+					// If invalid query param then set isInvalidQuery to true
+					setIsInvalidQuery(true);
+					// If invalid query param then clear out all the filters
+					dispatch({
+						type: 'CLEAR_FILTERS',
+					});
+				}
+			} else if (!maintypeCode) {
+				// If invalid query param then set isInvalidQuery to true
+				setIsInvalidQuery(true);
+				// If invalid query param then clear out all the filters
+				dispatch({
+					type: 'CLEAR_FILTERS',
+				});
+			}
+		}
+	}, [conceptCodeFromUrl, formattedOptions, isLoading, dispatch]);
+
+	// Effect to update isInvalidQuery if there is no invalid query parameter
+	React.useEffect(() => {
+		if (Array.isArray(filters.stage) && filters.stage.length > 0 && filters.stage[0].name) {
+			setIsInvalidQuery(false);
+		}
+	}, [filters.stage]);
 
 	const handleChange = (selectedValue) => {
 		// Prevent recursive onChange calls
@@ -80,5 +122,6 @@ const StageFilter = ({ disabled = false, onFocus }) => {
 StageFilter.propTypes = {
 	disabled: PropTypes.bool,
 	onFocus: PropTypes.func,
+	setIsInvalidQuery: PropTypes.func,
 };
 export default StageFilter;

@@ -395,11 +395,11 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			case 'drugIntervention':
 				return <DrugInterventionFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} setIsInvalidQuery={setIsInvalidQuery}/>;
 			case 'maintype':
-				return <MainTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
+				return <MainTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} setIsInvalidQuery={setIsInvalidQuery} />;
 			case 'subtype':
-				return <Subtype onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
+				return <Subtype onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} setIsInvalidQuery={setIsInvalidQuery} />;
 			case 'stage':
-				return <StageFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
+				return <StageFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} setIsInvalidQuery={setIsInvalidQuery}/>;
 			case 'age':
 				return (
 					<AgeFilter

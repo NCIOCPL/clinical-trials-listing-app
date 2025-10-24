@@ -8,7 +8,7 @@ import './Subtype.scss';
 import { useSubTypeSearch } from '../../../../hooks/ctsApiSupport/useSubTypeSearch';
 import ComboBox from '../ComboBox/ComboBox';
 
-const Subtype = ({ disabled = false, onFocus }) => {
+const Subtype = ({ disabled = false, onFocus, setIsInvalidQuery }) => {
 	const { state, dispatch } = useFilters();
 	const { filters } = state;
 
@@ -28,6 +28,49 @@ const Subtype = ({ disabled = false, onFocus }) => {
 
 	// Initialize value as empty array if not already set
 	const value = Array.isArray(filters.subtype) ? filters.subtype : [];
+
+	// Detect if we need to load subtype data for concept codes from URL
+	const conceptCodeFromUrl = React.useMemo(() => {
+		if (Array.isArray(filters.subtype) && filters.subtype.length > 0) {
+			return filters.subtype[0];
+		}
+		return null;
+	}, [filters.subtype]);
+
+	// Effect to update filter when subtype data loads from URL
+	React.useEffect(() => {
+		const matchingSubtype = formattedOptions.find((option) => option.value && option.value.includes(conceptCodeFromUrl));
+		if (conceptCodeFromUrl) {
+			if (formattedOptions.length > 0 && maintypeCode) {
+				// Find the subtype with matching concept code
+				if (matchingSubtype) {
+					// If a valid query param then set isInvalidQuery to false
+					setIsInvalidQuery(false);
+				} else if (!isLoading && !matchingSubtype) {
+					// If invalid query param then set isInvalidQuery to true
+					setIsInvalidQuery(true);
+					// If invalid query param then clear out all the filters
+					dispatch({
+						type: 'CLEAR_FILTERS',
+					});
+				}
+			} else if (!maintypeCode) {
+				// If invalid query param then set isInvalidQuery to true
+				setIsInvalidQuery(true);
+				// If invalid query param then clear out all the filters
+				dispatch({
+					type: 'CLEAR_FILTERS',
+				});
+			}
+		}
+	}, [conceptCodeFromUrl, formattedOptions, isLoading, dispatch]);
+
+	// Effect to update isInvalidQuery if there is no invalid query parameter
+	React.useEffect(() => {
+		if (Array.isArray(filters.subtype) && filters.subtype.length > 0 && filters.subtype[0].name) {
+			setIsInvalidQuery(false);
+		}
+	}, [filters.subtype]);
 
 	const handleChange = (selectedValue) => {
 		// Guard against ComboBox calling onChange with undefined during initialization
@@ -67,6 +110,7 @@ const Subtype = ({ disabled = false, onFocus }) => {
 Subtype.propTypes = {
 	disabled: PropTypes.bool,
 	onFocus: PropTypes.func,
+	setIsInvalidQuery: PropTypes.func,
 };
 
 export default Subtype;
