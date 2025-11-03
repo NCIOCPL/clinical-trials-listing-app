@@ -108,11 +108,12 @@ function filterReducer(state, action) {
 				// console.log('[MAINTYPE DEBUG] Setting maintype, isNewPageLoad:', action.payload.isNewPageLoad, 'isInitializingFromURL:', state.isInitializingFromURL);
 				// console.log('[MAINTYPE DEBUG] Current subtype before:', newFilters.subtype);
 				newFilters[action.payload.filterType] = action.payload.value;
-				// Only clear subtypes when maintype changes from user interaction, not during URL initialization
+				// Only clear subtypes and stages when maintype changes from user interaction, not during URL initialization
 				// Check both isNewPageLoad flag and isInitializingFromURL state
 				if (!action.payload.isNewPageLoad && !state.isInitializingFromURL) {
 					// console.log('[MAINTYPE DEBUG] Clearing subtype because NOT new page load AND NOT initializing from URL');
 					newFilters.subtype = []; // Clear subtypes when maintype changes
+					newFilters.stage = []; // Clear stages when maintype changes
 				} else {
 					// console.log('[MAINTYPE DEBUG] Preserving subtype because IS new page load OR IS initializing from URL');
 				}
