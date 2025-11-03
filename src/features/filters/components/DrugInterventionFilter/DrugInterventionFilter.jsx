@@ -36,30 +36,42 @@ const DrugInterventionFilter = ({ onFocus, disabled = false }) => {
 	}, [filters.drugIntervention]);
 
 	// Use drug search to load drug data by concept code if needed
-	const { drugs: drugsByCode } = useDrugSearchByCode(conceptCodeFromUrl);
+	const { drugs: drugsByCode, isLoading: isLoadingByCode } = useDrugSearchByCode(conceptCodeFromUrl);
 
 	// Effect to update filter when drug data loads from URL
 	React.useEffect(() => {
-		// console.log('[DrugInterventionFilter useEffect] conceptCodeFromUrl:', conceptCodeFromUrl, 'drugsByCode:', drugsByCode);
-		if (conceptCodeFromUrl && drugsByCode.length > 0) {
-			// Find the drug with matching concept code
-			const matchingDrug = drugsByCode.find((drug) => drug.codes && drug.codes.includes(conceptCodeFromUrl));
-			if (matchingDrug) {
-				// console.log('[DrugInterventionFilter] Found matching drug, dispatching SET_FILTER:', matchingDrug);
-				// Update the filter with the complete drug object (without isFallback flag)
+		// console.log('[DrugInterventionFilter useEffect] conceptCodeFromUrl:', conceptCodeFromUrl, 'drugsByCode:', drugsByCode, 'isLoadingByCode:', isLoadingByCode);
+		if (conceptCodeFromUrl) {
+			if (drugsByCode.length > 0) {
+				// Find the drug with matching concept code
+				const matchingDrug = drugsByCode.find((drug) => drug.codes && drug.codes.includes(conceptCodeFromUrl));
+				if (matchingDrug) {
+					// console.log('[DrugInterventionFilter] Found matching drug, dispatching SET_FILTER:', matchingDrug);
+					// Update the filter with the complete drug object (without isFallback flag)
+					dispatch({
+						type: 'SET_FILTER',
+						payload: {
+							filterType: 'drugIntervention',
+							value: [matchingDrug],
+						},
+					});
+					// console.log('[DrugInterventionFilter] Dispatched SET_FILTER with drug object');
+				} else {
+					// console.log('[DrugInterventionFilter] No matching drug found for code:', conceptCodeFromUrl, 'Available drugs:', drugsByCode);
+				}
+			} else if (!isLoadingByCode && drugsByCode.length === 0) {
+				// API finished loading but returned no results - clear the invalid code
+				// console.log('[DrugInterventionFilter] No drugs found for invalid code, clearing filter');
 				dispatch({
 					type: 'SET_FILTER',
 					payload: {
 						filterType: 'drugIntervention',
-						value: [matchingDrug],
+						value: [],
 					},
 				});
-				// console.log('[DrugInterventionFilter] Dispatched SET_FILTER with drug object');
-			} else {
-				// console.log('[DrugInterventionFilter] No matching drug found for code:', conceptCodeFromUrl, 'Available drugs:', drugsByCode);
 			}
 		}
-	}, [conceptCodeFromUrl, drugsByCode, dispatch]);
+	}, [conceptCodeFromUrl, drugsByCode, isLoadingByCode, dispatch]);
 
 	// Get selected drug from filters (single object, not array)
 	const selectedDrug = React.useMemo(() => {
