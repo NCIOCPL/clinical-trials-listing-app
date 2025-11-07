@@ -99,6 +99,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	const isInitialUrlLoadRef = useRef(true); // Track if this is the first load from URL params
 	const pendingRemovedFieldRef = useRef(null); // Track which field was just removed
 	const pendingAddedFieldRef = useRef(null); // Track which field was just added
+	const [isInvalidQuery, setIsInvalidQuery] = useState(false); // Tracks if user has entered an invalid query parameter in the url
 
 	/**
 	 * Validates the current filter values (age range, zip format, radius presence).
@@ -392,7 +393,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	const renderFilter = (filterType, isDisabled) => {
 		switch (filterType) {
 			case 'drugIntervention':
-				return <DrugInterventionFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
+				return <DrugInterventionFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} setIsInvalidQuery={setIsInvalidQuery}/>;
 			case 'maintype':
 				return <MainTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'subtype':
@@ -665,17 +666,22 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		return null;
 	}
 
-	const renderAppliedFilters = () => {
-		if (hasActiveFilters()) {
+	const renderClearButton = () => {
+		if (hasActiveFilters() || isInvalidQuery) {
 			return (
-			<>
-				<AppliedFilters pageType={pageType} onFilterRemoved={handleIndividualFilterRemoved} />
 				<div className="ctla-sidebar__actions">
 					<button className="usa-button ctla-sidebar__button--clear ctla-sidebar__button--full-width" onClick={handleClearFilters} disabled={isDisabled || !hasActiveFilters()}>
 						Clear Filters
 					</button>
 				</div>
-			</>
+			);
+		}
+	};
+
+	const renderAppliedFilters = () => {
+		if (hasActiveFilters()) {
+			return (
+				<AppliedFilters pageType={pageType} onFilterRemoved={handleIndividualFilterRemoved} isInvalidQuery={isInvalidQuery} setIsInvalidQuery={setIsInvalidQuery} />
 			);
 		}
 		return null;
@@ -703,6 +709,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 					return null;
 				})}
 				{renderAppliedFilters()}
+				{renderClearButton()}
 			</div>
 		</aside>
 	);
