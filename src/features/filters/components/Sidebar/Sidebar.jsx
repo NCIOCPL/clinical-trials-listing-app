@@ -615,7 +615,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	//
 	// Effect to detect auto-apply and trigger analytics callback
 	useEffect(() => {
-		const { appliedFilters } = state;
+		const { appliedFilters, isInitialLoad } = state;
 
 		// Capture previous value at the start to avoid race conditions
 		const prevFilters = prevAppliedFiltersRef.current;
@@ -631,6 +631,13 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		if (isInitialUrlLoadRef.current) {
 			prevAppliedFiltersRef.current = appliedFilters;
 			isInitialUrlLoadRef.current = false; // Mark initial load as complete
+			return;
+		}
+
+		// Skip if this change is from URL navigation (e.g., back button)
+		// isInitialLoad is true when FilterContext applies filters from URL params
+		if (isInitialLoad) {
+			prevAppliedFiltersRef.current = appliedFilters;
 			return;
 		}
 

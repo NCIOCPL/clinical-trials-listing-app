@@ -51,8 +51,6 @@ Feature: EDDL Analytics Events for Filters
 		And browser waits
 		And the NCIDataLayer is cleared
 		When the user types "65" into the Age filter input
-		And enters "20850" in the zip code filter
-		And selects "50" from the radius dropdown
 		And browser waits 3 seconds
 		Then there should be an analytics event with the following details
 			| key                          | value                              |
@@ -61,11 +59,27 @@ Feature: EDDL Analytics Events for Filters
 			| linkName                     | TrialListingApp:FilterApply        |
 			| data.fieldAdded              | a                                  |
 			| data.interactionType         | filter modified                    |
+			| data.numberResults           | (int)918                          |
+			| data.fieldsUsed              | a                                  |
+			| data.a                       | a\|65                             |
+			| data.filterAppliedCounter    | (int)1                            |
+			| data.filterRemovedCounter    | (int)0                            |
+		And the NCIDataLayer is cleared
+		When enters "20850" in the zip code filter
+		And selects "50" from the radius dropdown
+		And browser waits 3 seconds
+		Then there should be an analytics event with the following details
+			| key                          | value                              |
+			| type                         | Other                              |
+			| event                        | TrialListingApp:FilterApply        |
+			| linkName                     | TrialListingApp:FilterApply        |
+			| data.fieldAdded              | loc                                |
+			| data.interactionType         | filter modified                    |
 			| data.numberResults           | (int)90                           |
 			| data.fieldsUsed              | a:loc                              |
 			| data.loc                     | z\|20850\|50                      |
 			| data.a                       | a\|65                             |
-			| data.filterAppliedCounter    | (int)1                            |
+			| data.filterAppliedCounter    | (int)2                            |
 			| data.filterRemovedCounter    | (int)0                            |
 
 	Scenario: EDDL:TrialListingApp:FilterApply event fires when clearing all filters
