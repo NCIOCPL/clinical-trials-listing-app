@@ -3,7 +3,7 @@
  * system for all filter-related functionality in the application. It handles filter state,
  * URL synchronization, ZIP code validation and geocoding, and transforming filters to API parameters.
  */
-import React, { createContext, useContext, useReducer, useEffect, useState, useCallback } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, useState, useCallback, useMemo } from 'react';
 import axios from 'axios';
 import { useStateValue } from '../../../../store/store.jsx';
 import PropTypes from 'prop-types';
@@ -29,6 +29,7 @@ export const FilterActionTypes = {
 	SCHEDULE_AUTO_APPLY: 'SCHEDULE_AUTO_APPLY', // Schedule auto-apply timer
 	CANCEL_AUTO_APPLY: 'CANCEL_AUTO_APPLY', // Cancel pending auto-apply
 	START_AUTO_APPLY: 'START_AUTO_APPLY', // Start auto-apply process
+	RESET_INITIAL_LOAD: 'RESET_INITIAL_LOAD', // Reset isInitialLoad flag after URL sync
 };
 
 /**
@@ -391,6 +392,12 @@ function filterReducer(state, action) {
 				pendingAutoApply: false,
 			};
 
+		case FilterActionTypes.RESET_INITIAL_LOAD:
+			return {
+				...state,
+				isInitialLoad: false,
+			};
+
 		default:
 			return state;
 	}
@@ -424,6 +431,18 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 
 	const location = useLocation();
 	const navigate = useNavigate();
+
+	// Extract only filter-related params from URL for dependency tracking
+	// This prevents the effect from running when non-filter params (like pn for pagination) change
+	const filterParamsString = useMemo(() => {
+		const params = new URLSearchParams(location.search);
+		const filterParamKeys = [URL_PARAM_MAPPING.maintype.shortCode, URL_PARAM_MAPPING.subtype.shortCode, URL_PARAM_MAPPING.stage.shortCode, URL_PARAM_MAPPING.drugIntervention.shortCode, URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
+		return filterParamKeys
+			.filter((key) => params.has(key))
+			.map((key) => `${key}=${params.get(key)}`)
+			.sort()
+			.join('&');
+	}, [location.search]);
 
 	/**
 	 * Effect to initialize filters from URL parameters when the path changes.
@@ -494,7 +513,8 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 				payload: { isNewPageLoad, preservedParams: preservedParams.toString() },
 			});
 		}
-	}, [location.pathname]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [location.pathname, filterParamsString]);
 
 	/**
 	 * Effect specifically for handling invalid zipcode URL parameters.
@@ -887,8 +907,17 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 			} else {
 				// console.log('FilterContext - URL update - URL unchanged, skipping navigation');
 			}
+
+			// Reset isInitialLoad flag after URL sync completes
+			// This ensures analytics fire correctly for subsequent user interactions
+			if (state.isInitialLoad) {
+				const resetTimer = setTimeout(() => {
+					dispatch({ type: FilterActionTypes.RESET_INITIAL_LOAD });
+				}, 100); // Small delay to ensure navigation completes
+				return () => clearTimeout(resetTimer);
+			}
 		}
-	}, [state.appliedFilters, state.isDirty, state.shouldSearch, location.pathname, navigate]);
+	}, [state.appliedFilters, state.isDirty, state.shouldSearch, state.isInitialLoad, location.pathname, navigate]);
 
 	/**
 	 * Transforms the applied filter state into the format expected by the API.
