@@ -1,6 +1,6 @@
 import React, { useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useFilters } from '../../context/FilterContext/FilterContext';
+import { useFilters, FilterActionTypes } from '../../context/FilterContext/FilterContext';
 import FilterGroup from '../FilterGroup';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import './StageFilter.scss';
@@ -8,11 +8,18 @@ import './StageFilter.scss';
 import ComboBox from '../ComboBox/ComboBox';
 
 import { useStageSearch } from '../../../../hooks/ctsApiSupport/useStageSearch';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { URL_PARAM_MAPPING } from '../../constants/urlParams';
 
-const StageFilter = ({ disabled = false, onFocus, setIsInvalidQuery }) => {
-	const { state, dispatch } = useFilters();
+const StageFilter = ({ disabled = false, onFocus, dispatch: dispatchFromProps }) => {
+	const { state, dispatch: dispatchFromContext } = useFilters();
+	// Use dispatch from props if provided (for invalid query handling), otherwise use context dispatch
+	const dispatch = dispatchFromProps || dispatchFromContext;
 	const { filters } = state;
 	const isHandlingChangeRef = useRef(false);
+	const hasValidatedUrlParamRef = useRef(false);
+	const navigate = useNavigate();
+	const location = useLocation();
 
 	// Get the selected maintype code from filters
 	const maintypeCode = filters.maintype && filters.maintype.length > 0 ? filters.maintype[0] : null;
@@ -37,17 +44,17 @@ const StageFilter = ({ disabled = false, onFocus, setIsInvalidQuery }) => {
 	}, [filters.stage]);
 
 	// Effect to update filter when stage data loads from URL
+	// Note: This effect only sets isInvalidQuery to true when invalid params are detected.
+	// It does NOT set isInvalidQuery to false - that is handled by FilterContext
+	// to avoid race conditions where one valid component clears the error set by another invalid component.
 	React.useEffect(() => {
 		const matchingStage = formattedOptions.find((option) => option.value && option.value.includes(conceptCodeFromUrl));
 		if (conceptCodeFromUrl) {
 			if (formattedOptions.length > 0 && maintypeCode) {
 				// Find the stage with matching concept code
-				if (matchingStage) {
-					// If a valid query param then set isInvalidQuery to false
-					setIsInvalidQuery(false);
-				} else if (!isLoading && !matchingStage) {
+				if (!isLoading && !matchingStage) {
 					// If invalid query param then set isInvalidQuery to true
-					setIsInvalidQuery(true);
+					dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: true });
 					// If invalid query param then clear out all the filters
 					dispatch({
 						type: 'CLEAR_FILTERS',
@@ -55,7 +62,7 @@ const StageFilter = ({ disabled = false, onFocus, setIsInvalidQuery }) => {
 				}
 			} else if (!maintypeCode) {
 				// If invalid query param then set isInvalidQuery to true
-				setIsInvalidQuery(true);
+				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: true });
 				// If invalid query param then clear out all the filters
 				dispatch({
 					type: 'CLEAR_FILTERS',
@@ -64,12 +71,36 @@ const StageFilter = ({ disabled = false, onFocus, setIsInvalidQuery }) => {
 		}
 	}, [conceptCodeFromUrl, formattedOptions, isLoading, dispatch]);
 
-	// Effect to update isInvalidQuery if there is no invalid query parameter
+	// Validate stage c-code from URL once options are loaded
 	React.useEffect(() => {
-		if (Array.isArray(filters.stage) && filters.stage.length > 0 && filters.stage[0].name) {
-			setIsInvalidQuery(false);
+		// Only validate once when options are loaded and we have a stage value and maintype
+		if (formattedOptions.length > 0 && value.length > 0 && maintypeCode && !hasValidatedUrlParamRef.current) {
+			hasValidatedUrlParamRef.current = true;
+
+			const stageCode = value[0];
+			// Check if the stage code exists in the available options for this maintype
+			const isValidCode = formattedOptions.some((option) => option.value === stageCode);
+
+			if (!isValidCode) {
+				// Strip ALL filter parameters from URL when stage is invalid
+				const params = new URLSearchParams(location.search);
+				params.delete(URL_PARAM_MAPPING.stage.shortCode);
+				params.delete(URL_PARAM_MAPPING.maintype.shortCode);
+				params.delete(URL_PARAM_MAPPING.subtype.shortCode);
+				params.delete(URL_PARAM_MAPPING.age.shortCode);
+				params.delete(URL_PARAM_MAPPING.drugIntervention.shortCode);
+				params.delete(URL_PARAM_MAPPING.zipCode.shortCode);
+				params.delete(URL_PARAM_MAPPING.radius.shortCode);
+				const newSearch = params.toString();
+				const newUrl = newSearch ? `${location.pathname}?${newSearch}` : location.pathname;
+				navigate(newUrl, { replace: true, state: { invalidParamsRemoved: true } });
+
+				// Invalid c-code detected - set invalid query state and clear filters
+				dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
+				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: true });
+			}
 		}
-	}, [filters.stage]);
+	}, [formattedOptions, value, maintypeCode, dispatch, navigate, location]);
 
 	const handleChange = (selectedValue) => {
 		// Prevent recursive onChange calls
@@ -122,6 +153,6 @@ const StageFilter = ({ disabled = false, onFocus, setIsInvalidQuery }) => {
 StageFilter.propTypes = {
 	disabled: PropTypes.bool,
 	onFocus: PropTypes.func,
-	setIsInvalidQuery: PropTypes.func,
+	dispatch: PropTypes.func,
 };
 export default StageFilter;

@@ -88,7 +88,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { state, dispatch, applyFilters, enabledFilters = [], listingInfo } = useFilters();
-	const { filters, isDirty } = state; // Get current filters and dirty state from context
+	const { filters, isDirty, isInvalidQuery } = state; // Get current filters, dirty state, and invalid query state from context
 	const [hasInteracted, setHasInteracted] = useState(false); // Tracks if user has interacted with any filter yet
 	// const [isFirstLoad, setIsFirstLoad] = useState(true); // Unused state variable
 	// State to hold the function that retrieves the latest ZIP validation status from ZipCodeFilter
@@ -99,7 +99,6 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	const isInitialUrlLoadRef = useRef(true); // Track if this is the first load from URL params
 	const pendingRemovedFieldRef = useRef(null); // Track which field was just removed
 	const pendingAddedFieldRef = useRef(null); // Track which field was just added
-	const [isInvalidQuery, setIsInvalidQuery] = useState(false); // Tracks if user has entered an invalid query parameter in the url
 
 	/**
 	 * Validates the current filter values (age range, zip format, radius presence).
@@ -212,6 +211,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		pendingRemovedFieldRef.current = 'all';
 
 		// Dispatch actions to update context state
+		dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: false }); // Clear invalid query error
 		dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
 		dispatch({ type: FilterActionTypes.APPLY_FILTERS }); // Apply the cleared state
 
@@ -393,13 +393,13 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	const renderFilter = (filterType, isDisabled) => {
 		switch (filterType) {
 			case 'drugIntervention':
-				return <DrugInterventionFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} setIsInvalidQuery={setIsInvalidQuery}/>;
+				return <DrugInterventionFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'maintype':
-				return <MainTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} setIsInvalidQuery={setIsInvalidQuery} />;
+				return <MainTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} dispatch={dispatch} />;
 			case 'subtype':
-				return <Subtype onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} setIsInvalidQuery={setIsInvalidQuery} />;
+				return <Subtype onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} dispatch={dispatch} />;
 			case 'stage':
-				return <StageFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} setIsInvalidQuery={setIsInvalidQuery}/>;
+				return <StageFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} dispatch={dispatch} />;
 			case 'age':
 				return (
 					<AgeFilter
@@ -674,10 +674,10 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	}
 
 	const renderClearButton = () => {
-		if (hasActiveFilters() || isInvalidQuery) {
+		if (hasActiveFilters()) {
 			return (
 				<div className="ctla-sidebar__actions">
-					<button className="usa-button ctla-sidebar__button--clear ctla-sidebar__button--full-width" onClick={handleClearFilters} disabled={isDisabled || !hasActiveFilters()}>
+					<button className="usa-button ctla-sidebar__button--clear ctla-sidebar__button--full-width" onClick={handleClearFilters} disabled={isDisabled}>
 						Clear Filters
 					</button>
 				</div>
@@ -688,7 +688,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	const renderAppliedFilters = () => {
 		if (hasActiveFilters()) {
 			return (
-				<AppliedFilters pageType={pageType} onFilterRemoved={handleIndividualFilterRemoved} isInvalidQuery={isInvalidQuery} setIsInvalidQuery={setIsInvalidQuery} />
+				<AppliedFilters pageType={pageType} onFilterRemoved={handleIndividualFilterRemoved} />
 			);
 		}
 		return null;
@@ -697,6 +697,21 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	// Near the top of the component
 	// console.log('Sidebar - Rendering with isDirty:', state.isDirty);
 	// console.log('Sidebar - Current filters:', filters);
+
+	const renderInvalidQueryMessage = () => {
+		if (isInvalidQuery) {
+			return (
+				<div className="usa-alert usa-alert--error usa-alert--slim" role="alert">
+					<div className="usa-alert__body">
+						<p className="usa-alert__text">
+							Sorry, there seems to be invalid criteria. Please update your filters.
+						</p>
+					</div>
+				</div>
+			);
+		}
+		return null;
+	};
 
 	return (
 		<aside className="ctla-sidebar">
@@ -709,6 +724,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 				</h2>
 			</div>
 			<div id="accordionContent" className="usa-accordion__content ctla-sidebar__content">
+				{renderInvalidQueryMessage()}
 				{PAGE_FILTER_CONFIGS[pageType].order.map((filterType) => {
 					if (enabledFilters.includes(filterType)) {
 						return <div key={filterType}>{renderFilter(filterType, isDisabled)}</div>;
