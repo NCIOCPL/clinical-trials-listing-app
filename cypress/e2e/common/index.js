@@ -414,14 +414,11 @@ Then('the URL should contain the parameter {string}', (paramString) => {
 	cy.url().should('include', paramString);
 });
 
-// Removed duplicate/similar step: Then('the page URL includes {string}', ...);
-
 Then('the URL should not contain the parameter {string}', (paramString) => {
 	cy.get('.nci-spinner').should('not.exist', { timeout: 30000 });
-	cy.url().should('not.include', paramString);
+	// Wait for URL to be updated (invalid params are stripped asynchronously)
+	cy.url({ timeout: 10000 }).should('not.include', paramString);
 });
-
-// Removed duplicate/similar step: Then('the page URL does not include {string}', ...);
 
 Then('the system displays updated trial results', () => {
 	cy.get('.nci-spinner').should('not.exist', { timeout: 30000 });

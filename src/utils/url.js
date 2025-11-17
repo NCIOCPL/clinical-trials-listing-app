@@ -1,5 +1,48 @@
 import { URL_PARAM_MAPPING } from '../features/filters/constants/urlParams';
 
+/**
+ * Validates URL parameters and returns an object indicating validation results
+ * @param {URLSearchParams} params - The URL parameters to validate
+ * @param {boolean} hasMainType - Whether a main type parameter exists (for dependency validation)
+ * @returns {object} Validation result with isValid flag and invalidParams array
+ */
+export const validateURLParams = (params, hasMainType = false) => {
+	const invalidParams = [];
+
+	// Validate age parameter
+	const ageValues = params.getAll(URL_PARAM_MAPPING.age.shortCode);
+	if (ageValues.length > 0) {
+		const hasInvalidAge = ageValues.some((age) => {
+			// Check if the string contains only digits
+			if (!/^\d+$/.test(age)) {
+				return true; // Invalid: contains non-numeric characters
+			}
+			const numAge = parseInt(age, 10);
+			return isNaN(numAge) || numAge < 0 || numAge > 120;
+		});
+		if (hasInvalidAge) {
+			invalidParams.push(URL_PARAM_MAPPING.age.shortCode);
+		}
+	}
+
+	// Validate subtype - invalid if present without maintype
+	const subtypeValue = params.get(URL_PARAM_MAPPING.subtype.shortCode);
+	if (subtypeValue && !hasMainType) {
+		invalidParams.push(URL_PARAM_MAPPING.subtype.shortCode);
+	}
+
+	// Validate stage - invalid if present without maintype
+	const stageValue = params.get(URL_PARAM_MAPPING.stage.shortCode);
+	if (stageValue && !hasMainType) {
+		invalidParams.push(URL_PARAM_MAPPING.stage.shortCode);
+	}
+
+	return {
+		isValid: invalidParams.length === 0,
+		invalidParams,
+	};
+};
+
 export const appendOrUpdateToQueryString = (queryString, key, val) => {
 	const params = new URLSearchParams(queryString);
 	params.set(key, val);
@@ -21,6 +64,10 @@ export const getFiltersFromURL = (search) => {
 	if (ageValues.length) {
 		// Validate age values
 		const validAgeValues = ageValues.filter((age) => {
+			// Check if the string contains only digits
+			if (!/^\d+$/.test(age)) {
+				return false; // Invalid: contains non-numeric characters
+			}
 			const numAge = parseInt(age, 10);
 			return !isNaN(numAge) && numAge >= 0 && numAge <= 120;
 		});
@@ -117,5 +164,18 @@ export const removeQueryParam = (queryString, keyToRemove) => {
 	params.delete(keyToRemove);
 	const newSearch = params.toString();
 	// Return with '?' prefix if there are still params, otherwise empty string
+	return newSearch ? `?${newSearch}` : '';
+};
+
+/**
+ * Removes multiple query parameters from a query string
+ * @param {string} queryString - The query string to process
+ * @param {string[]} keysToRemove - Array of parameter keys to remove
+ * @returns {string} Updated query string with parameters removed
+ */
+export const removeMultipleQueryParams = (queryString, keysToRemove) => {
+	const params = new URLSearchParams(queryString);
+	keysToRemove.forEach((key) => params.delete(key));
+	const newSearch = params.toString();
 	return newSearch ? `?${newSearch}` : '';
 };

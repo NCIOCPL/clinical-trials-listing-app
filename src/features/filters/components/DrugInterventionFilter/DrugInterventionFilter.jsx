@@ -1,15 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useFilters } from '../../context/FilterContext/FilterContext';
+import { useFilters, FilterActionTypes } from '../../context/FilterContext/FilterContext';
 import FilterGroup from '../FilterGroup';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import './DrugInterventionFilter.scss';
 import { useDrugSearch } from '../../../../hooks/ctsApiSupport/useDrugSearch';
 import { useDrugSearchByCode } from '../../../../hooks/ctsApiSupport/useDrugSearchByCode';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { URL_PARAM_MAPPING } from '../../constants/urlParams';
 
-const DrugInterventionFilter = ({ onFocus, disabled = false, setIsInvalidQuery }) => {
+const DrugInterventionFilter = ({ onFocus, disabled = false }) => {
 	const { state, dispatch } = useFilters();
 	const { filters } = state;
+	const navigate = useNavigate();
+	const location = useLocation();
 
 	// State for autocomplete functionality
 	const [inputValue, setInputValue] = useState('');
@@ -46,7 +50,6 @@ const DrugInterventionFilter = ({ onFocus, disabled = false, setIsInvalidQuery }
 				// Find the drug with matching concept code
 				const matchingDrug = drugsByCode.find((drug) => drug.codes && drug.codes.includes(conceptCodeFromUrl));
 				if (matchingDrug) {
-					setIsInvalidQuery(false);
 					// console.log('[DrugInterventionFilter] Found matching drug, dispatching SET_FILTER:', matchingDrug);
 					// Update the filter with the complete drug object (without isFallback flag)
 					dispatch({
@@ -61,16 +64,26 @@ const DrugInterventionFilter = ({ onFocus, disabled = false, setIsInvalidQuery }
 					// console.log('[DrugInterventionFilter] No matching drug found for code:', conceptCodeFromUrl, 'Available drugs:', drugsByCode);
 				}
 			} else if (!isLoadingByCode && drugsByCode.length === 0) {
-				// API finished loading but returned no results - clear the invalid code
-				// console.log('[DrugInterventionFilter] No drugs found for invalid code, clearing filter');
-				setIsInvalidQuery(true);
-				// If invalid query param then clear out all the filters
-				dispatch({
-					type: 'CLEAR_FILTERS',
-				});
+				// API finished loading but returned no results - invalid c-code detected
+				// Strip ALL filter parameters from URL when drug intervention is invalid
+				const params = new URLSearchParams(location.search);
+				params.delete(URL_PARAM_MAPPING.drugIntervention.shortCode);
+				params.delete(URL_PARAM_MAPPING.maintype.shortCode);
+				params.delete(URL_PARAM_MAPPING.subtype.shortCode);
+				params.delete(URL_PARAM_MAPPING.stage.shortCode);
+				params.delete(URL_PARAM_MAPPING.age.shortCode);
+				params.delete(URL_PARAM_MAPPING.zipCode.shortCode);
+				params.delete(URL_PARAM_MAPPING.radius.shortCode);
+				const newSearch = params.toString();
+				const newUrl = newSearch ? `${location.pathname}?${newSearch}` : location.pathname;
+				navigate(newUrl, { replace: true, state: { invalidParamsRemoved: true } });
+
+				// Invalid c-code detected - set invalid query state and clear filters
+				dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
+				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: true });
 			}
 		}
-	}, [conceptCodeFromUrl, drugsByCode, isLoadingByCode, dispatch]);
+	}, [conceptCodeFromUrl, drugsByCode, isLoadingByCode, dispatch, navigate, location]);
 
 	// Get selected drug from filters (single object, not array)
 	const selectedDrug = React.useMemo(() => {
@@ -95,13 +108,6 @@ const DrugInterventionFilter = ({ onFocus, disabled = false, setIsInvalidQuery }
 		}
 		// console.log('[DrugInterventionFilter selectedDrug] Returning null');
 		return null;
-	}, [filters.drugIntervention]);
-
-	// Effect to update isInvalidQuery if there is no invalid query parameter
-	useEffect(() => {
-		if (Array.isArray(filters.drugIntervention) && filters.drugIntervention.length > 0 && typeof filters.drugIntervention[0] === 'object' && filters.drugIntervention[0].name) {
-			setIsInvalidQuery(false);
-		}
 	}, [filters.drugIntervention]);
 
 	// Generate unique IDs
@@ -308,7 +314,6 @@ const DrugInterventionFilter = ({ onFocus, disabled = false, setIsInvalidQuery }
 DrugInterventionFilter.propTypes = {
 	disabled: PropTypes.bool,
 	onFocus: PropTypes.func,
-	setIsInvalidQuery: PropTypes.func,
 };
 
 export default DrugInterventionFilter;

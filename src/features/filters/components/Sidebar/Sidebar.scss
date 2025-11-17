@@ -102,6 +102,28 @@
 
 	&__content{
 		@include u-padding(3);
+
+		// Remove extra spacing around invalid criteria alert
+		.usa-alert {
+			@include u-margin-top(0);
+			@include u-margin-bottom(2);
+			@include u-padding-y(1);
+			@include u-padding-left(2);
+
+			// Remove ::before pseudo-element spacing
+			&::before {
+				display: none !important;
+			}
+
+			.usa-alert__body {
+				@include u-padding(0);
+				@include u-margin(0);
+			}
+
+			.usa-alert__text {
+				@include u-margin(0);
+			}
+		}
 	}
 
 	@include at-media-max('desktop') {
