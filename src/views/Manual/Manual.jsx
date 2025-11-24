@@ -41,7 +41,7 @@ const Manual = () => {
 				// These properties are required.
 				type: 'PageLoad',
 				event: 'TrialListingApp:Load:Results',
-				name: canonicalHost.replace(/^(http|https):\/\//, '') + window.location.pathname,
+				name: canonicalHost.replace(/^(http|https):\/\//, '') + encodeURI(window.location.pathname),
 				title: pageTitle,
 				language: language === 'en' ? 'english' : 'spanish',
 				metaTitle: `${pageTitle} - ${siteName}`,
@@ -78,7 +78,9 @@ const Manual = () => {
 	};
 
 	const renderHelmet = () => {
-		const pathAndPage = window.location.pathname + `?pn=${pager.page}`;
+		// Sanitize pathname from DOM to prevent XSS
+		const sanitizedPathname = encodeURI(window.location.pathname);
+		const pathAndPage = sanitizedPathname + `?pn=${pager.page}`;
 
 		return (
 			<Helmet>

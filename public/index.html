@@ -800,11 +800,11 @@
 						jumpmenu = document.getElementById(selectElements[i].id);
 						jumpmenu.onchange = function () {
 							if (this.options[this.selectedIndex].value != '') {
-								// Redirect
+								// Redirect - encode value to prevent XSS
 								location.href =
 									window.publicUrl +
 									'?cfg=' +
-									this.options[this.selectedIndex].value;
+									encodeURIComponent(this.options[this.selectedIndex].value);
 							}
 						};
 					}
