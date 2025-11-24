@@ -339,7 +339,7 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 					tracking.trackEvent({
 						type: 'PageLoad',
 						event: 'TrialListingApp:Load:Results',
-						name: canonicalHost.replace(/^(http|https):\/\//, '') + window.location.pathname,
+						name: canonicalHost.replace(/^(http|https):\/\//, '') + encodeURI(window.location.pathname),
 						title: replacedText.pageTitle,
 						language: language === 'en' ? 'english' : 'spanish',
 						metaTitle: `${replacedText.pageTitle} - ${siteName}`,
@@ -466,7 +466,9 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 		navigate(`${routePath(paramsObject)}${qryStr}`);
 	};
 	const renderHelmet = () => {
-		const pathAndPage = window.location.pathname + `?pn=${pager.page}`;
+		// Sanitize pathname from DOM to prevent XSS
+		const sanitizedPathname = encodeURI(window.location.pathname);
+		const pathAndPage = sanitizedPathname + `?pn=${pager.page}`;
 
 		// Get redirect status from state or location.state
 		let redirectStatus = '';
@@ -490,7 +492,8 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 		}
 
 		// Get prerender location from location.state
-		const prerenderLocation = location.state?.prerenderLocation || baseHost + location.pathname;
+		// Sanitize location.pathname to prevent XSS
+		const prerenderLocation = location.state?.prerenderLocation || baseHost + encodeURI(location.pathname);
 
 		return (
 			<Helmet>

@@ -575,7 +575,9 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 	};
 
 	const renderHelmet = () => {
-		const pathAndPage = window.location.pathname + `?pn=${pager.page}`;
+		// Sanitize pathname from DOM to prevent XSS
+		const sanitizedPathname = encodeURI(window.location.pathname);
+		const pathAndPage = sanitizedPathname + `?pn=${pager.page}`;
 		// Get redirect status from state or location.state
 		let redirectStatus = '';
 
@@ -596,7 +598,8 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 		}
 
 		// Get prerender location from location.state
-		const prerenderLocation = location.state?.prerenderLocation || baseHost + location.pathname;
+		// Sanitize location.pathname to prevent XSS
+		const prerenderLocation = location.state?.prerenderLocation || baseHost + encodeURI(location.pathname);
 
 		return (
 			<Helmet>

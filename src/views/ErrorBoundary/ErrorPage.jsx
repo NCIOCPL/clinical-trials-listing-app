@@ -15,7 +15,7 @@ const ErrorPage = ({ error }) => {
 		tracking.trackEvent({
 			event: 'TrialsListingApp:Load:Error',
 			metaTitle: pageTitle,
-			name: `${canonicalHost.replace(/^(http|https):\/\//g, '')}${window.location.pathname}`,
+			name: `${canonicalHost.replace(/^(http|https):\/\//g, '')}${encodeURI(window.location.pathname)}`,
 			title: pageTitle,
 			type: 'PageLoad',
 		});

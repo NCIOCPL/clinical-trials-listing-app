@@ -74,7 +74,7 @@ const NoTrialsFound = ({ routeParamMap, data, redirectStatus, prerenderLocation 
 			// These properties are required.
 			type: 'PageLoad',
 			event: 'TrialListingApp:Load:NoTrialsFound',
-			name: canonicalHost.replace(/^(http|https):\/\//, '') + window.location.pathname,
+			name: canonicalHost.replace(/^(http|https):\/\//, '') + encodeURI(window.location.pathname),
 			title: replacementText.pageTitle,
 			language: language === 'en' ? 'english' : 'spanish',
 			metaTitle: `${replacementText.pageTitle} - ${siteName}`,
@@ -89,7 +89,10 @@ const NoTrialsFound = ({ routeParamMap, data, redirectStatus, prerenderLocation 
 	const renderHelmet = () => {
 		// Use props for status and header, with fallbacks
 		const status = redirectStatus || '404';
-		const finalPrerenderLocation = prerenderLocation || baseHost + window.location.pathname + window.location.search;
+		// Sanitize pathname and search from DOM to prevent XSS
+		const sanitizedPathname = encodeURI(window.location.pathname);
+		const sanitizedSearch = encodeURI(window.location.search);
+		const finalPrerenderLocation = prerenderLocation || baseHost + sanitizedPathname + sanitizedSearch;
 
 		// console.log('[NoTrialsFound Helmet] Status:', status, 'Location:', finalPrerenderLocation); // LOG HELMET VALUES
 
@@ -97,10 +100,10 @@ const NoTrialsFound = ({ routeParamMap, data, redirectStatus, prerenderLocation 
 			<Helmet>
 				<title>{`${replacementText.browserTitle} - ${siteName}`}</title>
 				<meta property="og:title" content={`${replacementText.pageTitle}`} />
-				<meta property="og:url" content={baseHost + window.location.pathname} />
+				<meta property="og:url" content={baseHost + sanitizedPathname} />
 				<meta name="description" content={replacementText.metaDescription} />
 				<meta property="og:description" content={replacementText.metaDescription} />
-				<link rel="canonical" href={canonicalHost + window.location.pathname} />
+				<link rel="canonical" href={canonicalHost + sanitizedPathname} />
 				<meta name="prerender-status-code" content={status} />
 				{(() => {
 					if (status !== '404') {
