@@ -64,7 +64,7 @@ const MainTypeFilter = ({ onFocus, disabled = false, dispatch: dispatchFromProps
 				// Find the maintype with matching concept code
 				if (!isLoading && !matchingMaintype) {
 					// If invalid query param then set isInvalidQuery to true
-					dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: true });
+					dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: { isInvalid: true, invalidParams: { [URL_PARAM_MAPPING.maintype.shortCode]: conceptCodeFromUrl } } });
 					// If invalid query param then clear out all the filters
 					dispatch({
 						type: 'CLEAR_FILTERS',
@@ -100,10 +100,20 @@ const MainTypeFilter = ({ onFocus, disabled = false, dispatch: dispatchFromProps
 
 				// Invalid c-code detected - set invalid query state and clear filters
 				dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
-				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: true });
+				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: { isInvalid: true, invalidParams: { [URL_PARAM_MAPPING.maintype.shortCode]: maintypeCode } } });
 			}
+
+			// Signal that maintype validation is complete (whether valid or invalid)
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_COMPLETE, payload: 'maintype' });
 		}
 	}, [formattedOptions, value, dispatch, navigate, location]);
+
+	// Signal validation complete when options load but no maintype param to validate
+	React.useEffect(() => {
+		if (formattedOptions.length > 0 && !isLoading && value.length === 0) {
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_COMPLETE, payload: 'maintype' });
+		}
+	}, [formattedOptions.length, isLoading, value.length, dispatch]);
 
 	// // Debug logging
 	// console.log('MainTypeFilter - render - filters:', filters);

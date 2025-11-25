@@ -60,6 +60,9 @@ const DrugInterventionFilter = ({ onFocus, disabled = false }) => {
 						},
 					});
 					// console.log('[DrugInterventionFilter] Dispatched SET_FILTER with drug object');
+
+					// Signal that drugIntervention validation is complete (valid)
+					dispatch({ type: FilterActionTypes.SET_VALIDATION_COMPLETE, payload: 'drugIntervention' });
 				} else {
 					// console.log('[DrugInterventionFilter] No matching drug found for code:', conceptCodeFromUrl, 'Available drugs:', drugsByCode);
 				}
@@ -80,10 +83,20 @@ const DrugInterventionFilter = ({ onFocus, disabled = false }) => {
 
 				// Invalid c-code detected - set invalid query state and clear filters
 				dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
-				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: true });
+				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: { isInvalid: true, invalidParams: { [URL_PARAM_MAPPING.drugIntervention.shortCode]: conceptCodeFromUrl } } });
+
+				// Signal that drugIntervention validation is complete (invalid)
+				dispatch({ type: FilterActionTypes.SET_VALIDATION_COMPLETE, payload: 'drugIntervention' });
 			}
 		}
 	}, [conceptCodeFromUrl, drugsByCode, isLoadingByCode, dispatch, navigate, location]);
+
+	// Signal validation complete when there's no drug param to validate
+	React.useEffect(() => {
+		if (!conceptCodeFromUrl) {
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_COMPLETE, payload: 'drugIntervention' });
+		}
+	}, [conceptCodeFromUrl, dispatch]);
 
 	// Get selected drug from filters (single object, not array)
 	const selectedDrug = React.useMemo(() => {

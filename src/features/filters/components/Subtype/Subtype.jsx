@@ -55,7 +55,7 @@ const Subtype = ({ disabled = false, onFocus, dispatch: dispatchFromProps }) => 
 				// Find the subtype with matching concept code
 				if (!isLoading && !matchingSubtype) {
 					// If invalid query param then set isInvalidQuery to true
-					dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: true });
+					dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: { isInvalid: true, invalidParams: { [URL_PARAM_MAPPING.subtype.shortCode]: conceptCodeFromUrl } } });
 					// If invalid query param then clear out all the filters
 					dispatch({
 						type: 'CLEAR_FILTERS',
@@ -63,7 +63,7 @@ const Subtype = ({ disabled = false, onFocus, dispatch: dispatchFromProps }) => 
 				}
 			} else if (!maintypeCode) {
 				// If invalid query param then set isInvalidQuery to true
-				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: true });
+				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: { isInvalid: true, invalidParams: { [URL_PARAM_MAPPING.subtype.shortCode]: conceptCodeFromUrl } } });
 				// If invalid query param then clear out all the filters
 				dispatch({
 					type: 'CLEAR_FILTERS',
@@ -98,10 +98,20 @@ const Subtype = ({ disabled = false, onFocus, dispatch: dispatchFromProps }) => 
 
 				// Invalid c-code detected - set invalid query state and clear filters
 				dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
-				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: true });
+				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: { isInvalid: true, invalidParams: { [URL_PARAM_MAPPING.subtype.shortCode]: subtypeCode } } });
 			}
+
+			// Signal that subtype validation is complete (whether valid or invalid)
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_COMPLETE, payload: 'subtype' });
 		}
 	}, [formattedOptions, value, maintypeCode, dispatch, navigate, location]);
+
+	// Signal validation complete when no subtype param to validate
+	React.useEffect(() => {
+		if (!isLoading && value.length === 0) {
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_COMPLETE, payload: 'subtype' });
+		}
+	}, [isLoading, value.length, dispatch]);
 
 	const handleChange = (selectedValue) => {
 		// Guard against ComboBox calling onChange with undefined during initialization

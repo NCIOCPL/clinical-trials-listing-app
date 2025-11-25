@@ -9,6 +9,9 @@ import { URL_PARAM_MAPPING } from '../features/filters/constants/urlParams';
 export const validateURLParams = (params, hasMainType = false) => {
 	const invalidParams = {};
 
+	// Helper to validate c-code format (C followed by digits, e.g., C3171, C4872)
+	const isValidCCodeFormat = (code) => /^C\d+$/i.test(code);
+
 	// Validate age parameter
 	const ageValues = params.getAll(URL_PARAM_MAPPING.age.shortCode);
 	if (ageValues.length > 0) {
@@ -25,16 +28,36 @@ export const validateURLParams = (params, hasMainType = false) => {
 		}
 	}
 
-	// Validate subtype - invalid if present without maintype
-	const subtypeValue = params.get(URL_PARAM_MAPPING.subtype.shortCode);
-	if (subtypeValue && !hasMainType) {
-		invalidParams[URL_PARAM_MAPPING.subtype.shortCode] = subtypeValue;
+	// Validate maintype c-code format
+	const maintypeValue = params.get(URL_PARAM_MAPPING.maintype.shortCode);
+	if (maintypeValue && !isValidCCodeFormat(maintypeValue)) {
+		invalidParams[URL_PARAM_MAPPING.maintype.shortCode] = maintypeValue;
 	}
 
-	// Validate stage - invalid if present without maintype
+	// Validate subtype - invalid if present without maintype OR invalid c-code format
+	const subtypeValue = params.get(URL_PARAM_MAPPING.subtype.shortCode);
+	if (subtypeValue) {
+		if (!hasMainType) {
+			invalidParams[URL_PARAM_MAPPING.subtype.shortCode] = subtypeValue;
+		} else if (!isValidCCodeFormat(subtypeValue)) {
+			invalidParams[URL_PARAM_MAPPING.subtype.shortCode] = subtypeValue;
+		}
+	}
+
+	// Validate stage - invalid if present without maintype OR invalid c-code format
 	const stageValue = params.get(URL_PARAM_MAPPING.stage.shortCode);
-	if (stageValue && !hasMainType) {
-		invalidParams[URL_PARAM_MAPPING.stage.shortCode] = stageValue;
+	if (stageValue) {
+		if (!hasMainType) {
+			invalidParams[URL_PARAM_MAPPING.stage.shortCode] = stageValue;
+		} else if (!isValidCCodeFormat(stageValue)) {
+			invalidParams[URL_PARAM_MAPPING.stage.shortCode] = stageValue;
+		}
+	}
+
+	// Validate drugIntervention c-code format
+	const drugValue = params.get(URL_PARAM_MAPPING.drugIntervention.shortCode);
+	if (drugValue && !isValidCCodeFormat(drugValue)) {
+		invalidParams[URL_PARAM_MAPPING.drugIntervention.shortCode] = drugValue;
 	}
 
 	return {

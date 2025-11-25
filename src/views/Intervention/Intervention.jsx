@@ -332,7 +332,8 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 				// If filters are applied, stay on page and show NoResultsWithFilters (handled in render)
 			} else if (fetchState?.total > 0) {
 				// Only fire tracking event on initial load or when filters are submitted
-				if (isInitialLoad || filtersSubmitted) {
+				// Wait for async validation to complete so errorParams includes non-existent c-codes
+				if ((isInitialLoad || filtersSubmitted) && filterState.validationComplete) {
 					// Fire off tracking event for successful results
 					// Create trackingData inside the event to ensure data is available
 					const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
@@ -368,7 +369,7 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 			}
 		}
 		// Update dependency array with renamed variables
-	}, [isTrialSearchLoading, fetchState, trialSearchError, isInitialLoad, filtersSubmitted]);
+	}, [isTrialSearchLoading, fetchState, trialSearchError, isInitialLoad, filtersSubmitted, filterState.validationComplete]);
 
 	// Dedicated useEffect for filter analytics
 	useEffect(() => {

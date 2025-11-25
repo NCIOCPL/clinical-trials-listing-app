@@ -326,7 +326,8 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 				// If filters are applied, stay on page and show NoResultsWithFilters (handled in render)
 			} else if (fetchState?.total > 0) {
 				// Only fire tracking event on initial load or when filters are submitted
-				if (isInitialLoad || filtersSubmitted) {
+				// Wait for async filter validations to complete before tracking
+				if ((isInitialLoad || filtersSubmitted) && filterState.validationComplete) {
 					trackPageView();
 
 					// Filter apply tracking moved to dedicated useEffect
@@ -341,7 +342,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 				}
 			}
 		}
-	}, [loading, fetchState, error, isInitialLoad, filtersSubmitted]);
+	}, [loading, fetchState, error, isInitialLoad, filtersSubmitted, filterState.validationComplete]);
 
 	// Dedicated useEffect for EDDL filter analytics
 	useEffect(() => {

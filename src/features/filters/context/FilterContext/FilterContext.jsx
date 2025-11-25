@@ -31,6 +31,8 @@ export const FilterActionTypes = {
 	START_AUTO_APPLY: 'START_AUTO_APPLY', // Start auto-apply process
 	RESET_INITIAL_LOAD: 'RESET_INITIAL_LOAD', // Reset isInitialLoad flag after URL sync
 	SET_INVALID_QUERY: 'SET_INVALID_QUERY', // Set invalid query state when URL params are invalid
+	SET_VALIDATION_PENDING: 'SET_VALIDATION_PENDING', // Mark a filter as pending async validation
+	SET_VALIDATION_COMPLETE: 'SET_VALIDATION_COMPLETE', // Mark a filter validation as complete
 };
 
 /**
@@ -76,6 +78,13 @@ const initialState = {
 	lastChangedFilter: null, // Track which filter was last changed
 	isInvalidQuery: false, // Whether URL contains invalid query parameters
 	invalidParams: null, // The invalid URL parameters that were detected (for analytics)
+	pendingValidations: {
+		maintype: false,
+		subtype: false,
+		stage: false,
+		drugIntervention: false,
+	}, // Track which filters are pending async validation
+	validationComplete: true, // Whether all async validations are complete
 };
 
 /**
@@ -425,8 +434,43 @@ function filterReducer(state, action) {
 			return {
 				...state,
 				isInvalidQuery: action.payload.isInvalid !== undefined ? action.payload.isInvalid : action.payload,
-				invalidParams: action.payload.invalidParams !== undefined ? action.payload.invalidParams : action.payload ? state.invalidParams : null,
+				invalidParams:
+					action.payload.invalidParams === null
+						? null // Explicit clear
+						: action.payload.invalidParams !== undefined
+						? { ...state.invalidParams, ...action.payload.invalidParams } // Merge with existing
+						: action.payload
+						? state.invalidParams
+						: null,
 			};
+
+		case FilterActionTypes.SET_VALIDATION_PENDING: {
+			const filterType = action.payload;
+			const newPendingValidations = {
+				...state.pendingValidations,
+				[filterType]: true,
+			};
+			return {
+				...state,
+				pendingValidations: newPendingValidations,
+				validationComplete: false,
+			};
+		}
+
+		case FilterActionTypes.SET_VALIDATION_COMPLETE: {
+			const filterType = action.payload;
+			const newPendingValidations = {
+				...state.pendingValidations,
+				[filterType]: false,
+			};
+			// Check if all validations are now complete
+			const allComplete = !Object.values(newPendingValidations).some((pending) => pending);
+			return {
+				...state,
+				pendingValidations: newPendingValidations,
+				validationComplete: allComplete,
+			};
+		}
 
 		default:
 			return state;
@@ -569,6 +613,21 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 
 		// Reset the ref after checking (for future navigations)
 		justRemovedInvalidParamsRef.current = false;
+
+		// Mark async validations as pending for filter params that need API validation
+		// These will be marked complete by the respective filter components after they validate
+		if (params.get(URL_PARAM_MAPPING.maintype.shortCode)) {
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_PENDING, payload: 'maintype' });
+		}
+		if (params.get(URL_PARAM_MAPPING.subtype.shortCode)) {
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_PENDING, payload: 'subtype' });
+		}
+		if (params.get(URL_PARAM_MAPPING.stage.shortCode)) {
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_PENDING, payload: 'stage' });
+		}
+		if (params.get(URL_PARAM_MAPPING.drugIntervention.shortCode)) {
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_PENDING, payload: 'drugIntervention' });
+		}
 
 		let filtersFromUrl = getFiltersFromURL(params);
 		let isNewPageLoad = true;
@@ -1019,7 +1078,12 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 						pathname: location.pathname,
 						search: newSearch,
 					},
-					{ replace: shouldReplace }
+					{
+						replace: shouldReplace,
+						// Signal to ScrollRestoration that this is a filter update
+						// so it doesn't scroll to top when users interact with filters
+						state: { filterUpdate: true },
+					}
 				);
 			} else {
 				// console.log('FilterContext - URL update - URL unchanged, skipping navigation');

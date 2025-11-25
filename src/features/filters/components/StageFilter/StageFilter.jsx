@@ -54,7 +54,7 @@ const StageFilter = ({ disabled = false, onFocus, dispatch: dispatchFromProps })
 				// Find the stage with matching concept code
 				if (!isLoading && !matchingStage) {
 					// If invalid query param then set isInvalidQuery to true
-					dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: true });
+					dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: { isInvalid: true, invalidParams: { [URL_PARAM_MAPPING.stage.shortCode]: conceptCodeFromUrl } } });
 					// If invalid query param then clear out all the filters
 					dispatch({
 						type: 'CLEAR_FILTERS',
@@ -62,7 +62,7 @@ const StageFilter = ({ disabled = false, onFocus, dispatch: dispatchFromProps })
 				}
 			} else if (!maintypeCode) {
 				// If invalid query param then set isInvalidQuery to true
-				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: true });
+				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: { isInvalid: true, invalidParams: { [URL_PARAM_MAPPING.stage.shortCode]: conceptCodeFromUrl } } });
 				// If invalid query param then clear out all the filters
 				dispatch({
 					type: 'CLEAR_FILTERS',
@@ -97,10 +97,20 @@ const StageFilter = ({ disabled = false, onFocus, dispatch: dispatchFromProps })
 
 				// Invalid c-code detected - set invalid query state and clear filters
 				dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
-				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: true });
+				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: { isInvalid: true, invalidParams: { [URL_PARAM_MAPPING.stage.shortCode]: stageCode } } });
 			}
+
+			// Signal that stage validation is complete (whether valid or invalid)
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_COMPLETE, payload: 'stage' });
 		}
 	}, [formattedOptions, value, maintypeCode, dispatch, navigate, location]);
+
+	// Signal validation complete when no stage param to validate
+	React.useEffect(() => {
+		if (!isLoading && value.length === 0) {
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_COMPLETE, payload: 'stage' });
+		}
+	}, [isLoading, value.length, dispatch]);
 
 	const handleChange = (selectedValue) => {
 		// Prevent recursive onChange calls

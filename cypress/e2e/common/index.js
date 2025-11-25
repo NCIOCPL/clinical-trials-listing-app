@@ -1711,3 +1711,51 @@ When('clicks on the second trial result link', () => {
 When('browser waits 3 seconds', () => {
 	cy.wait(3000);
 });
+
+/*
+	-----------------------
+		Scroll Behavior Steps
+	-----------------------
+*/
+const SCROLL_AMOUNT = 300; // pixels to scroll down
+const SCROLL_TOLERANCE = 100; // tolerance for scroll position checks
+
+let scrollPositionBeforeFilter = 0;
+
+When('the user scrolls down the page', () => {
+	// Wait for page to be fully loaded
+	cy.get('.nci-spinner').should('not.exist', { timeout: 30000 });
+	cy.scrollTo(0, SCROLL_AMOUNT);
+	cy.wait(500); // Allow scroll to settle
+	cy.window().then((win) => {
+		scrollPositionBeforeFilter = win.scrollY;
+		cy.log(`Scroll position before filter: ${scrollPositionBeforeFilter}`);
+	});
+});
+
+When('the user waits for the filter to auto-apply', () => {
+	// Wait for URL to update (indicates filter was applied)
+	cy.wait(2000); // Auto-apply delay + buffer for URL update and scroll restoration
+});
+
+When('the user clicks the Clear Filters button', () => {
+	cy.get('button').contains('Clear Filters').click();
+});
+
+Then('the page should be scrolled to the top', () => {
+	// Wait for smooth scroll animation to complete
+	cy.wait(1000);
+	cy.window().then((win) => {
+		cy.log(`Scroll position after filter (desktop): ${win.scrollY}`);
+	});
+	cy.window().its('scrollY').should('be.lessThan', SCROLL_TOLERANCE);
+});
+
+Then('the page should maintain its scroll position', () => {
+	cy.window().then((win) => {
+		cy.log(`Scroll position after filter (mobile): ${win.scrollY}`);
+		cy.log(`Expected scroll position: ${scrollPositionBeforeFilter}`);
+		// Allow some tolerance for minor scroll adjustments
+		expect(win.scrollY).to.be.greaterThan(scrollPositionBeforeFilter - SCROLL_TOLERANCE);
+	});
+});
