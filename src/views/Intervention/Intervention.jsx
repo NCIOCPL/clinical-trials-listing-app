@@ -336,7 +336,7 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 					// Fire off tracking event for successful results
 					// Create trackingData inside the event to ensure data is available
 					const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
-					tracking.trackEvent({
+					const eventData = {
 						type: 'PageLoad',
 						event: 'TrialListingApp:Load:Results',
 						name: canonicalHost.replace(/^(http|https):\/\//, '') + window.location.pathname,
@@ -346,7 +346,14 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 						numberResults: fetchState.total,
 						trialListingPageType: `${trialListingPageType.toLowerCase()}`,
 						...(trackingData || {}),
-					});
+					};
+
+					// Include errorParams if there are invalid URL parameters
+					if (filterState.isInvalidQuery && filterState.invalidParams) {
+						eventData.errorParams = filterState.invalidParams;
+					}
+
+					tracking.trackEvent(eventData);
 
 					// Filter apply tracking moved to dedicated useEffect
 
