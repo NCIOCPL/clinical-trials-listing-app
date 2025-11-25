@@ -75,6 +75,7 @@ const initialState = {
 	pendingAutoApply: false, // Whether auto-apply is pending
 	lastChangedFilter: null, // Track which filter was last changed
 	isInvalidQuery: false, // Whether URL contains invalid query parameters
+	invalidParams: null, // The invalid URL parameters that were detected (for analytics)
 };
 
 /**
@@ -423,7 +424,8 @@ function filterReducer(state, action) {
 		case FilterActionTypes.SET_INVALID_QUERY:
 			return {
 				...state,
-				isInvalidQuery: action.payload,
+				isInvalidQuery: action.payload.isInvalid !== undefined ? action.payload.isInvalid : action.payload,
+				invalidParams: action.payload.invalidParams !== undefined ? action.payload.invalidParams : action.payload ? state.invalidParams : null,
 			};
 
 		default:
@@ -481,6 +483,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 	useEffect(() => {
 		let params = new URLSearchParams(location.search);
 		let hasInvalidParams = false;
+		const detectedInvalidParams = {}; // Track which params are invalid for analytics
 
 		// Check for invalid zipcode
 		const zipFromUrl = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
@@ -488,6 +491,7 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 		const hasInvalidZip = zipFromUrl && !/^\d{5}$/.test(zipFromUrl);
 		if (hasInvalidZip) {
 			hasInvalidParams = true;
+			detectedInvalidParams[URL_PARAM_MAPPING.zipCode.shortCode] = zipFromUrl;
 		}
 
 		// Validate URL parameters for age, subtype/stage dependencies
@@ -496,6 +500,10 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 
 		if (!validationResult.isValid) {
 			hasInvalidParams = true;
+			// Collect the invalid params from validation result
+			if (validationResult.invalidParams) {
+				Object.assign(detectedInvalidParams, validationResult.invalidParams);
+			}
 		}
 
 		// If ANY parameter is invalid, strip ALL filter params from URL and set error state
@@ -542,14 +550,21 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 			});
 
 			// Mark that we have invalid query parameters (after clearing filters)
-			dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: true });
+			// Include the invalid params for analytics
+			dispatch({
+				type: FilterActionTypes.SET_INVALID_QUERY,
+				payload: {
+					isInvalid: true,
+					invalidParams: detectedInvalidParams,
+				},
+			});
 
 			// Exit early - don't try to load filters from invalid params
 			return;
 		} else if (!justRemovedInvalidParamsRef.current && !location.state?.invalidParamsRemoved) {
 			// Only clear invalid query flag if we didn't just remove invalid params
 			// This prevents the second render from clearing the error message
-			dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: false });
+			dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: { isInvalid: false, invalidParams: null } });
 		}
 
 		// Reset the ref after checking (for future navigations)

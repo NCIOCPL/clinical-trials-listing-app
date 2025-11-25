@@ -4,15 +4,15 @@ import { URL_PARAM_MAPPING } from '../features/filters/constants/urlParams';
  * Validates URL parameters and returns an object indicating validation results
  * @param {URLSearchParams} params - The URL parameters to validate
  * @param {boolean} hasMainType - Whether a main type parameter exists (for dependency validation)
- * @returns {object} Validation result with isValid flag and invalidParams array
+ * @returns {object} Validation result with isValid flag and invalidParams object containing param:value pairs
  */
 export const validateURLParams = (params, hasMainType = false) => {
-	const invalidParams = [];
+	const invalidParams = {};
 
 	// Validate age parameter
 	const ageValues = params.getAll(URL_PARAM_MAPPING.age.shortCode);
 	if (ageValues.length > 0) {
-		const hasInvalidAge = ageValues.some((age) => {
+		const invalidAgeValues = ageValues.filter((age) => {
 			// Check if the string contains only digits
 			if (!/^\d+$/.test(age)) {
 				return true; // Invalid: contains non-numeric characters
@@ -20,25 +20,25 @@ export const validateURLParams = (params, hasMainType = false) => {
 			const numAge = parseInt(age, 10);
 			return isNaN(numAge) || numAge < 0 || numAge > 120;
 		});
-		if (hasInvalidAge) {
-			invalidParams.push(URL_PARAM_MAPPING.age.shortCode);
+		if (invalidAgeValues.length > 0) {
+			invalidParams[URL_PARAM_MAPPING.age.shortCode] = invalidAgeValues.join(',');
 		}
 	}
 
 	// Validate subtype - invalid if present without maintype
 	const subtypeValue = params.get(URL_PARAM_MAPPING.subtype.shortCode);
 	if (subtypeValue && !hasMainType) {
-		invalidParams.push(URL_PARAM_MAPPING.subtype.shortCode);
+		invalidParams[URL_PARAM_MAPPING.subtype.shortCode] = subtypeValue;
 	}
 
 	// Validate stage - invalid if present without maintype
 	const stageValue = params.get(URL_PARAM_MAPPING.stage.shortCode);
 	if (stageValue && !hasMainType) {
-		invalidParams.push(URL_PARAM_MAPPING.stage.shortCode);
+		invalidParams[URL_PARAM_MAPPING.stage.shortCode] = stageValue;
 	}
 
 	return {
-		isValid: invalidParams.length === 0,
+		isValid: Object.keys(invalidParams).length === 0,
 		invalidParams,
 	};
 };

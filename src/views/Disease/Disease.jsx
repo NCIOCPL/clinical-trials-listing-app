@@ -536,7 +536,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 
 	const trackPageView = () => {
 		const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
-		tracking.trackEvent({
+		const eventData = {
 			type: 'PageLoad',
 			event: 'TrialListingApp:Load:Results',
 			name: canonicalHost.replace(/^(http|https):\/\//, '') + location.pathname,
@@ -546,7 +546,14 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 			numberResults: fetchState.total,
 			trialListingPageType: `${trialListingPageType.toLowerCase()}`,
 			...trackingData,
-		});
+		};
+
+		// Include errorParams if there are invalid URL parameters
+		if (filterState.isInvalidQuery && filterState.invalidParams) {
+			eventData.errorParams = filterState.invalidParams;
+		}
+
+		tracking.trackEvent(eventData);
 	};
 
 	const ResultsListWithPage = track({
