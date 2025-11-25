@@ -195,7 +195,7 @@ const ZipCodeFilter = ({ zipCode, radius, onZipCodeChange, onRadiusChange, onVal
 		<>
 			{/* ZIP Code Input Field */}
 			<FilterGroup title="Location by ZIP Code" helpText={FILTER_CONFIG.location.helpText}>
-				<div className={`usa-form-group ${error ? 'usa-form-group--error' : ''}`}>
+				<div className={`usa-form-group ${error ? 'usa-form-group--error usa-alert usa-alert--error' : ''}`}>
 					{error && (
 						<span className="usa-error-message" id="zip-error" role="alert">
 							{error}
