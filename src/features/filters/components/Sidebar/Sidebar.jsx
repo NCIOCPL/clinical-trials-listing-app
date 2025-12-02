@@ -26,6 +26,7 @@ import { isValidZipFormat } from '../../utils/locationUtils';
 import PropTypes from 'prop-types';
 import AppliedFilters from '../AppliedFilters/AppliedFilters';
 import { getFieldCode } from '../../utils/eddlAnalytics';
+import { BREAKPOINTS } from '../../../../constants/breakpoints';
 
 /**
  * Helper function to detect which field was added by comparing old and new filters
@@ -506,13 +507,41 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	}, []); // No dependencies needed since function doesn't depend on props/state
 
 	/**
+	 * Effect to handle invalid query state:
+	 * 1. Blur any focused input to prevent focus remaining on cleared fields
+	 * 2. Scroll to the filter/error area on mobile so the error message is visible
+	 */
+	useEffect(() => {
+		if (isInvalidQuery) {
+			// Blur any focused element to prevent focus remaining on cleared fields
+			if (document.activeElement && document.activeElement !== document.body) {
+				document.activeElement.blur();
+			}
+
+			// On mobile/tablet, scroll to show the error message
+			if (window.innerWidth < BREAKPOINTS.DESKTOP) {
+				// Small delay to ensure the error message is rendered
+				const scrollTimer = setTimeout(() => {
+					const sidebar = document.querySelector('.ctla-sidebar');
+					if (sidebar) {
+						const sidebarRect = sidebar.getBoundingClientRect();
+						const scrollTop = window.pageYOffset + sidebarRect.top - 20; // 20px offset from top
+						window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+					}
+				}, 100);
+				return () => clearTimeout(scrollTimer);
+			}
+		}
+	}, [isInvalidQuery]);
+
+	/**
 	 * Checks if any filters (age or location) are currently active.
 	 * Used to enable/disable the "Clear Filters" button.
 	 * @returns {boolean} True if at least one filter is active, false otherwise.
 	 */
 	const hasActiveFilters = () => {
 		// Check age filter (handles single value or potentially array in future)
-		const hasAgeFilter = filters.age != null && filters.age !== '';
+		const hasAgeFilter = filters.age != null && filters.age !== '' && filters.age.length !== 0;
 
 		// Check location filter (zip code must exist)
 		const hasLocationFilter = Boolean(filters.location?.zipCode);

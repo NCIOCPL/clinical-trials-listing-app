@@ -9,12 +9,14 @@ export const useScrollRestoration = () => {
 
 	useEffect(() => {
 		const isFilterUpdate = location.state?.filterUpdate;
+		const scrollToError = location.state?.scrollToError;
 		const isMobileOrTablet = window.innerWidth < BREAKPOINTS.DESKTOP;
 
 		// Skip scroll-to-top for filter updates on mobile/tablet only
 		// On desktop (1024px+), filters are in a sidebar so scrolling to top is appropriate
 		// On mobile/tablet (<1024px), filters are inline so scrolling disrupts the user experience
-		if (isFilterUpdate && isMobileOrTablet) {
+		// Exception: When there's an error, scroll to show the error message in the filter area
+		if (isFilterUpdate && isMobileOrTablet && !scrollToError) {
 			prevLocationKey.current = location.key;
 			return;
 		}
@@ -33,6 +35,19 @@ export const useScrollRestoration = () => {
 		if (savedPosition && !isFilterUpdate) {
 			// Restore saved position for back/forward navigation
 			window.scrollTo(savedPosition.x, savedPosition.y);
+		} else if (scrollToError && isMobileOrTablet) {
+			// When there's an error on mobile/tablet, scroll to the filter/error area
+			// so the error message is visible to the user
+			const sidebar = document.querySelector('.ctla-sidebar');
+			if (sidebar) {
+				// Get the sidebar's position and scroll to it with some offset
+				const sidebarRect = sidebar.getBoundingClientRect();
+				const scrollTop = window.pageYOffset + sidebarRect.top - 20; // 20px offset from top
+				window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+			} else {
+				// Fallback to top if sidebar not found
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+			}
 		} else {
 			// Scroll to top for new navigations, filter updates on desktop, or initial load
 			window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -53,5 +68,5 @@ export const useScrollRestoration = () => {
 		return () => {
 			window.removeEventListener('beforeunload', handleBeforeUnload);
 		};
-	}, [location.key, location.state?.filterUpdate]);
+	}, [location.key, location.state?.filterUpdate, location.state?.scrollToError]);
 };

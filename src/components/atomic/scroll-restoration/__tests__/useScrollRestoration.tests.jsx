@@ -131,4 +131,81 @@ describe('useScrollRestoration()', () => {
 
 		expect(window.removeEventListener).toHaveBeenCalledWith('beforeunload', expect.any(Function));
 	});
+
+	it('should scroll to filter area on mobile when there is an error', () => {
+		// Set viewport to mobile width
+		Object.defineProperty(window, 'innerWidth', {
+			value: BREAKPOINTS.MOBILE_LG,
+			writable: true,
+		});
+
+		// Mock the sidebar element
+		const mockSidebar = document.createElement('div');
+		mockSidebar.className = 'ctla-sidebar';
+		document.body.appendChild(mockSidebar);
+
+		// Mock getBoundingClientRect
+		mockSidebar.getBoundingClientRect = jest.fn(() => ({
+			top: 200,
+			left: 0,
+			right: 0,
+			bottom: 0,
+			width: 0,
+			height: 0,
+		}));
+
+		// Mock pageYOffset
+		Object.defineProperty(window, 'pageYOffset', {
+			value: 100,
+			writable: true,
+		});
+
+		const ScrollMockComponent = () => {
+			useScrollRestoration();
+			return <div>Test Component</div>;
+		};
+
+		// Render with filter update AND scrollToError state
+		render(
+			<MemoryRouter initialEntries={[{ pathname: '/test', state: { filterUpdate: true, scrollToError: true } }]}>
+				<ScrollMockComponent />
+			</MemoryRouter>
+		);
+
+		// On mobile with error, should scroll to filter area (sidebar position - 20px offset)
+		// scrollTop = pageYOffset (100) + sidebarRect.top (200) - 20 = 280
+		expect(window.scrollTo).toHaveBeenCalledWith({
+			top: 280,
+			behavior: 'smooth',
+		});
+
+		// Clean up
+		document.body.removeChild(mockSidebar);
+	});
+
+	it('should scroll to top on mobile with error if sidebar not found', () => {
+		// Set viewport to mobile width
+		Object.defineProperty(window, 'innerWidth', {
+			value: BREAKPOINTS.MOBILE_LG,
+			writable: true,
+		});
+
+		const ScrollMockComponent = () => {
+			useScrollRestoration();
+			return <div>Test Component</div>;
+		};
+
+		// Render with filter update AND scrollToError state but no sidebar in DOM
+		render(
+			<MemoryRouter initialEntries={[{ pathname: '/test', state: { filterUpdate: true, scrollToError: true } }]}>
+				<ScrollMockComponent />
+			</MemoryRouter>
+		);
+
+		// Fallback to scroll to top when sidebar not found
+		expect(window.scrollTo).toHaveBeenCalledWith({
+			top: 0,
+			behavior: 'smooth',
+		});
+	});
 });
