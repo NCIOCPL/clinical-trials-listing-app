@@ -512,7 +512,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	 */
 	const hasActiveFilters = () => {
 		// Check age filter (handles single value or potentially array in future)
-		const hasAgeFilter = filters.age != null && filters.age !== '';
+		const hasAgeFilter = filters.age != null && filters.age !== '' && filters.age.length !== 0;
 
 		// Check location filter (zip code must exist)
 		const hasLocationFilter = Boolean(filters.location?.zipCode);
