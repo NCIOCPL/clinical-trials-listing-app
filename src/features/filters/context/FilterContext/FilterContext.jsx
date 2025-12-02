@@ -1082,7 +1082,11 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 						replace: shouldReplace,
 						// Signal to ScrollRestoration that this is a filter update
 						// so it doesn't scroll to top when users interact with filters
-						state: { filterUpdate: true },
+						// Also signal if there's an error so it can scroll to show the error message
+						state: {
+							filterUpdate: true,
+							scrollToError: state.isInvalidQuery,
+						},
 					}
 				);
 			} else {
