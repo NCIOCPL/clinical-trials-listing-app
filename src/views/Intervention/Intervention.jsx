@@ -332,21 +332,29 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 				// If filters are applied, stay on page and show NoResultsWithFilters (handled in render)
 			} else if (fetchState?.total > 0) {
 				// Only fire tracking event on initial load or when filters are submitted
-				if (isInitialLoad || filtersSubmitted) {
+				// Wait for async validation to complete so errorParams includes non-existent c-codes
+				if ((isInitialLoad || filtersSubmitted) && filterState.validationComplete) {
 					// Fire off tracking event for successful results
 					// Create trackingData inside the event to ensure data is available
 					const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
-					tracking.trackEvent({
+					const eventData = {
 						type: 'PageLoad',
 						event: 'TrialListingApp:Load:Results',
-						name: canonicalHost.replace(/^(http|https):\/\//, '') + window.location.pathname,
+						name: canonicalHost.replace(/^(http|https):\/\//, '') + encodeURI(window.location.pathname),
 						title: replacedText.pageTitle,
 						language: language === 'en' ? 'english' : 'spanish',
 						metaTitle: `${replacedText.pageTitle} - ${siteName}`,
 						numberResults: fetchState.total,
 						trialListingPageType: `${trialListingPageType.toLowerCase()}`,
 						...(trackingData || {}),
-					});
+					};
+
+					// Include errorParams if there are invalid URL parameters
+					if (filterState.isInvalidQuery && filterState.invalidParams) {
+						eventData.errorParams = filterState.invalidParams;
+					}
+
+					tracking.trackEvent(eventData);
 
 					// Filter apply tracking moved to dedicated useEffect
 
@@ -361,7 +369,7 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 			}
 		}
 		// Update dependency array with renamed variables
-	}, [isTrialSearchLoading, fetchState, trialSearchError, isInitialLoad, filtersSubmitted]);
+	}, [isTrialSearchLoading, fetchState, trialSearchError, isInitialLoad, filtersSubmitted, filterState.validationComplete]);
 
 	// Dedicated useEffect for filter analytics
 	useEffect(() => {
@@ -466,7 +474,9 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 		navigate(`${routePath(paramsObject)}${qryStr}`);
 	};
 	const renderHelmet = () => {
-		const pathAndPage = window.location.pathname + `?pn=${pager.page}`;
+		// Sanitize pathname from DOM to prevent XSS
+		const sanitizedPathname = encodeURI(window.location.pathname);
+		const pathAndPage = sanitizedPathname + `?pn=${pager.page}`;
 
 		// Get redirect status from state or location.state
 		let redirectStatus = '';
@@ -490,7 +500,8 @@ const Intervention = ({ routeParamMap, routePath, data, isInitialLoading, state,
 		}
 
 		// Get prerender location from location.state
-		const prerenderLocation = location.state?.prerenderLocation || baseHost + location.pathname;
+		// Sanitize location.pathname to prevent XSS
+		const prerenderLocation = location.state?.prerenderLocation || baseHost + encodeURI(location.pathname);
 
 		return (
 			<Helmet>

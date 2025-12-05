@@ -3,12 +3,12 @@
  * system for all filter-related functionality in the application. It handles filter state,
  * URL synchronization, ZIP code validation and geocoding, and transforming filters to API parameters.
  */
-import React, { createContext, useContext, useReducer, useEffect, useState, useCallback } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, useState, useCallback, useMemo } from 'react';
 import axios from 'axios';
 import { useStateValue } from '../../../../store/store.jsx';
 import PropTypes from 'prop-types';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { getFiltersFromURL } from '../../../../utils/url';
+import { getFiltersFromURL, validateURLParams } from '../../../../utils/url';
 import { PAGE_FILTER_CONFIGS } from '../../config/pageFilterConfigs';
 import { URL_PARAM_MAPPING } from '../../constants/urlParams';
 import { getLocationFilters } from '../../utils/locationUtils';
@@ -29,6 +29,10 @@ export const FilterActionTypes = {
 	SCHEDULE_AUTO_APPLY: 'SCHEDULE_AUTO_APPLY', // Schedule auto-apply timer
 	CANCEL_AUTO_APPLY: 'CANCEL_AUTO_APPLY', // Cancel pending auto-apply
 	START_AUTO_APPLY: 'START_AUTO_APPLY', // Start auto-apply process
+	RESET_INITIAL_LOAD: 'RESET_INITIAL_LOAD', // Reset isInitialLoad flag after URL sync
+	SET_INVALID_QUERY: 'SET_INVALID_QUERY', // Set invalid query state when URL params are invalid
+	SET_VALIDATION_PENDING: 'SET_VALIDATION_PENDING', // Mark a filter as pending async validation
+	SET_VALIDATION_COMPLETE: 'SET_VALIDATION_COMPLETE', // Mark a filter validation as complete
 };
 
 /**
@@ -72,6 +76,15 @@ const initialState = {
 	isAutoApplying: false, // Whether auto-apply is in progress
 	pendingAutoApply: false, // Whether auto-apply is pending
 	lastChangedFilter: null, // Track which filter was last changed
+	isInvalidQuery: false, // Whether URL contains invalid query parameters
+	invalidParams: null, // The invalid URL parameters that were detected (for analytics)
+	pendingValidations: {
+		maintype: false,
+		subtype: false,
+		stage: false,
+		drugIntervention: false,
+	}, // Track which filters are pending async validation
+	validationComplete: true, // Whether all async validations are complete
 };
 
 /**
@@ -108,11 +121,12 @@ function filterReducer(state, action) {
 				// console.log('[MAINTYPE DEBUG] Setting maintype, isNewPageLoad:', action.payload.isNewPageLoad, 'isInitializingFromURL:', state.isInitializingFromURL);
 				// console.log('[MAINTYPE DEBUG] Current subtype before:', newFilters.subtype);
 				newFilters[action.payload.filterType] = action.payload.value;
-				// Only clear subtypes when maintype changes from user interaction, not during URL initialization
+				// Only clear subtypes and stages when maintype changes from user interaction, not during URL initialization
 				// Check both isNewPageLoad flag and isInitializingFromURL state
 				if (!action.payload.isNewPageLoad && !state.isInitializingFromURL) {
 					// console.log('[MAINTYPE DEBUG] Clearing subtype because NOT new page load AND NOT initializing from URL');
 					newFilters.subtype = []; // Clear subtypes when maintype changes
+					newFilters.stage = []; // Clear stages when maintype changes
 				} else {
 					// console.log('[MAINTYPE DEBUG] Preserving subtype because IS new page load OR IS initializing from URL');
 				}
@@ -265,8 +279,27 @@ function filterReducer(state, action) {
 			const filtersToApply = state.filters;
 			// console.log('FilterContext - APPLY_FILTERS - filters to apply:', filtersToApply);
 
-			// Create appliedFilters with validation - exclude invalid location filters
+			// Create appliedFilters with validation - exclude invalid filters
 			const appliedFiltersToSet = { ...filtersToApply };
+
+			// Validate age filter before adding to appliedFilters
+			if (appliedFiltersToSet.age && Array.isArray(appliedFiltersToSet.age)) {
+				const validAgeValues = appliedFiltersToSet.age.filter((age) => {
+					// Check if the string contains only digits
+					if (!/^\d+$/.test(age)) {
+						return false; // Invalid: contains non-numeric characters
+					}
+					const numAge = parseInt(age, 10);
+					return !isNaN(numAge) && numAge >= 0 && numAge <= 120;
+				});
+				if (validAgeValues.length === 0) {
+					// All age values are invalid, remove the age filter from appliedFilters
+					delete appliedFiltersToSet.age;
+				} else {
+					// Keep only valid age values
+					appliedFiltersToSet.age = validAgeValues;
+				}
+			}
 
 			// Validate location filter before adding to appliedFilters
 			if (appliedFiltersToSet.location?.zipCode && (!isValidZipFormat(appliedFiltersToSet.location.zipCode) || !state.zipCoords)) {
@@ -313,6 +346,7 @@ function filterReducer(state, action) {
 				appliedZipCoords: null,
 				pendingAutoApply: false,
 				autoApplyTimerId: null,
+				// Don't clear isInvalidQuery here - it should only be cleared when user manually clears or valid params load
 			};
 
 		case FilterActionTypes.REMOVE_FILTER: {
@@ -390,6 +424,54 @@ function filterReducer(state, action) {
 				pendingAutoApply: false,
 			};
 
+		case FilterActionTypes.RESET_INITIAL_LOAD:
+			return {
+				...state,
+				isInitialLoad: false,
+			};
+
+		case FilterActionTypes.SET_INVALID_QUERY:
+			return {
+				...state,
+				isInvalidQuery: action.payload.isInvalid !== undefined ? action.payload.isInvalid : action.payload,
+				invalidParams:
+					action.payload.invalidParams === null
+						? null // Explicit clear
+						: action.payload.invalidParams !== undefined
+						? { ...state.invalidParams, ...action.payload.invalidParams } // Merge with existing
+						: action.payload
+						? state.invalidParams
+						: null,
+			};
+
+		case FilterActionTypes.SET_VALIDATION_PENDING: {
+			const filterType = action.payload;
+			const newPendingValidations = {
+				...state.pendingValidations,
+				[filterType]: true,
+			};
+			return {
+				...state,
+				pendingValidations: newPendingValidations,
+				validationComplete: false,
+			};
+		}
+
+		case FilterActionTypes.SET_VALIDATION_COMPLETE: {
+			const filterType = action.payload;
+			const newPendingValidations = {
+				...state.pendingValidations,
+				[filterType]: false,
+			};
+			// Check if all validations are now complete
+			const allComplete = !Object.values(newPendingValidations).some((pending) => pending);
+			return {
+				...state,
+				pendingValidations: newPendingValidations,
+				validationComplete: allComplete,
+			};
+		}
+
 		default:
 			return state;
 	}
@@ -420,9 +502,23 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 
 	const [isApplyingFilters, setIsApplyingFilters] = useState(false);
 	const [{ zipConversionEndpoint }] = useStateValue();
+	// Track when we've just removed invalid params to prevent clearing the error message on re-render
+	const justRemovedInvalidParamsRef = React.useRef(false);
 
 	const location = useLocation();
 	const navigate = useNavigate();
+
+	// Extract only filter-related params from URL for dependency tracking
+	// This prevents the effect from running when non-filter params (like pn for pagination) change
+	const filterParamsString = useMemo(() => {
+		const params = new URLSearchParams(location.search);
+		const filterParamKeys = [URL_PARAM_MAPPING.maintype.shortCode, URL_PARAM_MAPPING.subtype.shortCode, URL_PARAM_MAPPING.stage.shortCode, URL_PARAM_MAPPING.drugIntervention.shortCode, URL_PARAM_MAPPING.age.shortCode, URL_PARAM_MAPPING.zipCode.shortCode, URL_PARAM_MAPPING.radius.shortCode];
+		return filterParamKeys
+			.filter((key) => params.has(key))
+			.map((key) => `${key}=${params.get(key)}`)
+			.sort()
+			.join('&');
+	}, [location.search]);
 
 	/**
 	 * Effect to initialize filters from URL parameters when the path changes.
@@ -430,18 +526,107 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 	 */
 	useEffect(() => {
 		let params = new URLSearchParams(location.search);
+		let hasInvalidParams = false;
+		const detectedInvalidParams = {}; // Track which params are invalid for analytics
 
-		// Check for invalid zipcode and remove it from URL entirely
+		// Check for invalid zipcode
 		const zipFromUrl = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
-		if (zipFromUrl && !/^\d{5}$/.test(zipFromUrl)) {
-			// Remove invalid zipcode and radius from URL
+		const radiusFromUrl = params.get(URL_PARAM_MAPPING.radius.shortCode);
+		const hasInvalidZip = zipFromUrl && !/^\d{5}$/.test(zipFromUrl);
+		if (hasInvalidZip) {
+			hasInvalidParams = true;
+			detectedInvalidParams[URL_PARAM_MAPPING.zipCode.shortCode] = zipFromUrl;
+		}
+
+		// Validate URL parameters for age, subtype/stage dependencies
+		const maintypeValue = params.get(URL_PARAM_MAPPING.maintype.shortCode);
+		const validationResult = validateURLParams(params, !!maintypeValue);
+
+		if (!validationResult.isValid) {
+			hasInvalidParams = true;
+			// Collect the invalid params from validation result
+			if (validationResult.invalidParams) {
+				Object.assign(detectedInvalidParams, validationResult.invalidParams);
+			}
+		}
+
+		// If ANY parameter is invalid, strip ALL filter params from URL and set error state
+		if (hasInvalidParams) {
+			// Remove ALL filter parameters from URL
+			params.delete(URL_PARAM_MAPPING.maintype.shortCode);
+			params.delete(URL_PARAM_MAPPING.subtype.shortCode);
+			params.delete(URL_PARAM_MAPPING.stage.shortCode);
+			params.delete(URL_PARAM_MAPPING.age.shortCode);
+			params.delete(URL_PARAM_MAPPING.drugIntervention.shortCode);
 			params.delete(URL_PARAM_MAPPING.zipCode.shortCode);
 			params.delete(URL_PARAM_MAPPING.radius.shortCode);
 
-			// Update URL without the invalid parameters
+			// Mark that we just removed invalid params (ref is checked on re-render)
+			justRemovedInvalidParamsRef.current = true;
+
+			// Update URL without the filter parameters using navigate for proper React Router integration
 			const newSearch = params.toString();
-			const newUrl = newSearch ? `?${newSearch}` : location.pathname;
-			window.history.replaceState(null, '', newUrl);
+			const newUrl = newSearch ? `${location.pathname}?${newSearch}` : location.pathname;
+			navigate(newUrl, { replace: true, state: { invalidParamsRemoved: true } });
+
+			// Clear all filters when invalid parameters are detected
+			dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
+
+			// If zipcode was invalid, populate the form with the invalid value
+			// so ZipCodeFilter can show its own validation error
+			if (hasInvalidZip) {
+				dispatch({
+					type: FilterActionTypes.SET_FILTER,
+					payload: {
+						filterType: 'location',
+						value: {
+							zipCode: zipFromUrl,
+							radius: radiusFromUrl || '100',
+						},
+						isNewPageLoad: true,
+					},
+				});
+			}
+
+			dispatch({
+				type: FilterActionTypes.APPLY_FILTERS,
+				payload: { isNewPageLoad: true, preservedParams: '' },
+			});
+
+			// Mark that we have invalid query parameters (after clearing filters)
+			// Include the invalid params for analytics
+			dispatch({
+				type: FilterActionTypes.SET_INVALID_QUERY,
+				payload: {
+					isInvalid: true,
+					invalidParams: detectedInvalidParams,
+				},
+			});
+
+			// Exit early - don't try to load filters from invalid params
+			return;
+		} else if (!justRemovedInvalidParamsRef.current && !location.state?.invalidParamsRemoved) {
+			// Only clear invalid query flag if we didn't just remove invalid params
+			// This prevents the second render from clearing the error message
+			dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: { isInvalid: false, invalidParams: null } });
+		}
+
+		// Reset the ref after checking (for future navigations)
+		justRemovedInvalidParamsRef.current = false;
+
+		// Mark async validations as pending for filter params that need API validation
+		// These will be marked complete by the respective filter components after they validate
+		if (params.get(URL_PARAM_MAPPING.maintype.shortCode)) {
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_PENDING, payload: 'maintype' });
+		}
+		if (params.get(URL_PARAM_MAPPING.subtype.shortCode)) {
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_PENDING, payload: 'subtype' });
+		}
+		if (params.get(URL_PARAM_MAPPING.stage.shortCode)) {
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_PENDING, payload: 'stage' });
+		}
+		if (params.get(URL_PARAM_MAPPING.drugIntervention.shortCode)) {
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_PENDING, payload: 'drugIntervention' });
 		}
 
 		let filtersFromUrl = getFiltersFromURL(params);
@@ -493,13 +678,20 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 				payload: { isNewPageLoad, preservedParams: preservedParams.toString() },
 			});
 		}
-	}, [location.pathname]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [location.pathname, filterParamsString]);
 
 	/**
 	 * Effect specifically for handling invalid zipcode URL parameters.
 	 * Runs when search params change to clean invalid zipcodes.
+	 * Only runs when zipcode is the ONLY invalid param (other invalid params are handled by main effect).
 	 */
 	useEffect(() => {
+		// Skip if we just removed invalid params in the main effect
+		if (justRemovedInvalidParamsRef.current || location.state?.invalidParamsRemoved) {
+			return;
+		}
+
 		const params = new URLSearchParams(location.search);
 		const zipFromUrl = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
 
@@ -628,6 +820,11 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 	 * Extracts ZIP and radius from URL and validates if present.
 	 */
 	useEffect(() => {
+		// Skip if we just removed invalid params in the main effect
+		if (justRemovedInvalidParamsRef.current || location.state?.invalidParamsRemoved) {
+			return;
+		}
+
 		// Get ZIP and radius from URL parameters
 		const params = new URLSearchParams(location.search);
 		const zipParam = params.get(URL_PARAM_MAPPING.zipCode.shortCode);
@@ -881,13 +1078,31 @@ export function FilterProvider({ children, baseFilters = {}, pageType = 'Disease
 						pathname: location.pathname,
 						search: newSearch,
 					},
-					{ replace: shouldReplace }
+					{
+						replace: shouldReplace,
+						// Signal to ScrollRestoration that this is a filter update
+						// so it doesn't scroll to top when users interact with filters
+						// Also signal if there's an error so it can scroll to show the error message
+						state: {
+							filterUpdate: true,
+							scrollToError: state.isInvalidQuery,
+						},
+					}
 				);
 			} else {
 				// console.log('FilterContext - URL update - URL unchanged, skipping navigation');
 			}
+
+			// Reset isInitialLoad flag after URL sync completes
+			// This ensures analytics fire correctly for subsequent user interactions
+			if (state.isInitialLoad) {
+				const resetTimer = setTimeout(() => {
+					dispatch({ type: FilterActionTypes.RESET_INITIAL_LOAD });
+				}, 100); // Small delay to ensure navigation completes
+				return () => clearTimeout(resetTimer);
+			}
 		}
-	}, [state.appliedFilters, state.isDirty, state.shouldSearch, location.pathname, navigate]);
+	}, [state.appliedFilters, state.isDirty, state.shouldSearch, state.isInitialLoad, location.pathname, navigate]);
 
 	/**
 	 * Transforms the applied filter state into the format expected by the API.

@@ -37,4 +37,13 @@ describe('matchQueryParam', () => {
 
 		expect(matchQueryParam('C4872,breast-cancer')).toStrictEqual(matchedParam);
 	});
+
+	it('matches intervention names containing c-digits patterns as purl type', () => {
+		const matchedParam = {
+			paramType: queryParamType.purl,
+			queryParam: 'carbon-c-14-ac0010',
+		};
+
+		expect(matchQueryParam('carbon-c-14-ac0010')).toStrictEqual(matchedParam);
+	});
 });

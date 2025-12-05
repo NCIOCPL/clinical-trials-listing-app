@@ -1,5 +1,71 @@
 import { URL_PARAM_MAPPING } from '../features/filters/constants/urlParams';
 
+/**
+ * Validates URL parameters and returns an object indicating validation results
+ * @param {URLSearchParams} params - The URL parameters to validate
+ * @param {boolean} hasMainType - Whether a main type parameter exists (for dependency validation)
+ * @returns {object} Validation result with isValid flag and invalidParams object containing param:value pairs
+ */
+export const validateURLParams = (params, hasMainType = false) => {
+	const invalidParams = {};
+
+	// Helper to validate c-code format (C followed by digits, e.g., C3171, C4872)
+	const isValidCCodeFormat = (code) => /^C\d+$/i.test(code);
+
+	// Validate age parameter
+	const ageValues = params.getAll(URL_PARAM_MAPPING.age.shortCode);
+	if (ageValues.length > 0) {
+		const invalidAgeValues = ageValues.filter((age) => {
+			// Check if the string contains only digits
+			if (!/^\d+$/.test(age)) {
+				return true; // Invalid: contains non-numeric characters
+			}
+			const numAge = parseInt(age, 10);
+			return isNaN(numAge) || numAge < 0 || numAge > 120;
+		});
+		if (invalidAgeValues.length > 0) {
+			invalidParams[URL_PARAM_MAPPING.age.shortCode] = invalidAgeValues.join(',');
+		}
+	}
+
+	// Validate maintype c-code format
+	const maintypeValue = params.get(URL_PARAM_MAPPING.maintype.shortCode);
+	if (maintypeValue && !isValidCCodeFormat(maintypeValue)) {
+		invalidParams[URL_PARAM_MAPPING.maintype.shortCode] = maintypeValue;
+	}
+
+	// Validate subtype - invalid if present without maintype OR invalid c-code format
+	const subtypeValue = params.get(URL_PARAM_MAPPING.subtype.shortCode);
+	if (subtypeValue) {
+		if (!hasMainType) {
+			invalidParams[URL_PARAM_MAPPING.subtype.shortCode] = subtypeValue;
+		} else if (!isValidCCodeFormat(subtypeValue)) {
+			invalidParams[URL_PARAM_MAPPING.subtype.shortCode] = subtypeValue;
+		}
+	}
+
+	// Validate stage - invalid if present without maintype OR invalid c-code format
+	const stageValue = params.get(URL_PARAM_MAPPING.stage.shortCode);
+	if (stageValue) {
+		if (!hasMainType) {
+			invalidParams[URL_PARAM_MAPPING.stage.shortCode] = stageValue;
+		} else if (!isValidCCodeFormat(stageValue)) {
+			invalidParams[URL_PARAM_MAPPING.stage.shortCode] = stageValue;
+		}
+	}
+
+	// Validate drugIntervention c-code format
+	const drugValue = params.get(URL_PARAM_MAPPING.drugIntervention.shortCode);
+	if (drugValue && !isValidCCodeFormat(drugValue)) {
+		invalidParams[URL_PARAM_MAPPING.drugIntervention.shortCode] = drugValue;
+	}
+
+	return {
+		isValid: Object.keys(invalidParams).length === 0,
+		invalidParams,
+	};
+};
+
 export const appendOrUpdateToQueryString = (queryString, key, val) => {
 	const params = new URLSearchParams(queryString);
 	params.set(key, val);
@@ -21,6 +87,10 @@ export const getFiltersFromURL = (search) => {
 	if (ageValues.length) {
 		// Validate age values
 		const validAgeValues = ageValues.filter((age) => {
+			// Check if the string contains only digits
+			if (!/^\d+$/.test(age)) {
+				return false; // Invalid: contains non-numeric characters
+			}
 			const numAge = parseInt(age, 10);
 			return !isNaN(numAge) && numAge >= 0 && numAge <= 120;
 		});
@@ -117,5 +187,18 @@ export const removeQueryParam = (queryString, keyToRemove) => {
 	params.delete(keyToRemove);
 	const newSearch = params.toString();
 	// Return with '?' prefix if there are still params, otherwise empty string
+	return newSearch ? `?${newSearch}` : '';
+};
+
+/**
+ * Removes multiple query parameters from a query string
+ * @param {string} queryString - The query string to process
+ * @param {string[]} keysToRemove - Array of parameter keys to remove
+ * @returns {string} Updated query string with parameters removed
+ */
+export const removeMultipleQueryParams = (queryString, keysToRemove) => {
+	const params = new URLSearchParams(queryString);
+	keysToRemove.forEach((key) => params.delete(key));
+	const newSearch = params.toString();
 	return newSearch ? `?${newSearch}` : '';
 };

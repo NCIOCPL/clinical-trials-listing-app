@@ -326,7 +326,8 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 				// If filters are applied, stay on page and show NoResultsWithFilters (handled in render)
 			} else if (fetchState?.total > 0) {
 				// Only fire tracking event on initial load or when filters are submitted
-				if (isInitialLoad || filtersSubmitted) {
+				// Wait for async filter validations to complete before tracking
+				if ((isInitialLoad || filtersSubmitted) && filterState.validationComplete) {
 					trackPageView();
 
 					// Filter apply tracking moved to dedicated useEffect
@@ -341,7 +342,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 				}
 			}
 		}
-	}, [loading, fetchState, error, isInitialLoad, filtersSubmitted]);
+	}, [loading, fetchState, error, isInitialLoad, filtersSubmitted, filterState.validationComplete]);
 
 	// Dedicated useEffect for EDDL filter analytics
 	useEffect(() => {
@@ -536,7 +537,7 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 
 	const trackPageView = () => {
 		const trackingData = getAnalyticsParamsForRoute(data, routeParamMap);
-		tracking.trackEvent({
+		const eventData = {
 			type: 'PageLoad',
 			event: 'TrialListingApp:Load:Results',
 			name: canonicalHost.replace(/^(http|https):\/\//, '') + location.pathname,
@@ -546,7 +547,14 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 			numberResults: fetchState.total,
 			trialListingPageType: `${trialListingPageType.toLowerCase()}`,
 			...trackingData,
-		});
+		};
+
+		// Include errorParams if there are invalid URL parameters
+		if (filterState.isInvalidQuery && filterState.invalidParams) {
+			eventData.errorParams = filterState.invalidParams;
+		}
+
+		tracking.trackEvent(eventData);
 	};
 
 	const ResultsListWithPage = track({
@@ -575,7 +583,9 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 	};
 
 	const renderHelmet = () => {
-		const pathAndPage = window.location.pathname + `?pn=${pager.page}`;
+		// Sanitize pathname from DOM to prevent XSS
+		const sanitizedPathname = encodeURI(window.location.pathname);
+		const pathAndPage = sanitizedPathname + `?pn=${pager.page}`;
 		// Get redirect status from state or location.state
 		let redirectStatus = '';
 
@@ -596,7 +606,8 @@ const Disease = ({ routeParamMap, routePath, data, isInitialLoading, state, last
 		}
 
 		// Get prerender location from location.state
-		const prerenderLocation = location.state?.prerenderLocation || baseHost + location.pathname;
+		// Sanitize location.pathname to prevent XSS
+		const prerenderLocation = location.state?.prerenderLocation || baseHost + encodeURI(location.pathname);
 
 		return (
 			<Helmet>

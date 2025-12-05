@@ -1,17 +1,24 @@
 import React, { useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useFilters } from '../../context/FilterContext/FilterContext';
+import { useFilters, FilterActionTypes } from '../../context/FilterContext/FilterContext';
 import FilterGroup from '../FilterGroup';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import { useMainTypeSearch } from '../../../../hooks/ctsApiSupport/useMainTypeSearch';
 import ComboBox from '../ComboBox/ComboBox';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { URL_PARAM_MAPPING } from '../../constants/urlParams';
 import './MainTypeFilter.scss';
 
-const MainTypeFilter = ({ onFocus, disabled = false }) => {
-	const { state, dispatch } = useFilters();
+const MainTypeFilter = ({ onFocus, disabled = false, dispatch: dispatchFromProps }) => {
+	const { state, dispatch: dispatchFromContext } = useFilters();
+	// Use dispatch from props if provided (for invalid query handling), otherwise use context dispatch
+	const dispatch = dispatchFromProps || dispatchFromContext;
 	const { filters } = state;
 	const isHandlingChangeRef = useRef(false);
 	const isInitializedRef = useRef(false);
+	const hasValidatedUrlParamRef = useRef(false);
+	const navigate = useNavigate();
+	const location = useLocation();
 
 	// Use our custom React Query hook
 	const { options, isLoading, error } = useMainTypeSearch();
@@ -37,6 +44,76 @@ const MainTypeFilter = ({ onFocus, disabled = false }) => {
 			isInitializedRef.current = true;
 		}
 	}, [formattedOptions.length]);
+
+	// Detect if we need to load maintype data for concept codes from URL
+	const conceptCodeFromUrl = React.useMemo(() => {
+		if (Array.isArray(filters.maintype) && filters.maintype.length > 0) {
+			return filters.maintype[0];
+		}
+		return null;
+	}, [filters.maintype]);
+
+	// Effect to update filter when maintype data loads from URL
+	// Note: This effect only sets isInvalidQuery to true when invalid params are detected.
+	// It does NOT set isInvalidQuery to false - that is handled by FilterContext
+	// to avoid race conditions where one valid component clears the error set by another invalid component.
+	React.useEffect(() => {
+		const matchingMaintype = formattedOptions.find((option) => option.value && option.value.includes(conceptCodeFromUrl));
+		if (conceptCodeFromUrl) {
+			if (formattedOptions.length > 0) {
+				// Find the maintype with matching concept code
+				if (!isLoading && !matchingMaintype) {
+					// If invalid query param then set isInvalidQuery to true
+					dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: { isInvalid: true, invalidParams: { [URL_PARAM_MAPPING.maintype.shortCode]: conceptCodeFromUrl } } });
+					// If invalid query param then clear out all the filters
+					dispatch({
+						type: 'CLEAR_FILTERS',
+					});
+				}
+			}
+		}
+	}, [conceptCodeFromUrl, formattedOptions, isLoading, dispatch]);
+
+	// Validate maintype c-code from URL once options are loaded
+	React.useEffect(() => {
+		// Only validate once when options are loaded and we have a maintype value
+		if (formattedOptions.length > 0 && value.length > 0 && !hasValidatedUrlParamRef.current) {
+			hasValidatedUrlParamRef.current = true;
+
+			const maintypeCode = value[0];
+			// Check if the maintype code exists in the available options
+			const isValidCode = formattedOptions.some((option) => option.value === maintypeCode);
+
+			if (!isValidCode) {
+				// Strip ALL filter parameters from URL when maintype is invalid
+				const params = new URLSearchParams(location.search);
+				params.delete(URL_PARAM_MAPPING.maintype.shortCode);
+				params.delete(URL_PARAM_MAPPING.subtype.shortCode);
+				params.delete(URL_PARAM_MAPPING.stage.shortCode);
+				params.delete(URL_PARAM_MAPPING.age.shortCode);
+				params.delete(URL_PARAM_MAPPING.drugIntervention.shortCode);
+				params.delete(URL_PARAM_MAPPING.zipCode.shortCode);
+				params.delete(URL_PARAM_MAPPING.radius.shortCode);
+				const newSearch = params.toString();
+				const newUrl = newSearch ? `${location.pathname}?${newSearch}` : location.pathname;
+				navigate(newUrl, { replace: true, state: { invalidParamsRemoved: true } });
+
+				// Invalid c-code detected - set invalid query state and clear filters
+				dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
+				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: { isInvalid: true, invalidParams: { [URL_PARAM_MAPPING.maintype.shortCode]: maintypeCode } } });
+			}
+
+			// Signal that maintype validation is complete (whether valid or invalid)
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_COMPLETE, payload: 'maintype' });
+		}
+	}, [formattedOptions, value, dispatch, navigate, location]);
+
+	// Signal validation complete when options load but no maintype param to validate
+	React.useEffect(() => {
+		if (formattedOptions.length > 0 && !isLoading && value.length === 0) {
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_COMPLETE, payload: 'maintype' });
+		}
+	}, [formattedOptions.length, isLoading, value.length, dispatch]);
 
 	// // Debug logging
 	// console.log('MainTypeFilter - render - filters:', filters);
@@ -122,6 +199,7 @@ const MainTypeFilter = ({ onFocus, disabled = false }) => {
 MainTypeFilter.propTypes = {
 	onFocus: PropTypes.func,
 	disabled: PropTypes.bool,
+	dispatch: PropTypes.func,
 };
 
 export default MainTypeFilter;

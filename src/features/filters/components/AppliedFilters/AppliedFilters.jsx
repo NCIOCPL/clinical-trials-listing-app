@@ -23,7 +23,7 @@ import { getFieldCode } from '../../utils/eddlAnalytics';
  *
  * @returns {JSX.Element|null} The rendered AppliedFilters component or null.
  */
-const AppliedFilters = ({ pageType = 'Disease', onFilterRemoved = () => {} }) => {
+const AppliedFilters = ({ pageType = 'Disease', onFilterRemoved = () => {}, isInvalidQuery }) => {
 	const { state, dispatch } = useFilters();
 	const filters = state.appliedFilters; // Get the list of applied filters from context
 	const appliedZipCoords = state.appliedZipCoords; // Get coordinates for applied ZIP code
@@ -67,7 +67,7 @@ const AppliedFilters = ({ pageType = 'Disease', onFilterRemoved = () => {} }) =>
 	};
 
 	// If there are no applied filters, don't render anything
-	if (!hasAppliedFilters(filters)) {
+	if (!hasAppliedFilters(filters) || isInvalidQuery) {
 		// console.log('[AppliedFilters] No meaningful filters, returning null');
 		return null;
 	}
@@ -215,6 +215,22 @@ const AppliedFilters = ({ pageType = 'Disease', onFilterRemoved = () => {} }) =>
 		values: filters[type],
 	}));
 
+	const isEmptyFilter = (filter) => {
+		const { values, type } = filter;
+		if (!values || values.length === 0) return true;
+		if (type === 'location' && values.radius == null) return true;
+		return false;
+	};
+
+	const hasVisibleFilters = filtersArray.some((filter) => {
+		if (isEmptyFilter(filter)) return null;
+
+		const formattedFilter = formatFilterLabel(filter);
+		return formattedFilter?.label?.length > 0;
+	});
+
+	if (!hasVisibleFilters) return null;
+
 	return (
 		<div className="applied-filters">
 			<div className="applied-filters__header">
@@ -223,18 +239,12 @@ const AppliedFilters = ({ pageType = 'Disease', onFilterRemoved = () => {} }) =>
 			<div className="applied-filters__content">
 				{/* Map through each applied filter group */}
 				{filtersArray.map((filter) => {
-					let emptyFilter = filter.values == null || filter.values == null || filter.values.length === 0 || (filter.type == 'location' && (filter.values.radius == null || filter.values.radius == undefined));
-					if (emptyFilter) {
-						return null;
-					}
+					if (isEmptyFilter(filter)) return null;
 
 					const formattedFilter = formatFilterLabel(filter);
 					// console.log('[AppliedFilters] formatFilterLabel returned:', formattedFilter);
 					// Skip if formatFilterLabel returns null (e.g., incomplete drugIntervention data)
-					if (!formattedFilter) {
-						// console.log('[AppliedFilters] formattedFilter is null, skipping');
-						return null;
-					}
+					if (!formattedFilter) return null;
 
 					const { label } = formattedFilter;
 					// Map through each value within the filter group (most have one, some like subtype can have multiple)
@@ -261,6 +271,8 @@ AppliedFilters.propTypes = {
 	pageType: PropTypes.string,
 	/** Callback function invoked when a filter is removed. Receives the field code of the removed filter. */
 	onFilterRemoved: PropTypes.func,
+	/** If an invalid query parameter was entered in the url */
+	isInvalidQuery: PropTypes.bool,
 };
 
 export default AppliedFilters;

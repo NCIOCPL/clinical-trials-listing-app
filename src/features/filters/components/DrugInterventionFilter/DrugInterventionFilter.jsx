@@ -1,15 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useFilters } from '../../context/FilterContext/FilterContext';
+import { useFilters, FilterActionTypes } from '../../context/FilterContext/FilterContext';
 import FilterGroup from '../FilterGroup';
 import { FILTER_CONFIG } from '../../config/filterConfig';
 import './DrugInterventionFilter.scss';
 import { useDrugSearch } from '../../../../hooks/ctsApiSupport/useDrugSearch';
 import { useDrugSearchByCode } from '../../../../hooks/ctsApiSupport/useDrugSearchByCode';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { URL_PARAM_MAPPING } from '../../constants/urlParams';
 
 const DrugInterventionFilter = ({ onFocus, disabled = false }) => {
 	const { state, dispatch } = useFilters();
 	const { filters } = state;
+	const navigate = useNavigate();
+	const location = useLocation();
 
 	// State for autocomplete functionality
 	const [inputValue, setInputValue] = useState('');
@@ -36,30 +40,63 @@ const DrugInterventionFilter = ({ onFocus, disabled = false }) => {
 	}, [filters.drugIntervention]);
 
 	// Use drug search to load drug data by concept code if needed
-	const { drugs: drugsByCode } = useDrugSearchByCode(conceptCodeFromUrl);
+	const { drugs: drugsByCode, isLoading: isLoadingByCode } = useDrugSearchByCode(conceptCodeFromUrl);
 
 	// Effect to update filter when drug data loads from URL
 	React.useEffect(() => {
-		// console.log('[DrugInterventionFilter useEffect] conceptCodeFromUrl:', conceptCodeFromUrl, 'drugsByCode:', drugsByCode);
-		if (conceptCodeFromUrl && drugsByCode.length > 0) {
-			// Find the drug with matching concept code
-			const matchingDrug = drugsByCode.find((drug) => drug.codes && drug.codes.includes(conceptCodeFromUrl));
-			if (matchingDrug) {
-				// console.log('[DrugInterventionFilter] Found matching drug, dispatching SET_FILTER:', matchingDrug);
-				// Update the filter with the complete drug object (without isFallback flag)
-				dispatch({
-					type: 'SET_FILTER',
-					payload: {
-						filterType: 'drugIntervention',
-						value: [matchingDrug],
-					},
-				});
-				// console.log('[DrugInterventionFilter] Dispatched SET_FILTER with drug object');
-			} else {
-				// console.log('[DrugInterventionFilter] No matching drug found for code:', conceptCodeFromUrl, 'Available drugs:', drugsByCode);
+		// console.log('[DrugInterventionFilter useEffect] conceptCodeFromUrl:', conceptCodeFromUrl, 'drugsByCode:', drugsByCode, 'isLoadingByCode:', isLoadingByCode);
+		if (conceptCodeFromUrl) {
+			if (drugsByCode.length > 0) {
+				// Find the drug with matching concept code
+				const matchingDrug = drugsByCode.find((drug) => drug.codes && drug.codes.includes(conceptCodeFromUrl));
+				if (matchingDrug) {
+					// console.log('[DrugInterventionFilter] Found matching drug, dispatching SET_FILTER:', matchingDrug);
+					// Update the filter with the complete drug object (without isFallback flag)
+					dispatch({
+						type: 'SET_FILTER',
+						payload: {
+							filterType: 'drugIntervention',
+							value: [matchingDrug],
+						},
+					});
+					// console.log('[DrugInterventionFilter] Dispatched SET_FILTER with drug object');
+
+					// Signal that drugIntervention validation is complete (valid)
+					dispatch({ type: FilterActionTypes.SET_VALIDATION_COMPLETE, payload: 'drugIntervention' });
+				} else {
+					// console.log('[DrugInterventionFilter] No matching drug found for code:', conceptCodeFromUrl, 'Available drugs:', drugsByCode);
+				}
+			} else if (!isLoadingByCode && drugsByCode.length === 0) {
+				// API finished loading but returned no results - invalid c-code detected
+				// Strip ALL filter parameters from URL when drug intervention is invalid
+				const params = new URLSearchParams(location.search);
+				params.delete(URL_PARAM_MAPPING.drugIntervention.shortCode);
+				params.delete(URL_PARAM_MAPPING.maintype.shortCode);
+				params.delete(URL_PARAM_MAPPING.subtype.shortCode);
+				params.delete(URL_PARAM_MAPPING.stage.shortCode);
+				params.delete(URL_PARAM_MAPPING.age.shortCode);
+				params.delete(URL_PARAM_MAPPING.zipCode.shortCode);
+				params.delete(URL_PARAM_MAPPING.radius.shortCode);
+				const newSearch = params.toString();
+				const newUrl = newSearch ? `${location.pathname}?${newSearch}` : location.pathname;
+				navigate(newUrl, { replace: true, state: { invalidParamsRemoved: true } });
+
+				// Invalid c-code detected - set invalid query state and clear filters
+				dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
+				dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: { isInvalid: true, invalidParams: { [URL_PARAM_MAPPING.drugIntervention.shortCode]: conceptCodeFromUrl } } });
+
+				// Signal that drugIntervention validation is complete (invalid)
+				dispatch({ type: FilterActionTypes.SET_VALIDATION_COMPLETE, payload: 'drugIntervention' });
 			}
 		}
-	}, [conceptCodeFromUrl, drugsByCode, dispatch]);
+	}, [conceptCodeFromUrl, drugsByCode, isLoadingByCode, dispatch, navigate, location]);
+
+	// Signal validation complete when there's no drug param to validate
+	React.useEffect(() => {
+		if (!conceptCodeFromUrl) {
+			dispatch({ type: FilterActionTypes.SET_VALIDATION_COMPLETE, payload: 'drugIntervention' });
+		}
+	}, [conceptCodeFromUrl, dispatch]);
 
 	// Get selected drug from filters (single object, not array)
 	const selectedDrug = React.useMemo(() => {

@@ -26,6 +26,7 @@ import { isValidZipFormat } from '../../utils/locationUtils';
 import PropTypes from 'prop-types';
 import AppliedFilters from '../AppliedFilters/AppliedFilters';
 import { getFieldCode } from '../../utils/eddlAnalytics';
+import { BREAKPOINTS } from '../../../../constants/breakpoints';
 
 /**
  * Helper function to detect which field was added by comparing old and new filters
@@ -88,7 +89,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	const navigate = useNavigate();
 	const location = useLocation();
 	const { state, dispatch, applyFilters, enabledFilters = [], listingInfo } = useFilters();
-	const { filters, isDirty } = state; // Get current filters and dirty state from context
+	const { filters, isDirty, isInvalidQuery } = state; // Get current filters, dirty state, and invalid query state from context
 	const [hasInteracted, setHasInteracted] = useState(false); // Tracks if user has interacted with any filter yet
 	// const [isFirstLoad, setIsFirstLoad] = useState(true); // Unused state variable
 	// State to hold the function that retrieves the latest ZIP validation status from ZipCodeFilter
@@ -211,6 +212,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		pendingRemovedFieldRef.current = 'all';
 
 		// Dispatch actions to update context state
+		dispatch({ type: FilterActionTypes.SET_INVALID_QUERY, payload: false }); // Clear invalid query error
 		dispatch({ type: FilterActionTypes.CLEAR_FILTERS });
 		dispatch({ type: FilterActionTypes.APPLY_FILTERS }); // Apply the cleared state
 
@@ -394,11 +396,11 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 			case 'drugIntervention':
 				return <DrugInterventionFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
 			case 'maintype':
-				return <MainTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
+				return <MainTypeFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} dispatch={dispatch} />;
 			case 'subtype':
-				return <Subtype onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
+				return <Subtype onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} dispatch={dispatch} />;
 			case 'stage':
-				return <StageFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} />;
+				return <StageFilter onFocus={() => trackFilterStart(filterType)} disabled={isDisabled} dispatch={dispatch} />;
 			case 'age':
 				return (
 					<AgeFilter
@@ -471,6 +473,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 				const isClosed = filterBtn.classList.contains('is-closed');
 				content.hidden = isClosed;
 				filterBtn.setAttribute('aria-expanded', !isClosed);
+				filterBtn.setAttribute('tabIndex', '0');
 			} else {
 				// If desktop view
 				// Ensure accordion is open and listener is removed
@@ -479,6 +482,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 				filterBtn.style.backgroundImage = minusSign; // Default to open style
 				content.removeAttribute('hidden');
 				filterBtn.setAttribute('aria-expanded', 'true');
+				filterBtn.setAttribute('tabIndex', '-1');
 			}
 		}
 
@@ -503,13 +507,41 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	}, []); // No dependencies needed since function doesn't depend on props/state
 
 	/**
+	 * Effect to handle invalid query state:
+	 * 1. Blur any focused input to prevent focus remaining on cleared fields
+	 * 2. Scroll to the filter/error area on mobile so the error message is visible
+	 */
+	useEffect(() => {
+		if (isInvalidQuery) {
+			// Blur any focused element to prevent focus remaining on cleared fields
+			if (document.activeElement && document.activeElement !== document.body) {
+				document.activeElement.blur();
+			}
+
+			// On mobile/tablet, scroll to show the error message
+			if (window.innerWidth < BREAKPOINTS.DESKTOP) {
+				// Small delay to ensure the error message is rendered
+				const scrollTimer = setTimeout(() => {
+					const sidebar = document.querySelector('.ctla-sidebar');
+					if (sidebar) {
+						const sidebarRect = sidebar.getBoundingClientRect();
+						const scrollTop = window.pageYOffset + sidebarRect.top - 20; // 20px offset from top
+						window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+					}
+				}, 100);
+				return () => clearTimeout(scrollTimer);
+			}
+		}
+	}, [isInvalidQuery]);
+
+	/**
 	 * Checks if any filters (age or location) are currently active.
 	 * Used to enable/disable the "Clear Filters" button.
 	 * @returns {boolean} True if at least one filter is active, false otherwise.
 	 */
 	const hasActiveFilters = () => {
 		// Check age filter (handles single value or potentially array in future)
-		const hasAgeFilter = filters.age != null && filters.age !== '';
+		const hasAgeFilter = filters.age != null && filters.age !== '' && filters.age.length !== 0;
 
 		// Check location filter (zip code must exist)
 		const hasLocationFilter = Boolean(filters.location?.zipCode);
@@ -613,7 +645,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	//
 	// Effect to detect auto-apply and trigger analytics callback
 	useEffect(() => {
-		const { appliedFilters } = state;
+		const { appliedFilters, isInitialLoad } = state;
 
 		// Capture previous value at the start to avoid race conditions
 		const prevFilters = prevAppliedFiltersRef.current;
@@ -629,6 +661,13 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		if (isInitialUrlLoadRef.current) {
 			prevAppliedFiltersRef.current = appliedFilters;
 			isInitialUrlLoadRef.current = false; // Mark initial load as complete
+			return;
+		}
+
+		// Skip if this change is from URL navigation (e.g., back button)
+		// isInitialLoad is true when FilterContext applies filters from URL params
+		if (isInitialLoad) {
+			prevAppliedFiltersRef.current = appliedFilters;
 			return;
 		}
 
@@ -663,17 +702,22 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 		return null;
 	}
 
-	const renderAppliedFilters = () => {
+	const renderClearButton = () => {
 		if (hasActiveFilters()) {
 			return (
-			<>
-				<AppliedFilters pageType={pageType} onFilterRemoved={handleIndividualFilterRemoved} />
 				<div className="ctla-sidebar__actions">
-					<button className="usa-button ctla-sidebar__button--clear ctla-sidebar__button--full-width" onClick={handleClearFilters} disabled={isDisabled || !hasActiveFilters()}>
+					<button className="usa-button ctla-sidebar__button--clear ctla-sidebar__button--full-width" onClick={handleClearFilters} disabled={isDisabled}>
 						Clear Filters
 					</button>
 				</div>
-			</>
+			);
+		}
+	};
+
+	const renderAppliedFilters = () => {
+		if (hasActiveFilters()) {
+			return (
+				<AppliedFilters pageType={pageType} onFilterRemoved={handleIndividualFilterRemoved} />
 			);
 		}
 		return null;
@@ -682,6 +726,21 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 	// Near the top of the component
 	// console.log('Sidebar - Rendering with isDirty:', state.isDirty);
 	// console.log('Sidebar - Current filters:', filters);
+
+	const renderInvalidQueryMessage = () => {
+		if (isInvalidQuery) {
+			return (
+				<div className="usa-alert usa-alert--error usa-alert--slim" role="alert">
+					<div className="usa-alert__body">
+						<p className="usa-alert__text">
+							Sorry, there seems to be invalid criteria. Please update your filters.
+						</p>
+					</div>
+				</div>
+			);
+		}
+		return null;
+	};
 
 	return (
 		<aside className="ctla-sidebar">
@@ -694,6 +753,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 				</h2>
 			</div>
 			<div id="accordionContent" className="usa-accordion__content ctla-sidebar__content">
+				{renderInvalidQueryMessage()}
 				{PAGE_FILTER_CONFIGS[pageType].order.map((filterType) => {
 					if (enabledFilters.includes(filterType)) {
 						return <div key={filterType}>{renderFilter(filterType, isDisabled)}</div>;
@@ -701,6 +761,7 @@ const Sidebar = ({ pageType = 'Disease', isDisabled = false, onFilterApplied = (
 					return null;
 				})}
 				{renderAppliedFilters()}
+				{renderClearButton()}
 			</div>
 		</aside>
 	);

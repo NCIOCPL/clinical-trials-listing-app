@@ -16,7 +16,7 @@ const PageNotFound = () => {
 		tracking.trackEvent({
 			event: 'TrialListingApp:Load:PageNotFound',
 			metaTitle: pageTitle,
-			name: `${canonicalHost.replace(/^(http|https):\/\//, '')}${window.location.pathname}`,
+			name: `${canonicalHost.replace(/^(http|https):\/\//, '')}${encodeURI(window.location.pathname)}`,
 			title: pageTitle,
 			type: 'PageLoad',
 			trialListingPageType: trialListingPageType.toLowerCase(),
@@ -46,7 +46,8 @@ const PageNotFound = () => {
 
 	const executeSearch = (event) => {
 		event.preventDefault();
-		window.location = `https://www.cancer.gov/search/results?swKeyword=${searchText}`;
+		// Encode search text to prevent XSS when constructing URL
+		window.location = `https://www.cancer.gov/search/results?swKeyword=${encodeURIComponent(searchText)}`;
 	};
 
 	const renderHelmet = () => {
