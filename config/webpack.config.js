@@ -13,7 +13,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
@@ -202,7 +202,7 @@ module.exports = function (webpackEnv) {
 						// Added for profiling in devtools
 						keep_classnames: isEnvProductionProfile,
 						keep_fnames: isEnvProductionProfile,
-						output: {
+						format: {
 							ecma: 5,
 							comments: false,
 							// Turned on because emoji and regex is not minified properly using default
@@ -210,7 +210,6 @@ module.exports = function (webpackEnv) {
 							ascii_only: true,
 						},
 					},
-					sourceMap: shouldUseSourceMap,
 				}),
 				// This is only used in production mode
 				new CssMinimizerPlugin({
@@ -601,12 +600,12 @@ module.exports = function (webpackEnv) {
 			// Generate a service worker script that will precache, and keep up to date,
 			// the HTML & assets that are part of the webpack build.
 			isEnvProduction &&
-				new WorkboxWebpackPlugin.GenerateSW({
+				new GenerateSW({
 					clientsClaim: true,
 					exclude: [/\.map$/, /asset-manifest\.json$/],
-					importWorkboxFrom: 'cdn',
+					// importWorkboxFrom: 'cdn',
 					navigateFallback: paths.publicUrlOrPath + 'index.html',
-					navigateFallbackBlacklist: [
+					navigateFallbackDenylist: [
 						// Exclude URLs starting with /_, as they're likely an API call
 						new RegExp('^/_'),
 						// Exclude any URLs whose last part seems to be a file extension

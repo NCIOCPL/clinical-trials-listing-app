@@ -39,8 +39,9 @@ module.exports = function (proxy, allowedHost) {
 				ignored: ignoredFiles(paths.appSrc),
 			},
 		},
-		https: getHttpsConfig(),
+		server: getHttpsConfig() ? 'https' : 'http',
 		host,
+		port: process.env.PORT || 3000,
 		historyApiFallback: {
 			// Paths with dots should still use the history fallback.
 			// See https://github.com/facebook/create-react-app/issues/387.
@@ -50,29 +51,36 @@ module.exports = function (proxy, allowedHost) {
 		// `proxy` is run between `before` and `after` `webpack-dev-server` hooks
 		proxy,
 		webSocketServer: 'ws',
-		onBeforeSetupMiddleware(devServer) {
+		setupMiddlewares(middlewares, devServer) {
+			if (!devServer) {
+				throw new Error("webpack-dev-server is not defined");
+			}
+
+			// BEFORE MIDDLEWARES
 			// Keep `evalSourceMapMiddleware` and `errorOverlayMiddleware`
 			// middlewares before `redirectServedPath` otherwise will not have any effect
 			// This lets us fetch source contents from webpack for the error overlay
-			devServer.app.use(evalSourceMapMiddleware(devServer));
+			middlewares.unshift(evalSourceMapMiddleware(devServer));
 			// This lets us open files from the runtime error overlay.
-			devServer.app.use(errorOverlayMiddleware());
+			middlewares.unshift(errorOverlayMiddleware());
 
 			if (fs.existsSync(paths.proxySetup)) {
 				// This registers user provided middleware for proxy reasons
 				require(paths.proxySetup)(devServer.app);
 			}
-		},
-		onAfterSetupMiddleware(devServer) {
+
+			// AFTER MIDDLEWARES
 			// Redirect to `PUBLIC_URL` or `homepage` from `package.json` if url not match
-			devServer.app.use(redirectServedPath(paths.publicUrlOrPath));
+			middlewares.push(redirectServedPath(paths.publicUrlOrPath));
 
 			// This service worker file is effectively a 'no-op' that will reset any
 			// previous service worker registered for the same host:port combination.
 			// We do this in development to avoid hitting the production cache if
 			// it used the same host and port.
 			// https://github.com/facebook/create-react-app/issues/2272#issuecomment-302832432
-			devServer.app.use(noopServiceWorkerMiddleware(paths.publicUrlOrPath));
+			middlewares.push(noopServiceWorkerMiddleware(paths.publicUrlOrPath));
+
+			return middlewares;
 		},
 	};
 };
