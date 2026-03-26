@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 import { useStateValue } from '../../../store/store';
 import './CISBanner.scss';
 
-const CISBanner = ({ onLiveHelpClick }) => {
+const defaultLiveHelpClick = (url) => {
+	window.open(url, 'ProactiveLiveHelpForCTS', 'height=600,width=633');
+};
+
+const CISBanner = ({ onLiveHelpClick = defaultLiveHelpClick }) => {
 	const [{ cisBannerImgUrlLarge, cisBannerImgUrlSmall, liveHelpUrl }] = useStateValue();
 
 	const liveHelpClickHandler = (url) => {
